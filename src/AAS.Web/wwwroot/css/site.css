@@ -84,43 +84,57 @@ main, header, footer {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--gold-light);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.03em;
 }
+
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
 }
+
 h3 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 600;
 }
+
 h4 {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: 600;
 }
 
 p {
-  margin-bottom: 1.2rem;
-  line-height: 1.8;
-  color: var(--text-primary);
-  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-size: 1.0625rem;
 }
 
 .brand-title {
   font-family: 'Playfair Display', serif;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.01em;
   font-weight: 700;
-  font-size: 1.25rem;
-  text-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.brand-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
 }
 
 /* ============ NAVIGATION ============ */
