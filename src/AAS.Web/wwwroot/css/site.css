@@ -863,52 +863,64 @@ footer a:hover {
 
 /* ============ LINK STYLES ============ */
 a {
-  color: var(--gold);
+  color: var(--text-gold);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 a:hover {
-  color: var(--gold-light);
-  text-decoration: none;
+  color: var(--gold);
+}
+
+main a:not(.btn):not(.nav-link):not(.card) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
 /* ============ TABLE STYLES ============ */
 .table {
   color: var(--text-primary);
-  background: transparent;
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .table thead {
-  color: var(--gold-light);
-  border-bottom: 2px solid var(--border);
-  position: relative;
+  background: var(--light-gray);
+  color: var(--text-primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-light);
 }
 
-.table thead::after {
-  content: '✦';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--gold);
-  font-size: 8px;
-  background: var(--black);
-  padding: 0 8px;
+.table thead th {
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .table tbody tr {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-light);
   transition: all 0.2s ease;
 }
 
 .table tbody tr:hover {
-  background: rgba(212, 175, 55, 0.05);
+  background: var(--gold-subtle);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table td {
+  padding: 1rem 1.25rem;
+  vertical-align: middle;
 }
 
 .table td,
 .table th {
-  padding: 1rem;
   vertical-align: middle;
 }
 
