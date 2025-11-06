@@ -880,21 +880,47 @@ footer a:hover {
 /* ============ PAGE SPECIFIC STYLES ============ */
 .page-heading {
   text-align: center;
-  margin: 3rem 0 2rem;
-  color: var(--gold-light);
+  margin: 3rem 0 1.5rem;
+  color: var(--text-primary);
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  letter-spacing: 1.5px;
-  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.page-heading::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
 }
 
 .page-description {
   text-align: center;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto 3rem;
   color: var(--text-secondary);
-  line-height: 1.8;
-  font-size: 1.1rem;
+  line-height: 1.7;
+  font-size: 1.125rem;
+}
+
+/* Section styles */
+.section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
 }
 
 /* ============ LINK STYLES ============ */
