@@ -1,21 +1,38 @@
 /* ===================================
    ARISTOCRATIC ARTWORK SALE - LUXURY DESIGN
    Elegant, Refined, Sophisticated
+   Modern Light Theme with Gold Accents
    =================================== */
 
 :root {
-  --gold: #d4af37;
-  --gold-light: #f4e4b8;
-  --gold-dark: #b8941f;
-  --black: #000000;
-  --dark-gray: #0a0a0a;
-  --mid-gray: #1a1a1a;
-  --light-gray: #2a2a2a;
-  --text-primary: #f8f6f2;
-  --text-secondary: #d0cec9;
-  --border: rgba(212, 175, 55, 0.15);
-  --shadow: 0 8px 32px rgba(212, 175, 55, 0.08);
-  --shadow-lg: 0 16px 48px rgba(212, 175, 55, 0.12);
+  /* Gold palette */
+  --gold: #D4AF37;
+  --gold-light: #E8D4A0;
+  --gold-dark: #B8941F;
+  --gold-subtle: #F5ECD7;
+  
+  /* White & Light palette */
+  --white: #FFFFFF;
+  --cream: #FAFAF8;
+  --light-gray: #F5F5F3;
+  --border-light: #E8E6E1;
+  
+  /* Black & Dark palette */
+  --black: #1A1A1A;
+  --charcoal: #2D2D2D;
+  --gray: #6B6B6B;
+  --gray-light: #9E9E9E;
+  
+  /* Text colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-gold: #B8941F;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-gold: 0 4px 24px rgba(212, 175, 55, 0.15);
 }
 
 /* ============ BASE STYLES ============ */
