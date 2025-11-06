@@ -986,53 +986,52 @@ main a:not(.btn):not(.nav-link):not(.card) {
   vertical-align: middle;
 }
 
-/* ============ BAROQUE ORNAMENTS ============ */
+/* ============ DIVIDERS ============ */
 .ornament-divider {
-  height: 20px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 20'%3E%3Cpath d='M0 10 Q50 5, 100 10 T200 10 T300 10 T400 10' stroke='%23d4af37' stroke-width='1' fill='none' opacity='0.4'/%3E%3Ccircle cx='200' cy='10' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='150' cy='10' r='2' fill='%23d4af37' opacity='0.4'/%3E%3Ccircle cx='250' cy='10' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  margin: 2rem 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+  margin: 3rem auto;
+  max-width: 200px;
+  border-radius: 2px;
+  opacity: 0.6;
 }
 
 .ornament-divider-small {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.2) 20%, rgba(212, 175, 55, 0.4) 50%, rgba(212, 175, 55, 0.2) 80%, transparent 100%);
-  margin: 1.5rem 0;
-  position: relative;
-}
-
-.ornament-divider-small::before {
-  content: '✦';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--gold);
-  font-size: 8px;
-  background: var(--black);
-  padding: 0 8px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+  margin: 2rem 0;
 }
 
 hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.3) 20%, rgba(212, 175, 55, 0.5) 50%, rgba(212, 175, 55, 0.3) 80%, transparent 100%);
-  margin: 2rem 0;
-  position: relative;
+  background: var(--border-light);
+  margin: 2.5rem 0;
+  opacity: 1;
 }
 
-hr::before {
-  content: '✦ ✦ ✦';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--gold);
-  font-size: 8px;
-  letter-spacing: 8px;
-  background: var(--black);
-  padding: 0 12px;
-  opacity: 0.8;
+/* ============ BADGES ============ */
+.badge {
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+.badge-gold {
+  background: var(--gold-subtle);
+  color: var(--text-gold);
+  border: 1px solid var(--gold-light);
+}
+
+.badge-primary {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.badge-secondary {
+  background: var(--light-gray);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
 }
