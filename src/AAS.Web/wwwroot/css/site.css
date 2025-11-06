@@ -600,22 +600,31 @@ footer a:hover {
 
 /* ============ DROPDOWN ============ */
 .dropdown-menu {
-  background: rgba(10, 10, 10, 0.98);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(10px);
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .dropdown-item {
   color: var(--text-secondary);
   transition: all 0.2s ease;
-  padding: 0.75rem 1.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9375rem;
 }
 
-.dropdown-item:hover {
-  background: rgba(212, 175, 55, 0.1);
-  color: var(--gold);
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: var(--light-gray);
+  color: var(--text-primary);
+}
+
+.dropdown-item:active {
+  background: var(--gold-subtle);
+  color: var(--text-gold);
 }
 
 /* ============ RESPONSIVE ============ */
