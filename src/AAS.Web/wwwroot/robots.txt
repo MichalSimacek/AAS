@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /Admin/
+Disallow: /Identity/
+
+Sitemap: https://aristocraticartworksale.com/sitemap.xml

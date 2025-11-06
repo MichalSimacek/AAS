@@ -1,0 +1,22 @@
+# Copy this file to docker-compose.override.yml and fill in your secrets
+# docker-compose.override.yml is in .gitignore and won't be committed
+
+version: '3.8'
+
+services:
+  postgres:
+    ports:
+      - "5432:5432"  # Expose for local development (remove in production)
+
+  web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_PASSWORD=YOUR_STRONG_DB_PASSWORD_HERE
+      - ADMIN_EMAIL=admin@aristocraticartworksale.com
+      - ADMIN_PASSWORD=YOUR_STRONG_ADMIN_PASSWORD_HERE
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USERNAME=your-email@gmail.com
+      - SMTP_PASSWORD=your-app-specific-password
+      - EMAIL_FROM=no-reply@aristocraticartworksale.com
+      - TRANSLATION_ENABLED=false

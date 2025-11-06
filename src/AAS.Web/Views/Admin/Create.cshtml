@@ -1,0 +1,11 @@
+@model AAS.Web.Models.Collection
+@using AAS.Web.Models
+<h2>Create collection</h2>
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+<div class="mb-2"><label class="form-label">Title</label><input asp-for="Title" class="form-control" /></div>
+<div class="mb-2"><label class="form-label">Category</label><select asp-for="Category" asp-items="Html.GetEnumSelectList<CollectionCategory>()" class="form-select"></select></div>
+<div class="mb-2"><label class="form-label">Description</label><textarea asp-for="Description" rows="6" class="form-control"></textarea></div>
+<div class="mb-2"><label class="form-label">Images</label><input type="file" name="images" multiple accept="image/*" class="form-control" /></div>
+<div class="mb-2"><label class="form-label">Audio (MP3)</label><input type="file" name="audio" accept="audio/mpeg" class="form-control" /></div>
+<button class="btn btn-dark">Save</button>
+</form>

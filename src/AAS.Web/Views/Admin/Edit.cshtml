@@ -1,0 +1,18 @@
+@model AAS.Web.Models.Collection
+@using AAS.Web.Models
+<h2>Edit collection</h2>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+<input type="hidden" asp-for="Id" />
+<div class="mb-2"><label class="form-label">Title</label><input asp-for="Title" class="form-control" /></div>
+<div class="mb-2"><label class="form-label">Category</label><select asp-for="Category" asp-items="Html.GetEnumSelectList<CollectionCategory>()" class="form-select"></select></div>
+<div class="mb-2"><label class="form-label">Description</label><textarea asp-for="Description" rows="6" class="form-control"></textarea></div>
+<div class="mb-2"><label class="form-label">Add images</label><input type="file" name="newImages" multiple accept="image/*" class="form-control" /></div>
+<button class="btn btn-dark">Save</button>
+</form>
+@if(Model.Images?.Any() == true){
+<div class="row mt-3 g-2">
+@foreach (var i in Model.Images.OrderBy(x=>x.SortOrder)){
+<div class="col-3"><img class="img-fluid" src="/uploads/images/@i.FileName-480.jpg" alt="" /></div>
+}
+</div>
+}
