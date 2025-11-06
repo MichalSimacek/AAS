@@ -42,57 +42,18 @@
   box-sizing: border-box;
 }
 
-/* Override Bootstrap white defaults */
-.text-white,
-.border-white,
-.btn-light,
-.btn-outline-light,
-.text-light {
-  color: var(--text-primary) !important;
-  border-color: var(--gold) !important;
-}
-
-.btn-light {
-  background: rgba(212, 175, 55, 0.15) !important;
-  color: var(--text-primary) !important;
-}
-
-.btn-light:hover {
-  background: rgba(212, 175, 55, 0.25) !important;
-  color: var(--gold-light) !important;
-}
-
-/* Remove white borders from form controls */
-input.form-control,
-textarea.form-control,
-select.form-select,
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--border) !important;
-}
-
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--gold) !important;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
-}
-
-/* Remove white from any remaining elements */
-*[style*="white"],
-*[style*="#fff"],
-*[style*="255, 255, 255"] {
-  color: var(--text-primary) !important;
-  border-color: var(--border) !important;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+  background: var(--cream);
   color: var(--text-primary);
-  line-height: 1.8;
+  line-height: 1.7;
   font-size: 16px;
   font-weight: 400;
-  letter-spacing: 0.025em;
+  letter-spacing: -0.01em;
   min-height: 100vh;
   position: relative;
   -webkit-font-smoothing: antialiased;
@@ -107,9 +68,9 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 40%);
   pointer-events: none;
   z-index: 0;
 }
