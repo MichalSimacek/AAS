@@ -273,10 +273,16 @@ else
 </div>
 
 <script>
-function confirmDelete(id, title) {
-    document.getElementById('deleteCollectionTitle').textContent = title;
-    document.getElementById('deleteForm').action = '/Admin/Collections/Delete/' + id;
-    var modal = new bootstrap.Modal(document.getElementById('deleteModal'));
-    modal.show();
-}
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.delete-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var id = this.getAttribute('data-id');
+            var title = this.getAttribute('data-title');
+            document.getElementById('deleteCollectionTitle').textContent = title;
+            document.getElementById('deleteForm').action = '/Admin/Collections/Delete/' + id;
+            var modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+            modal.show();
+        });
+    });
+});
 </script>
