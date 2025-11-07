@@ -196,48 +196,52 @@ namespace AAS.Web.Areas.Admin.Controllers
                 return View(existing);
             }
 
-            // CRITICAL FIX: Use transaction for data consistency
-            using var transaction = await _db.Database.BeginTransactionAsync();
-            try
+            // CRITICAL FIX: Use ExecutionStrategy for retrying transactions
+            var strategy = _db.Database.CreateExecutionStrategy();
+            return await strategy.ExecuteAsync<IActionResult>(async () =>
             {
-                existing.Title = model.Title;
-                existing.Description = model.Description ?? existing.Description;
-                existing.Category = model.Category;
-                existing.Slug = _slug.ToSlug(model.Title);
-
-                // Process new images if any
-                if (newImages != null && newImages.Any(f => f.Length > 0))
+                using var transaction = await _db.Database.BeginTransactionAsync();
+                try
                 {
-                    int order = existing.Images.Count == 0 ? 0 : existing.Images.Max(i => i.SortOrder) + 1;
-                    foreach (var f in newImages.Where(f => f.Length > 0))
-                    {
-                        var nameNoExt = Guid.NewGuid().ToString("N");
-                        var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
-                        _db.CollectionImages.Add(new CollectionImage
-                        {
-                            CollectionId = existing.Id,
-                            FileName = nameNoExt,
-                            Width = meta.w,
-                            Height = meta.h,
-                            Bytes = meta.b,
-                            SortOrder = order++
-                        });
-                    }
-                }
+                    existing.Title = model.Title;
+                    existing.Description = model.Description ?? existing.Description;
+                    existing.Category = model.Category;
+                    existing.Slug = _slug.ToSlug(model.Title);
 
-                await _db.SaveChangesAsync();
-                await transaction.CommitAsync();
-                
-                TempData["SuccessMessage"] = $"Collection '{existing.Title}' updated successfully.";
-                return RedirectToAction(nameof(Edit), new { id });
-            }
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                Console.WriteLine($"Error updating collection: {ex.Message}");
-                TempData["ErrorMessage"] = $"Error updating collection: {ex.Message}";
-                return View(existing);
-            }
+                    // Process new images if any
+                    if (newImages != null && newImages.Any(f => f.Length > 0))
+                    {
+                        int order = existing.Images.Count == 0 ? 0 : existing.Images.Max(i => i.SortOrder) + 1;
+                        foreach (var f in newImages.Where(f => f.Length > 0))
+                        {
+                            var nameNoExt = Guid.NewGuid().ToString("N");
+                            var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
+                            _db.CollectionImages.Add(new CollectionImage
+                            {
+                                CollectionId = existing.Id,
+                                FileName = nameNoExt,
+                                Width = meta.w,
+                                Height = meta.h,
+                                Bytes = meta.b,
+                                SortOrder = order++
+                            });
+                        }
+                    }
+
+                    await _db.SaveChangesAsync();
+                    await transaction.CommitAsync();
+                    
+                    TempData["SuccessMessage"] = $"Collection '{existing.Title}' updated successfully.";
+                    return RedirectToAction(nameof(Edit), new { id });
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    Console.WriteLine($"Error updating collection: {ex.Message}");
+                    TempData["ErrorMessage"] = $"Error updating collection: {ex.Message}";
+                    return View(existing);
+                }
+            });
         }
 
         [HttpPost]
