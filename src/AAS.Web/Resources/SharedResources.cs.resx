@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+<resheader name="version"><value>2.0</value></resheader>
+<resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+<resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+<data name="Slogan" xml:space="preserve"><value>Diskrétnost, zaručená kvalita a profesionální péče o naše klienty jsou na prvním místě.</value></data>
+<data name="Collections" xml:space="preserve"><value>Kolekce</value></data>
+<data name="About us" xml:space="preserve"><value>O nás</value></data>
+<data name="Contacts" xml:space="preserve"><value>Kontakty</value></data>
+<data name="Register" xml:space="preserve"><value>Registrovat</value></data>
+<data name="Explore collections" xml:space="preserve"><value>Prohlédnout kolekce</value></data>
+<data name="Paintings" xml:space="preserve"><value>Obrazy</value></data>
+<data name="Jewelry" xml:space="preserve"><value>Šperky</value></data>
+<data name="Watches" xml:space="preserve"><value>Hodinky</value></data>
+<data name="Statues" xml:space="preserve"><value>Sochy</value></data>
+<data name="Other" xml:space="preserve"><value>Ostatní</value></data>
+<data name="I'm interested" xml:space="preserve"><value>Mám zájem</value></data>
+<data name="Send inquiry" xml:space="preserve"><value>Odeslat poptávku</value></data>
+<data name="First name" xml:space="preserve"><value>Jméno</value></data>
+<data name="Last name" xml:space="preserve"><value>Příjmení</value></data>
+<data name="Phone" xml:space="preserve"><value>Telefon</value></data>
+<data name="Message" xml:space="preserve"><value>Zpráva</value></data>
+<data name="Close" xml:space="preserve"><value>Zavřít</value></data>
+<data name="Send" xml:space="preserve"><value>Odeslat</value></data>
+<data name="Thank you. We will contact you soon." xml:space="preserve"><value>Děkujeme. Brzy vás budeme kontaktovat.</value></data>
+</root>
