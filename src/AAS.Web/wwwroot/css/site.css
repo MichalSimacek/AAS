@@ -779,3 +779,226 @@ select.form-select option {
     font-size: 2rem !important;
   }
 }
+
+
+/* ============================================
+   IDENTITY PAGES STYLING (Login/Register)
+   ============================================ */
+
+/* Identity page container */
+#account-container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 50%, #F5F5F5 100%);
+}
+
+/* Identity card styling */
+.identity-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  padding: 3rem;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Identity page headings */
+.identity-card h1,
+.identity-card h2 {
+  font-family: 'Playfair Display', serif;
+  color: #1A1A1A;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+/* Decorative accent line */
+.identity-accent {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #B8941F, transparent);
+  margin: 0 auto 2rem;
+}
+
+/* Form groups */
+.identity-card .form-floating,
+.identity-card .mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+/* Form labels */
+.identity-card label,
+.identity-card .form-label {
+  color: #4A4A4A;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Form inputs */
+.identity-card input[type="text"],
+.identity-card input[type="email"],
+.identity-card input[type="password"],
+.identity-card .form-control {
+  background: #FAFAFA;
+  border: 1px solid #E5E5E5;
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  color: #1A1A1A;
+  transition: all 0.3s ease;
+}
+
+.identity-card input:focus,
+.identity-card .form-control:focus {
+  background: #FFFFFF;
+  border-color: #B8941F;
+  box-shadow: 0 0 0 3px rgba(184, 148, 31, 0.1);
+  outline: none;
+}
+
+/* Checkboxes */
+.identity-card .form-check {
+  margin: 1.5rem 0;
+}
+
+.identity-card .form-check-input {
+  border: 2px solid #E5E5E5;
+  border-radius: 4px;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+  cursor: pointer;
+}
+
+.identity-card .form-check-input:checked {
+  background-color: #B8941F;
+  border-color: #B8941F;
+}
+
+.identity-card .form-check-label {
+  color: #4A4A4A;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+/* Submit buttons */
+.identity-card button[type="submit"],
+.identity-card .btn-primary {
+  background: linear-gradient(135deg, #B8941F 0%, #D4AF37 100%);
+  border: none;
+  border-radius: 6px;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  width: 100%;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.identity-card button[type="submit"]:hover,
+.identity-card .btn-primary:hover {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(184, 148, 31, 0.3);
+}
+
+/* Secondary buttons */
+.identity-card .btn-link,
+.identity-card a {
+  color: #B8941F;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.identity-card .btn-link:hover,
+.identity-card a:hover {
+  color: #D4AF37;
+  text-decoration: underline;
+}
+
+/* Links section */
+.identity-links {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #E5E5E5;
+  text-align: center;
+}
+
+.identity-links a {
+  display: block;
+  margin: 0.75rem 0;
+  color: #B8941F;
+  font-size: 0.95rem;
+}
+
+/* External login section */
+.identity-card .external-login {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #E5E5E5;
+}
+
+.identity-card .external-login h3 {
+  font-size: 1.1rem;
+  color: #4A4A4A;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Validation messages */
+.identity-card .text-danger,
+.identity-card .validation-summary-errors {
+  color: #DC3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.identity-card .validation-summary-errors ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  background: rgba(220, 53, 69, 0.05);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.identity-card .validation-summary-errors li {
+  margin-bottom: 0.5rem;
+}
+
+/* Alert messages */
+.identity-card .alert {
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.identity-card .alert-info {
+  background: rgba(184, 148, 31, 0.05);
+  border: 1px solid rgba(184, 148, 31, 0.2);
+  color: #B8941F;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .identity-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .identity-card h1,
+  .identity-card h2 {
+    font-size: 1.75rem;
+  }
+}
