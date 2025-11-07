@@ -104,31 +104,65 @@ namespace AAS.Web.Areas.Admin.Controllers
                     await _db.SaveChangesAsync();
 
                     int order = 0;
+                    int successCount = 0;
+                    int failCount = 0;
+                    List<string> errors = new List<string>();
+                    
                     foreach (var f in images.Where(f => f.Length > 0))
                     {
-                        var nameNoExt = Guid.NewGuid().ToString("N");
-                        var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
-                        var imgEntity = new CollectionImage
+                        try
                         {
-                            CollectionId = model.Id,
-                            FileName = nameNoExt,
-                            Width = meta.w,
-                            Height = meta.h,
-                            Bytes = meta.b,
-                            SortOrder = order++
-                        };
-                        _db.CollectionImages.Add(imgEntity);
+                            Console.WriteLine($"Processing image {order + 1}: {f.FileName} ({f.Length} bytes)");
+                            var nameNoExt = Guid.NewGuid().ToString("N");
+                            var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
+                            var imgEntity = new CollectionImage
+                            {
+                                CollectionId = model.Id,
+                                FileName = nameNoExt,
+                                Width = meta.w,
+                                Height = meta.h,
+                                Bytes = meta.b,
+                                SortOrder = order++
+                            };
+                            _db.CollectionImages.Add(imgEntity);
+                            successCount++;
+                            Console.WriteLine($"Image {f.FileName} processed successfully");
+                        }
+                        catch (Exception imgEx)
+                        {
+                            failCount++;
+                            var errorMsg = $"{f.FileName}: {imgEx.Message}";
+                            errors.Add(errorMsg);
+                            Console.WriteLine($"Image {f.FileName} failed: {imgEx.Message}");
+                            // Continue processing other images instead of failing completely
+                        }
+                    }
+
+                    if (successCount == 0)
+                    {
+                        await transaction.RollbackAsync();
+                        ModelState.AddModelError("images", $"All images failed to upload. Errors: {string.Join("; ", errors)}");
+                        return View(model);
                     }
 
                     await _db.SaveChangesAsync();
                     await transaction.CommitAsync();
-                    TempData["SuccessMessage"] = $"Collection '{model.Title}' created successfully!";
+                    
+                    var successMsg = $"Collection '{model.Title}' created with {successCount} image(s)";
+                    if (failCount > 0)
+                    {
+                        successMsg += $". {failCount} image(s) failed: {string.Join(", ", errors)}";
+                    }
+                    TempData["SuccessMessage"] = successMsg;
+                    
+                    Console.WriteLine($"Collection created: {successCount} success, {failCount} failed");
                     return RedirectToAction(nameof(Index), new { area = "Admin" });
                 }
                 catch (Exception ex)
                 {
                     await transaction.RollbackAsync();
-                    ModelState.AddModelError("images", $"Error uploading images: {ex.Message}");
+                    Console.WriteLine($"Transaction failed: {ex.Message}");
+                    ModelState.AddModelError("images", $"Error creating collection: {ex.Message}");
                     return View(model);
                 }
             });
