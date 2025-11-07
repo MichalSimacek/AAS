@@ -1,7 +1,7 @@
 @model AAS.Web.Models.Collection
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 @{
-  var images = Model.Images.OrderBy(i=>i.SortOrder).ToList();
+  var images = Model.Images.OrderBy(i => i.SortOrder).ToList();
 }
 
 <div class="section">
