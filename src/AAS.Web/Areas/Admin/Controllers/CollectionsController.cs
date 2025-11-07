@@ -335,5 +335,45 @@ namespace AAS.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Edit), new { id });
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ReorderImages(int id, [FromBody] List<int> imageIds)
+        {
+            try
+            {
+                Console.WriteLine($"Reordering images for collection {id}. New order: {string.Join(", ", imageIds)}");
+
+                var collection = await _db.Collections
+                    .Include(c => c.Images)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+
+                if (collection == null)
+                {
+                    return Json(new { success = false, message = "Collection not found" });
+                }
+
+                // Update sort order for each image
+                for (int i = 0; i < imageIds.Count; i++)
+                {
+                    var imageId = imageIds[i];
+                    var image = collection.Images.FirstOrDefault(img => img.Id == imageId);
+                    if (image != null)
+                    {
+                        image.SortOrder = i;
+                        Console.WriteLine($"Updated image {imageId} to order {i}");
+                    }
+                }
+
+                await _db.SaveChangesAsync();
+                Console.WriteLine("Image order saved successfully");
+
+                return Json(new { success = true, message = "Order updated successfully" });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reordering images: {ex.Message}");
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
     }
 }
