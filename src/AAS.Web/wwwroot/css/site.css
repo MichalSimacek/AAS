@@ -779,6 +779,11 @@ select.form-select option {
   .hero h1 {
     font-size: 2rem !important;
   }
+  
+  .hero-logo {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 
