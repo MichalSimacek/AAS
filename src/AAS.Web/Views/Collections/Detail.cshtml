@@ -44,7 +44,7 @@
         @if(!string.IsNullOrEmpty(Model.AudioPath)){
           <div class="card">
             <div class="card-body">
-              <h5>Audio Description</h5>
+              <h5>@L["Audio Description"]</h5>
               <audio controls class="w-100" src="@Model.AudioPath"></audio>
             </div>
           </div>
