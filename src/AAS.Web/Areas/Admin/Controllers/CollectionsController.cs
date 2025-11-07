@@ -83,7 +83,7 @@ namespace AAS.Web.Areas.Admin.Controllers
 
             // CRITICAL FIX: Use ExecutionStrategy for retrying transactions
             var strategy = _db.Database.CreateExecutionStrategy();
-            return await strategy.ExecuteAsync(async () =>
+            return await strategy.ExecuteAsync<IActionResult>(async () =>
             {
                 using var transaction = await _db.Database.BeginTransactionAsync();
                 try
