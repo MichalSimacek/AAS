@@ -114,14 +114,14 @@ app.Use((ctx, next) =>
     ctx.Response.Headers["X-XSS-Protection"] = "0"; // Disabled as modern browsers use CSP
     ctx.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=(), usb=()";
 
-    // Strict CSP - only allow specific trusted sources
+    // CSP - allow specific trusted sources and inline scripts for functionality
     var csp = "default-src 'self'; " +
-              "script-src 'self' https://cdn.jsdelivr.net; " +
+              "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; " +
               "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; " +
               "img-src 'self' data: https:; " +
-              "font-src 'self' https://fonts.gstatic.com; " +
+              "font-src 'self' data: https://fonts.gstatic.com; " +
               "media-src 'self'; " +
-              "connect-src 'self'; " +
+              "connect-src 'self' https://cdn.jsdelivr.net; " +
               "frame-ancestors 'none'; " +
               "base-uri 'self'; " +
               "form-action 'self'";
