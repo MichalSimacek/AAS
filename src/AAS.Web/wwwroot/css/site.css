@@ -120,6 +120,14 @@ header {
   border: none !important;
   cursor: pointer !important;
   transition: all 0.2s !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+a.btn {
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 .btn-primary {
