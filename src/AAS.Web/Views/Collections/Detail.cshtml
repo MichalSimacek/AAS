@@ -91,24 +91,43 @@
 </div>
 
 <div class="modal fade" id="interestModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title">@L["Send inquiry"]</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-      <div class="modal-body">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border: none; border-radius: 16px; overflow: hidden;">
+      <div class="modal-header" style="background: var(--light-gray); border-bottom: 1px solid var(--border-light);">
+        <h5 class="modal-title">@L["Send inquiry"]</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <p class="text-secondary mb-4">Fill out the form below and our specialist will contact you within 12 hours.</p>
         <form id="inqForm">
           <input type="hidden" name="collectionId" value="@Model.Id" />
           <input type="hidden" name="collectionTitle" value="@Model.Title" />
-          <div class="mb-2"><label class="form-label">@L["First name"]</label><input class="form-control" name="FirstName" /></div>
-          <div class="mb-2"><label class="form-label">@L["Last name"]</label><input class="form-control" name="LastName" /></div>
-          <div class="mb-2"><label class="form-label">Email</label><input class="form-control" name="Email" type="email" /></div>
-          <div class="mb-2"><label class="form-label">@L["Phone"]</label><input class="form-control" name="Phone" /></div>
-          <div class="mb-2"><label class="form-label">@L["Message"]</label><textarea class="form-control" name="Message" rows="4"></textarea></div>
+          <div class="mb-3">
+            <label class="form-label">@L["First name"]</label>
+            <input class="form-control" name="FirstName" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">@L["Last name"]</label>
+            <input class="form-control" name="LastName" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" name="Email" type="email" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">@L["Phone"]</label>
+            <input class="form-control" name="Phone" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">@L["Message"]</label>
+            <textarea class="form-control" name="Message" rows="4" placeholder="Tell us about your interest..."></textarea>
+          </div>
         </form>
         <div id="inqOk" class="alert alert-success d-none">@L["Thank you. We will contact you soon."]</div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@L["Close"]</button>
-        <button type="button" class="btn btn-dark" onclick="submitInquiry()">@L["Send"]</button>
+      <div class="modal-footer" style="background: var(--light-gray); border-top: 1px solid var(--border-light);">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">@L["Close"]</button>
+        <button type="button" class="btn btn-primary" onclick="submitInquiry()">@L["Send"]</button>
       </div>
     </div>
   </div>
