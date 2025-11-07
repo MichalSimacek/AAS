@@ -2,17 +2,89 @@
 @using AAS.Web.Models
 <h2>Edit collection</h2>
 <form asp-area="Admin" asp-controller="Collections" asp-action="Edit" method="post" enctype="multipart/form-data">
+@Html.AntiForgeryToken()
 <input type="hidden" asp-for="Id" />
-<div class="mb-2"><label class="form-label">Title</label><input asp-for="Title" class="form-control" /></div>
-<div class="mb-2"><label class="form-label">Category</label><select asp-for="Category" asp-items="Html.GetEnumSelectList<CollectionCategory>()" class="form-select"></select></div>
-<div class="mb-2"><label class="form-label">Description</label><textarea asp-for="Description" rows="6" class="form-control"></textarea></div>
-<div class="mb-2"><label class="form-label">Add images</label><input type="file" name="newImages" multiple accept="image/*" class="form-control" /></div>
-<button class="btn btn-dark">Save</button>
+<div class="mb-3">
+    <label class="form-label">Title</label>
+    <input asp-for="Title" class="form-control" required />
+</div>
+<div class="mb-3">
+    <label class="form-label">Category</label>
+    <select asp-for="Category" class="form-select" required>
+        <option value="">-- Select Category --</option>
+        <option value="@((int)CollectionCategory.Paintings)" selected="@(Model.Category == CollectionCategory.Paintings)">Paintings</option>
+        <option value="@((int)CollectionCategory.Jewelry)" selected="@(Model.Category == CollectionCategory.Jewelry)">Jewelry</option>
+        <option value="@((int)CollectionCategory.Watches)" selected="@(Model.Category == CollectionCategory.Watches)">Watches</option>
+        <option value="@((int)CollectionCategory.Statues)" selected="@(Model.Category == CollectionCategory.Statues)">Statues</option>
+        <option value="@((int)CollectionCategory.Other)" selected="@(Model.Category == CollectionCategory.Other)">Other</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label class="form-label">Description</label>
+    <textarea asp-for="Description" rows="6" class="form-control"></textarea>
+</div>
+<div class="mb-3">
+    <label class="form-label">Add images</label>
+    <input type="file" name="newImages" multiple accept="image/*" class="form-control" />
+    <small class="form-text text-muted">Select multiple images to add to this collection</small>
+</div>
+<button type="submit" class="btn btn-dark">Save</button>
+<a asp-area="Admin" asp-controller="Collections" asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>
+
 @if(Model.Images?.Any() == true){
-<div class="row mt-3 g-2">
+<h3 class="mt-4">Current Images</h3>
+<div class="row mt-3 g-3">
 @foreach (var i in Model.Images.OrderBy(x=>x.SortOrder)){
-<div class="col-3"><img class="img-fluid" src="/uploads/images/@i.FileName-480.jpg" alt="" /></div>
+<div class="col-md-3 col-sm-4 col-6">
+    <div class="card">
+        <img class="card-img-top" src="/uploads/images/@i.FileName-480.jpg" alt="Collection image" />
+        <div class="card-body p-2">
+            <button type="button" class="btn btn-danger btn-sm w-100 delete-image-btn" data-image-id="@i.Id" data-collection-id="@Model.Id">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>
 }
 </div>
+}
+
+<!-- Delete Image Modal -->
+<div class="modal fade" id="deleteImageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this image?</p>
+                <p class="text-danger small">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteImageForm" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.delete-image-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var imageId = this.getAttribute('data-image-id');
+            var collectionId = this.getAttribute('data-collection-id');
+            document.getElementById('deleteImageForm').action = '/Admin/Collections/DeleteImage/' + collectionId + '/' + imageId;
+            var modal = new bootstrap.Modal(document.getElementById('deleteImageModal'));
+            modal.show();
+        });
+    });
+});
+</script>
 }
