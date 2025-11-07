@@ -1084,6 +1084,110 @@ button:focus-visible,
 .btn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+
+
+/* ============ BREADCRUMB ============ */
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  color: var(--gray-light);
+}
+
+.breadcrumb-item a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--gold);
+}
+
+.breadcrumb-item.active {
+  color: var(--text-primary);
+}
+
+/* ============ SWIPER CUSTOMIZATION ============ */
+.swiper-button-prev,
+.swiper-button-next {
+  background: var(--white);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 18px !important;
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: var(--gold);
+}
+
+.swiper-button-prev:hover:after,
+.swiper-button-next:hover:after {
+  color: var(--white);
+}
+
+.swiper-pagination-bullet {
+  background: var(--gray-light);
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--gold);
+}
+
+/* ============ MODAL CUSTOMIZATION ============ */
+.modal-content {
+  border-radius: 16px;
+  border: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  background: var(--light-gray);
+  border-bottom: 1px solid var(--border-light);
+  border-radius: 16px 16px 0 0;
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-title {
+  color: var(--text-primary);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  background: var(--light-gray);
+  border-top: 1px solid var(--border-light);
+  border-radius: 0 0 16px 16px;
+  padding: 1rem 1.5rem;
+}
+
+.btn-close {
+  background-size: 1.25rem;
+  opacity: 0.5;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
 }
 
   background: var(--white);
