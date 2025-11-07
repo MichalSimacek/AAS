@@ -73,6 +73,7 @@ services.AddRazorPages();
 services.AddScoped<SlugService>();
 services.AddScoped<ImageService>();
 services.AddScoped<EmailService>();
+services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, EmailSenderAdapter>();
 
 // TranslationService with HttpClient - CRITICAL: Must be singleton to reuse HttpClient
 // But uses IServiceProvider to create scoped DbContext to avoid memory leak
