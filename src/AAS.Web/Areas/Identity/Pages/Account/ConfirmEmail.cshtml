@@ -1,0 +1,21 @@
+@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirm email";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.StatusMessage != null)
+{
+    <div class="alert @(Model.IsSuccess ? "alert-success" : "alert-danger")" role="alert">
+        @Model.StatusMessage
+    </div>
+}
+
+@if (Model.IsSuccess)
+{
+    <p>
+        Thank you for confirming your email. You can now <a asp-page="./Login">log in</a>.
+    </p>
+}
