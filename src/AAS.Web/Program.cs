@@ -55,10 +55,11 @@ services.AddDbContext<AppDbContext>(options =>
 // Identity
 services.AddDefaultIdentity<IdentityUser>(o =>
 {
-    o.SignIn.RequireConfirmedAccount = false;
+    o.SignIn.RequireConfirmedAccount = true; // Require email confirmation
     o.Password.RequiredLength = 12;
     o.Password.RequireNonAlphanumeric = true;
     o.Password.RequireUppercase = true;
+    o.User.RequireUniqueEmail = true; // Ensure unique emails
 })
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<AppDbContext>();
