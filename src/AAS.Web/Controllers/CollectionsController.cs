@@ -44,6 +44,20 @@ namespace AAS.Web.Controllers
                 }
             }
 
+            // Translate titles if not English
+            var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+            var translations = new Dictionary<int, string>();
+            
+            if (lang != "en")
+            {
+                foreach (var item in items)
+                {
+                    var translatedTitle = await _tr.TranslateAsync(item.Collection.Title, "en", lang);
+                    translations[item.Collection.Id] = translatedTitle;
+                }
+            }
+
+            ViewBag.Translations = translations;
             ViewBag.Category = category;
             return View(items.Select(x => x.Collection).ToList());
         }
