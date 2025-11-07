@@ -1,6 +1,54 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
-<section class="hero text-center py-5">
-  <h1 class="display-5 fw-bold brand-title">Aristocratic Artwork Sale</h1>
-  <p class="lead">@L["Slogan"]</p>
-  <a class="btn btn-lg btn-outline-primary mt-3" href="/Collections">@L["Explore collections"]</a>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-accent"></div>
+    <h1 class="display-5 fw-bold">Aristocratic Artwork Sale</h1>
+    <p class="lead">@L["Slogan"]</p>
+    <p class="text-secondary mb-4" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+      Discover exceptional fine art, antiques, precious jewelry, and luxury watches. 
+      We provide the highest prices with guaranteed discretion and professionalism.
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a class="btn btn-lg btn-primary" href="/Collections">@L["Explore collections"]</a>
+      <a class="btn btn-lg btn-outline-primary" href="/Contacts">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title text-center">Why Choose Us</h2>
+    <p class="section-subtitle text-center">Excellence in Every Transaction</p>
+    
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <div class="mb-3" style="font-size: 2.5rem; color: var(--gold);">◆</div>
+            <h3 class="h5 card-title">Highest Prices</h3>
+            <p class="card-text">We offer the most competitive prices for your valuable items, ensuring you receive their true worth.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <div class="mb-3" style="font-size: 2.5rem; color: var(--gold);">◆</div>
+            <h3 class="h5 card-title">Complete Discretion</h3>
+            <p class="card-text">Your privacy is paramount. All transactions are conducted with the utmost confidentiality.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <div class="mb-3" style="font-size: 2.5rem; color: var(--gold);">◆</div>
+            <h3 class="h5 card-title">Expert Service</h3>
+            <p class="card-text">Our specialists provide professional evaluations and personalized service for every client.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
