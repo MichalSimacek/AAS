@@ -183,12 +183,25 @@ namespace AAS.Web.Areas.Admin.Controllers
             var existing = await _db.Collections.Include(c => c.Images).FirstOrDefaultAsync(c => c.Id == id);
             if (existing == null) return NotFound();
 
+            // Remove Title from ModelState if not changed - allows saving without changing title
+            if (string.IsNullOrEmpty(model.Title) || model.Title == existing.Title)
+            {
+                ModelState.Remove("Title");
+                model.Title = existing.Title;
+            }
+
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Please fix validation errors.";
+                return View(existing);
+            }
+
             // CRITICAL FIX: Use transaction for data consistency
             using var transaction = await _db.Database.BeginTransactionAsync();
             try
             {
                 existing.Title = model.Title;
-                existing.Description = model.Description;
+                existing.Description = model.Description ?? existing.Description;
                 existing.Category = model.Category;
                 existing.Slug = _slug.ToSlug(model.Title);
 
@@ -214,12 +227,15 @@ namespace AAS.Web.Areas.Admin.Controllers
 
                 await _db.SaveChangesAsync();
                 await transaction.CommitAsync();
-                return RedirectToAction(nameof(Index));
+                
+                TempData["SuccessMessage"] = $"Collection '{existing.Title}' updated successfully.";
+                return RedirectToAction(nameof(Edit), new { id });
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                ModelState.AddModelError("newImages", ex.Message);
+                Console.WriteLine($"Error updating collection: {ex.Message}");
+                TempData["ErrorMessage"] = $"Error updating collection: {ex.Message}";
                 return View(existing);
             }
         }
