@@ -566,6 +566,56 @@ select.form-select option {
   margin: 0 !important;
 }
 
+/* SWIPER GALLERY */
+.swiper {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.swiper-slide {
+  text-align: center !important;
+  font-size: 18px !important;
+  background: #fff !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #B8941F !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #B8941F !important;
+  color: #FFFFFF !important;
+}
+
+.swiper-pagination-bullet {
+  background: #E5E5E5 !important;
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #B8941F !important;
+  width: 12px !important;
+  height: 12px !important;
+}
+
 /* RESPONSIVE */
 @media (max-width: 991px) {
   .navbar-collapse {
