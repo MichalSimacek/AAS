@@ -155,6 +155,66 @@
 
 @section Scripts{
 <script>
-  new Swiper('.mySwiper', { loop: true, pagination: { el: '.swiper-pagination' }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } });
+  // Main gallery swiper
+  const mainSwiper = new Swiper('.mySwiper', {
+    loop: true,
+    pagination: {
+      el: '.mySwiper .swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.mySwiper .swiper-button-next',
+      prevEl: '.mySwiper .swiper-button-prev'
+    },
+    keyboard: {
+      enabled: true
+    }
+  });
+
+  // Lightbox gallery swiper
+  let lightboxSwiper = null;
+  
+  // Initialize lightbox swiper when modal is shown
+  const lightboxModal = document.getElementById('lightboxModal');
+  lightboxModal.addEventListener('shown.bs.modal', function () {
+    if (!lightboxSwiper) {
+      lightboxSwiper = new Swiper('.lightboxSwiper', {
+        loop: true,
+        pagination: {
+          el: '.lightboxSwiper .swiper-pagination',
+          clickable: true
+        },
+        navigation: {
+          nextEl: '.lightboxSwiper .swiper-button-next',
+          prevEl: '.lightboxSwiper .swiper-button-prev'
+        },
+        keyboard: {
+          enabled: true
+        },
+        initialSlide: mainSwiper.realIndex
+      });
+    } else {
+      lightboxSwiper.slideTo(mainSwiper.realIndex);
+    }
+  });
+
+  // Open lightbox when clicking on gallery image
+  document.querySelectorAll('.gallery-image').forEach((img, index) => {
+    img.addEventListener('click', function() {
+      mainSwiper.slideTo(index);
+      const modal = new bootstrap.Modal(lightboxModal);
+      modal.show();
+    });
+  });
+
+  // Close lightbox with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const modalInstance = bootstrap.Modal.getInstance(lightboxModal);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+    }
+  });
 </script>
 }
