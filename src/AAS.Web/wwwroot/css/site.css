@@ -224,26 +224,6 @@ a.btn {
   }
 }
 
-@keyframes elementFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes monogramFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 /* SECTIONS */
 .section {
   padding: 3rem 0 !important;
