@@ -5,13 +5,15 @@
     ViewData["ActivePage"] = ManageNavPages.Email;
 }
 
-<h1 class="text-center mb-4">@ViewData["Title"]</h1>
+<div class="manage-page-header">
+    <h1>@ViewData["Title"]</h1>
+</div>
 
-<div class="row">
-    <div class="col-md-3 mb-4">
+<div class="manage-content-wrapper">
+    <div class="manage-sidebar">
         <partial name="_ManageNav" />
     </div>
-    <div class="col-md-9">
+    <div class="manage-main-content">
         <partial name="_StatusMessage" for="StatusMessage" />
         
         <div class="card">
