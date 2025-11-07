@@ -154,57 +154,95 @@
 </form>
 
 @section Scripts{
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(function() {
-    console.log('Initializing Swiper...');
+  console.log('DOMContentLoaded - Initializing Swiper...');
+  
+  // Wait for Swiper to be available
+  var initAttempts = 0;
+  var maxAttempts = 10;
+  
+  function tryInitSwiper() {
+    initAttempts++;
     
-    // Main gallery
-    var mainSwiper = new Swiper('.mySwiper', {
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      }
-    });
-    
-    console.log('Main Swiper initialized');
-    
-    // Lightbox
-    var lightboxSwiper = null;
-    var lightboxModal = document.getElementById('lightboxModal');
-    
-    if (lightboxModal) {
-      lightboxModal.addEventListener('shown.bs.modal', function() {
-        if (!lightboxSwiper) {
-          lightboxSwiper = new Swiper('.lightboxSwiper', {
-            loop: true,
-            pagination: {
-              el: '.lightboxSwiper .swiper-pagination',
-              clickable: true
-            },
-            navigation: {
-              nextEl: '.lightboxSwiper .swiper-button-next',
-              prevEl: '.lightboxSwiper .swiper-button-prev'
-            }
-          });
+    if (typeof Swiper !== 'undefined') {
+      console.log('Swiper found! Initializing galleries...');
+      
+      // Main gallery
+      var mainSwiper = new Swiper('.mySwiper', {
+        loop: true,
+        spaceBetween: 10,
+        pagination: {
+          el: '.mySwiper .swiper-pagination',
+          clickable: true,
+          type: 'bullets'
+        },
+        navigation: {
+          nextEl: '.mySwiper .swiper-button-next',
+          prevEl: '.mySwiper .swiper-button-prev'
+        },
+        keyboard: {
+          enabled: true,
+          onlyInViewport: false
         }
       });
       
-      // Open lightbox on image click
-      document.querySelectorAll('.gallery-image').forEach(function(img) {
-        img.addEventListener('click', function() {
-          var bsModal = new bootstrap.Modal(lightboxModal);
-          bsModal.show();
+      console.log('Main Swiper initialized successfully!');
+      
+      // Lightbox
+      var lightboxSwiper = null;
+      var lightboxModal = document.getElementById('lightboxModal');
+      
+      if (lightboxModal) {
+        lightboxModal.addEventListener('shown.bs.modal', function() {
+          console.log('Lightbox modal opened');
+          
+          if (!lightboxSwiper) {
+            lightboxSwiper = new Swiper('.lightboxSwiper', {
+              loop: true,
+              spaceBetween: 10,
+              pagination: {
+                el: '.lightboxSwiper .swiper-pagination',
+                clickable: true,
+                type: 'bullets'
+              },
+              navigation: {
+                nextEl: '.lightboxSwiper .swiper-button-next',
+                prevEl: '.lightboxSwiper .swiper-button-prev'
+              },
+              keyboard: {
+                enabled: true,
+                onlyInViewport: false
+              }
+            });
+            console.log('Lightbox Swiper initialized!');
+          } else {
+            lightboxSwiper.update();
+          }
         });
-      });
+        
+        // Open lightbox on image click
+        document.querySelectorAll('.gallery-image').forEach(function(img, idx) {
+          img.addEventListener('click', function() {
+            console.log('Image clicked, opening lightbox');
+            mainSwiper.slideTo(idx);
+            var bsModal = new bootstrap.Modal(lightboxModal);
+            bsModal.show();
+          });
+        });
+        
+        console.log('Lightbox event listeners attached');
+      }
+      
+    } else if (initAttempts < maxAttempts) {
+      console.log('Swiper not ready yet, attempt ' + initAttempts + '/' + maxAttempts);
+      setTimeout(tryInitSwiper, 200);
+    } else {
+      console.error('Swiper failed to load after ' + maxAttempts + ' attempts');
     }
-  }, 500);
+  }
+  
+  tryInitSwiper();
 });
 </script>
 }
