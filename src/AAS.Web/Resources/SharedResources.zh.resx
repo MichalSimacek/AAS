@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+<resheader name="version"><value>2.0</value></resheader>
+<resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+<resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+<!-- Home Page -->
+<data name="Slogan" xml:space="preserve"><value>谨慎、保证质量和专业的客户服务是我们的首要任务。</value></data>
+<data name="Home Description" xml:space="preserve"><value>发现卓越的艺术品、古董、珍贵珠宝和豪华腕表。我们提供最高的价格,并保证谨慎和专业精神。</value></data>
+
+<!-- Navigation -->
+<data name="Collections" xml:space="preserve"><value>收藏</value></data>
+<data name="About us" xml:space="preserve"><value>关于我们</value></data>
+<data name="Contacts" xml:space="preserve"><value>联系方式</value></data>
+<data name="Register" xml:space="preserve"><value>注册</value></data>
+<data name="Login" xml:space="preserve"><value>登录</value></data>
+<data name="Logout" xml:space="preserve"><value>注销</value></data>
+<data name="Admin Panel" xml:space="preserve"><value>管理员面板</value></data>
+<data name="Manage" xml:space="preserve"><value>管理</value></data>
+
+<!-- Home Page Content -->
+<data name="Explore collections" xml:space="preserve"><value>探索收藏</value></data>
+<data name="Contact Us" xml:space="preserve"><value>联系我们</value></data>
+<data name="Why Choose Us" xml:space="preserve"><value>为什么选择我们</value></data>
+<data name="Excellence in Every Transaction" xml:space="preserve"><value>每笔交易都卓越</value></data>
+<data name="Highest Prices" xml:space="preserve"><value>最高价格</value></data>
+<data name="Highest Prices Desc" xml:space="preserve"><value>我们为您的珍贵物品提供最具竞争力的价格,确保您获得其真正价值。</value></data>
+<data name="Complete Discretion" xml:space="preserve"><value>完全谨慎</value></data>
+<data name="Complete Discretion Desc" xml:space="preserve"><value>您的隐私至关重要。所有交易均以最高的机密性进行。</value></data>
+<data name="Expert Service" xml:space="preserve"><value>专家服务</value></data>
+<data name="Expert Service Desc" xml:space="preserve"><value>我们的专家为每位客户提供专业评估和个性化服务。</value></data>
+
+<!-- Categories -->
+<data name="Paintings" xml:space="preserve"><value>绘画</value></data>
+<data name="Jewelry" xml:space="preserve"><value>珠宝</value></data>
+<data name="Watches" xml:space="preserve"><value>腕表</value></data>
+<data name="Statues" xml:space="preserve"><value>雕像</value></data>
+<data name="Other" xml:space="preserve"><value>其他</value></data>
+<data name="All" xml:space="preserve"><value>全部</value></data>
+
+<!-- Collection Details -->
+<data name="I'm interested" xml:space="preserve"><value>我有兴趣</value></data>
+<data name="Send inquiry" xml:space="preserve"><value>发送咨询</value></data>
+
+<!-- Forms -->
+<data name="First name" xml:space="preserve"><value>名</value></data>
+<data name="Last name" xml:space="preserve"><value>姓</value></data>
+<data name="Phone" xml:space="preserve"><value>电话</value></data>
+<data name="Email" xml:space="preserve"><value>电子邮件</value></data>
+<data name="Message" xml:space="preserve"><value>消息</value></data>
+<data name="Close" xml:space="preserve"><value>关闭</value></data>
+<data name="Send" xml:space="preserve"><value>发送</value></data>
+<data name="Thank you. We will contact you soon." xml:space="preserve"><value>谢谢。我们将尽快与您联系。</value></data>
+
+<!-- About Page -->
+<data name="About Us" xml:space="preserve"><value>关于我们</value></data>
+<data name="Excellence in luxury artwork and collectibles" xml:space="preserve"><value>奢侈艺术品和收藏品的卓越表现</value></data>
+<data name="Who We Are" xml:space="preserve"><value>我们是谁</value></data>
+<data name="Who We Are Text" xml:space="preserve"><value>我们是一家总部设在美国德克萨斯州休斯顿的公司,在全球均有代表处,在奢侈品市场中享有卓越的声誉。我们的专家鉴定师和专家团队在美术、古董、珍贵珠宝、豪华腕表和珍稀收藏品方面拥有数十年的综合经验。无论您是想出售单个物品还是整个收藏,我们都会提供根据您的独特需求量身定制的个性化服务。</value></data>
+<data name="Our Services" xml:space="preserve"><value>我们的服务</value></data>
+<data name="Fine Art & Paintings" xml:space="preserve"><value>美术与绘画:</value></data>
+<data name="Fine Art & Paintings Desc" xml:space="preserve"><value>古代大师、现代艺术和当代作品</value></data>
+<data name="Antiques & Collectibles" xml:space="preserve"><value>古董与收藏品:</value></data>
+<data name="Antiques & Collectibles Desc" xml:space="preserve"><value>稀有家具、瓷器和历史物品</value></data>
+<data name="Luxury Jewelry" xml:space="preserve"><value>奢华珠宝:</value></data>
+<data name="Luxury Jewelry Desc" xml:space="preserve"><value>钻石、宝石和设计师作品</value></data>
+<data name="Fine Watches" xml:space="preserve"><value>高级腕表:</value></data>
+<data name="Fine Watches Desc" xml:space="preserve"><value>劳力士、百达翡丽和其他知名品牌</value></data>
+<data name="Sculptures & Statues" xml:space="preserve"><value>雕塑与雕像:</value></data>
+<data name="Sculptures & Statues Desc" xml:space="preserve"><value>青铜、大理石和混合媒介作品</value></data>
+<data name="Our Commitment" xml:space="preserve"><value>我们的承诺</value></data>
+<data name="Highest Prices Commitment" xml:space="preserve"><value>我们提供市场上最具竞争力的估值</value></data>
+<data name="Complete Discretion Commitment" xml:space="preserve"><value>您的匿名性和隐私得到绝对保证</value></data>
+<data name="Professional Service" xml:space="preserve"><value>专业服务</value></data>
+<data name="Professional Service Commitment" xml:space="preserve"><value>可信赖的专业知识</value></data>
+
+<!-- Contact Page -->
+<data name="Get in touch with our team" xml:space="preserve"><value>联系我们的专家团队。我们在此帮助您解决任何问题。</value></data>
+<data name="Reach Out to Us" xml:space="preserve"><value>联系我们</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>我们的专家随时准备回答您的问题并提供专家指导。我们保证12小时内回复。</value></data>
+<data name="Email Address" xml:space="preserve"><value>电子邮件地址</value></data>
+<data name="Location" xml:space="preserve"><value>位置</value></data>
+<data name="Houston, Texas, USA" xml:space="preserve"><value>美国德克萨斯州休斯顿</value></data>
+<data name="Worldwide representation available" xml:space="preserve"><value>提供全球代表</value></data>
+<data name="Response Time" xml:space="preserve"><value>响应时间</value></data>
+<data name="Within 12 hours" xml:space="preserve"><value>12小时内</value></data>
+<data name="Professional and confidential service" xml:space="preserve"><value>专业且保密的服务</value></data>
+<data name="Privacy Notice" xml:space="preserve"><value>隐私声明:</value></data>
+<data name="Privacy Notice Text" xml:space="preserve"><value>所有沟通都以最严格的保密方式处理。您的个人信息和查询在我们这里很安全。</value></data>
+
+<!-- Admin Panel -->
+<data name="Manage Collections" xml:space="preserve"><value>管理收藏</value></data>
+<data name="Collections Management" xml:space="preserve"><value>收藏管理</value></data>
+<data name="Total" xml:space="preserve"><value>总计</value></data>
+<data name="collection(s)" xml:space="preserve"><value>收藏</value></data>
+<data name="Create New Collection" xml:space="preserve"><value>创建新收藏</value></data>
+<data name="No Collections Yet" xml:space="preserve"><value>还没有收藏</value></data>
+<data name="Start by creating your first aristocratic collection" xml:space="preserve"><value>从创建您的第一个贵族收藏开始</value></data>
+<data name="Create Collection" xml:space="preserve"><value>创建收藏</value></data>
+<data name="Edit" xml:space="preserve"><value>编辑</value></data>
+<data name="Delete" xml:space="preserve"><value>删除</value></data>
+<data name="images" xml:space="preserve"><value>图片</value></data>
+<data name="Created" xml:space="preserve"><value>已创建</value></data>
+<data name="Audio" xml:space="preserve"><value>音频</value></data>
+<data name="Confirm Delete" xml:space="preserve"><value>确认删除</value></data>
+<data name="Are you sure you want to delete this collection?" xml:space="preserve"><value>您确定要删除此收藏吗?</value></data>
+<data name="This action cannot be undone." xml:space="preserve"><value>此操作无法撤销。</value></data>
+<data name="Cancel" xml:space="preserve"><value>取消</value></data>
+<data name="Success!" xml:space="preserve"><value>成功!</value></data>
+
+<!-- Admin Forms -->
+<data name="Title" xml:space="preserve"><value>标题</value></data>
+<data name="Description" xml:space="preserve"><value>描述</value></data>
+<data name="Category" xml:space="preserve"><value>类别</value></data>
+<data name="Select Category" xml:space="preserve"><value>选择类别</value></data>
+<data name="Images" xml:space="preserve"><value>图片</value></data>
+<data name="Audio File" xml:space="preserve"><value>音频文件</value></data>
+<data name="Submit" xml:space="preserve"><value>提交</value></data>
+<data name="Save Changes" xml:space="preserve"><value>保存更改</value></data>
+<data name="Add New Images" xml:space="preserve"><value>添加新图片</value></data>
+<data name="Current Images" xml:space="preserve"><value>当前图片</value></data>
+<data name="Drag to reorder" xml:space="preserve"><value>拖动以重新排序</value></data>
+
+<!-- Identity - Login -->
+<data name="Log in" xml:space="preserve"><value>登录</value></data>
+<data name="Password" xml:space="preserve"><value>密码</value></data>
+<data name="Remember me?" xml:space="preserve"><value>记住我?</value></data>
+<data name="Forgot your password?" xml:space="preserve"><value>忘记密码?</value></data>
+<data name="Register as a new user" xml:space="preserve"><value>注册为新用户</value></data>
+<data name="Resend email confirmation" xml:space="preserve"><value>重新发送电子邮件确认</value></data>
+
+<!-- Identity - Register -->
+<data name="Confirm Password" xml:space="preserve"><value>确认密码</value></data>
+
+<!-- Identity - Manage Account -->
+<data name="Account Settings" xml:space="preserve"><value>账户设置</value></data>
+<data name="Profile Information" xml:space="preserve"><value>个人资料信息</value></data>
+<data name="Email / Username" xml:space="preserve"><value>电子邮件 / 用户名</value></data>
+<data name="Phone number" xml:space="preserve"><value>电话号码</value></data>
+<data name="Save changes" xml:space="preserve"><value>保存更改</value></data>
+<data name="Profile" xml:space="preserve"><value>个人资料</value></data>
+<data name="Personal Data" xml:space="preserve"><value>个人数据</value></data>
+<data name="Change Password" xml:space="preserve"><value>更改密码</value></data>
+<data name="Current Password" xml:space="preserve"><value>当前密码</value></data>
+<data name="New Password" xml:space="preserve"><value>新密码</value></data>
+<data name="Confirm new password" xml:space="preserve"><value>确认新密码</value></data>
+<data name="Update password" xml:space="preserve"><value>更新密码</value></data>
+<data name="Confirm Email" xml:space="preserve"><value>确认电子邮件</value></data>
+<data name="Thank you for confirming your email" xml:space="preserve"><value>感谢您确认您的电子邮件</value></data>
+<data name="Please confirm your account" xml:space="preserve"><value>请确认您的账户</value></data>
+
+</root>
