@@ -200,14 +200,15 @@ a.btn {
 }
 
 .hero-logo {
-  width: 150px;
-  height: 150px;
-  filter: drop-shadow(0 4px 12px rgba(184, 148, 31, 0.15));
-  transition: transform 0.4s ease;
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 6px 20px rgba(184, 148, 31, 0.2));
+  transition: all 0.5s ease;
 }
 
 .hero-logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(2deg);
+  filter: drop-shadow(0 8px 28px rgba(184, 148, 31, 0.35));
 }
 
 .logo-crown,
