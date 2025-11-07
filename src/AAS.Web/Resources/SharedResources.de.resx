@@ -59,16 +59,16 @@
 <data name="Who We Are" xml:space="preserve"><value>Wer wir sind</value></data>
 <data name="Who We Are Text" xml:space="preserve"><value>Wir sind ein amerikanisches Unternehmen mit Sitz in Houston, Texas, mit weltweiter Vertretung und einem Ruf für Exzellenz auf dem Luxusmarkt. Unser Team aus erfahrenen Gutachtern und Spezialisten bringt jahrzehntelange kombinierte Erfahrung in den Bereichen Kunst, Antiquitäten, wertvoller Schmuck, Luxusuhren und seltene Sammlerstücke mit. Egal, ob Sie ein einzelnes Stück oder eine ganze Sammlung verkaufen möchten, wir bieten personalisierten Service, der auf Ihre individuellen Bedürfnisse zugeschnitten ist.</value></data>
 <data name="Our Services" xml:space="preserve"><value>Unsere Dienstleistungen</value></data>
-<data name="Fine Art & Paintings" xml:space="preserve"><value>Kunst & Gemälde:</value></data>
-<data name="Fine Art & Paintings Desc" xml:space="preserve"><value>Alte Meister, moderne Kunst und zeitgenössische Werke</value></data>
-<data name="Antiques & Collectibles" xml:space="preserve"><value>Antiquitäten & Sammlerstücke:</value></data>
-<data name="Antiques & Collectibles Desc" xml:space="preserve"><value>Seltene Möbel, Porzellan und historische Gegenstände</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>Kunst &amp; Gemälde:</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>Alte Meister, moderne Kunst und zeitgenössische Werke</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>Antiquitäten &amp; Sammlerstücke:</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>Seltene Möbel, Porzellan und historische Gegenstände</value></data>
 <data name="Luxury Jewelry" xml:space="preserve"><value>Luxusschmuck:</value></data>
 <data name="Luxury Jewelry Desc" xml:space="preserve"><value>Diamanten, Edelsteine und Designerstücke</value></data>
 <data name="Fine Watches" xml:space="preserve"><value>Luxusuhren:</value></data>
 <data name="Fine Watches Desc" xml:space="preserve"><value>Rolex, Patek Philippe und andere prestigeträchtige Marken</value></data>
-<data name="Sculptures & Statues" xml:space="preserve"><value>Skulpturen & Statuen:</value></data>
-<data name="Sculptures & Statues Desc" xml:space="preserve"><value>Bronze, Marmor und Mixed-Media-Werke</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>Skulpturen &amp; Statuen:</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>Bronze, Marmor und Mixed-Media-Werke</value></data>
 <data name="Our Commitment" xml:space="preserve"><value>Unser Engagement</value></data>
 <data name="Highest Prices Commitment" xml:space="preserve"><value>Wir bieten die wettbewerbsfähigsten Bewertungen auf dem Markt</value></data>
 <data name="Complete Discretion Commitment" xml:space="preserve"><value>Ihre Anonymität und Privatsphäre sind absolut garantiert</value></data>
@@ -149,5 +149,105 @@
 <data name="Confirm Email" xml:space="preserve"><value>E-Mail bestätigen</value></data>
 <data name="Thank you for confirming your email" xml:space="preserve"><value>Vielen Dank für die Bestätigung Ihrer E-Mail</value></data>
 <data name="Please confirm your account" xml:space="preserve"><value>Bitte bestätigen Sie Ihr Konto</value></data>
+
+<!-- Additional UI Texts -->
+<data name="Collections Description" xml:space="preserve"><value>Entdecken Sie unsere kuratierte Auswahl an Kunst, Schmuck, Uhren und Sammlerstücken</value></data>
+<data name="No Collections Available" xml:space="preserve"><value>Keine Kollektionen verfügbar</value></data>
+<data name="Check back soon message" xml:space="preserve"><value>Schauen Sie bald wieder vorbei für neue Ergänzungen unserer Kollektion.</value></data>
+<data name="No Image" xml:space="preserve"><value>Kein Bild</value></data>
+<data name="Home" xml:space="preserve"><value>Startseite</value></data>
+<data name="Audio Description" xml:space="preserve"><value>Audiobeschreibung</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>Füllen Sie das Formular unten aus und unser Spezialist wird Sie innerhalb von 12 Stunden kontaktieren.</value></data>
+<data name="Message placeholder" xml:space="preserve"><value>Erzählen Sie uns von Ihrem Interesse...</value></data>
+<data name="Site Title" xml:space="preserve"><value>Aristokratischer Kunstverkauf</value></data>
+<data name="Site Meta Description" xml:space="preserve"><value>Diskretion, Qualität und Professionalität in Kunst, Schmuck, Uhren und Sammlerstücken.</value></data>
+<data name="Site Name" xml:space="preserve"><value>Aristokratischer Kunstverkauf</value></data>
+<data name="Toggle navigation" xml:space="preserve"><value>Navigation umschalten</value></data>
+<data name="Footer rights text" xml:space="preserve"><value>© {0} Alle Rechte vorbehalten. Diskretion, Qualität &amp; Professionalität.</value></data>
+
+<!-- Admin - Collection Management -->
+<data name="Add new collection description" xml:space="preserve"><value>Eine neue aristokratische Kunstkollektion hinzufügen</value></data>
+<data name="Error label" xml:space="preserve"><value>Fehler:</value></data>
+<data name="Fix errors message" xml:space="preserve"><value>Bitte korrigieren Sie die folgenden Fehler:</value></data>
+<data name="Collection Details" xml:space="preserve"><value>Kollektionsdetails</value></data>
+<data name="Enter collection title" xml:space="preserve"><value>Kollektionstitel eingeben</value></data>
+<data name="Select a Category" xml:space="preserve"><value>-- Kategorie wählen --</value></data>
+<data name="Enter collection description" xml:space="preserve"><value>Kollektionsbeschreibung eingeben</value></data>
+<data name="Media Files" xml:space="preserve"><value>Mediendateien</value></data>
+<data name="Multiple file selection instruction" xml:space="preserve"><value>(Mehrfachauswahl mit Strg+Klick)</value></data>
+<data name="Image upload instructions" xml:space="preserve"><value>💡 Tipp: Halten Sie Strg (oder Cmd auf Mac), um mehrere Dateien gleichzeitig auszuwählen. Unterstützt: JPG, PNG, WebP (max. 10MB pro Datei)</value></data>
+<data name="Audio file description" xml:space="preserve"><value>Optional klassische Musik (max. 15MB)</value></data>
+<data name="Files selected message" xml:space="preserve"><value>✓ {0} Datei(en) ausgewählt</value></data>
+<data name="Edit Collection" xml:space="preserve"><value>Kollektion bearbeiten</value></data>
+<data name="Title help text" xml:space="preserve"><value>Unverändert lassen, wenn Sie nur Bilder neu anordnen möchten</value></data>
+<data name="Add images" xml:space="preserve"><value>Bilder hinzufügen</value></data>
+<data name="Add images help text" xml:space="preserve"><value>Wählen Sie mehrere Bilder aus, um sie dieser Kollektion hinzuzufügen</value></data>
+<data name="Save" xml:space="preserve"><value>Speichern</value></data>
+<data name="Drag instruction" xml:space="preserve"><value>Ziehen und Ablegen, um Bilder neu anzuordnen</value></data>
+<data name="Order" xml:space="preserve"><value>Reihenfolge:</value></data>
+<data name="Saving order message" xml:space="preserve"><value>Reihenfolge geändert. Speichern...</value></data>
+<data name="Delete Image" xml:space="preserve"><value>Bild löschen</value></data>
+<data name="Order saved success" xml:space="preserve"><value>Reihenfolge erfolgreich gespeichert!</value></data>
+<data name="Error saving order" xml:space="preserve"><value>Fehler beim Speichern der Reihenfolge:</value></data>
+<data name="Error saving order message" xml:space="preserve"><value>Fehler beim Speichern der Reihenfolge. Bitte versuchen Sie es erneut.</value></data>
+
+<!-- Form Placeholders -->
+<data name="Email placeholder" xml:space="preserve"><value>name@beispiel.de</value></data>
+<data name="Password placeholder" xml:space="preserve"><value>Passwort</value></data>
+<data name="Email label placeholder" xml:space="preserve"><value>Ihre E-Mail-Adresse</value></data>
+<data name="Phone placeholder" xml:space="preserve"><value>Telefonnummer eingeben (optional)</value></data>
+<data name="Current password placeholder" xml:space="preserve"><value>Ihr aktuelles Passwort eingeben</value></data>
+<data name="New password placeholder" xml:space="preserve"><value>Neues Passwort eingeben (mind. 12 Zeichen)</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>Neues Passwort erneut eingeben</value></data>
+
+<!-- Email Management -->
+<data name="Manage Email" xml:space="preserve"><value>E-Mail verwalten</value></data>
+<data name="Current Email" xml:space="preserve"><value>Aktuelle E-Mail</value></data>
+<data name="Email confirmed" xml:space="preserve"><value>E-Mail bestätigt</value></data>
+<data name="Email not confirmed" xml:space="preserve"><value>E-Mail nicht bestätigt</value></data>
+<data name="Send verification email" xml:space="preserve"><value>Bestätigungs-E-Mail senden</value></data>
+<data name="New email" xml:space="preserve"><value>Neue E-Mail</value></data>
+<data name="New email placeholder" xml:space="preserve"><value>Neue E-Mail-Adresse eingeben</value></data>
+<data name="Change email" xml:space="preserve"><value>E-Mail ändern</value></data>
+
+<!-- Navigation Items -->
+<data name="Email nav" xml:space="preserve"><value>E-Mail</value></data>
+<data name="Password nav" xml:space="preserve"><value>Passwort</value></data>
+
+<!-- Personal Data -->
+<data name="Personal data description" xml:space="preserve"><value>Ihr Konto enthält persönliche Daten, die Sie uns gegeben haben. Diese Seite ermöglicht es Ihnen, diese Daten herunterzuladen oder zu löschen.</value></data>
+<data name="Delete warning" xml:space="preserve"><value>Das Löschen dieser Daten wird Ihr Konto dauerhaft entfernen, und dies kann nicht rückgängig gemacht werden.</value></data>
+<data name="Download data button" xml:space="preserve"><value>Persönliche Daten herunterladen</value></data>
+<data name="Delete Account" xml:space="preserve"><value>Konto löschen</value></data>
+<data name="Delete account warning" xml:space="preserve"><value>Das Löschen Ihres Kontos ist dauerhaft und kann nicht rückgängig gemacht werden.</value></data>
+<data name="Confirm password label" xml:space="preserve"><value>Mit Ihrem Passwort bestätigen</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>Geben Sie Ihr Passwort zur Bestätigung ein</value></data>
+<data name="Delete account button" xml:space="preserve"><value>Konto dauerhaft löschen</value></data>
+
+<!-- Confirm Email Messages -->
+<data name="Confirm email success text" xml:space="preserve"><value>Vielen Dank für die Bestätigung Ihrer E-Mail. Sie können sich jetzt</value></data>
+<data name="log in link" xml:space="preserve"><value>anmelden</value></data>
+
+<!-- Error Messages -->
+<data name="Rate limit error" xml:space="preserve"><value>Zu viele Anfragen. Bitte versuchen Sie es später erneut.</value></data>
+<data name="Message too long error" xml:space="preserve"><value>Nachricht ist zu lang (max. 5000 Zeichen)</value></data>
+<data name="Inquiry processing error" xml:space="preserve"><value>Bei der Bearbeitung Ihrer Anfrage ist ein Fehler aufgetreten</value></data>
+<data name="Audio format error" xml:space="preserve"><value>Nur MP3-Dateien sind erlaubt</value></data>
+<data name="Audio size error" xml:space="preserve"><value>Audiodateigröße muss kleiner als {0}MB sein</value></data>
+<data name="Image required error" xml:space="preserve"><value>Mindestens ein Bild ist erforderlich</value></data>
+<data name="All images failed" xml:space="preserve"><value>Alle Bilder konnten nicht hochgeladen werden. Fehler: {0}</value></data>
+<data name="Collection created success" xml:space="preserve"><value>Kollektion '{0}' mit {1} Bild(ern) erstellt</value></data>
+<data name="Images failed partial" xml:space="preserve"><value>{0} Bild(er) fehlgeschlagen: {1}</value></data>
+<data name="Error creating collection" xml:space="preserve"><value>Fehler beim Erstellen der Kollektion: {0}</value></data>
+<data name="Fix validation errors" xml:space="preserve"><value>Bitte beheben Sie die Validierungsfehler.</value></data>
+<data name="Collection updated success" xml:space="preserve"><value>Kollektion '{0}' erfolgreich aktualisiert.</value></data>
+<data name="Collection update error" xml:space="preserve"><value>Fehler beim Aktualisieren der Kollektion: {0}</value></data>
+<data name="Collection not found" xml:space="preserve"><value>Kollektion nicht gefunden.</value></data>
+<data name="Collection deleted success" xml:space="preserve"><value>Kollektion '{0}' erfolgreich gelöscht.</value></data>
+<data name="Collection delete error" xml:space="preserve"><value>Fehler beim Löschen der Kollektion: {0}</value></data>
+<data name="Image not found" xml:space="preserve"><value>Bild nicht gefunden.</value></data>
+<data name="Image deleted success" xml:space="preserve"><value>Bild erfolgreich gelöscht.</value></data>
+<data name="Image delete error" xml:space="preserve"><value>Fehler beim Löschen des Bildes: {0}</value></data>
+<data name="Order updated success" xml:space="preserve"><value>Reihenfolge erfolgreich aktualisiert</value></data>
 
 </root>
