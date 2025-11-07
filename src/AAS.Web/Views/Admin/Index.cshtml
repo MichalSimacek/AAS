@@ -90,9 +90,9 @@ else
 .empty-state {
     text-align: center;
     padding: 5rem 2rem;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(10, 10, 10, 0.7) 100%);
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    background: var(--light-gray);
+    border: 2px dashed var(--border-light);
+    border-radius: 12px;
     margin: 3rem 0;
 }
 
@@ -100,11 +100,11 @@ else
     font-size: 4rem;
     color: var(--gold);
     margin-bottom: 1rem;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .empty-state h3 {
-    color: var(--gold-light);
+    color: var(--text-primary);
     font-family: 'Playfair Display', serif;
     margin-bottom: 0.5rem;
 }
@@ -116,19 +116,18 @@ else
 
 .collections-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
     margin-top: 2rem;
 }
 
 .collection-card {
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
     padding: 1.75rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
 }
 
 .collection-card::before {
@@ -137,16 +136,17 @@ else
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
+    border-radius: 12px 12px 0 0;
 }
 
 .collection-card:hover {
     transform: translateY(-4px);
-    border-color: var(--gold);
-    box-shadow: 0 16px 48px rgba(212, 175, 55, 0.15);
+    border-color: var(--gold-light);
+    box-shadow: var(--shadow-lg);
 }
 
 .collection-card:hover::before {
@@ -163,30 +163,18 @@ else
 
 .collection-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--gold-light);
+    font-size: 1.375rem;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.01em;
 }
 
 .collection-meta {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.badge-gold {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: rgba(212, 175, 55, 0.15);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    color: var(--gold);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border-radius: 3px;
+    flex-wrap: wrap;
 }
 
 .collection-description {
@@ -210,12 +198,11 @@ else
     align-items: center;
     padding-top: 1rem;
     margin-top: 1rem;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-light);
 }
 
-.btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
+.text-gold {
+    color: var(--gold) !important;
 }
 
 @@media (max-width: 768px) {
