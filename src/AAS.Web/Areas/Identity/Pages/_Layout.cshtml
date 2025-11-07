@@ -11,45 +11,4 @@
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Hide external login sections
-        var container = document.getElementById('account-container');
-        if (container) {
-            // Find and hide all h4 elements containing "Use another" or similar text
-            var headings = container.querySelectorAll('h4');
-            headings.forEach(function(h4) {
-                var text = h4.textContent || h4.innerText;
-                if (text.includes('Use another') || text.includes('Use a local')) {
-                    var section = h4.closest('section');
-                    if (section) {
-                        section.style.display = 'none';
-                    }
-                    h4.style.display = 'none';
-                }
-            });
-            
-            // Hide hr elements that appear after form
-            var hrs = container.querySelectorAll('hr');
-            hrs.forEach(function(hr) {
-                hr.style.display = 'none';
-            });
-            
-            // Find and hide external login forms
-            var externalForms = container.querySelectorAll('form[action*="ExternalLogin"]');
-            externalForms.forEach(function(form) {
-                form.style.display = 'none';
-            });
-            
-            // Hide columns with external login buttons
-            var cols = container.querySelectorAll('.col-md-6, .col-md-4');
-            cols.forEach(function(col) {
-                if (col.querySelector('form[action*="ExternalLogin"]') || 
-                    col.querySelector('h4') && col.querySelector('h4').textContent.includes('Use')) {
-                    col.style.display = 'none';
-                }
-            });
-        }
-    });
-    </script>
 }
