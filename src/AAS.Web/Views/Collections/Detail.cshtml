@@ -10,7 +10,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">@L["Home"]</a></li>
         <li class="breadcrumb-item"><a href="/Collections">@L["Collections"]</a></li>
-        <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+        <li class="breadcrumb-item active" aria-current="page">@(ViewBag.TranslatedTitle as string ?? Model.Title)</li>
       </ol>
     </nav>
 
