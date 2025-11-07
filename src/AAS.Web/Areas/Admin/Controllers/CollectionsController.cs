@@ -363,31 +363,36 @@ namespace AAS.Web.Areas.Admin.Controllers
             {
                 Console.WriteLine($"Reordering images for collection {id}. New order: {string.Join(", ", imageIds)}");
 
-                var collection = await _db.Collections
-                    .Include(c => c.Images)
-                    .FirstOrDefaultAsync(c => c.Id == id);
-
-                if (collection == null)
+                // CRITICAL FIX: Use ExecutionStrategy for retrying transactions
+                var strategy = _db.Database.CreateExecutionStrategy();
+                return await strategy.ExecuteAsync<IActionResult>(async () =>
                 {
-                    return Json(new { success = false, message = "Collection not found" });
-                }
+                    var collection = await _db.Collections
+                        .Include(c => c.Images)
+                        .FirstOrDefaultAsync(c => c.Id == id);
 
-                // Update sort order for each image
-                for (int i = 0; i < imageIds.Count; i++)
-                {
-                    var imageId = imageIds[i];
-                    var image = collection.Images.FirstOrDefault(img => img.Id == imageId);
-                    if (image != null)
+                    if (collection == null)
                     {
-                        image.SortOrder = i;
-                        Console.WriteLine($"Updated image {imageId} to order {i}");
+                        return Json(new { success = false, message = "Collection not found" });
                     }
-                }
 
-                await _db.SaveChangesAsync();
-                Console.WriteLine("Image order saved successfully");
+                    // Update sort order for each image
+                    for (int i = 0; i < imageIds.Count; i++)
+                    {
+                        var imageId = imageIds[i];
+                        var image = collection.Images.FirstOrDefault(img => img.Id == imageId);
+                        if (image != null)
+                        {
+                            image.SortOrder = i;
+                            Console.WriteLine($"Updated image {imageId} to order {i}");
+                        }
+                    }
 
-                return Json(new { success = true, message = "Order updated successfully" });
+                    await _db.SaveChangesAsync();
+                    Console.WriteLine("Image order saved successfully");
+
+                    return Json(new { success = true, message = "Order updated successfully" });
+                });
             }
             catch (Exception ex)
             {
