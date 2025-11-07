@@ -170,7 +170,7 @@ namespace AAS.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var item = await _db.Collections.Include(c => c.Images.OrderBy(i => i.SortOrder)).FirstOrDefaultAsync(c => c.Id == id);
+            var item = await _db.Collections.Include(c => c.Images).FirstOrDefaultAsync(c => c.Id == id);
             if (item == null) return NotFound();
             return View(item);
         }
