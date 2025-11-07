@@ -412,6 +412,20 @@ footer p {
   padding: 0.75rem 1rem !important;
   border-radius: 4px !important;
   display: block !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+}
+
+select.form-select {
+  -webkit-appearance: menulist !important;
+  -moz-appearance: menulist !important;
+  appearance: menulist !important;
+}
+
+select.form-select option {
+  color: #1A1A1A !important;
+  background: #FFFFFF !important;
 }
 
 .form-control:focus, .form-select:focus {
