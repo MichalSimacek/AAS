@@ -1055,21 +1055,45 @@ select.form-select option {
   min-height: 80vh;
 }
 
-.manage-account-container h1 {
+/* Page header */
+.manage-page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.manage-page-header h1 {
   font-family: 'Playfair Display', serif;
   color: #1A1A1A;
   font-weight: 600;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  position: relative;
 }
 
 /* Decorative line under heading */
-.manage-account-container h1::after {
+.manage-page-header h1::after {
   content: '';
-  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 80px;
   height: 3px;
   background: linear-gradient(90deg, #B8941F, #D4AF37, #B8941F);
-  margin: 1rem auto 0;
+}
+
+/* Content wrapper - flex layout */
+.manage-content-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Sidebar */
+.manage-sidebar {
+  flex: 0 0 280px;
+  min-width: 280px;
 }
 
 /* Manage navigation */
