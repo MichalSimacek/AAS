@@ -93,31 +93,17 @@ else
 
 /* Baroque ornamental divider */
 .ornament-divider {
-    height: 20px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 20'%3E%3Cpath d='M0 10 Q50 5, 100 10 T200 10 T300 10 T400 10' stroke='%23d4af37' stroke-width='1' fill='none' opacity='0.5'/%3E%3Ccircle cx='200' cy='10' r='3' fill='%23d4af37' opacity='0.7'/%3E%3Ccircle cx='150' cy='10' r='2' fill='%23d4af37' opacity='0.5'/%3E%3Ccircle cx='250' cy='10' r='2' fill='%23d4af37' opacity='0.5劵'/%3E%3Cpath d='M190 10 L195 7 L200 10 L205 7 L210 10' stroke='%23d4af37' stroke-width='0.5' fill='none' opacity='0.6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #C9A961, transparent);
     margin: 2rem 0;
+    border-radius: 2px;
+    opacity: 0.3;
 }
 
 .ornament-divider-small {
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.3) 20%, rgba(212, 175, 55, 0.5) 50%, rgba(212, 175, 55, 0.3) 80%, transparent 100%);
+    background: #E5E5E5;
     margin-bottom: 1rem;
-    position: relative;
-}
-
-.ornament-divider-small::before {
-    content: '✦';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--gold);
-    font-size: 8px;
-    background: rgba(10, 10, 10, 0.9);
-    padding: 0 8px;
 }
 
 .empty-state {
