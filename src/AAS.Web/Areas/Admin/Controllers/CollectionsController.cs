@@ -223,5 +223,67 @@ namespace AAS.Web.Areas.Admin.Controllers
                 return View(existing);
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var collection = await _db.Collections
+                    .Include(c => c.Images)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+
+                if (collection == null)
+                {
+                    TempData["ErrorMessage"] = "Collection not found.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                // Delete image files
+                foreach (var img in collection.Images)
+                {
+                    try
+                    {
+                        _img.DeleteAllVariants(img.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Failed to delete image {img.FileName}: {ex.Message}");
+                        // Continue deleting other images even if one fails
+                    }
+                }
+
+                // Delete audio file if exists
+                if (!string.IsNullOrEmpty(collection.AudioPath))
+                {
+                    try
+                    {
+                        var audioPath = Path.Combine("wwwroot", collection.AudioPath.TrimStart('/'));
+                        if (System.IO.File.Exists(audioPath))
+                        {
+                            System.IO.File.Delete(audioPath);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Failed to delete audio file: {ex.Message}");
+                    }
+                }
+
+                // Delete from database
+                _db.Collections.Remove(collection);
+                await _db.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = $"Collection '{collection.Title}' deleted successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting collection: {ex.Message}");
+                TempData["ErrorMessage"] = $"Error deleting collection: {ex.Message}";
+                return RedirectToAction(nameof(Index));
+            }
+        }
     }
 }
