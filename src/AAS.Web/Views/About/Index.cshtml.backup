@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<div class="section">
+  <h1 class="page-heading">About Us</h1>
+  <p class="page-description">
+    Excellence in luxury artwork and collectibles since our inception
+  </p>
+
+  <div class="row g-4 mb-5">
+    <div class="col-12 col-lg-6">
+      <div class="card">
+        <div class="card-body p-4">
+          <h2 class="h3 mb-4">Who We Are</h2>
+          <p class="mb-3">
+            We are an American company based in Houston, Texas, with worldwide representation and a reputation for excellence in the luxury market.
+          </p>
+          <p class="mb-3">
+            Our team of expert appraisers and specialists brings decades of combined experience in fine art, antiques, precious jewelry, luxury watches, and rare collectibles.
+          </p>
+          <p class="mb-0">
+            Whether you're looking to sell a single piece or an entire collection, we provide personalized service tailored to your unique needs.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-12 col-lg-6">
+      <div class="card">
+        <div class="card-body p-4">
+          <h2 class="h3 mb-4">Our Services</h2>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-3 d-flex">
+              <span class="text-gold me-3">✓</span>
+              <span><strong>Fine Art & Paintings:</strong> Old masters, modern art, and contemporary pieces</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <span class="text-gold me-3">✓</span>
+              <span><strong>Antiques & Collectibles:</strong> Rare furniture, porcelain, and historical items</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <span class="text-gold me-3">✓</span>
+              <span><strong>Luxury Jewelry:</strong> Diamonds, precious stones, and designer pieces</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <span class="text-gold me-3">✓</span>
+              <span><strong>Fine Watches:</strong> Rolex, Patek Philippe, and other prestigious brands</span>
+            </li>
+            <li class="mb-0 d-flex">
+              <span class="text-gold me-3">✓</span>
+              <span><strong>Sculptures & Statues:</strong> Bronze, marble, and mixed media works</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body p-4 text-center">
+      <h2 class="h3 mb-4">Our Commitment</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <div class="mb-3" style="font-size: 2rem; color: var(--gold);">◆</div>
+          <h3 class="h5 mb-2">Highest Prices</h3>
+          <p class="text-secondary mb-0">We provide the most competitive valuations in the market</p>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="mb-3" style="font-size: 2rem; color: var(--gold);">◆</div>
+          <h3 class="h5 mb-2">Complete Discretion</h3>
+          <p class="text-secondary mb-0">Your anonymity and privacy are absolutely guaranteed</p>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="mb-3" style="font-size: 2rem; color: var(--gold);">◆</div>
+          <h3 class="h5 mb-2">Professional Service</h3>
+          <p class="text-secondary mb-0">Reliability and expertise you can trust</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
