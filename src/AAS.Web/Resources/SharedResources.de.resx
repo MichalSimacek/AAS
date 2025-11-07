@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+<resheader name="version"><value>2.0</value></resheader>
+<resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+<resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+<!-- Home Page -->
+<data name="Slogan" xml:space="preserve"><value>Diskretion, garantierte Qualität und professionelle Betreuung unserer Kunden sind unsere oberste Priorität.</value></data>
+<data name="Home Description" xml:space="preserve"><value>Entdecken Sie außergewöhnliche Kunstwerke, Antiquitäten, wertvollen Schmuck und Luxusuhren. Wir bieten die höchsten Preise mit garantierter Diskretion und Professionalität.</value></data>
+
+<!-- Navigation -->
+<data name="Collections" xml:space="preserve"><value>Kollektionen</value></data>
+<data name="About us" xml:space="preserve"><value>Über uns</value></data>
+<data name="Contacts" xml:space="preserve"><value>Kontakte</value></data>
+<data name="Register" xml:space="preserve"><value>Registrieren</value></data>
+<data name="Login" xml:space="preserve"><value>Anmelden</value></data>
+<data name="Logout" xml:space="preserve"><value>Abmelden</value></data>
+<data name="Admin Panel" xml:space="preserve"><value>Admin-Panel</value></data>
+<data name="Manage" xml:space="preserve"><value>Verwalten</value></data>
+
+<!-- Home Page Content -->
+<data name="Explore collections" xml:space="preserve"><value>Kollektionen erkunden</value></data>
+<data name="Contact Us" xml:space="preserve"><value>Kontaktieren Sie uns</value></data>
+<data name="Why Choose Us" xml:space="preserve"><value>Warum uns wählen</value></data>
+<data name="Excellence in Every Transaction" xml:space="preserve"><value>Exzellenz bei jeder Transaktion</value></data>
+<data name="Highest Prices" xml:space="preserve"><value>Höchste Preise</value></data>
+<data name="Highest Prices Desc" xml:space="preserve"><value>Wir bieten die wettbewerbsfähigsten Preise für Ihre wertvollen Gegenstände und stellen sicher, dass Sie ihren wahren Wert erhalten.</value></data>
+<data name="Complete Discretion" xml:space="preserve"><value>Vollständige Diskretion</value></data>
+<data name="Complete Discretion Desc" xml:space="preserve"><value>Ihre Privatsphäre hat höchste Priorität. Alle Transaktionen werden mit größter Vertraulichkeit durchgeführt.</value></data>
+<data name="Expert Service" xml:space="preserve"><value>Expertenservice</value></data>
+<data name="Expert Service Desc" xml:space="preserve"><value>Unsere Spezialisten bieten professionelle Bewertungen und persönlichen Service für jeden Kunden.</value></data>
+
+<!-- Categories -->
+<data name="Paintings" xml:space="preserve"><value>Gemälde</value></data>
+<data name="Jewelry" xml:space="preserve"><value>Schmuck</value></data>
+<data name="Watches" xml:space="preserve"><value>Uhren</value></data>
+<data name="Statues" xml:space="preserve"><value>Statuen</value></data>
+<data name="Other" xml:space="preserve"><value>Andere</value></data>
+<data name="All" xml:space="preserve"><value>Alle</value></data>
+
+<!-- Collection Details -->
+<data name="I'm interested" xml:space="preserve"><value>Ich bin interessiert</value></data>
+<data name="Send inquiry" xml:space="preserve"><value>Anfrage senden</value></data>
+
+<!-- Forms -->
+<data name="First name" xml:space="preserve"><value>Vorname</value></data>
+<data name="Last name" xml:space="preserve"><value>Nachname</value></data>
+<data name="Phone" xml:space="preserve"><value>Telefon</value></data>
+<data name="Email" xml:space="preserve"><value>E-Mail</value></data>
+<data name="Message" xml:space="preserve"><value>Nachricht</value></data>
+<data name="Close" xml:space="preserve"><value>Schließen</value></data>
+<data name="Send" xml:space="preserve"><value>Senden</value></data>
+<data name="Thank you. We will contact you soon." xml:space="preserve"><value>Vielen Dank. Wir werden Sie bald kontaktieren.</value></data>
+
+<!-- About Page -->
+<data name="About Us" xml:space="preserve"><value>Über uns</value></data>
+<data name="Excellence in luxury artwork and collectibles" xml:space="preserve"><value>Exzellenz in Luxuskunstwerken und Sammlerstücken</value></data>
+<data name="Who We Are" xml:space="preserve"><value>Wer wir sind</value></data>
+<data name="Who We Are Text" xml:space="preserve"><value>Wir sind ein amerikanisches Unternehmen mit Sitz in Houston, Texas, mit weltweiter Vertretung und einem Ruf für Exzellenz auf dem Luxusmarkt. Unser Team aus erfahrenen Gutachtern und Spezialisten bringt jahrzehntelange kombinierte Erfahrung in den Bereichen Kunst, Antiquitäten, wertvoller Schmuck, Luxusuhren und seltene Sammlerstücke mit. Egal, ob Sie ein einzelnes Stück oder eine ganze Sammlung verkaufen möchten, wir bieten personalisierten Service, der auf Ihre individuellen Bedürfnisse zugeschnitten ist.</value></data>
+<data name="Our Services" xml:space="preserve"><value>Unsere Dienstleistungen</value></data>
+<data name="Fine Art & Paintings" xml:space="preserve"><value>Kunst & Gemälde:</value></data>
+<data name="Fine Art & Paintings Desc" xml:space="preserve"><value>Alte Meister, moderne Kunst und zeitgenössische Werke</value></data>
+<data name="Antiques & Collectibles" xml:space="preserve"><value>Antiquitäten & Sammlerstücke:</value></data>
+<data name="Antiques & Collectibles Desc" xml:space="preserve"><value>Seltene Möbel, Porzellan und historische Gegenstände</value></data>
+<data name="Luxury Jewelry" xml:space="preserve"><value>Luxusschmuck:</value></data>
+<data name="Luxury Jewelry Desc" xml:space="preserve"><value>Diamanten, Edelsteine und Designerstücke</value></data>
+<data name="Fine Watches" xml:space="preserve"><value>Luxusuhren:</value></data>
+<data name="Fine Watches Desc" xml:space="preserve"><value>Rolex, Patek Philippe und andere prestigeträchtige Marken</value></data>
+<data name="Sculptures & Statues" xml:space="preserve"><value>Skulpturen & Statuen:</value></data>
+<data name="Sculptures & Statues Desc" xml:space="preserve"><value>Bronze, Marmor und Mixed-Media-Werke</value></data>
+<data name="Our Commitment" xml:space="preserve"><value>Unser Engagement</value></data>
+<data name="Highest Prices Commitment" xml:space="preserve"><value>Wir bieten die wettbewerbsfähigsten Bewertungen auf dem Markt</value></data>
+<data name="Complete Discretion Commitment" xml:space="preserve"><value>Ihre Anonymität und Privatsphäre sind absolut garantiert</value></data>
+<data name="Professional Service" xml:space="preserve"><value>Professioneller Service</value></data>
+<data name="Professional Service Commitment" xml:space="preserve"><value>Zuverlässigkeit und Expertise, der Sie vertrauen können</value></data>
+
+<!-- Contact Page -->
+<data name="Get in touch with our team" xml:space="preserve"><value>Kontaktieren Sie unser Spezialistenteam. Wir sind hier, um Ihnen bei allen Anfragen zu helfen.</value></data>
+<data name="Reach Out to Us" xml:space="preserve"><value>Kontaktieren Sie uns</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>Unsere Spezialisten stehen zur Verfügung, um Ihre Fragen zu beantworten und fachkundige Beratung zu bieten. Wir garantieren eine Antwort innerhalb von 12 Stunden.</value></data>
+<data name="Email Address" xml:space="preserve"><value>E-Mail-Adresse</value></data>
+<data name="Location" xml:space="preserve"><value>Standort</value></data>
+<data name="Houston, Texas, USA" xml:space="preserve"><value>Houston, Texas, USA</value></data>
+<data name="Worldwide representation available" xml:space="preserve"><value>Weltweite Vertretung verfügbar</value></data>
+<data name="Response Time" xml:space="preserve"><value>Antwortzeit</value></data>
+<data name="Within 12 hours" xml:space="preserve"><value>Innerhalb von 12 Stunden</value></data>
+<data name="Professional and confidential service" xml:space="preserve"><value>Professioneller und vertraulicher Service</value></data>
+<data name="Privacy Notice" xml:space="preserve"><value>Datenschutzhinweis:</value></data>
+<data name="Privacy Notice Text" xml:space="preserve"><value>Alle Kommunikation wird mit strengster Vertraulichkeit behandelt. Ihre persönlichen Informationen und Anfragen sind bei uns sicher.</value></data>
+
+<!-- Admin Panel -->
+<data name="Manage Collections" xml:space="preserve"><value>Kollektionen verwalten</value></data>
+<data name="Collections Management" xml:space="preserve"><value>Kollektionsverwaltung</value></data>
+<data name="Total" xml:space="preserve"><value>Gesamt</value></data>
+<data name="collection(s)" xml:space="preserve"><value>Kollektion(en)</value></data>
+<data name="Create New Collection" xml:space="preserve"><value>Neue Kollektion erstellen</value></data>
+<data name="No Collections Yet" xml:space="preserve"><value>Noch keine Kollektionen</value></data>
+<data name="Start by creating your first aristocratic collection" xml:space="preserve"><value>Beginnen Sie mit der Erstellung Ihrer ersten aristokratischen Kollektion</value></data>
+<data name="Create Collection" xml:space="preserve"><value>Kollektion erstellen</value></data>
+<data name="Edit" xml:space="preserve"><value>Bearbeiten</value></data>
+<data name="Delete" xml:space="preserve"><value>Löschen</value></data>
+<data name="images" xml:space="preserve"><value>Bilder</value></data>
+<data name="Created" xml:space="preserve"><value>Erstellt</value></data>
+<data name="Audio" xml:space="preserve"><value>Audio</value></data>
+<data name="Confirm Delete" xml:space="preserve"><value>Löschen bestätigen</value></data>
+<data name="Are you sure you want to delete this collection?" xml:space="preserve"><value>Sind Sie sicher, dass Sie diese Kollektion löschen möchten?</value></data>
+<data name="This action cannot be undone." xml:space="preserve"><value>Diese Aktion kann nicht rückgängig gemacht werden.</value></data>
+<data name="Cancel" xml:space="preserve"><value>Abbrechen</value></data>
+<data name="Success!" xml:space="preserve"><value>Erfolgreich!</value></data>
+
+<!-- Admin Forms -->
+<data name="Title" xml:space="preserve"><value>Titel</value></data>
+<data name="Description" xml:space="preserve"><value>Beschreibung</value></data>
+<data name="Category" xml:space="preserve"><value>Kategorie</value></data>
+<data name="Select Category" xml:space="preserve"><value>Kategorie wählen</value></data>
+<data name="Images" xml:space="preserve"><value>Bilder</value></data>
+<data name="Audio File" xml:space="preserve"><value>Audiodatei</value></data>
+<data name="Submit" xml:space="preserve"><value>Absenden</value></data>
+<data name="Save Changes" xml:space="preserve"><value>Änderungen speichern</value></data>
+<data name="Add New Images" xml:space="preserve"><value>Neue Bilder hinzufügen</value></data>
+<data name="Current Images" xml:space="preserve"><value>Aktuelle Bilder</value></data>
+<data name="Drag to reorder" xml:space="preserve"><value>Ziehen, um neu anzuordnen</value></data>
+
+<!-- Identity - Login -->
+<data name="Log in" xml:space="preserve"><value>Anmelden</value></data>
+<data name="Password" xml:space="preserve"><value>Passwort</value></data>
+<data name="Remember me?" xml:space="preserve"><value>Angemeldet bleiben?</value></data>
+<data name="Forgot your password?" xml:space="preserve"><value>Passwort vergessen?</value></data>
+<data name="Register as a new user" xml:space="preserve"><value>Als neuer Benutzer registrieren</value></data>
+<data name="Resend email confirmation" xml:space="preserve"><value>E-Mail-Bestätigung erneut senden</value></data>
+
+<!-- Identity - Register -->
+<data name="Confirm Password" xml:space="preserve"><value>Passwort bestätigen</value></data>
+
+<!-- Identity - Manage Account -->
+<data name="Account Settings" xml:space="preserve"><value>Kontoeinstellungen</value></data>
+<data name="Profile Information" xml:space="preserve"><value>Profilinformationen</value></data>
+<data name="Email / Username" xml:space="preserve"><value>E-Mail / Benutzername</value></data>
+<data name="Phone number" xml:space="preserve"><value>Telefonnummer</value></data>
+<data name="Save changes" xml:space="preserve"><value>Änderungen speichern</value></data>
+<data name="Profile" xml:space="preserve"><value>Profil</value></data>
+<data name="Personal Data" xml:space="preserve"><value>Persönliche Daten</value></data>
+<data name="Change Password" xml:space="preserve"><value>Passwort ändern</value></data>
+<data name="Current Password" xml:space="preserve"><value>Aktuelles Passwort</value></data>
+<data name="New Password" xml:space="preserve"><value>Neues Passwort</value></data>
+<data name="Confirm new password" xml:space="preserve"><value>Neues Passwort bestätigen</value></data>
+<data name="Update password" xml:space="preserve"><value>Passwort aktualisieren</value></data>
+<data name="Confirm Email" xml:space="preserve"><value>E-Mail bestätigen</value></data>
+<data name="Thank you for confirming your email" xml:space="preserve"><value>Vielen Dank für die Bestätigung Ihrer E-Mail</value></data>
+<data name="Please confirm your account" xml:space="preserve"><value>Bitte bestätigen Sie Ihr Konto</value></data>
+
+</root>
