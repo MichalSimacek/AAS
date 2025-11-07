@@ -1,7 +1,7 @@
 @model AAS.Web.Models.Collection
 @using AAS.Web.Models
 <h2>Edit collection</h2>
-<form asp-action="Edit" method="post" enctype="multipart/form-data">
+<form asp-area="Admin" asp-controller="Collections" asp-action="Edit" method="post" enctype="multipart/form-data">
 <input type="hidden" asp-for="Id" />
 <div class="mb-2"><label class="form-label">Title</label><input asp-for="Title" class="form-control" /></div>
 <div class="mb-2"><label class="form-label">Category</label><select asp-for="Category" asp-items="Html.GetEnumSelectList<CollectionCategory>()" class="form-select"></select></div>
