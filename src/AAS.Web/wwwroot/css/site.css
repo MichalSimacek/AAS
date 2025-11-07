@@ -982,6 +982,57 @@ select.form-select option {
   color: #B8941F;
 }
 
+
+/* Additional specific overrides for Identity pages */
+.identity-card .col-md-6,
+.identity-card .col-md-4,
+.identity-card section,
+.identity-card hr {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+}
+
+.identity-card .row {
+  margin: 0 !important;
+}
+
+/* Hide the "Use another service" section completely */
+.identity-card form + section,
+.identity-card form ~ section,
+#account-container section:last-of-type,
+#account-container h4:contains("Use another"),
+#account-container h4:contains("Use a") {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure form takes full width */
+.identity-card form {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Fix floating labels */
+.identity-card .form-floating > label {
+  padding: 0.875rem 1rem;
+  color: #6B6B6B;
+}
+
+.identity-card .form-floating > .form-control {
+  padding: 1rem 1rem 0.5rem;
+}
+
+.identity-card .form-floating > .form-control:focus ~ label,
+.identity-card .form-floating > .form-control:not(:placeholder-shown) ~ label {
+  opacity: 0.65;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
 /* Responsive adjustments */
 @media (max-width: 576px) {
   .identity-card {
