@@ -1,0 +1,117 @@
+@model AAS.Web.Models.Collection
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+@{
+  var images = Model.Images.OrderBy(i => i.SortOrder).ToList();
+}
+
+<div class="section">
+  <div class="container">
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/Collections">Collections</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+      </ol>
+    </nav>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-7">
+        <div class="card mb-3">
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              @foreach(var i in images){
+                <div class="swiper-slide">
+                  <img class="w-100" alt="@Model.Title" style="width: 100%; height: 500px; object-fit: cover;"
+                       src="/uploads/images/@i.FileName-960.jpg"
+                       srcset="/uploads/images/@i.FileName-480.jpg 480w, /uploads/images/@i.FileName-960.jpg 960w, /uploads/images/@i.FileName-1600.jpg 1600w" />
+                </div>
+              }
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+        @if(!string.IsNullOrEmpty(Model.AudioPath)){
+          <div class="card">
+            <div class="card-body">
+              <h5>Audio Description</h5>
+              <audio controls class="w-100" src="@Model.AudioPath"></audio>
+            </div>
+          </div>
+        }
+      </div>
+      
+      <div class="col-12 col-lg-5">
+        <div class="card">
+          <div class="card-body p-4">
+            <span class="badge badge-gold mb-3">@Model.Category</span>
+            <h1 style="font-size: 2rem;">@Model.Title</h1>
+            
+            <div class="mb-4">
+              @Html.Raw(ViewBag.TranslatedDescription as string ?? Model.Description)
+            </div>
+
+            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#interestModal">
+              @L["I'm interested"]
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="interestModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">@L["Send inquiry"]</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-secondary mb-4">Fill out the form below and our specialist will contact you within 12 hours.</p>
+        <form id="inqForm">
+          <input type="hidden" name="collectionId" value="@Model.Id" />
+          <input type="hidden" name="collectionTitle" value="@Model.Title" />
+          <div class="mb-3">
+            <label class="form-label">@L["First name"]</label>
+            <input class="form-control" name="FirstName" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">@L["Last name"]</label>
+            <input class="form-control" name="LastName" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" name="Email" type="email" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">@L["Phone"]</label>
+            <input class="form-control" name="Phone" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">@L["Message"]</label>
+            <textarea class="form-control" name="Message" rows="4" placeholder="Tell us about your interest..."></textarea>
+          </div>
+        </form>
+        <div id="inqOk" class="alert alert-success d-none">@L["Thank you. We will contact you soon."]</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">@L["Close"]</button>
+        <button type="button" class="btn btn-primary" onclick="submitInquiry()">@L["Send"]</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form id="inqForm">
+@Html.AntiForgeryToken()
+...
+</form>
+
+@section Scripts{
+<script>
+  new Swiper('.mySwiper', { loop: true, pagination: { el: '.swiper-pagination' }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } });
+</script>
+}
