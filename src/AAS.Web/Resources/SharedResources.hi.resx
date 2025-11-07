@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+<resheader name="version"><value>2.0</value></resheader>
+<resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+<resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+<!-- Home Page -->
+<data name="Slogan" xml:space="preserve"><value>विवेक, गारंटीकृत गुणवत्ता और हमारे ग्राहकों की पेशेवर देखभाल हमारी सर्वोच्च प्राथमिकता है।</value></data>
+<data name="Home Description" xml:space="preserve"><value>असाधारण कला, प्राचीन वस्तुएं, कीमती आभूषण और लक्जरी घड़ियों की खोज करें। हम गारंटीकृत विवेक और व्यावसायिकता के साथ उच्चतम मूल्य प्रदान करते हैं।</value></data>
+
+<!-- Navigation -->
+<data name="Collections" xml:space="preserve"><value>संग्रह</value></data>
+<data name="About us" xml:space="preserve"><value>हमारे बारे में</value></data>
+<data name="Contacts" xml:space="preserve"><value>संपर्क</value></data>
+<data name="Register" xml:space="preserve"><value>पंजीकरण करें</value></data>
+<data name="Login" xml:space="preserve"><value>लॉगिन करें</value></data>
+<data name="Logout" xml:space="preserve"><value>लॉगआउट</value></data>
+<data name="Admin Panel" xml:space="preserve"><value>व्यवस्थापक पैनल</value></data>
+<data name="Manage" xml:space="preserve"><value>प्रबंधित करें</value></data>
+
+<!-- Home Page Content -->
+<data name="Explore collections" xml:space="preserve"><value>संग्रह देखें</value></data>
+<data name="Contact Us" xml:space="preserve"><value>हमसे संपर्क करें</value></data>
+<data name="Why Choose Us" xml:space="preserve"><value>हमें क्यों चुनें</value></data>
+<data name="Excellence in Every Transaction" xml:space="preserve"><value>हर लेनदेन में उत्कृष्टता</value></data>
+<data name="Highest Prices" xml:space="preserve"><value>उच्चतम मूल्य</value></data>
+<data name="Highest Prices Desc" xml:space="preserve"><value>हम आपकी मूल्यवान वस्तुओं के लिए सबसे प्रतिस्पर्धी मूल्य प्रदान करते हैं, यह सुनिश्चित करते हुए कि आपको उनका वास्तविक मूल्य मिले।</value></data>
+<data name="Complete Discretion" xml:space="preserve"><value>पूर्ण विवेक</value></data>
+<data name="Complete Discretion Desc" xml:space="preserve"><value>आपकी गोपनीयता सर्वोपरि है। सभी लेनदेन अत्यधिक गोपनीयता के साथ किए जाते हैं।</value></data>
+<data name="Expert Service" xml:space="preserve"><value>विशेषज्ञ सेवा</value></data>
+<data name="Expert Service Desc" xml:space="preserve"><value>हमारे विशेषज्ञ प्रत्येक ग्राहक के लिए पेशेवर मूल्यांकन और व्यक्तिगत सेवा प्रदान करते हैं।</value></data>
+
+<!-- Categories -->
+<data name="Paintings" xml:space="preserve"><value>चित्रकारी</value></data>
+<data name="Jewelry" xml:space="preserve"><value>आभूषण</value></data>
+<data name="Watches" xml:space="preserve"><value>घड़ियां</value></data>
+<data name="Statues" xml:space="preserve"><value>मूर्तियां</value></data>
+<data name="Other" xml:space="preserve"><value>अन्य</value></data>
+<data name="All" xml:space="preserve"><value>सभी</value></data>
+
+<!-- Collection Details -->
+<data name="I'm interested" xml:space="preserve"><value>मुझे रुचि है</value></data>
+<data name="Send inquiry" xml:space="preserve"><value>पूछताछ भेजें</value></data>
+
+<!-- Forms -->
+<data name="First name" xml:space="preserve"><value>पहला नाम</value></data>
+<data name="Last name" xml:space="preserve"><value>अंतिम नाम</value></data>
+<data name="Phone" xml:space="preserve"><value>फोन</value></data>
+<data name="Email" xml:space="preserve"><value>ईमेल</value></data>
+<data name="Message" xml:space="preserve"><value>संदेश</value></data>
+<data name="Close" xml:space="preserve"><value>बंद करें</value></data>
+<data name="Send" xml:space="preserve"><value>भेजें</value></data>
+<data name="Thank you. We will contact you soon." xml:space="preserve"><value>धन्यवाद। हम जल्द ही आपसे संपर्क करेंगे।</value></data>
+
+<!-- About Page -->
+<data name="About Us" xml:space="preserve"><value>हमारे बारे में</value></data>
+<data name="Excellence in luxury artwork and collectibles" xml:space="preserve"><value>लक्जरी कलाकृति और संग्रहणीय वस्तुओं में उत्कृष्टता</value></data>
+<data name="Who We Are" xml:space="preserve"><value>हम कौन हैं</value></data>
+<data name="Who We Are Text" xml:space="preserve"><value>हम ह्यूस्टन, टेक्सास में स्थित एक अमेरिकी कंपनी हैं, जिसका विश्वव्यापी प्रतिनिधित्व है और लक्जरी बाजार में उत्कृष्टता के लिए प्रतिष्ठा है। हमारी विशेषज्ञ मूल्यांकनकर्ताओं और विशेषज्ञों की टीम ललित कला, प्राचीन वस्तुओं, कीमती आभूषणों, लक्जरी घड़ियों और दुर्लभ संग्रहणीय वस्तुओं में दशकों का संयुक्त अनुभव लाती है। चाहे आप एक टुकड़ा या पूरे संग्रह को बेचना चाहते हों, हम आपकी अनूठी जरूरतों के अनुरूप व्यक्तिगत सेवा प्रदान करते हैं।</value></data>
+<data name="Our Services" xml:space="preserve"><value>हमारी सेवाएं</value></data>
+<data name="Fine Art & Paintings" xml:space="preserve"><value>ललित कला और चित्रकारी:</value></data>
+<data name="Fine Art & Paintings Desc" xml:space="preserve"><value>पुराने मास्टर्स, आधुनिक कला और समकालीन रचनाएं</value></data>
+<data name="Antiques & Collectibles" xml:space="preserve"><value>प्राचीन वस्तुएं और संग्रहणीय:</value></data>
+<data name="Antiques & Collectibles Desc" xml:space="preserve"><value>दुर्लभ फर्नीचर, चीनी मिट्टी के बर्तन और ऐतिहासिक वस्तुएं</value></data>
+<data name="Luxury Jewelry" xml:space="preserve"><value>लक्जरी आभूषण:</value></data>
+<data name="Luxury Jewelry Desc" xml:space="preserve"><value>हीरे, कीमती पत्थर और डिजाइनर टुकड़े</value></data>
+<data name="Fine Watches" xml:space="preserve"><value>बढ़िया घड़ियां:</value></data>
+<data name="Fine Watches Desc" xml:space="preserve"><value>रोलेक्स, पेटेक फिलिप और अन्य प्रतिष्ठित ब्रांड</value></data>
+<data name="Sculptures & Statues" xml:space="preserve"><value>मूर्तियां और प्रतिमाएं:</value></data>
+<data name="Sculptures & Statues Desc" xml:space="preserve"><value>कांस्य, संगमरमर और मिश्रित मीडिया कार्य</value></data>
+<data name="Our Commitment" xml:space="preserve"><value>हमारी प्रतिबद्धता</value></data>
+<data name="Highest Prices Commitment" xml:space="preserve"><value>हम बाजार में सबसे प्रतिस्पर्धी मूल्यांकन प्रदान करते हैं</value></data>
+<data name="Complete Discretion Commitment" xml:space="preserve"><value>आपकी गुमनामी और गोपनीयता पूरी तरह से गारंटीकृत है</value></data>
+<data name="Professional Service" xml:space="preserve"><value>पेशेवर सेवा</value></data>
+<data name="Professional Service Commitment" xml:space="preserve"><value>विश्वसनीयता और विशेषज्ञता जिस पर आप भरोसा कर सकते हैं</value></data>
+
+<!-- Contact Page -->
+<data name="Get in touch with our team" xml:space="preserve"><value>हमारी विशेषज्ञों की टीम से संपर्क करें। हम किसी भी पूछताछ में आपकी सहायता के लिए यहां हैं।</value></data>
+<data name="Reach Out to Us" xml:space="preserve"><value>हमसे संपर्क करें</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>हमारे विशेषज्ञ आपके प्रश्नों का उत्तर देने और विशेषज्ञ मार्गदर्शन प्रदान करने के लिए उपलब्ध हैं। हम 12 घंटे के भीतर प्रतिक्रिया की गारंटी देते हैं।</value></data>
+<data name="Email Address" xml:space="preserve"><value>ईमेल पता</value></data>
+<data name="Location" xml:space="preserve"><value>स्थान</value></data>
+<data name="Houston, Texas, USA" xml:space="preserve"><value>ह्यूस्टन, टेक्सास, यूएसए</value></data>
+<data name="Worldwide representation available" xml:space="preserve"><value>विश्वव्यापी प्रतिनिधित्व उपलब्ध</value></data>
+<data name="Response Time" xml:space="preserve"><value>प्रतिक्रिया समय</value></data>
+<data name="Within 12 hours" xml:space="preserve"><value>12 घंटे के भीतर</value></data>
+<data name="Professional and confidential service" xml:space="preserve"><value>पेशेवर और गोपनीय सेवा</value></data>
+<data name="Privacy Notice" xml:space="preserve"><value>गोपनीयता सूचना:</value></data>
+<data name="Privacy Notice Text" xml:space="preserve"><value>सभी संचार सबसे सख्त गोपनीयता के साथ संभाले जाते हैं। आपकी व्यक्तिगत जानकारी और पूछताछ हमारे साथ सुरक्षित है।</value></data>
+
+<!-- Admin Panel -->
+<data name="Manage Collections" xml:space="preserve"><value>संग्रह प्रबंधित करें</value></data>
+<data name="Collections Management" xml:space="preserve"><value>संग्रह प्रबंधन</value></data>
+<data name="Total" xml:space="preserve"><value>कुल</value></data>
+<data name="collection(s)" xml:space="preserve"><value>संग्रह</value></data>
+<data name="Create New Collection" xml:space="preserve"><value>नया संग्रह बनाएं</value></data>
+<data name="No Collections Yet" xml:space="preserve"><value>अभी तक कोई संग्रह नहीं</value></data>
+<data name="Start by creating your first aristocratic collection" xml:space="preserve"><value>अपने पहले कुलीन संग्रह को बनाकर शुरू करें</value></data>
+<data name="Create Collection" xml:space="preserve"><value>संग्रह बनाएं</value></data>
+<data name="Edit" xml:space="preserve"><value>संपादित करें</value></data>
+<data name="Delete" xml:space="preserve"><value>हटाएं</value></data>
+<data name="images" xml:space="preserve"><value>चित्र</value></data>
+<data name="Created" xml:space="preserve"><value>बनाया गया</value></data>
+<data name="Audio" xml:space="preserve"><value>ऑडियो</value></data>
+<data name="Confirm Delete" xml:space="preserve"><value>हटाना पुष्टि करें</value></data>
+<data name="Are you sure you want to delete this collection?" xml:space="preserve"><value>क्या आप वाकई इस संग्रह को हटाना चाहते हैं?</value></data>
+<data name="This action cannot be undone." xml:space="preserve"><value>इस क्रिया को पूर्ववत नहीं किया जा सकता।</value></data>
+<data name="Cancel" xml:space="preserve"><value>रद्द करें</value></data>
+<data name="Success!" xml:space="preserve"><value>सफलता!</value></data>
+
+<!-- Admin Forms -->
+<data name="Title" xml:space="preserve"><value>शीर्षक</value></data>
+<data name="Description" xml:space="preserve"><value>विवरण</value></data>
+<data name="Category" xml:space="preserve"><value>श्रेणी</value></data>
+<data name="Select Category" xml:space="preserve"><value>श्रेणी चुनें</value></data>
+<data name="Images" xml:space="preserve"><value>चित्र</value></data>
+<data name="Audio File" xml:space="preserve"><value>ऑडियो फ़ाइल</value></data>
+<data name="Submit" xml:space="preserve"><value>जमा करें</value></data>
+<data name="Save Changes" xml:space="preserve"><value>परिवर्तन सहेजें</value></data>
+<data name="Add New Images" xml:space="preserve"><value>नई छवियां जोड़ें</value></data>
+<data name="Current Images" xml:space="preserve"><value>वर्तमान छवियां</value></data>
+<data name="Drag to reorder" xml:space="preserve"><value>पुनः क्रम के लिए खींचें</value></data>
+
+<!-- Identity - Login -->
+<data name="Log in" xml:space="preserve"><value>लॉगिन करें</value></data>
+<data name="Password" xml:space="preserve"><value>पासवर्ड</value></data>
+<data name="Remember me?" xml:space="preserve"><value>मुझे याद रखें?</value></data>
+<data name="Forgot your password?" xml:space="preserve"><value>अपना पासवर्ड भूल गए?</value></data>
+<data name="Register as a new user" xml:space="preserve"><value>नए उपयोगकर्ता के रूप में पंजीकरण करें</value></data>
+<data name="Resend email confirmation" xml:space="preserve"><value>ईमेल पुष्टि पुनः भेजें</value></data>
+
+<!-- Identity - Register -->
+<data name="Confirm Password" xml:space="preserve"><value>पासवर्ड की पुष्टि करें</value></data>
+
+<!-- Identity - Manage Account -->
+<data name="Account Settings" xml:space="preserve"><value>खाता सेटिंग्स</value></data>
+<data name="Profile Information" xml:space="preserve"><value>प्रोफ़ाइल जानकारी</value></data>
+<data name="Email / Username" xml:space="preserve"><value>ईमेल / उपयोगकर्ता नाम</value></data>
+<data name="Phone number" xml:space="preserve"><value>फोन नंबर</value></data>
+<data name="Save changes" xml:space="preserve"><value>परिवर्तन सहेजें</value></data>
+<data name="Profile" xml:space="preserve"><value>प्रोफ़ाइल</value></data>
+<data name="Personal Data" xml:space="preserve"><value>व्यक्तिगत डेटा</value></data>
+<data name="Change Password" xml:space="preserve"><value>पासवर्ड बदलें</value></data>
+<data name="Current Password" xml:space="preserve"><value>वर्तमान पासवर्ड</value></data>
+<data name="New Password" xml:space="preserve"><value>नया पासवर्ड</value></data>
+<data name="Confirm new password" xml:space="preserve"><value>नए पासवर्ड की पुष्टि करें</value></data>
+<data name="Update password" xml:space="preserve"><value>पासवर्ड अपडेट करें</value></data>
+<data name="Confirm Email" xml:space="preserve"><value>ईमेल की पुष्टि करें</value></data>
+<data name="Thank you for confirming your email" xml:space="preserve"><value>अपने ईमेल की पुष्टि करने के लिए धन्यवाद</value></data>
+<data name="Please confirm your account" xml:space="preserve"><value>कृपया अपने खाते की पुष्टि करें</value></data>
+
+</root>
