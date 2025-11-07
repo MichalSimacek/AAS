@@ -40,7 +40,19 @@ namespace AAS.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Create(Collection model, List<IFormFile> images, IFormFile? audio)
         {
             if (!ModelState.IsValid) return View(model);
-            model.Slug = _slug.ToSlug(model.Title);
+            
+            // Generate unique slug
+            var baseSlug = _slug.ToSlug(model.Title);
+            var slug = baseSlug;
+            var counter = 1;
+            
+            while (await _db.Collections.AnyAsync(c => c.Slug == slug))
+            {
+                slug = $"{baseSlug}-{counter}";
+                counter++;
+            }
+            
+            model.Slug = slug;
 
             // Security: Validate audio file
             if (audio != null && audio.Length > 0)
