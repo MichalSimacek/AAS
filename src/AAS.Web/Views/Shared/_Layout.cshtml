@@ -80,7 +80,19 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="/js/site.js"></script>
 
-  <form id="cultureForm" method="post" asp-controller="Home" asp-action="SetLanguage"></form>
+  <form id="cultureForm" method="post" asp-controller="Home" asp-action="SetLanguage">
+    <input type="hidden" name="culture" id="cultureInput" />
+    <input type="hidden" name="returnUrl" id="returnUrlInput" />
+  </form>
+  
+  <script>
+  function setLang(culture) {
+    document.getElementById('cultureInput').value = culture;
+    document.getElementById('returnUrlInput').value = window.location.pathname + window.location.search;
+    document.getElementById('cultureForm').submit();
+  }
+  </script>
+  
   @RenderSection("Scripts", required: false)
 </body>
 </html>
