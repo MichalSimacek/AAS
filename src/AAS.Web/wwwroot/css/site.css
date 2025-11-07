@@ -170,41 +170,86 @@ a.btn {
 
 /* HERO SECTION */
 .hero {
-  background: #FFFFFF !important;
-  padding: 4rem 0 !important;
-  text-align: center !important;
-  border-bottom: 1px solid #E5E5E5 !important;
-  width: 100% !important;
-}
-
-.hero h1 {
-  font-size: 2.5rem !important;
-  margin-bottom: 1rem !important;
-  color: #1A1A1A !important;
-}
-
-.hero .lead {
-  font-size: 1.25rem !important;
-  color: #4A4A4A !important;
-  margin-bottom: 1rem !important;
-  max-width: 700px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.hero p {
-  max-width: 700px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  color: #6B6B6B !important;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
 }
 
 .hero-accent {
-  width: 60px !important;
-  height: 3px !important;
-  background: #C9A961 !important;
-  margin: 2rem auto !important;
-  display: block !important;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #B8941F, transparent);
+  opacity: 0.6;
+}
+
+/* HERO LOGO */
+.hero-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  animation: logoFadeIn 1.2s ease-out;
+}
+
+.hero-logo {
+  width: 150px;
+  height: 150px;
+  filter: drop-shadow(0 4px 12px rgba(184, 148, 31, 0.15));
+  transition: transform 0.4s ease;
+}
+
+.hero-logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-crown,
+.logo-laurel-left,
+.logo-laurel-right,
+.logo-column {
+  animation: elementFadeIn 1.5s ease-out;
+}
+
+.logo-monogram {
+  animation: monogramFadeIn 1.8s ease-out;
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes elementFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes monogramFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* SECTIONS */
