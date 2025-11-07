@@ -1240,23 +1240,57 @@ select.form-select option {
 }
 
 /* Responsive manage layout */
-@media (max-width: 768px) {
-  .manage-account-container .nav-pills {
-    padding: 1rem;
-    margin-bottom: 1.5rem;
+@media (max-width: 992px) {
+  .manage-content-wrapper {
+    flex-direction: column;
   }
   
-  .manage-account-container .nav-pills .nav-link {
+  .manage-sidebar {
+    flex: 1;
+    width: 100%;
+    min-width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  .manage-sidebar .nav-pills {
+    position: static;
+  }
+  
+  .manage-page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .manage-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .manage-page-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .manage-sidebar .nav-pills {
+    padding: 1rem;
+  }
+  
+  .manage-sidebar .nav-pills .nav-link {
     padding: 0.75rem 1rem;
     font-size: 0.95rem;
   }
   
-  .manage-account-container .card-body {
+  .manage-card {
     padding: 1.5rem;
   }
   
-  .manage-account-container h1 {
-    font-size: 1.75rem;
+  .manage-card-title {
+    font-size: 1.25rem;
+  }
+  
+  .manage-main-content .btn-primary,
+  .manage-main-content .btn-danger {
+    padding: 0.75rem 1.5rem;
+    width: 100%;
   }
 }
   }
