@@ -1154,19 +1154,17 @@ select.form-select option {
   color: #FFFFFF;
 }
 
-/* Manage content card */
-.manage-account-container .card {
+/* Manage card */
+.manage-card {
   background: #FFFFFF;
   border: 1px solid #E5E5E5;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-}
-
-.manage-account-container .card-body {
   padding: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.manage-account-container .card-title {
+.manage-card-title {
   font-family: 'Playfair Display', serif;
   color: #1A1A1A;
   font-size: 1.5rem;
@@ -1175,56 +1173,69 @@ select.form-select option {
 }
 
 /* Form elements in manage pages */
-.manage-account-container .form-floating > label {
+.manage-main-content .form-floating > label {
   color: #6B6B6B;
 }
 
-.manage-account-container .form-control {
+.manage-main-content .form-control {
   border: 1px solid #E5E5E5;
   border-radius: 8px;
   padding: 0.875rem 1rem;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-.manage-account-container .form-control:focus {
+.manage-main-content .form-control:focus {
   border-color: #B8941F;
   box-shadow: 0 0 0 3px rgba(184, 148, 31, 0.1);
 }
 
 /* Buttons in manage pages */
-.manage-account-container .btn-primary {
+.manage-main-content .btn-primary {
   background: linear-gradient(135deg, #B8941F 0%, #D4AF37 100%);
   border: none;
-  padding: 0.75rem 2rem;
+  padding: 0.875rem 2.5rem;
   font-weight: 600;
   border-radius: 8px;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-.manage-account-container .btn-primary:hover {
+.manage-main-content .btn-primary:hover {
   background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(184, 148, 31, 0.3);
 }
 
-.manage-account-container .btn-danger {
+.manage-main-content .btn-danger {
   border-radius: 8px;
-  padding: 0.75rem 2rem;
+  padding: 0.875rem 2.5rem;
   font-weight: 600;
 }
 
+.manage-main-content .btn-link {
+  color: #B8941F;
+  text-decoration: none;
+}
+
+.manage-main-content .btn-link:hover {
+  color: #D4AF37;
+  text-decoration: underline;
+}
+
 /* Alert messages */
-.manage-account-container .alert {
+.manage-main-content .alert {
   border-radius: 8px;
   border: none;
+  margin-bottom: 1.5rem;
 }
 
 /* Danger card for delete account */
-.manage-account-container .card.border-danger {
+.manage-card.border-danger {
   border: 2px solid #DC3545 !important;
 }
 
-.manage-account-container .card.border-danger .card-title {
+.manage-card.border-danger .manage-card-title {
   color: #DC3545;
 }
 
