@@ -632,6 +632,12 @@ select.form-select option {
   border-radius: 50% !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
   transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 1070 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .lightboxSwiper .swiper-button-next:after,
@@ -651,6 +657,7 @@ select.form-select option {
 .lightboxSwiper .swiper-button-prev svg {
   width: 28px !important;
   height: 28px !important;
+  pointer-events: none !important;
 }
 
 /* Pagination Dots */
