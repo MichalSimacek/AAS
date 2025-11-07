@@ -581,39 +581,108 @@ select.form-select option {
   align-items: center !important;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
+/* Main Gallery Navigation - Subtle & Elegant */
+.mySwiper .swiper-button-next,
+.mySwiper .swiper-button-prev {
   color: #B8941F !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  width: 44px !important;
-  height: 44px !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+  width: 40px !important;
+  height: 40px !important;
   border-radius: 50% !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1) !important;
+  opacity: 0.7 !important;
+  transition: all 0.3s ease !important;
 }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 20px !important;
-  font-weight: bold !important;
+.mySwiper .swiper-button-next:after,
+.mySwiper .swiper-button-prev:after {
+  content: '' !important;
+  display: none !important;
 }
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background: #B8941F !important;
+.mySwiper .swiper-button-next:hover,
+.mySwiper .swiper-button-prev:hover {
+  background: rgba(184, 148, 31, 0.95) !important;
   color: #FFFFFF !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 16px rgba(184, 148, 31, 0.3) !important;
 }
 
+.mySwiper .swiper-button-next svg,
+.mySwiper .swiper-button-prev svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Lightbox Navigation - Larger & More Prominent */
+.lightboxSwiper .swiper-button-next,
+.lightboxSwiper .swiper-button-prev {
+  color: #FFFFFF !important;
+  background: rgba(184, 148, 31, 0.8) !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+.lightboxSwiper .swiper-button-next:after,
+.lightboxSwiper .swiper-button-prev:after {
+  content: '' !important;
+  display: none !important;
+}
+
+.lightboxSwiper .swiper-button-next:hover,
+.lightboxSwiper .swiper-button-prev:hover {
+  background: rgba(184, 148, 31, 1) !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 24px rgba(184, 148, 31, 0.5) !important;
+}
+
+.lightboxSwiper .swiper-button-next svg,
+.lightboxSwiper .swiper-button-prev svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+/* Pagination Dots */
 .swiper-pagination-bullet {
   background: #E5E5E5 !important;
-  opacity: 1 !important;
-  width: 10px !important;
-  height: 10px !important;
+  opacity: 0.6 !important;
+  width: 8px !important;
+  height: 8px !important;
+  transition: all 0.3s ease !important;
 }
 
 .swiper-pagination-bullet-active {
   background: #B8941F !important;
-  width: 12px !important;
-  height: 12px !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  height: 8px !important;
+  border-radius: 4px !important;
+}
+
+/* Lightbox specific pagination */
+.lightboxSwiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.lightboxSwiper .swiper-pagination-bullet-active {
+  background: #B8941F !important;
+}
+
+/* Lightbox Modal Styling */
+#lightboxModal .modal-content {
+  background: #000000 !important;
+}
+
+#lightboxModal .btn-close {
+  opacity: 0.8 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+#lightboxModal .btn-close:hover {
+  opacity: 1 !important;
 }
 
 /* RESPONSIVE */
