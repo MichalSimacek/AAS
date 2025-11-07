@@ -1173,21 +1173,46 @@ select.form-select option {
 }
 
 /* Form elements in manage pages */
-.manage-main-content .form-floating > label {
-  color: #6B6B6B;
+.manage-main-content .form-label {
+  color: #4A4A4A;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
 }
 
 .manage-main-content .form-control {
   border: 1px solid #E5E5E5;
   border-radius: 8px;
-  padding: 0.875rem 1rem;
+  padding: 0.75rem 1rem;
   transition: all 0.3s ease;
   font-size: 1rem;
+  background: #FAFAFA;
 }
 
 .manage-main-content .form-control:focus {
   border-color: #B8941F;
   box-shadow: 0 0 0 3px rgba(184, 148, 31, 0.1);
+  background: #FFFFFF;
+}
+
+.manage-main-content .form-control:disabled {
+  background: #F5F5F5;
+  color: #6B6B6B;
+}
+
+.manage-main-content .form-control::placeholder {
+  color: #AAAAAA;
+  font-style: italic;
+}
+
+.manage-main-content small {
+  font-size: 0.875rem;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.manage-main-content small i {
+  font-size: 0.875rem;
 }
 
 /* Buttons in manage pages */
