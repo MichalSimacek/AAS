@@ -150,4 +150,9 @@
 <data name="Thank you for confirming your email" xml:space="preserve"><value>Děkujeme za potvrzení vašeho e-mailu</value></data>
 <data name="Please confirm your account" xml:space="preserve"><value>Prosím potvrďte váš účet</value></data>
 
+<!-- Additional -->
+<data name="Home" xml:space="preserve"><value>Domů</value></data>
+<data name="Audio Description" xml:space="preserve"><value>Audio popis</value></data>
+<data name="No Image" xml:space="preserve"><value>Žádný obrázek</value></data>
+
 </root>
