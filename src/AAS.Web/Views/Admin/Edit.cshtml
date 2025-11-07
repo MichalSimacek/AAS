@@ -11,7 +11,7 @@
 </form>
 @if(Model.Images?.Any() == true){
 <div class="row mt-3 g-2">
-@foreach (var i in Model.Images.OrderBy(x=>x.SortOrder)){
+@foreach (var i in Model.Images.OrderBy(x => x.SortOrder)){
 <div class="col-3"><img class="img-fluid" src="/uploads/images/@i.FileName-480.jpg" alt="" /></div>
 }
 </div>
