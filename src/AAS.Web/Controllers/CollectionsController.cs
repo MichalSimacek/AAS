@@ -59,14 +59,16 @@ namespace AAS.Web.Controllers
 
             if (item == null) return NotFound();
 
-            // Translate description on the fly based on UI culture
+            // Translate title and description on the fly based on UI culture
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             if (lang != "en")
             {
+                ViewBag.TranslatedTitle = await _tr.TranslateAsync(item.Title, "en", lang);
                 ViewBag.TranslatedDescription = await _tr.TranslateAsync(item.Description, "en", lang);
             }
             else
             {
+                ViewBag.TranslatedTitle = item.Title;
                 ViewBag.TranslatedDescription = item.Description;
             }
 
