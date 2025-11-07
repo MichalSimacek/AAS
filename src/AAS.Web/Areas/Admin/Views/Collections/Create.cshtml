@@ -14,7 +14,19 @@
 
     <form action="/Admin/Collections/Create" method="post" enctype="multipart/form-data" class="luxury-form">
         @Html.AntiForgeryToken()
-        <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
+        
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <strong>Error:</strong> Please correct the following errors:
+                <ul class="mb-0 mt-2">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
 
         <div class="form-section">
             <h3 class="section-title">Collection Details</h3>
