@@ -592,6 +592,12 @@ select.form-select option {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1) !important;
   opacity: 0.7 !important;
   transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .mySwiper .swiper-button-next:after,
@@ -606,12 +612,14 @@ select.form-select option {
   color: #FFFFFF !important;
   opacity: 1 !important;
   box-shadow: 0 4px 16px rgba(184, 148, 31, 0.3) !important;
+  transform: scale(1.05) !important;
 }
 
 .mySwiper .swiper-button-next svg,
 .mySwiper .swiper-button-prev svg {
   width: 20px !important;
   height: 20px !important;
+  pointer-events: none !important;
 }
 
 /* Lightbox Navigation - Larger & More Prominent */
