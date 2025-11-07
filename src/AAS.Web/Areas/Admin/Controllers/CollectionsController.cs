@@ -285,5 +285,55 @@ namespace AAS.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteImage(int id, int imageId)
+        {
+            try
+            {
+                var collection = await _db.Collections
+                    .Include(c => c.Images)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+
+                if (collection == null)
+                {
+                    TempData["ErrorMessage"] = "Collection not found.";
+                    return RedirectToAction(nameof(Edit), new { id });
+                }
+
+                var image = collection.Images.FirstOrDefault(i => i.Id == imageId);
+                if (image == null)
+                {
+                    TempData["ErrorMessage"] = "Image not found.";
+                    return RedirectToAction(nameof(Edit), new { id });
+                }
+
+                // Delete image files from disk
+                try
+                {
+                    _img.DeleteAllVariants(image.FileName);
+                    Console.WriteLine($"Deleted image files for: {image.FileName}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to delete image files: {ex.Message}");
+                    // Continue to remove from database even if file deletion fails
+                }
+
+                // Remove from database
+                _db.CollectionImages.Remove(image);
+                await _db.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = "Image deleted successfully.";
+                return RedirectToAction(nameof(Edit), new { id });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting image: {ex.Message}");
+                TempData["ErrorMessage"] = $"Error deleting image: {ex.Message}";
+                return RedirectToAction(nameof(Edit), new { id });
+            }
+        }
     }
 }
