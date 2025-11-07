@@ -778,19 +778,27 @@ select.form-select option {
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   padding: 3rem;
-  max-width: 480px;
+  max-width: 520px;
   width: 100%;
   margin: 0 auto;
 }
 
 /* Identity page headings */
 .identity-card h1,
-.identity-card h2 {
+.identity-card h2,
+.identity-card h3,
+.identity-card h4 {
   font-family: 'Playfair Display', serif;
   color: #1A1A1A;
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
+}
+
+.identity-card h4 {
+  font-size: 1.1rem;
+  color: #4A4A4A;
+  margin-top: 2rem;
 }
 
 /* Decorative accent line */
@@ -799,6 +807,13 @@ select.form-select option {
   height: 3px;
   background: linear-gradient(90deg, transparent, #B8941F, transparent);
   margin: 0 auto 2rem;
+}
+
+/* Hide external login section by default */
+.identity-card section:has(h4),
+.identity-card .col-md-6:last-child,
+.identity-card hr + div {
+  display: none !important;
 }
 
 /* Form groups */
