@@ -408,6 +408,10 @@ footer {
   width: 100% !important;
 }
 
+footer .container {
+  background: transparent !important;
+}
+
 footer p {
   color: #6B6B6B !important;
   margin: 0.25rem 0 !important;
