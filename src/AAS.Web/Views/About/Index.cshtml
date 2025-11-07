@@ -1,12 +1,13 @@
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 @{
-    ViewData["Title"] = "About Us";
+    ViewData["Title"] = L["About Us"];
 }
 
 <div class="section">
   <div class="container">
-    <h1 class="page-heading">About Us</h1>
+    <h1 class="page-heading">@L["About Us"]</h1>
     <p class="page-description">
-      Excellence in luxury artwork and collectibles
+      @L["Excellence in luxury artwork and collectibles"]
     </p>
 
     <div class="row g-4">
