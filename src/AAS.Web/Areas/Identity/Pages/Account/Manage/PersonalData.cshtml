@@ -33,9 +33,8 @@
             </div>
         </div>
         
-        <div class="card border-danger">
-            <div class="card-body">
-                <h4 class="card-title text-danger mb-3">Delete Account</h4>
+        <div class="manage-card border-danger">
+            <h4 class="manage-card-title text-danger">Delete Account</h4>
                 <form id="delete-user" method="post" asp-page-handler="DeleteAccount">
                     @Html.AntiForgeryToken()
                     <p class="text-danger">
