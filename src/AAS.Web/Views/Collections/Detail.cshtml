@@ -71,6 +71,40 @@
   </div>
 </div>
 
+<!-- Lightbox Modal for Full Screen Gallery -->
+<div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-black">
+      <div class="modal-header border-0" style="position: absolute; top: 0; right: 0; z-index: 1060; background: rgba(0,0,0,0.5);">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0 d-flex align-items-center justify-content-center">
+        <div class="swiper lightboxSwiper" style="width: 100%; height: 100vh;">
+          <div class="swiper-wrapper">
+            @foreach(var i in images){
+              <div class="swiper-slide d-flex align-items-center justify-content-center">
+                <img alt="@Model.Title" style="max-width: 95%; max-height: 95vh; object-fit: contain;"
+                     src="/uploads/images/@i.FileName-1600.jpg" />
+              </div>
+            }
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </div>
+          <div class="swiper-button-next">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" id="interestModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
