@@ -1,34 +1,40 @@
 <analysis>
-The AI engineer's initial understanding of the project's tech stack was incorrect, assuming React+FastAPI+MongoDB, but quickly adapted upon discovering it was an ASP.NET Core MVC application. The work then shifted to a comprehensive UI redesign based on user feedback, addressing inconsistencies, color schemes, and responsiveness. This involved extensive CSS modifications and updates to Razor views. Subsequent efforts focused on debugging functional issues, including admin login, collection creation (handling unique slugs, file uploads, transaction errors), and fixing navigation for collection details. The primary challenge involved resolving Razor syntax issues, ensuring proper form submission with AntiForgeryToken, and adapting to the .NET execution strategy for database transactions. The latest interaction addresses a non-functional Swiper image gallery.
+The trajectory details an intensive development cycle for an ASP.NET Core MVC application, transitioning from an AI-built MVP to iterative enhancements. Initial work focused on a complete UI redesign, adhering to specific aesthetic guidelines. This quickly broadened to addressing critical functional bugs, including admin login, robust collection creation with multi-image uploads, slug generation, and fixing database transaction issues. A significant portion involved resolving front-end discrepancies like a non-functional Swiper image gallery, followed by extensive Content Security Policy (CSP) adjustments. Later, the focus shifted to refining user account management pages (Login, Register, Manage Account), implementing email verification, and adding image reordering. The engineer also tackled localization issues, progressively adding translations. Environmental debugging for application startup was a recurring challenge, highlighting the shift from a local development assumption to a Kubernetes environment. The work consistently involved detailed Razor view modifications, CSS overhauls, and C# controller logic updates.
 </analysis>
 
 <product_requirements>
-The user initially requested a complete overhaul of the terrible frontend across the entire GitHub repository, emphasizing the need for a highly responsive, luxurious, and aristocratic design. The preferred aesthetic involved a combination of gold, elegant white, and minimalist black. Later, the user clarified that the current design was still too black, chaotic, and unprofessional, requesting a clean, professional, and elegant design with a light white background and consistent black text with gold accents.
+The user initially requested a complete overhaul of the terrible frontend to a highly responsive, luxurious, and aristocratic design, emphasizing gold, elegant white, and minimalist black. This evolved to a clean, professional, and elegant design with a light white background, consistent black text, and gold accents, addressing initial issues of a too black, chaotic, and unprofessional appearance.
 
-Subsequent functional requirements included:
-1.  **Admin Login:** Fix the inability to log in with  credentials.
-2.  **Collection Management:**
-    *   Ensure proper functionality for adding and editing collections from the admin account.
+Key functional and design requirements include:
+1.  **Admin Login**: Fix login issues for .
+2.  **Collection Management**:
+    *   Enable robust adding/editing of collections, including multi-file image upload.
     *   Fix non-responsive Add Collection button.
-    *   Enable selection of categories during collection creation.
-    *   Address 400 Bad Request errors during collection creation.
-    *   Implement multi-file image upload for collections.
-    *   Ensure collection creation provides feedback and correctly displays the newly created collection on the main site.
-    *   Resolve database transaction errors related to .
-    *   Fix duplicate key value violates unique constraint IX_Collections_Slug error during collection creation.
-    *   Correct Details view not found error when clicking on a collection from the main page.
-    *   Enable image carousel functionality (Swiper) on the collection detail page.
+    *   Ensure category selection works during creation and edit.
+    *   Resolve 400 Bad Request, database transaction errors (), and duplicate slug errors.
+    *   Fix Details view not found errors.
+    *   Implement Swiper image carousel on detail pages with elegant icons, functioning navigation, and image maximization/lightbox.
+    *   Add Delete Collection and Delete Individual Photo functionality in admin.
+    *   Implement drag-and-drop image reordering in admin.
+3.  **Branding**: Improve the landing page logo to be high-quality, clear, and non-disruptive, replacing a previous SVG with a provided image.
+4.  **Identity UI**: Redesign Login, Register, and Manage Account pages for consistency, elegance, responsiveness, and proper layout, removing floating labels.
+5.  **User Registration**: Enable email registration with an email field and enforce email verification.
+6.  **Localization**: Ensure full and functional automatic page translation (Czech/English).
 </product_requirements>
 
 <key_technical_concepts>
--   **ASP.NET Core MVC:** Primary web framework for both frontend (Razor Views) and backend (Controllers, Models).
--   **Razor:** Templating engine for dynamic HTML generation within C# (.cshtml files).
--   **C#:** Main programming language for backend logic.
--   **PostgreSQL:** Database used via Entity Framework Core.
--   **Entity Framework Core:** ORM for database interactions, including transaction management ().
--   **SwiperJS:** JavaScript library for image carousels/galleries.
--   **CSS:** Styling language, including responsive design and custom themes.
--   **AntiForgeryToken:** Security mechanism in ASP.NET Core MVC for preventing CSRF attacks.
+-   **ASP.NET Core MVC**: Core web framework for Razor Views and backend.
+-   **Razor**: Templating engine for dynamic HTML.
+-   **C#**: Backend logic.
+-   **PostgreSQL & Entity Framework Core**: Database interactions, including .
+-   **SwiperJS**: Image carousels/galleries.
+-   **SortableJS**: Drag-and-drop reordering.
+-   **CSS**: Styling, responsive design, custom themes.
+-   **AntiForgeryToken**: CSRF protection.
+-   **Content Security Policy (CSP)**: Security headers management.
+-   **ASP.NET Core Identity**: User authentication and management.
+-   **Localization (.resx files)**: Multi-language support.
+-   **jQuery**: Frontend scripting for validation and interactions.
 </key_technical_concepts>
 
 <code_architecture>
@@ -36,38 +42,62 @@ The application is an ASP.NET Core MVC project with the following high-level str
 
 
 
-Key files and changes:
--   : This is the main stylesheet. It underwent multiple complete overhauls to implement the new dark/gold theme, then a clean white/gold/black theme, and finally robust responsive design and specific Swiper navigation styles. It was initially dark, then made light, and received numerous utility classes and styling fixes.
--   : Global view configuration.
--   : Master layout page. Modified to correctly load the  after Bootstrap CSS (with cache busting) to ensure custom styles take precedence. Also includes Swiper CSS and JS imports.
--   , , , , : These are the main Razor views for the public-facing pages. They were extensively modified to integrate the new CSS classes, simplify HTML structures, improve responsiveness, and fix Razor syntax errors (e.g., escaping , fixing lambda expressions ).
--   : Admin view for listing collections. Links to Create/Edit actions were updated with , , and  handlers for better routing and interactivity. Inline styles were also updated.
--   : Admin view for creating new collections. Form structure was refined,  helpers were explicitly converted to  attributes for  and , an  for file uploads was confirmed, an  was added, and the category dropdown was modified to explicitly set  attributes. JavaScript for file selection feedback was also added.
--   : Model for collections. The  property was made non-required for model binding, as it's generated in the controller.
--    (originally ): Admin controller for collection management.
-    -   Moved from  to .
-    -   Modified the  POST action to use  for database transactions, fixing Npgsql errors.
-    -   Implemented a slug duplication check with suffix generation to ensure unique slugs.
-    -   Added  for success messages.
-    -   The  action was changed to explicitly return  to resolve view not found issues.
--   : Used for seeding admin user data. Checked for password length requirements.
--   : Contains development-specific settings, including admin credentials (, ).
--   : Service for image handling. Its functionality was confirmed.
+**Key files and changes:**
+-   :
+    -   **Importance**: Application entry point, configuration of services, middleware, and CSP.
+    -   **Changes**: Modified Content Security Policy (CSP) to allow inline scripts and CDN connections. Enabled  for Identity. Registered  as .
+-   :
+    -   **Importance**: Main stylesheet, heavily modified for UI redesign, responsiveness, Swiper, Identity pages, logo, and footer.
+    -   **Changes**: Multiple overhauls for dark/gold, then clean white/gold/black themes, responsive design. Added specific styles for Swiper navigation/pagination, lightbox, new SVG/image logo, and extensive styling for Login, Register, and Manage Account Identity pages, including flexbox layouts and form label adjustments. Fixed footer container background color.
+-   :
+    -   **Importance**: Master layout page for public-facing views.
+    -   **Changes**: Modified to load  with cache busting (version ). Added Swiper CSS and JS. Added Bootstrap Icons CSS. Added jQuery script. Added  JavaScript function for language switching. Removed redundant Swiper script loading.
+-   :
+    -   **Importance**: Landing page.
+    -   **Changes**: Modified to integrate new CSS classes. Updated to use a new image logo in the hero section.
+-   :
+    -   **Importance**: Displays details of a single collection with an image gallery.
+    -   **Changes**: Extensively modified for Swiper integration, including HTML structure for navigation and pagination, and JavaScript initialization. Integrated a lightbox for image maximization. Simplified Swiper JS logic.
+-   :
+    -   **Importance**: Admin view for listing collections.
+    -   **Changes**: Links to Create/Edit actions updated. Added Delete button with a modal and associated JavaScript. Removed inline  handlers for CSP compliance.
+-   :
+    -   **Importance**: Admin view for creating new collections.
+    -   **Changes**: Form structure refined. Confirmed  for file uploads,  added. Modified category dropdown for explicit  attributes.  attribute for image input confirmed.
+-   :
+    -   **Importance**: Admin view for editing existing collections.
+    -   **Changes**: Fixed category dropdown to correctly display selected item. Added delete individual image functionality with buttons and AJAX. Implemented drag-and-drop reordering for images using SortableJS and associated JavaScript. Removed  HTML attributes from Title and Category. Added  messages.
+-   :
+    -   **Importance**: Admin controller for collection management.
+    -   **Changes**: Modified  POST action to use  for database transactions and process multiple image uploads more robustly (not rolling back for individual image failures). Added  POST action for collections. Added  POST action for individual images. Added  POST action for drag-and-drop. Fixed GET  action's  with . Added  and  checks to POST  action, and adjusted Title validation. Used  for transaction handling in  (saving reorder).
+-   :
+    -   **Importance**: Model for collection data.
+    -   **Changes**:  property made non-required.  property made nullable to avoid mandatory validation in specific contexts.
+-   :
+    -   **Importance**: Service for image handling.
+    -   **Changes**: Added  method.
+-   :
+    -   **Importance**: New adapter to integrate  with  for ASP.NET Core Identity.
+    -   **Changes**: New file created.
+-    and :
+    -   **Importance**: Resource files for localization (English and Czech).
+    -   **Changes**:  (Czech) was created. Both files updated to include all text from the application for comprehensive translation.
 </code_architecture>
 
 <pending_tasks>
--   The user still reports that the Swiper image gallery is not functioning correctly (images cannot be scrolled through).
+-   The Czech translation for all texts across all sections of the web application still needs to be fully implemented and verified after  was populated.
 </pending_tasks>
 
 <current_work>
-Immediately before this summary request, the AI engineer was addressing the issue where the Swiper image gallery on the collection detail page () was not allowing users to browse through multiple uploaded photos. The user explicitly stated: Super zobrazení kolekce už funguje, ale nejde listovat ve fotkách je vidět pouze první vybraná při nahrávání, ale ostatní nahrané se zobrazit nedají. Nevidím možnost přes kterou fotky procházet a funkce ani nefunguje.
+Immediately before this summary request, the AI engineer was addressing two critical issues:
+1.  **Image Reordering Saving Failure**: The drag-and-drop image reordering functionality in the collection edit page () was not saving the new order, resulting in an Error updating collection: The configured execution strategy NpgsqlRetryingExecutionStrategy does not support user-initiated transactions. error.
+2.  **Incomplete Localization**: The user reported that the automatic page translation was still only partially working, with many texts remaining in English, despite previous attempts to add localization and a Czech resource file.
 
-The AI engineer's analysis confirmed that the Swiper JavaScript was being loaded, but the problem likely lay in conflicting CSS or missing Swiper styles.
-The last action taken was to:
--   Edit  to add explicit styles for Swiper navigation and pagination, attempting to override any conflicting styles and ensure the navigation buttons/indicators are visible and functional.
--   The AI engineer then indicated the next step was to update the CSS version (likely in ) to ensure the browser fetches the latest stylesheet.
+The AI engineer's last actions were to:
+-   Fix the  error in the  POST action within  by ensuring database operations within transactions use . This directly addresses the transaction error for saving reordered images.
+-   Begin addressing the incomplete localization by updating  (the English base resource file) with *all* text found on the application's pages. The very next step indicated was to then update  (the Czech resource file) with all corresponding translations.
 </current_work>
 
 <optional_next_step>
-Update the CSS version in  to ensure the new Swiper styles are loaded and then check if the gallery navigation is working.
+Complete the Czech translations in  based on the updated .
 </optional_next_step>
