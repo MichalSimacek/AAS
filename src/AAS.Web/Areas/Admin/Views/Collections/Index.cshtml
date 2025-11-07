@@ -62,7 +62,7 @@ else
                         <a href="/Admin/Collections/Edit/@collection.Id" class="btn btn-sm btn-outline-primary" style="pointer-events: auto; z-index: 1000; position: relative;">
                             Edit
                         </a>
-                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete(@collection.Id, '@collection.Title')" style="pointer-events: auto; z-index: 1000; position: relative;">
+                        <button type="button" class="btn btn-sm btn-outline-danger delete-btn" data-id="@collection.Id" data-title="@collection.Title" style="pointer-events: auto; z-index: 1000; position: relative;">
                             Delete
                         </button>
                     </div>
