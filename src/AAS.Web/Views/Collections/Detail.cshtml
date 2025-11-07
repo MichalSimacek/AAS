@@ -155,114 +155,105 @@
 
 @section Scripts{
 <script>
-(function() {
-  console.log('Initializing Swiper galleries...');
+window.addEventListener('load', function() {
+  console.log('Window loaded, initializing Swiper galleries...');
   
-  // Wait for DOM to be fully loaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGalleries);
-  } else {
-    initGalleries();
-  }
-  
-  function initGalleries() {
-    try {
-      // Check if Swiper is available
-      if (typeof Swiper === 'undefined') {
-        console.error('Swiper library not loaded!');
-        return;
-      }
-      
-      console.log('Swiper library found, initializing...');
-      
-      // Main gallery swiper
-      const mainSwiper = new Swiper('.mySwiper', {
-        loop: true,
-        spaceBetween: 10,
-        pagination: {
-          el: '.mySwiper .swiper-pagination',
-          clickable: true,
-          dynamicBullets: true
-        },
-        navigation: {
-          nextEl: '.mySwiper .swiper-button-next',
-          prevEl: '.mySwiper .swiper-button-prev'
-        },
-        keyboard: {
-          enabled: true
-        },
-        on: {
-          init: function() {
-            console.log('Main swiper initialized');
-          }
-        }
-      });
-
-      // Lightbox gallery swiper
-      let lightboxSwiper = null;
-      
-      // Get lightbox modal element
-      const lightboxModal = document.getElementById('lightboxModal');
-      
-      if (!lightboxModal) {
-        console.error('Lightbox modal not found!');
-        return;
-      }
-      
-      // Initialize lightbox swiper when modal is shown
-      lightboxModal.addEventListener('shown.bs.modal', function () {
-        console.log('Lightbox modal shown, initializing swiper...');
-        
-        if (!lightboxSwiper) {
-          lightboxSwiper = new Swiper('.lightboxSwiper', {
-            loop: true,
-            spaceBetween: 10,
-            pagination: {
-              el: '.lightboxSwiper .swiper-pagination',
-              clickable: true,
-              dynamicBullets: true
-            },
-            navigation: {
-              nextEl: '.lightboxSwiper .swiper-button-next',
-              prevEl: '.lightboxSwiper .swiper-button-prev'
-            },
-            keyboard: {
-              enabled: true
-            },
-            initialSlide: mainSwiper.realIndex || 0,
-            on: {
-              init: function() {
-                console.log('Lightbox swiper initialized');
-              }
-            }
-          });
-        } else {
-          const targetSlide = mainSwiper.realIndex || 0;
-          lightboxSwiper.slideTo(targetSlide);
-          console.log('Lightbox swiper updated to slide:', targetSlide);
-        }
-      });
-
-      // Open lightbox when clicking on gallery image
-      const galleryImages = document.querySelectorAll('.gallery-image');
-      console.log('Found gallery images:', galleryImages.length);
-      
-      galleryImages.forEach((img, index) => {
-        img.addEventListener('click', function(e) {
-          console.log('Image clicked, opening lightbox at index:', index);
-          e.preventDefault();
-          mainSwiper.slideTo(index);
-          const modal = new bootstrap.Modal(lightboxModal);
-          modal.show();
-        });
-      });
-      
-      console.log('Gallery initialization complete!');
-      
-    } catch (error) {
-      console.error('Error initializing galleries:', error);
+  try {
+    // Check if Swiper is available
+    if (typeof Swiper === 'undefined') {
+      console.error('Swiper library not loaded!');
+      return;
     }
+    
+    console.log('Swiper library found, initializing...');
+    
+    // Main gallery swiper
+    var mainSwiper = new Swiper('.mySwiper', {
+      loop: true,
+      spaceBetween: 10,
+      pagination: {
+        el: '.mySwiper .swiper-pagination',
+        clickable: true,
+        dynamicBullets: true
+      },
+      navigation: {
+        nextEl: '.mySwiper .swiper-button-next',
+        prevEl: '.mySwiper .swiper-button-prev'
+      },
+      keyboard: {
+        enabled: true
+      },
+      on: {
+        init: function() {
+          console.log('Main swiper initialized successfully!');
+        }
+      }
+    });
+
+    // Lightbox gallery swiper
+    var lightboxSwiper = null;
+    
+    // Get lightbox modal element
+    var lightboxModal = document.getElementById('lightboxModal');
+    
+    if (!lightboxModal) {
+      console.error('Lightbox modal not found!');
+      return;
+    }
+    
+    // Initialize lightbox swiper when modal is shown
+    lightboxModal.addEventListener('shown.bs.modal', function () {
+      console.log('Lightbox modal shown, initializing swiper...');
+      
+      if (!lightboxSwiper) {
+        lightboxSwiper = new Swiper('.lightboxSwiper', {
+          loop: true,
+          spaceBetween: 10,
+          pagination: {
+            el: '.lightboxSwiper .swiper-pagination',
+            clickable: true,
+            dynamicBullets: true
+          },
+          navigation: {
+            nextEl: '.lightboxSwiper .swiper-button-next',
+            prevEl: '.lightboxSwiper .swiper-button-prev'
+          },
+          keyboard: {
+            enabled: true
+          },
+          initialSlide: mainSwiper.realIndex || 0,
+          on: {
+            init: function() {
+              console.log('Lightbox swiper initialized successfully!');
+            }
+          }
+        });
+      } else {
+        var targetSlide = mainSwiper.realIndex || 0;
+        lightboxSwiper.slideTo(targetSlide);
+        console.log('Lightbox swiper updated to slide:', targetSlide);
+      }
+    });
+
+    // Open lightbox when clicking on gallery image
+    var galleryImages = document.querySelectorAll('.gallery-image');
+    console.log('Found gallery images:', galleryImages.length);
+    
+    galleryImages.forEach(function(img, index) {
+      img.addEventListener('click', function(e) {
+        console.log('Image clicked, opening lightbox at index:', index);
+        e.preventDefault();
+        mainSwiper.slideTo(index);
+        var modal = new bootstrap.Modal(lightboxModal);
+        modal.show();
+      });
+    });
+    
+    console.log('Gallery initialization complete!');
+    
+  } catch (error) {
+    console.error('Error initializing galleries:', error);
   }
-})();
+});
 </script>
 }
