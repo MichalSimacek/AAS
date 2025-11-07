@@ -154,106 +154,57 @@
 </form>
 
 @section Scripts{
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-window.addEventListener('load', function() {
-  console.log('Window loaded, initializing Swiper galleries...');
-  
-  try {
-    // Check if Swiper is available
-    if (typeof Swiper === 'undefined') {
-      console.error('Swiper library not loaded!');
-      return;
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    console.log('Initializing Swiper...');
     
-    console.log('Swiper library found, initializing...');
-    
-    // Main gallery swiper
+    // Main gallery
     var mainSwiper = new Swiper('.mySwiper', {
       loop: true,
-      spaceBetween: 10,
       pagination: {
-        el: '.mySwiper .swiper-pagination',
-        clickable: true,
-        dynamicBullets: true
+        el: '.swiper-pagination',
+        clickable: true
       },
       navigation: {
-        nextEl: '.mySwiper .swiper-button-next',
-        prevEl: '.mySwiper .swiper-button-prev'
-      },
-      keyboard: {
-        enabled: true
-      },
-      on: {
-        init: function() {
-          console.log('Main swiper initialized successfully!');
-        }
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
       }
     });
-
-    // Lightbox gallery swiper
-    var lightboxSwiper = null;
     
-    // Get lightbox modal element
+    console.log('Main Swiper initialized');
+    
+    // Lightbox
+    var lightboxSwiper = null;
     var lightboxModal = document.getElementById('lightboxModal');
     
-    if (!lightboxModal) {
-      console.error('Lightbox modal not found!');
-      return;
-    }
-    
-    // Initialize lightbox swiper when modal is shown
-    lightboxModal.addEventListener('shown.bs.modal', function () {
-      console.log('Lightbox modal shown, initializing swiper...');
-      
-      if (!lightboxSwiper) {
-        lightboxSwiper = new Swiper('.lightboxSwiper', {
-          loop: true,
-          spaceBetween: 10,
-          pagination: {
-            el: '.lightboxSwiper .swiper-pagination',
-            clickable: true,
-            dynamicBullets: true
-          },
-          navigation: {
-            nextEl: '.lightboxSwiper .swiper-button-next',
-            prevEl: '.lightboxSwiper .swiper-button-prev'
-          },
-          keyboard: {
-            enabled: true
-          },
-          initialSlide: mainSwiper.realIndex || 0,
-          on: {
-            init: function() {
-              console.log('Lightbox swiper initialized successfully!');
+    if (lightboxModal) {
+      lightboxModal.addEventListener('shown.bs.modal', function() {
+        if (!lightboxSwiper) {
+          lightboxSwiper = new Swiper('.lightboxSwiper', {
+            loop: true,
+            pagination: {
+              el: '.lightboxSwiper .swiper-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.lightboxSwiper .swiper-button-next',
+              prevEl: '.lightboxSwiper .swiper-button-prev'
             }
-          }
-        });
-      } else {
-        var targetSlide = mainSwiper.realIndex || 0;
-        lightboxSwiper.slideTo(targetSlide);
-        console.log('Lightbox swiper updated to slide:', targetSlide);
-      }
-    });
-
-    // Open lightbox when clicking on gallery image
-    var galleryImages = document.querySelectorAll('.gallery-image');
-    console.log('Found gallery images:', galleryImages.length);
-    
-    galleryImages.forEach(function(img, index) {
-      img.addEventListener('click', function(e) {
-        console.log('Image clicked, opening lightbox at index:', index);
-        e.preventDefault();
-        mainSwiper.slideTo(index);
-        var modal = new bootstrap.Modal(lightboxModal);
-        modal.show();
+          });
+        }
       });
-    });
-    
-    console.log('Gallery initialization complete!');
-    
-  } catch (error) {
-    console.error('Error initializing galleries:', error);
-  }
+      
+      // Open lightbox on image click
+      document.querySelectorAll('.gallery-image').forEach(function(img) {
+        img.addEventListener('click', function() {
+          var bsModal = new bootstrap.Modal(lightboxModal);
+          bsModal.show();
+        });
+      });
+    }
+  }, 500);
 });
 </script>
 }
