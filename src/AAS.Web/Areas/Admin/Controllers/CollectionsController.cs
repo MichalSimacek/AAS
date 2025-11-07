@@ -81,42 +81,45 @@ namespace AAS.Web.Areas.Admin.Controllers
                 return View(model);
             }
 
-            // CRITICAL FIX: Use transaction to ensure data consistency
-            // If image upload fails, rollback the collection creation
-            using var transaction = await _db.Database.BeginTransactionAsync();
-            try
+            // CRITICAL FIX: Use ExecutionStrategy for retrying transactions
+            var strategy = _db.Database.CreateExecutionStrategy();
+            return await strategy.ExecuteAsync(async () =>
             {
-                _db.Collections.Add(model);
-                await _db.SaveChangesAsync();
-
-                int order = 0;
-                foreach (var f in images.Where(f => f.Length > 0))
+                using var transaction = await _db.Database.BeginTransactionAsync();
+                try
                 {
-                    var nameNoExt = Guid.NewGuid().ToString("N");
-                    var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
-                    var imgEntity = new CollectionImage
-                    {
-                        CollectionId = model.Id,
-                        FileName = nameNoExt,
-                        Width = meta.w,
-                        Height = meta.h,
-                        Bytes = meta.b,
-                        SortOrder = order++
-                    };
-                    _db.CollectionImages.Add(imgEntity);
-                }
+                    _db.Collections.Add(model);
+                    await _db.SaveChangesAsync();
 
-                await _db.SaveChangesAsync();
-                await transaction.CommitAsync();
-                TempData["SuccessMessage"] = $"Collection '{model.Title}' created successfully!";
-                return RedirectToAction(nameof(Index), new { area = "Admin" });
-            }
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                ModelState.AddModelError("images", $"Error uploading images: {ex.Message}");
-                return View(model);
-            }
+                    int order = 0;
+                    foreach (var f in images.Where(f => f.Length > 0))
+                    {
+                        var nameNoExt = Guid.NewGuid().ToString("N");
+                        var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
+                        var imgEntity = new CollectionImage
+                        {
+                            CollectionId = model.Id,
+                            FileName = nameNoExt,
+                            Width = meta.w,
+                            Height = meta.h,
+                            Bytes = meta.b,
+                            SortOrder = order++
+                        };
+                        _db.CollectionImages.Add(imgEntity);
+                    }
+
+                    await _db.SaveChangesAsync();
+                    await transaction.CommitAsync();
+                    TempData["SuccessMessage"] = $"Collection '{model.Title}' created successfully!";
+                    return RedirectToAction(nameof(Index), new { area = "Admin" });
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    ModelState.AddModelError("images", $"Error uploading images: {ex.Message}");
+                    return View(model);
+                }
+            });
         }
 
         public async Task<IActionResult> Edit(int id)
