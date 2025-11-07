@@ -70,7 +70,7 @@ namespace AAS.Web.Controllers
                 ViewBag.TranslatedDescription = item.Description;
             }
 
-            return View(item);
+            return View("Detail", item);
         }
     }
 }
