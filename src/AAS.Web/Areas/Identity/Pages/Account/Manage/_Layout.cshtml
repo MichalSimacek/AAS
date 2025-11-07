@@ -1,0 +1,13 @@
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="manage-account-container py-5">
+    <div class="container">
+        @RenderBody()
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
