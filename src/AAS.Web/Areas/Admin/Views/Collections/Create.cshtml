@@ -192,6 +192,33 @@
 }
 </style>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const imagesInput = document.getElementById('images');
+    const fileCountDiv = document.getElementById('fileCount');
+    
+    if (imagesInput) {
+        imagesInput.addEventListener('change', function(e) {
+            const fileCount = e.target.files.length;
+            if (fileCount > 0) {
+                fileCountDiv.style.display = 'block';
+                fileCountDiv.innerHTML = `✓ ${fileCount} file(s) selected`;
+                
+                // Show file names
+                const fileNames = Array.from(e.target.files)
+                    .map(f => f.name)
+                    .join(', ');
+                console.log('Selected files:', fileNames);
+            } else {
+                fileCountDiv.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
+
+
 @@section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
