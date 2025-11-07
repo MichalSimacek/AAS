@@ -84,8 +84,10 @@
 </div>
 
 @section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Delete image functionality
     document.querySelectorAll('.delete-image-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var imageId = this.getAttribute('data-image-id');
@@ -95,6 +97,106 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.show();
         });
     });
+    
+    // Sortable drag & drop functionality
+    var sortableContainer = document.getElementById('sortable-images');
+    if (sortableContainer) {
+        var sortable = new Sortable(sortableContainer, {
+            animation: 150,
+            handle: '.sortable-handle',
+            ghostClass: 'sortable-ghost',
+            chosenClass: 'sortable-chosen',
+            dragClass: 'sortable-drag',
+            onEnd: function(evt) {
+                console.log('Image moved from', evt.oldIndex, 'to', evt.newIndex);
+                
+                // Get new order of image IDs
+                var imageIds = [];
+                var items = sortableContainer.querySelectorAll('.sortable-item');
+                items.forEach(function(item, index) {
+                    var imageId = item.getAttribute('data-image-id');
+                    imageIds.push(imageId);
+                    
+                    // Update order number display
+                    var orderSpan = item.querySelector('.order-number');
+                    if (orderSpan) {
+                        orderSpan.textContent = index;
+                    }
+                });
+                
+                // Show saving message
+                var message = document.getElementById('reorder-message');
+                if (message) {
+                    message.style.display = 'block';
+                }
+                
+                // Send new order to server
+                var collectionId = @Model.Id;
+                fetch('/Admin/Collections/ReorderImages/' + collectionId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify(imageIds)
+                })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (data.success) {
+                        // Update message
+                        if (message) {
+                            message.className = 'alert alert-success mt-3';
+                            message.innerHTML = '<i class="bi bi-check-circle"></i> Order saved successfully!';
+                            setTimeout(function() {
+                                message.style.display = 'none';
+                            }, 3000);
+                        }
+                        console.log('Order saved successfully');
+                    } else {
+                        if (message) {
+                            message.className = 'alert alert-danger mt-3';
+                            message.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Error saving order: ' + (data.message || 'Unknown error');
+                        }
+                        console.error('Error saving order:', data.message);
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                    if (message) {
+                        message.className = 'alert alert-danger mt-3';
+                        message.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Error saving order. Please try again.';
+                    }
+                });
+            }
+        });
+    }
 });
 </script>
+<style>
+.sortable-ghost {
+    opacity: 0.4;
+}
+.sortable-chosen {
+    background: #f8f9fa;
+}
+.sortable-drag {
+    opacity: 1;
+}
+.sortable-card {
+    transition: transform 0.2s ease;
+}
+.sortable-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.sortable-handle {
+    cursor: move;
+    user-select: none;
+}
+.sortable-handle:hover {
+    background: #e9ecef !important;
+}
+</style>
 }
