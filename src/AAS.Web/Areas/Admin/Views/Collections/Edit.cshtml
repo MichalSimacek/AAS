@@ -34,19 +34,29 @@
 
 @if(Model.Images?.Any() == true){
 <h3 class="mt-4">Current Images</h3>
-<div class="row mt-3 g-3">
+<p class="text-muted small">
+    <i class="bi bi-arrows-move"></i> Drag and drop images to reorder them
+</p>
+<div id="sortable-images" class="row mt-3 g-3">
 @foreach (var i in Model.Images.OrderBy(x=>x.SortOrder)){
-<div class="col-md-3 col-sm-4 col-6">
-    <div class="card">
+<div class="col-md-3 col-sm-4 col-6 sortable-item" data-image-id="@i.Id">
+    <div class="card sortable-card">
+        <div class="card-header bg-light p-2 text-center sortable-handle" style="cursor: move;">
+            <i class="bi bi-grip-vertical"></i> Drag to reorder
+        </div>
         <img class="card-img-top" src="/uploads/images/@i.FileName-480.jpg" alt="Collection image" />
         <div class="card-body p-2">
+            <small class="text-muted d-block mb-1">Order: <span class="order-number">@i.SortOrder</span></small>
             <button type="button" class="btn btn-danger btn-sm w-100 delete-image-btn" data-image-id="@i.Id" data-collection-id="@Model.Id">
-                Delete
+                <i class="bi bi-trash"></i> Delete
             </button>
         </div>
     </div>
 </div>
 }
+</div>
+<div class="alert alert-info mt-3" id="reorder-message" style="display: none;">
+    <i class="bi bi-info-circle"></i> Order changed. Saving...
 </div>
 }
 
