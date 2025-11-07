@@ -51,7 +51,7 @@ else
                         </div>
                     </div>
                     <div class="collection-actions">
-                        <a asp-area="Admin" asp-controller="Collections" asp-action="Edit" asp-route-id="@collection.Id" class="btn btn-sm btn-outline-primary">
+                        <a href="/Admin/Collections/Edit/@collection.Id" class="btn btn-sm btn-outline-primary" style="pointer-events: auto; z-index: 1000; position: relative;">
                             Edit
                         </a>
                     </div>
