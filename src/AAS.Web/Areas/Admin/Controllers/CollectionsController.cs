@@ -108,12 +108,13 @@ namespace AAS.Web.Areas.Admin.Controllers
 
                 await _db.SaveChangesAsync();
                 await transaction.CommitAsync();
-                return RedirectToAction(nameof(Index));
+                TempData["SuccessMessage"] = $"Collection '{model.Title}' created successfully!";
+                return RedirectToAction(nameof(Index), new { area = "Admin" });
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                ModelState.AddModelError("images", ex.Message);
+                ModelState.AddModelError("images", $"Error uploading images: {ex.Message}");
                 return View(model);
             }
         }
