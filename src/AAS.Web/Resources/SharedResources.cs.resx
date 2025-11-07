@@ -4,12 +4,22 @@
 <resheader name="version"><value>2.0</value></resheader>
 <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
 <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+<!-- Home Page -->
 <data name="Slogan" xml:space="preserve"><value>Diskrétnost, zaručená kvalita a profesionální péče o naše klienty jsou naší prioritou.</value></data>
 <data name="Home Description" xml:space="preserve"><value>Objevte výjimečná umělecká díla, starožitnosti, drahocenné šperky a luxusní hodinky. Poskytujeme nejvyšší ceny se zaručenou diskrétností a profesionalitou.</value></data>
+
+<!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>Kolekce</value></data>
 <data name="About us" xml:space="preserve"><value>O nás</value></data>
 <data name="Contacts" xml:space="preserve"><value>Kontakty</value></data>
 <data name="Register" xml:space="preserve"><value>Registrovat</value></data>
+<data name="Login" xml:space="preserve"><value>Přihlásit se</value></data>
+<data name="Logout" xml:space="preserve"><value>Odhlásit se</value></data>
+<data name="Admin Panel" xml:space="preserve"><value>Administrátorský panel</value></data>
+<data name="Manage" xml:space="preserve"><value>Spravovat</value></data>
+
+<!-- Home Page Content -->
 <data name="Explore collections" xml:space="preserve"><value>Prohlédnout kolekce</value></data>
 <data name="Contact Us" xml:space="preserve"><value>Kontaktujte nás</value></data>
 <data name="Why Choose Us" xml:space="preserve"><value>Proč si vybrat nás</value></data>
@@ -20,19 +30,124 @@
 <data name="Complete Discretion Desc" xml:space="preserve"><value>Vaše soukromí je prvořadé. Všechny transakce jsou prováděny s maximální důvěrností.</value></data>
 <data name="Expert Service" xml:space="preserve"><value>Odborný servis</value></data>
 <data name="Expert Service Desc" xml:space="preserve"><value>Naši specialisté poskytují profesionální posudky a individuální služby pro každého klienta.</value></data>
+
+<!-- Categories -->
 <data name="Paintings" xml:space="preserve"><value>Obrazy</value></data>
 <data name="Jewelry" xml:space="preserve"><value>Šperky</value></data>
 <data name="Watches" xml:space="preserve"><value>Hodinky</value></data>
 <data name="Statues" xml:space="preserve"><value>Sochy</value></data>
 <data name="Other" xml:space="preserve"><value>Ostatní</value></data>
 <data name="All" xml:space="preserve"><value>Vše</value></data>
+
+<!-- Collection Details -->
 <data name="I'm interested" xml:space="preserve"><value>Mám zájem</value></data>
 <data name="Send inquiry" xml:space="preserve"><value>Odeslat poptávku</value></data>
+
+<!-- Forms -->
 <data name="First name" xml:space="preserve"><value>Jméno</value></data>
 <data name="Last name" xml:space="preserve"><value>Příjmení</value></data>
 <data name="Phone" xml:space="preserve"><value>Telefon</value></data>
+<data name="Email" xml:space="preserve"><value>E-mail</value></data>
 <data name="Message" xml:space="preserve"><value>Zpráva</value></data>
 <data name="Close" xml:space="preserve"><value>Zavřít</value></data>
 <data name="Send" xml:space="preserve"><value>Odeslat</value></data>
 <data name="Thank you. We will contact you soon." xml:space="preserve"><value>Děkujeme. Brzy vás budeme kontaktovat.</value></data>
+
+<!-- About Page -->
+<data name="About Us" xml:space="preserve"><value>O nás</value></data>
+<data name="Excellence in luxury artwork and collectibles" xml:space="preserve"><value>Excelence v luxusních uměleckých dílech a sběratelských předmětech</value></data>
+<data name="Who We Are" xml:space="preserve"><value>Kdo jsme</value></data>
+<data name="Who We Are Text" xml:space="preserve"><value>Jsme americká společnost se sídlem v Houstonu v Texasu, s celosvětovým zastoupením a pověstí excelence na trhu s luxusním zbožím. Náš tým odborných odhadců a specialistů přináší desítky let zkušeností v oblasti umění, starožitností, drahocenných šperků, luxusních hodinek a vzácných sběratelských předmětů. Ať již chcete prodat jeden kus nebo celou kolekci, poskytujeme personalizované služby přizpůsobené vašim jedinečným potřebám.</value></data>
+<data name="Our Services" xml:space="preserve"><value>Naše služby</value></data>
+<data name="Fine Art & Paintings" xml:space="preserve"><value>Umění a obrazy:</value></data>
+<data name="Fine Art & Paintings Desc" xml:space="preserve"><value>Staří mistři, moderní umění a současná díla</value></data>
+<data name="Antiques & Collectibles" xml:space="preserve"><value>Starožitnosti a sběratelské předměty:</value></data>
+<data name="Antiques & Collectibles Desc" xml:space="preserve"><value>Vzácný nábytek, porcelán a historické předměty</value></data>
+<data name="Luxury Jewelry" xml:space="preserve"><value>Luxusní šperky:</value></data>
+<data name="Luxury Jewelry Desc" xml:space="preserve"><value>Diamanty, drahé kameny a designové kousky</value></data>
+<data name="Fine Watches" xml:space="preserve"><value>Luxusní hodinky:</value></data>
+<data name="Fine Watches Desc" xml:space="preserve"><value>Rolex, Patek Philippe a další prestižní značky</value></data>
+<data name="Sculptures & Statues" xml:space="preserve"><value>Sochy a sochařství:</value></data>
+<data name="Sculptures & Statues Desc" xml:space="preserve"><value>Bronz, mramor a smíšené techniky</value></data>
+<data name="Our Commitment" xml:space="preserve"><value>Náš závazek</value></data>
+<data name="Highest Prices Commitment" xml:space="preserve"><value>Poskytujeme nejkonkurenceschopnější ocenění na trhu</value></data>
+<data name="Complete Discretion Commitment" xml:space="preserve"><value>Vaše anonymita a soukromí jsou absolutně zaručeny</value></data>
+<data name="Professional Service" xml:space="preserve"><value>Profesionální služby</value></data>
+<data name="Professional Service Commitment" xml:space="preserve"><value>Spolehlivost a odbornost, které můžete důvěřovat</value></data>
+
+<!-- Contact Page -->
+<data name="Get in touch with our team" xml:space="preserve"><value>Spojte se s naším týmem specialistů. Jsme zde, abychom vám pomohli s jakýmikoli dotazy.</value></data>
+<data name="Reach Out to Us" xml:space="preserve"><value>Kontaktujte nás</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>Naši specialisté jsou k dispozici pro zodpovězení vašich otázek a poskytnutí odborného vedení. Garantujeme odpověď do 12 hodin.</value></data>
+<data name="Email Address" xml:space="preserve"><value>E-mailová adresa</value></data>
+<data name="Location" xml:space="preserve"><value>Umístění</value></data>
+<data name="Houston, Texas, USA" xml:space="preserve"><value>Houston, Texas, USA</value></data>
+<data name="Worldwide representation available" xml:space="preserve"><value>K dispozici celosvětové zastoupení</value></data>
+<data name="Response Time" xml:space="preserve"><value>Doba odpovědi</value></data>
+<data name="Within 12 hours" xml:space="preserve"><value>Do 12 hodin</value></data>
+<data name="Professional and confidential service" xml:space="preserve"><value>Profesionální a důvěrná služba</value></data>
+<data name="Privacy Notice" xml:space="preserve"><value>Upozornění na ochranu soukromí:</value></data>
+<data name="Privacy Notice Text" xml:space="preserve"><value>Veškerá komunikace je vedena s maximální důvěrností. Vaše osobní údaje a dotazy jsou u nás v bezpečí.</value></data>
+
+<!-- Admin Panel -->
+<data name="Manage Collections" xml:space="preserve"><value>Správa kolekcí</value></data>
+<data name="Collections Management" xml:space="preserve"><value>Správa kolekcí</value></data>
+<data name="Total" xml:space="preserve"><value>Celkem</value></data>
+<data name="collection(s)" xml:space="preserve"><value>kolekce</value></data>
+<data name="Create New Collection" xml:space="preserve"><value>Vytvořit novou kolekci</value></data>
+<data name="No Collections Yet" xml:space="preserve"><value>Zatím žádné kolekce</value></data>
+<data name="Start by creating your first aristocratic collection" xml:space="preserve"><value>Začněte vytvořením vaší první aristokratické kolekce</value></data>
+<data name="Create Collection" xml:space="preserve"><value>Vytvořit kolekci</value></data>
+<data name="Edit" xml:space="preserve"><value>Upravit</value></data>
+<data name="Delete" xml:space="preserve"><value>Smazat</value></data>
+<data name="images" xml:space="preserve"><value>obrázky</value></data>
+<data name="Created" xml:space="preserve"><value>Vytvořeno</value></data>
+<data name="Audio" xml:space="preserve"><value>Audio</value></data>
+<data name="Confirm Delete" xml:space="preserve"><value>Potvrdit smazání</value></data>
+<data name="Are you sure you want to delete this collection?" xml:space="preserve"><value>Opravdu chcete smazat tuto kolekci?</value></data>
+<data name="This action cannot be undone." xml:space="preserve"><value>Tuto akci nelze vrátit zpět.</value></data>
+<data name="Cancel" xml:space="preserve"><value>Zrušit</value></data>
+<data name="Success!" xml:space="preserve"><value>Úspěch!</value></data>
+
+<!-- Admin Forms -->
+<data name="Title" xml:space="preserve"><value>Název</value></data>
+<data name="Description" xml:space="preserve"><value>Popis</value></data>
+<data name="Category" xml:space="preserve"><value>Kategorie</value></data>
+<data name="Select Category" xml:space="preserve"><value>Vyberte kategorii</value></data>
+<data name="Images" xml:space="preserve"><value>Obrázky</value></data>
+<data name="Audio File" xml:space="preserve"><value>Audio soubor</value></data>
+<data name="Submit" xml:space="preserve"><value>Odeslat</value></data>
+<data name="Save Changes" xml:space="preserve"><value>Uložit změny</value></data>
+<data name="Add New Images" xml:space="preserve"><value>Přidat nové obrázky</value></data>
+<data name="Current Images" xml:space="preserve"><value>Aktuální obrázky</value></data>
+<data name="Drag to reorder" xml:space="preserve"><value>Přetáhněte pro změnu pořadí</value></data>
+
+<!-- Identity - Login -->
+<data name="Log in" xml:space="preserve"><value>Přihlásit se</value></data>
+<data name="Password" xml:space="preserve"><value>Heslo</value></data>
+<data name="Remember me?" xml:space="preserve"><value>Zapamatovat si mě?</value></data>
+<data name="Forgot your password?" xml:space="preserve"><value>Zapomněli jste heslo?</value></data>
+<data name="Register as a new user" xml:space="preserve"><value>Registrovat se jako nový uživatel</value></data>
+<data name="Resend email confirmation" xml:space="preserve"><value>Znovu odeslat potvrzení e-mailu</value></data>
+
+<!-- Identity - Register -->
+<data name="Confirm Password" xml:space="preserve"><value>Potvrdit heslo</value></data>
+
+<!-- Identity - Manage Account -->
+<data name="Account Settings" xml:space="preserve"><value>Nastavení účtu</value></data>
+<data name="Profile Information" xml:space="preserve"><value>Informace o profilu</value></data>
+<data name="Email / Username" xml:space="preserve"><value>E-mail / Uživatelské jméno</value></data>
+<data name="Phone number" xml:space="preserve"><value>Telefonní číslo</value></data>
+<data name="Save changes" xml:space="preserve"><value>Uložit změny</value></data>
+<data name="Profile" xml:space="preserve"><value>Profil</value></data>
+<data name="Personal Data" xml:space="preserve"><value>Osobní údaje</value></data>
+<data name="Change Password" xml:space="preserve"><value>Změnit heslo</value></data>
+<data name="Current Password" xml:space="preserve"><value>Současné heslo</value></data>
+<data name="New Password" xml:space="preserve"><value>Nové heslo</value></data>
+<data name="Confirm new password" xml:space="preserve"><value>Potvrdit nové heslo</value></data>
+<data name="Update password" xml:space="preserve"><value>Aktualizovat heslo</value></data>
+<data name="Confirm Email" xml:space="preserve"><value>Potvrdit e-mail</value></data>
+<data name="Thank you for confirming your email" xml:space="preserve"><value>Děkujeme za potvrzení vašeho e-mailu</value></data>
+<data name="Please confirm your account" xml:space="preserve"><value>Prosím potvrďte váš účet</value></data>
+
 </root>
