@@ -4,17 +4,28 @@
 <resheader name="version"><value>2.0</value></resheader>
 <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
 <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-<data name="Slogan" xml:space="preserve"><value>Diskrétnost, zaručená kvalita a profesionální péče o naše klienty jsou na prvním místě.</value></data>
+<data name="Slogan" xml:space="preserve"><value>Diskrétnost, zaručená kvalita a profesionální péče o naše klienty jsou naší prioritou.</value></data>
+<data name="Home Description" xml:space="preserve"><value>Objevte výjimečná umělecká díla, starožitnosti, drahocenné šperky a luxusní hodinky. Poskytujeme nejvyšší ceny se zaručenou diskrétností a profesionalitou.</value></data>
 <data name="Collections" xml:space="preserve"><value>Kolekce</value></data>
 <data name="About us" xml:space="preserve"><value>O nás</value></data>
 <data name="Contacts" xml:space="preserve"><value>Kontakty</value></data>
 <data name="Register" xml:space="preserve"><value>Registrovat</value></data>
 <data name="Explore collections" xml:space="preserve"><value>Prohlédnout kolekce</value></data>
+<data name="Contact Us" xml:space="preserve"><value>Kontaktujte nás</value></data>
+<data name="Why Choose Us" xml:space="preserve"><value>Proč si vybrat nás</value></data>
+<data name="Excellence in Every Transaction" xml:space="preserve"><value>Excelence v každé transakci</value></data>
+<data name="Highest Prices" xml:space="preserve"><value>Nejvyšší ceny</value></data>
+<data name="Highest Prices Desc" xml:space="preserve"><value>Nabízíme nejkonkurenceschopnější ceny za vaše cenné předměty a zajistíme, abyste dostali jejich skutečnou hodnotu.</value></data>
+<data name="Complete Discretion" xml:space="preserve"><value>Naprostá diskrétnost</value></data>
+<data name="Complete Discretion Desc" xml:space="preserve"><value>Vaše soukromí je prvořadé. Všechny transakce jsou prováděny s maximální důvěrností.</value></data>
+<data name="Expert Service" xml:space="preserve"><value>Odborný servis</value></data>
+<data name="Expert Service Desc" xml:space="preserve"><value>Naši specialisté poskytují profesionální posudky a individuální služby pro každého klienta.</value></data>
 <data name="Paintings" xml:space="preserve"><value>Obrazy</value></data>
 <data name="Jewelry" xml:space="preserve"><value>Šperky</value></data>
 <data name="Watches" xml:space="preserve"><value>Hodinky</value></data>
 <data name="Statues" xml:space="preserve"><value>Sochy</value></data>
 <data name="Other" xml:space="preserve"><value>Ostatní</value></data>
+<data name="All" xml:space="preserve"><value>Vše</value></data>
 <data name="I'm interested" xml:space="preserve"><value>Mám zájem</value></data>
 <data name="Send inquiry" xml:space="preserve"><value>Odeslat poptávku</value></data>
 <data name="First name" xml:space="preserve"><value>Jméno</value></data>
