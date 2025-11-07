@@ -809,11 +809,12 @@ select.form-select option {
   margin: 0 auto 2rem;
 }
 
-/* Hide external login section by default */
-.identity-card section:has(h4),
-.identity-card .col-md-6:last-child,
-.identity-card hr + div {
-  display: none !important;
+/* Style hr in identity pages */
+.identity-card hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E5E5E5, transparent);
+  margin: 1.5rem 0;
 }
 
 /* Form groups */
