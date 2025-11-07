@@ -121,7 +121,7 @@ app.Use((ctx, next) =>
               "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com; " +
               "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; " +
               "img-src 'self' data: https:; " +
-              "font-src 'self' data: https://fonts.gstatic.com; " +
+              "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; " +
               "media-src 'self'; " +
               "connect-src 'self' https://cdn.jsdelivr.net https://code.jquery.com; " +
               "frame-ancestors 'none'; " +
