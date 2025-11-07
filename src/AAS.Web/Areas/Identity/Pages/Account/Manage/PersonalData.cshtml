@@ -5,18 +5,19 @@
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
-<h1 class="text-center mb-4">@ViewData["Title"]</h1>
+<div class="manage-page-header">
+    <h1>@ViewData["Title"]</h1>
+</div>
 
-<div class="row">
-    <div class="col-md-3 mb-4">
+<div class="manage-content-wrapper">
+    <div class="manage-sidebar">
         <partial name="_ManageNav" />
     </div>
-    <div class="col-md-9">
+    <div class="manage-main-content">
         <partial name="_StatusMessage" for="StatusMessage" />
         
-        <div class="card mb-3">
-            <div class="card-body">
-                <h4 class="card-title mb-3">Personal Data</h4>
+        <div class="manage-card">
+            <h4 class="manage-card-title">Personal Data</h4>
                 <p class="text-muted">
                     Your account contains personal data that you have given us. This page allows you to download or delete that data.
                 </p>
