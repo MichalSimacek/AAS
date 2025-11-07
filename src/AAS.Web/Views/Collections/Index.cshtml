@@ -46,8 +46,14 @@
                 </div>
               }
               <div class="card-body">
-                <h5 class="card-title">@c.Title</h5>
-                <span class="badge badge-gold">@c.Category</span>
+                <h5 class="card-title">
+                  @{
+                    var translations = ViewBag.Translations as Dictionary<int, string>;
+                    var title = (translations != null && translations.ContainsKey(c.Id)) ? translations[c.Id] : c.Title;
+                  }
+                  @title
+                </h5>
+                <span class="badge badge-gold">@L[c.Category.ToString()]</span>
               </div>
             </a>
           </div>
