@@ -155,36 +155,17 @@ else
 }
 
 .collection-card {
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
-    border: 1px solid var(--border);
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
     border-radius: 8px;
     padding: 1.75rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.collection-card::before {
-    content: '✦ ✦ ✦';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--gold);
-    font-size: 8px;
-    letter-spacing: 12px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .collection-card:hover {
     transform: translateY(-4px);
-    border-color: var(--gold);
-    box-shadow: 0 16px 48px rgba(212, 175, 55, 0.15);
-}
-
-.collection-card:hover::before {
-    opacity: 0.6;
+    border-color: #C9A961;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .collection-card-header {
