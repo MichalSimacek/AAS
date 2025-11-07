@@ -200,26 +200,17 @@ a.btn {
 }
 
 .hero-logo {
-  width: 200px;
-  height: 200px;
-  filter: drop-shadow(0 6px 20px rgba(184, 148, 31, 0.2));
-  transition: all 0.5s ease;
+  width: 280px;
+  height: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+  transition: all 0.4s ease;
+  border-radius: 8px;
 }
 
 .hero-logo:hover {
-  transform: scale(1.08) rotate(2deg);
-  filter: drop-shadow(0 8px 28px rgba(184, 148, 31, 0.35));
-}
-
-.logo-crown,
-.logo-laurel-left,
-.logo-laurel-right,
-.logo-column {
-  animation: elementFadeIn 1.5s ease-out;
-}
-
-.logo-monogram {
-  animation: monogramFadeIn 1.8s ease-out;
+  transform: scale(1.05);
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.18));
 }
 
 @keyframes logoFadeIn {
