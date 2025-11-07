@@ -7,7 +7,7 @@ namespace AAS.Web.Models
     {
         public int Id { get; set; }
         [Required, MaxLength(180)] public string Title { get; set; } = string.Empty;
-        [Required, MaxLength(200)] public string Slug { get; set; } = string.Empty;
+        [MaxLength(200)] public string Slug { get; set; } = string.Empty;
         [Required] public CollectionCategory Category { get; set; }
         [Column(TypeName = "text")] public string Description { get; set; } = string.Empty;
         public string? AudioPath { get; set; }
