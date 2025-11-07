@@ -59,16 +59,16 @@
 <data name="Who We Are" xml:space="preserve"><value>हम कौन हैं</value></data>
 <data name="Who We Are Text" xml:space="preserve"><value>हम ह्यूस्टन, टेक्सास में स्थित एक अमेरिकी कंपनी हैं, जिसका विश्वव्यापी प्रतिनिधित्व है और लक्जरी बाजार में उत्कृष्टता के लिए प्रतिष्ठा है। हमारी विशेषज्ञ मूल्यांकनकर्ताओं और विशेषज्ञों की टीम ललित कला, प्राचीन वस्तुओं, कीमती आभूषणों, लक्जरी घड़ियों और दुर्लभ संग्रहणीय वस्तुओं में दशकों का संयुक्त अनुभव लाती है। चाहे आप एक टुकड़ा या पूरे संग्रह को बेचना चाहते हों, हम आपकी अनूठी जरूरतों के अनुरूप व्यक्तिगत सेवा प्रदान करते हैं।</value></data>
 <data name="Our Services" xml:space="preserve"><value>हमारी सेवाएं</value></data>
-<data name="Fine Art & Paintings" xml:space="preserve"><value>ललित कला और चित्रकारी:</value></data>
-<data name="Fine Art & Paintings Desc" xml:space="preserve"><value>पुराने मास्टर्स, आधुनिक कला और समकालीन रचनाएं</value></data>
-<data name="Antiques & Collectibles" xml:space="preserve"><value>प्राचीन वस्तुएं और संग्रहणीय:</value></data>
-<data name="Antiques & Collectibles Desc" xml:space="preserve"><value>दुर्लभ फर्नीचर, चीनी मिट्टी के बर्तन और ऐतिहासिक वस्तुएं</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>ललित कला और चित्रकारी:</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>पुराने मास्टर्स, आधुनिक कला और समकालीन रचनाएं</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>प्राचीन वस्तुएं और संग्रहणीय:</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>दुर्लभ फर्नीचर, चीनी मिट्टी के बर्तन और ऐतिहासिक वस्तुएं</value></data>
 <data name="Luxury Jewelry" xml:space="preserve"><value>लक्जरी आभूषण:</value></data>
 <data name="Luxury Jewelry Desc" xml:space="preserve"><value>हीरे, कीमती पत्थर और डिजाइनर टुकड़े</value></data>
 <data name="Fine Watches" xml:space="preserve"><value>बढ़िया घड़ियां:</value></data>
 <data name="Fine Watches Desc" xml:space="preserve"><value>रोलेक्स, पेटेक फिलिप और अन्य प्रतिष्ठित ब्रांड</value></data>
-<data name="Sculptures & Statues" xml:space="preserve"><value>मूर्तियां और प्रतिमाएं:</value></data>
-<data name="Sculptures & Statues Desc" xml:space="preserve"><value>कांस्य, संगमरमर और मिश्रित मीडिया कार्य</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>मूर्तियां और प्रतिमाएं:</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>कांस्य, संगमरमर और मिश्रित मीडिया कार्य</value></data>
 <data name="Our Commitment" xml:space="preserve"><value>हमारी प्रतिबद्धता</value></data>
 <data name="Highest Prices Commitment" xml:space="preserve"><value>हम बाजार में सबसे प्रतिस्पर्धी मूल्यांकन प्रदान करते हैं</value></data>
 <data name="Complete Discretion Commitment" xml:space="preserve"><value>आपकी गुमनामी और गोपनीयता पूरी तरह से गारंटीकृत है</value></data>
@@ -149,5 +149,105 @@
 <data name="Confirm Email" xml:space="preserve"><value>ईमेल की पुष्टि करें</value></data>
 <data name="Thank you for confirming your email" xml:space="preserve"><value>अपने ईमेल की पुष्टि करने के लिए धन्यवाद</value></data>
 <data name="Please confirm your account" xml:space="preserve"><value>कृपया अपने खाते की पुष्टि करें</value></data>
+
+<!-- Additional UI Texts -->
+<data name="Collections Description" xml:space="preserve"><value>हमारे उत्कृष्ट कला, आभूषण, घड़ियों और संग्रहणीय वस्तुओं के चयनित संग्रह का अन्वेषण करें</value></data>
+<data name="No Collections Available" xml:space="preserve"><value>कोई संग्रह उपलब्ध नहीं है</value></data>
+<data name="Check back soon message" xml:space="preserve"><value>हमारे संग्रह में नई वस्तुओं के लिए जल्द ही वापस जांचें।</value></data>
+<data name="No Image" xml:space="preserve"><value>कोई छवि नहीं</value></data>
+<data name="Home" xml:space="preserve"><value>मुख्य पृष्ठ</value></data>
+<data name="Audio Description" xml:space="preserve"><value>ऑडियो विवरण</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>नीचे दिया गया फॉर्म भरें और हमारे विशेषज्ञ 12 घंटे के भीतर आपसे संपर्क करेंगे।</value></data>
+<data name="Message placeholder" xml:space="preserve"><value>हमें अपनी रुचि के बारे में बताएं...</value></data>
+<data name="Site Title" xml:space="preserve"><value>कुलीन कला बिक्री</value></data>
+<data name="Site Meta Description" xml:space="preserve"><value>उत्कृष्ट कला, आभूषण, घड़ियों और संग्रहणीय वस्तुओं में विवेक, गुणवत्ता और व्यावसायिकता।</value></data>
+<data name="Site Name" xml:space="preserve"><value>कुलीन कला बिक्री</value></data>
+<data name="Toggle navigation" xml:space="preserve"><value>नेविगेशन टॉगल करें</value></data>
+<data name="Footer rights text" xml:space="preserve"><value>© {0} सभी अधिकार सुरक्षित। विवेक, गुणवत्ता &amp; व्यावसायिकता।</value></data>
+
+<!-- Admin - Collection Management -->
+<data name="Add new collection description" xml:space="preserve"><value>एक नया कुलीन कला संग्रह जोड़ें</value></data>
+<data name="Error label" xml:space="preserve"><value>त्रुटि:</value></data>
+<data name="Fix errors message" xml:space="preserve"><value>कृपया निम्नलिखित त्रुटियों को ठीक करें:</value></data>
+<data name="Collection Details" xml:space="preserve"><value>संग्रह विवरण</value></data>
+<data name="Enter collection title" xml:space="preserve"><value>संग्रह शीर्षक दर्ज करें</value></data>
+<data name="Select a Category" xml:space="preserve"><value>-- श्रेणी चुनें --</value></data>
+<data name="Enter collection description" xml:space="preserve"><value>संग्रह विवरण दर्ज करें</value></data>
+<data name="Media Files" xml:space="preserve"><value>मीडिया फ़ाइलें</value></data>
+<data name="Multiple file selection instruction" xml:space="preserve"><value>(Ctrl+क्लिक से एकाधिक चुनें)</value></data>
+<data name="Image upload instructions" xml:space="preserve"><value>💡 सुझाव: एक साथ कई फ़ाइलों का चयन करने के लिए Ctrl (या Mac पर Cmd) दबाए रखें। समर्थित: JPG, PNG, WebP (प्रत्येक अधिकतम 10MB)</value></data>
+<data name="Audio file description" xml:space="preserve"><value>वैकल्पिक शास्त्रीय संगीत (अधिकतम 15MB)</value></data>
+<data name="Files selected message" xml:space="preserve"><value>✓ {0} फ़ाइल(ें) चयनित</value></data>
+<data name="Edit Collection" xml:space="preserve"><value>संग्रह संपादित करें</value></data>
+<data name="Title help text" xml:space="preserve"><value>यदि आप केवल चित्रों को पुनः क्रमबद्ध करना चाहते हैं तो अपरिवर्तित छोड़ दें</value></data>
+<data name="Add images" xml:space="preserve"><value>चित्र जोड़ें</value></data>
+<data name="Add images help text" xml:space="preserve"><value>इस संग्रह में जोड़ने के लिए कई चित्र चुनें</value></data>
+<data name="Save" xml:space="preserve"><value>सहेजें</value></data>
+<data name="Drag instruction" xml:space="preserve"><value>चित्रों को पुनः क्रमबद्ध करने के लिए खींचें और छोड़ें</value></data>
+<data name="Order" xml:space="preserve"><value>क्रम:</value></data>
+<data name="Saving order message" xml:space="preserve"><value>क्रम बदल गया। सहेज रहे हैं...</value></data>
+<data name="Delete Image" xml:space="preserve"><value>चित्र हटाएं</value></data>
+<data name="Order saved success" xml:space="preserve"><value>क्रम सफलतापूर्वक सहेजा गया!</value></data>
+<data name="Error saving order" xml:space="preserve"><value>क्रम सहेजने में त्रुटि:</value></data>
+<data name="Error saving order message" xml:space="preserve"><value>क्रम सहेजने में त्रुटि। कृपया पुनः प्रयास करें।</value></data>
+
+<!-- Form Placeholders -->
+<data name="Email placeholder" xml:space="preserve"><value>नाम@उदाहरण.com</value></data>
+<data name="Password placeholder" xml:space="preserve"><value>पासवर्ड</value></data>
+<data name="Email label placeholder" xml:space="preserve"><value>आपका ईमेल पता</value></data>
+<data name="Phone placeholder" xml:space="preserve"><value>फोन नंबर दर्ज करें (वैकल्पिक)</value></data>
+<data name="Current password placeholder" xml:space="preserve"><value>अपना वर्तमान पासवर्ड दर्ज करें</value></data>
+<data name="New password placeholder" xml:space="preserve"><value>नया पासवर्ड दर्ज करें (न्यूनतम 12 वर्ण)</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>नया पासवर्ड पुनः दर्ज करें</value></data>
+
+<!-- Email Management -->
+<data name="Manage Email" xml:space="preserve"><value>ईमेल प्रबंधित करें</value></data>
+<data name="Current Email" xml:space="preserve"><value>वर्तमान ईमेल</value></data>
+<data name="Email confirmed" xml:space="preserve"><value>ईमेल की पुष्टि हो गई</value></data>
+<data name="Email not confirmed" xml:space="preserve"><value>ईमेल की पुष्टि नहीं हुई</value></data>
+<data name="Send verification email" xml:space="preserve"><value>सत्यापन ईमेल भेजें</value></data>
+<data name="New email" xml:space="preserve"><value>नया ईमेल</value></data>
+<data name="New email placeholder" xml:space="preserve"><value>नया ईमेल पता दर्ज करें</value></data>
+<data name="Change email" xml:space="preserve"><value>ईमेल बदलें</value></data>
+
+<!-- Navigation Items -->
+<data name="Email nav" xml:space="preserve"><value>ईमेल</value></data>
+<data name="Password nav" xml:space="preserve"><value>पासवर्ड</value></data>
+
+<!-- Personal Data -->
+<data name="Personal data description" xml:space="preserve"><value>आपके खाते में व्यक्तिगत डेटा है जो आपने हमें दिया है। यह पृष्ठ आपको उस डेटा को डाउनलोड या हटाने की अनुमति देता है।</value></data>
+<data name="Delete warning" xml:space="preserve"><value>इस डेटा को हटाने से आपका खाता स्थायी रूप से हटा दिया जाएगा, और इसे पुनर्प्राप्त नहीं किया जा सकता।</value></data>
+<data name="Download data button" xml:space="preserve"><value>व्यक्तिगत डेटा डाउनलोड करें</value></data>
+<data name="Delete Account" xml:space="preserve"><value>खाता हटाएं</value></data>
+<data name="Delete account warning" xml:space="preserve"><value>आपके खाते को हटाना स्थायी है और इसे पूर्ववत नहीं किया जा सकता।</value></data>
+<data name="Confirm password label" xml:space="preserve"><value>अपने पासवर्ड से पुष्टि करें</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>पुष्टि करने के लिए अपना पासवर्ड दर्ज करें</value></data>
+<data name="Delete account button" xml:space="preserve"><value>खाता स्थायी रूप से हटाएं</value></data>
+
+<!-- Confirm Email Messages -->
+<data name="Confirm email success text" xml:space="preserve"><value>आपके ईमेल की पुष्टि करने के लिए धन्यवाद। अब आप</value></data>
+<data name="log in link" xml:space="preserve"><value>लॉगिन कर सकते हैं</value></data>
+
+<!-- Error Messages -->
+<data name="Rate limit error" xml:space="preserve"><value>बहुत अधिक पूछताछ। कृपया बाद में पुनः प्रयास करें।</value></data>
+<data name="Message too long error" xml:space="preserve"><value>संदेश बहुत लंबा है (अधिकतम 5000 वर्ण)</value></data>
+<data name="Inquiry processing error" xml:space="preserve"><value>आपकी पूछताछ को संसाधित करते समय एक त्रुटि हुई</value></data>
+<data name="Audio format error" xml:space="preserve"><value>केवल MP3 फ़ाइलों की अनुमति है</value></data>
+<data name="Audio size error" xml:space="preserve"><value>ऑडियो फ़ाइल का आकार {0}MB से कम होना चाहिए</value></data>
+<data name="Image required error" xml:space="preserve"><value>कम से कम एक चित्र आवश्यक है</value></data>
+<data name="All images failed" xml:space="preserve"><value>सभी चित्र अपलोड करने में विफल रहे। त्रुटियाँ: {0}</value></data>
+<data name="Collection created success" xml:space="preserve"><value>संग्रह '{0}' {1} चित्र(रों) के साथ बनाया गया</value></data>
+<data name="Images failed partial" xml:space="preserve"><value>{0} चित्र विफल रहे: {1}</value></data>
+<data name="Error creating collection" xml:space="preserve"><value>संग्रह बनाने में त्रुटि: {0}</value></data>
+<data name="Fix validation errors" xml:space="preserve"><value>कृपया सत्यापन त्रुटियों को ठीक करें।</value></data>
+<data name="Collection updated success" xml:space="preserve"><value>संग्रह '{0}' सफलतापूर्वक अपडेट किया गया।</value></data>
+<data name="Collection update error" xml:space="preserve"><value>संग्रह अपडेट करने में त्रुटि: {0}</value></data>
+<data name="Collection not found" xml:space="preserve"><value>संग्रह नहीं मिला।</value></data>
+<data name="Collection deleted success" xml:space="preserve"><value>संग्रह '{0}' सफलतापूर्वक हटाया गया।</value></data>
+<data name="Collection delete error" xml:space="preserve"><value>संग्रह हटाने में त्रुटि: {0}</value></data>
+<data name="Image not found" xml:space="preserve"><value>चित्र नहीं मिला।</value></data>
+<data name="Image deleted success" xml:space="preserve"><value>चित्र सफलतापूर्वक हटाया गया।</value></data>
+<data name="Image delete error" xml:space="preserve"><value>चित्र हटाने में त्रुटि: {0}</value></data>
+<data name="Order updated success" xml:space="preserve"><value>क्रम सफलतापूर्वक अपडेट किया गया</value></data>
 
 </root>

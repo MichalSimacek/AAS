@@ -59,16 +59,16 @@
 <data name="Who We Are" xml:space="preserve"><value>Kdo jsme</value></data>
 <data name="Who We Are Text" xml:space="preserve"><value>Jsme americká společnost se sídlem v Houstonu v Texasu, s celosvětovým zastoupením a pověstí excelence na trhu s luxusním zbožím. Náš tým odborných odhadců a specialistů přináší desítky let zkušeností v oblasti umění, starožitností, drahocenných šperků, luxusních hodinek a vzácných sběratelských předmětů. Ať již chcete prodat jeden kus nebo celou kolekci, poskytujeme personalizované služby přizpůsobené vašim jedinečným potřebám.</value></data>
 <data name="Our Services" xml:space="preserve"><value>Naše služby</value></data>
-<data name="Fine Art & Paintings" xml:space="preserve"><value>Umění a obrazy:</value></data>
-<data name="Fine Art & Paintings Desc" xml:space="preserve"><value>Staří mistři, moderní umění a současná díla</value></data>
-<data name="Antiques & Collectibles" xml:space="preserve"><value>Starožitnosti a sběratelské předměty:</value></data>
-<data name="Antiques & Collectibles Desc" xml:space="preserve"><value>Vzácný nábytek, porcelán a historické předměty</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>Umění a obrazy:</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>Staří mistři, moderní umění a současná díla</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>Starožitnosti a sběratelské předměty:</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>Vzácný nábytek, porcelán a historické předměty</value></data>
 <data name="Luxury Jewelry" xml:space="preserve"><value>Luxusní šperky:</value></data>
 <data name="Luxury Jewelry Desc" xml:space="preserve"><value>Diamanty, drahé kameny a designové kousky</value></data>
 <data name="Fine Watches" xml:space="preserve"><value>Luxusní hodinky:</value></data>
 <data name="Fine Watches Desc" xml:space="preserve"><value>Rolex, Patek Philippe a další prestižní značky</value></data>
-<data name="Sculptures & Statues" xml:space="preserve"><value>Sochy a sochařství:</value></data>
-<data name="Sculptures & Statues Desc" xml:space="preserve"><value>Bronz, mramor a smíšené techniky</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>Sochy a sochařství:</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>Bronz, mramor a smíšené techniky</value></data>
 <data name="Our Commitment" xml:space="preserve"><value>Náš závazek</value></data>
 <data name="Highest Prices Commitment" xml:space="preserve"><value>Poskytujeme nejkonkurenceschopnější ocenění na trhu</value></data>
 <data name="Complete Discretion Commitment" xml:space="preserve"><value>Vaše anonymita a soukromí jsou absolutně zaručeny</value></data>
@@ -150,9 +150,104 @@
 <data name="Thank you for confirming your email" xml:space="preserve"><value>Děkujeme za potvrzení vašeho e-mailu</value></data>
 <data name="Please confirm your account" xml:space="preserve"><value>Prosím potvrďte váš účet</value></data>
 
-<!-- Additional -->
+<!-- Additional UI Texts -->
+<data name="Collections Description" xml:space="preserve"><value>Prozkoumejte náš pečlivě vybraný výběr umění, šperků, hodinek a sběratelských předmětů</value></data>
+<data name="No Collections Available" xml:space="preserve"><value>Žádné kolekce nejsou k dispozici</value></data>
+<data name="Check back soon message" xml:space="preserve"><value>Brzy se vraťte pro nové přírůstky do naší kolekce.</value></data>
+<data name="No Image" xml:space="preserve"><value>Bez obrázku</value></data>
 <data name="Home" xml:space="preserve"><value>Domů</value></data>
-<data name="Audio Description" xml:space="preserve"><value>Audio popis</value></data>
-<data name="No Image" xml:space="preserve"><value>Žádný obrázek</value></data>
+<data name="Audio Description" xml:space="preserve"><value>Popis audia</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>Vyplňte formulář níže a náš specialista vás bude kontaktovat do 12 hodin.</value></data>
+<data name="Message placeholder" xml:space="preserve"><value>Řekněte nám o vašem zájmu...</value></data>
+<data name="Site Title" xml:space="preserve"><value>Aristocratic Artwork Sale</value></data>
+<data name="Site Meta Description" xml:space="preserve"><value>Diskrétnost, kvalita a profesionalita v oblasti umění, šperků, hodinek a sběratelských předmětů.</value></data>
+<data name="Site Name" xml:space="preserve"><value>Aristocratic Artwork Sale</value></data>
+<data name="Toggle navigation" xml:space="preserve"><value>Přepnout navigaci</value></data>
+<data name="Footer rights text" xml:space="preserve"><value>© {0} Všechna práva vyhrazena. Diskrétnost, kvalita &amp; profesionalita.</value></data>
+
+<!-- Admin - Collection Management -->
+<data name="Add new collection description" xml:space="preserve"><value>Přidat novou aristokratickou uměleckou kolekci</value></data>
+<data name="Error label" xml:space="preserve"><value>Chyba:</value></data>
+<data name="Fix errors message" xml:space="preserve"><value>Prosím opravte následující chyby:</value></data>
+<data name="Collection Details" xml:space="preserve"><value>Detaily kolekce</value></data>
+<data name="Enter collection title" xml:space="preserve"><value>Zadejte název kolekce</value></data>
+<data name="Select a Category" xml:space="preserve"><value>-- Vyberte kategorii --</value></data>
+<data name="Enter collection description" xml:space="preserve"><value>Zadejte popis kolekce</value></data>
+<data name="Media Files" xml:space="preserve"><value>Mediální soubory</value></data>
+<data name="Multiple file selection instruction" xml:space="preserve"><value>(Vyberte více pomocí Ctrl+Klik)</value></data>
+<data name="Image upload instructions" xml:space="preserve"><value>💡 Tip: Podržte Ctrl (nebo Cmd na Mac) pro výběr více souborů najednou. Podporované: JPG, PNG, WebP (max 10MB každý)</value></data>
+<data name="Audio file description" xml:space="preserve"><value>Volitelná klasická hudba (max 15MB)</value></data>
+<data name="Files selected message" xml:space="preserve"><value>✓ {0} soubor(ů) vybráno</value></data>
+<data name="Edit Collection" xml:space="preserve"><value>Upravit kolekci</value></data>
+<data name="Title help text" xml:space="preserve"><value>Ponechte nezměněno, pokud chcete pouze změnit pořadí obrázků</value></data>
+<data name="Add images" xml:space="preserve"><value>Přidat obrázky</value></data>
+<data name="Add images help text" xml:space="preserve"><value>Vyberte více obrázků k přidání do této kolekce</value></data>
+<data name="Save" xml:space="preserve"><value>Uložit</value></data>
+<data name="Drag instruction" xml:space="preserve"><value>Přetáhněte obrázky pro změnu jejich pořadí</value></data>
+<data name="Order" xml:space="preserve"><value>Pořadí:</value></data>
+<data name="Saving order message" xml:space="preserve"><value>Pořadí změněno. Ukládám...</value></data>
+<data name="Delete Image" xml:space="preserve"><value>Smazat obrázek</value></data>
+<data name="Order saved success" xml:space="preserve"><value>Pořadí úspěšně uloženo!</value></data>
+<data name="Error saving order" xml:space="preserve"><value>Chyba při ukládání pořadí:</value></data>
+<data name="Error saving order message" xml:space="preserve"><value>Chyba při ukládání pořadí. Zkuste to prosím znovu.</value></data>
+
+<!-- Form Placeholders -->
+<data name="Email placeholder" xml:space="preserve"><value>jmeno@priklad.cz</value></data>
+<data name="Password placeholder" xml:space="preserve"><value>heslo</value></data>
+<data name="Email label placeholder" xml:space="preserve"><value>Vaše e-mailová adresa</value></data>
+<data name="Phone placeholder" xml:space="preserve"><value>Zadejte telefonní číslo (volitelné)</value></data>
+<data name="Current password placeholder" xml:space="preserve"><value>Zadejte vaše současné heslo</value></data>
+<data name="New password placeholder" xml:space="preserve"><value>Zadejte nové heslo (min 12 znaků)</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>Zadejte znovu nové heslo</value></data>
+
+<!-- Email Management -->
+<data name="Manage Email" xml:space="preserve"><value>Spravovat e-mail</value></data>
+<data name="Current Email" xml:space="preserve"><value>Současný e-mail</value></data>
+<data name="Email confirmed" xml:space="preserve"><value>E-mail potvrzen</value></data>
+<data name="Email not confirmed" xml:space="preserve"><value>E-mail nebyl potvrzen</value></data>
+<data name="Send verification email" xml:space="preserve"><value>Odeslat ověřovací e-mail</value></data>
+<data name="New email" xml:space="preserve"><value>Nový e-mail</value></data>
+<data name="New email placeholder" xml:space="preserve"><value>Zadejte novou e-mailovou adresu</value></data>
+<data name="Change email" xml:space="preserve"><value>Změnit e-mail</value></data>
+
+<!-- Navigation Items -->
+<data name="Email nav" xml:space="preserve"><value>E-mail</value></data>
+<data name="Password nav" xml:space="preserve"><value>Heslo</value></data>
+
+<!-- Personal Data -->
+<data name="Personal data description" xml:space="preserve"><value>Váš účet obsahuje osobní údaje, které jste nám poskytli. Tato stránka vám umožňuje stáhnout nebo smazat tyto údaje.</value></data>
+<data name="Delete warning" xml:space="preserve"><value>Smazáním těchto údajů trvale odstraníte váš účet a toto nelze vrátit zpět.</value></data>
+<data name="Download data button" xml:space="preserve"><value>Stáhnout osobní údaje</value></data>
+<data name="Delete Account" xml:space="preserve"><value>Smazat účet</value></data>
+<data name="Delete account warning" xml:space="preserve"><value>Smazání vášho účtu je trvalé a nelze jej vrátit zpět.</value></data>
+<data name="Confirm password label" xml:space="preserve"><value>Potvrďte vaším heslem</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>Zadejte vaše heslo pro potvrzení</value></data>
+<data name="Delete account button" xml:space="preserve"><value>Smazat účet trvale</value></data>
+
+<!-- Confirm Email Messages -->
+<data name="Confirm email success text" xml:space="preserve"><value>Děkujeme za potvrzení vašeho e-mailu. Nyní se můžete</value></data>
+<data name="log in link" xml:space="preserve"><value>přihlásit</value></data>
+
+<!-- Error Messages -->
+<data name="Rate limit error" xml:space="preserve"><value>Příliš mnoho dotazů. Zkuste to prosím později.</value></data>
+<data name="Message too long error" xml:space="preserve"><value>Zpráva je příliš dlouhá (max 5000 znaků)</value></data>
+<data name="Inquiry processing error" xml:space="preserve"><value>Při zpracování vašeho dotazu došlo k chybě</value></data>
+<data name="Audio format error" xml:space="preserve"><value>Povoleny jsou pouze MP3 soubory</value></data>
+<data name="Audio size error" xml:space="preserve"><value>Velikost audio souboru musí být menší než {0}MB</value></data>
+<data name="Image required error" xml:space="preserve"><value>Je vyžadován alespoň jeden obrázek</value></data>
+<data name="All images failed" xml:space="preserve"><value>Všechny obrázky se nepodařilo nahrát. Chyby: {0}</value></data>
+<data name="Collection created success" xml:space="preserve"><value>Kolekce '{0}' vytvořena s {1} obrázky</value></data>
+<data name="Images failed partial" xml:space="preserve"><value>{0} obrázek(ů) selhalo: {1}</value></data>
+<data name="Error creating collection" xml:space="preserve"><value>Chyba při vytváření kolekce: {0}</value></data>
+<data name="Fix validation errors" xml:space="preserve"><value>Prosím opravte chyby validace.</value></data>
+<data name="Collection updated success" xml:space="preserve"><value>Kolekce '{0}' úspěšně aktualizována.</value></data>
+<data name="Collection update error" xml:space="preserve"><value>Chyba při aktualizaci kolekce: {0}</value></data>
+<data name="Collection not found" xml:space="preserve"><value>Kolekce nenalezena.</value></data>
+<data name="Collection deleted success" xml:space="preserve"><value>Kolekce '{0}' úspěšně smazána.</value></data>
+<data name="Collection delete error" xml:space="preserve"><value>Chyba při mazání kolekce: {0}</value></data>
+<data name="Image not found" xml:space="preserve"><value>Obrázek nenalezen.</value></data>
+<data name="Image deleted success" xml:space="preserve"><value>Obrázek úspěšně smazán.</value></data>
+<data name="Image delete error" xml:space="preserve"><value>Chyba při mazání obrázku: {0}</value></data>
+<data name="Order updated success" xml:space="preserve"><value>Pořadí úspěšně aktualizováno</value></data>
 
 </root>

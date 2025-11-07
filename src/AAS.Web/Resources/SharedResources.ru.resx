@@ -59,16 +59,16 @@
 <data name="Who We Are" xml:space="preserve"><value>Кто мы</value></data>
 <data name="Who We Are Text" xml:space="preserve"><value>Мы - американская компания, базирующаяся в Хьюстоне, штат Техас, с представительствами по всему миру и репутацией совершенства на рынке роскоши. Наша команда опытных оценщиков и специалистов обладает десятилетиями совместного опыта в области изобразительного искусства, антиквариата, драгоценностей, роскошных часов и редких предметов коллекционирования. Независимо от того, хотите ли вы продать один предмет или целую коллекцию, мы предоставляем персонализированное обслуживание, адаптированное к вашим уникальным потребностям.</value></data>
 <data name="Our Services" xml:space="preserve"><value>Наши услуги</value></data>
-<data name="Fine Art & Paintings" xml:space="preserve"><value>Изобразительное искусство и картины:</value></data>
-<data name="Fine Art & Paintings Desc" xml:space="preserve"><value>Старые мастера, современное искусство и современные произведения</value></data>
-<data name="Antiques & Collectibles" xml:space="preserve"><value>Антиквариат и коллекционные предметы:</value></data>
-<data name="Antiques & Collectibles Desc" xml:space="preserve"><value>Редкая мебель, фарфор и исторические предметы</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>Изобразительное искусство и картины:</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>Старые мастера, современное искусство и современные произведения</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>Антиквариат и коллекционные предметы:</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>Редкая мебель, фарфор и исторические предметы</value></data>
 <data name="Luxury Jewelry" xml:space="preserve"><value>Роскошные украшения:</value></data>
 <data name="Luxury Jewelry Desc" xml:space="preserve"><value>Бриллианты, драгоценные камни и дизайнерские изделия</value></data>
 <data name="Fine Watches" xml:space="preserve"><value>Роскошные часы:</value></data>
 <data name="Fine Watches Desc" xml:space="preserve"><value>Rolex, Patek Philippe и другие престижные бренды</value></data>
-<data name="Sculptures & Statues" xml:space="preserve"><value>Скульптуры и статуи:</value></data>
-<data name="Sculptures & Statues Desc" xml:space="preserve"><value>Бронза, мрамор и смешанные техники</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>Скульптуры и статуи:</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>Бронза, мрамор и смешанные техники</value></data>
 <data name="Our Commitment" xml:space="preserve"><value>Наши обязательства</value></data>
 <data name="Highest Prices Commitment" xml:space="preserve"><value>Мы предоставляем самые конкурентные оценки на рынке</value></data>
 <data name="Complete Discretion Commitment" xml:space="preserve"><value>Ваша анонимность и конфиденциальность абсолютно гарантированы</value></data>
@@ -150,9 +150,104 @@
 <data name="Thank you for confirming your email" xml:space="preserve"><value>Спасибо за подтверждение вашего email</value></data>
 <data name="Please confirm your account" xml:space="preserve"><value>Пожалуйста, подтвердите ваш аккаунт</value></data>
 
-<!-- Additional -->
+<!-- Additional UI Texts -->
+<data name="Collections Description" xml:space="preserve"><value>Изучите нашу тщательно подобранную коллекцию произведений искусства, ювелирных изделий, часов и предметов коллекционирования</value></data>
+<data name="No Collections Available" xml:space="preserve"><value>Нет доступных коллекций</value></data>
+<data name="Check back soon message" xml:space="preserve"><value>Скоро появятся новые экспонаты в нашей коллекции.</value></data>
+<data name="No Image" xml:space="preserve"><value>Нет изображения</value></data>
 <data name="Home" xml:space="preserve"><value>Главная</value></data>
 <data name="Audio Description" xml:space="preserve"><value>Аудио описание</value></data>
-<data name="No Image" xml:space="preserve"><value>Нет изображения</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>Заполните форму ниже, и наш специалист свяжется с вами в течение 12 часов.</value></data>
+<data name="Message placeholder" xml:space="preserve"><value>Расскажите нам о вашем интересе...</value></data>
+<data name="Site Title" xml:space="preserve"><value>Продажа аристократических произведений искусства</value></data>
+<data name="Site Meta Description" xml:space="preserve"><value>Конфиденциальность, качество и профессионализм в изобразительном искусстве, ювелирных изделиях, часах и предметах коллекционирования.</value></data>
+<data name="Site Name" xml:space="preserve"><value>Продажа аристократических произведений искусства</value></data>
+<data name="Toggle navigation" xml:space="preserve"><value>Переключить навигацию</value></data>
+<data name="Footer rights text" xml:space="preserve"><value>© {0} Все права защищены. Конфиденциальность, качество &amp; профессионализм.</value></data>
+
+<!-- Admin - Collection Management -->
+<data name="Add new collection description" xml:space="preserve"><value>Добавить новую коллекцию аристократических произведений искусства</value></data>
+<data name="Error label" xml:space="preserve"><value>Ошибка:</value></data>
+<data name="Fix errors message" xml:space="preserve"><value>Пожалуйста, исправьте следующие ошибки:</value></data>
+<data name="Collection Details" xml:space="preserve"><value>Детали коллекции</value></data>
+<data name="Enter collection title" xml:space="preserve"><value>Введите название коллекции</value></data>
+<data name="Select a Category" xml:space="preserve"><value>-- Выберите категорию --</value></data>
+<data name="Enter collection description" xml:space="preserve"><value>Введите описание коллекции</value></data>
+<data name="Media Files" xml:space="preserve"><value>Медиафайлы</value></data>
+<data name="Multiple file selection instruction" xml:space="preserve"><value>(Выберите несколько с помощью Ctrl+Клик)</value></data>
+<data name="Image upload instructions" xml:space="preserve"><value>💡 Совет: Удерживайте Ctrl (или Cmd на Mac), чтобы выбрать несколько файлов одновременно. Поддерживаются: JPG, PNG, WebP (максимум 10 МБ каждый)</value></data>
+<data name="Audio file description" xml:space="preserve"><value>Необязательная классическая музыка (максимум 15 МБ)</value></data>
+<data name="Files selected message" xml:space="preserve"><value>✓ Выбрано файлов: {0}</value></data>
+<data name="Edit Collection" xml:space="preserve"><value>Редактировать коллекцию</value></data>
+<data name="Title help text" xml:space="preserve"><value>Оставьте без изменений, если вы хотите только изменить порядок изображений</value></data>
+<data name="Add images" xml:space="preserve"><value>Добавить изображения</value></data>
+<data name="Add images help text" xml:space="preserve"><value>Выберите несколько изображений для добавления в эту коллекцию</value></data>
+<data name="Save" xml:space="preserve"><value>Сохранить</value></data>
+<data name="Drag instruction" xml:space="preserve"><value>Перетащите изображения, чтобы изменить их порядок</value></data>
+<data name="Order" xml:space="preserve"><value>Порядок:</value></data>
+<data name="Saving order message" xml:space="preserve"><value>Порядок изменен. Сохранение...</value></data>
+<data name="Delete Image" xml:space="preserve"><value>Удалить изображение</value></data>
+<data name="Order saved success" xml:space="preserve"><value>Порядок успешно сохранен!</value></data>
+<data name="Error saving order" xml:space="preserve"><value>Ошибка сохранения порядка:</value></data>
+<data name="Error saving order message" xml:space="preserve"><value>Ошибка сохранения порядка. Пожалуйста, попробуйте снова.</value></data>
+
+<!-- Form Placeholders -->
+<data name="Email placeholder" xml:space="preserve"><value>имя@пример.com</value></data>
+<data name="Password placeholder" xml:space="preserve"><value>пароль</value></data>
+<data name="Email label placeholder" xml:space="preserve"><value>Ваш адрес электронной почты</value></data>
+<data name="Phone placeholder" xml:space="preserve"><value>Введите номер телефона (необязательно)</value></data>
+<data name="Current password placeholder" xml:space="preserve"><value>Введите текущий пароль</value></data>
+<data name="New password placeholder" xml:space="preserve"><value>Введите новый пароль (минимум 12 символов)</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>Введите новый пароль повторно</value></data>
+
+<!-- Email Management -->
+<data name="Manage Email" xml:space="preserve"><value>Управление email</value></data>
+<data name="Current Email" xml:space="preserve"><value>Текущий email</value></data>
+<data name="Email confirmed" xml:space="preserve"><value>Email подтвержден</value></data>
+<data name="Email not confirmed" xml:space="preserve"><value>Email не подтвержден</value></data>
+<data name="Send verification email" xml:space="preserve"><value>Отправить письмо для подтверждения</value></data>
+<data name="New email" xml:space="preserve"><value>Новый email</value></data>
+<data name="New email placeholder" xml:space="preserve"><value>Введите новый адрес электронной почты</value></data>
+<data name="Change email" xml:space="preserve"><value>Изменить email</value></data>
+
+<!-- Navigation Items -->
+<data name="Email nav" xml:space="preserve"><value>Email</value></data>
+<data name="Password nav" xml:space="preserve"><value>Пароль</value></data>
+
+<!-- Personal Data -->
+<data name="Personal data description" xml:space="preserve"><value>Ваша учетная запись содержит персональные данные, которые вы нам предоставили. Эта страница позволяет вам скачать или удалить эти данные.</value></data>
+<data name="Delete warning" xml:space="preserve"><value>Удаление этих данных приведет к безвозвратному удалению вашей учетной записи, и это невозможно будет восстановить.</value></data>
+<data name="Download data button" xml:space="preserve"><value>Скачать персональные данные</value></data>
+<data name="Delete Account" xml:space="preserve"><value>Удалить учетную запись</value></data>
+<data name="Delete account warning" xml:space="preserve"><value>Удаление учетной записи является окончательным и не может быть отменено.</value></data>
+<data name="Confirm password label" xml:space="preserve"><value>Подтвердите с помощью пароля</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>Введите пароль для подтверждения</value></data>
+<data name="Delete account button" xml:space="preserve"><value>Удалить учетную запись навсегда</value></data>
+
+<!-- Confirm Email Messages -->
+<data name="Confirm email success text" xml:space="preserve"><value>Спасибо за подтверждение вашего email. Теперь вы можете</value></data>
+<data name="log in link" xml:space="preserve"><value>войти</value></data>
+
+<!-- Error Messages -->
+<data name="Rate limit error" xml:space="preserve"><value>Слишком много запросов. Пожалуйста, попробуйте позже.</value></data>
+<data name="Message too long error" xml:space="preserve"><value>Сообщение слишком длинное (максимум 5000 символов)</value></data>
+<data name="Inquiry processing error" xml:space="preserve"><value>Произошла ошибка при обработке вашего запроса</value></data>
+<data name="Audio format error" xml:space="preserve"><value>Разрешены только файлы MP3</value></data>
+<data name="Audio size error" xml:space="preserve"><value>Размер аудиофайла должен быть меньше {0} МБ</value></data>
+<data name="Image required error" xml:space="preserve"><value>Требуется хотя бы одно изображение</value></data>
+<data name="All images failed" xml:space="preserve"><value>Не удалось загрузить все изображения. Ошибки: {0}</value></data>
+<data name="Collection created success" xml:space="preserve"><value>Коллекция '{0}' создана с {1} изображением(ями)</value></data>
+<data name="Images failed partial" xml:space="preserve"><value>Не удалось загрузить {0} изображение(й): {1}</value></data>
+<data name="Error creating collection" xml:space="preserve"><value>Ошибка создания коллекции: {0}</value></data>
+<data name="Fix validation errors" xml:space="preserve"><value>Пожалуйста, исправьте ошибки проверки.</value></data>
+<data name="Collection updated success" xml:space="preserve"><value>Коллекция '{0}' успешно обновлена.</value></data>
+<data name="Collection update error" xml:space="preserve"><value>Ошибка обновления коллекции: {0}</value></data>
+<data name="Collection not found" xml:space="preserve"><value>Коллекция не найдена.</value></data>
+<data name="Collection deleted success" xml:space="preserve"><value>Коллекция '{0}' успешно удалена.</value></data>
+<data name="Collection delete error" xml:space="preserve"><value>Ошибка удаления коллекции: {0}</value></data>
+<data name="Image not found" xml:space="preserve"><value>Изображение не найдено.</value></data>
+<data name="Image deleted success" xml:space="preserve"><value>Изображение успешно удалено.</value></data>
+<data name="Image delete error" xml:space="preserve"><value>Ошибка удаления изображения: {0}</value></data>
+<data name="Order updated success" xml:space="preserve"><value>Порядок успешно обновлен</value></data>
 
 </root>
