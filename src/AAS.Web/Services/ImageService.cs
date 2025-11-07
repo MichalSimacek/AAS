@@ -90,6 +90,27 @@ namespace AAS.Web.Services
             }
         }
 
+        public void DeleteAllVariants(string fileNameNoExt)
+        {
+            try
+            {
+                var root = Path.Combine(_env.ContentRootPath, _cfg["Uploads:ImagesPath"]!);
+                if (Directory.Exists(root))
+                {
+                    // Delete original and all variants (480, 960, 1600)
+                    foreach (var file in Directory.GetFiles(root, $"{fileNameNoExt}*"))
+                    {
+                        File.Delete(file);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log but don't throw - file might already be deleted
+                Console.WriteLine($"Warning: Could not delete image files for {fileNameNoExt}: {ex.Message}");
+            }
+        }
+
         private static async Task SaveVariantAsync(Image image, string root, string name, int width)
         {
             using var clone = image.Clone(ctx => ctx.AutoOrient().Resize(new ResizeOptions
