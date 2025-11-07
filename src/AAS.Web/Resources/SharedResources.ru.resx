@@ -150,4 +150,9 @@
 <data name="Thank you for confirming your email" xml:space="preserve"><value>Спасибо за подтверждение вашего email</value></data>
 <data name="Please confirm your account" xml:space="preserve"><value>Пожалуйста, подтвердите ваш аккаунт</value></data>
 
+<!-- Additional -->
+<data name="Home" xml:space="preserve"><value>Главная</value></data>
+<data name="Audio Description" xml:space="preserve"><value>Аудио описание</value></data>
+<data name="No Image" xml:space="preserve"><value>Нет изображения</value></data>
+
 </root>
