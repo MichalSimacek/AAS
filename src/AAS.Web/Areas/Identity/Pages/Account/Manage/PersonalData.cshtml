@@ -1,0 +1,57 @@
+@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Account Settings";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-3 mb-4">
+        <partial name="_ManageNav" />
+    </div>
+    <div class="col-md-9">
+        <partial name="_StatusMessage" for="StatusMessage" />
+        
+        <div class="card mb-3">
+            <div class="card-body">
+                <h4 class="card-title mb-3">Personal Data</h4>
+                <p class="text-muted">
+                    Your account contains personal data that you have given us. This page allows you to download or delete that data.
+                </p>
+                <p class="text-muted">
+                    <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+                </p>
+                
+                <form method="post" class="mb-3">
+                    <button class="btn btn-primary" type="submit" asp-page-handler="DownloadData">
+                        <i class="bi bi-download"></i> Download Personal Data
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card border-danger">
+            <div class="card-body">
+                <h4 class="card-title text-danger mb-3">Delete Account</h4>
+                <form id="delete-user" method="post" asp-page-handler="DeleteAccount">
+                    @Html.AntiForgeryToken()
+                    <p class="text-danger">
+                        <strong>Deleting your account is permanent and cannot be undone.</strong>
+                    </p>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" placeholder="Password" />
+                        <label asp-for="Input.Password">Password</label>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-danger" type="submit">Delete Account Permanently</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
