@@ -50,7 +50,7 @@ namespace AAS.Web.Areas.Identity.Pages.Account
                     "/Account/ConfirmEmail",
                     pageHandler: null,
                     values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                    protocol: Request.Scheme);
+                    protocol: Request.Scheme)!;
                 DisplayConfirmAccountLink = true;
             }
 
