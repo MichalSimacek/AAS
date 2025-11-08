@@ -52,14 +52,24 @@ services.AddDbContext<AppDbContext>(options =>
     .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
-// Identity
+// Identity with comprehensive security settings
 services.AddDefaultIdentity<IdentityUser>(o =>
 {
+    // Account settings
     o.SignIn.RequireConfirmedAccount = true; // Require email confirmation
+    o.User.RequireUniqueEmail = true; // Ensure unique emails
+    
+    // Password policy
     o.Password.RequiredLength = 12;
     o.Password.RequireNonAlphanumeric = true;
     o.Password.RequireUppercase = true;
-    o.User.RequireUniqueEmail = true; // Ensure unique emails
+    o.Password.RequireLowercase = true;
+    o.Password.RequireDigit = true;
+    
+    // SECURITY: Account lockout to prevent brute force attacks
+    o.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+    o.Lockout.MaxFailedAccessAttempts = 5;
+    o.Lockout.AllowedForNewUsers = true;
 })
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<AppDbContext>();
