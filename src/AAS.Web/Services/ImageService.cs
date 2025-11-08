@@ -94,20 +94,35 @@ namespace AAS.Web.Services
         {
             try
             {
+                // SECURITY: Validate filename to prevent path traversal
+                if (string.IsNullOrWhiteSpace(fileNameNoExt) || 
+                    fileNameNoExt.Contains("..") || 
+                    fileNameNoExt.Contains("/") || 
+                    fileNameNoExt.Contains("\\"))
+                {
+                    throw new InvalidOperationException("Invalid filename");
+                }
+
                 var root = Path.Combine(_env.ContentRootPath, _cfg["Uploads:ImagesPath"]!);
                 if (Directory.Exists(root))
                 {
                     // Delete original and all variants (480, 960, 1600)
                     foreach (var file in Directory.GetFiles(root, $"{fileNameNoExt}*"))
                     {
-                        File.Delete(file);
+                        // SECURITY: Verify file is within uploads directory
+                        var fullPath = Path.GetFullPath(file);
+                        var rootPath = Path.GetFullPath(root);
+                        if (fullPath.StartsWith(rootPath, StringComparison.OrdinalIgnoreCase))
+                        {
+                            File.Delete(file);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Log but don't throw - file might already be deleted
-                Console.WriteLine($"Warning: Could not delete image files for {fileNameNoExt}: {ex.Message}");
+                // SECURITY: Log but don't expose file system details
+                Console.WriteLine($"[SECURE] Image deletion failed: {ex.GetType().Name}");
             }
         }
 
