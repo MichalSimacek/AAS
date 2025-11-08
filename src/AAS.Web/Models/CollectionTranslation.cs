@@ -15,10 +15,10 @@ namespace AAS.Web.Models
         [Required, MaxLength(10)]
         public string LanguageCode { get; set; } = string.Empty; // "cs", "de", "es", etc.
 
-        [Required, MaxLength(180)]
+        [Required, MaxLength(200)]
         public string TranslatedTitle { get; set; } = string.Empty;
 
-        [Column(TypeName = "text")]
+        [Column(TypeName = "text"), MaxLength(10000)]
         public string TranslatedDescription { get; set; } = string.Empty;
 
         public DateTime CreatedUtc { get; set; } = DateTime.UtcNow;
