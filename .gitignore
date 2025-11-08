@@ -226,3 +226,7 @@ nginx/ssl/*.key
 backups/
 logs/
 postgres-data/
+-e 
+# Environment files
+*.env
+*.env.*
