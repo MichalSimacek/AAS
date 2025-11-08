@@ -9,6 +9,7 @@ namespace AAS.Web.Data
     {
         public DbSet<Collection> Collections => Set<Collection>();
         public DbSet<CollectionImage> CollectionImages => Set<CollectionImage>();
+        public DbSet<CollectionTranslation> CollectionTranslations => Set<CollectionTranslation>();
         public DbSet<Inquiry> Inquiries => Set<Inquiry>();
         public DbSet<TranslationCache> TranslationCaches => Set<TranslationCache>();
 
@@ -28,6 +29,12 @@ namespace AAS.Web.Data
             b.Entity<CollectionImage>(e =>
             {
                 e.HasIndex(x => new { x.CollectionId, x.SortOrder });
+            });
+
+            b.Entity<CollectionTranslation>(e =>
+            {
+                e.HasIndex(x => new { x.CollectionId, x.LanguageCode }).IsUnique();
+                e.Property(x => x.TranslatedDescription).HasColumnType("text");
             });
 
             b.Entity<TranslationCache>(e =>

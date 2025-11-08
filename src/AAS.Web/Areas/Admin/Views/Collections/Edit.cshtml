@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var imageIds = [];
                 var items = sortableContainer.querySelectorAll('.sortable-item');
                 items.forEach(function(item, index) {
-                    var imageId = item.getAttribute('data-image-id');
+                    var imageId = parseInt(item.getAttribute('data-image-id'), 10);
                     imageIds.push(imageId);
                     
                     // Update order number display
@@ -153,8 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 fetch('/Admin/Collections/ReorderImages/' + collectionId, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(imageIds)
                 })

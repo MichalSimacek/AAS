@@ -44,16 +44,29 @@ namespace AAS.Web.Controllers
                 }
             }
 
-            // Translate titles if not English
+            // Load pre-translated titles from database
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             var translations = new Dictionary<int, string>();
-            
+
             if (lang != "en")
             {
+                var collectionIds = items.Select(x => x.Collection.Id).ToList();
+                var dbTranslations = await _db.CollectionTranslations
+                    .Where(t => collectionIds.Contains(t.CollectionId) && t.LanguageCode == lang)
+                    .AsNoTracking()
+                    .ToDictionaryAsync(t => t.CollectionId, t => t.TranslatedTitle);
+
                 foreach (var item in items)
                 {
-                    var translatedTitle = await _tr.TranslateAsync(item.Collection.Title, "en", lang);
-                    translations[item.Collection.Id] = translatedTitle;
+                    if (dbTranslations.TryGetValue(item.Collection.Id, out var translatedTitle))
+                    {
+                        translations[item.Collection.Id] = translatedTitle;
+                    }
+                    else
+                    {
+                        // Fallback to on-demand translation if not found in database
+                        translations[item.Collection.Id] = await _tr.TranslateAsync(item.Collection.Title, "en", lang);
+                    }
                 }
             }
 
@@ -73,12 +86,25 @@ namespace AAS.Web.Controllers
 
             if (item == null) return NotFound();
 
-            // Translate title and description on the fly based on UI culture
+            // Load pre-translated content from database
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             if (lang != "en")
             {
-                ViewBag.TranslatedTitle = await _tr.TranslateAsync(item.Title, "en", lang);
-                ViewBag.TranslatedDescription = await _tr.TranslateAsync(item.Description, "en", lang);
+                var translation = await _db.CollectionTranslations
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(t => t.CollectionId == item.Id && t.LanguageCode == lang);
+
+                if (translation != null)
+                {
+                    ViewBag.TranslatedTitle = translation.TranslatedTitle;
+                    ViewBag.TranslatedDescription = translation.TranslatedDescription;
+                }
+                else
+                {
+                    // Fallback to on-demand translation if not found in database
+                    ViewBag.TranslatedTitle = await _tr.TranslateAsync(item.Title, "en", lang);
+                    ViewBag.TranslatedDescription = await _tr.TranslateAsync(item.Description, "en", lang);
+                }
             }
             else
             {

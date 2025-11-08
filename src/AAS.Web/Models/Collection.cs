@@ -13,5 +13,6 @@ namespace AAS.Web.Models
         public string? AudioPath { get; set; }
         public DateTime CreatedUtc { get; set; } = DateTime.UtcNow;
         public ICollection<CollectionImage> Images { get; set; } = new List<CollectionImage>();
+        public ICollection<CollectionTranslation> Translations { get; set; } = new List<CollectionTranslation>();
     }
 }

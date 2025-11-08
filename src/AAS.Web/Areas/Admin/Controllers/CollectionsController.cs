@@ -11,8 +11,8 @@ namespace AAS.Web.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class CollectionsController : Controller
     {
-        private readonly AppDbContext _db; private readonly SlugService _slug; private readonly ImageService _img;
-        public CollectionsController(AppDbContext db, SlugService slug, ImageService img) { _db = db; _slug = slug; _img = img; }
+        private readonly AppDbContext _db; private readonly SlugService _slug; private readonly ImageService _img; private readonly TranslationService _tr; private readonly IConfiguration _cfg;
+        public CollectionsController(AppDbContext db, SlugService slug, ImageService img, TranslationService tr, IConfiguration cfg) { _db = db; _slug = slug; _img = img; _tr = tr; _cfg = cfg; }
 
         public async Task<IActionResult> Index()
         {
@@ -146,8 +146,12 @@ namespace AAS.Web.Areas.Admin.Controllers
                     }
 
                     await _db.SaveChangesAsync();
+
+                    // Automatically translate collection to all supported languages
+                    await TranslateCollectionAsync(model);
+
                     await transaction.CommitAsync();
-                    
+
                     var successMsg = $"Collection '{model.Title}' created with {successCount} image(s)";
                     if (failCount > 0)
                     {
@@ -180,7 +184,8 @@ namespace AAS.Web.Areas.Admin.Controllers
         [RequestSizeLimit(100 * 1024 * 1024)] // 100MB max
         public async Task<IActionResult> Edit(int id, Collection model, List<IFormFile> newImages)
         {
-            var existing = await _db.Collections.Include(c => c.Images).FirstOrDefaultAsync(c => c.Id == id);
+            // Don't track Images - only load collection data to avoid overwriting SortOrder changes from ReorderImages
+            var existing = await _db.Collections.FirstOrDefaultAsync(c => c.Id == id);
             if (existing == null) return NotFound();
 
             // Remove Title from ModelState if not changed - allows saving without changing title
@@ -211,7 +216,14 @@ namespace AAS.Web.Areas.Admin.Controllers
                     // Process new images if any
                     if (newImages != null && newImages.Any(f => f.Length > 0))
                     {
-                        int order = existing.Images.Count == 0 ? 0 : existing.Images.Max(i => i.SortOrder) + 1;
+                        // Get current max SortOrder from database without tracking
+                        var maxOrder = await _db.CollectionImages
+                            .Where(i => i.CollectionId == existing.Id)
+                            .Select(i => (int?)i.SortOrder)
+                            .MaxAsync() ?? -1;
+
+                        int order = maxOrder + 1;
+
                         foreach (var f in newImages.Where(f => f.Length > 0))
                         {
                             var nameNoExt = Guid.NewGuid().ToString("N");
@@ -229,8 +241,12 @@ namespace AAS.Web.Areas.Admin.Controllers
                     }
 
                     await _db.SaveChangesAsync();
+
+                    // Automatically translate collection to all supported languages
+                    await TranslateCollectionAsync(existing);
+
                     await transaction.CommitAsync();
-                    
+
                     TempData["SuccessMessage"] = $"Collection '{existing.Title}' updated successfully.";
                     return RedirectToAction(nameof(Edit), new { id });
                 }
@@ -307,6 +323,7 @@ namespace AAS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Route("Admin/Collections/DeleteImage/{id}/{imageId}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteImage(int id, int imageId)
         {
@@ -357,48 +374,133 @@ namespace AAS.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Route("Admin/Collections/ReorderImages/{id}")]
+        [IgnoreAntiforgeryToken] // AJAX POST with JSON body
         public async Task<IActionResult> ReorderImages(int id, [FromBody] List<int> imageIds)
         {
             try
             {
-                Console.WriteLine($"Reordering images for collection {id}. New order: {string.Join(", ", imageIds)}");
+                Console.WriteLine($"[ReorderImages] START - Collection {id}, Received IDs: [{string.Join(", ", imageIds ?? new List<int>())}]");
 
-                // CRITICAL FIX: Use ExecutionStrategy for retrying transactions
-                var strategy = _db.Database.CreateExecutionStrategy();
-                return await strategy.ExecuteAsync<IActionResult>(async () =>
+                if (imageIds == null || imageIds.Count == 0)
                 {
-                    var collection = await _db.Collections
-                        .Include(c => c.Images)
-                        .FirstOrDefaultAsync(c => c.Id == id);
+                    Console.WriteLine("[ReorderImages] ERROR: No image IDs provided");
+                    return Json(new { success = false, message = "No image IDs provided" });
+                }
 
-                    if (collection == null)
-                    {
-                        return Json(new { success = false, message = "Collection not found" });
-                    }
+                // Load images - tracked entities
+                var images = await _db.CollectionImages
+                    .Where(img => img.CollectionId == id)
+                    .OrderBy(img => img.SortOrder)
+                    .ToListAsync();
 
-                    // Update sort order for each image
-                    for (int i = 0; i < imageIds.Count; i++)
+                Console.WriteLine($"[ReorderImages] Loaded {images.Count} images from DB");
+                foreach (var img in images)
+                {
+                    Console.WriteLine($"[ReorderImages] DB Image {img.Id}: current SortOrder = {img.SortOrder}");
+                }
+
+                if (images.Count == 0)
+                {
+                    Console.WriteLine($"[ReorderImages] ERROR: No images found for collection {id}");
+                    return Json(new { success = false, message = "Collection not found or has no images" });
+                }
+
+                // Update sort order for each image in the new order
+                int changedCount = 0;
+                for (int i = 0; i < imageIds.Count; i++)
+                {
+                    var imageId = imageIds[i];
+                    var image = images.FirstOrDefault(img => img.Id == imageId);
+                    if (image != null)
                     {
-                        var imageId = imageIds[i];
-                        var image = collection.Images.FirstOrDefault(img => img.Id == imageId);
-                        if (image != null)
+                        if (image.SortOrder != i)
                         {
+                            var oldOrder = image.SortOrder;
                             image.SortOrder = i;
-                            Console.WriteLine($"Updated image {imageId} to order {i}");
+                            _db.Entry(image).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                            changedCount++;
+                            Console.WriteLine($"[ReorderImages] CHANGED Image {imageId}: {oldOrder} -> {i}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"[ReorderImages] UNCHANGED Image {imageId}: already at position {i}");
                         }
                     }
+                    else
+                    {
+                        Console.WriteLine($"[ReorderImages] WARNING: Image {imageId} not found in collection {id}");
+                    }
+                }
 
-                    await _db.SaveChangesAsync();
-                    Console.WriteLine("Image order saved successfully");
+                Console.WriteLine($"[ReorderImages] About to save {changedCount} changes to database...");
+                var savedChanges = await _db.SaveChangesAsync();
+                Console.WriteLine($"[ReorderImages] SUCCESS: SaveChangesAsync returned {savedChanges}");
 
-                    return Json(new { success = true, message = "Order updated successfully" });
-                });
+                // Verify changes were saved
+                var verifyImages = await _db.CollectionImages
+                    .Where(img => img.CollectionId == id)
+                    .OrderBy(img => img.SortOrder)
+                    .AsNoTracking()
+                    .ToListAsync();
+
+                Console.WriteLine($"[ReorderImages] VERIFICATION - After save:");
+                foreach (var img in verifyImages)
+                {
+                    Console.WriteLine($"[ReorderImages] VERIFY Image {img.Id}: SortOrder = {img.SortOrder}");
+                }
+
+                return Json(new { success = true, message = $"Order updated successfully ({savedChanges} changes)" });
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error reordering images: {ex.Message}");
+                Console.WriteLine($"[ReorderImages] ERROR: {ex.Message}");
+                Console.WriteLine($"[ReorderImages] Stack: {ex.StackTrace}");
                 return Json(new { success = false, message = ex.Message });
             }
+        }
+
+        /// <summary>
+        /// Automatically translates collection title and description to all supported languages
+        /// </summary>
+        private async Task TranslateCollectionAsync(Collection collection)
+        {
+            var supportedCultures = _cfg.GetSection("Localization:SupportedCultures").Get<string[]>() ?? new[] { "en" };
+
+            // Remove existing translations for this collection
+            var existingTranslations = await _db.CollectionTranslations
+                .Where(t => t.CollectionId == collection.Id)
+                .ToListAsync();
+            _db.CollectionTranslations.RemoveRange(existingTranslations);
+
+            // Translate to all supported languages (except English, which is the source)
+            foreach (var lang in supportedCultures.Where(l => l != "en"))
+            {
+                try
+                {
+                    var translatedTitle = await _tr.TranslateAsync(collection.Title, "en", lang);
+                    var translatedDescription = await _tr.TranslateAsync(collection.Description, "en", lang);
+
+                    var translation = new CollectionTranslation
+                    {
+                        CollectionId = collection.Id,
+                        LanguageCode = lang,
+                        TranslatedTitle = translatedTitle,
+                        TranslatedDescription = translatedDescription,
+                        CreatedUtc = DateTime.UtcNow
+                    };
+
+                    _db.CollectionTranslations.Add(translation);
+                    Console.WriteLine($"Translated collection '{collection.Title}' to {lang}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to translate collection to {lang}: {ex.Message}");
+                    // Continue with other languages even if one fails
+                }
+            }
+
+            await _db.SaveChangesAsync();
         }
     }
 }
