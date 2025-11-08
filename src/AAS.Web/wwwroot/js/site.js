@@ -8,14 +8,38 @@ function setLang(code) {
 async function submitInquiry() {
   const form = document.getElementById("inqForm");
   const data = new FormData(form);
-  const res = await fetch("/Inquiries/Create", {
-    method: "POST",
-    body: data,
-    headers: { "X-Requested-With": "fetch" },
-  });
-  if (res.ok) {
-    document.getElementById("inqOk").classList.remove("d-none");
-    setTimeout(() => location.reload(), 1200);
+  
+  // SECURITY FIX: Include anti-forgery token in request
+  const token = form.querySelector('input[name="__RequestVerificationToken"]');
+  if (token) {
+    data.append('__RequestVerificationToken', token.value);
+  }
+  
+  try {
+    const res = await fetch("/Inquiries/Create", {
+      method: "POST",
+      body: data,
+      headers: { 
+        "X-Requested-With": "fetch"
+      },
+    });
+    
+    const result = await res.json();
+    
+    if (res.ok && result.success) {
+      document.getElementById("inqOk").classList.remove("d-none");
+      setTimeout(() => {
+        const modal = bootstrap.Modal.getInstance(document.getElementById('interestModal'));
+        if (modal) modal.hide();
+        form.reset();
+        document.getElementById("inqOk").classList.add("d-none");
+      }, 1500);
+    } else {
+      alert(result.message || "Failed to submit inquiry. Please try again.");
+    }
+  } catch (error) {
+    console.error('Error submitting inquiry:', error);
+    alert("An error occurred. Please try again later.");
   }
 }
 
