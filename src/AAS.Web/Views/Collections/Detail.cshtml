@@ -55,10 +55,10 @@
         <div class="card">
           <div class="card-body p-4">
             <span class="badge badge-gold mb-3">@L[Model.Category.ToString()]</span>
-            <h1 style="font-size: 2rem;">@(ViewBag.TranslatedTitle as string ?? Model.Title)</h1>
+            <h1 style="font-size: 2rem;">@Html.Raw(Html.Encode(ViewBag.TranslatedTitle as string ?? Model.Title))</h1>
             
             <div class="mb-4" style="white-space: pre-wrap;">
-              @(ViewBag.TranslatedDescription as string ?? Model.Description)
+              @Html.Raw(Html.Encode(ViewBag.TranslatedDescription as string ?? Model.Description).Replace("\n", "<br/>"))
             </div>
 
             <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#interestModal">
