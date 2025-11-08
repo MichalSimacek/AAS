@@ -69,6 +69,12 @@ services.AddLocalization();
 services.AddControllersWithViews().AddViewLocalization();
 services.AddRazorPages();
 
+// SECURITY: Configure anti-forgery to accept tokens from headers (for AJAX requests)
+services.AddAntiforgery(options =>
+{
+    options.HeaderName = "RequestVerificationToken";
+});
+
 // Services
 services.AddScoped<SlugService>();
 services.AddScoped<ImageService>();
@@ -100,11 +106,17 @@ using (var scope = app.Services.CreateScope())
     await db.Database.MigrateAsync();
 }
 
-// Security
-if (app.Environment.IsProduction())
+// SECURITY: Exception handling middleware
+if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
+
 app.UseHttpsRedirection();
 
 app.Use((ctx, next) =>

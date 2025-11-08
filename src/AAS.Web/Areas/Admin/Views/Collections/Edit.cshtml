@@ -39,7 +39,7 @@
 </div>
 <div class="mb-3">
     <label class="form-label">Description</label>
-    <textarea asp-for="Description" rows="6" class="form-control"></textarea>
+    <textarea asp-for="Description" name="Description" rows="6" class="form-control">@Model.Description</textarea>
 </div>
 <div class="mb-3">
     <label class="form-label">Add images</label>
@@ -150,10 +150,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Send new order to server
                 var collectionId = @Model.Id;
+                var token = document.querySelector('input[name="__RequestVerificationToken"]').value;
                 fetch('/Admin/Collections/ReorderImages/' + collectionId, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
                     },
                     body: JSON.stringify(imageIds)
                 })

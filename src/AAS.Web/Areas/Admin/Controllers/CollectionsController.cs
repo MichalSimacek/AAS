@@ -54,7 +54,15 @@ namespace AAS.Web.Areas.Admin.Controllers
             
             model.Slug = slug;
 
-            // Security: Validate audio file
+            // Security: Validate at least one image is provided
+            if (!images.Any(f => f.Length > 0))
+            {
+                ModelState.AddModelError("images", "At least one image is required");
+                return View(model);
+            }
+
+            // PERFORMANCE FIX: Process audio file BEFORE transaction (I/O should not be in transaction)
+            string? savedAudioPath = null;
             if (audio != null && audio.Length > 0)
             {
                 var allowedAudioExt = new[] { ".mp3" };
@@ -72,28 +80,68 @@ namespace AAS.Web.Areas.Admin.Controllers
                     return View(model);
                 }
 
-                var audioDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads/audio");
-                Directory.CreateDirectory(audioDir);
-                var audioName = Guid.NewGuid().ToString("N") + audioExt;
-                var audioPath = Path.Combine(audioDir, audioName);
-
-                // CRITICAL FIX: Use await using to properly dispose FileStream
-                await using (var fs = new FileStream(audioPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 81920, useAsync: true))
+                try
                 {
-                    await audio.CopyToAsync(fs);
-                }
+                    var audioDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads/audio");
+                    Directory.CreateDirectory(audioDir);
+                    var audioName = Guid.NewGuid().ToString("N") + audioExt;
+                    var audioPath = Path.Combine(audioDir, audioName);
 
-                model.AudioPath = "/uploads/audio/" + audioName;
+                    await using (var fs = new FileStream(audioPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 81920, useAsync: true))
+                    {
+                        await audio.CopyToAsync(fs);
+                    }
+
+                    savedAudioPath = "/uploads/audio/" + audioName;
+                    model.AudioPath = savedAudioPath;
+                }
+                catch (Exception audioEx)
+                {
+                    ModelState.AddModelError("audio", $"Error saving audio: {audioEx.Message}");
+                    return View(model);
+                }
             }
 
-            // Security: Validate at least one image is provided
-            if (!images.Any(f => f.Length > 0))
+            // PERFORMANCE FIX: Process all images BEFORE transaction (I/O should not be in transaction)
+            var savedImages = new List<(string fileName, int width, int height, long bytes)>();
+            var imageErrors = new List<string>();
+
+            foreach (var f in images.Where(f => f.Length > 0))
             {
-                ModelState.AddModelError("images", "At least one image is required");
+                try
+                {
+                    Console.WriteLine($"Processing image: {f.FileName} ({f.Length} bytes)");
+                    var nameNoExt = Guid.NewGuid().ToString("N");
+                    var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
+                    savedImages.Add((nameNoExt, meta.w, meta.h, meta.b));
+                    Console.WriteLine($"Image {f.FileName} processed successfully");
+                }
+                catch (Exception imgEx)
+                {
+                    imageErrors.Add($"{f.FileName}: {imgEx.Message}");
+                    Console.WriteLine($"Image {f.FileName} failed: {imgEx.Message}");
+                }
+            }
+
+            if (savedImages.Count == 0)
+            {
+                // Clean up audio if all images failed
+                if (savedAudioPath != null)
+                {
+                    try
+                    {
+                        var audioFullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot" + savedAudioPath.TrimStart('/'));
+                        if (System.IO.File.Exists(audioFullPath))
+                            System.IO.File.Delete(audioFullPath);
+                    }
+                    catch { }
+                }
+
+                ModelState.AddModelError("images", $"All images failed. Errors: {string.Join("; ", imageErrors)}");
                 return View(model);
             }
 
-            // CRITICAL FIX: Use ExecutionStrategy for retrying transactions
+            // NOW start transaction (fast DB operations only)
             var strategy = _db.Database.CreateExecutionStrategy();
             return await strategy.ExecuteAsync<IActionResult>(async () =>
             {
@@ -103,70 +151,68 @@ namespace AAS.Web.Areas.Admin.Controllers
                     _db.Collections.Add(model);
                     await _db.SaveChangesAsync();
 
+                    // Add all successfully processed images to DB
                     int order = 0;
-                    int successCount = 0;
-                    int failCount = 0;
-                    List<string> errors = new List<string>();
-                    
-                    foreach (var f in images.Where(f => f.Length > 0))
+                    foreach (var (fileName, width, height, bytes) in savedImages)
                     {
-                        try
+                        var imgEntity = new CollectionImage
                         {
-                            Console.WriteLine($"Processing image {order + 1}: {f.FileName} ({f.Length} bytes)");
-                            var nameNoExt = Guid.NewGuid().ToString("N");
-                            var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
-                            var imgEntity = new CollectionImage
-                            {
-                                CollectionId = model.Id,
-                                FileName = nameNoExt,
-                                Width = meta.w,
-                                Height = meta.h,
-                                Bytes = meta.b,
-                                SortOrder = order++
-                            };
-                            _db.CollectionImages.Add(imgEntity);
-                            successCount++;
-                            Console.WriteLine($"Image {f.FileName} processed successfully");
-                        }
-                        catch (Exception imgEx)
-                        {
-                            failCount++;
-                            var errorMsg = $"{f.FileName}: {imgEx.Message}";
-                            errors.Add(errorMsg);
-                            Console.WriteLine($"Image {f.FileName} failed: {imgEx.Message}");
-                            // Continue processing other images instead of failing completely
-                        }
-                    }
-
-                    if (successCount == 0)
-                    {
-                        await transaction.RollbackAsync();
-                        ModelState.AddModelError("images", $"All images failed to upload. Errors: {string.Join("; ", errors)}");
-                        return View(model);
+                            CollectionId = model.Id,
+                            FileName = fileName,
+                            Width = width,
+                            Height = height,
+                            Bytes = bytes,
+                            SortOrder = order++
+                        };
+                        _db.CollectionImages.Add(imgEntity);
                     }
 
                     await _db.SaveChangesAsync();
-
-                    // Automatically translate collection to all supported languages
-                    await TranslateCollectionAsync(model);
-
                     await transaction.CommitAsync();
 
-                    var successMsg = $"Collection '{model.Title}' created with {successCount} image(s)";
-                    if (failCount > 0)
+                    // PERFORMANCE FIX: Translate AFTER transaction commits (HTTP calls should not be in transaction)
+                    try
                     {
-                        successMsg += $". {failCount} image(s) failed: {string.Join(", ", errors)}";
+                        await TranslateCollectionAsync(model);
+                    }
+                    catch (Exception transEx)
+                    {
+                        Console.WriteLine($"Translation failed (non-fatal): {transEx.Message}");
+                    }
+
+                    var successMsg = $"Collection '{model.Title}' created with {savedImages.Count} image(s)";
+                    if (imageErrors.Count > 0)
+                    {
+                        successMsg += $". {imageErrors.Count} image(s) failed: {string.Join(", ", imageErrors)}";
                     }
                     TempData["SuccessMessage"] = successMsg;
-                    
-                    Console.WriteLine($"Collection created: {successCount} success, {failCount} failed");
+
+                    Console.WriteLine($"Collection created: {savedImages.Count} success, {imageErrors.Count} failed");
                     return RedirectToAction(nameof(Index), new { area = "Admin" });
                 }
                 catch (Exception ex)
                 {
                     await transaction.RollbackAsync();
                     Console.WriteLine($"Transaction failed: {ex.Message}");
-                    ModelState.AddModelError("images", $"Error creating collection: {ex.Message}");
+
+                    // Clean up saved files since DB transaction failed
+                    foreach (var (fileName, _, _, _) in savedImages)
+                    {
+                        try { _img.DeleteAllVariants(fileName); } catch { }
+                    }
+
+                    if (savedAudioPath != null)
+                    {
+                        try
+                        {
+                            var audioFullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot" + savedAudioPath.TrimStart('/'));
+                            if (System.IO.File.Exists(audioFullPath))
+                                System.IO.File.Delete(audioFullPath);
+                        }
+                        catch { }
+                    }
+
+                    ModelState.AddModelError("", $"Error creating collection: {ex.Message}");
                     return View(model);
                 }
             });
@@ -176,6 +222,11 @@ namespace AAS.Web.Areas.Admin.Controllers
         {
             var item = await _db.Collections.Include(c => c.Images).FirstOrDefaultAsync(c => c.Id == id);
             if (item == null) return NotFound();
+
+            Console.WriteLine($"[EDIT GET DEBUG] Collection ID: {id}");
+            Console.WriteLine($"[EDIT GET DEBUG] Description from DB: {item.Description?.Substring(0, Math.Min(100, item.Description?.Length ?? 0))}...");
+            Console.WriteLine($"[EDIT GET DEBUG] Description Length: {item.Description?.Length ?? 0}");
+
             return View(item);
         }
 
@@ -184,21 +235,37 @@ namespace AAS.Web.Areas.Admin.Controllers
         [RequestSizeLimit(100 * 1024 * 1024)] // 100MB max
         public async Task<IActionResult> Edit(int id, Collection model, List<IFormFile> newImages)
         {
-            // Don't track Images - only load collection data to avoid overwriting SortOrder changes from ReorderImages
-            var existing = await _db.Collections.FirstOrDefaultAsync(c => c.Id == id);
-            if (existing == null) return NotFound();
-
-            // Remove Title from ModelState if not changed - allows saving without changing title
-            if (string.IsNullOrEmpty(model.Title) || model.Title == existing.Title)
+            // Validate Title for ModelState
+            if (string.IsNullOrEmpty(model.Title))
             {
                 ModelState.Remove("Title");
-                model.Title = existing.Title;
             }
 
             if (!ModelState.IsValid)
             {
+                var temp = await _db.Collections.FirstOrDefaultAsync(c => c.Id == id);
                 TempData["ErrorMessage"] = "Please fix validation errors.";
-                return View(existing);
+                return View(temp ?? new Collection());
+            }
+
+            // PERFORMANCE FIX: Process new images BEFORE transaction (I/O should not be in transaction)
+            var savedNewImages = new List<(string fileName, int width, int height, long bytes)>();
+            if (newImages != null && newImages.Any(f => f.Length > 0))
+            {
+                foreach (var f in newImages.Where(f => f.Length > 0))
+                {
+                    try
+                    {
+                        var nameNoExt = Guid.NewGuid().ToString("N");
+                        var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
+                        savedNewImages.Add((nameNoExt, meta.w, meta.h, meta.b));
+                    }
+                    catch (Exception imgEx)
+                    {
+                        Console.WriteLine($"Image {f.FileName} failed: {imgEx.Message}");
+                        // Continue with other images
+                    }
+                }
             }
 
             // CRITICAL FIX: Use ExecutionStrategy for retrying transactions
@@ -208,44 +275,54 @@ namespace AAS.Web.Areas.Admin.Controllers
                 using var transaction = await _db.Database.BeginTransactionAsync();
                 try
                 {
-                    existing.Title = model.Title;
-                    existing.Description = model.Description ?? existing.Description;
-                    existing.Category = model.Category;
-                    existing.Slug = _slug.ToSlug(model.Title);
+                    // CRITICAL: Load entity INSIDE ExecutionStrategy to ensure proper tracking
+                    var existing = await _db.Collections.FirstOrDefaultAsync(c => c.Id == id);
+                    if (existing == null) return NotFound();
 
-                    // Process new images if any
-                    if (newImages != null && newImages.Any(f => f.Length > 0))
+                    // Update properties - handle empty strings as "keep existing value"
+                    existing.Title = !string.IsNullOrWhiteSpace(model.Title) ? model.Title : existing.Title;
+                    existing.Description = !string.IsNullOrWhiteSpace(model.Description) ? model.Description : existing.Description;
+                    existing.Category = model.Category;
+                    existing.Slug = _slug.ToSlug(existing.Title);
+
+                    // CRITICAL: Mark entity as modified to ensure EF Core tracks changes
+                    _db.Entry(existing).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+                    // Add new images that were successfully processed
+                    if (savedNewImages.Any())
                     {
-                        // Get current max SortOrder from database without tracking
                         var maxOrder = await _db.CollectionImages
                             .Where(i => i.CollectionId == existing.Id)
                             .Select(i => (int?)i.SortOrder)
                             .MaxAsync() ?? -1;
 
                         int order = maxOrder + 1;
-
-                        foreach (var f in newImages.Where(f => f.Length > 0))
+                        foreach (var (fileName, width, height, bytes) in savedNewImages)
                         {
-                            var nameNoExt = Guid.NewGuid().ToString("N");
-                            var meta = await _img.SaveOriginalAndVariantsAsync(f, nameNoExt);
                             _db.CollectionImages.Add(new CollectionImage
                             {
                                 CollectionId = existing.Id,
-                                FileName = nameNoExt,
-                                Width = meta.w,
-                                Height = meta.h,
-                                Bytes = meta.b,
+                                FileName = fileName,
+                                Width = width,
+                                Height = height,
+                                Bytes = bytes,
                                 SortOrder = order++
                             });
                         }
                     }
 
                     await _db.SaveChangesAsync();
-
-                    // Automatically translate collection to all supported languages
-                    await TranslateCollectionAsync(existing);
-
                     await transaction.CommitAsync();
+
+                    // PERFORMANCE FIX: Translate AFTER transaction commits (HTTP calls should not be in transaction)
+                    try
+                    {
+                        await TranslateCollectionAsync(existing);
+                    }
+                    catch (Exception transEx)
+                    {
+                        Console.WriteLine($"Translation failed (non-fatal): {transEx.Message}");
+                    }
 
                     TempData["SuccessMessage"] = $"Collection '{existing.Title}' updated successfully.";
                     return RedirectToAction(nameof(Edit), new { id });
@@ -254,8 +331,15 @@ namespace AAS.Web.Areas.Admin.Controllers
                 {
                     await transaction.RollbackAsync();
                     Console.WriteLine($"Error updating collection: {ex.Message}");
+
+                    // Clean up saved images since DB transaction failed
+                    foreach (var (fileName, _, _, _) in savedNewImages)
+                    {
+                        try { _img.DeleteAllVariants(fileName); } catch { }
+                    }
+
                     TempData["ErrorMessage"] = $"Error updating collection: {ex.Message}";
-                    return View(existing);
+                    return RedirectToAction(nameof(Edit), new { id });
                 }
             });
         }
@@ -375,7 +459,7 @@ namespace AAS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [Route("Admin/Collections/ReorderImages/{id}")]
-        [IgnoreAntiforgeryToken] // AJAX POST with JSON body
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ReorderImages(int id, [FromBody] List<int> imageIds)
         {
             try
@@ -457,6 +541,171 @@ namespace AAS.Web.Areas.Admin.Controllers
                 Console.WriteLine($"[ReorderImages] ERROR: {ex.Message}");
                 Console.WriteLine($"[ReorderImages] Stack: {ex.StackTrace}");
                 return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// Diagnostic page showing translation status
+        /// </summary>
+        public async Task<IActionResult> TranslationStatus()
+        {
+            var collections = await _db.Collections.ToListAsync();
+            var translations = await _db.CollectionTranslations.ToListAsync();
+
+            var status = new System.Text.StringBuilder();
+            status.AppendLine($"<h2>Translation Status</h2>");
+            status.AppendLine($"<p><strong>Total Collections:</strong> {collections.Count}</p>");
+            status.AppendLine($"<p><strong>Total Translations:</strong> {translations.Count}</p>");
+            status.AppendLine($"<p><strong>Translation Service Enabled:</strong> {_cfg["Translation:Enabled"]}</p>");
+            status.AppendLine($"<p><strong>Translation Endpoint:</strong> {_cfg["Translation:Endpoint"]}</p>");
+            status.AppendLine($"<hr>");
+
+            foreach (var col in collections)
+            {
+                var colTranslations = translations.Where(t => t.CollectionId == col.Id).ToList();
+                status.AppendLine($"<h3>Collection #{col.Id}: {col.Title}</h3>");
+                status.AppendLine($"<p>Translations: {colTranslations.Count}</p>");
+                if (colTranslations.Any())
+                {
+                    status.AppendLine("<ul>");
+                    foreach (var t in colTranslations)
+                    {
+                        status.AppendLine($"<li><strong>{t.LanguageCode}:</strong> {t.TranslatedTitle}</li>");
+                    }
+                    status.AppendLine("</ul>");
+                }
+                else
+                {
+                    status.AppendLine("<p style='color: red;'>⚠️ No translations found!</p>");
+                }
+            }
+
+            return Content(status.ToString(), "text/html");
+        }
+
+        /// <summary>
+        /// Create dummy/mock translations for testing (without calling translation API)
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateDummyTranslations()
+        {
+            try
+            {
+                var collections = await _db.Collections.ToListAsync();
+                var supportedCultures = _cfg.GetSection("Localization:SupportedCultures").Get<string[]>() ?? new[] { "en" };
+
+                // Remove existing translations
+                var existingTranslations = await _db.CollectionTranslations.ToListAsync();
+                _db.CollectionTranslations.RemoveRange(existingTranslations);
+
+                var langNames = new Dictionary<string, string>
+                {
+                    ["cs"] = "(Czech)",
+                    ["ru"] = "(Russian)",
+                    ["de"] = "(German)",
+                    ["es"] = "(Spanish)",
+                    ["fr"] = "(French)",
+                    ["zh"] = "(Chinese)",
+                    ["pt"] = "(Portuguese)",
+                    ["hi"] = "(Hindi)",
+                    ["ja"] = "(Japanese)"
+                };
+
+                foreach (var collection in collections)
+                {
+                    foreach (var lang in supportedCultures.Where(l => l != "en"))
+                    {
+                        var translation = new CollectionTranslation
+                        {
+                            CollectionId = collection.Id,
+                            LanguageCode = lang,
+                            TranslatedTitle = $"{collection.Title} {langNames.GetValueOrDefault(lang, $"({lang})")}",
+                            TranslatedDescription = string.IsNullOrWhiteSpace(collection.Description)
+                                ? $"[{langNames.GetValueOrDefault(lang, lang)} translation]"
+                                : $"{collection.Description} {langNames.GetValueOrDefault(lang, $"({lang})")}",
+                            CreatedUtc = DateTime.UtcNow
+                        };
+                        _db.CollectionTranslations.Add(translation);
+                    }
+                }
+
+                await _db.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = $"Created dummy translations for {collections.Count} collections for testing purposes.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Error: {ex.Message}";
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        /// <summary>
+        /// Delete all translations (for cleanup)
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteAllTranslations()
+        {
+            try
+            {
+                var translations = await _db.CollectionTranslations.ToListAsync();
+                _db.CollectionTranslations.RemoveRange(translations);
+                await _db.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = $"Deleted {translations.Count} translations. You can now retranslate.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Error: {ex.Message}";
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        /// <summary>
+        /// Admin action to translate all existing collections (for collections created before auto-translation was implemented)
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TranslateAllCollections()
+        {
+            try
+            {
+                Console.WriteLine("[TranslateAll] Starting translation of all collections...");
+
+                var collections = await _db.Collections.ToListAsync();
+                Console.WriteLine($"[TranslateAll] Found {collections.Count} collections to translate");
+
+                int successCount = 0;
+                int failCount = 0;
+
+                foreach (var collection in collections)
+                {
+                    try
+                    {
+                        Console.WriteLine($"[TranslateAll] Translating collection {collection.Id}: {collection.Title}");
+                        await TranslateCollectionAsync(collection);
+                        successCount++;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"[TranslateAll] Failed to translate collection {collection.Id}: {ex.Message}");
+                        failCount++;
+                    }
+                }
+
+                Console.WriteLine($"[TranslateAll] Complete! Success: {successCount}, Failed: {failCount}");
+                TempData["SuccessMessage"] = $"Translation completed! {successCount} collections translated successfully" + (failCount > 0 ? $", {failCount} failed." : ".");
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[TranslateAll] ERROR: {ex.Message}");
+                TempData["ErrorMessage"] = $"Error translating collections: {ex.Message}";
+                return RedirectToAction(nameof(Index));
             }
         }
 

@@ -17,9 +17,41 @@
             <h1 class="page-heading mb-2">Collections Management</h1>
             <p class="text-secondary mb-0">Total: @Model.Count() collection(s)</p>
         </div>
-        <a href="/Admin/Collections/Create" class="btn btn-primary" style="cursor: pointer; pointer-events: auto; z-index: 1000; position: relative;">
-            <span>✦</span> Create New Collection
-        </a>
+        <div class="d-flex gap-2">
+            @if (Model.Any())
+            {
+                <a href="/Admin/Collections/TranslationStatus" class="btn btn-outline-info" style="cursor: pointer; pointer-events: auto; z-index: 1000; position: relative;" target="_blank">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                    Status
+                </a>
+                <button type="button" class="btn btn-outline-danger" onclick="showDeleteTranslationsModal()" style="cursor: pointer; pointer-events: auto; z-index: 1000; position: relative;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                    </svg>
+                    Delete Translations
+                </button>
+                <button type="button" class="btn btn-outline-secondary" onclick="showTranslateAllModal()" style="cursor: pointer; pointer-events: auto; z-index: 1000; position: relative;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                        <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/>
+                        <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/>
+                    </svg>
+                    Translate All (API)
+                </button>
+                <button type="button" class="btn btn-outline-success" onclick="showDummyTranslationsModal()" style="cursor: pointer; pointer-events: auto; z-index: 1000; position: relative;">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                    </svg>
+                    Dummy Translations
+                </button>
+            }
+            <a href="/Admin/Collections/Create" class="btn btn-primary" style="cursor: pointer; pointer-events: auto; z-index: 1000; position: relative;">
+                <span>✦</span> Create New Collection
+            </a>
+        </div>
     </div>
     <div class="ornament-divider"></div>
 </div>
@@ -248,6 +280,82 @@ else
 }
 </style>
 
+<!-- Dummy Translations Modal -->
+<div class="modal fade" id="dummyTranslationsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Dummy Translations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>For testing only!</strong> This will create mock/dummy translations without calling the translation API.</p>
+                <p>Example: "TEST" → "TEST (Czech)", "TEST (Russian)", etc.</p>
+                <p class="text-success small">✓ Works instantly, no API key needed<br>✓ Perfect for testing the translation display system</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="/Admin/Collections/CreateDummyTranslations" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-success">Create Dummy Translations</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete All Translations Modal -->
+<div class="modal fade" id="deleteTranslationsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete All Translations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger"><strong>Warning!</strong> This will delete all existing translations from the database.</p>
+                <p>Use this before retranslating collections after enabling the translation service.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="/Admin/Collections/DeleteAllTranslations" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">Delete All Translations</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Translate All Confirmation Modal -->
+<div class="modal fade" id="translateAllModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Translate All Collections</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This will translate all @Model.Count() collections to all supported languages (cs, ru, de, es, fr, zh, pt, hi, ja).</p>
+                <p class="text-warning small"><strong>Note:</strong> Make sure Translation service is enabled in appsettings.json. This may take a few minutes.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="/Admin/Collections/TranslateAllCollections" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                            <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/>
+                            <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/>
+                        </svg>
+                        Start Translation
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Delete Confirmation Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -273,6 +381,21 @@ else
 </div>
 
 <script>
+function showDummyTranslationsModal() {
+    var modal = new bootstrap.Modal(document.getElementById('dummyTranslationsModal'));
+    modal.show();
+}
+
+function showDeleteTranslationsModal() {
+    var modal = new bootstrap.Modal(document.getElementById('deleteTranslationsModal'));
+    modal.show();
+}
+
+function showTranslateAllModal() {
+    var modal = new bootstrap.Modal(document.getElementById('translateAllModal'));
+    modal.show();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.delete-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {

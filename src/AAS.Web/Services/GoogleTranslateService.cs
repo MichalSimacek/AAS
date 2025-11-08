@@ -2,6 +2,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Web;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace AAS.Web.Services
 {
@@ -9,12 +10,13 @@ namespace AAS.Web.Services
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
-        private static readonly Dictionary<string, string> _cache = new();
+        private readonly IMemoryCache _cache;
 
-        public GoogleTranslateService(IHttpClientFactory httpClientFactory, IConfiguration configuration)
+        public GoogleTranslateService(IHttpClientFactory httpClientFactory, IConfiguration configuration, IMemoryCache cache)
         {
             _httpClientFactory = httpClientFactory;
             _configuration = configuration;
+            _cache = cache;
         }
 
         public async Task<string> TranslateAsync(string text, string targetLanguage)
@@ -24,11 +26,11 @@ namespace AAS.Web.Services
                 return text;
             }
 
-            // Check cache first
-            var cacheKey = $"{text}_{targetLanguage}";
-            if (_cache.ContainsKey(cacheKey))
+            // Check cache first (thread-safe with IMemoryCache)
+            var cacheKey = $"translate:{text}_{targetLanguage}";
+            if (_cache.TryGetValue(cacheKey, out string? cachedValue) && cachedValue != null)
             {
-                return _cache[cacheKey];
+                return cachedValue;
             }
 
             try
@@ -69,7 +71,14 @@ namespace AAS.Web.Services
                     if (result?.data?.translations?.Count > 0)
                     {
                         var translatedText = result.data.translations[0].translatedText;
-                        _cache[cacheKey] = translatedText;
+
+                        // Cache with expiration to prevent unbounded growth
+                        _cache.Set(cacheKey, translatedText, new MemoryCacheEntryOptions
+                        {
+                            SlidingExpiration = TimeSpan.FromHours(24),
+                            AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(7)
+                        });
+
                         return translatedText;
                     }
                 }

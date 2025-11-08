@@ -48,8 +48,8 @@
             <span class="badge badge-gold mb-3">@Model.Category</span>
             <h1 style="font-size: 2rem;">@Model.Title</h1>
             
-            <div class="mb-4">
-              @Html.Raw(ViewBag.TranslatedDescription as string ?? Model.Description)
+            <div class="mb-4" style="white-space: pre-wrap;">
+              @(ViewBag.TranslatedDescription as string ?? Model.Description)
             </div>
 
             <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#interestModal">
