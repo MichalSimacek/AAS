@@ -115,27 +115,28 @@
       <div class="modal-body">
         <p class="text-secondary mb-4">Fill out the form below and our specialist will contact you within 12 hours.</p>
         <form id="inqForm">
+          @Html.AntiForgeryToken()
           <input type="hidden" name="collectionId" value="@Model.Id" />
-          <input type="hidden" name="collectionTitle" value="@Model.Title" />
+          <input type="hidden" name="collectionTitle" value="@Html.Encode(Model.Title)" />
           <div class="mb-3">
             <label class="form-label">@L["First name"]</label>
-            <input class="form-control" name="FirstName" required />
+            <input class="form-control" name="FirstName" maxlength="100" required />
           </div>
           <div class="mb-3">
             <label class="form-label">@L["Last name"]</label>
-            <input class="form-control" name="LastName" required />
+            <input class="form-control" name="LastName" maxlength="100" required />
           </div>
           <div class="mb-3">
             <label class="form-label">Email</label>
-            <input class="form-control" name="Email" type="email" required />
+            <input class="form-control" name="Email" type="email" maxlength="160" required />
           </div>
           <div class="mb-3">
             <label class="form-label">@L["Phone"]</label>
-            <input class="form-control" name="Phone" />
+            <input class="form-control" name="Phone" type="tel" maxlength="40" />
           </div>
           <div class="mb-3">
             <label class="form-label">@L["Message"]</label>
-            <textarea class="form-control" name="Message" rows="4" placeholder="Tell us about your interest..."></textarea>
+            <textarea class="form-control" name="Message" rows="4" maxlength="5000" placeholder="Tell us about your interest..."></textarea>
           </div>
         </form>
         <div id="inqOk" class="alert alert-success d-none">@L["Thank you. We will contact you soon."]</div>
