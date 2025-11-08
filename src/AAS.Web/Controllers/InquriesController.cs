@@ -17,28 +17,52 @@ namespace AAS.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(int? collectionId, string? collectionTitle, Inquiry model)
         {
-            // Security: Get real IP (consider X-Forwarded-For for reverse proxy)
-            var ip = HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault()
-                     ?? HttpContext.Connection.RemoteIpAddress?.ToString()
-                     ?? "unknown";
+            // SECURITY: Validate model state (includes all data annotations)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { success = false, message = "Invalid input data" });
+            }
+
+            // Security: Get real IP (validate X-Forwarded-For header)
+            var forwardedFor = HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+            var remoteIp = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+            
+            // SECURITY: Validate forwarded IP format to prevent header injection
+            string ip = remoteIp;
+            if (!string.IsNullOrEmpty(forwardedFor))
+            {
+                var ips = forwardedFor.Split(',');
+                var firstIp = ips[0].Trim();
+                // Basic IP validation
+                if (System.Net.IPAddress.TryParse(firstIp, out _))
+                {
+                    ip = firstIp;
+                }
+            }
 
             // Security: Rate limiting - 3 requests per 15 minutes per IP
             var key = $"inq:{ip}";
             var count = _cache.GetOrCreate<int>(key, e => { e.SlidingExpiration = TimeSpan.FromMinutes(15); return 0; });
             if (count >= 3)
             {
-                return StatusCode(429, "Too many inquiries. Please try again later.");
+                return StatusCode(429, new { success = false, message = "Too many inquiries. Please try again later." });
             }
 
-            // Security: Validate input lengths
-            if (!string.IsNullOrWhiteSpace(model.Message) && model.Message.Length > 5000)
+            // SECURITY: Validate collectionId if provided
+            if (collectionId.HasValue && collectionId.Value <= 0)
             {
-                return BadRequest("Message is too long (max 5000 characters)");
+                return BadRequest(new { success = false, message = "Invalid collection ID" });
+            }
+
+            // SECURITY: Sanitize and validate collectionTitle length
+            if (!string.IsNullOrWhiteSpace(collectionTitle) && collectionTitle.Length > 200)
+            {
+                collectionTitle = collectionTitle.Substring(0, 200);
             }
 
             model.CollectionId = collectionId;
             model.CollectionTitle = collectionTitle;
-            model.OriginIp = ip;
+            model.OriginIp = ip.Length > 100 ? ip.Substring(0, 100) : ip;
 
             _cache.Set(key, count + 1, new MemoryCacheEntryOptions { SlidingExpiration = TimeSpan.FromMinutes(15) });
 
@@ -47,12 +71,13 @@ namespace AAS.Web.Controllers
                 _db.Inquiries.Add(model);
                 await _db.SaveChangesAsync();
                 await _email.SendInquiryAsync(model);
-                return Ok(new { ok = true });
+                return Ok(new { success = true, message = "Inquiry submitted successfully" });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // Don't expose internal errors to client
-                return StatusCode(500, "An error occurred while processing your inquiry");
+                // SECURITY: Log error securely without exposing details to client
+                Console.WriteLine($"[SECURE] Inquiry submission error: {ex.GetType().Name}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your inquiry" });
             }
         }
     }
