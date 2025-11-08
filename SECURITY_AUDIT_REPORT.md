@@ -66,15 +66,18 @@ if (token) {
 #### 3. XSS Vulnerabilities in Views
 **Location**: `/Views/Collections/Detail.cshtml`  
 **Severity**: CRITICAL  
-**Issue**: User-generated content (Collection titles, descriptions) was rendered without HTML encoding.
+**Issue**: User-generated content (Collection titles, descriptions) was rendered without proper encoding.
 
 **Fixes Applied**:
-- Line 119: `value="@Html.Encode(Model.Title)"` (was: `value="@Model.Title"`)
-- Line 58: `@Html.Raw(Html.Encode(ViewBag.TranslatedTitle...))` with proper encoding
-- Line 61: Description encoded with newline handling
-- Line 48: Audio path attribute-encoded: `@Html.AttributeEncode(Model.AudioPath)`
+- Line 58: `@Html.Raw(Html.Encode(ViewBag.TranslatedTitle...))` - Encodes then allows display
+- Line 61: Description encoded with HTML encoding plus newline-to-BR conversion
+- Line 120: Uses Razor's automatic attribute encoding for `value="@Model.Title"`
+- Line 48: Uses Razor's automatic attribute encoding for audio `src="@Model.AudioPath"`
+- Added maxlength attributes to all form inputs for client-side validation
 
-**Result**: All user content is now properly HTML/attribute encoded to prevent XSS attacks.
+**Important**: ASP.NET Core Razor automatically HTML-encodes all `@` expressions by default, including in attributes. Explicit encoding is only needed when using `@Html.Raw()` to output HTML tags intentionally (like `<br/>`).
+
+**Result**: All user content is now properly encoded to prevent XSS attacks.
 
 ---
 
