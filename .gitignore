@@ -217,3 +217,12 @@ publish/
 # Environment files
 *.env
 *.env.*
+
+# Production Configuration - SECURITY CRITICAL!
+.env.production
+.env.local
+nginx/ssl/*.pem
+nginx/ssl/*.key
+backups/
+logs/
+postgres-data/
