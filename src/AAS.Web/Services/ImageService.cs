@@ -78,10 +78,25 @@ namespace AAS.Web.Services
         {
             try
             {
+                // SECURITY: Validate filename to prevent path traversal
+                if (string.IsNullOrWhiteSpace(nameNoExt) || 
+                    nameNoExt.Contains("..") || 
+                    nameNoExt.Contains("/") || 
+                    nameNoExt.Contains("\\"))
+                {
+                    return;
+                }
+
                 // Delete original and all variants
+                var rootPath = Path.GetFullPath(root);
                 foreach (var file in Directory.GetFiles(root, $"{nameNoExt}*"))
                 {
-                    File.Delete(file);
+                    // SECURITY: Verify file is within uploads directory
+                    var fullPath = Path.GetFullPath(file);
+                    if (fullPath.StartsWith(rootPath, StringComparison.OrdinalIgnoreCase))
+                    {
+                        File.Delete(file);
+                    }
                 }
             }
             catch
