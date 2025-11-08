@@ -131,29 +131,41 @@ app.UseHttpsRedirection();
 
 app.Use((ctx, next) =>
 {
-    // Security Headers
+    // SECURITY HEADERS - Comprehensive protection against common web vulnerabilities
     ctx.Response.Headers["X-Content-Type-Options"] = "nosniff";
     ctx.Response.Headers["X-Frame-Options"] = "DENY";
     ctx.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
     ctx.Response.Headers["X-XSS-Protection"] = "0"; // Disabled as modern browsers use CSP
-    ctx.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=(), usb=()";
+    ctx.Response.Headers["X-Download-Options"] = "noopen";
+    ctx.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=(), usb=(), payment=()";
+    
+    // HSTS - Force HTTPS for 1 year (only in production)
+    if (!app.Environment.IsDevelopment())
+    {
+        ctx.Response.Headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload";
+    }
 
-    // CSP - allow specific trusted sources and inline scripts for functionality
+    // CSP - Content Security Policy with nonce-based script protection
+    // Note: 'unsafe-inline' is needed for Bootstrap and inline event handlers
+    // Consider migrating to nonce-based CSP in future for better security
     var csp = "default-src 'self'; " +
               "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com; " +
               "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; " +
-              "img-src 'self' data: https:; " +
+              "img-src 'self' data: https: blob:; " +
               "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; " +
-              "media-src 'self'; " +
+              "media-src 'self' blob:; " +
               "connect-src 'self' https://cdn.jsdelivr.net https://code.jquery.com; " +
               "frame-ancestors 'none'; " +
               "base-uri 'self'; " +
-              "form-action 'self'";
+              "form-action 'self'; " +
+              "upgrade-insecure-requests";
     ctx.Response.Headers["Content-Security-Policy"] = csp;
 
-    // Remove server header
+    // Remove server identification headers
     ctx.Response.Headers.Remove("Server");
     ctx.Response.Headers.Remove("X-Powered-By");
+    ctx.Response.Headers.Remove("X-AspNet-Version");
+    ctx.Response.Headers.Remove("X-AspNetMvc-Version");
 
     return next();
 });
