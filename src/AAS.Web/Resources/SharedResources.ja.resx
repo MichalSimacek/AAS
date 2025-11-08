@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>コレクション</value></data>
-<data name="About us" xml:space="preserve"><value>私たちについて</value></data>
 <data name="Contacts" xml:space="preserve"><value>お問い合わせ</value></data>
 <data name="Register" xml:space="preserve"><value>登録</value></data>
 <data name="Login" xml:space="preserve"><value>ログイン</value></data>
@@ -100,7 +99,6 @@
 <data name="Create Collection" xml:space="preserve"><value>コレクションを作成</value></data>
 <data name="Edit" xml:space="preserve"><value>編集</value></data>
 <data name="Delete" xml:space="preserve"><value>削除</value></data>
-<data name="images" xml:space="preserve"><value>画像</value></data>
 <data name="Created" xml:space="preserve"><value>作成済み</value></data>
 <data name="Audio" xml:space="preserve"><value>オーディオ</value></data>
 <data name="Confirm Delete" xml:space="preserve"><value>削除の確認</value></data>
@@ -117,7 +115,6 @@
 <data name="Images" xml:space="preserve"><value>画像</value></data>
 <data name="Audio File" xml:space="preserve"><value>オーディオファイル</value></data>
 <data name="Submit" xml:space="preserve"><value>送信</value></data>
-<data name="Save Changes" xml:space="preserve"><value>変更を保存</value></data>
 <data name="Add New Images" xml:space="preserve"><value>新しい画像を追加</value></data>
 <data name="Current Images" xml:space="preserve"><value>現在の画像</value></data>
 <data name="Drag to reorder" xml:space="preserve"><value>ドラッグして並べ替え</value></data>
@@ -221,7 +218,6 @@
 <data name="Delete Account" xml:space="preserve"><value>アカウントを削除</value></data>
 <data name="Delete account warning" xml:space="preserve"><value>アカウントの削除は永久的で、元に戻すことはできません。</value></data>
 <data name="Confirm password label" xml:space="preserve"><value>パスワードで確認</value></data>
-<data name="Confirm password placeholder" xml:space="preserve"><value>確認のためパスワードを入力</value></data>
 <data name="Delete account button" xml:space="preserve"><value>アカウントを完全に削除</value></data>
 
 <!-- Confirm Email Messages -->

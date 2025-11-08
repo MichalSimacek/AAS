@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>संग्रह</value></data>
-<data name="About us" xml:space="preserve"><value>हमारे बारे में</value></data>
 <data name="Contacts" xml:space="preserve"><value>संपर्क</value></data>
 <data name="Register" xml:space="preserve"><value>पंजीकरण करें</value></data>
 <data name="Login" xml:space="preserve"><value>लॉगिन करें</value></data>
@@ -100,7 +99,6 @@
 <data name="Create Collection" xml:space="preserve"><value>संग्रह बनाएं</value></data>
 <data name="Edit" xml:space="preserve"><value>संपादित करें</value></data>
 <data name="Delete" xml:space="preserve"><value>हटाएं</value></data>
-<data name="images" xml:space="preserve"><value>चित्र</value></data>
 <data name="Created" xml:space="preserve"><value>बनाया गया</value></data>
 <data name="Audio" xml:space="preserve"><value>ऑडियो</value></data>
 <data name="Confirm Delete" xml:space="preserve"><value>हटाना पुष्टि करें</value></data>
@@ -117,7 +115,6 @@
 <data name="Images" xml:space="preserve"><value>चित्र</value></data>
 <data name="Audio File" xml:space="preserve"><value>ऑडियो फ़ाइल</value></data>
 <data name="Submit" xml:space="preserve"><value>जमा करें</value></data>
-<data name="Save Changes" xml:space="preserve"><value>परिवर्तन सहेजें</value></data>
 <data name="Add New Images" xml:space="preserve"><value>नई छवियां जोड़ें</value></data>
 <data name="Current Images" xml:space="preserve"><value>वर्तमान छवियां</value></data>
 <data name="Drag to reorder" xml:space="preserve"><value>पुनः क्रम के लिए खींचें</value></data>
@@ -221,7 +218,6 @@
 <data name="Delete Account" xml:space="preserve"><value>खाता हटाएं</value></data>
 <data name="Delete account warning" xml:space="preserve"><value>आपके खाते को हटाना स्थायी है और इसे पूर्ववत नहीं किया जा सकता।</value></data>
 <data name="Confirm password label" xml:space="preserve"><value>अपने पासवर्ड से पुष्टि करें</value></data>
-<data name="Confirm password placeholder" xml:space="preserve"><value>पुष्टि करने के लिए अपना पासवर्ड दर्ज करें</value></data>
 <data name="Delete account button" xml:space="preserve"><value>खाता स्थायी रूप से हटाएं</value></data>
 
 <!-- Confirm Email Messages -->

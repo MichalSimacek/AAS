@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>Kollektionen</value></data>
-<data name="About us" xml:space="preserve"><value>Über uns</value></data>
 <data name="Contacts" xml:space="preserve"><value>Kontakte</value></data>
 <data name="Register" xml:space="preserve"><value>Registrieren</value></data>
 <data name="Login" xml:space="preserve"><value>Anmelden</value></data>
@@ -100,7 +99,6 @@
 <data name="Create Collection" xml:space="preserve"><value>Kollektion erstellen</value></data>
 <data name="Edit" xml:space="preserve"><value>Bearbeiten</value></data>
 <data name="Delete" xml:space="preserve"><value>Löschen</value></data>
-<data name="images" xml:space="preserve"><value>Bilder</value></data>
 <data name="Created" xml:space="preserve"><value>Erstellt</value></data>
 <data name="Audio" xml:space="preserve"><value>Audio</value></data>
 <data name="Confirm Delete" xml:space="preserve"><value>Löschen bestätigen</value></data>
@@ -117,7 +115,6 @@
 <data name="Images" xml:space="preserve"><value>Bilder</value></data>
 <data name="Audio File" xml:space="preserve"><value>Audiodatei</value></data>
 <data name="Submit" xml:space="preserve"><value>Absenden</value></data>
-<data name="Save Changes" xml:space="preserve"><value>Änderungen speichern</value></data>
 <data name="Add New Images" xml:space="preserve"><value>Neue Bilder hinzufügen</value></data>
 <data name="Current Images" xml:space="preserve"><value>Aktuelle Bilder</value></data>
 <data name="Drag to reorder" xml:space="preserve"><value>Ziehen, um neu anzuordnen</value></data>
@@ -221,7 +218,6 @@
 <data name="Delete Account" xml:space="preserve"><value>Konto löschen</value></data>
 <data name="Delete account warning" xml:space="preserve"><value>Das Löschen Ihres Kontos ist dauerhaft und kann nicht rückgängig gemacht werden.</value></data>
 <data name="Confirm password label" xml:space="preserve"><value>Mit Ihrem Passwort bestätigen</value></data>
-<data name="Confirm password placeholder" xml:space="preserve"><value>Geben Sie Ihr Passwort zur Bestätigung ein</value></data>
 <data name="Delete account button" xml:space="preserve"><value>Konto dauerhaft löschen</value></data>
 
 <!-- Confirm Email Messages -->

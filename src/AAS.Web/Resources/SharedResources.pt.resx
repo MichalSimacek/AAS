@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>Coleções</value></data>
-<data name="About us" xml:space="preserve"><value>Sobre nós</value></data>
 <data name="Contacts" xml:space="preserve"><value>Contatos</value></data>
 <data name="Register" xml:space="preserve"><value>Registrar</value></data>
 <data name="Login" xml:space="preserve"><value>Entrar</value></data>
@@ -100,7 +99,6 @@
 <data name="Create Collection" xml:space="preserve"><value>Criar coleção</value></data>
 <data name="Edit" xml:space="preserve"><value>Editar</value></data>
 <data name="Delete" xml:space="preserve"><value>Excluir</value></data>
-<data name="images" xml:space="preserve"><value>imagens</value></data>
 <data name="Created" xml:space="preserve"><value>Criado</value></data>
 <data name="Audio" xml:space="preserve"><value>Áudio</value></data>
 <data name="Confirm Delete" xml:space="preserve"><value>Confirmar exclusão</value></data>
@@ -117,7 +115,6 @@
 <data name="Images" xml:space="preserve"><value>Imagens</value></data>
 <data name="Audio File" xml:space="preserve"><value>Arquivo de áudio</value></data>
 <data name="Submit" xml:space="preserve"><value>Enviar</value></data>
-<data name="Save Changes" xml:space="preserve"><value>Salvar alterações</value></data>
 <data name="Add New Images" xml:space="preserve"><value>Adicionar novas imagens</value></data>
 <data name="Current Images" xml:space="preserve"><value>Imagens atuais</value></data>
 <data name="Drag to reorder" xml:space="preserve"><value>Arraste para reordenar</value></data>
@@ -221,7 +218,6 @@
 <data name="Delete Account" xml:space="preserve"><value>Excluir conta</value></data>
 <data name="Delete account warning" xml:space="preserve"><value>Excluir sua conta é permanente e não pode ser desfeito.</value></data>
 <data name="Confirm password label" xml:space="preserve"><value>Confirme com sua senha</value></data>
-<data name="Confirm password placeholder" xml:space="preserve"><value>Digite sua senha para confirmar</value></data>
 <data name="Delete account button" xml:space="preserve"><value>Excluir conta permanentemente</value></data>
 
 <!-- Confirm Email Messages -->

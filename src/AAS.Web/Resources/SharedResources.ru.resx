@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>Коллекции</value></data>
-<data name="About us" xml:space="preserve"><value>О нас</value></data>
 <data name="Contacts" xml:space="preserve"><value>Контакты</value></data>
 <data name="Register" xml:space="preserve"><value>Регистрация</value></data>
 <data name="Login" xml:space="preserve"><value>Войти</value></data>
@@ -100,7 +99,6 @@
 <data name="Create Collection" xml:space="preserve"><value>Создать коллекцию</value></data>
 <data name="Edit" xml:space="preserve"><value>Редактировать</value></data>
 <data name="Delete" xml:space="preserve"><value>Удалить</value></data>
-<data name="images" xml:space="preserve"><value>изображений</value></data>
 <data name="Created" xml:space="preserve"><value>Создано</value></data>
 <data name="Audio" xml:space="preserve"><value>Аудио</value></data>
 <data name="Confirm Delete" xml:space="preserve"><value>Подтвердить удаление</value></data>
@@ -117,7 +115,6 @@
 <data name="Images" xml:space="preserve"><value>Изображения</value></data>
 <data name="Audio File" xml:space="preserve"><value>Аудио файл</value></data>
 <data name="Submit" xml:space="preserve"><value>Отправить</value></data>
-<data name="Save Changes" xml:space="preserve"><value>Сохранить изменения</value></data>
 <data name="Add New Images" xml:space="preserve"><value>Добавить новые изображения</value></data>
 <data name="Current Images" xml:space="preserve"><value>Текущие изображения</value></data>
 <data name="Drag to reorder" xml:space="preserve"><value>Перетащите для изменения порядка</value></data>
@@ -221,7 +218,6 @@
 <data name="Delete Account" xml:space="preserve"><value>Удалить учетную запись</value></data>
 <data name="Delete account warning" xml:space="preserve"><value>Удаление учетной записи является окончательным и не может быть отменено.</value></data>
 <data name="Confirm password label" xml:space="preserve"><value>Подтвердите с помощью пароля</value></data>
-<data name="Confirm password placeholder" xml:space="preserve"><value>Введите пароль для подтверждения</value></data>
 <data name="Delete account button" xml:space="preserve"><value>Удалить учетную запись навсегда</value></data>
 
 <!-- Confirm Email Messages -->
