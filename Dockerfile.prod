@@ -1,0 +1,36 @@
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy csproj and restore
+COPY ["src/AAS.Web/AAS.Web.csproj", "AAS.Web/"]
+RUN dotnet restore "AAS.Web/AAS.Web.csproj"
+
+# Copy everything and build
+COPY src/AAS.Web/. AAS.Web/
+WORKDIR "/src/AAS.Web"
+RUN dotnet build "AAS.Web.csproj" -c Release -o /app/build
+
+# Publish
+FROM build AS publish
+RUN dotnet publish "AAS.Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+
+# Install dependencies
+RUN apt-get update && apt-get install -y libgdiplus libc6-dev && rm -rf /var/lib/apt/lists/*
+
+# Copy published app
+COPY --from=publish /app/publish .
+
+# Create directories
+RUN mkdir -p /app/wwwroot/uploads/images /app/wwwroot/uploads/audio /app/logs && chmod -R 755 /app/wwwroot/uploads /app/logs
+
+ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_URLS=http://+:5000
+
+EXPOSE 5000
+
+ENTRYPOINT ["dotnet", "AAS.Web.dll"]
