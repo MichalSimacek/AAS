@@ -36,14 +36,8 @@ services:
       # ASP.NET Core
       ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_URLS: http://+:8080
-    ports:
-      - "8080:8080"
     volumes:
       - uploads-data:/app/wwwroot/uploads
-    networks:
-      - aas-network
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     deploy:
       resources:
         limits:
