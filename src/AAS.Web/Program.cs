@@ -127,7 +127,11 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// Only redirect to HTTPS if running on HTTPS port
+if (app.Environment.IsProduction() && app.Urls.Any(u => u.Contains("https")))
+{
+    app.UseHttpsRedirection();
+}
 
 app.Use((ctx, next) =>
 {
