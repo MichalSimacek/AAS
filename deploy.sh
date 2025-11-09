@@ -248,14 +248,25 @@ NGINX_EOF
         read -p "Enter email for Let's Encrypt notifications: " LE_EMAIL
         
         print_info "Requesting SSL certificates..."
+        echo ""
+        echo "Request certificate for:"
+        echo "  1) aristocraticartworksale.com only"
+        echo "  2) aristocraticartworksale.com + www.aristocraticartworksale.com (requires www DNS record)"
+        read -p "Enter choice (1 or 2): " cert_choice
+        
+        if [ "$cert_choice" = "2" ]; then
+            CERT_DOMAINS="-d aristocraticartworksale.com -d www.aristocraticartworksale.com"
+        else
+            CERT_DOMAINS="-d aristocraticartworksale.com"
+        fi
+        
         if $DOCKER_COMPOSE -f $COMPOSE_FILE run --rm --entrypoint certbot certbot certonly \
           --webroot \
           --webroot-path=/var/www/certbot \
           --email "$LE_EMAIL" \
           --agree-tos \
           --no-eff-email \
-          -d aristocraticartworksale.com \
-          -d www.aristocraticartworksale.com; then
+          $CERT_DOMAINS; then
             
             print_success "SSL certificates obtained!"
             
