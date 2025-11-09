@@ -111,26 +111,19 @@ fi
 print_success "Environment configuration validated"
 echo ""
 
-# Step 4: Prepare docker-compose for host services
-echo "Step 4: Preparing Docker Compose configuration..."
+# Step 4: Use host-optimized docker-compose
+echo "Step 4: Configuring for host services..."
 
-# Create a host-optimized docker-compose file
-if [ ! -f docker-compose.host.yml ]; then
-    print_info "Creating docker-compose.host.yml for host services..."
-    
-    # Copy original and remove db service and dependencies
-    cat $COMPOSE_FILE | \
-    sed '/^  db:/,/^  [a-z]/{ /^  db:/d; /^  [a-z]/!d; }' | \
-    sed '/depends_on:/,/condition: service_healthy/d' | \
-    sed 's/DB_HOST: db/DB_HOST: host.docker.internal/g' > docker-compose.host.yml
-    
-    print_success "Created docker-compose.host.yml"
-else
-    print_info "docker-compose.host.yml already exists"
+# Use docker-compose.host.yml which connects to host PostgreSQL and ProtonMail Bridge
+COMPOSE_FILE="docker-compose.host.yml"
+
+if [ ! -f "$COMPOSE_FILE" ]; then
+    print_error "docker-compose.host.yml not found!"
+    print_info "This file should be in the repository"
+    exit 1
 fi
 
-# Use host config file
-COMPOSE_FILE="docker-compose.host.yml"
+print_success "Using $COMPOSE_FILE (configured for host PostgreSQL + ProtonMail Bridge)"
 echo ""
 
 # Step 5: Check DNS
