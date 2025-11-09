@@ -2,6 +2,7 @@
 
 # Production Setup Script for Aristocratic Artwork Sale
 # This script helps set up the production environment step by step
+# Supports: Host PostgreSQL + ProtonMail Bridge OR Docker-based setup
 
 set -e
 
