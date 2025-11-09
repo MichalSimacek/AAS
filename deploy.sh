@@ -116,7 +116,7 @@ if [ ! -f docker-compose.host.yml ]; then
     print_info "Creating docker-compose.host.yml for host services..."
     
     # Copy original and remove db service and dependencies
-    cat docker-compose.production.yml | \
+    cat $COMPOSE_FILE | \
     sed '/^  db:/,/^  [a-z]/{ /^  db:/d; /^  [a-z]/!d; }' | \
     sed '/depends_on:/,/condition: service_healthy/d' | \
     sed 's/DB_HOST: db/DB_HOST: host.docker.internal/g' > docker-compose.host.yml
@@ -240,11 +240,11 @@ http {
 NGINX_EOF
         
         # Backup and modify docker-compose
-        cp docker-compose.production.yml docker-compose.production.yml.ssl_backup
-        sed -i 's|nginx.prod.conf|nginx.init.conf|g' docker-compose.production.yml
+        cp $COMPOSE_FILE $COMPOSE_FILE.ssl_backup
+        sed -i 's|nginx.prod.conf|nginx.init.conf|g' $COMPOSE_FILE
         
         print_info "Starting Nginx for ACME challenge..."
-        $DOCKER_COMPOSE -f docker-compose.production.yml up -d nginx
+        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d nginx
         
         sleep 3
         
@@ -252,7 +252,7 @@ NGINX_EOF
         read -p "Enter email for Let's Encrypt notifications: " LE_EMAIL
         
         print_info "Requesting SSL certificates..."
-        if $DOCKER_COMPOSE -f docker-compose.production.yml run --rm certbot certonly \
+        if $DOCKER_COMPOSE -f $COMPOSE_FILE run --rm certbot certonly \
           --webroot \
           --webroot-path=/var/www/certbot \
           --email "$LE_EMAIL" \
@@ -264,17 +264,17 @@ NGINX_EOF
             print_success "SSL certificates obtained!"
             
             # Restore production config
-            mv docker-compose.production.yml.ssl_backup docker-compose.production.yml
+            mv $COMPOSE_FILE.ssl_backup $COMPOSE_FILE
             
             # Stop temporary setup
-            $DOCKER_COMPOSE -f docker-compose.production.yml down
+            $DOCKER_COMPOSE -f $COMPOSE_FILE down
             
             SKIP_SSL_SETUP=false
         else
             print_error "Failed to obtain SSL certificates"
             print_info "Restoring configuration..."
-            mv docker-compose.production.yml.ssl_backup docker-compose.production.yml
-            $DOCKER_COMPOSE -f docker-compose.production.yml down
+            mv $COMPOSE_FILE.ssl_backup $COMPOSE_FILE
+            $DOCKER_COMPOSE -f $COMPOSE_FILE down
             exit 1
         fi
         
@@ -307,15 +307,15 @@ export $(cat .env.production | grep -v '^#' | xargs)
 
 # Build the application
 print_info "Building Docker image..."
-$DOCKER_COMPOSE -f docker-compose.production.yml build web
+$DOCKER_COMPOSE -f $COMPOSE_FILE build web
 
 # Start services (exclude db since we use host PostgreSQL)
 print_info "Starting services..."
 if [ "$SKIP_SSL_SETUP" = true ]; then
     print_warning "Starting WITHOUT SSL (HTTP only)"
-    $DOCKER_COMPOSE -f docker-compose.production.yml up -d web
+    $DOCKER_COMPOSE -f $COMPOSE_FILE up -d web
 else
-    $DOCKER_COMPOSE -f docker-compose.production.yml up -d web nginx certbot
+    $DOCKER_COMPOSE -f $COMPOSE_FILE up -d web nginx certbot
 fi
 
 print_success "Services started"
@@ -329,7 +329,7 @@ sleep 10
 # Check service status
 echo ""
 print_info "Service Status:"
-$DOCKER_COMPOSE -f docker-compose.production.yml ps
+$DOCKER_COMPOSE -f $COMPOSE_FILE ps
 
 # Test connection
 echo ""
@@ -374,9 +374,9 @@ echo "  Email: $ADMIN_EMAIL"
 echo "  Password: (as configured in .env.production)"
 echo ""
 echo "📋 Useful Commands:"
-echo "  View logs:    $DOCKER_COMPOSE -f docker-compose.production.yml logs -f"
-echo "  Restart:      $DOCKER_COMPOSE -f docker-compose.production.yml restart"
-echo "  Stop:         $DOCKER_COMPOSE -f docker-compose.production.yml down"
+echo "  View logs:    $DOCKER_COMPOSE -f $COMPOSE_FILE logs -f"
+echo "  Restart:      $DOCKER_COMPOSE -f $COMPOSE_FILE restart"
+echo "  Stop:         $DOCKER_COMPOSE -f $COMPOSE_FILE down"
 echo "  Update app:   git pull && ./deploy.sh"
 echo ""
 echo "📖 Documentation: See PRODUCTION_DEPLOYMENT.md for details"
