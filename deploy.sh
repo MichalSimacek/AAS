@@ -111,22 +111,23 @@ echo ""
 # Step 4: Prepare docker-compose for host services
 echo "Step 4: Preparing Docker Compose configuration..."
 
-# Check if we need to modify docker-compose
-if grep -q "^  db:" docker-compose.production.yml && ! grep -q "^  # db:" docker-compose.production.yml; then
-    print_info "Backing up docker-compose.production.yml..."
-    cp docker-compose.production.yml docker-compose.production.yml.backup
+# Create a host-optimized docker-compose file
+if [ ! -f docker-compose.host.yml ]; then
+    print_info "Creating docker-compose.host.yml for host services..."
     
-    print_info "Modifying for host PostgreSQL (commenting out db service)..."
-    # Comment out entire db service section
-    sed -i '/^  db:/,/^$/s/^/  # /' docker-compose.production.yml
-    # Comment out depends_on section
-    sed -i '/^    depends_on:/,/^      db:/s/^/    # /' docker-compose.production.yml
-    sed -i '/^        condition: service_healthy/s/^/    # /' docker-compose.production.yml
+    # Copy original and remove db service and dependencies
+    cat docker-compose.production.yml | \
+    sed '/^  db:/,/^  [a-z]/{ /^  db:/d; /^  [a-z]/!d; }' | \
+    sed '/depends_on:/,/condition: service_healthy/d' | \
+    sed 's/DB_HOST: db/DB_HOST: host.docker.internal/g' > docker-compose.host.yml
     
-    print_success "Docker Compose configured for host services"
+    print_success "Created docker-compose.host.yml"
 else
-    print_info "Docker Compose already configured or db service not found"
+    print_info "docker-compose.host.yml already exists"
 fi
+
+# Use host config file
+COMPOSE_FILE="docker-compose.host.yml"
 echo ""
 
 # Step 5: Check DNS
