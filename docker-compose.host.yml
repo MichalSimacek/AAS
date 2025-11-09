@@ -10,8 +10,8 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
-      # Database (Host PostgreSQL via host.docker.internal)
-      DB_HOST: host.docker.internal
+      # Database (Host PostgreSQL via localhost with network_mode: host)
+      DB_HOST: localhost
       DB_PORT: 5432
       DB_NAME: ${DB_NAME:-aas}
       DB_USER: ${DB_USER:-aas}
