@@ -126,6 +126,9 @@ using (var scope = app.Services.CreateScope())
     await db.Database.MigrateAsync();
 }
 
+// CRITICAL: Configure forwarded headers BEFORE other middleware
+app.UseForwardedHeaders();
+
 // SECURITY: Exception handling middleware
 if (app.Environment.IsDevelopment())
 {
