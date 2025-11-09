@@ -35,11 +35,17 @@ if ! command -v docker &> /dev/null; then
 fi
 print_success "Docker is installed"
 
-if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/null; then
+# Detect which docker-compose command to use
+if docker compose version &> /dev/null; then
+    DOCKER_COMPOSE="docker compose"
+    print_success "Docker Compose V2 detected"
+elif command -v docker-compose &> /dev/null; then
+    DOCKER_COMPOSE="docker-compose"
+    print_success "Docker Compose V1 detected"
+else
     print_error "Docker Compose is not installed"
     exit 1
 fi
-print_success "Docker Compose is installed"
 echo ""
 
 # Step 2: Stop old container if running
