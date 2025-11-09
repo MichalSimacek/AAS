@@ -197,24 +197,27 @@ header {
 }
 
 .btn-primary {
-  background: var(--gold-dark);
-  color: var(--white);
+  background: var(--gold-dark) !important;
+  border-color: var(--gold-dark) !important;
+  color: var(--white) !important;
 }
 
 .btn-primary:hover {
-  background: var(--gold);
-  color: var(--white);
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: var(--white) !important;
 }
 
 .btn-outline-primary {
-  background: transparent;
-  border: 2px solid var(--gold-dark);
-  color: var(--gold-dark);
+  background: transparent !important;
+  border: 2px solid var(--gold-dark) !important;
+  color: var(--gold-dark) !important;
 }
 
 .btn-outline-primary:hover {
-  background: var(--gold-dark);
-  color: var(--white);
+  background: var(--gold-dark) !important;
+  border-color: var(--gold-dark) !important;
+  color: var(--white) !important;
 }
 
 .btn-outline-secondary {
