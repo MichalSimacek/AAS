@@ -248,7 +248,7 @@ NGINX_EOF
         read -p "Enter email for Let's Encrypt notifications: " LE_EMAIL
         
         print_info "Requesting SSL certificates..."
-        if $DOCKER_COMPOSE -f $COMPOSE_FILE run --rm certbot certonly \
+        if $DOCKER_COMPOSE -f $COMPOSE_FILE run --rm --entrypoint certbot certbot certonly \
           --webroot \
           --webroot-path=/var/www/certbot \
           --email "$LE_EMAIL" \
