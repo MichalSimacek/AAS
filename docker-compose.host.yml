@@ -52,9 +52,7 @@ services:
     restart: unless-stopped
     depends_on:
       - web
-    ports:
-      - "80:80"
-      - "443:443"
+    network_mode: host
     volumes:
       - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
       - ./certbot/conf:/etc/letsencrypt:ro
