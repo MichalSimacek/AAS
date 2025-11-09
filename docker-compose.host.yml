@@ -8,6 +8,7 @@ services:
       dockerfile: Dockerfile
     container_name: aas-web-prod
     restart: unless-stopped
+    network_mode: host
     environment:
       # Database (Host PostgreSQL via host.docker.internal)
       DB_HOST: host.docker.internal
