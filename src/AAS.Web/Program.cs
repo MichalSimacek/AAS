@@ -161,8 +161,14 @@ app.Use((ctx, next) =>
               "connect-src 'self' https://cdn.jsdelivr.net https://code.jquery.com; " +
               "frame-ancestors 'none'; " +
               "base-uri 'self'; " +
-              "form-action 'self'; " +
-              "upgrade-insecure-requests";
+              "form-action 'self'";
+    
+    // Only add upgrade-insecure-requests if running on HTTPS
+    if (ctx.Request.IsHttps)
+    {
+        csp += "; upgrade-insecure-requests";
+    }
+    
     ctx.Response.Headers["Content-Security-Policy"] = csp;
 
     // Remove server identification headers
