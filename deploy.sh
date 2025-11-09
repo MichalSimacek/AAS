@@ -21,6 +21,9 @@ echo "  Automated Production Deployment"
 echo "=========================================="
 echo ""
 
+# Default compose file
+COMPOSE_FILE="docker-compose.production.yml"
+
 # Function to print colored messages
 print_success() { echo -e "${GREEN}✅ $1${NC}"; }
 print_error() { echo -e "${RED}❌ $1${NC}"; }
