@@ -65,7 +65,7 @@ services:
     volumes:
       - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/ssl:/etc/nginx/ssl:ro
-      - ./src/AAS.Web/wwwroot:/app/src/AAS.Web/wwwroot:ro
+      - static-files:/app/wwwroot:ro
       - ./wwwroot/uploads:/var/www/uploads:ro
     depends_on:
       - web
@@ -74,6 +74,7 @@ services:
 
 volumes:
   postgres-data:
+  static-files:
 
 networks:
   aas-network:
