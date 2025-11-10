@@ -37,29 +37,29 @@ namespace AAS.Web.Controllers
 
             if (lang != "en")
             {
-                var collectionIds = items.Select(x => x.Collection.Id).ToList();
+                var collectionIds = collections.Select(c => c.Id).ToList();
                 var dbTranslations = await _db.CollectionTranslations
                     .Where(t => collectionIds.Contains(t.CollectionId) && t.LanguageCode == lang)
                     .AsNoTracking()
                     .ToDictionaryAsync(t => t.CollectionId, t => t.TranslatedTitle);
 
-                foreach (var item in items)
+                foreach (var collection in collections)
                 {
-                    if (dbTranslations.TryGetValue(item.Collection.Id, out var translatedTitle))
+                    if (dbTranslations.TryGetValue(collection.Id, out var translatedTitle))
                     {
-                        translations[item.Collection.Id] = translatedTitle;
+                        translations[collection.Id] = translatedTitle;
                     }
                     else
                     {
                         // Fallback to on-demand translation if not found in database
-                        translations[item.Collection.Id] = await _tr.TranslateAsync(item.Collection.Title, "en", lang);
+                        translations[collection.Id] = await _tr.TranslateAsync(collection.Title, "en", lang);
                     }
                 }
             }
 
             ViewBag.Translations = translations;
             ViewBag.Category = category;
-            return View(items.Select(x => x.Collection).ToList());
+            return View(collections);
         }
 
         [Route("collections/{slug}")]
