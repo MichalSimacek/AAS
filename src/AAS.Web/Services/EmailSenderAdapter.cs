@@ -49,10 +49,24 @@ namespace AAS.Web.Services
                 msg.Body = builder.ToMessageBody();
 
                 using var client = new SmtpClient();
-                await client.ConnectAsync(host, port, useStartTls ? MailKit.Security.SecureSocketOptions.StartTls : MailKit.Security.SecureSocketOptions.Auto);
+                
+                // Determine SSL/TLS options based on port and configuration
+                var secureOptions = MailKit.Security.SecureSocketOptions.None;
+                if (port == 465)
+                {
+                    secureOptions = MailKit.Security.SecureSocketOptions.SslOnConnect;
+                }
+                else if (useStartTls && port != 1025)
+                {
+                    secureOptions = MailKit.Security.SecureSocketOptions.StartTls;
+                }
+                
+                _logger.LogInformation("Connecting to SMTP server {Host}:{Port} with security: {Security}", host, port, secureOptions);
+                await client.ConnectAsync(host, port, secureOptions);
                 
                 if (!string.IsNullOrWhiteSpace(user) && !string.IsNullOrWhiteSpace(pass))
                 {
+                    _logger.LogInformation("Authenticating with user: {User}", user);
                     await client.AuthenticateAsync(user, pass);
                 }
                 
