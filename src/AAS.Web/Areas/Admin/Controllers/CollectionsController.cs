@@ -245,6 +245,9 @@ namespace AAS.Web.Areas.Admin.Controllers
             var currencyStr = Request.Form["Currency"].ToString();
             var priceStr = Request.Form["Price"].ToString();
             
+            Console.WriteLine($"[EDIT POST DEBUG] Collection ID: {id}");
+            Console.WriteLine($"[EDIT POST DEBUG] Form - Category: '{categoryStr}', Status: '{statusStr}', Currency: '{currencyStr}', Price: '{priceStr}'");
+            
             if (string.IsNullOrWhiteSpace(title))
             {
                 TempData["ErrorMessage"] = "Title is required.";
