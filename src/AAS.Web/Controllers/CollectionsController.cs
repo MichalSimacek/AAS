@@ -16,33 +16,20 @@ namespace AAS.Web.Controllers
         {
             const int pageSize = 12;
 
-            // PERFORMANCE FIX: Only load first image for thumbnail, not all images
+            // Load collections with first image
             var q = _db.Collections
-                .Select(c => new
-                {
-                    Collection = c,
-                    FirstImage = c.Images.OrderBy(i => i.SortOrder).FirstOrDefault()
-                })
-                .OrderByDescending(x => x.Collection.CreatedUtc)
+                .Include(c => c.Images.OrderBy(i => i.SortOrder).Take(1))
+                .OrderByDescending(c => c.CreatedUtc)
                 .AsQueryable();
 
             if (category.HasValue)
-                q = q.Where(x => x.Collection.Category == category);
+                q = q.Where(c => c.Category == category);
 
-            var items = await q
+            var collections = await q
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .AsNoTracking()
                 .ToListAsync();
-
-            // Manually attach first image to collection for view
-            foreach (var item in items)
-            {
-                if (item.FirstImage != null)
-                {
-                    item.Collection.Images = new List<CollectionImage> { item.FirstImage };
-                }
-            }
 
             // Load pre-translated titles from database
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
