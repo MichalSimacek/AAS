@@ -1,0 +1,89 @@
+EN (SharedResources.resx):
+<data name="Home" xml:space="preserve"><value>Home</value></data>
+<data name="Available" xml:space="preserve"><value>Available</value></data>
+<data name="Sold" xml:space="preserve"><value>Sold</value></data>
+<data name="Price" xml:space="preserve"><value>Price</value></data>
+<data name="Status" xml:space="preserve"><value>Status</value></data>
+<data name="Currency" xml:space="preserve"><value>Currency</value></data>
+<data name="Available for" xml:space="preserve"><value>Available for</value></data>
+
+CS (SharedResources.cs.resx):
+<data name="Home" xml:space="preserve"><value>Domů</value></data>
+<data name="Available" xml:space="preserve"><value>Dostupné</value></data>
+<data name="Sold" xml:space="preserve"><value>Prodáno</value></data>
+<data name="Price" xml:space="preserve"><value>Cena</value></data>
+<data name="Status" xml:space="preserve"><value>Stav</value></data>
+<data name="Currency" xml:space="preserve"><value>Měna</value></data>
+<data name="Available for" xml:space="preserve"><value>Dostupné za</value></data>
+
+DE (SharedResources.de.resx):
+<data name="Home" xml:space="preserve"><value>Startseite</value></data>
+<data name="Available" xml:space="preserve"><value>Verfügbar</value></data>
+<data name="Sold" xml:space="preserve"><value>Verkauft</value></data>
+<data name="Price" xml:space="preserve"><value>Preis</value></data>
+<data name="Status" xml:space="preserve"><value>Status</value></data>
+<data name="Currency" xml:space="preserve"><value>Währung</value></data>
+<data name="Available for" xml:space="preserve"><value>Erhältlich für</value></data>
+
+ES (SharedResources.es.resx):
+<data name="Home" xml:space="preserve"><value>Inicio</value></data>
+<data name="Available" xml:space="preserve"><value>Disponible</value></data>
+<data name="Sold" xml:space="preserve"><value>Vendido</value></data>
+<data name="Price" xml:space="preserve"><value>Precio</value></data>
+<data name="Status" xml:space="preserve"><value>Estado</value></data>
+<data name="Currency" xml:space="preserve"><value>Moneda</value></data>
+<data name="Available for" xml:space="preserve"><value>Disponible por</value></data>
+
+FR (SharedResources.fr.resx):
+<data name="Home" xml:space="preserve"><value>Accueil</value></data>
+<data name="Available" xml:space="preserve"><value>Disponible</value></data>
+<data name="Sold" xml:space="preserve"><value>Vendu</value></data>
+<data name="Price" xml:space="preserve"><value>Prix</value></data>
+<data name="Status" xml:space="preserve"><value>Statut</value></data>
+<data name="Currency" xml:space="preserve"><value>Devise</value></data>
+<data name="Available for" xml:space="preserve"><value>Disponible pour</value></data>
+
+RU (SharedResources.ru.resx):
+<data name="Home" xml:space="preserve"><value>Главная</value></data>
+<data name="Available" xml:space="preserve"><value>Доступно</value></data>
+<data name="Sold" xml:space="preserve"><value>Продано</value></data>
+<data name="Price" xml:space="preserve"><value>Цена</value></data>
+<data name="Status" xml:space="preserve"><value>Статус</value></data>
+<data name="Currency" xml:space="preserve"><value>Валюта</value></data>
+<data name="Available for" xml:space="preserve"><value>Доступно за</value></data>
+
+ZH (SharedResources.zh.resx):
+<data name="Home" xml:space="preserve"><value>主页</value></data>
+<data name="Available" xml:space="preserve"><value>可用</value></data>
+<data name="Sold" xml:space="preserve"><value>已售</value></data>
+<data name="Price" xml:space="preserve"><value>价格</value></data>
+<data name="Status" xml:space="preserve"><value>状态</value></data>
+<data name="Currency" xml:space="preserve"><value>货币</value></data>
+<data name="Available for" xml:space="preserve"><value>可购买价格</value></data>
+
+JA (SharedResources.ja.resx):
+<data name="Home" xml:space="preserve"><value>ホーム</value></data>
+<data name="Available" xml:space="preserve"><value>利用可能</value></data>
+<data name="Sold" xml:space="preserve"><value>売却済み</value></data>
+<data name="Price" xml:space="preserve"><value>価格</value></data>
+<data name="Status" xml:space="preserve"><value>ステータス</value></data>
+<data name="Currency" xml:space="preserve"><value>通貨</value></data>
+<data name="Available for" xml:space="preserve"><value>入手可能価格</value></data>
+
+PT (SharedResources.pt.resx):
+<data name="Home" xml:space="preserve"><value>Início</value></data>
+<data name="Available" xml:space="preserve"><value>Disponível</value></data>
+<data name="Sold" xml:space="preserve"><value>Vendido</value></data>
+<data name="Price" xml:space="preserve"><value>Preço</value></data>
+<data name="Status" xml:space="preserve"><value>Status</value></data>
+<data name="Currency" xml:space="preserve"><value>Moeda</value></data>
+<data name="Available for" xml:space="preserve"><value>Disponível por</value></data>
+
+HI (SharedResources.hi.resx):
+<data name="Home" xml:space="preserve"><value>होम</value></data>
+<data name="Available" xml:space="preserve"><value>उपलब्ध</value></data>
+<data name="Sold" xml:space="preserve"><value>बिक गया</value></data>
+<data name="Price" xml:space="preserve"><value>कीमत</value></data>
+<data name="Status" xml:space="preserve"><value>स्थिति</value></data>
+<data name="Currency" xml:space="preserve"><value>मुद्रा</value></data>
+<data name="Available for" xml:space="preserve"><value>उपलब्ध मूल्य</value></data>
