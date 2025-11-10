@@ -20,7 +20,7 @@ namespace AAS.Web.Controllers
         {
             // DEBUG: Log received data
             Console.WriteLine($"[INQUIRY DEBUG] Received: CollectionId={collectionId}, Title={collectionTitle}");
-            Console.WriteLine($"[INQUIRY DEBUG] Model: Name={model.Name}, Email={model.Email}, Phone={model.Phone}, Message={model.Message}");
+            Console.WriteLine($"[INQUIRY DEBUG] Model: FirstName={model.FirstName}, LastName={model.LastName}, Email={model.Email}, Phone={model.Phone}, Message={model.Message}");
             
             // SECURITY: Validate model state (includes all data annotations)
             if (!ModelState.IsValid)
