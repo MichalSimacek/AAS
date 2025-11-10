@@ -50,8 +50,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    # Port 5432 not exposed to host - communication via Docker network only
     networks:
       - aas-network
 
