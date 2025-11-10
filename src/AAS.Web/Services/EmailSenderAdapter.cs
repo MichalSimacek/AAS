@@ -20,12 +20,12 @@ namespace AAS.Web.Services
             try
             {
                 // Get email configuration from environment variables or config
-                var from = Environment.GetEnvironmentVariable("EMAIL_FROM") ?? _cfg["Email:From"] ?? "noreply@aas.local";
-                var host = Environment.GetEnvironmentVariable("SMTP_HOST") ?? _cfg["Email:SmtpHost"];
-                var port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT") ?? _cfg["Email:SmtpPort"] ?? "587");
-                var useStartTls = bool.Parse(Environment.GetEnvironmentVariable("SMTP_USE_STARTTLS") ?? _cfg["Email:UseStartTls"] ?? "true");
-                var user = Environment.GetEnvironmentVariable("SMTP_USERNAME") ?? _cfg["Email:Username"];
-                var pass = Environment.GetEnvironmentVariable("SMTP_PASSWORD") ?? _cfg["Email:Password"];
+                var from = Environment.GetEnvironmentVariable("EMAIL_FROM") ?? _cfg["Email:From"] ?? "noreply@aristocraticartworksale.com";
+                var host = Environment.GetEnvironmentVariable("EMAIL_SMTP_HOST") ?? _cfg["Email:SmtpHost"];
+                var port = int.Parse(Environment.GetEnvironmentVariable("EMAIL_SMTP_PORT") ?? _cfg["Email:SmtpPort"] ?? "587");
+                var useStartTls = bool.Parse(Environment.GetEnvironmentVariable("EMAIL_USE_STARTTLS") ?? _cfg["Email:UseStartTls"] ?? "true");
+                var user = Environment.GetEnvironmentVariable("EMAIL_USERNAME") ?? _cfg["Email:Username"];
+                var pass = Environment.GetEnvironmentVariable("EMAIL_PASSWORD") ?? _cfg["Email:Password"];
 
                 // For development: If SMTP not configured, just log the email
                 if (string.IsNullOrWhiteSpace(host))
