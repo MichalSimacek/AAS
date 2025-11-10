@@ -8,7 +8,6 @@ using System.Linq;
 
 namespace AAS.Web.Controllers
 {
-    [AutoValidateAntiforgeryToken]
     public class InquiriesController : Controller
     {
         private readonly AppDbContext _db; private readonly EmailService _email; private readonly IMemoryCache _cache;
