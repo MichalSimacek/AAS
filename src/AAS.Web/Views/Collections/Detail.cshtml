@@ -107,38 +107,9 @@
       <div class="col-12 col-lg-5">
         <div class="card">
           <div class="card-body p-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <span class="badge badge-gold">@L[Model.Category.ToString()]</span>
-              @if (Model.Status == AAS.Web.Models.CollectionStatus.Sold)
-              {
-                <span class="badge bg-danger fs-6">@L["Sold"]</span>
-              }
-              else if (Model.Price.HasValue)
-              {
-                <span class="badge bg-success fs-6">@L["Available"]</span>
-              }
-            </div>
+            <span class="badge badge-gold mb-3">@L[Model.Category.ToString()]</span>
             
-            <h1 style="font-size: 2rem;">@Html.Raw(Html.Encode(ViewBag.TranslatedTitle as string ?? Model.Title))</h1>
-            
-            @if (Model.Status == AAS.Web.Models.CollectionStatus.Available && Model.Price.HasValue)
-            {
-              <div class="mb-3 p-3 bg-light rounded">
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="text-muted">@L["Available for"]:</span>
-                  <h3 class="mb-0 text-gold">
-                    @if (Model.Currency == AAS.Web.Models.Currency.EUR)
-                    {
-                      @string.Format("{0:N0} €", Model.Price)
-                    }
-                    else
-                    {
-                      @string.Format("$ {0:N0}", Model.Price)
-                    }
-                  </h3>
-                </div>
-              </div>
-            }
+            <h1 style="font-size: 2rem;" class="mb-4">@Html.Raw(Html.Encode(ViewBag.TranslatedTitle as string ?? Model.Title))</h1>
             
             <div style="white-space: pre-wrap;">
               @Html.Raw(Html.Encode(ViewBag.TranslatedDescription as string ?? Model.Description).Replace("\n", "<br/>"))
