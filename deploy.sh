@@ -92,20 +92,38 @@ if [ ${#MISSING[@]} -ne 0 ]; then
     exit 1
 fi
 
-# Verify host connectivity configuration
-if [ "$DB_HOST" != "host.docker.internal" ]; then
-    print_warning "DB_HOST is not set to 'host.docker.internal'"
-    print_info "For host PostgreSQL, it should be: DB_HOST=host.docker.internal"
-    read -p "Continue anyway? (y/n) " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
-    fi
+# Auto-fix host connectivity configuration for network_mode: host
+FIXED=false
+
+if [ "$DB_HOST" = "host.docker.internal" ]; then
+    print_info "Auto-fixing DB_HOST: host.docker.internal → localhost (for network_mode: host)"
+    sed -i 's/DB_HOST=host.docker.internal/DB_HOST=localhost/g' .env.production
+    DB_HOST="localhost"
+    FIXED=true
 fi
 
-if [ "$EMAIL_SMTP_HOST" != "host.docker.internal" ] && [ "$EMAIL_SMTP_HOST" != "127.0.0.1" ]; then
-    print_warning "EMAIL_SMTP_HOST might not be configured for ProtonMail Bridge on host"
-    print_info "For host ProtonMail Bridge, it should be: EMAIL_SMTP_HOST=host.docker.internal"
+if [ "$EMAIL_SMTP_HOST" = "host.docker.internal" ]; then
+    print_info "Auto-fixing EMAIL_SMTP_HOST: host.docker.internal → 127.0.0.1 (for network_mode: host)"
+    sed -i 's/EMAIL_SMTP_HOST=host.docker.internal/EMAIL_SMTP_HOST=127.0.0.1/g' .env.production
+    EMAIL_SMTP_HOST="127.0.0.1"
+    FIXED=true
+fi
+
+if [ "$FIXED" = true ]; then
+    print_success "Updated .env.production for host network mode"
+    # Reload environment variables
+    set -a
+    source .env.production
+    set +a
+fi
+
+# Verify configuration
+if [ "$DB_HOST" != "localhost" ]; then
+    print_warning "DB_HOST is '$DB_HOST' - expected 'localhost' for host PostgreSQL with network_mode: host"
+fi
+
+if [ "$EMAIL_SMTP_HOST" != "127.0.0.1" ] && [ "$EMAIL_SMTP_HOST" != "localhost" ]; then
+    print_warning "EMAIL_SMTP_HOST is '$EMAIL_SMTP_HOST' - expected '127.0.0.1' or 'localhost'"
 fi
 
 print_success "Environment configuration validated"
