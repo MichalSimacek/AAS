@@ -11,6 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var config = builder.Configuration;
 
+// Configure Data Protection to persist keys across container restarts
+var dataProtectionPath = Path.Combine(Directory.GetCurrentDirectory(), "DataProtection-Keys");
+Directory.CreateDirectory(dataProtectionPath);
+services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(dataProtectionPath))
+    .SetApplicationName("AAS.Web");
+
 // Configure forwarded headers for reverse proxy support (Nginx)
 services.Configure<ForwardedHeadersOptions>(options =>
 {
