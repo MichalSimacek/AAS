@@ -371,22 +371,32 @@ $DOCKER_COMPOSE -f $COMPOSE_FILE build --no-cache web
 
 # Start services
 print_info "Starting services..."
+
+# Detect available services
+AVAILABLE_SERVICES=$($DOCKER_COMPOSE -f $COMPOSE_FILE config --services)
+SERVICES_TO_START=""
+
+# Always try to start these if they exist
+for service in db web nginx certbot; do
+    if echo "$AVAILABLE_SERVICES" | grep -q "^${service}$"; then
+        SERVICES_TO_START="$SERVICES_TO_START $service"
+    fi
+done
+
 if [ "$SKIP_SSL_SETUP" = true ]; then
     print_warning "Starting WITHOUT SSL (HTTP only)"
-    # Check if db service exists in compose file
-    if $DOCKER_COMPOSE -f $COMPOSE_FILE config --services | grep -q "^db$"; then
-        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d db web
-    else
-        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d web
-    fi
-else
-    # Check if db service exists in compose file
-    if $DOCKER_COMPOSE -f $COMPOSE_FILE config --services | grep -q "^db$"; then
-        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d db web nginx certbot
-    else
-        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d web nginx certbot
-    fi
+    # Remove nginx and certbot from list
+    SERVICES_TO_START=$(echo "$SERVICES_TO_START" | sed 's/nginx//g' | sed 's/certbot//g')
 fi
+
+# Start the services
+if [ -z "$SERVICES_TO_START" ]; then
+    print_error "No services found to start!"
+    exit 1
+fi
+
+print_info "Starting services:$SERVICES_TO_START"
+$DOCKER_COMPOSE -f $COMPOSE_FILE up -d $SERVICES_TO_START
 
 print_success "Services started"
 
