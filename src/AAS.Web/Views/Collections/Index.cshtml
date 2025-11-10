@@ -33,19 +33,51 @@
           var first = c.Images.OrderBy(i => i.SortOrder).FirstOrDefault();
           <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <a class="card" href="/collections/@c.Slug" style="text-decoration: none; color: inherit;">
-              @if(first != null){
-                <img class="card-img-top" loading="lazy" alt="@c.Title" style="width: 100%; height: 250px; object-fit: cover;"
-                     src="/uploads/images/@first.FileName-480.jpg"
-                     srcset="/uploads/images/@first.FileName-480.jpg 480w, /uploads/images/@first.FileName-960.jpg 960w, /uploads/images/@first.FileName-1600.jpg 1600w"
-                     sizes="(max-width: 768px) 50vw, 25vw" />
-              }
-              else
-              {
-                <div style="width: 100%; height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; color: #999;">
-                  @L["Images"]
+              <div style="position: relative;">
+                @if(first != null){
+                  <img class="card-img-top" loading="lazy" alt="@c.Title" style="width: 100%; height: 250px; object-fit: cover;"
+                       src="/uploads/images/@first.FileName-480.jpg"
+                       srcset="/uploads/images/@first.FileName-480.jpg 480w, /uploads/images/@first.FileName-960.jpg 960w, /uploads/images/@first.FileName-1600.jpg 1600w"
+                       sizes="(max-width: 768px) 50vw, 25vw" />
+                }
+                else
+                {
+                  <div style="width: 100%; height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; color: #999;">
+                    @L["Images"]
+                  </div>
+                }
+                
+                @* Status badge overlay *@
+                <div style="position: absolute; top: 10px; right: 10px;">
+                  @if (c.Status == AAS.Web.Models.CollectionStatus.Sold)
+                  {
+                    <span class="badge bg-danger fs-6 px-3 py-2" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);">@L["Sold"]</span>
+                  }
+                  else if (c.Status == AAS.Web.Models.CollectionStatus.Available)
+                  {
+                    <span class="badge bg-success fs-6 px-3 py-2" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);">@L["Available"]</span>
+                  }
                 </div>
-              }
+              </div>
+              
               <div class="card-body">
+                @* Price display *@
+                @if (c.Status == AAS.Web.Models.CollectionStatus.Available && c.Price.HasValue)
+                {
+                  <div class="mb-2">
+                    <strong style="color: var(--gold); font-size: 1.1rem;">
+                      @if (c.Currency == AAS.Web.Models.Currency.EUR)
+                      {
+                        @string.Format("{0:N0} €", c.Price)
+                      }
+                      else
+                      {
+                        @string.Format("$ {0:N0}", c.Price)
+                      }
+                    </strong>
+                  </div>
+                }
+                
                 <h5 class="card-title">
                   @{
                     var translations = ViewBag.Translations as Dictionary<int, string>;
