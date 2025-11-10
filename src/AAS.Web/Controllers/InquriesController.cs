@@ -15,6 +15,7 @@ namespace AAS.Web.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int? collectionId, string? collectionTitle, Inquiry model)
         {
             // DEBUG: Log received data
