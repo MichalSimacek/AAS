@@ -247,4 +247,12 @@
 <data name="Image delete error" xml:space="preserve"><value>画像削除エラー: {0}</value></data>
 <data name="Order updated success" xml:space="preserve"><value>順序が正常に更新されました</value></data>
 
+<data name="Home" xml:space="preserve"><value>ホーム</value></data>
+<data name="Available" xml:space="preserve"><value>利用可能</value></data>
+<data name="Sold" xml:space="preserve"><value>売却済み</value></data>
+<data name="Price" xml:space="preserve"><value>価格</value></data>
+<data name="Status" xml:space="preserve"><value>ステータス</value></data>
+<data name="Currency" xml:space="preserve"><value>通貨</value></data>
+<data name="Available for" xml:space="preserve"><value>入手可能価格</value></data>
+
 </root>

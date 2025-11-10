@@ -247,4 +247,12 @@
 <data name="Image delete error" xml:space="preserve"><value>删除图片时出错：{0}</value></data>
 <data name="Order updated success" xml:space="preserve"><value>顺序更新成功</value></data>
 
+<data name="Home" xml:space="preserve"><value>主页</value></data>
+<data name="Available" xml:space="preserve"><value>可用</value></data>
+<data name="Sold" xml:space="preserve"><value>已售</value></data>
+<data name="Price" xml:space="preserve"><value>价格</value></data>
+<data name="Status" xml:space="preserve"><value>状态</value></data>
+<data name="Currency" xml:space="preserve"><value>货币</value></data>
+<data name="Available for" xml:space="preserve"><value>可购买价格</value></data>
+
 </root>

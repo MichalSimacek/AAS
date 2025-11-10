@@ -247,4 +247,12 @@
 <data name="Image delete error" xml:space="preserve"><value>Ошибка удаления изображения: {0}</value></data>
 <data name="Order updated success" xml:space="preserve"><value>Порядок успешно обновлен</value></data>
 
+<data name="Home" xml:space="preserve"><value>Главная</value></data>
+<data name="Available" xml:space="preserve"><value>Доступно</value></data>
+<data name="Sold" xml:space="preserve"><value>Продано</value></data>
+<data name="Price" xml:space="preserve"><value>Цена</value></data>
+<data name="Status" xml:space="preserve"><value>Статус</value></data>
+<data name="Currency" xml:space="preserve"><value>Валюта</value></data>
+<data name="Available for" xml:space="preserve"><value>Доступно за</value></data>
+
 </root>
