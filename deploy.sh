@@ -175,28 +175,57 @@ echo ""
 
 # Step 6: Check ports
 echo "Step 6: Checking port availability..."
+
+# Check if ports are used by Docker containers (which is OK)
+DOCKER_NGINX_RUNNING=false
+if docker ps --format '{{.Names}}' 2>/dev/null | grep -q "nginx"; then
+    DOCKER_NGINX_RUNNING=true
+    print_info "Docker Nginx container detected (will be replaced)"
+fi
+
 PORT_80_IN_USE=false
 PORT_443_IN_USE=false
+NON_DOCKER_CONFLICT=false
 
+# Check port 80
 if ss -tulpn 2>/dev/null | grep -q ":80 "; then
     PORT_80_IN_USE=true
-    print_warning "Port 80 is in use"
-    ss -tulpn | grep ":80 "
+    # Check if it's NOT a Docker process
+    if ! ss -tulpn 2>/dev/null | grep ":80 " | grep -q "docker-proxy"; then
+        if [ "$DOCKER_NGINX_RUNNING" = false ]; then
+            NON_DOCKER_CONFLICT=true
+            print_warning "Port 80 is in use by non-Docker process"
+            ss -tulpn | grep ":80 "
+        fi
+    fi
 fi
 
+# Check port 443
 if ss -tulpn 2>/dev/null | grep -q ":443 "; then
     PORT_443_IN_USE=true
-    print_warning "Port 443 is in use"
-    ss -tulpn | grep ":443 "
+    # Check if it's NOT a Docker process
+    if ! ss -tulpn 2>/dev/null | grep ":443 " | grep -q "docker-proxy"; then
+        if [ "$DOCKER_NGINX_RUNNING" = false ]; then
+            NON_DOCKER_CONFLICT=true
+            print_warning "Port 443 is in use by non-Docker process"
+            ss -tulpn | grep ":443 "
+        fi
+    fi
 fi
 
-if [ "$PORT_80_IN_USE" = true ] || [ "$PORT_443_IN_USE" = true ]; then
-    print_error "Ports 80/443 are in use. Stop conflicting services first."
-    echo "Hint: sudo systemctl stop nginx apache2"
+if [ "$NON_DOCKER_CONFLICT" = true ]; then
+    print_error "Ports 80/443 are in use by non-Docker services."
+    print_info "Stop conflicting services first:"
+    echo "  - sudo supervisorctl stop nginx-code-proxy"
+    echo "  - sudo systemctl stop nginx apache2"
     exit 1
 fi
 
-print_success "Ports 80 and 443 are available"
+if [ "$DOCKER_NGINX_RUNNING" = true ]; then
+    print_success "Ports used by Docker (will be updated during deployment)"
+else
+    print_success "Ports 80 and 443 are available"
+fi
 echo ""
 
 # Step 7: Create directories
