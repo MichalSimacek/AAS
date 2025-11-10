@@ -247,4 +247,12 @@
 <data name="Image delete error" xml:space="preserve"><value>Fehler beim Löschen des Bildes: {0}</value></data>
 <data name="Order updated success" xml:space="preserve"><value>Reihenfolge erfolgreich aktualisiert</value></data>
 
+<data name="Home" xml:space="preserve"><value>Startseite</value></data>
+<data name="Available" xml:space="preserve"><value>Verfügbar</value></data>
+<data name="Sold" xml:space="preserve"><value>Verkauft</value></data>
+<data name="Price" xml:space="preserve"><value>Preis</value></data>
+<data name="Status" xml:space="preserve"><value>Status</value></data>
+<data name="Currency" xml:space="preserve"><value>Währung</value></data>
+<data name="Available for" xml:space="preserve"><value>Erhältlich für</value></data>
+
 </root>
