@@ -283,16 +283,39 @@ namespace AAS.Web.Areas.Admin.Controllers
                     var existing = await _db.Collections.FirstOrDefaultAsync(c => c.Id == id);
                     if (existing == null) return NotFound();
 
-                    // Update properties - handle empty strings as "keep existing value"
-                    existing.Title = !string.IsNullOrWhiteSpace(model.Title) ? model.Title : existing.Title;
-                    existing.Description = !string.IsNullOrWhiteSpace(model.Description) ? model.Description : existing.Description;
-                    existing.Category = model.Category;
+                    // Update properties from form values
+                    existing.Title = title;
+                    existing.Description = description;
                     existing.Slug = _slug.ToSlug(existing.Title);
                     
-                    // Update price and status fields
-                    existing.Status = model.Status;
-                    existing.Price = model.Price;
-                    existing.Currency = model.Currency;
+                    // Parse and update Category
+                    if (int.TryParse(categoryStr, out int categoryInt))
+                    {
+                        existing.Category = (CollectionCategory)categoryInt;
+                    }
+                    
+                    // Parse and update Status
+                    if (int.TryParse(statusStr, out int statusInt))
+                    {
+                        existing.Status = (CollectionStatus)statusInt;
+                    }
+                    
+                    // Parse and update Price (only if provided)
+                    if (!string.IsNullOrWhiteSpace(priceStr) && decimal.TryParse(priceStr, out decimal price))
+                    {
+                        existing.Price = price;
+                    }
+                    else if (string.IsNullOrWhiteSpace(priceStr))
+                    {
+                        // Keep existing price if not provided
+                        // Don't set to null
+                    }
+                    
+                    // Parse and update Currency
+                    if (int.TryParse(currencyStr, out int currencyInt))
+                    {
+                        existing.Currency = (Currency)currencyInt;
+                    }
 
                     // CRITICAL: Mark entity as modified to ensure EF Core tracks changes
                     _db.Entry(existing).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
