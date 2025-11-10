@@ -46,8 +46,8 @@
     <div class="col-md-4 mb-3">
         <label asp-for="Status" class="form-label">Status</label>
         <select asp-for="Status" name="Status" class="form-select">
-            <option value="0">Available</option>
-            <option value="1">Sold</option>
+            <option value="0" @(Model.Status == CollectionStatus.Available ? "selected" : "")>Available</option>
+            <option value="1" @(Model.Status == CollectionStatus.Sold ? "selected" : "")>Sold</option>
         </select>
     </div>
     <div class="col-md-4 mb-3">
