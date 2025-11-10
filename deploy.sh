@@ -92,18 +92,19 @@ if [ ${#MISSING[@]} -ne 0 ]; then
     exit 1
 fi
 
-# Auto-fix host connectivity configuration for network_mode: host
+# Auto-fix database host configuration
 FIXED=false
 
-if [ "$DB_HOST" = "host.docker.internal" ]; then
-    print_info "Auto-fixing DB_HOST: host.docker.internal → localhost (for network_mode: host)"
-    sed -i 's/DB_HOST=host.docker.internal/DB_HOST=localhost/g' .env.production
-    DB_HOST="localhost"
+# Fix DB_HOST for Docker Compose setup (must be 'db' not localhost)
+if [ "$DB_HOST" = "localhost" ] || [ "$DB_HOST" = "127.0.0.1" ] || [ "$DB_HOST" = "host.docker.internal" ]; then
+    print_info "Auto-fixing DB_HOST: $DB_HOST → db (for Docker Compose network)"
+    sed -i "s/DB_HOST=.*/DB_HOST=db/g" .env.production
+    DB_HOST="db"
     FIXED=true
 fi
 
 if [ "$EMAIL_SMTP_HOST" = "host.docker.internal" ]; then
-    print_info "Auto-fixing EMAIL_SMTP_HOST: host.docker.internal → 127.0.0.1 (for network_mode: host)"
+    print_info "Auto-fixing EMAIL_SMTP_HOST: host.docker.internal → 127.0.0.1"
     sed -i 's/EMAIL_SMTP_HOST=host.docker.internal/EMAIL_SMTP_HOST=127.0.0.1/g' .env.production
     EMAIL_SMTP_HOST="127.0.0.1"
     FIXED=true
