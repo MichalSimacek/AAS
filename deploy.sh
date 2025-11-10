@@ -129,19 +129,25 @@ fi
 print_success "Environment configuration validated"
 echo ""
 
-# Step 4: Use host-optimized docker-compose
-echo "Step 4: Configuring for host services..."
+# Step 4: Select docker-compose file
+echo "Step 4: Configuring deployment..."
 
-# Use docker-compose.host.yml which connects to host PostgreSQL and ProtonMail Bridge
-COMPOSE_FILE="docker-compose.host.yml"
-
-if [ ! -f "$COMPOSE_FILE" ]; then
-    print_error "docker-compose.host.yml not found!"
-    print_info "This file should be in the repository"
+# Check available compose files
+if [ -f "docker-compose.prod.yml" ]; then
+    COMPOSE_FILE="docker-compose.prod.yml"
+    print_success "Using docker-compose.prod.yml (with static files optimization)"
+elif [ -f "docker-compose.host.yml" ]; then
+    COMPOSE_FILE="docker-compose.host.yml"
+    print_success "Using docker-compose.host.yml (for host PostgreSQL + ProtonMail Bridge)"
+elif [ -f "docker-compose.production.yml" ]; then
+    COMPOSE_FILE="docker-compose.production.yml"
+    print_success "Using docker-compose.production.yml"
+else
+    print_error "No production docker-compose file found!"
+    print_info "Looking for: docker-compose.prod.yml, docker-compose.host.yml, or docker-compose.production.yml"
     exit 1
 fi
 
-print_success "Using $COMPOSE_FILE (configured for host PostgreSQL + ProtonMail Bridge)"
 echo ""
 
 # Step 5: Check DNS
