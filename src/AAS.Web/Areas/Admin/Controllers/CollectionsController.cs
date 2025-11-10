@@ -233,18 +233,22 @@ namespace AAS.Web.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [RequestSizeLimit(100 * 1024 * 1024)] // 100MB max
-        public async Task<IActionResult> Edit(int id, Collection model, List<IFormFile> newImages)
+        public async Task<IActionResult> Edit(int id, List<IFormFile> newImages)
         {
-            // Validate Title for ModelState
-            if (string.IsNullOrEmpty(model.Title))
+            // Get values directly from form to avoid model binding issues
+            var title = Request.Form["Title"].ToString();
+            var description = Request.Form["Description"].ToString();
+            
+            // Parse enum values from form
+            var categoryStr = Request.Form["Category"].ToString();
+            var statusStr = Request.Form["Status"].ToString();
+            var currencyStr = Request.Form["Currency"].ToString();
+            var priceStr = Request.Form["Price"].ToString();
+            
+            if (string.IsNullOrWhiteSpace(title))
             {
-                ModelState.Remove("Title");
-            }
-
-            if (!ModelState.IsValid)
-            {
+                TempData["ErrorMessage"] = "Title is required.";
                 var temp = await _db.Collections.FirstOrDefaultAsync(c => c.Id == id);
-                TempData["ErrorMessage"] = "Please fix validation errors.";
                 return View(temp ?? new Collection());
             }
 
