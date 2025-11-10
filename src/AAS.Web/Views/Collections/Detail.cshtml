@@ -99,16 +99,9 @@
               </div>
             }
             
-            <div class="mb-4" style="white-space: pre-wrap;">
+            <div style="white-space: pre-wrap;">
               @Html.Raw(Html.Encode(ViewBag.TranslatedDescription as string ?? Model.Description).Replace("\n", "<br/>"))
             </div>
-
-            @if (Model.Status == AAS.Web.Models.CollectionStatus.Available)
-            {
-              <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#interestModal">
-                @L["I'm interested"]
-              </button>
-            }
           </div>
         </div>
       </div>
