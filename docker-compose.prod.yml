@@ -34,7 +34,7 @@ services:
     volumes:
       - ./wwwroot/uploads:/app/wwwroot/uploads
       - ./logs:/app/logs
-      - static-files:/app/wwwroot:ro
+      - static-files:/shared-static
     depends_on:
       - db
     networks:
