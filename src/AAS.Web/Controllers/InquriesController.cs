@@ -17,10 +17,16 @@ namespace AAS.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(int? collectionId, string? collectionTitle, Inquiry model)
         {
+            // DEBUG: Log received data
+            Console.WriteLine($"[INQUIRY DEBUG] Received: CollectionId={collectionId}, Title={collectionTitle}");
+            Console.WriteLine($"[INQUIRY DEBUG] Model: Name={model.Name}, Email={model.Email}, Phone={model.Phone}, Message={model.Message}");
+            
             // SECURITY: Validate model state (includes all data annotations)
             if (!ModelState.IsValid)
             {
-                return BadRequest(new { success = false, message = "Invalid input data" });
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                Console.WriteLine($"[INQUIRY DEBUG] Validation failed: {string.Join(", ", errors)}");
+                return BadRequest(new { success = false, message = "Invalid input data", errors = errors });
             }
 
             // Security: Get real IP (validate X-Forwarded-For header)
