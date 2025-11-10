@@ -284,6 +284,11 @@ namespace AAS.Web.Areas.Admin.Controllers
                     existing.Description = !string.IsNullOrWhiteSpace(model.Description) ? model.Description : existing.Description;
                     existing.Category = model.Category;
                     existing.Slug = _slug.ToSlug(existing.Title);
+                    
+                    // Update price and status fields
+                    existing.Status = model.Status;
+                    existing.Price = model.Price;
+                    existing.Currency = model.Currency;
 
                     // CRITICAL: Mark entity as modified to ensure EF Core tracks changes
                     _db.Entry(existing).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
