@@ -62,9 +62,10 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/ssl:/etc/nginx/ssl:ro
-      - ./wwwroot:/usr/share/nginx/html/static:ro
+      - ./src/AAS.Web/wwwroot:/app/src/AAS.Web/wwwroot:ro
+      - ./wwwroot/uploads:/var/www/uploads:ro
     depends_on:
       - web
     networks:
