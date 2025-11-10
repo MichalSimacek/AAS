@@ -25,12 +25,17 @@ RUN apt-get update && apt-get install -y libgdiplus libc6-dev && rm -rf /var/lib
 # Copy published app
 COPY --from=publish /app/publish .
 
+# Copy entrypoint script
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 # Create directories
-RUN mkdir -p /app/wwwroot/uploads/images /app/wwwroot/uploads/audio /app/logs && chmod -R 755 /app/wwwroot/uploads /app/logs
+RUN mkdir -p /app/wwwroot/uploads/images /app/wwwroot/uploads/audio /app/logs /shared-static && \
+    chmod -R 755 /app/wwwroot/uploads /app/logs /shared-static
 
 ENV ASPNETCORE_ENVIRONMENT=Production
 ENV ASPNETCORE_URLS=http://+:5000
 
 EXPOSE 5000
 
-ENTRYPOINT ["dotnet", "AAS.Web.dll"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
