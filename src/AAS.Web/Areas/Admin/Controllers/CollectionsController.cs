@@ -295,29 +295,33 @@ namespace AAS.Web.Areas.Admin.Controllers
                     if (int.TryParse(categoryStr, out int categoryInt))
                     {
                         existing.Category = (CollectionCategory)categoryInt;
+                        Console.WriteLine($"[EDIT POST DEBUG] Updated Category to: {existing.Category} ({categoryInt})");
                     }
                     
                     // Parse and update Status
                     if (int.TryParse(statusStr, out int statusInt))
                     {
                         existing.Status = (CollectionStatus)statusInt;
+                        Console.WriteLine($"[EDIT POST DEBUG] Updated Status to: {existing.Status} ({statusInt})");
                     }
                     
                     // Parse and update Price (only if provided)
                     if (!string.IsNullOrWhiteSpace(priceStr) && decimal.TryParse(priceStr, out decimal price))
                     {
                         existing.Price = price;
+                        Console.WriteLine($"[EDIT POST DEBUG] Updated Price to: {existing.Price}");
                     }
                     else if (string.IsNullOrWhiteSpace(priceStr))
                     {
                         // Keep existing price if not provided
-                        // Don't set to null
+                        Console.WriteLine($"[EDIT POST DEBUG] Price field empty, keeping existing value: {existing.Price}");
                     }
                     
                     // Parse and update Currency
                     if (int.TryParse(currencyStr, out int currencyInt))
                     {
                         existing.Currency = (Currency)currencyInt;
+                        Console.WriteLine($"[EDIT POST DEBUG] Updated Currency to: {existing.Currency} ({currencyInt})");
                     }
 
                     // CRITICAL: Mark entity as modified to ensure EF Core tracks changes
