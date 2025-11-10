@@ -336,20 +336,47 @@ print_info "This may take a few minutes..."
 # Export env variables for docker-compose
 export $(cat .env.production | grep -v '^#' | xargs)
 
-# Build the application
-print_info "Building Docker image..."
-$DOCKER_COMPOSE -f $COMPOSE_FILE build web
+# Build the application with no cache for fresh static files
+print_info "Building Docker image (with static files optimization)..."
+$DOCKER_COMPOSE -f $COMPOSE_FILE build --no-cache web
 
-# Start services (exclude db since we use host PostgreSQL)
+# Start services
 print_info "Starting services..."
 if [ "$SKIP_SSL_SETUP" = true ]; then
     print_warning "Starting WITHOUT SSL (HTTP only)"
-    $DOCKER_COMPOSE -f $COMPOSE_FILE up -d web
+    # Check if db service exists in compose file
+    if $DOCKER_COMPOSE -f $COMPOSE_FILE config --services | grep -q "^db$"; then
+        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d db web
+    else
+        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d web
+    fi
 else
-    $DOCKER_COMPOSE -f $COMPOSE_FILE up -d web nginx certbot
+    # Check if db service exists in compose file
+    if $DOCKER_COMPOSE -f $COMPOSE_FILE config --services | grep -q "^db$"; then
+        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d db web nginx certbot
+    else
+        $DOCKER_COMPOSE -f $COMPOSE_FILE up -d web nginx certbot
+    fi
 fi
 
 print_success "Services started"
+
+# Wait for static files to be copied
+print_info "Waiting for static files initialization..."
+sleep 5
+
+# Verify static files are available in Nginx
+if docker ps | grep -q "nginx"; then
+    NGINX_CONTAINER=$(docker ps --filter "name=nginx" --format "{{.Names}}" | head -1)
+    if [ ! -z "$NGINX_CONTAINER" ]; then
+        if docker exec $NGINX_CONTAINER ls /app/wwwroot/ > /dev/null 2>&1; then
+            print_success "Static files initialized in Nginx"
+        else
+            print_warning "Static files might not be initialized yet"
+        fi
+    fi
+fi
+
 echo ""
 
 # Step 10: Wait and verify
