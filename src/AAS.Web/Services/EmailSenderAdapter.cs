@@ -62,16 +62,23 @@ namespace AAS.Web.Services
                 }
                 
                 _logger.LogInformation("Connecting to SMTP server {Host}:{Port} with security: {Security}", host, port, secureOptions);
-                await client.ConnectAsync(host, port, secureOptions);
+                
+                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+                await client.ConnectAsync(host, port, secureOptions, cts.Token);
+                _logger.LogInformation("Connected successfully");
                 
                 if (!string.IsNullOrWhiteSpace(user) && !string.IsNullOrWhiteSpace(pass))
                 {
                     _logger.LogInformation("Authenticating with user: {User}", user);
-                    await client.AuthenticateAsync(user, pass);
+                    await client.AuthenticateAsync(user, pass, cts.Token);
+                    _logger.LogInformation("Authenticated successfully");
                 }
                 
-                await client.SendAsync(msg);
-                await client.DisconnectAsync(true);
+                _logger.LogInformation("Sending email to {Email}", email);
+                await client.SendAsync(msg, cts.Token);
+                _logger.LogInformation("Email sent successfully");
+                
+                await client.DisconnectAsync(true, cts.Token);
                 
                 _logger.LogInformation("Email sent successfully to {Email}", email);
             }
