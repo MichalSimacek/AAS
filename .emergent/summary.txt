@@ -1,103 +1,92 @@
 <analysis>
-The trajectory details an intensive development cycle for an ASP.NET Core MVC application, transitioning from an AI-built MVP to iterative enhancements. Initial work focused on a complete UI redesign, adhering to specific aesthetic guidelines. This quickly broadened to addressing critical functional bugs, including admin login, robust collection creation with multi-image uploads, slug generation, and fixing database transaction issues. A significant portion involved resolving front-end discrepancies like a non-functional Swiper image gallery, followed by extensive Content Security Policy (CSP) adjustments. Later, the focus shifted to refining user account management pages (Login, Register, Manage Account), implementing email verification, and adding image reordering. The engineer also tackled localization issues, progressively adding translations. Environmental debugging for application startup was a recurring challenge, highlighting the shift from a local development assumption to a Kubernetes environment. The work consistently involved detailed Razor view modifications, CSS overhauls, and C# controller logic updates.
+The trajectory outlines a comprehensive debugging and feature-development cycle for an ASP.NET Core application, Aristocratic Artwork Sale. The initial phase focused on resolving critical deployment issues within a Dockerized environment using Nginx and PostgreSQL. This involved fixing persistent database connection errors, correcting Nginx configuration for static files and SSL, and resolving a fundamental misunderstanding of the deployment workflow (rebuilding Docker images vs. simply restarting containers).
+
+After stabilizing the application, the work shifted to bug fixing and feature implementation. A major bug where the Admin Edit form failed to save collection status, price, and category was traced to a model-binding issue and a missing  attribute in the view. This was resolved, and the repository was cleaned of extraneous scripts and files, establishing a STABLE v1.0.
+
+The most complex part was debugging the email functionality. This was a multi-stage process involving fixing StartTLS settings, resolving Antiforgery token errors by persisting Data Protection keys to a volume, and troubleshooting network connectivity. The AI correctly diagnosed issues with  vs. , DNS resolution failures caused by  rules, and SMTP port blocking by the hosting provider. The final solution involved switching from the problematic ProtonMail Bridge to the cloud-based SMTP Submission API using a specific token.
+
+The final user request is a major feature expansion, including a blog, user comments, and an AAS Verified system, all integrated with DeepL for translation. The AI has just begun this work by creating the necessary models, database migrations, and the DeepL service class.
+
+The user's primary language is Czech (čeština). The next agent MUST respond in Czech.
 </analysis>
 
 <product_requirements>
-The user initially requested a complete overhaul of the terrible frontend to a highly responsive, luxurious, and aristocratic design, emphasizing gold, elegant white, and minimalist black. This evolved to a clean, professional, and elegant design with a light white background, consistent black text, and gold accents, addressing initial issues of a too black, chaotic, and unprofessional appearance.
+The application, Aristocratic Artwork Sale, is a web platform for buying and selling high-end art.
 
-Key functional and design requirements include:
-1.  **Admin Login**: Fix login issues for .
-2.  **Collection Management**:
-    *   Enable robust adding/editing of collections, including multi-file image upload.
-    *   Fix non-responsive Add Collection button.
-    *   Ensure category selection works during creation and edit.
-    *   Resolve 400 Bad Request, database transaction errors (), and duplicate slug errors.
-    *   Fix Details view not found errors.
-    *   Implement Swiper image carousel on detail pages with elegant icons, functioning navigation, and image maximization/lightbox.
-    *   Add Delete Collection and Delete Individual Photo functionality in admin.
-    *   Implement drag-and-drop image reordering in admin.
-3.  **Branding**: Improve the landing page logo to be high-quality, clear, and non-disruptive, replacing a previous SVG with a provided image.
-4.  **Identity UI**: Redesign Login, Register, and Manage Account pages for consistency, elegance, responsiveness, and proper layout, removing floating labels.
-5.  **User Registration**: Enable email registration with an email field and enforce email verification.
-6.  **Localization**: Ensure full and functional automatic page translation (Czech/English).
+**Initial Implementation & Fixes (Completed):**
+The primary goal was to stabilize a deployed ASP.NET Core application. This involved:
+- Fixing HTTP 400/502 errors by correctly configuring Nginx to serve static files and proxy requests to the Dockerized backend.
+- Resolving a Name or service not known database error by ensuring correct environment variable passing in .
+- Fixing a critical bug where the Admin Edit form would not save , , and  for collections.
+- Implementing and debugging email functionality for user inquiries, which required extensive troubleshooting of network, Antiforgery tokens, and SMTP authentication with ProtonMail.
+- Cleaning the repository to establish a stable, production-ready codebase (v1.0).
+
+**New Feature Development (In Progress):**
+The user has requested a major expansion of the application's feature set:
+1.  **AAS Verified Icon:** Admins can flag a collection as AAS Verified. A logo icon will appear on the collection's thumbnail, showing a tooltip Autenticita předmětu garantována společností AAS on hover.
+2.  **User Comments:** Registered users can add, edit, and delete their own comments on each collection's detail page. Admins can delete any comment.
+3.  **Blog System:** A new Blog section where the admin can create, edit, and delete articles using a Rich Text Editor (TinyMCE), including a title and an optional main image.
+4.  **How to Sell/Buy Page:** A new static page explaining the sales process and the meaning of the AAS Verified icon.
+5.  **DeepL Integration:** All new user-generated text (blog posts, comments, new page content) must be translatable into all existing site languages, using the user-provided DeepL API key.
 </product_requirements>
 
 <key_technical_concepts>
--   **ASP.NET Core MVC**: Core web framework for Razor Views and backend.
--   **Razor**: Templating engine for dynamic HTML.
--   **C#**: Backend logic.
--   **PostgreSQL & Entity Framework Core**: Database interactions, including .
--   **SwiperJS**: Image carousels/galleries.
--   **SortableJS**: Drag-and-drop reordering.
--   **CSS**: Styling, responsive design, custom themes.
--   **AntiForgeryToken**: CSRF protection.
--   **Content Security Policy (CSP)**: Security headers management.
--   **ASP.NET Core Identity**: User authentication and management.
--   **Localization (.resx files)**: Multi-language support.
--   **jQuery**: Frontend scripting for validation and interactions.
+- **Framework:** ASP.NET Core 8.0 (with Razor Pages and MVC)
+- **Database:** PostgreSQL with Entity Framework Core (for data access and migrations)
+- **Deployment:** Docker & Docker Compose for containerization.
+- **Web Server:** Nginx as a reverse proxy, handling SSL (via Certbot) and serving static files.
+- **Email:** ProtonMail (SMTP Submission API with token authentication).
+- **Localization:** .NET RESX files for multi-language support.
+- **API Integration:** DeepL API for automated translations.
+- **Networking:**  for network debugging and traffic forwarding.
 </key_technical_concepts>
 
 <code_architecture>
-The application is an ASP.NET Core MVC project with the following high-level structure:
+The application is a standard ASP.NET Core project containerized with Docker and fronted by an Nginx reverse proxy. The deployment process requires rebuilding the  Docker image to incorporate any backend code changes, as Razor views () are compiled into the .
+
+**Directory Structure:**
 
 
+**Key File Summaries:**
 
-**Key files and changes:**
--   :
-    -   **Importance**: Application entry point, configuration of services, middleware, and CSP.
-    -   **Changes**: Modified Content Security Policy (CSP) to allow inline scripts and CDN connections. Enabled  for Identity. Registered  as .
--   :
-    -   **Importance**: Main stylesheet, heavily modified for UI redesign, responsiveness, Swiper, Identity pages, logo, and footer.
-    -   **Changes**: Multiple overhauls for dark/gold, then clean white/gold/black themes, responsive design. Added specific styles for Swiper navigation/pagination, lightbox, new SVG/image logo, and extensive styling for Login, Register, and Manage Account Identity pages, including flexbox layouts and form label adjustments. Fixed footer container background color.
--   :
-    -   **Importance**: Master layout page for public-facing views.
-    -   **Changes**: Modified to load  with cache busting (version ). Added Swiper CSS and JS. Added Bootstrap Icons CSS. Added jQuery script. Added  JavaScript function for language switching. Removed redundant Swiper script loading.
--   :
-    -   **Importance**: Landing page.
-    -   **Changes**: Modified to integrate new CSS classes. Updated to use a new image logo in the hero section.
--   :
-    -   **Importance**: Displays details of a single collection with an image gallery.
-    -   **Changes**: Extensively modified for Swiper integration, including HTML structure for navigation and pagination, and JavaScript initialization. Integrated a lightbox for image maximization. Simplified Swiper JS logic.
--   :
-    -   **Importance**: Admin view for listing collections.
-    -   **Changes**: Links to Create/Edit actions updated. Added Delete button with a modal and associated JavaScript. Removed inline  handlers for CSP compliance.
--   :
-    -   **Importance**: Admin view for creating new collections.
-    -   **Changes**: Form structure refined. Confirmed  for file uploads,  added. Modified category dropdown for explicit  attributes.  attribute for image input confirmed.
--   :
-    -   **Importance**: Admin view for editing existing collections.
-    -   **Changes**: Fixed category dropdown to correctly display selected item. Added delete individual image functionality with buttons and AJAX. Implemented drag-and-drop reordering for images using SortableJS and associated JavaScript. Removed  HTML attributes from Title and Category. Added  messages.
--   :
-    -   **Importance**: Admin controller for collection management.
-    -   **Changes**: Modified  POST action to use  for database transactions and process multiple image uploads more robustly (not rolling back for individual image failures). Added  POST action for collections. Added  POST action for individual images. Added  POST action for drag-and-drop. Fixed GET  action's  with . Added  and  checks to POST  action, and adjusted Title validation. Used  for transaction handling in  (saving reorder).
--   :
-    -   **Importance**: Model for collection data.
-    -   **Changes**:  property made non-required.  property made nullable to avoid mandatory validation in specific contexts.
--   :
-    -   **Importance**: Service for image handling.
-    -   **Changes**: Added  method.
--   :
-    -   **Importance**: New adapter to integrate  with  for ASP.NET Core Identity.
-    -   **Changes**: New file created.
--    and :
-    -   **Importance**: Resource files for localization (English and Czech).
-    -   **Changes**:  (Czech) was created. Both files updated to include all text from the application for comprehensive translation.
+-   ****: Defines the production services (, , ). It was modified to add a  volume to persist Antiforgery tokens and  to allow the container to reach the host machine. It reads configuration from a root  file.
+-   ****: A multi-stage Dockerfile that builds and publishes the ASP.NET Core application. Crucially, it compiles all source code and  views into , meaning no source files exist in the final runtime image.
+-   ** / **: Critical configuration files.  reads from  by default. These files contain database credentials, admin passwords, and the final working email configuration, which uses  with a specific user token, not the ProtonMail Bridge.
+-   ****: The controller for managing collections. The  (POST) action was heavily modified to correctly bind and save form data for , , , and .
+-   ****: The admin edit form. Was modified to add the  attribute to fix a binding issue and to correctly set the  attribute on dropdowns based on the model's current state. A new checkbox for  was just added.
+-   ****: The application entry point. Was modified to add Data Protection services and configure them to persist keys to a shared filesystem location (), solving the Antiforgery token decryption error after container restarts.
+-   **, **: New model classes created to support the blog and comment features.
+-   ****: Updated to include  properties for the new  and  models.
+-   ****: New EF Core migration to add the tables for  and , and the  column to the  table.
+-   ****: A new service class created to encapsulate the logic for interacting with the DeepL API for translations.
 </code_architecture>
 
 <pending_tasks>
--   The Czech translation for all texts across all sections of the web application still needs to be fully implemented and verified after  was populated.
+The following features from the user's major request are pending implementation:
+- **AAS Verified Icon:** UI logic to display the icon and tooltip.
+- **Comments System:** API controller for CRUD operations, front-end JavaScript for submission, and view components to display comments.
+- **Blog System:** Admin controllers and views for blog management (using TinyMCE), public-facing controller and views, and routing.
+- **How to Sell/Buy Page:** Controller, view, and localization resource entries.
+- **DeepL Integration:** Integrating  into all new features (Blog, How to page) for automated translation.
 </pending_tasks>
 
 <current_work>
-Immediately before this summary request, the AI engineer was addressing two critical issues:
-1.  **Image Reordering Saving Failure**: The drag-and-drop image reordering functionality in the collection edit page () was not saving the new order, resulting in an Error updating collection: The configured execution strategy NpgsqlRetryingExecutionStrategy does not support user-initiated transactions. error.
-2.  **Incomplete Localization**: The user reported that the automatic page translation was still only partially working, with many texts remaining in English, despite previous attempts to add localization and a Czech resource file.
+The AI engineer has just started the implementation of the large new feature set requested by the user. Work has begun on the foundational backend components.
 
-The AI engineer's last actions were to:
--   Fix the  error in the  POST action within  by ensuring database operations within transactions use . This directly addresses the transaction error for saving reordered images.
--   Begin addressing the incomplete localization by updating  (the English base resource file) with *all* text found on the application's pages. The very next step indicated was to then update  (the Czech resource file) with all corresponding translations.
+**Specifically, the following actions were just completed:**
+1.  **Data Model Expansion:**
+    - The  model in  was updated with a new boolean property: .
+    - New model classes were created:  and  to support the comments and blog features.
+2.  **Database Context Update:**
+    - The  file was updated to include  and  so Entity Framework Core is aware of the new tables.
+3.  **Database Migration:**
+    - A new EF Core migration file was created: . This migration contains the schema changes to add the  and  tables and the  column to the  table.
+4.  **Service Layer for Translation:**
+    - A new service was created: . This class is intended to handle all interactions with the DeepL API, using the API key provided by the user.
+
+The immediate work is focused on building out the backend infrastructure required for all the new features before moving to the controller, view, and front-end implementation.
 </current_work>
 
 <optional_next_step>
-Complete the Czech translations in  based on the updated .
+Create the API controller for the new commenting feature () to handle creating, reading, updating, and deleting comments. This is the next logical step after defining the  model and .
 </optional_next_step>
