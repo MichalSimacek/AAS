@@ -1,0 +1,58 @@
+@model IEnumerable<AAS.Web.Models.BlogPost>
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+@using System.Globalization
+
+@{
+    ViewData["Title"] = L["Blog"];
+    var currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+}
+
+<div class="section">
+    <div class="container">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">@L["Home"]</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@L["Blog"]</li>
+            </ol>
+        </nav>
+
+        <h1 class="display-4 mb-5">@L["Blog"]</h1>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">
+                @L["No blog posts available"]
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+                @foreach (var post in Model)
+                {
+                    var title = AAS.Web.Controllers.BlogController.GetLocalizedTitle(post, currentCulture);
+                    var content = AAS.Web.Controllers.BlogController.GetLocalizedContent(post, currentCulture);
+                    var excerpt = content.Length > 200 ? content.Substring(0, 200) + "..." : content;
+                    
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100">
+                            @if (!string.IsNullOrEmpty(post.FeaturedImage))
+                            {
+                                <img src="@post.FeaturedImage" class="card-img-top" alt="@title" style="height: 200px; object-fit: cover;" />
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">@title</h5>
+                                <p class="card-text text-muted small">
+                                    <i class="bi bi-calendar"></i> @post.CreatedAt.ToString("dd.MM.yyyy")
+                                </p>
+                                <div class="card-text mb-3">
+                                    @Html.Raw(excerpt)
+                                </div>
+                                <a href="/Blog/Post/@post.Id" class="btn btn-primary mt-auto">@L["Read More"]</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
