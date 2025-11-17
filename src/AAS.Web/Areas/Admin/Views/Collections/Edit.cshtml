@@ -63,6 +63,16 @@
     </div>
 </div>
 
+<div class="mb-3">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="AASVerified" id="AASVerified" value="true" @(Model.AASVerified ? "checked" : "")>
+        <label class="form-check-label" for="AASVerified">
+            <strong>AAS Verified</strong> - Authenticity guaranteed by Aristocratic Artwork Sale
+        </label>
+        <small class="form-text text-muted d-block">Check this if AAS guarantees the authenticity of this item</small>
+    </div>
+</div>
+
 <h4 class="mt-4 mb-3">Media Files</h4>
 <div class="mb-3">
     <label class="form-label">Add images</label>
