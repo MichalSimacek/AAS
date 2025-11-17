@@ -226,10 +226,12 @@ CREATE TABLE "Comments" (...);
 #### Přidání nové migrace:
 
 ```bash
+# 🔴 DŮLEŽITÉ: Používej /AAS jako kořenový adresář!
+
 # 1. Vstup do SDK kontejneru (pokud není SDK na productionu)
 docker run -it --rm \
-  -v /app:/app \
-  -w /app/src/AAS.Web \
+  -v /AAS:/AAS \
+  -w /AAS/src/AAS.Web \
   --network aas_default \
   -e ConnectionStrings__DefaultConnection="Host=db;Database=aasdb;Username=aasuser;Password=aaspassword" \
   mcr.microsoft.com/dotnet/sdk:8.0 \
@@ -237,6 +239,7 @@ docker run -it --rm \
 
 # 2. Instalace EF Core tools
 dotnet tool install --global dotnet-ef --version 8.0.11
+export PATH="$PATH:/root/.dotnet/tools"
 
 # 3. Přidání migrace
 dotnet ef migrations add MigrationName
@@ -257,8 +260,8 @@ cat Migrations/YYYYMMDDHHMMSS_MigrationName.cs
 # Zobraz seznam migrací
 dotnet ef migrations list
 
-# Zkontroluj strukturu
-ls -la Migrations/
+# Zkontroluj strukturu v PRODUKČNÍ CESTĚ
+ls -la /AAS/src/AAS.Web/Migrations/
 
 # Ujisti se:
 # 1. Každá .cs migrace má svůj .Designer.cs
