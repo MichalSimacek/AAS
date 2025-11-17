@@ -1,19 +1,31 @@
 # 🏛️ Aristocratic Artwork Sale - Developer Guide
 
-> **DŮLEŽITÉ:** Tento dokument MUSÍ být přečten před jakýmikoliv změnami v projektu!
+> **🔴 KRITICKÉ:** Tento dokument MUSÍ být přečten před jakýmikoliv změnami v projektu!
 > Obsahuje kritické poznatky získané během rozsáhlého debuggingu a deployment procesu.
+
+---
+
+## ⚠️ DŮLEŽITÉ - CESTY V PROJEKTU
+
+### 🔴 KOŘENOVÝ ADRESÁŘ
+**Produkční server:** `/AAS` (NIKDY ne `/app`!)  
+**Persistent storage:** `/mnt/data` (databáze, nahrané soubory, logy)
+
+**❌ NEPOUŽÍVEJ:** `/app` - to je jen development prostředí!  
+**✅ POUŽÍVEJ:** `/AAS` - to je produkční cesta!
 
 ---
 
 ## 📋 Obsah
 1. [Přehled projektu](#přehled-projektu)
-2. [Struktura projektu](#struktura-projektu)
+2. [Struktura projektu a cesty](#struktura-projektu-a-cesty)
 3. [Entity Framework Core - KRITICKÉ POZNATKY](#entity-framework-core---kritické-poznatky)
 4. [Deployment proces](#deployment-proces)
 5. [Databázová struktura](#databázová-struktura)
-6. [Důležité příkazy](#důležité-příkazy)
-7. [Known Issues & Solutions](#known-issues--solutions)
-8. [Best Practices](#best-practices)
+6. [Persistent Storage (/mnt/data)](#persistent-storage-mntdata)
+7. [Důležité příkazy](#důležité-příkazy)
+8. [Known Issues & Solutions](#known-issues--solutions)
+9. [Best Practices](#best-practices)
 
 ---
 
@@ -24,7 +36,9 @@
 **Databáze:** PostgreSQL  
 **ORM:** Entity Framework Core  
 **Kontejnerizace:** Docker + Docker Compose  
-**Web Server:** Nginx (Reverse Proxy)
+**Web Server:** Nginx (Reverse Proxy)  
+**Kořenový adresář:** `/AAS` (production)  
+**Persistent storage:** `/mnt/data`
 
 **Aktuální funkce:**
 - ✅ Správa uměleckých sbírek (Collections)
@@ -36,10 +50,12 @@
 
 ---
 
-## 📁 Struktura projektu
+## 📁 Struktura projektu a cesty
+
+### 🔴 PRODUKČNÍ PROSTŘEDÍ
 
 ```
-/app/
+/AAS/                                # ⭐ KOŘENOVÝ ADRESÁŘ (PRODUCTION)
 ├── AAS.sln                          # Solution file
 ├── docker-compose.prod.yml          # Production Docker Compose
 ├── Dockerfile.prod                  # Production Dockerfile (multi-stage build)
