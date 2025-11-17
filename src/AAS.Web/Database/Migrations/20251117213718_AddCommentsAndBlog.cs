@@ -117,6 +117,7 @@ namespace AAS.Web.Database.Migrations
                 column: "AuthorId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(name: "Comments");
