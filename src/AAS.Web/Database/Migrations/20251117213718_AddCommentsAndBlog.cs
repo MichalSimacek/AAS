@@ -120,7 +120,6 @@ namespace AAS.Web.Database.Migrations
         {
             migrationBuilder.DropTable(name: "Comments");
             migrationBuilder.DropTable(name: "BlogPosts");
-            migrationBuilder.DropColumn(name: "AASVerified", table: "Collections");
         }
     }
 }
