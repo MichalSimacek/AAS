@@ -6,9 +6,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AAS.Web.Database.Migrations
 {
-    /// <migration builder-name="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    /// <inheritdoc />
     public partial class AddCommentsAndBlog : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             // Create Comments table
