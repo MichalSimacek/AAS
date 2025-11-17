@@ -1,0 +1,50 @@
+# New Localization Keys for Phase 1
+
+## Czech (cs)
+AASVerified=AAS Ověřeno
+AASVerifiedTooltip=Autenticita předmětu garantována společností AAS
+BuyOrSellThroughUs=Kupujte a prodávejte s námi
+BuyOrSellDescription=Objevte jak bezpečně koupit nebo prodat luxusní předměty
+BuyOrSellDetails=Spojujeme kupce a prodejce prémiových uměleckých děl, šperků, hodinek a starožitností s garancí kvality a bezpečnosti.
+LearnMore=Zjistit více
+HowToBuySell=Jak koupit nebo prodat
+HowToBuySellDescription=Komplexní průvodce nákupem a prodejem s Aristocratic Artwork Sale
+HowToBuy=Jak koupit
+HowToSell=Jak prodat
+HowToBuyStep1Title=1. Procházejte kolekce
+HowToBuyStep1Text=Prohlížejte si naši kurátorskou sbírku luxusních předmětů. Každý kus je pečlivě ověřen a dokumentován.
+HowToBuyStep2Title=2. Kontaktujte nás
+HowToBuyStep2Text=Klikněte na tlačítko "I'm Interested" u vybraného předmětu. Vyplňte formulář a my vás spojíme s prodejcem.
+HowToBuyStep3Title=3. Komunikace s prodejcem
+HowToBuyStep3Text=Prostřednictvím nás komunikujete s prodejcem, domluvíte si prohlídku a všechny detaily transakce.
+HowToBuyStep4Title=4. Bezpečná transakce
+HowToBuyStep4Text=Zajistíme bezpečný průběh transakce, autentifikaci předmětu a všechny potřebné dokumenty.
+HowToBuyNote=U předmětů označených AAS ikonou garantujeme pravost a autenticitu.
+HowToSellStep1Title=1. Kontaktujte nás
+HowToSellStep1Text=Pošlete nám email na info@aristocraticartworksale.com s fotografiemi a detaily vašeho předmětu.
+HowToSellStep2Title=2. Posouzení a ocenění
+HowToSellStep2Text=Náš tým odborníků posoudí váš předmět a navrhne cenu a způsob prodeje.
+HowToSellStep3Title=3. Vytvoření inzerátu
+HowToSellStep3Text=Po dohodě vytvoříme profesionální inzerát s fotografiemi a popisem vašeho předmětu.
+HowToSellStep4Title=4. Prodej a provize
+HowToSellStep4Text=Zajistíme kontakt s kupcem, domluvíme transakci. Naše provize je dohodnuta předem a férová.
+HowToSellNote=Specializujeme se na umění, šperky, hodinky a starožitnosti. Kontaktujte nás i s neobvyklými předměty.
+WhatIsAASVerified=Co znamená AAS Verified ikona?
+AASVerifiedExplanation=Ikona AAS Verified označuje předměty, u kterých Aristocratic Artwork Sale osobně ručí za pravost a autenticitu.
+WithAASVerified=S AAS Verified ikonou
+WithAASVerifiedText=Aristocratic Artwork Sale osobně garantuje pravost předmětu. Prošel naším důkladným ověřením a máte jistotu autenticity.
+WithoutAASVerified=Bez AAS Verified ikony
+WithoutAASVerifiedText=Předmět je nabízen prodejcem bez naší garance pravosti. Doporučujeme vlastní ověření nebo expertizu.
+AASVerifiedDisclaimer=AAS Verified ikona je zárukou naší společnosti, že předmět je autentický a odpovídá popisu. U ostatních předmětů odpovědnost za pravost nese prodejce.
+BrowseCollections=Prohlédnout kolekce
+Note=Poznámka
+
+## English (en) - will be translated
+## German (de) - will be translated
+## Spanish (es) - will be translated
+## French (fr) - will be translated
+## Hindi (hi) - will be translated
+## Japanese (ja) - will be translated
+## Portuguese (pt) - will be translated
+## Russian (ru) - will be translated
+## Chinese (zh) - will be translated
