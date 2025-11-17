@@ -43,6 +43,28 @@ namespace AAS.Web.Data
             {
                 e.HasIndex(x => x.SourceHash).IsUnique();
             });
+
+            b.Entity<Comment>(e =>
+            {
+                e.HasIndex(x => x.CollectionId);
+                e.HasIndex(x => x.CreatedAt);
+            });
+
+            b.Entity<BlogPost>(e =>
+            {
+                e.HasIndex(x => x.Published);
+                e.HasIndex(x => x.CreatedAt);
+                e.Property(x => x.ContentCs).HasColumnType("text");
+                e.Property(x => x.ContentEn).HasColumnType("text");
+                e.Property(x => x.ContentDe).HasColumnType("text");
+                e.Property(x => x.ContentEs).HasColumnType("text");
+                e.Property(x => x.ContentFr).HasColumnType("text");
+                e.Property(x => x.ContentHi).HasColumnType("text");
+                e.Property(x => x.ContentJa).HasColumnType("text");
+                e.Property(x => x.ContentPt).HasColumnType("text");
+                e.Property(x => x.ContentRu).HasColumnType("text");
+                e.Property(x => x.ContentZh).HasColumnType("text");
+            });
         }
     }
 }
