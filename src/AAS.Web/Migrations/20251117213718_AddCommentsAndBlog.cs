@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace AAS.Web.Database.Migrations
+namespace AAS.Web.Migrations
 {
     /// <inheritdoc />
     public partial class AddCommentsAndBlog : Migration
