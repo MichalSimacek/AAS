@@ -1,5 +1,6 @@
 @model AAS.Web.Models.Collection
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+@using System.Web
 @{
   var images = Model.Images.OrderBy(i => i.SortOrder).ToList();
 }
