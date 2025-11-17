@@ -18,6 +18,9 @@ namespace AAS.Web.Models
         [Column(TypeName = "decimal(18,2)")] public decimal? Price { get; set; }
         public Currency Currency { get; set; } = Currency.EUR;
         
+        // AAS Verification - authenticity guaranteed by AAS
+        public bool AASVerified { get; set; } = false;
+        
         public ICollection<CollectionImage> Images { get; set; } = new List<CollectionImage>();
         public ICollection<CollectionTranslation> Translations { get; set; } = new List<CollectionTranslation>();
     }
