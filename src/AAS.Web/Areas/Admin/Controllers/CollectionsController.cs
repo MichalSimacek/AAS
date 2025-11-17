@@ -323,6 +323,11 @@ namespace AAS.Web.Areas.Admin.Controllers
                         existing.Currency = (Currency)currencyInt;
                         Console.WriteLine($"[EDIT POST DEBUG] Updated Currency to: {existing.Currency} ({currencyInt})");
                     }
+                    
+                    // Parse and update AASVerified
+                    var aasVerifiedStr = Request.Form["AASVerified"].ToString();
+                    existing.AASVerified = aasVerifiedStr == "true";
+                    Console.WriteLine($"[EDIT POST DEBUG] Updated AASVerified to: {existing.AASVerified}");
 
                     // CRITICAL: Mark entity as modified to ensure EF Core tracks changes
                     _db.Entry(existing).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
