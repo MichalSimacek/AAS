@@ -1,0 +1,147 @@
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+
+<div class="section">
+  <div class="container">
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">@L["Home"]</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@L["HowToBuySell"]</li>
+      </ol>
+    </nav>
+
+    <h1 class="page-heading">@L["HowToBuySell"]</h1>
+    <p class="lead text-center mb-5">@L["HowToBuySellDescription"]</p>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="h3 mb-4">
+              <i class="bi bi-cart-check text-success me-2"></i>
+              @L["HowToBuy"]
+            </h2>
+            
+            <div class="mb-4">
+              <h3 class="h5">@L["HowToBuyStep1Title"]</h3>
+              <p>@L["HowToBuyStep1Text"]</p>
+            </div>
+            
+            <div class="mb-4">
+              <h3 class="h5">@L["HowToBuyStep2Title"]</h3>
+              <p>@L["HowToBuyStep2Text"]</p>
+            </div>
+            
+            <div class="mb-4">
+              <h3 class="h5">@L["HowToBuyStep3Title"]</h3>
+              <p>@L["HowToBuyStep3Text"]</p>
+            </div>
+            
+            <div class="mb-4">
+              <h3 class="h5">@L["HowToBuyStep4Title"]</h3>
+              <p>@L["HowToBuyStep4Text"]</p>
+            </div>
+
+            <div class="alert alert-info mt-4">
+              <strong>@L["Note"]:</strong> @L["HowToBuyNote"]
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="h3 mb-4">
+              <i class="bi bi-currency-dollar text-primary me-2"></i>
+              @L["HowToSell"]
+            </h2>
+            
+            <div class="mb-4">
+              <h3 class="h5">@L["HowToSellStep1Title"]</h3>
+              <p>@L["HowToSellStep1Text"]</p>
+              <p>
+                <a href="mailto:info@aristocraticartworksale.com" class="btn btn-sm btn-outline-primary">
+                  <i class="bi bi-envelope me-1"></i>
+                  info@aristocraticartworksale.com
+                </a>
+              </p>
+            </div>
+            
+            <div class="mb-4">
+              <h3 class="h5">@L["HowToSellStep2Title"]</h3>
+              <p>@L["HowToSellStep2Text"]</p>
+            </div>
+            
+            <div class="mb-4">
+              <h3 class="h5">@L["HowToSellStep3Title"]</h3>
+              <p>@L["HowToSellStep3Text"]</p>
+            </div>
+            
+            <div class="mb-4">
+              <h3 class="h5">@L["HowToSellStep4Title"]</h3>
+              <p>@L["HowToSellStep4Text"]</p>
+            </div>
+
+            <div class="alert alert-warning mt-4">
+              <strong>@L["Note"]:</strong> @L["HowToSellNote"]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-5">
+      <div class="card-body text-center p-5">
+        <div class="mb-4">
+          <img src="~/images/aas-verified-badge.png" alt="AAS Verified" style="width: 80px; height: 80px;" />
+        </div>
+        <h2 class="h3 mb-3">@L["WhatIsAASVerified"]</h2>
+        <p class="lead">@L["AASVerifiedExplanation"]</p>
+        
+        <div class="row g-4 mt-4">
+          <div class="col-12 col-md-6">
+            <div class="alert alert-success">
+              <h4 class="h5">
+                <img src="~/images/aas-verified-badge.png" alt="Verified" style="width: 30px; height: 30px;" class="me-2" />
+                @L["WithAASVerified"]
+              </h4>
+              <p class="mb-0">@L["WithAASVerifiedText"]</p>
+            </div>
+          </div>
+          
+          <div class="col-12 col-md-6">
+            <div class="alert alert-light border">
+              <h4 class="h5">@L["WithoutAASVerified"]</h4>
+              <p class="mb-0">@L["WithoutAASVerifiedText"]</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-4 text-muted">@L["AASVerifiedDisclaimer"]</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="/Collections" class="btn btn-primary btn-lg me-3">
+        <i class="bi bi-search me-2"></i>
+        @L["BrowseCollections"]
+      </a>
+      <a href="mailto:info@aristocraticartworksale.com" class="btn btn-outline-secondary btn-lg">
+        <i class="bi bi-envelope me-2"></i>
+        @L["ContactUs"]
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+.card {
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card-body h3.h5 {
+  color: var(--gold);
+  font-weight: 600;
+}
+</style>
