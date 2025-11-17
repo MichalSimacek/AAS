@@ -114,6 +114,10 @@ services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, Em
 services.AddHttpClient<TranslationService>();
 services.AddSingleton<TranslationService>();
 
+// DeepL Translation Service
+services.AddHttpClient();
+services.AddScoped<IDeepLService, DeepLService>();
+
 services.AddHostedService<AdminSeeder>();
 
 // Response caching + compression
