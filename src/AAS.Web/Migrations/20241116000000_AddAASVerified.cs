@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AAS.Web.Database.Migrations
+namespace AAS.Web.Migrations
 {
     /// <inheritdoc />
     public partial class AddAASVerified : Migration
