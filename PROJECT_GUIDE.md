@@ -110,6 +110,27 @@
             ├── Collections/
             ├── Comments/
             └── Shared/
+
+/mnt/data/                           # ⭐ PERSISTENT STORAGE
+├── postgres/                        # PostgreSQL data (databázové soubory)
+├── uploads/                         # Nahrané soubory (obrázky sbírek, atd.)
+├── logs/                            # Aplikační logy
+└── backups/                         # Databázové zálohy
+```
+
+### 🔴 PRAVIDLA PRO CESTY
+
+1. **Vždy používej `/AAS` jako kořenový adresář v produkci**
+2. **Persistent data MUSÍ být v `/mnt/data`** (jinak se ztratí při restartu kontejneru!)
+3. **NIKDY nepiš hardcoded `/app`** - to je jen development
+4. **Volume mappings v docker-compose.yml musí ukazovat na `/mnt/data`**
+
+**Příklad správné konfigurace v docker-compose:**
+```yaml
+volumes:
+  - /mnt/data/postgres:/var/lib/postgresql/data
+  - /mnt/data/uploads:/AAS/wwwroot/uploads
+  - /mnt/data/logs:/AAS/logs
 ```
 
 ---
