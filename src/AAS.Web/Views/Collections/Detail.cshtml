@@ -109,6 +109,18 @@
           <div class="card-body p-4">
             <span class="badge badge-gold mb-3">@L[Model.Category.ToString()]</span>
             
+            @* AAS Verified Badge *@
+            @if (Model.AASVerified)
+            {
+              <div class="alert alert-success d-flex align-items-center mb-3" role="alert">
+                <img src="~/images/aas-verified-badge.png" alt="AAS Verified" style="width: 40px; height: 40px; margin-right: 15px;" />
+                <div>
+                  <strong>@L["AASVerified"]</strong><br/>
+                  <small>@L["AASVerifiedTooltip"]</small>
+                </div>
+              </div>
+            }
+            
             <h1 style="font-size: 2rem;" class="mb-4">@Html.Raw(Html.Encode(ViewBag.TranslatedTitle as string ?? Model.Title))</h1>
             
             <div style="white-space: pre-wrap;">
