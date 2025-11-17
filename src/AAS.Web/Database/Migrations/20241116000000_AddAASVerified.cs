@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace AAS.Web.Database.Migrations
 {
+    /// <inheritdoc />
     public partial class AddAASVerified : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
