@@ -18,6 +18,7 @@ namespace AAS.Web.Database.Migrations
                 defaultValue: false);
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
