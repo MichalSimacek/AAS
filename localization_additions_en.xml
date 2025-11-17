@@ -1,0 +1,38 @@
+<!-- Add these to SharedResources.en.resx -->
+<data name="AASVerified" xml:space="preserve"><value>AAS Verified</value></data>
+<data name="AASVerifiedTooltip" xml:space="preserve"><value>Item authenticity guaranteed by AAS</value></data>
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>Buy or Sell Through Us</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>Discover how to safely buy or sell luxury items</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>We connect buyers and sellers of premium artworks, jewelry, watches and antiques with quality and safety guarantee.</value></data>
+<data name="LearnMore" xml:space="preserve"><value>Learn More</value></data>
+<data name="HowToBuySell" xml:space="preserve"><value>How to Buy or Sell</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>Complete guide to buying and selling with Aristocratic Artwork Sale</value></data>
+<data name="HowToBuy" xml:space="preserve"><value>How to Buy</value></data>
+<data name="HowToSell" xml:space="preserve"><value>How to Sell</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>1. Browse Collections</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>Explore our curated collection of luxury items. Each piece is carefully verified and documented.</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>2. Contact Us</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>Click the "I'm Interested" button on your selected item. Fill out the form and we'll connect you with the seller.</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>3. Communicate with Seller</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Through us, you communicate with the seller, arrange viewing and all transaction details.</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>4. Secure Transaction</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>We ensure secure transaction process, item authentication and all necessary documents.</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>For items marked with AAS icon, we guarantee authenticity and provenance.</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>1. Contact Us</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>Send us an email at info@aristocraticartworksale.com with photos and details of your item.</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>2. Assessment and Valuation</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>Our team of experts will assess your item and propose pricing and selling method.</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>3. Listing Creation</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Upon agreement, we'll create a professional listing with photos and description of your item.</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>4. Sale and Commission</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>We'll arrange contact with buyer and handle the transaction. Our commission is agreed upfront and fair.</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>We specialize in art, jewelry, watches and antiques. Contact us even with unusual items.</value></data>
+<data name="WhatIsAASVerified" xml:space="preserve"><value>What does the AAS Verified icon mean?</value></data>
+<data name="AASVerifiedExplanation" xml:space="preserve"><value>The AAS Verified icon identifies items for which Aristocratic Artwork Sale personally guarantees authenticity and provenance.</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>With AAS Verified Icon</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>Aristocratic Artwork Sale personally guarantees the item's authenticity. It has passed our thorough verification and you have certainty of authenticity.</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>Without AAS Verified Icon</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>Item is offered by seller without our authenticity guarantee. We recommend own verification or expert appraisal.</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>AAS Verified icon is our company's guarantee that the item is authentic and matches the description. For other items, authenticity responsibility lies with the seller.</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>Browse Collections</value></data>
+<data name="Note" xml:space="preserve"><value>Note</value></data>
