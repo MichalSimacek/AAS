@@ -255,4 +255,51 @@
 <data name="Currency" xml:space="preserve"><value>Měna</value></data>
 <data name="Available for" xml:space="preserve"><value>Dostupné za</value></data>
 
+<!-- Komentáře -->
+<data name="Comments" xml:space="preserve"><value>Komentáře</value></data>
+<data name="Add Comment" xml:space="preserve"><value>Přidat komentář</value></data>
+<data name="Write your comment..." xml:space="preserve"><value>Napište váš komentář...</value></data>
+<data name="Submit Comment" xml:space="preserve"><value>Odeslat komentář</value></data>
+<data name="Sign in" xml:space="preserve"><value>Přihlásit se</value></data>
+<data name="to leave a comment" xml:space="preserve"><value>pro zanechání komentáře</value></data>
+<data name="No comments yet. Be the first to comment!" xml:space="preserve"><value>Zatím žádné komentáře. Buďte první, kdo komentuje!</value></data>
+<data name="Failed to load comments" xml:space="preserve"><value>Nepodařilo se načíst komentáře</value></data>
+<data name="Failed to post comment. Please try again." xml:space="preserve"><value>Nepodařilo se odeslat komentář. Zkuste to prosím znovu.</value></data>
+<data name="Edit" xml:space="preserve"><value>Upravit</value></data>
+<data name="Delete" xml:space="preserve"><value>Smazat</value></data>
+<data name="Edit your comment:" xml:space="preserve"><value>Upravte svůj komentář:</value></data>
+<data name="Failed to update comment. Please try again." xml:space="preserve"><value>Nepodařilo se aktualizovat komentář. Zkuste to prosím znovu.</value></data>
+<data name="Are you sure you want to delete this comment?" xml:space="preserve"><value>Opravdu chcete smazat tento komentář?</value></data>
+<data name="Failed to delete comment. Please try again." xml:space="preserve"><value>Nepodařilo se smazat komentář. Zkuste to prosím znovu.</value></data>
+<data name="edited" xml:space="preserve"><value>upraveno</value></data>
+
+<!-- Blog -->
+<data name="Blog" xml:space="preserve"><value>Blog</value></data>
+<data name="New Post" xml:space="preserve"><value>Nový příspěvek</value></data>
+<data name="Create Blog Post" xml:space="preserve"><value>Vytvořit příspěvek</value></data>
+<data name="Edit Blog Post" xml:space="preserve"><value>Upravit příspěvek</value></data>
+<data name="Delete Blog Post" xml:space="preserve"><value>Smazat příspěvek</value></data>
+<data name="Blog Title" xml:space="preserve"><value>Název příspěvku</value></data>
+<data name="Blog Content" xml:space="preserve"><value>Obsah příspěvku</value></data>
+<data name="Featured Image" xml:space="preserve"><value>Hlavní obrázek</value></data>
+<data name="Published" xml:space="preserve"><value>Publikováno</value></data>
+<data name="Draft" xml:space="preserve"><value>Koncept</value></data>
+<data name="Read More" xml:space="preserve"><value>Číst více</value></data>
+<data name="Back to Blog" xml:space="preserve"><value>Zpět na blog</value></data>
+<data name="No blog posts available" xml:space="preserve"><value>Žádné příspěvky nejsou k dispozici</value></data>
+
+<!-- AAS Ověřeno -->
+<data name="AASVerified" xml:space="preserve"><value>AAS Ověřeno</value></data>
+<data name="AASVerifiedTooltip" xml:space="preserve"><value>Autenticita předmětu garantována společností AAS</value></data>
+<data name="AASVerifiedBadge" xml:space="preserve"><value>AAS Ověřená známka</value></data>
+<data name="AASVerifiedExplanation" xml:space="preserve"><value>Známka AAS Ověřeno zaručuje, že tento předmět byl důkladně prozkoumán a ověřen naším týmem odborníků. Stojíme si za autenticitou a kvalitou každého ověřeného předmětu.</value></data>
+
+<!-- Průvodce -->
+<data name="How To" xml:space="preserve"><value>Jak na to</value></data>
+<data name="How to Sell" xml:space="preserve"><value>Jak prodat</value></data>
+<data name="How to Buy" xml:space="preserve"><value>Jak koupit</value></data>
+<data name="Selling Process" xml:space="preserve"><value>Proces prodeje</value></data>
+<data name="Buying Process" xml:space="preserve"><value>Proces nákupu</value></data>
+<data name="Step" xml:space="preserve"><value>Krok</value></data>
+
 </root>
