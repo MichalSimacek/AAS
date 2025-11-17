@@ -12,6 +12,8 @@ namespace AAS.Web.Data
         public DbSet<CollectionTranslation> CollectionTranslations => Set<CollectionTranslation>();
         public DbSet<Inquiry> Inquiries => Set<Inquiry>();
         public DbSet<TranslationCache> TranslationCaches => Set<TranslationCache>();
+        public DbSet<Comment> Comments => Set<Comment>();
+        public DbSet<BlogPost> BlogPosts => Set<BlogPost>();
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
