@@ -1,0 +1,87 @@
+@model IEnumerable<AAS.Web.Models.BlogPost>
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+
+@{
+    ViewData["Title"] = L["Blog"];
+}
+
+<div class="container-fluid px-4 py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">@L["Blog"]</h1>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> @L["New Post"]
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <p class="text-muted">@L["No blog posts available"]</p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>@L["Blog Title"]</th>
+                                <th>@L["Status"]</th>
+                                <th>@L["Created"]</th>
+                                <th>@L["Actions"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var post in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <strong>@post.TitleCs</strong>
+                                        @if (!string.IsNullOrEmpty(post.FeaturedImage))
+                                        {
+                                            <br /><small class="text-muted"><i class="bi bi-image"></i> @L["Featured Image"]</small>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (post.Published)
+                                        {
+                                            <span class="badge bg-success">@L["Published"]</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">@L["Draft"]</span>
+                                        }
+                                    </td>
+                                    <td>@post.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-outline-primary">@L["Edit"]</a>
+                                            <a asp-action="Delete" asp-route-id="@post.Id" class="btn btn-outline-danger">@L["Delete"]</a>
+                                            <a href="/Blog/Post/@post.Id" target="_blank" class="btn btn-outline-secondary">@L["View"]</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
