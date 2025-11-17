@@ -150,6 +150,8 @@ volumes:
 
 **⚠️ PRAVIDLO:** Vždy kontroluj, že existuje pouze JEDNA složka `Migrations`!
 
+**Správná cesta:** `/AAS/src/AAS.Web/Migrations/`
+
 ---
 
 #### 2. **Chybějící .Designer.cs soubory**
