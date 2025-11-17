@@ -1,0 +1,90 @@
+@model AAS.Web.Models.BlogPost
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+@using System.Globalization
+
+@{
+    var currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+    var title = AAS.Web.Controllers.BlogController.GetLocalizedTitle(Model, currentCulture);
+    var content = AAS.Web.Controllers.BlogController.GetLocalizedContent(Model, currentCulture);
+    
+    ViewData["Title"] = title;
+}
+
+<div class="section">
+    <div class="container">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">@L["Home"]</a></li>
+                <li class="breadcrumb-item"><a href="/Blog">@L["Blog"]</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@title</li>
+            </ol>
+        </nav>
+
+        <article>
+            @if (!string.IsNullOrEmpty(Model.FeaturedImage))
+            {
+                <div class="mb-4">
+                    <img src="@Model.FeaturedImage" class="img-fluid rounded" alt="@title" style="width: 100%; max-height: 500px; object-fit: cover;" />
+                </div>
+            }
+
+            <h1 class="display-4 mb-3">@title</h1>
+            
+            <p class="text-muted mb-4">
+                <i class="bi bi-calendar"></i> @Model.CreatedAt.ToString("dd MMMM yyyy", CultureInfo.CurrentCulture)
+                @if (Model.UpdatedAt.HasValue)
+                {
+                    <span class="ms-3"><i class="bi bi-pencil"></i> @L["Updated"]: @Model.UpdatedAt.Value.ToString("dd.MM.yyyy")</span>
+                }
+            </p>
+
+            <div class="blog-content">
+                @Html.Raw(content)
+            </div>
+        </article>
+
+        <div class="mt-5">
+            <a href="/Blog" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> @L["Back to Blog"]
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+<style>
+    .blog-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    
+    .blog-content img {
+        max-width: 100%;
+        height: auto;
+        margin: 2rem 0;
+        border-radius: 8px;
+    }
+    
+    .blog-content h1, .blog-content h2, .blog-content h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .blog-content p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .blog-content ul, .blog-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+    }
+    
+    .blog-content blockquote {
+        border-left: 4px solid var(--gold, #d4af37);
+        padding-left: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: #666;
+    }
+</style>
+}
