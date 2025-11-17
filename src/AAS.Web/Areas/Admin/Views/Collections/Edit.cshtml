@@ -29,11 +29,11 @@
 <div class="mb-3">
     <label class="form-label">Category</label>
     <select name="Category" class="form-select">
-        <option value="0" @(Model.Category == CollectionCategory.Paintings ? "selected" : "")>Paintings</option>
-        <option value="1" @(Model.Category == CollectionCategory.Jewelry ? "selected" : "")>Jewelry</option>
-        <option value="2" @(Model.Category == CollectionCategory.Watches ? "selected" : "")>Watches</option>
-        <option value="3" @(Model.Category == CollectionCategory.Statues ? "selected" : "")>Statues</option>
-        <option value="4" @(Model.Category == CollectionCategory.Other ? "selected" : "")>Other</option>
+        <option value="0" selected="@(Model.Category == CollectionCategory.Paintings)">Paintings</option>
+        <option value="1" selected="@(Model.Category == CollectionCategory.Jewelry)">Jewelry</option>
+        <option value="2" selected="@(Model.Category == CollectionCategory.Watches)">Watches</option>
+        <option value="3" selected="@(Model.Category == CollectionCategory.Statues)">Statues</option>
+        <option value="4" selected="@(Model.Category == CollectionCategory.Other)">Other</option>
     </select>
 </div>
 <div class="mb-3">
