@@ -6,18 +6,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AAS.Web.Database.Migrations
 {
+    /// <migration builder-name="Npgsql.EntityFrameworkCore.PostgreSQL" />
     public partial class AddCommentsAndBlog : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            // Add AASVerified to Collections
-            migrationBuilder.AddColumn<bool>(
-                name: "AASVerified",
-                table: "Collections",
-                type: "boolean",
-                nullable: false,
-                defaultValue: false);
-
             // Create Comments table
             migrationBuilder.CreateTable(
                 name: "Comments",
