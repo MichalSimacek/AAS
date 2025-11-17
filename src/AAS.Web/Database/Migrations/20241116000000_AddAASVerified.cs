@@ -7,6 +7,7 @@ namespace AAS.Web.Database.Migrations
     /// <inheritdoc />
     public partial class AddAASVerified : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<bool>(
