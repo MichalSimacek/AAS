@@ -402,6 +402,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('commentsList');
     console.log('commentsList container:', container);
     
+    if (!container) {
+      console.error('commentsList container not found!');
+      return;
+    }
+    
     if (comments.length === 0) {
       container.innerHTML = '<p class="text-muted">@L["No comments yet. Be the first to comment!"]</p>';
       return;
@@ -410,41 +415,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentUserId = '@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value';
     console.log('Current user ID:', currentUserId, 'isAuthenticated:', isAuthenticated, 'isAdmin:', isAdmin);
     
-    let html = '';
-    comments.forEach(comment => {
-      console.log('Processing comment:', comment);
-      const date = new Date(comment.createdAt).toLocaleDateString('@System.Globalization.CultureInfo.CurrentCulture.Name');
-      const updated = comment.updatedAt ? ' <small class="text-muted">(@L["edited"])</small>' : '';
-      
-      html += `
-        <div class="card mb-3" data-comment-id="${comment.id}">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-start">
-              <div>
-                <strong>${escapeHtml(comment.userName)}</strong>
-                <small class="text-muted ms-2">${date}${updated}</small>
-              </div>`;
-      
-      // Show edit/delete buttons if user is owner or admin
-      if (isAuthenticated && (comment.userId === currentUserId || isAdmin)) {
+    try {
+      let html = '';
+      comments.forEach((comment, index) => {
+        console.log(`Processing comment ${index}:`, comment);
+        
+        const date = new Date(comment.createdAt).toLocaleDateString('@System.Globalization.CultureInfo.CurrentCulture.Name');
+        const updated = comment.updatedAt ? ' <small class="text-muted">(@L["edited"])</small>' : '';
+        const safeUserName = escapeHtml(comment.userName || 'Unknown');
+        const safeText = escapeHtml(comment.text || '');
+        
         html += `
-              <div class="btn-group btn-group-sm">
-                <button class="btn btn-outline-primary btn-sm" onclick="editComment(${comment.id}, this.getAttribute('data-text'))" data-text="${escapeHtml(comment.text).replace(/"/g, '&quot;')}">@L["Edit"]</button>
-                <button class="btn btn-outline-danger btn-sm" onclick="deleteComment(${comment.id})">@L["Delete"]</button>
-              </div>`;
-      }
-      
-      html += `
+          <div class="card mb-3" data-comment-id="${comment.id}">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <strong>${safeUserName}</strong>
+                  <small class="text-muted ms-2">${date}${updated}</small>
+                </div>`;
+        
+        // Show edit/delete buttons if user is owner or admin
+        if (isAuthenticated && (comment.userId === currentUserId || isAdmin)) {
+          const dataText = safeText.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+          html += `
+                <div class="btn-group btn-group-sm">
+                  <button class="btn btn-outline-primary btn-sm" onclick="editComment(${comment.id}, this.getAttribute('data-text'))" data-text="${dataText}">@L["Edit"]</button>
+                  <button class="btn btn-outline-danger btn-sm" onclick="deleteComment(${comment.id})">@L["Delete"]</button>
+                </div>`;
+        }
+        
+        html += `
+              </div>
+              <p class="mt-2 mb-0 comment-text">${safeText}</p>
             </div>
-            <p class="mt-2 mb-0 comment-text">${escapeHtml(comment.text)}</p>
-          </div>
-        </div>`;
-    });
-    
-    console.log('Final HTML length:', html.length);
-    console.log('Setting innerHTML...');
-    container.innerHTML = html;
-    console.log('Comments rendered successfully');
+          </div>`;
+      });
+      
+      console.log('Final HTML length:', html.length);
+      console.log('Setting innerHTML...');
+      container.innerHTML = html;
+      console.log('Comments rendered successfully');
+    } catch (error) {
+      console.error('Error rendering comments:', error);
+      container.innerHTML = '<div class="alert alert-danger">Error displaying comments. Please refresh the page.</div>';
+    }
   }
   
   // Submit new comment
