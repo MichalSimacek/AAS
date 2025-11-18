@@ -766,13 +766,13 @@ namespace AAS.Web.Areas.Admin.Controllers
                 .ToListAsync();
             _db.CollectionTranslations.RemoveRange(existingTranslations);
 
-            // Translate to all supported languages (except English, which is the source)
-            foreach (var lang in supportedCultures.Where(l => l != "en"))
+            // Translate to all supported languages (except Czech, which is the source)
+            foreach (var lang in supportedCultures.Where(l => l != "cs"))
             {
                 try
                 {
-                    var translatedTitle = await _tr.TranslateAsync(collection.Title, "en", lang);
-                    var translatedDescription = await _tr.TranslateAsync(collection.Description, "en", lang);
+                    var translatedTitle = await _tr.TranslateAsync(collection.Title, "cs", lang);
+                    var translatedDescription = await _tr.TranslateAsync(collection.Description, "cs", lang);
 
                     var translation = new CollectionTranslation
                     {
