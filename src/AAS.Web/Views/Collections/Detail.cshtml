@@ -430,10 +430,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Show edit/delete buttons if user is owner or admin
       if (isAuthenticated && (comment.userId === currentUserId || isAdmin)) {
-        const escapedText = escapeHtml(comment.text).replace(/'/g, '&#39;').replace(/"/g, '&quot;');
         html += `
               <div class="btn-group btn-group-sm">
-                <button class="btn btn-outline-primary btn-sm" onclick="editComment(${comment.id}, \`${escapedText}\`)">@L["Edit"]</button>
+                <button class="btn btn-outline-primary btn-sm" onclick="editComment(${comment.id}, this.getAttribute('data-text'))" data-text="${escapeHtml(comment.text).replace(/"/g, '&quot;')}">@L["Edit"]</button>
                 <button class="btn btn-outline-danger btn-sm" onclick="deleteComment(${comment.id})">@L["Delete"]</button>
               </div>`;
       }
