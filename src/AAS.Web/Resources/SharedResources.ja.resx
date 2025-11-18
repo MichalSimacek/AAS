@@ -255,4 +255,48 @@
 <data name="Currency" xml:space="preserve"><value>通貨</value></data>
 <data name="Available for" xml:space="preserve"><value>入手可能価格</value></data>
 
+<!-- How To Page Details -->
+<data name="HowToBuySell" xml:space="preserve"><value>購入または販売方法</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>プロフェッショナルなケアと完全な機密保持で高級美術品とコレクションアイテムを購入・販売するためのガイド</value></data>
+<data name="Note" xml:space="preserve"><value>注意</value></data>
+
+<!-- How to Buy -->
+<data name="HowToBuy" xml:space="preserve"><value>購入方法</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>ステップ1：コレクションを閲覧</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>厳選された高級美術品、骨董品、ジュエリー、時計のコレクションをご覧ください。各アイテムは専門家によって徹底的に検証され、認証されています。</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>ステップ2：興味を表明</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>興味のあるアイテムを見つけたら、「興味があります」ボタンをクリックして連絡フォームに記入してください。お問い合わせは完全に機密に扱われます。</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>ステップ3：専門家との相談</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>専門スタッフが12時間以内にご連絡し、アイテムの詳細情報を提供し、すべてのご質問にお答えします。</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>ステップ4：取引完了</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>条件が合意されたら、安全な支払いと世界中のお選びいただいた住所への機密配送を手配いたします。</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>すべての取引は最大限の機密性とセキュリティで行われます。お客様のプライバシーが私たちの最優先事項です。</value></data>
+
+<!-- How to Sell -->
+<data name="HowToSell" xml:space="preserve"><value>販売方法</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>ステップ1：お問い合わせ</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>アイテムの説明と写真を添付してメールでお問い合わせください。情報が多いほど、より正確な評価が可能になります。</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>ステップ2：専門家による評価</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>専門家チームがアイテムを徹底的に評価し、無料でプロフェッショナルな市場評価を提供します。</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>ステップ3：オファーの承認</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>オファーに同意いただければ、アイテムの引き取りまたは安全な配送を手配します。すべての輸送費用は当社が負担します。</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>ステップ4：即時支払い</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>アイテムの受領と検証後、お好みの安全な支払い方法で即座に支払いを受け取ります。</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>市場で最高の価格を提供します。隠れた手数料や手数料はありません。合意した全額を受け取ります。</value></data>
+
+<!-- AAS Verified Section -->
+<data name="WhatIsAASVerified" xml:space="preserve"><value>AAS認証とは？</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>AAS認証付き</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>専門家による真正性保証。完全な文書と真正性証明書。最高レベルの信頼と品質。</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>AAS認証なし</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>アイテムはまだ当社チームによって検証されていません。ご要望に応じて検証を提供できます。</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>AAS認証バッジ付きのすべてのアイテムには、真正性証明書と完全な出所文書が付属します。</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>コレクションを閲覧</value></data>
+
+<!-- Home page - BuyOrSell Section -->
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>当社で購入または販売</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>高級美術品の購入と販売における信頼できるパートナー</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>コレクションを拡大したい場合でも、貴重なアイテムを販売したい場合でも、完全な機密保持と市場最高価格でプロフェッショナルなサービスを提供します。</value></data>
+<data name="LearnMore" xml:space="preserve"><value>詳細を見る</value></data>
+
 </root>
