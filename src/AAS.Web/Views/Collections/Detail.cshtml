@@ -447,15 +447,22 @@ document.addEventListener('DOMContentLoaded', function() {
       fetch('/api/Comments', {
         method: 'POST',
         headers: {
+          'X-CSRF-TOKEN': token,
           'RequestVerificationToken': token
         },
         body: formData
       })
       .then(response => {
-        if (!response.ok) throw new Error('Failed to post comment');
+        if (!response.ok) {
+          return response.text().then(text => {
+            console.error('Server response:', text);
+            throw new Error('Failed to post comment');
+          });
+        }
         return response.json();
       })
       .then(data => {
+        console.log('Comment created:', data);
         document.getElementById('commentText').value = '';
         loadComments();
       })
