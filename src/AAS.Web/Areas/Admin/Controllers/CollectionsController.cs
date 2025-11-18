@@ -173,10 +173,13 @@ namespace AAS.Web.Areas.Admin.Controllers
                     // PERFORMANCE FIX: Translate AFTER transaction commits (HTTP calls should not be in transaction)
                     try
                     {
+                        _logger.LogInformation($"Starting translation for collection '{model.Title}' (ID: {model.Id})");
                         await TranslateCollectionAsync(model);
+                        _logger.LogInformation($"Translation completed for collection '{model.Title}'");
                     }
                     catch (Exception transEx)
                     {
+                        _logger.LogError(transEx, $"Translation failed (non-fatal) for collection '{model.Title}': {transEx.Message}");
                         Console.WriteLine($"Translation failed (non-fatal): {transEx.Message}");
                     }
 
