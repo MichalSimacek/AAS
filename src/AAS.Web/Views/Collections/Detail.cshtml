@@ -448,7 +448,10 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>`;
     });
     
+    console.log('Final HTML length:', html.length);
+    console.log('Setting innerHTML...');
     container.innerHTML = html;
+    console.log('Comments rendered successfully');
   }
   
   // Submit new comment
