@@ -288,19 +288,37 @@ docker-compose -f docker-compose.prod.yml build --no-cache
 ```dockerfile
 # Stage 1: Build (s .NET SDK)
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /AAS
 COPY . .
 RUN dotnet restore
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish -c Release -o /AAS/publish
 
 # Stage 2: Runtime (bez SDK - menší image)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
-WORKDIR /app
-COPY --from=build /app/publish .
+WORKDIR /AAS
+COPY --from=build /AAS/publish .
 ENTRYPOINT ["dotnet", "AAS.Web.dll"]
 ```
 
 **⚠️ Poznámka:** Runtime image NEMÁ .NET SDK, takže nemůžeš spouštět `dotnet ef` příkazy na productionu!
+
+**🔴 Volume mappings pro persistent data:**
+```yaml
+volumes:
+  postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/data/postgres
+  
+  uploads:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/data/uploads
+```
 
 ### Automatické migrace v Program.cs
 
