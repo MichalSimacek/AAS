@@ -744,6 +744,17 @@ docker network ls
 
 Když něco nefunguje, projdi tento checklist:
 
+0. **🔴 NEJDŘÍV - CESTY!**
+   ```bash
+   # Používáš správné cesty?
+   pwd  # Mělo by ukazovat na /AAS, NE /app
+   ls -la /AAS
+   ls -la /mnt/data
+   
+   # Docker volumes správně namapované?
+   docker inspect <container> | grep -A 10 "Mounts"
+   ```
+
 1. **Aplikace nespadne při startu?**
    ```bash
    docker logs <web_container> --tail 200
@@ -751,13 +762,17 @@ Když něco nefunguje, projdi tento checklist:
 
 2. **Migrace jsou v pořádku?**
    ```bash
-   ls -la /app/src/AAS.Web/Migrations/
+   # 🔴 SPRÁVNÁ CESTA: /AAS (ne /app!)
+   ls -la /AAS/src/AAS.Web/Migrations/
    # Zkontroluj: formát názvů, .Designer.cs, nejsou prázdné
    ```
 
-3. **DB je dostupná?**
+3. **DB je dostupná a data jsou v /mnt/data?**
    ```bash
    docker exec -it <db_container> psql -U aasuser -d aasdb -c "\dt"
+   
+   # Zkontroluj persistent storage
+   ls -la /mnt/data/postgres
    ```
 
 4. **Tabulky existují?**
@@ -771,9 +786,28 @@ Když něco nefunguje, projdi tento checklist:
    SELECT * FROM "__EFMigrationsHistory" ORDER BY "MigrationId";
    ```
 
-6. **ConnectionString je správný?**
+6. **ConnectionString a cesty jsou správné?**
    ```bash
-   cat /app/src/AAS.Web/appsettings.Production.json
+   # 🔴 SPRÁVNÁ CESTA: /AAS (ne /app!)
+   cat /AAS/src/AAS.Web/appsettings.Production.json
+   
+   # Zkontroluj upload cesty v kódu
+   grep -r "/app" /AAS/src/AAS.Web/Controllers/
+   # ❌ Pokud najde něco, OPRAV NA /AAS nebo /mnt/data!
+   ```
+
+7. **Persistent data přežijí restart?**
+   ```bash
+   # Před restartem
+   ls -la /mnt/data/uploads > /tmp/before.txt
+   
+   # Restart
+   docker-compose restart
+   
+   # Po restartu
+   ls -la /mnt/data/uploads > /tmp/after.txt
+   diff /tmp/before.txt /tmp/after.txt
+   # Mělo by být prázdné!
    ```
 
 ---
