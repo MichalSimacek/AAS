@@ -255,4 +255,48 @@
 <data name="Currency" xml:space="preserve"><value>Devise</value></data>
 <data name="Available for" xml:space="preserve"><value>Disponible pour</value></data>
 
+<!-- How To Page Details -->
+<data name="HowToBuySell" xml:space="preserve"><value>Comment acheter ou vendre</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>Votre guide pour acheter et vendre des œuvres d'art de luxe et des objets de collection avec des soins professionnels et une discrétion totale</value></data>
+<data name="Note" xml:space="preserve"><value>Note</value></data>
+
+<!-- How to Buy -->
+<data name="HowToBuy" xml:space="preserve"><value>Comment acheter</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>Étape 1 : Parcourir les collections</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>Explorez notre collection soigneusement sélectionnée d'œuvres d'art de luxe, d'antiquités, de bijoux et de montres. Chaque article est minutieusement examiné et authentifié par nos experts.</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>Étape 2 : Exprimer votre intérêt</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>Lorsque vous trouvez un article qui vous intéresse, cliquez sur le bouton "Je suis intéressé" et remplissez le formulaire de contact. Votre demande sera traitée avec une discrétion totale.</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>Étape 3 : Consultation d'expert</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Notre spécialiste vous contactera dans les 12 heures, fournira des informations détaillées sur l'article et répondra à toutes vos questions.</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>Étape 4 : Finaliser la transaction</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>Une fois les conditions convenues, nous organiserons un paiement sécurisé et une livraison discrète à votre adresse choisie partout dans le monde.</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>Toutes les transactions sont effectuées avec une discrétion et une sécurité maximales. Votre vie privée est notre priorité.</value></data>
+
+<!-- How to Sell -->
+<data name="HowToSell" xml:space="preserve"><value>Comment vendre</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>Étape 1 : Contactez-nous</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>Envoyez-nous un e-mail avec une description de votre article et joignez des photos. Plus vous fournissez d'informations, plus notre évaluation sera précise.</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>Étape 2 : Évaluation d'expert</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>Notre équipe d'experts effectuera une évaluation approfondie de votre article et vous fournira une estimation professionnelle du marché sans frais.</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>Étape 3 : Accepter l'offre</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Si vous acceptez notre offre, nous organiserons l'enlèvement de l'article ou l'expédition sécurisée. Tous les frais de transport sont pris en charge par nous.</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>Étape 4 : Paiement immédiat</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>Dès réception et vérification de l'article, vous recevrez le paiement immédiatement via votre méthode de paiement sécurisée préférée.</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>Nous offrons les prix les plus élevés du marché. Pas de frais cachés, pas de commissions. Vous recevez le montant total convenu.</value></data>
+
+<!-- AAS Verified Section -->
+<data name="WhatIsAASVerified" xml:space="preserve"><value>Qu'est-ce que AAS Vérifié ?</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>Avec AAS Vérifié</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>Authenticité garantie par nos experts. Documentation complète et certificat d'authenticité. Plus haut niveau de confiance et de qualité.</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>Sans AAS Vérifié</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>L'article n'a pas encore été vérifié par notre équipe. Nous pouvons fournir une vérification sur demande.</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>Tous les articles avec le badge AAS Vérifié sont accompagnés d'un certificat d'authenticité et d'une documentation complète de provenance.</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>Parcourir les collections</value></data>
+
+<!-- Home page - BuyOrSell Section -->
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>Achetez ou vendez avec nous</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>Votre partenaire de confiance pour acheter et vendre des œuvres d'art de luxe</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>Que vous cherchiez à agrandir votre collection ou à vendre des articles précieux, nous offrons des services professionnels avec une discrétion totale et les prix les plus élevés du marché.</value></data>
+<data name="LearnMore" xml:space="preserve"><value>En savoir plus</value></data>
+
 </root>
