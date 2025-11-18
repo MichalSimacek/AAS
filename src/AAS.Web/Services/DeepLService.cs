@@ -16,13 +16,13 @@ namespace AAS.Web.Services
         private readonly ILogger<DeepLService> _logger;
 
         // Language codes mapping (DeepL uses different codes)
+        // Note: DeepL doesn't support Hindi (hi), so it will fallback to original text
         private readonly Dictionary<string, string> _langMap = new()
         {
             { "en", "EN-US" },
             { "de", "DE" },
             { "es", "ES" },
             { "fr", "FR" },
-            { "hi", "HI" },
             { "ja", "JA" },
             { "pt", "PT-PT" },
             { "ru", "RU" },
