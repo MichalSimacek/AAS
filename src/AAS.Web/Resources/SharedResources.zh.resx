@@ -255,4 +255,48 @@
 <data name="Currency" xml:space="preserve"><value>货币</value></data>
 <data name="Available for" xml:space="preserve"><value>可购买价格</value></data>
 
+<!-- How To Page Details -->
+<data name="HowToBuySell" xml:space="preserve"><value>如何购买或出售</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>您购买和出售豪华艺术品和收藏品的专业指南，提供专业护理和完全保密</value></data>
+<data name="Note" xml:space="preserve"><value>注意</value></data>
+
+<!-- How to Buy -->
+<data name="HowToBuy" xml:space="preserve"><value>如何购买</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>步骤1：浏览收藏</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>探索我们精心策划的豪华艺术品、古董、珠宝和手表收藏。每件物品都经过我们专家的彻底检查和认证。</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>步骤2：表达兴趣</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>当您找到感兴趣的物品时，点击"我感兴趣"按钮并填写联系表单。您的询问将得到完全保密处理。</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>步骤3：专家咨询</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>我们的专家将在12小时内与您联系，提供有关该物品的详细信息，并回答您的所有问题。</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>步骤4：完成交易</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>一旦达成条款协议，我们将安排安全付款和将物品谨慎送达您选择的全球任何地址。</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>所有交易都以最大的保密性和安全性进行。您的隐私是我们的首要任务。</value></data>
+
+<!-- How to Sell -->
+<data name="HowToSell" xml:space="preserve"><value>如何出售</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>步骤1：联系我们</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>向我们发送电子邮件，描述您的物品并附上照片。您提供的信息越多，我们的估价就越准确。</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>步骤2：专家评估</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>我们的专家团队将对您的物品进行全面评估，并免费为您提供专业的市场估价。</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>步骤3：接受报价</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>如果您同意我们的报价，我们将安排取件或安全运输。所有运输费用由我们承担。</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>步骤4：即时付款</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>收到并验证物品后，您将立即通过您首选的安全付款方式收到付款。</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>我们提供市场上最高的价格。没有隐藏费用，没有佣金。您将收到全额协议金额。</value></data>
+
+<!-- AAS Verified Section -->
+<data name="WhatIsAASVerified" xml:space="preserve"><value>什么是AAS认证？</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>带AAS认证</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>由我们的专家保证真实性。完整的文档和真品证书。最高级别的信任和质量。</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>不带AAS认证</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>该物品尚未经我们团队验证。我们可以根据要求提供验证。</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>所有带有AAS认证徽章的物品都附有真品证书和完整的来源文档。</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>浏览收藏</value></data>
+
+<!-- Home page - BuyOrSell Section -->
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>通过我们购买或出售</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>您购买和出售豪华艺术品的可信赖合作伙伴</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>无论您是想扩大收藏还是出售珍贵物品，我们都提供完全保密和市场最高价格的专业服务。</value></data>
+<data name="LearnMore" xml:space="preserve"><value>了解更多</value></data>
+
 </root>
