@@ -513,10 +513,13 @@ docker exec -it <db_container_name> psql -U aasuser -d aasdb
 ### Entity Framework (v SDK kontejneru)
 
 ```bash
+# 🔴 DŮLEŽITÉ: Používej /AAS jako kořenový adresář!
+
 # Start SDK kontejneru
 docker run -it --rm \
-  -v /app:/app \
-  -w /app/src/AAS.Web \
+  -v /AAS:/AAS \
+  -v /mnt/data/postgres:/var/lib/postgresql/data \
+  -w /AAS/src/AAS.Web \
   --network aas_default \
   -e ConnectionStrings__DefaultConnection="Host=db;Database=aasdb;Username=aasuser;Password=aaspassword" \
   mcr.microsoft.com/dotnet/sdk:8.0 \
@@ -529,6 +532,25 @@ export PATH="$PATH:/root/.dotnet/tools"
 dotnet ef migrations list
 dotnet ef migrations add MigrationName
 dotnet ef database update
+```
+
+### Práce s /mnt/data
+
+```bash
+# Kontrola persistent storage
+ls -lah /mnt/data/
+
+# Backup databáze
+docker exec <db_container> pg_dump -U aasuser aasdb > /mnt/data/backups/backup_$(date +%Y%m%d).sql
+
+# Restore databáze
+docker exec -i <db_container> psql -U aasuser -d aasdb < /mnt/data/backups/backup_20250117.sql
+
+# Vyčištění starých logů
+find /mnt/data/logs -name "*.log" -mtime +30 -delete
+
+# Kontrola velikosti uploads
+du -sh /mnt/data/uploads/*
 ```
 
 ---
