@@ -204,12 +204,12 @@ namespace AAS.Web.Areas.Admin.Controllers
                     existingPost.FeaturedImage = $"/uploads/blog/{uniqueFileName}";
                 }
 
-                // Re-translate if content changed
+                // Re-translate if content changed (auto-detect source language)
                 try
                 {
                     _logger.LogInformation("Re-translating blog post {PostId}...", id);
 
-                    var titleTranslations = await _deepL.TranslateToAllLanguagesAsync(existingPost.TitleCs, "cs");
+                    var titleTranslations = await _deepL.TranslateToAllLanguagesAsync(existingPost.TitleCs, "auto");
                     existingPost.TitleEn = titleTranslations.GetValueOrDefault("en", existingPost.TitleCs);
                     existingPost.TitleDe = titleTranslations.GetValueOrDefault("de", existingPost.TitleCs);
                     existingPost.TitleEs = titleTranslations.GetValueOrDefault("es", existingPost.TitleCs);
@@ -220,7 +220,7 @@ namespace AAS.Web.Areas.Admin.Controllers
                     existingPost.TitleRu = titleTranslations.GetValueOrDefault("ru", existingPost.TitleCs);
                     existingPost.TitleZh = titleTranslations.GetValueOrDefault("zh", existingPost.TitleCs);
 
-                    var contentTranslations = await _deepL.TranslateToAllLanguagesAsync(existingPost.ContentCs, "cs");
+                    var contentTranslations = await _deepL.TranslateToAllLanguagesAsync(existingPost.ContentCs, "auto");
                     existingPost.ContentEn = contentTranslations.GetValueOrDefault("en", existingPost.ContentCs);
                     existingPost.ContentDe = contentTranslations.GetValueOrDefault("de", existingPost.ContentCs);
                     existingPost.ContentEs = contentTranslations.GetValueOrDefault("es", existingPost.ContentCs);
