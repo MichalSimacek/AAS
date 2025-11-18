@@ -41,6 +41,8 @@ namespace AAS.Web.Services
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty;
 
+            _logger.LogInformation($"DeepL TranslateAsync called: source={sourceLang}, target={targetLang}, textLength={text.Length}");
+
             try
             {
                 // Map language codes
@@ -65,6 +67,8 @@ namespace AAS.Web.Services
                     sourceLangCode = sourceLang.ToUpper();
                 }
 
+                _logger.LogInformation($"Mapped codes: source={sourceLangCode}, target={targetLangCode}");
+
                 var requestData = new Dictionary<string, string>
                 {
                     { "text", text },
@@ -74,6 +78,11 @@ namespace AAS.Web.Services
                 if (sourceLangCode != "auto")
                 {
                     requestData.Add("source_lang", sourceLangCode);
+                    _logger.LogInformation($"Including source_lang={sourceLangCode} in request");
+                }
+                else
+                {
+                    _logger.LogInformation("Using automatic language detection (no source_lang specified)");
                 }
 
                 var content = new FormUrlEncodedContent(requestData);
