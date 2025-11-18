@@ -762,11 +762,14 @@ namespace AAS.Web.Areas.Admin.Controllers
         private async Task TranslateCollectionAsync(Collection collection)
         {
             var supportedCultures = _cfg.GetSection("Localization:SupportedCultures").Get<string[]>() ?? new[] { "en" };
+            _logger.LogInformation($"TranslateCollectionAsync called for '{collection.Title}' - Will translate to: {string.Join(", ", supportedCultures)}");
 
             // Remove existing translations for this collection
             var existingTranslations = await _db.CollectionTranslations
                 .Where(t => t.CollectionId == collection.Id)
                 .ToListAsync();
+            
+            _logger.LogInformation($"Removing {existingTranslations.Count} existing translations");
             _db.CollectionTranslations.RemoveRange(existingTranslations);
 
             // Translate to all supported languages
@@ -775,9 +778,13 @@ namespace AAS.Web.Areas.Admin.Controllers
             {
                 try
                 {
+                    _logger.LogInformation($"Translating to {lang}: Title='{collection.Title.Substring(0, Math.Min(30, collection.Title.Length))}'");
+                    
                     // Use "auto" for automatic language detection
                     var translatedTitle = await _tr.TranslateAsync(collection.Title, "auto", lang);
                     var translatedDescription = await _tr.TranslateAsync(collection.Description, "auto", lang);
+
+                    _logger.LogInformation($"Translation result for {lang}: '{translatedTitle.Substring(0, Math.Min(30, translatedTitle.Length))}'");
 
                     var translation = new CollectionTranslation
                     {
@@ -789,16 +796,19 @@ namespace AAS.Web.Areas.Admin.Controllers
                     };
 
                     _db.CollectionTranslations.Add(translation);
-                    Console.WriteLine($"Translated collection '{collection.Title}' to {lang} (auto-detected source language)");
+                    _logger.LogInformation($"Added translation for {lang}");
                 }
                 catch (Exception ex)
                 {
+                    _logger.LogError(ex, $"Failed to translate collection to {lang}: {ex.Message}");
                     Console.WriteLine($"Failed to translate collection to {lang}: {ex.Message}");
                     // Continue with other languages even if one fails
                 }
             }
 
+            _logger.LogInformation($"Saving {supportedCultures.Length} translations to database");
             await _db.SaveChangesAsync();
+            _logger.LogInformation("Translations saved successfully");
         }
     }
 }
