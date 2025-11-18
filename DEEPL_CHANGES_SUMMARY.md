@@ -52,7 +52,7 @@
 ```bash
 TRANSLATION_ENABLED=true
 TRANSLATION_PROVIDER=DeepL
-DEEPL_API_KEY=844c4481-fc11-4f31-994b-f769e0d80c79:fx
+DEEPL_API_KEY=noble-showcase:fx
 ```
 
 **docker-compose.prod.yml:**
