@@ -30,7 +30,12 @@ namespace AAS.Web.Services
             // Skip if text is empty or too short
             if (string.IsNullOrWhiteSpace(text) || text.Length < 2) return text;
 
-            if (string.Equals(sourceLang, targetLang, StringComparison.OrdinalIgnoreCase)) return text;
+            // Skip if source and target are the same (but not for "auto")
+            if (!sourceLang.Equals("auto", StringComparison.OrdinalIgnoreCase) 
+                && string.Equals(sourceLang, targetLang, StringComparison.OrdinalIgnoreCase)) 
+            {
+                return text;
+            }
 
             var enabled = bool.Parse(Environment.GetEnvironmentVariable("TRANSLATION_ENABLED") ?? _cfg["Translation:Enabled"] ?? "false");
             if (!enabled) return text;
