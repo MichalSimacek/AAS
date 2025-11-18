@@ -299,4 +299,6 @@
 <data name="BuyOrSellDetails" xml:space="preserve"><value>Хотите расширить свою коллекцию или продать ценные предметы - мы предоставляем профессиональные услуги с полной конфиденциальностью и самыми высокими ценами на рынке.</value></data>
 <data name="LearnMore" xml:space="preserve"><value>Узнать больше</value></data>
 
+<data name="Blog" xml:space="preserve"><value>Блог</value></data>
+
 </root>

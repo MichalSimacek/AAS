@@ -299,4 +299,6 @@
 <data name="BuyOrSellDetails" xml:space="preserve"><value>无论您是想扩大收藏还是出售珍贵物品，我们都提供完全保密和市场最高价格的专业服务。</value></data>
 <data name="LearnMore" xml:space="preserve"><value>了解更多</value></data>
 
+<data name="Blog" xml:space="preserve"><value>博客</value></data>
+
 </root>

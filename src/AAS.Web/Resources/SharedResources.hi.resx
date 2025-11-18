@@ -299,4 +299,6 @@
 <data name="BuyOrSellDetails" xml:space="preserve"><value>चाहे आप अपने संग्रह का विस्तार करना चाहते हों या मूल्यवान वस्तुओं को बेचना चाहते हों, हम पूर्ण गोपनीयता और बाजार में सबसे अधिक कीमतों के साथ पेशेवर सेवाएं प्रदान करते हैं।</value></data>
 <data name="LearnMore" xml:space="preserve"><value>अधिक जानें</value></data>
 
+<data name="Blog" xml:space="preserve"><value>ब्लॉग</value></data>
+
 </root>

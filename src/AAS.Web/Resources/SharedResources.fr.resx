@@ -299,4 +299,6 @@
 <data name="BuyOrSellDetails" xml:space="preserve"><value>Que vous cherchiez à agrandir votre collection ou à vendre des articles précieux, nous offrons des services professionnels avec une discrétion totale et les prix les plus élevés du marché.</value></data>
 <data name="LearnMore" xml:space="preserve"><value>En savoir plus</value></data>
 
+<data name="Blog" xml:space="preserve"><value>Blog</value></data>
+
 </root>

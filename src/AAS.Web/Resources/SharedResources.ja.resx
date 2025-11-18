@@ -299,4 +299,6 @@
 <data name="BuyOrSellDetails" xml:space="preserve"><value>コレクションを拡大したい場合でも、貴重なアイテムを販売したい場合でも、完全な機密保持と市場最高価格でプロフェッショナルなサービスを提供します。</value></data>
 <data name="LearnMore" xml:space="preserve"><value>詳細を見る</value></data>
 
+<data name="Blog" xml:space="preserve"><value>ブログ</value></data>
+
 </root>
