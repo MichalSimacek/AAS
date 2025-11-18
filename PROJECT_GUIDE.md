@@ -627,6 +627,40 @@ docker network ls
 
 ---
 
+### Issue #6: Data zmizela po restartu kontejneru
+
+**Symptom:** Nahrané soubory, databáze nebo logy zmizely po restartu.
+
+**Root Cause:** Data nebyla uložena v `/mnt/data` persistent storage.
+
+**Solution:**
+1. **Okamžitě přesuň data do `/mnt/data`:**
+   ```bash
+   # Backup databáze
+   docker exec <db_container> pg_dump -U aasuser aasdb > /mnt/data/backups/emergency_backup.sql
+   
+   # Přesuň uploads
+   docker cp <web_container>:/AAS/wwwroot/uploads /mnt/data/uploads
+   ```
+
+2. **Oprav docker-compose.yml volumes:**
+   ```yaml
+   volumes:
+     - /mnt/data/postgres:/var/lib/postgresql/data
+     - /mnt/data/uploads:/AAS/wwwroot/uploads
+     - /mnt/data/logs:/AAS/logs
+   ```
+
+3. **Restart kontejnerů:**
+   ```bash
+   docker-compose -f docker-compose.prod.yml down
+   docker-compose -f docker-compose.prod.yml up -d
+   ```
+
+**⚠️ Prevention:** VŽDY používej `/mnt/data` pro persistent data!
+
+---
+
 ## ✅ Best Practices
 
 ### 1. Před přidáním nové migrace
