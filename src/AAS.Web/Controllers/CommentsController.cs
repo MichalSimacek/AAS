@@ -96,7 +96,6 @@ namespace AAS.Web.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, [FromForm] string text)
         {
             try
