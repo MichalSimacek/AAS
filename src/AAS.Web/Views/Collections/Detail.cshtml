@@ -455,6 +455,16 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Setting innerHTML...');
       container.innerHTML = html;
       console.log('Comments rendered successfully');
+      
+      // Scroll to comments if not visible
+      setTimeout(() => {
+        const rect = container.getBoundingClientRect();
+        console.log('Container position:', rect);
+        if (rect.top < 0 || rect.bottom > window.innerHeight) {
+          console.log('Scrolling to comments...');
+          container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 100);
     } catch (error) {
       console.error('Error rendering comments:', error);
       container.innerHTML = '<div class="alert alert-danger">Error displaying comments. Please refresh the page.</div>';
