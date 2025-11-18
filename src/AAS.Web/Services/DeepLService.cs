@@ -45,7 +45,25 @@ namespace AAS.Web.Services
             {
                 // Map language codes
                 var targetLangCode = _langMap.ContainsKey(targetLang) ? _langMap[targetLang] : targetLang.ToUpper();
-                var sourceLangCode = sourceLang == "auto" ? "auto" : (sourceLang == "cs" ? "CS" : sourceLang.ToUpper());
+                
+                // Handle source language mapping
+                string sourceLangCode;
+                if (sourceLang == "auto")
+                {
+                    sourceLangCode = "auto"; // DeepL automatic detection
+                }
+                else if (sourceLang == "cs")
+                {
+                    sourceLangCode = "CS"; // Czech
+                }
+                else if (_langMap.ContainsKey(sourceLang))
+                {
+                    sourceLangCode = _langMap[sourceLang];
+                }
+                else
+                {
+                    sourceLangCode = sourceLang.ToUpper();
+                }
 
                 var requestData = new Dictionary<string, string>
                 {
