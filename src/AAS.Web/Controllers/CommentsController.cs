@@ -52,7 +52,6 @@ namespace AAS.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromForm] int collectionId, [FromForm] string text)
         {
             try
