@@ -255,4 +255,48 @@
 <data name="Currency" xml:space="preserve"><value>Moneda</value></data>
 <data name="Available for" xml:space="preserve"><value>Disponible por</value></data>
 
+<!-- How To Page Details -->
+<data name="HowToBuySell" xml:space="preserve"><value>Cómo comprar o vender</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>Su guía para comprar y vender arte de lujo y objetos de colección con atención profesional y total discreción</value></data>
+<data name="Note" xml:space="preserve"><value>Nota</value></data>
+
+<!-- How to Buy -->
+<data name="HowToBuy" xml:space="preserve"><value>Cómo comprar</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>Paso 1: Explorar colecciones</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>Explore nuestra colección cuidadosamente seleccionada de arte de lujo, antigüedades, joyería y relojes. Cada artículo es examinado y autenticado minuciosamente por nuestros expertos.</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>Paso 2: Expresar interés</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>Cuando encuentre un artículo que le interese, haga clic en el botón "Estoy interesado" y complete el formulario de contacto. Su consulta se manejará con total discreción.</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>Paso 3: Consulta con experto</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Nuestro especialista se pondrá en contacto con usted dentro de 12 horas, proporcionará información detallada sobre el artículo y responderá todas sus preguntas.</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>Paso 4: Completar transacción</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>Una vez acordados los términos, organizaremos el pago seguro y la entrega discreta a su dirección elegida en cualquier parte del mundo.</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>Todas las transacciones se realizan con máxima discreción y seguridad. Su privacidad es nuestra prioridad.</value></data>
+
+<!-- How to Sell -->
+<data name="HowToSell" xml:space="preserve"><value>Cómo vender</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>Paso 1: Contáctenos</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>Envíenos un correo electrónico con una descripción de su artículo y adjunte fotos. Cuanta más información proporcione, más precisa será nuestra valoración.</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>Paso 2: Valoración experta</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>Nuestro equipo de expertos realizará una evaluación exhaustiva de su artículo y le proporcionará una valoración profesional del mercado sin costo.</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>Paso 3: Aceptar oferta</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Si está de acuerdo con nuestra oferta, organizaremos la recogida del artículo o el envío seguro. Todos los costos de transporte son cubiertos por nosotros.</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>Paso 4: Pago inmediato</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>Al recibir y verificar el artículo, recibirá el pago inmediatamente a través de su método de pago seguro preferido.</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>Ofrecemos los precios más altos del mercado. Sin tarifas ocultas, sin comisiones. Usted recibe el monto total acordado.</value></data>
+
+<!-- AAS Verified Section -->
+<data name="WhatIsAASVerified" xml:space="preserve"><value>¿Qué significa AAS Verificado?</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>Con AAS Verificado</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>Autenticidad garantizada por nuestros expertos. Documentación completa y certificado de autenticidad. Máximo nivel de confianza y calidad.</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>Sin AAS Verificado</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>El artículo aún no ha sido verificado por nuestro equipo. Podemos proporcionar verificación bajo petición.</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>Todos los artículos con la insignia AAS Verificado están acompañados de un certificado de autenticidad y documentación completa de procedencia.</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>Explorar colecciones</value></data>
+
+<!-- Home page - BuyOrSell Section -->
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>Compre o venda con nosotros</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>Su socio de confianza para comprar y vender arte de lujo</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>Ya sea que busque expandir su colección o vender artículos valiosos, ofrecemos servicios profesionales con total discreción y los precios más altos del mercado.</value></data>
+<data name="LearnMore" xml:space="preserve"><value>Saber más</value></data>
+
 </root>
