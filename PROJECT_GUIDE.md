@@ -705,10 +705,13 @@ docker network ls
 
 ### 5. Při debuggingu
 
+- [ ] **Zkontroluj, že používáš správné cesty (`/AAS`, ne `/app`)**
+- [ ] **Ověř, že persistent data jsou v `/mnt/data`**
 - [ ] Vždy čti logy od začátku, ne jen poslední řádky
 - [ ] Používej `--tail 200` pro delší history
 - [ ] Kontroluj ConnectionString v různých prostředích
 - [ ] Ověř network connectivity mezi kontejnery
+- [ ] Zkontroluj volné místo: `df -h /mnt/data`
 
 ---
 
