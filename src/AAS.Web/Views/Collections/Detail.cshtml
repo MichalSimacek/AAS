@@ -479,8 +479,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Edit comment
   window.editComment = function(commentId, currentText) {
-    const newText = prompt('@L["Edit your comment:"]', currentText);
-    if (newText === null || newText.trim() === '' || newText === currentText) return;
+    // Decode HTML entities
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = currentText;
+    const decodedText = textarea.value;
+    
+    const newText = prompt('@L["Edit your comment:"]', decodedText);
+    if (newText === null || newText.trim() === '' || newText === decodedText) return;
     
     const formData = new FormData();
     formData.append('text', newText);
