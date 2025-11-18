@@ -814,10 +814,18 @@ Když něco nefunguje, projdi tento checklist:
 
 ## 🎓 Lessons Learned
 
+### 0. 🔴 CESTY, CESTY, CESTY!
+- **NIKDY nepoužívej `/app` na produkci - VŽDY `/AAS`!**
+- **Persistent data MUSÍ být v `/mnt/data`**
+- Hardcodované cesty způsobují OBROVSKÉ problémy
+- Zkontroluj Docker volumes PŘED každým deploymentem
+- **Toto nám už způsobilo spoustu problémů - neudělej to znovu!**
+
 ### 1. EF Core migrace jsou zrádné
 - Vždy kontroluj, že migrace nejsou prázdné
 - .Designer.cs soubory jsou POVINNÉ
 - Formát názvů je kritický
+- Správná cesta: `/AAS/src/AAS.Web/Migrations/`
 
 ### 2. Docker cache může způsobit problémy
 - Při změnách migrací vždy `--no-cache`
@@ -826,15 +834,21 @@ Když něco nefunguje, projdi tento checklist:
 ### 3. Production debugging je těžký
 - Runtime image nemá SDK
 - Musíš používat separátní SDK kontejner pro EF tools
-- Logy jsou tvůj nejlepší přítel
+- Logy jsou tvůj nejlepší přítel (v `/mnt/data/logs`)
 
 ### 4. Manuální SQL je OK jako hotfix
 - Ale není dlouhodobé řešení
 - Vždy se vrať a oprav root cause
 
-### 5. Dokumentace je klíčová
+### 5. Persistent storage je kritický
+- Data mimo `/mnt/data` zmizí při restartu!
+- Databáze, uploads, logy - VŠE do `/mnt/data`
+- Pravidelně zálohuj do `/mnt/data/backups`
+
+### 6. Dokumentace je klíčová
 - Tento soubor by měl ušetřit hodiny debuggingu
 - Aktualizuj ho při každé velké změně
+- **VŽDY si ho přečti před začátkem práce!**
 
 ---
 
