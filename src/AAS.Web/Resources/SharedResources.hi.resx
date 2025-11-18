@@ -255,4 +255,48 @@
 <data name="Currency" xml:space="preserve"><value>मुद्रा</value></data>
 <data name="Available for" xml:space="preserve"><value>उपलब्ध मूल्य</value></data>
 
+<!-- How To Page Details -->
+<data name="HowToBuySell" xml:space="preserve"><value>कैसे खरीदें या बेचें</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>पेशेवर देखभाल और पूर्ण गोपनीयता के साथ लक्जरी कलाकृति और संग्रहणीय वस्तुओं को खरीदने और बेचने के लिए आपकी मार्गदर्शिका</value></data>
+<data name="Note" xml:space="preserve"><value>नोट</value></data>
+
+<!-- How to Buy -->
+<data name="HowToBuy" xml:space="preserve"><value>कैसे खरीदें</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>चरण 1: संग्रह ब्राउज़ करें</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>हमारे सावधानीपूर्वक चयनित लक्जरी कलाकृति, पुरावशेष, आभूषण और घड़ियों के संग्रह का अन्वेषण करें। प्रत्येक वस्तु हमारे विशेषज्ञों द्वारा पूरी तरह से जांची और प्रमाणित की जाती है।</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>चरण 2: रुचि व्यक्त करें</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>जब आपको कोई वस्तु मिल जाए जो आपकी रुचि रखती है, तो "मुझे रुचि है" बटन पर क्लिक करें और संपर्क फॉर्म भरें। आपकी पूछताछ पूर्ण गोपनीयता के साथ संभाली जाएगी।</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>चरण 3: विशेषज्ञ परामर्श</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>हमारा विशेषज्ञ 12 घंटों के भीतर आपसे संपर्क करेगा, वस्तु के बारे में विस्तृत जानकारी प्रदान करेगा और आपके सभी प्रश्नों का उत्तर देगा।</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>चरण 4: लेनदेन पूर्ण करें</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>शर्तों पर सहमति होने के बाद, हम दुनिया में कहीं भी आपके चुने हुए पते पर सुरक्षित भुगतान और गोपनीय डिलीवरी की व्यवस्था करेंगे।</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>सभी लेनदेन अधिकतम गोपनीयता और सुरक्षा के साथ संचालित किए जाते हैं। आपकी गोपनीयता हमारी प्राथमिकता है।</value></data>
+
+<!-- How to Sell -->
+<data name="HowToSell" xml:space="preserve"><value>कैसे बेचें</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>चरण 1: हमसे संपर्क करें</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>अपनी वस्तु का विवरण लेकर हमें ईमेल करें और फोटो संलग्न करें। आप जितनी अधिक जानकारी प्रदान करेंगे, हमारा मूल्यांकन उतना ही सटीक हो सकता है।</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>चरण 2: विशेषज्ञ मूल्यांकन</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>हमारी विशेषज्ञ टीम आपकी वस्तु का पूर्ण मूल्यांकन करेगी और आपको बिना किसी लागत के पेशेवर बाजार मूल्यांकन प्रदान करेगी।</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>चरण 3: प्रस्ताव स्वीकार करें</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>यदि आप हमारे प्रस्ताव से सहमत हैं, तो हम वस्तु को उठाने या सुरक्षित शिपिंग की व्यवस्था करेंगे। सभी परिवहन लागत हम द्वारा कवर की जाती है।</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>चरण 4: तत्काल भुगतान</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>वस्तु की प्राप्ति और सत्यापन पर, आपको अपनी पसंदीदा सुरक्षित भुगतान विधि के माध्यम से तुरंत भुगतान प्राप्त होगा।</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>हम बाजार में सबसे अधिक कीमतों की पेशकश करते हैं। कोई छिपी हुई फीस नहीं, कोई कमीशन नहीं। आपको पूरी सहमत राशि मिलती है।</value></data>
+
+<!-- AAS Verified Section -->
+<data name="WhatIsAASVerified" xml:space="preserve"><value>AAS सत्यापित क्या है?</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>AAS सत्यापित के साथ</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>हमारे विशेषज्ञों द्वारा प्रामाणिकता की गारंटी। पूर्ण प्रलेखन और प्रामाणिकता का प्रमाणपत्र। विश्वास और गुणवत्ता का उच्चतम स्तर।</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>AAS सत्यापित के बिना</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>वस्तु अभी तक हमारी टीम द्वारा सत्यापित नहीं की गई है। हम अनुरोध पर सत्यापन प्रदान कर सकते हैं।</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>AAS सत्यापित बैज वाली सभी वस्तुओं के साथ प्रामाणिकता का प्रमाणपत्र और पूर्ण उत्पत्ति प्रलेखन होता है।</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>संग्रह ब्राउज़ करें</value></data>
+
+<!-- Home page - BuyOrSell Section -->
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>हमारे साथ खरीदें या बेचें</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>लक्जरी कलाकृति खरीदने और बेचने के लिए आपका विश्वसनीय साझेदार</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>चाहे आप अपने संग्रह का विस्तार करना चाहते हों या मूल्यवान वस्तुओं को बेचना चाहते हों, हम पूर्ण गोपनीयता और बाजार में सबसे अधिक कीमतों के साथ पेशेवर सेवाएं प्रदान करते हैं।</value></data>
+<data name="LearnMore" xml:space="preserve"><value>अधिक जानें</value></data>
+
 </root>
