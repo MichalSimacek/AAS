@@ -298,5 +298,6 @@
 <data name="BuyOrSellDescription" xml:space="preserve"><value>Ihr vertrauenswürdiger Partner für den Kauf und Verkauf von Luxuskunst</value></data>
 <data name="BuyOrSellDetails" xml:space="preserve"><value>Ob Sie Ihre Sammlung erweitern oder wertvolle Gegenstände verkaufen möchten, wir bieten professionelle Dienstleistungen mit vollständiger Diskretion und den höchsten Preisen auf dem Markt.</value></data>
 <data name="LearnMore" xml:space="preserve"><value>Mehr erfahren</value></data>
+<data name="Blog" xml:space="preserve"><value>Blog</value></data>
 
 </root>
