@@ -255,4 +255,48 @@
 <data name="Currency" xml:space="preserve"><value>Валюта</value></data>
 <data name="Available for" xml:space="preserve"><value>Доступно за</value></data>
 
+<!-- How To Page Details -->
+<data name="HowToBuySell" xml:space="preserve"><value>Как купить или продать</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>Ваш путеводитель по покупке и продаже предметов роскоши и коллекционных произведений искусства с профессиональным уходом и полной конфиденциальностью</value></data>
+<data name="Note" xml:space="preserve"><value>Примечание</value></data>
+
+<!-- How to Buy -->
+<data name="HowToBuy" xml:space="preserve"><value>Как купить</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>Шаг 1: Просмотр коллекций</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>Изучите нашу тщательно отобранную коллекцию предметов роскоши, антиквариата, ювелирных изделий и часов. Каждый предмет тщательно проверяется и аутентифицируется нашими экспертами.</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>Шаг 2: Выразить интерес</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>Когда вы найдете интересующий вас предмет, нажмите кнопку "Мне интересно" и заполните контактную форму. Ваш запрос будет обработан с полной конфиденциальностью.</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>Шаг 3: Консультация с экспертом</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Наш специалист свяжется с вами в течение 12 часов, предоставит подробную информацию о предмете и ответит на все ваши вопросы.</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>Шаг 4: Завершение сделки</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>После согласования условий мы организуем безопасную оплату и конфиденциальную доставку по выбранному вами адресу в любую точку мира.</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>Все транзакции проводятся с максимальной конфиденциальностью и безопасностью. Ваша конфиденциальность - наш приоритет.</value></data>
+
+<!-- How to Sell -->
+<data name="HowToSell" xml:space="preserve"><value>Как продать</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>Шаг 1: Свяжитесь с нами</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>Отправьте нам электронное письмо с описанием вашего предмета и прикрепите фотографии. Чем больше информации вы предоставите, тем точнее будет наша оценка.</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>Шаг 2: Экспертная оценка</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>Наша команда экспертов проведет тщательную оценку вашего предмета и предоставит вам профессиональную рыночную оценку бесплатно.</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>Шаг 3: Принять предложение</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Если вы согласны с нашим предложением, мы организуем забор предмета или безопасную доставку. Все транспортные расходы оплачиваем мы.</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>Шаг 4: Немедленная оплата</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>После получения и проверки предмета вы получите оплату немедленно через предпочитаемый вами безопасный способ оплаты.</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>Мы предлагаем самые высокие цены на рынке. Никаких скрытых комиссий, никаких комиссионных. Вы получаете полную согласованную сумму.</value></data>
+
+<!-- AAS Verified Section -->
+<data name="WhatIsAASVerified" xml:space="preserve"><value>Что такое AAS Проверено?</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>С AAS Проверено</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>Подлинность гарантирована нашими экспертами. Полная документация и сертификат подлинности. Высший уровень доверия и качества.</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>Без AAS Проверено</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>Предмет еще не был проверен нашей командой. Мы можем предоставить проверку по запросу.</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>Все предметы со значком AAS Проверено сопровождаются сертификатом подлинности и полной документацией о происхождении.</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>Просмотреть коллекции</value></data>
+
+<!-- Home page - BuyOrSell Section -->
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>Покупайте или продавайте с нами</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>Ваш надежный партнер для покупки и продажи предметов роскоши</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>Хотите расширить свою коллекцию или продать ценные предметы - мы предоставляем профессиональные услуги с полной конфиденциальностью и самыми высокими ценами на рынке.</value></data>
+<data name="LearnMore" xml:space="preserve"><value>Узнать больше</value></data>
+
 </root>
