@@ -132,7 +132,6 @@ namespace AAS.Web.Controllers
 
         [HttpDelete("{id}")]
         [Authorize]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             try
