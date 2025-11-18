@@ -335,6 +335,80 @@ using (var scope = app.Services.CreateScope())
 
 ---
 
+## 💾 Persistent Storage (/mnt/data)
+
+### 🔴 CO JE /mnt/data?
+
+`/mnt/data` je **persistent storage** na produkčním serveru. Všechna data, která musí přežít restart kontejneru, MUSÍ být uložena zde!
+
+### Struktura /mnt/data:
+
+```
+/mnt/data/
+├── postgres/                        # 🔴 PostgreSQL databázové soubory
+│   └── data/                        # NIKDY nesmaž tuto složku!
+│
+├── uploads/                         # 🔴 Nahrané soubory od uživatelů
+│   ├── collections/                 # Obrázky sbírek
+│   ├── blog/                        # Obrázky z blogů
+│   └── avatars/                     # Avatary uživatelů
+│
+├── logs/                            # 🔴 Aplikační logy
+│   ├── app.log
+│   ├── errors.log
+│   └── nginx-access.log
+│
+└── backups/                         # 🔴 Databázové zálohy
+    ├── daily/
+    └── weekly/
+```
+
+### ⚠️ PRAVIDLA PRO /mnt/data:
+
+1. **NIKDY nesmaž obsah `/mnt/data/postgres`** - ztratíš celou databázi!
+2. **Nahrané soubory musí jít do `/mnt/data/uploads`** - jinak zmizí při restartu
+3. **Logy musí jít do `/mnt/data/logs`** - pro dlouhodobé sledování
+4. **Pravidelně zálohuj do `/mnt/data/backups`**
+
+### Konfigurace v kódu:
+
+```csharp
+// ✅ SPRÁVNĚ: Použij persistent path
+var uploadPath = "/mnt/data/uploads/collections";
+
+// ❌ ŠPATNĚ: Data zmizí při restartu kontejneru
+var uploadPath = "/AAS/wwwroot/uploads";
+```
+
+### Docker Volume Mappings:
+
+```yaml
+services:
+  db:
+    volumes:
+      - /mnt/data/postgres:/var/lib/postgresql/data
+  
+  web:
+    volumes:
+      - /mnt/data/uploads:/AAS/wwwroot/uploads
+      - /mnt/data/logs:/AAS/logs
+```
+
+### Kontrola místa na disku:
+
+```bash
+# Zkontroluj volné místo
+df -h /mnt/data
+
+# Velikost jednotlivých složek
+du -sh /mnt/data/*
+
+# Největší soubory
+find /mnt/data -type f -size +100M -exec ls -lh {} \;
+```
+
+---
+
 ## 🗄️ Databázová struktura
 
 ### PostgreSQL konfigurace
