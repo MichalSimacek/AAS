@@ -766,13 +766,15 @@ namespace AAS.Web.Areas.Admin.Controllers
                 .ToListAsync();
             _db.CollectionTranslations.RemoveRange(existingTranslations);
 
-            // Translate to all supported languages (except Czech, which is the source)
-            foreach (var lang in supportedCultures.Where(l => l != "cs"))
+            // Translate to all supported languages
+            // DeepL will automatically detect source language (Czech, English, German, etc.)
+            foreach (var lang in supportedCultures)
             {
                 try
                 {
-                    var translatedTitle = await _tr.TranslateAsync(collection.Title, "cs", lang);
-                    var translatedDescription = await _tr.TranslateAsync(collection.Description, "cs", lang);
+                    // Use "auto" for automatic language detection
+                    var translatedTitle = await _tr.TranslateAsync(collection.Title, "auto", lang);
+                    var translatedDescription = await _tr.TranslateAsync(collection.Description, "auto", lang);
 
                     var translation = new CollectionTranslation
                     {
@@ -784,7 +786,7 @@ namespace AAS.Web.Areas.Admin.Controllers
                     };
 
                     _db.CollectionTranslations.Add(translation);
-                    Console.WriteLine($"Translated collection '{collection.Title}' to {lang}");
+                    Console.WriteLine($"Translated collection '{collection.Title}' to {lang} (auto-detected source language)");
                 }
                 catch (Exception ex)
                 {
