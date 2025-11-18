@@ -16,7 +16,7 @@ namespace AAS.Web.Services
         private readonly ILogger<DeepLService> _logger;
 
         // Language codes mapping (DeepL uses different codes)
-        // Note: DeepL doesn't support Hindi (hi), so it will fallback to original text
+        // Note: DeepL doesn't support Hindi (hi), so it will fallback to English translation
         private readonly Dictionary<string, string> _langMap = new()
         {
             { "en", "EN-US" },
