@@ -92,10 +92,28 @@ namespace AAS.Web.Services
         {
             var translations = new Dictionary<string, string>();
 
-            foreach (var lang in _langMap.Keys)
+            // Include all target languages, even if not in _langMap (for Hindi fallback)
+            var allLanguages = new[] { "en", "de", "es", "fr", "hi", "ja", "pt", "ru", "zh" };
+
+            foreach (var lang in allLanguages)
             {
                 try
                 {
+                    // Skip if same as source
+                    if (lang == sourceLang)
+                    {
+                        translations[lang] = text;
+                        continue;
+                    }
+
+                    // Check if DeepL supports this language
+                    if (!_langMap.ContainsKey(lang))
+                    {
+                        _logger.LogWarning($"DeepL doesn't support {lang}, using original text");
+                        translations[lang] = text; // Fallback for unsupported languages (like Hindi)
+                        continue;
+                    }
+
                     var translated = await TranslateAsync(text, lang, sourceLang);
                     translations[lang] = translated;
                     
