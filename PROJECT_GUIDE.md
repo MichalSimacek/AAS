@@ -663,9 +663,16 @@ docker network ls
 
 ## ✅ Best Practices
 
+### 0. 🔴 KRITICKÉ - CESTY
+
+- [ ] **VŽDY používej `/AAS` jako kořenový adresář (ne `/app`!)**
+- [ ] **VŽDY ukládej persistent data do `/mnt/data`**
+- [ ] Zkontroluj Docker volumes před startem kontejnerů
+- [ ] Ověř, že cesty v kódu ukazují na `/AAS` a `/mnt/data`
+
 ### 1. Před přidáním nové migrace
 
-- [ ] Zkontroluj, že máš POUZE jednu složku `Migrations`
+- [ ] Zkontroluj, že máš POUZE jednu složku `Migrations` v `/AAS/src/AAS.Web/`
 - [ ] Ujisti se, že poslední migrace byly aplikovány úspěšně
 - [ ] Prověď `dotnet ef migrations list` před přidáním nové
 
@@ -674,6 +681,7 @@ docker network ls
 - [ ] Zkontroluj, že byly vytvořeny OBA soubory (.cs + .Designer.cs)
 - [ ] Otevři .cs soubor a ověř, že není prázdný
 - [ ] Zkontroluj správný formát názvu (YYYYMMDDHHMMSS_Name)
+- [ ] Ověř správnou cestu: `/AAS/src/AAS.Web/Migrations/`
 - [ ] Commitni do gitu IHNED (aby se nepřepsaly)
 
 ### 3. Před deploymentem
