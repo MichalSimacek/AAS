@@ -75,8 +75,16 @@ namespace AAS.Web.Controllers
 
             // Load pre-translated content from database
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            if (lang != "en")
+            
+            // Czech is the source language, no translation needed
+            if (lang == "cs")
             {
+                ViewBag.TranslatedTitle = item.Title;
+                ViewBag.TranslatedDescription = item.Description;
+            }
+            else
+            {
+                // Try to load translation from database
                 var translation = await _db.CollectionTranslations
                     .AsNoTracking()
                     .FirstOrDefaultAsync(t => t.CollectionId == item.Id && t.LanguageCode == lang);
@@ -89,14 +97,9 @@ namespace AAS.Web.Controllers
                 else
                 {
                     // Fallback to on-demand translation if not found in database
-                    ViewBag.TranslatedTitle = await _tr.TranslateAsync(item.Title, "en", lang);
-                    ViewBag.TranslatedDescription = await _tr.TranslateAsync(item.Description, "en", lang);
+                    ViewBag.TranslatedTitle = await _tr.TranslateAsync(item.Title, "cs", lang);
+                    ViewBag.TranslatedDescription = await _tr.TranslateAsync(item.Description, "cs", lang);
                 }
-            }
-            else
-            {
-                ViewBag.TranslatedTitle = item.Title;
-                ViewBag.TranslatedDescription = item.Description;
             }
 
             return View("Detail", item);
