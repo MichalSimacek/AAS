@@ -485,7 +485,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Edit comment
-  window.editComment = function(commentId, currentText) {
+  window.editComment = function(commentId, currentTextElement) {
+    // Get text from data attribute
+    let currentText = '';
+    if (typeof currentTextElement === 'string') {
+      currentText = currentTextElement;
+    } else if (currentTextElement && currentTextElement.getAttribute) {
+      currentText = currentTextElement.getAttribute('data-text') || '';
+    }
+    
     // Decode HTML entities
     const textarea = document.createElement('textarea');
     textarea.innerHTML = currentText;
