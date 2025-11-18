@@ -385,9 +385,17 @@ document.addEventListener('DOMContentLoaded', function() {
   loadComments();
   
   function loadComments() {
+    console.log('Loading comments for collection:', collectionId);
     fetch(`/api/Comments/collection/${collectionId}`)
-      .then(response => response.json())
+      .then(response => {
+        console.log('Comments API response status:', response.status);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(comments => {
+        console.log('Loaded comments:', comments.length, comments);
         renderComments(comments);
       })
       .catch(error => {
