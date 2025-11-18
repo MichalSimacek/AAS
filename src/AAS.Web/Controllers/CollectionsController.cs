@@ -76,30 +76,22 @@ namespace AAS.Web.Controllers
             // Load pre-translated content from database
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             
-            // Czech is the source language, no translation needed
-            if (lang == "cs")
+            // Try to load translation from database
+            var translation = await _db.CollectionTranslations
+                .AsNoTracking()
+                .FirstOrDefaultAsync(t => t.CollectionId == item.Id && t.LanguageCode == lang);
+
+            if (translation != null)
             {
-                ViewBag.TranslatedTitle = item.Title;
-                ViewBag.TranslatedDescription = item.Description;
+                ViewBag.TranslatedTitle = translation.TranslatedTitle;
+                ViewBag.TranslatedDescription = translation.TranslatedDescription;
             }
             else
             {
-                // Try to load translation from database
-                var translation = await _db.CollectionTranslations
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(t => t.CollectionId == item.Id && t.LanguageCode == lang);
-
-                if (translation != null)
-                {
-                    ViewBag.TranslatedTitle = translation.TranslatedTitle;
-                    ViewBag.TranslatedDescription = translation.TranslatedDescription;
-                }
-                else
-                {
-                    // Fallback to on-demand translation if not found in database
-                    ViewBag.TranslatedTitle = await _tr.TranslateAsync(item.Title, "cs", lang);
-                    ViewBag.TranslatedDescription = await _tr.TranslateAsync(item.Description, "cs", lang);
-                }
+                // On-demand translation with automatic language detection
+                // DeepL will automatically detect source language (Czech, English, etc.)
+                ViewBag.TranslatedTitle = await _tr.TranslateAsync(item.Title, "auto", lang);
+                ViewBag.TranslatedDescription = await _tr.TranslateAsync(item.Description, "auto", lang);
             }
 
             return View("Detail", item);
