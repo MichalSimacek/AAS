@@ -404,6 +404,8 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
+    const currentUserId = '@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value';
+    
     let html = '';
     comments.forEach(comment => {
       const date = new Date(comment.createdAt).toLocaleDateString('@System.Globalization.CultureInfo.CurrentCulture.Name');
@@ -414,14 +416,16 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start">
               <div>
-                <strong>${comment.userName}</strong>
+                <strong>${escapeHtml(comment.userName)}</strong>
                 <small class="text-muted ms-2">${date}${updated}</small>
               </div>`;
       
-      if (isAuthenticated && (comment.userId === '@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value' || isAdmin)) {
+      // Show edit/delete buttons if user is owner or admin
+      if (isAuthenticated && (comment.userId === currentUserId || isAdmin)) {
+        const escapedText = escapeHtml(comment.text).replace(/'/g, '&#39;').replace(/"/g, '&quot;');
         html += `
               <div class="btn-group btn-group-sm">
-                <button class="btn btn-outline-primary btn-sm" onclick="editComment(${comment.id}, '${comment.text.replace(/'/g, "\\'")}')">@L["Edit"]</button>
+                <button class="btn btn-outline-primary btn-sm" onclick="editComment(${comment.id}, \`${escapedText}\`)">@L["Edit"]</button>
                 <button class="btn btn-outline-danger btn-sm" onclick="deleteComment(${comment.id})">@L["Delete"]</button>
               </div>`;
       }
