@@ -302,4 +302,48 @@
 <data name="Buying Process" xml:space="preserve"><value>Proces nákupu</value></data>
 <data name="Step" xml:space="preserve"><value>Krok</value></data>
 
+<!-- How To stránka -->
+<data name="HowToBuySell" xml:space="preserve"><value>Jak koupit nebo prodat</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>Váš průvodce nákupem a prodejem luxusních uměleckých děl a sběratelských předmětů s profesionální péčí a naprostou diskrétností</value></data>
+<data name="Note" xml:space="preserve"><value>Poznámka</value></data>
+
+<!-- Jak koupit -->
+<data name="HowToBuy" xml:space="preserve"><value>Jak koupit</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>Krok 1: Procházejte kolekce</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>Prozkoumejte naši pečlivě vybranou kolekci luxusních uměleckých děl, starožitností, šperků a hodinek. Každý předmět je důkladně prozkoumán a ověřen našimi odborníky.</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>Krok 2: Vyjádřete zájem</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>Když najdete předmět, který vás zaujme, klikněte na tlačítko "Mám zájem" a vyplňte kontaktní formulář. Váš dotaz bude zpracován s naprostou diskrétností.</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>Krok 3: Konzultace s odborníkem</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Náš specialista vás bude kontaktovat do 12 hodin, poskytne vám podrobné informace o předmětu a zodpoví všechny vaše otázky.</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>Krok 4: Dokončení transakce</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>Po dohodě na podmínkách zařídíme bezpečnou platbu a diskrétní doručení na vaši zvolenou adresu kdekoli na světě.</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>Všechny transakce jsou provedeny s maximální diskrétností a bezpečností. Vaše soukromí je naší prioritou.</value></data>
+
+<!-- Jak prodat -->
+<data name="HowToSell" xml:space="preserve"><value>Jak prodat</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>Krok 1: Kontaktujte nás</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>Napište nám e-mail s popisem vašeho předmětu a přiložte fotografie. Čím více informací poskytnete, tím přesnější ocenění můžeme připravit.</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>Krok 2: Odborné ocenění</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>Náš tým odborníků provede důkladné posouzení vašeho předmětu a poskytne vám profesionální tržní ocenění zdarma.</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>Krok 3: Přijměte nabídku</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Pokud souhlasíte s naší nabídkou, domluvíme si vyzvednutí předmětu nebo bezpečnou přepravu. Všechny náklady na přepravu hradíme my.</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>Krok 4: Okamžitá platba</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>Po obdržení a ověření předmětu obdržíte platbu ihned prostřednictvím vámi preferované bezpečné platební metody.</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>Nabízíme nejvyšší ceny na trhu. Žádné skryté poplatky, žádné provize. Dostanete plnou dohodnutou částku.</value></data>
+
+<!-- AAS Verified sekce -->
+<data name="WhatIsAASVerified" xml:space="preserve"><value>Co znamená AAS Ověřeno?</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>S AAS Ověřeno</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>Autenticita garantována našimi odborníky. Plná dokumentace a certifikát pravosti. Nejvyšší úroveň důvěry a kvality.</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>Bez AAS Ověřeno</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>Předmět zatím nebyl ověřen naším týmem. Můžeme poskytnout ověření na vyžádání.</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>Všechny předměty s odznakem AAS Ověřeno jsou doprovázeny certifikátem pravosti a kompletní dokumentací o původu.</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>Procházet kolekce</value></data>
+
+<!-- Home page - BuyOrSell sekce -->
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>Kupujte nebo prodávejte s námi</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>Váš důvěryhodný partner pro nákup a prodej luxusních uměleckých děl</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>Ať už chcete rozšířit svou sbírku nebo prodat cenné předměty, poskytujeme profesionální služby s naprostou diskrétností a nejvyššími cenami na trhu.</value></data>
+<data name="LearnMore" xml:space="preserve"><value>Zjistit více</value></data>
+
 </root>
