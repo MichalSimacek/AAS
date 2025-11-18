@@ -686,10 +686,13 @@ docker network ls
 
 ### 3. Před deploymentem
 
-- [ ] Zkontroluj všechny migrace v `/Migrations/` složce
+- [ ] **Zkontroluj VŠECHNY cesty - musí být `/AAS` a `/mnt/data`!**
+- [ ] Zkontroluj všechny migrace v `/AAS/src/AAS.Web/Migrations/` složce
 - [ ] Prověř, že žádná není prázdná
+- [ ] Ověř Docker volumes v docker-compose.yml
 - [ ] Build s `--no-cache` pokud měníš migrace
 - [ ] Testuj na lokální DB před nasazením
+- [ ] Backup databáze do `/mnt/data/backups`
 
 ### 4. Po deploymenu
 
