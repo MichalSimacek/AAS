@@ -95,6 +95,9 @@ namespace AAS.Web.Services
             // Include all target languages, even if not in _langMap (for Hindi fallback)
             var allLanguages = new[] { "en", "de", "es", "fr", "hi", "ja", "pt", "ru", "zh" };
 
+            // First, translate to English if needed (for Hindi fallback)
+            string? englishTranslation = null;
+
             foreach (var lang in allLanguages)
             {
                 try
@@ -109,13 +112,33 @@ namespace AAS.Web.Services
                     // Check if DeepL supports this language
                     if (!_langMap.ContainsKey(lang))
                     {
-                        _logger.LogWarning($"DeepL doesn't support {lang}, using original text");
-                        translations[lang] = text; // Fallback for unsupported languages (like Hindi)
+                        // For Hindi: fallback to English translation
+                        if (lang == "hi")
+                        {
+                            if (englishTranslation == null && sourceLang != "en")
+                            {
+                                _logger.LogInformation("Translating to English for Hindi fallback...");
+                                englishTranslation = await TranslateAsync(text, "en", sourceLang);
+                            }
+                            translations[lang] = englishTranslation ?? text;
+                            _logger.LogWarning($"DeepL doesn't support {lang}, using English translation as fallback");
+                        }
+                        else
+                        {
+                            _logger.LogWarning($"DeepL doesn't support {lang}, using original text");
+                            translations[lang] = text;
+                        }
                         continue;
                     }
 
                     var translated = await TranslateAsync(text, lang, sourceLang);
                     translations[lang] = translated;
+                    
+                    // Store English translation for potential Hindi fallback
+                    if (lang == "en")
+                    {
+                        englishTranslation = translated;
+                    }
                     
                     // Small delay to avoid rate limiting
                     await Task.Delay(100);
@@ -123,7 +146,15 @@ namespace AAS.Web.Services
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, $"Failed to translate to {lang}");
-                    translations[lang] = text; // Fallback to original
+                    // For Hindi, try to use English as fallback even on error
+                    if (lang == "hi" && englishTranslation != null)
+                    {
+                        translations[lang] = englishTranslation;
+                    }
+                    else
+                    {
+                        translations[lang] = text; // Fallback to original
+                    }
                 }
             }
 
