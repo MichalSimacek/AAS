@@ -31,6 +31,7 @@ services:
       - TRANSLATION_PROVIDER=${TRANSLATION_PROVIDER:-LibreTranslate}
       - TRANSLATION_ENDPOINT=${TRANSLATION_ENDPOINT}
       - TRANSLATION_API_KEY=${TRANSLATION_API_KEY}
+      - DEEPL_API_KEY=${DEEPL_API_KEY}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
