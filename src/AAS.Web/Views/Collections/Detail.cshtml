@@ -168,50 +168,6 @@
         </div>
       </div>
     </div>
-
-    @* Comments Section *@
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <h3 class="mb-4">@L["Comments"]</h3>
-            
-            @* Comment Form (only for logged in users) *@
-            @if (User.Identity?.IsAuthenticated == true)
-            {
-              <div class="card bg-light mb-4">
-                <div class="card-body">
-                  <h5>@L["Add Comment"]</h5>
-                  <form id="commentForm">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="collectionId" value="@Model.Id" />
-                    <div class="mb-3">
-                      <textarea class="form-control" id="commentText" name="text" rows="3" maxlength="2000" required placeholder="@L["Write your comment..."]"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">@L["Submit Comment"]</button>
-                  </form>
-                </div>
-              </div>
-            }
-            else
-            {
-              <div class="alert alert-info">
-                <a href="/Identity/Account/Login?returnUrl=@HttpUtility.UrlEncode(Context.Request.Path)">@L["Sign in"]</a> @L["to leave a comment"]
-              </div>
-            }
-            
-            @* Comments List *@
-            <div id="commentsList">
-              <div class="text-center py-3">
-                <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
