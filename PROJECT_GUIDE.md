@@ -870,9 +870,34 @@ Pokud narazíš na problém, který není v tomto dokumentu:
 
 ---
 
-**⚠️ PŘED ODCHODEM:**
-- Přečetl jsi sekci "EF Core - KRITICKÉ POZNATKY"?
-- Znáš Deployment proces?
-- Víš, jak debugovat migrace?
+## 🚨 KRITICKÁ PŘIPOMÍNKA
 
-**Pokud ano, jsi připraven pro další vývoj! 🚀**
+```
+╔════════════════════════════════════════════════════════════╗
+║                                                            ║
+║  🔴 PRODUKČNÍ CESTY - NIKDY NEZAPOMEŇ!                    ║
+║                                                            ║
+║  ✅ Kořenový adresář:     /AAS                            ║
+║  ✅ Persistent storage:   /mnt/data                       ║
+║                                                            ║
+║  ❌ NIKDY nepoužívej:     /app                            ║
+║                                                            ║
+║  Toto způsobilo SPOUSTU problémů v minulosti!             ║
+║  Zkontroluj VŠECHNY cesty před jakoukoliv změnou!         ║
+║                                                            ║
+╚════════════════════════════════════════════════════════════╝
+```
+
+---
+
+**⚠️ CHECKLIST PŘED ZAČÁTKEM PRÁCE:**
+- [ ] **Přečetl jsi sekci "DŮLEŽITÉ - CESTY V PROJEKTU"?**
+- [ ] **Víš, že používáš `/AAS` a `/mnt/data` (NE `/app`)?**
+- [ ] Přečetl jsi sekci "EF Core - KRITICKÉ POZNATKY"?
+- [ ] Znáš Deployment proces?
+- [ ] Víš, jak debugovat migrace?
+- [ ] Rozumíš persistent storage v `/mnt/data`?
+
+**Pokud máš VŠECHNY checkboxy, jsi připraven pro další vývoj! 🚀**
+
+**Pokud ne, VRAŤ SE A PŘEČTI SI TENTO DOKUMENT ZNOVU!** ⚠️
