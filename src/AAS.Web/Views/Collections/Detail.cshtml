@@ -405,7 +405,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function renderComments(comments) {
+    console.log('renderComments called with:', comments);
     const container = document.getElementById('commentsList');
+    console.log('commentsList container:', container);
     
     if (comments.length === 0) {
       container.innerHTML = '<p class="text-muted">@L["No comments yet. Be the first to comment!"]</p>';
@@ -413,9 +415,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     const currentUserId = '@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value';
+    console.log('Current user ID:', currentUserId, 'isAuthenticated:', isAuthenticated, 'isAdmin:', isAdmin);
     
     let html = '';
     comments.forEach(comment => {
+      console.log('Processing comment:', comment);
       const date = new Date(comment.createdAt).toLocaleDateString('@System.Globalization.CultureInfo.CurrentCulture.Name');
       const updated = comment.updatedAt ? ' <small class="text-muted">(@L["edited"])</small>' : '';
       
