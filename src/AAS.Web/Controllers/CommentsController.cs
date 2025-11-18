@@ -26,6 +26,7 @@ namespace AAS.Web.Controllers
             try
             {
                 var comments = await _db.Comments
+                    .Include(c => c.User)
                     .Where(c => c.CollectionId == collectionId)
                     .OrderByDescending(c => c.CreatedAt)
                     .Select(c => new
@@ -39,6 +40,7 @@ namespace AAS.Web.Controllers
                     })
                     .ToListAsync();
 
+                _logger.LogInformation("Loaded {Count} comments for collection {CollectionId}", comments.Count, collectionId);
                 return Ok(comments);
             }
             catch (Exception ex)
