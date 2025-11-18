@@ -84,12 +84,13 @@ namespace AAS.Web.Areas.Admin.Controllers
                 }
 
                 // Translate title and content to all languages using DeepL
+                // Uses automatic language detection - admin can write in any language
                 try
                 {
                     _logger.LogInformation("Starting DeepL translations for blog post...");
 
-                    // Translate Title
-                    var titleTranslations = await _deepL.TranslateToAllLanguagesAsync(post.TitleCs, "cs");
+                    // Translate Title (auto-detect source language)
+                    var titleTranslations = await _deepL.TranslateToAllLanguagesAsync(post.TitleCs, "auto");
                     post.TitleEn = titleTranslations.GetValueOrDefault("en", post.TitleCs);
                     post.TitleDe = titleTranslations.GetValueOrDefault("de", post.TitleCs);
                     post.TitleEs = titleTranslations.GetValueOrDefault("es", post.TitleCs);
@@ -100,8 +101,8 @@ namespace AAS.Web.Areas.Admin.Controllers
                     post.TitleRu = titleTranslations.GetValueOrDefault("ru", post.TitleCs);
                     post.TitleZh = titleTranslations.GetValueOrDefault("zh", post.TitleCs);
 
-                    // Translate Content (HTML from TinyMCE)
-                    var contentTranslations = await _deepL.TranslateToAllLanguagesAsync(post.ContentCs, "cs");
+                    // Translate Content (HTML from TinyMCE) - auto-detect source language
+                    var contentTranslations = await _deepL.TranslateToAllLanguagesAsync(post.ContentCs, "auto");
                     post.ContentEn = contentTranslations.GetValueOrDefault("en", post.ContentCs);
                     post.ContentDe = contentTranslations.GetValueOrDefault("de", post.ContentCs);
                     post.ContentEs = contentTranslations.GetValueOrDefault("es", post.ContentCs);
