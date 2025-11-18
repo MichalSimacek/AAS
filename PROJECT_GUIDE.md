@@ -578,11 +578,13 @@ du -sh /mnt/data/uploads/*
 1. Migrace jsou ve špatné složce (např. `/Database/Migrations/` místo `/Migrations/`)
 2. Chybí `.Designer.cs` soubory
 3. Nesprávný formát názvů souborů
+4. Používáš `/app` místo `/AAS` v cestách
 
 **Solution:**
-1. Zkontroluj, že všechny migrace jsou v `/src/AAS.Web/Migrations/`
+1. Zkontroluj, že všechny migrace jsou v `/AAS/src/AAS.Web/Migrations/` (ne `/app`!)
 2. Ověř, že každá .cs migrace má svůj .Designer.cs
 3. Ověř správný formát názvů (YYYYMMDDHHMMSS_Name)
+4. Ujisti se, že Docker volumes ukazují na `/AAS` a `/mnt/data`
 
 ---
 
