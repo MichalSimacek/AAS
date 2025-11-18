@@ -11,8 +11,22 @@ namespace AAS.Web.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class CollectionsController : Controller
     {
-        private readonly AppDbContext _db; private readonly SlugService _slug; private readonly ImageService _img; private readonly TranslationService _tr; private readonly IConfiguration _cfg;
-        public CollectionsController(AppDbContext db, SlugService slug, ImageService img, TranslationService tr, IConfiguration cfg) { _db = db; _slug = slug; _img = img; _tr = tr; _cfg = cfg; }
+        private readonly AppDbContext _db; 
+        private readonly SlugService _slug; 
+        private readonly ImageService _img; 
+        private readonly TranslationService _tr; 
+        private readonly IConfiguration _cfg;
+        private readonly ILogger<CollectionsController> _logger;
+        
+        public CollectionsController(AppDbContext db, SlugService slug, ImageService img, TranslationService tr, IConfiguration cfg, ILogger<CollectionsController> logger) 
+        { 
+            _db = db; 
+            _slug = slug; 
+            _img = img; 
+            _tr = tr; 
+            _cfg = cfg; 
+            _logger = logger;
+        }
 
         public async Task<IActionResult> Index()
         {
