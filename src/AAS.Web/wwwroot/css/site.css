@@ -215,6 +215,12 @@ a.btn {
   filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.18));
 }
 
+.hero-description {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  color: #4A4A4A !important;
+}
+
 @keyframes logoFadeIn {
   from {
     opacity: 0;
