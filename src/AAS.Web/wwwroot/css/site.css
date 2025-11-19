@@ -558,7 +558,11 @@ select.form-select option {
 .text-center { text-align: center !important; }
 .text-secondary { color: #4A4A4A !important; }
 .small { font-size: 0.875rem !important; }
-.lead { font-size: 1.25rem !important; }
+.lead { 
+  font-size: 1.25rem !important; 
+  font-weight: 400 !important;
+  color: #1A1A1A !important;
+}
 .fw-bold { font-weight: 700 !important; }
 
 .mb-0 { margin-bottom: 0 !important; }
