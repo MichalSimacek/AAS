@@ -755,6 +755,21 @@ select.form-select option {
   }
 }
 
+/* Prevent excessive spacing on large viewports (zoom out) */
+@media (min-width: 1600px) {
+  .hero {
+    padding: 3rem 0 !important;
+  }
+  
+  .section {
+    padding: 2.5rem 0 !important;
+  }
+  
+  .hero-logo-container {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding-left: 15px !important;
