@@ -9,10 +9,13 @@
 html, body {
   background: #FFFFFF !important;
   color: #1A1A1A !important;
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
   font-size: 16px !important;
   line-height: 1.6 !important;
   overflow-x: hidden !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 /* FORCE WHITE BACKGROUND */
