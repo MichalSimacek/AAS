@@ -247,7 +247,6 @@
 <data name="Image delete error" xml:space="preserve"><value>Erro ao excluir imagem: {0}</value></data>
 <data name="Order updated success" xml:space="preserve"><value>Ordem atualizada com sucesso</value></data>
 
-<data name="Home" xml:space="preserve"><value>Início</value></data>
 <data name="Available" xml:space="preserve"><value>Disponível</value></data>
 <data name="Sold" xml:space="preserve"><value>Vendido</value></data>
 <data name="Price" xml:space="preserve"><value>Preço</value></data>
