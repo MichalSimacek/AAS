@@ -29,7 +29,7 @@
 <data name="Complete Discretion" xml:space="preserve"><value>完全谨慎</value></data>
 <data name="Complete Discretion Desc" xml:space="preserve"><value>您的隐私至关重要。所有交易均以最高的机密性进行。</value></data>
 <data name="Expert Service" xml:space="preserve"><value>专家服务</value></data>
-<data name="Expert Service Desc" xml:space="preserve"><value>我们的专家为每位客户提供专业评估和个性化服务。</value></data>
+<data name="Expert Service Desc" xml:space="preserve"><value>如有兴趣，我们的专家将安排由卖方承担费用的专业评估和个性化服务。</value></data>
 
 <!-- Categories -->
 <data name="Paintings" xml:space="preserve"><value>绘画</value></data>
