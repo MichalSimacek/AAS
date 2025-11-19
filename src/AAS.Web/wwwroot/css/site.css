@@ -39,7 +39,7 @@ a:hover {
 
 /* TYPOGRAPHY */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif !important;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', Times, serif !important;
   color: #1A1A1A !important;
   font-weight: 600 !important;
   line-height: 1.3 !important;
