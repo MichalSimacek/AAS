@@ -247,7 +247,6 @@
 <data name="Image delete error" xml:space="preserve"><value>चित्र हटाने में त्रुटि: {0}</value></data>
 <data name="Order updated success" xml:space="preserve"><value>क्रम सफलतापूर्वक अपडेट किया गया</value></data>
 
-<data name="Home" xml:space="preserve"><value>होम</value></data>
 <data name="Available" xml:space="preserve"><value>उपलब्ध</value></data>
 <data name="Sold" xml:space="preserve"><value>बिक गया</value></data>
 <data name="Price" xml:space="preserve"><value>कीमत</value></data>
