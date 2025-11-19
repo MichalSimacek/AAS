@@ -265,8 +265,6 @@
 <data name="No comments yet. Be the first to comment!" xml:space="preserve"><value>Zatím žádné komentáře. Buďte první, kdo komentuje!</value></data>
 <data name="Failed to load comments" xml:space="preserve"><value>Nepodařilo se načíst komentáře</value></data>
 <data name="Failed to post comment. Please try again." xml:space="preserve"><value>Nepodařilo se odeslat komentář. Zkuste to prosím znovu.</value></data>
-<data name="Edit" xml:space="preserve"><value>Upravit</value></data>
-<data name="Delete" xml:space="preserve"><value>Smazat</value></data>
 <data name="Edit your comment:" xml:space="preserve"><value>Upravte svůj komentář:</value></data>
 <data name="Failed to update comment. Please try again." xml:space="preserve"><value>Nepodařilo se aktualizovat komentář. Zkuste to prosím znovu.</value></data>
 <data name="Are you sure you want to delete this comment?" xml:space="preserve"><value>Opravdu chcete smazat tento komentář?</value></data>
