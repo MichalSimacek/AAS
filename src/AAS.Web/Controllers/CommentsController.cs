@@ -121,6 +121,9 @@ namespace AAS.Web.Controllers
 
                 await _db.SaveChangesAsync();
 
+                // Reload comment from database to ensure fresh data
+                await _db.Entry(comment).ReloadAsync();
+
                 return Ok(new { comment.Id, comment.Text, comment.UpdatedAt });
             }
             catch (Exception ex)
