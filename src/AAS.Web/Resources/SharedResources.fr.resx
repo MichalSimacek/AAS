@@ -29,7 +29,7 @@
 <data name="Complete Discretion" xml:space="preserve"><value>Discrétion complète</value></data>
 <data name="Complete Discretion Desc" xml:space="preserve"><value>Votre vie privée est primordiale. Toutes les transactions sont effectuées avec la plus grande confidentialité.</value></data>
 <data name="Expert Service" xml:space="preserve"><value>Service d'experts</value></data>
-<data name="Expert Service Desc" xml:space="preserve"><value>Nos spécialistes fournissent des évaluations professionnelles et un service personnalisé pour chaque client.</value></data>
+<data name="Expert Service Desc" xml:space="preserve"><value>Si vous êtes intéressé, nos spécialistes organisent des expertises professionnelles et des services personnalisés aux frais du vendeur.</value></data>
 
 <!-- Categories -->
 <data name="Paintings" xml:space="preserve"><value>Peintures</value></data>
