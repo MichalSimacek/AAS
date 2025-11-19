@@ -1060,6 +1060,8 @@ select.form-select option {
 .manage-account-container {
   background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 50%, #F5F5F5 100%);
   min-height: 80vh;
+  contain: layout;
+  will-change: auto;
 }
 
 /* Page header */
