@@ -773,6 +773,7 @@ select.form-select option {
   justify-content: center;
   padding: 3rem 1rem;
   background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 50%, #F5F5F5 100%);
+  contain: layout;
 }
 
 /* Identity card styling */
@@ -785,6 +786,8 @@ select.form-select option {
   max-width: 520px;
   width: 100%;
   margin: 0 auto;
+  will-change: auto;
+  contain: layout style;
 }
 
 /* Identity page headings */
