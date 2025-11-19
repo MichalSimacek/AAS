@@ -228,9 +228,13 @@ a.btn {
 
 /* SECTIONS */
 .section {
-  padding: 3rem 0 !important;
+  padding: 2.5rem 0 !important;
   width: 100% !important;
   background: #FFFFFF !important;
+}
+
+.bg-light {
+  background: #FAFAFA !important;
 }
 
 .section-title {
