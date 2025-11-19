@@ -88,11 +88,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Add smooth transitions to all interactive elements
-  const interactiveElements = document.querySelectorAll('button, a, .card, .btn');
+  // Add smooth transitions only to specific interactive elements (not layout-affecting)
+  const interactiveElements = document.querySelectorAll('button:not(.navbar-toggler), a:not(.nav-link), .btn');
   interactiveElements.forEach(el => {
-    if (!el.style.transition) {
-      el.style.transition = 'all 0.3s ease';
+    if (!el.style.transition && !el.closest('.identity-card') && !el.closest('.manage-account-container')) {
+      el.style.transition = 'color 0.2s ease, background-color 0.2s ease, transform 0.2s ease';
     }
   });
 });
