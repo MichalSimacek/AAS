@@ -1,6 +1,7 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @if (SignInManager.IsSignedIn(User))
 {
@@ -8,28 +9,28 @@
     {
         <li class="nav-item">
             <a class="nav-link admin-link" asp-area="Admin" asp-controller="Collections" asp-action="Index">
-                <span class="admin-icon">✦</span> Admin Panel
+                <span class="admin-icon">✦</span> @L["Admin Panel"]
             </a>
         </li>
     }
     <li class="nav-item">
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="@L["Manage"]">
             <span class="user-greeting">@User.Identity?.Name</span>
         </a>
     </li>
     <li class="nav-item">
         <form class="form-inline d-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit" class="nav-link btn btn-link">Logout</button>
+            <button type="submit" class="nav-link btn btn-link">@L["Logout"]</button>
         </form>
     </li>
 }
 else
 {
     <li class="nav-item">
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">@L["Register"]</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">@L["Login"]</a>
     </li>
 }
 
