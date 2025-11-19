@@ -173,13 +173,12 @@ a.btn {
 
 /* HERO SECTION */
 .hero {
-  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
-  padding: 4rem 0;
+  padding: 3rem 0;
   background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
 }
 
