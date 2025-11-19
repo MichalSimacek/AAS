@@ -247,7 +247,6 @@
 <data name="Image delete error" xml:space="preserve"><value>Chyba při mazání obrázku: {0}</value></data>
 <data name="Order updated success" xml:space="preserve"><value>Pořadí úspěšně aktualizováno</value></data>
 
-<data name="Home" xml:space="preserve"><value>Domů</value></data>
 <data name="Available" xml:space="preserve"><value>Dostupné</value></data>
 <data name="Sold" xml:space="preserve"><value>Prodáno</value></data>
 <data name="Price" xml:space="preserve"><value>Cena</value></data>
