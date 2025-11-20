@@ -39,36 +39,46 @@
             </div>
             <div class="card-body-custom">
 
-            <div class="form-group">
-                <label for="Title" class="form-label">Title</label>
-                <input name="Title" id="Title" type="text" class="form-control" placeholder="Enter collection title" required />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
+                <div class="form-group-modern">
+                    <label for="Title" class="form-label-modern">
+                        <i class="bi bi-pencil me-1"></i> Title <span class="required-star">*</span>
+                    </label>
+                    <input name="Title" id="Title" type="text" class="form-control-modern" placeholder="e.g., OMEGA Speedmaster Professional" required />
+                    <span asp-validation-for="Title" class="text-danger small"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Category" class="form-label">Category</label>
-                <select name="Category" id="Category" class="form-select" required>
-                    <option value="">-- Select Category --</option>
-                    <option value="0">Paintings</option>
-                    <option value="1">Jewelry</option>
-                    <option value="2">Watches</option>
-                    <option value="3">Statues</option>
-                    <option value="4">Other</option>
-                </select>
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
+                <div class="form-group-modern">
+                    <label asp-for="Category" class="form-label-modern">
+                        <i class="bi bi-tag me-1"></i> Category <span class="required-star">*</span>
+                    </label>
+                    <select name="Category" id="Category" class="form-select-modern" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="0">🎨 Paintings</option>
+                        <option value="1">💎 Jewelry</option>
+                        <option value="2">⌚ Watches</option>
+                        <option value="3">🗿 Statues</option>
+                        <option value="4">✨ Other</option>
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger small"></span>
+                </div>
 
-            <div class="form-group">
-                <label for="Description" class="form-label">Description</label>
-                <textarea name="Description" id="Description" rows="6" class="form-control" placeholder="Enter collection description"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <div class="form-group-modern">
+                    <label for="Description" class="form-label-modern">
+                        <i class="bi bi-text-paragraph me-1"></i> Description
+                    </label>
+                    <textarea name="Description" id="Description" rows="6" class="form-control-modern" placeholder="Detailed description of the collection item..."></textarea>
+                    <span asp-validation-for="Description" class="text-danger small"></span>
+                    <small class="form-text text-muted">Provide detailed information about the item's history, condition, and unique features.</small>
+                </div>
             </div>
         </div>
 
-        <div class="ornament-divider-small"></div>
-
-        <div class="form-section">
-            <h3 class="section-title">Price & Availability</h3>
+        <div class="form-card">
+            <div class="card-header-custom">
+                <i class="bi bi-currency-euro me-2"></i>
+                <h3 class="card-title-custom">Price & Availability</h3>
+            </div>
+            <div class="card-body-custom">
 
             <div class="row">
                 <div class="col-md-4">
