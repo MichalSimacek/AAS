@@ -926,12 +926,24 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   transform: none !important;
 }
 
-/* Force GPU rendering for smooth page transitions */
+/* Force GPU rendering and prevent reflow */
 #account-container {
-  will-change: contents;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Prevent content shift during navigation */
+body {
+  overflow-y: scroll !important;
+}
+
+/* Stabilize form elements */
+.identity-card input,
+.identity-card button,
+.identity-card label,
+.identity-card .form-floating {
+  transform: translateZ(0);
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 /* Identity page headings */
