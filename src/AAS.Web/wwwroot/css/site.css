@@ -48,7 +48,7 @@ p {
 }
 
 /* FORCE WHITE BACKGROUND */
-header, main, footer, .container, .navbar, .card, .modal-content, section {
+header, main, footer, .container, .navbar, .card, section {
   background: #FFFFFF !important;
 }
 
