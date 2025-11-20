@@ -944,8 +944,7 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   text-align: center;
   margin-bottom: 24px;
   font-size: 32px;
-  height: 48px;
-  line-height: 48px;
+  line-height: 1.2;
 }
 
 .identity-card h4 {
