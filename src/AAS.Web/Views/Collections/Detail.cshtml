@@ -321,45 +321,36 @@ document.addEventListener('DOMContentLoaded', function() {
       
       console.log('Main Swiper initialized successfully!');
       
-      // Lightbox
+      // Lightbox - Simple implementation without Bootstrap Modal
       var lightboxSwiper = null;
       var lightboxModal = document.getElementById('lightboxModal');
       
+      // Initialize lightbox Swiper once
       if (lightboxModal) {
-        lightboxModal.addEventListener('shown.bs.modal', function() {
-          console.log('Lightbox modal opened');
-          
-          if (!lightboxSwiper) {
-            lightboxSwiper = new Swiper('.lightboxSwiper', {
-              loop: true,
-              spaceBetween: 10,
-              pagination: {
-                el: '.lightboxSwiper .swiper-pagination',
-                clickable: true,
-                type: 'bullets'
-              },
-              navigation: {
-                nextEl: '.lightboxSwiper .swiper-button-next',
-                prevEl: '.lightboxSwiper .swiper-button-prev'
-              },
-              keyboard: {
-                enabled: true,
-                onlyInViewport: false
-              }
-            });
-            console.log('Lightbox Swiper initialized!');
-          } else {
-            lightboxSwiper.update();
+        lightboxSwiper = new Swiper('.lightboxSwiper', {
+          loop: true,
+          spaceBetween: 10,
+          pagination: {
+            el: '.lightboxSwiper .swiper-pagination',
+            clickable: true,
+            type: 'bullets'
+          },
+          navigation: {
+            nextEl: '.lightboxSwiper .swiper-button-next',
+            prevEl: '.lightboxSwiper .swiper-button-prev'
+          },
+          keyboard: {
+            enabled: true,
+            onlyInViewport: false
           }
         });
+        console.log('Lightbox Swiper initialized!');
         
         // Open lightbox on image click
         document.querySelectorAll('.gallery-image').forEach(function(img, idx) {
           img.addEventListener('click', function() {
-            console.log('Image clicked, opening lightbox');
-            mainSwiper.slideTo(idx);
-            var bsModal = new bootstrap.Modal(lightboxModal);
-            bsModal.show();
+            console.log('Image clicked, opening lightbox at index:', idx);
+            openLightbox(idx);
           });
         });
         
