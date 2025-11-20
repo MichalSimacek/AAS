@@ -896,14 +896,12 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
 
 /* Identity page container */
 #account-container {
-  height: 650px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px 16px;
+  padding: 80px 16px;
   background: #FFFFFF;
-  contain: strict;
-  overflow: hidden;
 }
 
 /* Identity card styling */
