@@ -5,7 +5,8 @@ namespace AAS.Web.Models
     public enum CollectionStatus 
     { 
         Available, 
-        Sold 
+        Sold,
+        InAuction
     }
     
     public enum Currency 
