@@ -7,21 +7,14 @@ function setLang(code) {
 
 async function submitInquiry() {
   const form = document.getElementById("inqForm");
-  const data = new FormData(form);
   
-  // SECURITY FIX: Include anti-forgery token in request
-  const token = form.querySelector('input[name="__RequestVerificationToken"]');
-  if (token) {
-    data.append('__RequestVerificationToken', token.value);
-  }
+  // Get form data - FormData works with ASP.NET MVC model binding
+  const formData = new FormData(form);
   
   try {
     const res = await fetch("/Inquiries/Create", {
       method: "POST",
-      body: data,
-      headers: { 
-        "X-Requested-With": "fetch"
-      },
+      body: formData
     });
     
     // Try to parse JSON, but handle non-JSON responses
@@ -30,18 +23,22 @@ async function submitInquiry() {
     if (contentType && contentType.includes("application/json")) {
       result = await res.json();
     } else {
-      // If not JSON, create a result object
-      result = { success: res.ok, message: res.ok ? "Success" : "Error" };
+      // If not JSON, check status code
+      const text = await res.text();
+      console.log('Non-JSON response:', text);
+      result = { success: res.ok, message: res.ok ? "Success" : "Error submitting inquiry" };
     }
     
     if (res.ok && result.success) {
       document.getElementById("inqOk").classList.remove("d-none");
+      form.style.display = 'none'; // Hide form
       setTimeout(() => {
         closeInquiryForm();
-      }, 1500);
+        form.style.display = ''; // Show form again for next use
+      }, 2000);
     } else {
       // Show error message inline instead of alert
-      showInlineError(result.message || "Failed to submit inquiry. Please try again.");
+      showInlineError(result.message || result.errors?.join(', ') || "Failed to submit inquiry. Please try again.");
     }
   } catch (error) {
     console.error('Error submitting inquiry:', error);
