@@ -915,11 +915,10 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   padding: 48px;
   max-width: 520px;
   width: 100%;
-  min-height: 500px;
+  height: 550px;
   margin: 0 auto;
-  will-change: auto;
-  contain: layout style;
-  transition: min-height 0.3s ease;
+  contain: strict;
+  overflow-y: auto;
 }
 
 /* Identity page headings */
