@@ -914,6 +914,7 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   padding: 48px;
   max-width: 520px;
   width: 100%;
+  min-height: 500px;
   margin: 0 auto;
   will-change: auto;
   contain: layout style;
