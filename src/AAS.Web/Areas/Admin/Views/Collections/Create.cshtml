@@ -516,67 +516,6 @@ kbd {
 </style>
 
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Image upload handling
-    const imagesInput = document.getElementById('images');
-    const fileCountDiv = document.getElementById('fileCount');
-    const fileLabel = document.querySelector('.file-upload-label');
-    
-    if (imagesInput) {
-        imagesInput.addEventListener('change', function(e) {
-            const fileCount = e.target.files.length;
-            if (fileCount > 0) {
-                fileCountDiv.style.display = 'inline-flex';
-                fileCountDiv.textContent = `${fileCount} image${fileCount > 1 ? 's' : ''} selected`;
-                
-                // Update label
-                const firstFileName = e.target.files[0].name;
-                if (fileCount === 1) {
-                    fileLabel.innerHTML = `<i class="bi bi-check-circle fs-1 mb-2 text-success"></i>
-                                          <p class="mb-1"><strong>${firstFileName}</strong></p>
-                                          <small class="text-muted">Click to change</small>`;
-                } else {
-                    fileLabel.innerHTML = `<i class="bi bi-check-circle fs-1 mb-2 text-success"></i>
-                                          <p class="mb-1"><strong>${fileCount} files selected</strong></p>
-                                          <small class="text-muted">Click to change</small>`;
-                }
-            } else {
-                fileCountDiv.style.display = 'none';
-                fileLabel.innerHTML = `<i class="bi bi-cloud-upload fs-1 mb-2"></i>
-                                       <p class="mb-1"><strong>Click to upload</strong> or drag and drop</p>
-                                       <small class="text-muted">JPG, PNG, WebP (max 10MB each)</small>`;
-            }
-        });
-    }
-    
-    // Audio upload handling
-    const audioInput = document.getElementById('audio');
-    const audioFileName = document.getElementById('audioFileName');
-    
-    if (audioInput) {
-        audioInput.addEventListener('change', function(e) {
-            if (e.target.files.length > 0) {
-                const fileName = e.target.files[0].name;
-                audioFileName.textContent = fileName;
-                audioFileName.style.color = '#155724';
-            } else {
-                audioFileName.textContent = '';
-            }
-        });
-    }
-    
-    // Form validation feedback
-    const form = document.querySelector('.create-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            const submitBtn = form.querySelector('.btn-submit');
-            submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i> Creating...';
-            submitBtn.disabled = true;
-        });
-    }
-});
-</script>
 
 
 @@section Scripts {
