@@ -783,6 +783,31 @@ select.form-select option {
   }
 }
 
+/* Extreme zoom out fix */
+@media (min-width: 2400px) {
+  .hero {
+    padding: 40px 0 !important;
+    max-height: 500px;
+  }
+  
+  .section {
+    padding: 32px 0 !important;
+  }
+  
+  .hero-logo-container {
+    margin-bottom: 16px !important;
+  }
+  
+  h1 { font-size: 2rem !important; margin-bottom: 12px !important; }
+  h2 { font-size: 1.75rem !important; margin-bottom: 12px !important; }
+  
+  .lead { font-size: 1.1rem !important; }
+  
+  .mb-2 { margin-bottom: 8px !important; }
+  .mb-3 { margin-bottom: 12px !important; }
+  .mb-4 { margin-bottom: 16px !important; }
+}
+
 @media (max-width: 768px) {
   .container {
     padding-left: 15px !important;
