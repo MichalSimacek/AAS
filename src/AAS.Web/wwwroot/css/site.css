@@ -117,7 +117,7 @@ header {
 .nav-link {
   color: #4A4A4A !important;
   font-weight: 500 !important;
-  padding: 8px 1rem !important;
+  padding: 8px 16px !important;
   display: block !important;
   white-space: nowrap !important;
 }
@@ -131,7 +131,7 @@ header {
 /* BUTTONS */
 .btn {
   display: inline-block !important;
-  padding: 12px 1.5rem !important;
+  padding: 12px 24px !important;
   border-radius: 4px !important;
   font-weight: 500 !important;
   text-align: center !important;
@@ -177,12 +177,12 @@ a.btn {
 }
 
 .btn-lg {
-  padding: 16px 2rem !important;
+  padding: 16px 32px !important;
   font-size: 17px !important;
 }
 
 .btn-sm {
-  padding: 8px 1rem !important;
+  padding: 8px 16px !important;
   font-size: 14px !important;
 }
 
@@ -290,7 +290,7 @@ a.btn {
   text-align: center !important;
   color: #4A4A4A !important;
   max-width: 700px !important;
-  margin: 0 auto 2rem !important;
+  margin: 0 auto 32px !important;
 }
 
 /* CARDS */
@@ -456,7 +456,7 @@ footer p {
   background: #FFFFFF !important;
   border: 1px solid #E5E5E5 !important;
   color: #1A1A1A !important;
-  padding: 12px 1rem !important;
+  padding: 12px 16px !important;
   border-radius: 4px !important;
   display: block !important;
   pointer-events: auto !important;
@@ -487,9 +487,9 @@ select.form-select option {
   background: rgba(201, 169, 97, 0.1) !important;
   color: #B8941F !important;
   border: 1px solid rgba(201, 169, 97, 0.2) !important;
-  padding: 4px 0.75rem !important;
+  padding: 4px 12px !important;
   border-radius: 4px !important;
-  font-size: 0.8125rem !important;
+  font-size: 13px !important;
   display: inline-block !important;
 }
 
@@ -537,7 +537,7 @@ select.form-select option {
 
 .breadcrumb-item + .breadcrumb-item::before {
   content: "/" !important;
-  padding: 0 0.5rem !important;
+  padding: 0 8px !important;
   color: #E5E5E5 !important;
 }
 
@@ -568,7 +568,7 @@ select.form-select option {
 
 .dropdown-item {
   color: #4A4A4A !important;
-  padding: 8px 1rem !important;
+  padding: 8px 16px !important;
 }
 
 .dropdown-item:hover {
@@ -779,7 +779,7 @@ select.form-select option {
   }
   
   h1 { font-size: 32px !important; }
-  h2 { font-size: 1.75rem !important; }
+  h2 { font-size: 28px !important; }
   
   .hero, .section {
     padding: 32px 0 !important;
@@ -805,7 +805,7 @@ select.form-select option {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px 1rem;
+  padding: 48px 16px;
   background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 50%, #F5F5F5 100%);
   contain: layout;
 }
@@ -837,7 +837,7 @@ select.form-select option {
 }
 
 .identity-card h4 {
-  font-size: 1.1rem;
+  font-size: 18px;
   color: #4A4A4A;
   margin-top: 32px;
 }
@@ -847,7 +847,7 @@ select.form-select option {
   width: 80px;
   height: 3px;
   background: linear-gradient(90deg, transparent, #B8941F, transparent);
-  margin: 0 auto 2rem;
+  margin: 0 auto 32px;
 }
 
 /* Style hr in identity pages */
@@ -869,7 +869,7 @@ select.form-select option {
 .identity-card .form-label {
   color: #4A4A4A;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 15px;
   margin-bottom: 8px;
 }
 
@@ -950,7 +950,7 @@ select.form-select option {
 .identity-card a {
   color: #B8941F;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 15px;
   transition: color 0.3s ease;
 }
 
@@ -972,7 +972,7 @@ select.form-select option {
   display: block;
   margin: 12px 0;
   color: #B8941F;
-  font-size: 0.95rem;
+  font-size: 15px;
 }
 
 /* External login section */
@@ -983,7 +983,7 @@ select.form-select option {
 }
 
 .identity-card .external-login h3 {
-  font-size: 1.1rem;
+  font-size: 18px;
   color: #4A4A4A;
   text-align: center;
   margin-bottom: 16px;
@@ -1083,7 +1083,7 @@ select.form-select option {
   
   .identity-card h1,
   .identity-card h2 {
-    font-size: 1.75rem;
+    font-size: 28px;
 
 
 /* ============================================
@@ -1219,14 +1219,14 @@ select.form-select option {
 .manage-main-content .form-label {
   color: #4A4A4A;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 15px;
   margin-bottom: 8px;
 }
 
 .manage-main-content .form-control {
   border: 1px solid #E5E5E5;
   border-radius: 8px;
-  padding: 12px 1rem;
+  padding: 12px 16px;
   transition: all 0.3s ease;
   font-size: 16px;
   background: #FAFAFA;
@@ -1335,7 +1335,7 @@ select.form-select option {
 
 @media (max-width: 576px) {
   .manage-page-header h1 {
-    font-size: 1.75rem;
+    font-size: 28px;
   }
   
   .manage-sidebar .nav-pills {
@@ -1343,8 +1343,8 @@ select.form-select option {
   }
   
   .manage-sidebar .nav-pills .nav-link {
-    padding: 12px 1rem;
-    font-size: 0.95rem;
+    padding: 12px 16px;
+    font-size: 15px;
   }
   
   .manage-card {
@@ -1357,7 +1357,7 @@ select.form-select option {
   
   .manage-main-content .btn-primary,
   .manage-main-content .btn-danger {
-    padding: 12px 1.5rem;
+    padding: 12px 24px;
     width: 100%;
   }
 }
