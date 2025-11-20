@@ -13,24 +13,31 @@
         <p class="header-subtitle">Add a new aristocratic artwork to the collection</p>
     </div>
 
-    <form action="/Admin/Collections/Create" method="post" enctype="multipart/form-data" class="luxury-form">
+    <form action="/Admin/Collections/Create" method="post" enctype="multipart/form-data" class="create-form">
         @Html.AntiForgeryToken()
         
         @if (!ViewData.ModelState.IsValid)
         {
-            <div class="alert alert-danger">
-                <strong>Error:</strong> Please correct the following errors:
-                <ul class="mb-0 mt-2">
-                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                    {
-                        <li>@error.ErrorMessage</li>
-                    }
-                </ul>
+            <div class="alert alert-danger alert-modern">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <div>
+                    <strong>Validation Error</strong>
+                    <ul class="mb-0 mt-2">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                    </ul>
+                </div>
             </div>
         }
 
-        <div class="form-section">
-            <h3 class="section-title">Collection Details</h3>
+        <div class="form-card">
+            <div class="card-header-custom">
+                <i class="bi bi-info-circle me-2"></i>
+                <h3 class="card-title-custom">Collection Details</h3>
+            </div>
+            <div class="card-body-custom">
 
             <div class="form-group">
                 <label for="Title" class="form-label">Title</label>
