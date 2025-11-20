@@ -139,44 +139,47 @@
             </div>
             <div class="card-body-custom">
 
-            <div class="form-group">
-                <label for="images" class="form-label">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                        <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
-                    </svg>
-                    Images <strong>(Select Multiple with Ctrl+Click)</strong>
-                </label>
-                <input type="file" id="images" name="images" multiple accept="image/jpeg,image/jpg,image/png,image/webp,.jpg,.jpeg,.png,.webp" class="form-control" required style="cursor: pointer;" />
-                <small class="form-text text-secondary">
-                    💡 Tip: Hold <strong>Ctrl</strong> (or <strong>Cmd</strong> on Mac) to select multiple files at once. 
-                    Supported: JPG, PNG, WebP (max 10MB each)
-                </small>
-                <div id="fileCount" class="small text-success mt-2" style="display: none;"></div>
-            </div>
+                <div class="upload-section">
+                    <label for="images" class="form-label-modern">
+                        <i class="bi bi-image me-1"></i> Images <span class="required-star">*</span>
+                    </label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="images" name="images" multiple accept="image/jpeg,image/jpg,image/png,image/webp,.jpg,.jpeg,.png,.webp" class="file-input" required />
+                        <label for="images" class="file-upload-label">
+                            <i class="bi bi-cloud-upload fs-1 mb-2"></i>
+                            <p class="mb-1"><strong>Click to upload</strong> or drag and drop</p>
+                            <small class="text-muted">JPG, PNG, WebP (max 10MB each)</small>
+                        </label>
+                    </div>
+                    <div id="fileCount" class="file-count-badge" style="display: none;"></div>
+                    <small class="form-text text-muted mt-2 d-block">
+                        <i class="bi bi-info-circle me-1"></i> Hold <kbd>Ctrl</kbd> (or <kbd>Cmd</kbd> on Mac) to select multiple files
+                    </small>
+                </div>
 
-            <div class="form-group">
-                <label class="form-label">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                        <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                        <path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z"/>
-                        <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z"/>
-                    </svg>
-                    Audio File (MP3)
-                </label>
-                <input type="file" name="audio" accept="audio/mpeg" class="form-control" />
-                <small class="form-text">Optional classical music (max 15MB)</small>
+                <div class="form-group-modern mt-4">
+                    <label class="form-label-modern">
+                        <i class="bi bi-music-note-beamed me-1"></i> Audio File (Optional)
+                    </label>
+                    <div class="audio-upload-wrapper">
+                        <input type="file" name="audio" id="audio" accept="audio/mpeg" class="file-input-small" />
+                        <label for="audio" class="audio-upload-label">
+                            <i class="bi bi-file-earmark-music me-2"></i>
+                            Choose MP3 file
+                        </label>
+                        <span id="audioFileName" class="audio-file-name"></span>
+                    </div>
+                    <small class="form-text text-muted">Classical music for enhanced presentation (max 15MB)</small>
+                </div>
             </div>
         </div>
 
-        <div class="ornament-divider-small"></div>
-
-        <div class="form-actions">
-            <a href="/Admin/Collections" class="btn btn-outline-secondary" style="pointer-events: auto; z-index: 1000; position: relative;">
-                Cancel
+        <div class="form-actions-modern">
+            <a href="/Admin/Collections" class="btn-cancel">
+                <i class="bi bi-x-circle me-2"></i> Cancel
             </a>
-            <button type="submit" class="btn btn-primary" style="pointer-events: auto; z-index: 1000; position: relative;">
-                <span>✦</span> Create Collection
+            <button type="submit" class="btn-submit">
+                <i class="bi bi-check-circle me-2"></i> Create Collection
             </button>
         </div>
     </form>
