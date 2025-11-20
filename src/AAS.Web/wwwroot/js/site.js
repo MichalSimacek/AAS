@@ -24,15 +24,20 @@ async function submitInquiry() {
       },
     });
     
-    const result = await res.json();
+    // Try to parse JSON, but handle non-JSON responses
+    let result;
+    const contentType = res.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      result = await res.json();
+    } else {
+      // If not JSON, create a result object
+      result = { success: res.ok, message: res.ok ? "Success" : "Error" };
+    }
     
     if (res.ok && result.success) {
       document.getElementById("inqOk").classList.remove("d-none");
       setTimeout(() => {
-        const modal = bootstrap.Modal.getInstance(document.getElementById('interestModal'));
-        if (modal) modal.hide();
-        form.reset();
-        document.getElementById("inqOk").classList.add("d-none");
+        closeInquiryForm();
       }, 1500);
     } else {
       // Show error message inline instead of alert
