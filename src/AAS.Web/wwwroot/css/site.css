@@ -471,6 +471,12 @@ main {
   width: 100%;
 }
 
+/* Ensure pages without sections have padding */
+main > .container {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
 footer {
   background: #FAFAFA !important;
   border-top: 1px solid #E5E5E5 !important;
