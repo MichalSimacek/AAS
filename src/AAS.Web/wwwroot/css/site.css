@@ -160,7 +160,20 @@ header {
 
 a.btn {
   text-decoration: none !important;
-  color: inherit !important;
+  display: inline-block;
+  cursor: pointer;
+}
+
+a.btn-primary {
+  color: #FFFFFF !important;
+}
+
+a.btn-outline-primary {
+  color: #B8941F !important;
+}
+
+a.btn-outline-secondary {
+  color: #4A4A4A !important;
 }
 
 .btn-primary {
