@@ -249,6 +249,7 @@
 
 <data name="Available" xml:space="preserve"><value>उपलब्ध</value></data>
 <data name="Sold" xml:space="preserve"><value>बिक गया</value></data>
+<data name="InAuction" xml:space="preserve"><value>नीलामी में</value></data>
 <data name="Price" xml:space="preserve"><value>कीमत</value></data>
 <data name="Status" xml:space="preserve"><value>स्थिति</value></data>
 <data name="Currency" xml:space="preserve"><value>मुद्रा</value></data>
