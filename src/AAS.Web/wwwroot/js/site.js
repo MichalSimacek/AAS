@@ -35,11 +35,23 @@ async function submitInquiry() {
         document.getElementById("inqOk").classList.add("d-none");
       }, 1500);
     } else {
-      alert(result.message || "Failed to submit inquiry. Please try again.");
+      // Show error message inline instead of alert
+      showInlineError(result.message || "Failed to submit inquiry. Please try again.");
     }
   } catch (error) {
     console.error('Error submitting inquiry:', error);
-    alert("An error occurred. Please try again later.");
+    showInlineError("An error occurred. Please try again later.");
+  }
+}
+
+function showInlineError(message) {
+  const errorDiv = document.getElementById("inqError");
+  if (errorDiv) {
+    errorDiv.textContent = message;
+    errorDiv.classList.remove("d-none");
+    setTimeout(() => {
+      errorDiv.classList.add("d-none");
+    }, 5000);
   }
 }
 
