@@ -568,9 +568,11 @@ select.form-select option {
 .text-secondary { color: #4A4A4A !important; }
 .small { font-size: 0.875rem !important; }
 .lead { 
-  font-size: 1.25rem !important; 
+  font-size: 20px !important; 
   font-weight: 400 !important;
   color: #1A1A1A !important;
+  margin-bottom: 16px !important;
+  line-height: 1.5 !important;
 }
 .fw-bold { font-weight: 700 !important; }
 
