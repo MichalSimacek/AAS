@@ -249,6 +249,7 @@
 
 <data name="Available" xml:space="preserve"><value>利用可能</value></data>
 <data name="Sold" xml:space="preserve"><value>売却済み</value></data>
+<data name="InAuction" xml:space="preserve"><value>オークション中</value></data>
 <data name="Price" xml:space="preserve"><value>価格</value></data>
 <data name="Status" xml:space="preserve"><value>ステータス</value></data>
 <data name="Currency" xml:space="preserve"><value>通貨</value></data>
