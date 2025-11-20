@@ -465,12 +465,19 @@ a.btn {
 }
 
 /* FOOTER */
+/* MAIN - Push footer to bottom */
+main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
 footer {
   background: #FAFAFA !important;
   border-top: 1px solid #E5E5E5 !important;
   padding: 48px 0 !important;
-  margin-top: 48px !important;
+  margin-top: 0 !important;
   width: 100% !important;
+  flex-shrink: 0;
 }
 
 footer .container {
