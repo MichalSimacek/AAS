@@ -43,52 +43,17 @@ async function submitInquiry() {
   }
 }
 
-// Aristocratic styling for Identity pages
+// Disable all JavaScript animations on Identity pages to prevent flickering
 document.addEventListener('DOMContentLoaded', function() {
   // Check if we're on an Identity page
   const isIdentityPage = window.location.pathname.includes('/Identity/');
 
   if (isIdentityPage) {
-    // Find the main content area
-    const main = document.querySelector('main');
-    if (main) {
-      // Wrap Identity forms in auth-container
-      const forms = main.querySelectorAll('form');
-      forms.forEach(form => {
-        if (!form.closest('.auth-container')) {
-          const wrapper = document.createElement('div');
-          wrapper.className = 'auth-container fade-in';
-          form.parentNode.insertBefore(wrapper, form);
-          wrapper.appendChild(form);
-
-          // Move any headings or validation summaries into the wrapper
-          const siblings = [];
-          let prev = wrapper.previousElementSibling;
-          while (prev) {
-            if (prev.tagName === 'H1' || prev.tagName === 'H2' ||
-                prev.classList.contains('validation-summary-errors') ||
-                prev.classList.contains('text-danger')) {
-              siblings.unshift(prev);
-            }
-            prev = prev.previousElementSibling;
-          }
-          siblings.forEach(el => wrapper.insertBefore(el, wrapper.firstChild));
-        }
-      });
-
-      // Style any remaining content
-      const directChildren = Array.from(main.children);
-      directChildren.forEach(child => {
-        if (!child.classList.contains('auth-container') &&
-            !child.classList.contains('container')) {
-          child.style.maxWidth = '480px';
-          child.style.margin = '2rem auto';
-        }
-      });
-    }
+    // Do nothing - let CSS handle everything for stable layout
+    return;
   }
 
-  // Add smooth transitions only to specific interactive elements (not layout-affecting)
+  // Add smooth transitions only to non-Identity interactive elements
   const interactiveElements = document.querySelectorAll('button:not(.navbar-toggler), a:not(.nav-link), .btn');
   interactiveElements.forEach(el => {
     if (!el.style.transition && !el.closest('.identity-card') && !el.closest('.manage-account-container')) {
