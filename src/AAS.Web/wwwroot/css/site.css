@@ -178,7 +178,7 @@ a.btn {
   justify-content: center;
   text-align: center;
   position: relative;
-  padding: 3rem 0;
+  padding: clamp(40px, 5vh, 60px) 0;
   background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
 }
 
