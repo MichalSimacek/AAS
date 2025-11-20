@@ -256,7 +256,29 @@
 
 @section Scripts{
 <script>
+// Debug Bootstrap Modal
+console.log('Bootstrap version:', typeof bootstrap !== 'undefined' ? bootstrap : 'NOT LOADED');
+console.log('Modal element:', document.getElementById('interestModal'));
+
+// Test modal manually
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Testing Bootstrap modal functionality...');
+  
+  const modalEl = document.getElementById('interestModal');
+  if (modalEl) {
+    console.log('Modal element found');
+    
+    // Try to create modal instance
+    try {
+      const testModal = new bootstrap.Modal(modalEl);
+      console.log('Modal instance created successfully:', testModal);
+    } catch (error) {
+      console.error('Error creating modal instance:', error);
+    }
+  } else {
+    console.error('Modal element NOT found!');
+  }
+  
   console.log('DOMContentLoaded - Initializing Swiper...');
   
   // Wait for Swiper to be available
