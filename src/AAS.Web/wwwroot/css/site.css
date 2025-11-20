@@ -909,21 +909,19 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   background: #FFFFFF;
   border: 1px solid #E5E5E5;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
   padding: 48px;
   max-width: 520px;
   width: 100%;
   margin: 0 auto;
 }
 
-/* Disable ALL animations and prevent layout shift on Identity pages */
-.identity-card,
-.identity-card *,
-#account-container,
-#account-container * {
+/* Disable animations and prevent layout shift on Identity pages, BUT allow floating labels to work */
+.identity-card > *:not(.form-floating):not(.row),
+.identity-card > * > *:not(.form-floating):not(.form-control):not(label),
+#account-container {
   animation: none !important;
   transition: none !important;
-  transform: none !important;
 }
 
 /* Force GPU rendering and prevent reflow */
