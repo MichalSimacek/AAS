@@ -278,21 +278,6 @@ else
 </div>
 
 <script>
-function showDummyTranslationsModal() {
-    var modal = new bootstrap.Modal(document.getElementById('dummyTranslationsModal'));
-    modal.show();
-}
-
-function showDeleteTranslationsModal() {
-    var modal = new bootstrap.Modal(document.getElementById('deleteTranslationsModal'));
-    modal.show();
-}
-
-function showTranslateAllModal() {
-    var modal = new bootstrap.Modal(document.getElementById('translateAllModal'));
-    modal.show();
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.delete-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
