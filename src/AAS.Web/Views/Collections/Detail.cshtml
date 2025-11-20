@@ -344,20 +344,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   tryInitSwiper();
-  
-  // Debug: Add event listener to "I'm interested" button
-  const interestedBtn = document.querySelector('button[data-bs-target="#interestModal"]');
-  if (interestedBtn) {
-    console.log('Found I\'m interested button:', interestedBtn);
-    
-    interestedBtn.addEventListener('click', function(e) {
-      console.log('Button clicked!', e);
-      console.log('Bootstrap available:', typeof bootstrap !== 'undefined');
-      console.log('Modal element exists:', document.getElementById('interestModal'));
-    });
-  } else {
-    console.error('I\'m interested button NOT found!');
-  }
 });
 
 // Comments functionality
