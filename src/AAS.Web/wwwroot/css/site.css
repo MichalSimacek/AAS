@@ -925,6 +925,8 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   max-width: 520px;
   width: 100%;
   margin: 0 auto;
+  contain: layout style;
+  will-change: auto;
 }
 
 /* Disable animations and prevent layout shift on Identity pages, BUT allow floating labels to work */
