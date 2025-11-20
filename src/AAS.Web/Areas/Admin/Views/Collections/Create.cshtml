@@ -4,13 +4,14 @@
     ViewData["Title"] = "Create Collection";
 }
 
-<div class="admin-form-container">
-    <div class="form-header">
-        <h1 class="page-heading mb-2">Create New Collection</h1>
-        <p class="text-secondary mb-0">Add a new aristocratic artwork collection</p>
+<div class="admin-create-container">
+    <div class="create-header">
+        <div class="header-icon">
+            <i class="bi bi-plus-circle"></i>
+        </div>
+        <h1 class="header-title">Create New Collection</h1>
+        <p class="header-subtitle">Add a new aristocratic artwork to the collection</p>
     </div>
-
-    <div class="ornament-divider"></div>
 
     <form action="/Admin/Collections/Create" method="post" enctype="multipart/form-data" class="luxury-form">
         @Html.AntiForgeryToken()
