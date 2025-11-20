@@ -8,6 +8,7 @@
 
 html {
   font-size: 16px !important;
+  height: 100%;
 }
 
 body {
@@ -20,6 +21,9 @@ body {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Override any zoom scaling */
@@ -84,11 +88,12 @@ header {
   top: 0 !important;
   z-index: 1000 !important;
   width: 100% !important;
+  flex-shrink: 0;
 }
 
 .navbar {
   background: #FFFFFF !important;
-  padding: 1rem 0 !important;
+  padding: 16px 0 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -99,16 +104,16 @@ header {
   color: #1A1A1A !important;
   font-family: 'Playfair Display', serif !important;
   font-weight: 700 !important;
-  font-size: 1.25rem !important;
+  font-size: 20px !important;
   display: flex !important;
   align-items: center !important;
-  gap: 0.75rem !important;
+  gap: 12px !important;
 }
 
 .navbar-nav {
   display: flex !important;
   list-style: none !important;
-  gap: 0.5rem !important;
+  gap: 8px !important;
   margin: 0 !important;
   padding: 0 !important;
   align-items: center !important;
@@ -117,7 +122,7 @@ header {
 .nav-link {
   color: #4A4A4A !important;
   font-weight: 500 !important;
-  padding: 0.5rem 1rem !important;
+  padding: 8px 16px !important;
   display: block !important;
   white-space: nowrap !important;
 }
@@ -131,7 +136,7 @@ header {
 /* BUTTONS */
 .btn {
   display: inline-block !important;
-  padding: 0.75rem 1.5rem !important;
+  padding: 12px 24px !important;
   border-radius: 4px !important;
   font-weight: 500 !important;
   text-align: center !important;
@@ -177,13 +182,13 @@ a.btn {
 }
 
 .btn-lg {
-  padding: 1rem 2rem !important;
-  font-size: 1.0625rem !important;
+  padding: 16px 32px !important;
+  font-size: 17px !important;
 }
 
 .btn-sm {
-  padding: 0.5rem 1rem !important;
-  font-size: 0.875rem !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
 }
 
 /* HERO SECTION */
@@ -228,9 +233,44 @@ a.btn {
   filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.18));
 }
 
+.hero-title {
+  font-size: 40px !important;
+  margin-bottom: 16px !important;
+}
+
+.hero-lead {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #1A1A1A !important;
+  margin-bottom: 16px !important;
+  line-height: 1.5 !important;
+}
+
 .hero-description {
   max-width: 600px;
   margin: 0 auto 20px !important;
+  color: #4A4A4A !important;
+  font-size: 16px !important;
+}
+
+.hero-buttons {
+  display: flex !important;
+  gap: 16px !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+}
+
+.section-lead {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #1A1A1A !important;
+  margin-bottom: 24px !important;
+  line-height: 1.5 !important;
+}
+
+.section-text {
+  font-size: 16px !important;
+  margin-bottom: 24px !important;
   color: #4A4A4A !important;
 }
 
@@ -253,7 +293,7 @@ a.btn {
 }
 
 .bg-light {
-  background: #FAFAFA !important;
+  background: #FFFFFF !important;
 }
 
 .section-title {
@@ -272,9 +312,9 @@ a.btn {
 
 .page-heading {
   text-align: center !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 8px !important;
   color: #1A1A1A !important;
-  font-size: 2.5rem !important;
+  font-size: 40px !important;
 }
 
 .page-heading::after {
@@ -283,14 +323,14 @@ a.btn {
   width: 60px !important;
   height: 3px !important;
   background: #C9A961 !important;
-  margin: 1rem auto 0 !important;
+  margin: 16px auto 0 !important;
 }
 
 .page-description {
   text-align: center !important;
   color: #4A4A4A !important;
   max-width: 700px !important;
-  margin: 0 auto 2rem !important;
+  margin: 0 auto 32px !important;
 }
 
 /* CARDS */
@@ -305,7 +345,7 @@ a.btn {
 }
 
 .card-body {
-  padding: 1.5rem !important;
+  padding: 24px !important;
   background: #FFFFFF !important;
   flex: 1 !important;
 }
@@ -313,8 +353,8 @@ a.btn {
 .card-title {
   color: #1A1A1A !important;
   font-family: 'Playfair Display', serif !important;
-  font-size: 1.25rem !important;
-  margin-bottom: 0.75rem !important;
+  font-size: 20px !important;
+  margin-bottom: 12px !important;
 }
 
 .card-text {
@@ -426,12 +466,25 @@ a.btn {
 }
 
 /* FOOTER */
+/* MAIN - Push footer to bottom */
+main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+/* Ensure pages without sections have padding */
+main > .container {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
 footer {
   background: #FAFAFA !important;
   border-top: 1px solid #E5E5E5 !important;
-  padding: 3rem 0 !important;
-  margin-top: 3rem !important;
+  padding: 48px 0 !important;
+  margin-top: 0 !important;
   width: 100% !important;
+  flex-shrink: 0;
 }
 
 footer .container {
@@ -440,14 +493,14 @@ footer .container {
 
 footer p {
   color: #4A4A4A !important;
-  margin: 0.25rem 0 !important;
+  margin: 4px 0 !important;
 }
 
 /* FORMS */
 .form-label {
   color: #1A1A1A !important;
   font-weight: 500 !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 8px !important;
   display: block !important;
 }
 
@@ -456,7 +509,7 @@ footer p {
   background: #FFFFFF !important;
   border: 1px solid #E5E5E5 !important;
   color: #1A1A1A !important;
-  padding: 0.75rem 1rem !important;
+  padding: 12px 16px !important;
   border-radius: 4px !important;
   display: block !important;
   pointer-events: auto !important;
@@ -487,9 +540,9 @@ select.form-select option {
   background: rgba(201, 169, 97, 0.1) !important;
   color: #B8941F !important;
   border: 1px solid rgba(201, 169, 97, 0.2) !important;
-  padding: 0.25rem 0.75rem !important;
+  padding: 4px 12px !important;
   border-radius: 4px !important;
-  font-size: 0.8125rem !important;
+  font-size: 13px !important;
   display: inline-block !important;
 }
 
@@ -506,23 +559,23 @@ select.form-select option {
 
 .modal-header {
   border-bottom: 1px solid #E5E5E5 !important;
-  padding: 1.5rem !important;
+  padding: 24px !important;
 }
 
 .modal-body {
-  padding: 1.5rem !important;
+  padding: 24px !important;
 }
 
 .modal-footer {
   border-top: 1px solid #E5E5E5 !important;
-  padding: 1.5rem !important;
+  padding: 24px !important;
 }
 
 /* BREADCRUMB */
 .breadcrumb {
   background: transparent !important;
   padding: 0 !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 24px !important;
   display: flex !important;
   list-style: none !important;
 }
@@ -537,15 +590,15 @@ select.form-select option {
 
 .breadcrumb-item + .breadcrumb-item::before {
   content: "/" !important;
-  padding: 0 0.5rem !important;
+  padding: 0 8px !important;
   color: #E5E5E5 !important;
 }
 
 /* ALERT */
 .alert {
-  padding: 1rem !important;
+  padding: 16px !important;
   border-radius: 4px !important;
-  margin-bottom: 1rem !important;
+  margin-bottom: 16px !important;
 }
 
 .alert-info {
@@ -568,7 +621,7 @@ select.form-select option {
 
 .dropdown-item {
   color: #4A4A4A !important;
-  padding: 0.5rem 1rem !important;
+  padding: 8px 16px !important;
 }
 
 .dropdown-item:hover {
@@ -579,7 +632,7 @@ select.form-select option {
 /* UTILITIES */
 .text-center { text-align: center !important; }
 .text-secondary { color: #4A4A4A !important; }
-.small { font-size: 0.875rem !important; }
+.small { font-size: 14px !important; }
 .lead { 
   font-size: 20px !important; 
   font-weight: 400 !important;
@@ -589,14 +642,38 @@ select.form-select option {
 }
 .fw-bold { font-weight: 700 !important; }
 
-.mb-0 { margin-bottom: 0 !important; }
-.mb-2 { margin-bottom: 8px !important; }
-.mb-3 { margin-bottom: 16px !important; }
-.mb-4 { margin-bottom: 24px !important; }
-.mb-5 { margin-bottom: 48px !important; }
-.mt-3 { margin-top: 1rem !important; }
-.mt-4 { margin-top: 1.5rem !important; }
-.mt-5 { margin-top: 3rem !important; }
+/* Override Bootstrap spacing with fixed px - MUST be after Bootstrap CSS */
+/* Double class for higher specificity than Bootstrap */
+html .mb-0, html .my-0, html .m-0 { margin-bottom: 0 !important; }
+html .mb-1, html .my-1 { margin-bottom: 4px !important; }
+html .mb-2, html .my-2 { margin-bottom: 8px !important; }
+html .mb-3, html .my-3 { margin-bottom: 16px !important; }
+html .mb-4, html .my-4 { margin-bottom: 24px !important; }
+html .mb-5, html .my-5 { margin-bottom: 48px !important; }
+
+html .mt-0, html .my-0, html .m-0 { margin-top: 0 !important; }
+html .mt-1, html .my-1 { margin-top: 4px !important; }
+html .mt-2, html .my-2 { margin-top: 8px !important; }
+html .mt-3, html .my-3 { margin-top: 16px !important; }
+html .mt-4, html .my-4 { margin-top: 24px !important; }
+html .mt-5, html .my-5 { margin-top: 48px !important; }
+
+html .pb-0, html .py-0, html .p-0 { padding-bottom: 0 !important; }
+html .pb-1, html .py-1 { padding-bottom: 4px !important; }
+html .pb-2, html .py-2 { padding-bottom: 8px !important; }
+html .pb-3, html .py-3 { padding-bottom: 16px !important; }
+html .pb-4, html .py-4 { padding-bottom: 24px !important; }
+html .pb-5, html .py-5 { padding-bottom: 48px !important; }
+
+html .pt-0, html .py-0, html .p-0 { padding-top: 0 !important; }
+html .pt-1, html .py-1 { padding-top: 4px !important; }
+html .pt-2, html .py-2 { padding-top: 8px !important; }
+html .pt-3, html .py-3 { padding-top: 16px !important; }
+html .pt-4, html .py-4 { padding-top: 24px !important; }
+html .pt-5, html .py-5 { padding-top: 48px !important; }
+.mt-3 { margin-top: 16px !important; }
+.mt-4 { margin-top: 24px !important; }
+.mt-5 { margin-top: 48px !important; }
 
 .py-4 { padding-top: 24px !important; padding-bottom: 24px !important; }
 .py-5 { padding-top: 48px !important; padding-bottom: 48px !important; }
@@ -604,9 +681,27 @@ select.form-select option {
 
 .d-flex { display: flex !important; }
 .flex-wrap { flex-wrap: wrap !important; }
-.gap-2 { gap: 8px !important; }
-.gap-3 { gap: 16px !important; }
-.gap-4 { gap: 24px !important; }
+/* Override Bootstrap gap with fixed px */
+html .gap-0 { gap: 0 !important; }
+html .gap-1 { gap: 4px !important; }
+html .gap-2 { gap: 8px !important; }
+html .gap-3 { gap: 16px !important; }
+html .gap-4 { gap: 24px !important; }
+html .gap-5 { gap: 48px !important; }
+
+/* Override Bootstrap grid gutters */
+html .g-0, html .gx-0 { --bs-gutter-x: 0 !important; }
+html .g-0, html .gy-0 { --bs-gutter-y: 0 !important; }
+html .g-1, html .gx-1 { --bs-gutter-x: 4px !important; }
+html .g-1, html .gy-1 { --bs-gutter-y: 4px !important; }
+html .g-2, html .gx-2 { --bs-gutter-x: 8px !important; }
+html .g-2, html .gy-2 { --bs-gutter-y: 8px !important; }
+html .g-3, html .gx-3 { --bs-gutter-x: 16px !important; }
+html .g-3, html .gy-3 { --bs-gutter-y: 16px !important; }
+html .g-4, html .gx-4 { --bs-gutter-x: 24px !important; }
+html .g-4, html .gy-4 { --bs-gutter-y: 24px !important; }
+html .g-5, html .gx-5 { --bs-gutter-x: 48px !important; }
+html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
 .justify-content-center { justify-content: center !important; }
 .align-items-center { align-items: center !important; }
 
@@ -757,7 +852,7 @@ select.form-select option {
 @media (max-width: 991px) {
   .navbar-collapse {
     width: 100% !important;
-    margin-top: 1rem !important;
+    margin-top: 16px !important;
   }
   
   .navbar-nav {
@@ -778,15 +873,15 @@ select.form-select option {
     padding-right: 15px !important;
   }
   
-  h1 { font-size: 2rem !important; }
-  h2 { font-size: 1.75rem !important; }
+  h1 { font-size: 32px !important; }
+  h2 { font-size: 28px !important; }
   
   .hero, .section {
-    padding: 2rem 0 !important;
+    padding: 32px 0 !important;
   }
   
   .hero h1 {
-    font-size: 2rem !important;
+    font-size: 32px !important;
   }
   
   .hero-logo {
@@ -801,13 +896,12 @@ select.form-select option {
 
 /* Identity page container */
 #account-container {
-  min-height: 70vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 50%, #F5F5F5 100%);
-  contain: layout;
+  padding: 80px 16px;
+  background: #FFFFFF;
 }
 
 /* Identity card styling */
@@ -815,13 +909,37 @@ select.form-select option {
   background: #FFFFFF;
   border: 1px solid #E5E5E5;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  padding: 3rem;
+  box-shadow: none;
+  padding: 48px;
   max-width: 520px;
   width: 100%;
   margin: 0 auto;
-  will-change: auto;
-  contain: layout style;
+}
+
+/* Disable animations and prevent layout shift on Identity pages, BUT allow floating labels to work */
+.identity-card > *:not(.form-floating):not(.row),
+.identity-card > * > *:not(.form-floating):not(.form-control):not(label),
+#account-container {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Force GPU rendering and prevent reflow */
+#account-container {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Prevent content shift during navigation */
+body {
+  overflow-y: scroll !important;
+}
+
+/* Stabilize form elements - but exclude floating labels */
+.identity-card input:not(.form-floating > .form-control),
+.identity-card button {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* Identity page headings */
@@ -832,14 +950,15 @@ select.form-select option {
   font-family: 'Playfair Display', serif;
   color: #1A1A1A;
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+  margin-bottom: 24px;
+  font-size: 32px;
+  line-height: 1.2;
 }
 
 .identity-card h4 {
-  font-size: 1.1rem;
+  font-size: 18px;
   color: #4A4A4A;
-  margin-top: 2rem;
+  margin-top: 32px;
 }
 
 /* Decorative accent line */
@@ -847,7 +966,7 @@ select.form-select option {
   width: 80px;
   height: 3px;
   background: linear-gradient(90deg, transparent, #B8941F, transparent);
-  margin: 0 auto 2rem;
+  margin: 0 auto 32px;
 }
 
 /* Style hr in identity pages */
@@ -855,13 +974,13 @@ select.form-select option {
   border: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, #E5E5E5, transparent);
-  margin: 1.5rem 0;
+  margin: 24px 0;
 }
 
 /* Form groups */
 .identity-card .form-floating,
 .identity-card .mb-3 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 /* Form labels */
@@ -869,8 +988,8 @@ select.form-select option {
 .identity-card .form-label {
   color: #4A4A4A;
   font-weight: 500;
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+  font-size: 15px;
+  margin-bottom: 8px;
 }
 
 /* Form inputs */
@@ -881,8 +1000,8 @@ select.form-select option {
   background: #FAFAFA;
   border: 1px solid #E5E5E5;
   border-radius: 6px;
-  padding: 0.875rem 1rem;
-  font-size: 1rem;
+  padding: 14px 16px;
+  font-size: 16px;
   color: #1A1A1A;
   transition: all 0.3s ease;
 }
@@ -897,15 +1016,15 @@ select.form-select option {
 
 /* Checkboxes */
 .identity-card .form-check {
-  margin: 1.5rem 0;
+  margin: 24px 0;
 }
 
 .identity-card .form-check-input {
   border: 2px solid #E5E5E5;
   border-radius: 4px;
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-top: 0.125rem;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
   cursor: pointer;
 }
 
@@ -916,7 +1035,7 @@ select.form-select option {
 
 .identity-card .form-check-label {
   color: #4A4A4A;
-  margin-left: 0.5rem;
+  margin-left: 8px;
   cursor: pointer;
 }
 
@@ -926,12 +1045,12 @@ select.form-select option {
   background: linear-gradient(135deg, #B8941F 0%, #C9A961 100%);
   border: none;
   border-radius: 6px;
-  padding: 0.875rem 2rem;
-  font-size: 1rem;
+  padding: 14px 32px;
+  font-size: 16px;
   font-weight: 600;
   color: #FFFFFF;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 16px;
   transition: all 0.3s ease;
   cursor: pointer;
   text-transform: uppercase;
@@ -950,7 +1069,7 @@ select.form-select option {
 .identity-card a {
   color: #B8941F;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 15px;
   transition: color 0.3s ease;
 }
 
@@ -962,31 +1081,31 @@ select.form-select option {
 
 /* Links section */
 .identity-links {
-  margin-top: 2rem;
-  padding-top: 2rem;
+  margin-top: 32px;
+  padding-top: 32px;
   border-top: 1px solid #E5E5E5;
   text-align: center;
 }
 
 .identity-links a {
   display: block;
-  margin: 0.75rem 0;
+  margin: 12px 0;
   color: #B8941F;
-  font-size: 0.95rem;
+  font-size: 15px;
 }
 
 /* External login section */
 .identity-card .external-login {
-  margin-top: 2rem;
-  padding-top: 2rem;
+  margin-top: 32px;
+  padding-top: 32px;
   border-top: 1px solid #E5E5E5;
 }
 
 .identity-card .external-login h3 {
-  font-size: 1.1rem;
+  font-size: 18px;
   color: #4A4A4A;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   font-weight: 500;
 }
 
@@ -994,28 +1113,28 @@ select.form-select option {
 .identity-card .text-danger,
 .identity-card .validation-summary-errors {
   color: #DC3545;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
+  font-size: 14px;
+  margin-top: 8px;
 }
 
 .identity-card .validation-summary-errors ul {
   list-style: none;
   padding: 0;
-  margin: 1rem 0;
+  margin: 16px 0;
   background: rgba(220, 53, 69, 0.05);
   border: 1px solid rgba(220, 53, 69, 0.2);
   border-radius: 6px;
-  padding: 1rem;
+  padding: 16px;
 }
 
 .identity-card .validation-summary-errors li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 /* Alert messages */
 .identity-card .alert {
   border-radius: 6px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 .identity-card .alert-info {
@@ -1059,31 +1178,86 @@ select.form-select option {
   max-width: 100% !important;
 }
 
-/* Fix floating labels */
-.identity-card .form-floating > label {
-  padding: 0.875rem 1rem;
-  color: #4A4A4A;
+/* Custom floating labels implementation */
+.identity-card .form-floating {
+  position: relative !important;
+  margin-bottom: 16px !important;
 }
 
 .identity-card .form-floating > .form-control {
-  padding: 1rem 1rem 0.5rem;
+  height: 58px !important;
+  padding: 24px 12px 8px 12px !important;
+  font-size: 16px !important;
+  line-height: 1.25 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #dee2e6 !important;
+  border-radius: 6px !important;
 }
 
+.identity-card .form-floating > label {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 20px 12px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+  border: 1px solid transparent !important;
+  transform-origin: 0 0 !important;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out !important;
+  color: #6c757d !important;
+  font-size: 16px !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+}
+
+/* When input has focus OR has value (not showing placeholder), move label up */
 .identity-card .form-floating > .form-control:focus ~ label,
 .identity-card .form-floating > .form-control:not(:placeholder-shown) ~ label {
-  opacity: 0.65;
-  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  opacity: 0.65 !important;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !important;
+  color: #6c757d !important;
+  padding-top: 8px !important;
+  padding-bottom: 0 !important;
+}
+
+/* Focus state for input */
+.identity-card .form-floating > .form-control:focus {
+  border-color: #86b7fe !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+}
+
+/* Hide the actual placeholder text */
+.identity-card .form-floating > .form-control::placeholder {
+  color: transparent !important;
+}
+
+/* Validation errors styling */
+.identity-card .text-danger {
+  display: block;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #dc3545 !important;
+}
+
+.identity-card .form-floating + .text-danger {
+  margin-top: -8px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 576px) {
   .identity-card {
-    padding: 2rem 1.5rem;
+    padding: 32px 24px;
   }
   
   .identity-card h1,
   .identity-card h2 {
-    font-size: 1.75rem;
+    font-size: 28px;
 
 
 /* ============================================
@@ -1092,8 +1266,8 @@ select.form-select option {
 
 /* Manage account container */
 .manage-account-container {
-  background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 50%, #F5F5F5 100%);
-  min-height: 80vh;
+  background: #FFFFFF;
+  min-height: 600px;
   contain: layout;
   will-change: auto;
 }
@@ -1101,15 +1275,15 @@ select.form-select option {
 /* Page header */
 .manage-page-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
 }
 
 .manage-page-header h1 {
   font-family: 'Playfair Display', serif;
   color: #1A1A1A;
   font-weight: 600;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 40px;
+  margin-bottom: 16px;
   display: inline-block;
   position: relative;
 }
@@ -1129,7 +1303,7 @@ select.form-select option {
 /* Content wrapper - flex layout */
 .manage-content-wrapper {
   display: flex;
-  gap: 2rem;
+  gap: 32px;
   align-items: flex-start;
 }
 
@@ -1148,7 +1322,7 @@ select.form-select option {
 /* Manage navigation */
 .manage-sidebar .nav-pills {
   background: #FFFFFF;
-  padding: 1.5rem;
+  padding: 24px;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid #E5E5E5;
@@ -1158,15 +1332,15 @@ select.form-select option {
 
 .manage-sidebar .nav-pills .nav-link {
   color: #4A4A4A;
-  padding: 1rem 1.25rem;
-  margin-bottom: 0.75rem;
+  padding: 16px 20px;
+  margin-bottom: 12px;
   border-radius: 8px;
   transition: all 0.3s ease;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 16px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -1176,7 +1350,7 @@ select.form-select option {
 }
 
 .manage-sidebar .nav-pills .nav-link i {
-  font-size: 1.25rem;
+  font-size: 20px;
   color: #B8941F;
   flex-shrink: 0;
 }
@@ -1203,32 +1377,32 @@ select.form-select option {
   border: 1px solid #E5E5E5;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  padding: 2.5rem;
-  margin-bottom: 1.5rem;
+  padding: 40px;
+  margin-bottom: 24px;
 }
 
 .manage-card-title {
   font-family: 'Playfair Display', serif;
   color: #1A1A1A;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 /* Form elements in manage pages */
 .manage-main-content .form-label {
   color: #4A4A4A;
   font-weight: 500;
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+  font-size: 15px;
+  margin-bottom: 8px;
 }
 
 .manage-main-content .form-control {
   border: 1px solid #E5E5E5;
   border-radius: 8px;
-  padding: 0.75rem 1rem;
+  padding: 12px 16px;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 16px;
   background: #FAFAFA;
 }
 
@@ -1249,24 +1423,24 @@ select.form-select option {
 }
 
 .manage-main-content small {
-  font-size: 0.875rem;
+  font-size: 14px;
   display: block;
-  margin-top: 0.25rem;
+  margin-top: 4px;
 }
 
 .manage-main-content small i {
-  font-size: 0.875rem;
+  font-size: 14px;
 }
 
 /* Buttons in manage pages */
 .manage-main-content .btn-primary {
   background: linear-gradient(135deg, #B8941F 0%, #C9A961 100%);
   border: none;
-  padding: 0.875rem 2.5rem;
+  padding: 14px 40px;
   font-weight: 600;
   border-radius: 8px;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .manage-main-content .btn-primary:hover {
@@ -1277,7 +1451,7 @@ select.form-select option {
 
 .manage-main-content .btn-danger {
   border-radius: 8px;
-  padding: 0.875rem 2.5rem;
+  padding: 14px 40px;
   font-weight: 600;
 }
 
@@ -1295,7 +1469,7 @@ select.form-select option {
 .manage-main-content .alert {
   border-radius: 8px;
   border: none;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 /* Danger card for delete account */
@@ -1317,7 +1491,7 @@ select.form-select option {
     flex: 1;
     width: 100%;
     min-width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
   }
   
   .manage-sidebar .nav-pills {
@@ -1325,39 +1499,39 @@ select.form-select option {
   }
   
   .manage-page-header h1 {
-    font-size: 2rem;
+    font-size: 32px;
   }
   
   .manage-card {
-    padding: 2rem;
+    padding: 32px;
   }
 }
 
 @media (max-width: 576px) {
   .manage-page-header h1 {
-    font-size: 1.75rem;
+    font-size: 28px;
   }
   
   .manage-sidebar .nav-pills {
-    padding: 1rem;
+    padding: 16px;
   }
   
   .manage-sidebar .nav-pills .nav-link {
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
+    padding: 12px 16px;
+    font-size: 15px;
   }
   
   .manage-card {
-    padding: 1.5rem;
+    padding: 24px;
   }
   
   .manage-card-title {
-    font-size: 1.25rem;
+    font-size: 20px;
   }
   
   .manage-main-content .btn-primary,
   .manage-main-content .btn-danger {
-    padding: 0.75rem 1.5rem;
+    padding: 12px 24px;
     width: 100%;
   }
 }
