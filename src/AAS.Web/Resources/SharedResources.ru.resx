@@ -249,6 +249,7 @@
 
 <data name="Available" xml:space="preserve"><value>Доступно</value></data>
 <data name="Sold" xml:space="preserve"><value>Продано</value></data>
+<data name="InAuction" xml:space="preserve"><value>На Аукционе</value></data>
 <data name="Price" xml:space="preserve"><value>Цена</value></data>
 <data name="Status" xml:space="preserve"><value>Статус</value></data>
 <data name="Currency" xml:space="preserve"><value>Валюта</value></data>
