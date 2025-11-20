@@ -612,6 +612,23 @@ select.form-select option {
   opacity: 0.5;
 }
 
+/* Fix z-index hierarchy for modals */
+.modal {
+  z-index: 1055 !important;
+}
+
+.modal.show {
+  display: block !important;
+}
+
+.modal-backdrop {
+  z-index: 1050 !important;
+}
+
+.modal-dialog {
+  z-index: 1056 !important;
+}
+
 /* BREADCRUMB */
 .breadcrumb {
   background: transparent !important;
