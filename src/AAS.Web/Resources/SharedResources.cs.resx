@@ -249,6 +249,7 @@
 
 <data name="Available" xml:space="preserve"><value>Dostupné</value></data>
 <data name="Sold" xml:space="preserve"><value>Prodáno</value></data>
+<data name="InAuction" xml:space="preserve"><value>V aukci</value></data>
 <data name="Price" xml:space="preserve"><value>Cena</value></data>
 <data name="Status" xml:space="preserve"><value>Stav</value></data>
 <data name="Currency" xml:space="preserve"><value>Měna</value></data>
