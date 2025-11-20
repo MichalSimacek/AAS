@@ -615,10 +615,13 @@ select.form-select option {
 /* Fix z-index hierarchy for modals */
 .modal {
   z-index: 1055 !important;
+  display: none;
 }
 
 .modal.show {
-  display: block !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-backdrop {
@@ -627,6 +630,17 @@ select.form-select option {
 
 .modal-dialog {
   z-index: 1056 !important;
+  position: relative;
+  margin: 1.75rem auto;
+  max-width: 500px;
+  width: auto;
+  pointer-events: auto;
+}
+
+.modal-dialog-centered {
+  display: flex !important;
+  align-items: center !important;
+  min-height: calc(100% - 3.5rem) !important;
 }
 
 /* BREADCRUMB */
