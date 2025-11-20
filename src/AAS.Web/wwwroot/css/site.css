@@ -896,12 +896,12 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
 
 /* Identity page container */
 #account-container {
-  min-height: 70vh;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 48px 16px;
-  background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 50%, #F5F5F5 100%);
+  background: #FFFFFF;
   contain: layout;
 }
 
