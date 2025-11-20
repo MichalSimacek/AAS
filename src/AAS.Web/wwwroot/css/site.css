@@ -24,6 +24,16 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  visibility: visible !important;
+}
+
+/* Prevent layout shifts during page load */
+body.loading {
+  visibility: hidden;
+}
+
+body.loaded {
+  visibility: visible;
 }
 
 /* Override any zoom scaling */
