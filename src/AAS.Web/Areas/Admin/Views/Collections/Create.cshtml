@@ -43,7 +43,7 @@
                     <label for="Title" class="form-label-modern">
                         <i class="bi bi-pencil me-1"></i> Title <span class="required-star">*</span>
                     </label>
-                    <input name="Title" id="Title" type="text" class="form-control-modern" placeholder="e.g., OMEGA Speedmaster Professional" required />
+                    <input asp-for="Title" class="form-control-modern" placeholder="e.g., OMEGA Speedmaster Professional" required />
                     <span asp-validation-for="Title" class="text-danger small"></span>
                 </div>
 
@@ -51,7 +51,7 @@
                     <label asp-for="Category" class="form-label-modern">
                         <i class="bi bi-tag me-1"></i> Category <span class="required-star">*</span>
                     </label>
-                    <select name="Category" id="Category" class="form-select-modern" required>
+                    <select asp-for="Category" class="form-select-modern" required>
                         <option value="">-- Select Category --</option>
                         <option value="0">🎨 Paintings</option>
                         <option value="1">💎 Jewelry</option>
@@ -66,7 +66,7 @@
                     <label for="Description" class="form-label-modern">
                         <i class="bi bi-text-paragraph me-1"></i> Description
                     </label>
-                    <textarea name="Description" id="Description" rows="6" class="form-control-modern" placeholder="Detailed description of the collection item..."></textarea>
+                    <textarea asp-for="Description" rows="6" class="form-control-modern" placeholder="Detailed description of the collection item..."></textarea>
                     <span asp-validation-for="Description" class="text-danger small"></span>
                     <small class="form-text text-muted">Provide detailed information about the item's history, condition, and unique features.</small>
                 </div>
