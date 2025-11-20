@@ -648,9 +648,13 @@ select.form-select option {
 
 .d-flex { display: flex !important; }
 .flex-wrap { flex-wrap: wrap !important; }
+/* Override Bootstrap gap with fixed px */
+.gap-0 { gap: 0 !important; }
+.gap-1 { gap: 4px !important; }
 .gap-2 { gap: 8px !important; }
 .gap-3 { gap: 16px !important; }
 .gap-4 { gap: 24px !important; }
+.gap-5 { gap: 48px !important; }
 .justify-content-center { justify-content: center !important; }
 .align-items-center { align-items: center !important; }
 
