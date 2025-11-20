@@ -1,0 +1,255 @@
+@model AAS.Web.Models.Collection
+@using AAS.Web.Models
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h2>Edit collection</h2>
+<form asp-area="Admin" asp-controller="Collections" asp-action="Edit" method="post" enctype="multipart/form-data">
+@Html.AntiForgeryToken()
+<input type="hidden" asp-for="Id" />
+<div class="mb-3">
+    <label class="form-label">Title</label>
+    <input asp-for="Title" name="Title" class="form-control" />
+    <small class="text-muted">Leave unchanged if you only want to reorder images</small>
+</div>
+<div class="mb-3">
+    <label class="form-label">Category</label>
+    <select name="Category" class="form-select">
+        <option value="0" selected="@(Model.Category == CollectionCategory.Paintings)">Paintings</option>
+        <option value="1" selected="@(Model.Category == CollectionCategory.Jewelry)">Jewelry</option>
+        <option value="2" selected="@(Model.Category == CollectionCategory.Watches)">Watches</option>
+        <option value="3" selected="@(Model.Category == CollectionCategory.Statues)">Statues</option>
+        <option value="4" selected="@(Model.Category == CollectionCategory.Other)">Other</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label class="form-label">Description</label>
+    <textarea asp-for="Description" name="Description" rows="6" class="form-control">@Model.Description</textarea>
+</div>
+
+<h4 class="mt-4 mb-3">Price & Availability</h4>
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <label asp-for="Status" class="form-label">Status</label>
+        <select name="Status" class="form-select">
+            <option value="0" selected="@(Model.Status == CollectionStatus.Available)">Available</option>
+            <option value="1" selected="@(Model.Status == CollectionStatus.Sold)">Sold</option>
+            <option value="2" selected="@(Model.Status == CollectionStatus.InAuction)">In Auction</option>
+        </select>
+    </div>
+    <div class="col-md-4 mb-3">
+        <label for="Price" class="form-label">Price (Optional)</label>
+        <input asp-for="Price" name="Price" type="number" step="0.01" min="0" class="form-control" placeholder="Enter price" />
+    </div>
+    <div class="col-md-4 mb-3">
+        <label asp-for="Currency" class="form-label">Currency</label>
+        <select name="Currency" class="form-select">
+            <option value="0" selected="@(Model.Currency == Currency.EUR)">EUR (€)</option>
+            <option value="1" selected="@(Model.Currency == Currency.USD)">USD ($)</option>
+        </select>
+    </div>
+</div>
+
+<div class="mb-3">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="AASVerified" id="AASVerified" value="true" @(Model.AASVerified ? "checked" : "")>
+        <label class="form-check-label" for="AASVerified">
+            <strong>AAS Verified</strong> - Authenticity guaranteed by Aristocratic Artwork Sale
+        </label>
+        <small class="form-text text-muted d-block">Check this if AAS guarantees the authenticity of this item</small>
+    </div>
+</div>
+
+<h4 class="mt-4 mb-3">Media Files</h4>
+<div class="mb-3">
+    <label class="form-label">Add images</label>
+    <input type="file" name="newImages" multiple accept="image/*" class="form-control" />
+    <small class="form-text text-muted">Select multiple images to add to this collection</small>
+</div>
+<button type="submit" class="btn btn-dark">Save</button>
+<a asp-area="Admin" asp-controller="Collections" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@if(Model.Images?.Any() == true){
+<h3 class="mt-4">Current Images</h3>
+<p class="text-muted small">
+    <i class="bi bi-arrows-move"></i> Drag and drop images to reorder them
+</p>
+<div id="sortable-images" class="row mt-3 g-3">
+@foreach (var i in Model.Images.OrderBy(x=>x.SortOrder)){
+<div class="col-md-3 col-sm-4 col-6 sortable-item" data-image-id="@i.Id">
+    <div class="card sortable-card">
+        <div class="card-header bg-light p-2 text-center sortable-handle" style="cursor: move;">
+            <i class="bi bi-grip-vertical"></i> Drag to reorder
+        </div>
+        <img class="card-img-top" src="/uploads/images/@i.FileName-480.jpg" alt="Collection image" />
+        <div class="card-body p-2">
+            <small class="text-muted d-block mb-1">Order: <span class="order-number">@i.SortOrder</span></small>
+            <button type="button" class="btn btn-danger btn-sm w-100 delete-image-btn" data-image-id="@i.Id" data-collection-id="@Model.Id">
+                <i class="bi bi-trash"></i> Delete
+            </button>
+        </div>
+    </div>
+</div>
+}
+</div>
+<div class="alert alert-info mt-3" id="reorder-message" style="display: none;">
+    <i class="bi bi-info-circle"></i> Order changed. Saving...
+</div>
+}
+
+<!-- Delete Image Modal -->
+<div class="modal fade" id="deleteImageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this image?</p>
+                <p class="text-danger small">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteImageForm" method="post" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Delete image functionality
+    document.querySelectorAll('.delete-image-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var imageId = this.getAttribute('data-image-id');
+            var collectionId = this.getAttribute('data-collection-id');
+            document.getElementById('deleteImageForm').action = '/Admin/Collections/DeleteImage/' + collectionId + '/' + imageId;
+            var modal = new bootstrap.Modal(document.getElementById('deleteImageModal'));
+            modal.show();
+        });
+    });
+    
+    // Sortable drag & drop functionality
+    var sortableContainer = document.getElementById('sortable-images');
+    if (sortableContainer) {
+        var sortable = new Sortable(sortableContainer, {
+            animation: 150,
+            handle: '.sortable-handle',
+            ghostClass: 'sortable-ghost',
+            chosenClass: 'sortable-chosen',
+            dragClass: 'sortable-drag',
+            onEnd: function(evt) {
+                console.log('Image moved from', evt.oldIndex, 'to', evt.newIndex);
+                
+                // Get new order of image IDs
+                var imageIds = [];
+                var items = sortableContainer.querySelectorAll('.sortable-item');
+                items.forEach(function(item, index) {
+                    var imageId = parseInt(item.getAttribute('data-image-id'), 10);
+                    imageIds.push(imageId);
+                    
+                    // Update order number display
+                    var orderSpan = item.querySelector('.order-number');
+                    if (orderSpan) {
+                        orderSpan.textContent = index;
+                    }
+                });
+                
+                // Show saving message
+                var message = document.getElementById('reorder-message');
+                if (message) {
+                    message.style.display = 'block';
+                }
+                
+                // Send new order to server
+                var collectionId = @Model.Id;
+                var token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+                fetch('/Admin/Collections/ReorderImages/' + collectionId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify(imageIds)
+                })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (data.success) {
+                        // Update message
+                        if (message) {
+                            message.className = 'alert alert-success mt-3';
+                            message.innerHTML = '<i class="bi bi-check-circle"></i> Order saved successfully!';
+                            setTimeout(function() {
+                                message.style.display = 'none';
+                            }, 3000);
+                        }
+                        console.log('Order saved successfully');
+                    } else {
+                        if (message) {
+                            message.className = 'alert alert-danger mt-3';
+                            message.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Error saving order: ' + (data.message || 'Unknown error');
+                        }
+                        console.error('Error saving order:', data.message);
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                    if (message) {
+                        message.className = 'alert alert-danger mt-3';
+                        message.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Error saving order. Please try again.';
+                    }
+                });
+            }
+        });
+    }
+});
+</script>
+<style>
+.sortable-ghost {
+    opacity: 0.4;
+}
+.sortable-chosen {
+    background: #f8f9fa;
+}
+.sortable-drag {
+    opacity: 1;
+}
+.sortable-card {
+    transition: transform 0.2s ease;
+}
+.sortable-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.sortable-handle {
+    cursor: move;
+    user-select: none;
+}
+.sortable-handle:hover {
+    background: #e9ecef !important;
+}
+</style>
+}
