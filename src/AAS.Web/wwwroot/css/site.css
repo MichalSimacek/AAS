@@ -921,6 +921,17 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   overflow-y: auto;
 }
 
+/* Disable ALL animations on Identity pages */
+.identity-card *,
+.identity-card *::before,
+.identity-card *::after,
+#account-container *,
+#account-container *::before,
+#account-container *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
 /* Identity page headings */
 .identity-card h1,
 .identity-card h2,
