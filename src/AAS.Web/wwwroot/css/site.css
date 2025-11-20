@@ -571,76 +571,10 @@ select.form-select option {
 }
 
 /* MODAL */
+/* Minimal modal styling - let Bootstrap handle the rest */
 .modal-content {
-  background: #FFFFFF !important;
-  border: none !important;
-  border-radius: 8px !important;
-}
-
-.modal-header, .modal-body, .modal-footer {
-  background: #FFFFFF !important;
-}
-
-.modal-header {
-  border-bottom: 1px solid #E5E5E5 !important;
-  padding: 24px !important;
-}
-
-.modal-body {
-  padding: 24px !important;
-}
-
-.modal-footer {
-  border-top: 1px solid #E5E5E5 !important;
-  padding: 24px !important;
-}
-
-/* Modal backdrop sync fix */
-.modal.fade .modal-dialog {
-  transition: transform 0.15s ease-out;
-}
-
-.modal.show .modal-dialog {
-  transform: none;
-}
-
-.modal-backdrop {
-  transition: opacity 0.15s linear;
-}
-
-.modal-backdrop.show {
-  opacity: 0.5;
-}
-
-/* Fix z-index hierarchy for modals */
-.modal {
-  z-index: 1055 !important;
-  display: none;
-}
-
-.modal.show {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-backdrop {
-  z-index: 1050 !important;
-}
-
-.modal-dialog {
-  z-index: 1056 !important;
-  position: relative;
-  margin: 1.75rem auto;
-  max-width: 500px;
-  width: auto;
-  pointer-events: auto;
-}
-
-.modal-dialog-centered {
-  display: flex !important;
-  align-items: center !important;
-  min-height: calc(100% - 3.5rem) !important;
+  background: #FFFFFF;
+  border-radius: 8px;
 }
 
 /* BREADCRUMB */
