@@ -197,7 +197,7 @@ a.btn {
 .hero-logo-container {
   display: flex;
   justify-content: center;
-  margin-bottom: clamp(16px, 2vh, 24px);
+  margin-bottom: 20px !important;
   animation: logoFadeIn 1.2s ease-out;
 }
 
