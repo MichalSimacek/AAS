@@ -664,12 +664,26 @@ html .pt-5, html .py-5 { padding-top: 48px !important; }
 .d-flex { display: flex !important; }
 .flex-wrap { flex-wrap: wrap !important; }
 /* Override Bootstrap gap with fixed px */
-.gap-0 { gap: 0 !important; }
-.gap-1 { gap: 4px !important; }
-.gap-2 { gap: 8px !important; }
-.gap-3 { gap: 16px !important; }
-.gap-4 { gap: 24px !important; }
-.gap-5 { gap: 48px !important; }
+html .gap-0 { gap: 0 !important; }
+html .gap-1 { gap: 4px !important; }
+html .gap-2 { gap: 8px !important; }
+html .gap-3 { gap: 16px !important; }
+html .gap-4 { gap: 24px !important; }
+html .gap-5 { gap: 48px !important; }
+
+/* Override Bootstrap grid gutters */
+html .g-0, html .gx-0 { --bs-gutter-x: 0 !important; }
+html .g-0, html .gy-0 { --bs-gutter-y: 0 !important; }
+html .g-1, html .gx-1 { --bs-gutter-x: 4px !important; }
+html .g-1, html .gy-1 { --bs-gutter-y: 4px !important; }
+html .g-2, html .gx-2 { --bs-gutter-x: 8px !important; }
+html .g-2, html .gy-2 { --bs-gutter-y: 8px !important; }
+html .g-3, html .gx-3 { --bs-gutter-x: 16px !important; }
+html .g-3, html .gy-3 { --bs-gutter-y: 16px !important; }
+html .g-4, html .gx-4 { --bs-gutter-x: 24px !important; }
+html .g-4, html .gy-4 { --bs-gutter-y: 24px !important; }
+html .g-5, html .gx-5 { --bs-gutter-x: 48px !important; }
+html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
 .justify-content-center { justify-content: center !important; }
 .align-items-center { align-items: center !important; }
 
