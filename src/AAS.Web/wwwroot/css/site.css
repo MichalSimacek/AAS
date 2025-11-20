@@ -884,14 +884,24 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   background: #B8941F !important;
 }
 
-/* Lightbox Modal Styling */
-#lightboxModal .modal-content {
-  background: #000000 !important;
+/* Lightbox Styling */
+#lightboxModal .swiper-button-prev,
+#lightboxModal .swiper-button-next {
+  color: white !important;
+  width: 50px !important;
+  height: 50px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 4px !important;
 }
 
-#lightboxModal .btn-close {
-  opacity: 0.8 !important;
-  transition: opacity 0.3s ease !important;
+#lightboxModal .swiper-button-prev:hover,
+#lightboxModal .swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+#lightboxModal .swiper-button-prev::after,
+#lightboxModal .swiper-button-next::after {
+  content: '' !important;
 }
 
 #lightboxModal .btn-close:hover {
