@@ -250,6 +250,38 @@
 
 @section Scripts{
 <script>
+// Global lightboxSwiper reference
+var lightboxSwiper = null;
+
+// Lightbox functions
+function openLightbox(slideIndex) {
+  const lightboxModal = document.getElementById('lightboxModal');
+  if (lightboxModal) {
+    lightboxModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Slide to the clicked image
+    if (lightboxSwiper && typeof slideIndex === 'number') {
+      lightboxSwiper.slideTo(slideIndex);
+    }
+  }
+}
+
+function closeLightbox() {
+  const lightboxModal = document.getElementById('lightboxModal');
+  if (lightboxModal) {
+    lightboxModal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+// Close lightbox on ESC key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
+});
+
 // Simple modal open/close functions
 function openInquiryForm() {
   const modal = document.getElementById('interestModal');
