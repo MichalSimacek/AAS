@@ -595,6 +595,23 @@ select.form-select option {
   padding: 24px !important;
 }
 
+/* Modal backdrop sync fix */
+.modal.fade .modal-dialog {
+  transition: transform 0.15s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+}
+
+.modal-backdrop {
+  transition: opacity 0.15s linear;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
 /* BREADCRUMB */
 .breadcrumb {
   background: transparent !important;
