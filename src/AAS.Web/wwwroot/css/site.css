@@ -1188,8 +1188,8 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
 
 /* Manage account container */
 .manage-account-container {
-  background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 50%, #F5F5F5 100%);
-  min-height: 80vh;
+  background: #FFFFFF;
+  min-height: 600px;
   contain: layout;
   will-change: auto;
 }
