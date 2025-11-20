@@ -245,16 +245,16 @@ a.btn {
 
 .section-title {
   text-align: center !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: clamp(8px, 1vh, 12px) !important;
   color: #1A1A1A !important;
-  font-size: 2rem !important;
+  font-size: clamp(1.75rem, 3vw, 2rem) !important;
 }
 
 .section-subtitle {
   text-align: center !important;
   color: #4A4A4A !important;
-  margin-bottom: 2rem !important;
-  font-size: 1.1rem !important;
+  margin-bottom: clamp(20px, 2.5vh, 32px) !important;
+  font-size: clamp(1rem, 2vw, 1.1rem) !important;
 }
 
 .page-heading {
