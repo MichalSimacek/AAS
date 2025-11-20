@@ -96,7 +96,7 @@ header {
   border-bottom: 1px solid #E5E5E5 !important;
   position: sticky !important;
   top: 0 !important;
-  z-index: 1000 !important;
+  z-index: 999 !important;
   width: 100% !important;
   flex-shrink: 0;
 }
