@@ -249,6 +249,7 @@
 
 <data name="Available" xml:space="preserve"><value>Disponible</value></data>
 <data name="Sold" xml:space="preserve"><value>Vendu</value></data>
+<data name="InAuction" xml:space="preserve"><value>Aux Enchères</value></data>
 <data name="Price" xml:space="preserve"><value>Prix</value></data>
 <data name="Status" xml:space="preserve"><value>Statut</value></data>
 <data name="Currency" xml:space="preserve"><value>Devise</value></data>
