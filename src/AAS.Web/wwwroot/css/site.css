@@ -234,7 +234,7 @@ a.btn {
 
 /* SECTIONS */
 .section {
-  padding: 2.5rem 0 !important;
+  padding: clamp(32px, 4vh, 48px) 0 !important;
   width: 100% !important;
   background: #FFFFFF !important;
 }
