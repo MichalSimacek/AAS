@@ -183,7 +183,7 @@ a.btn {
 
 .btn-lg {
   padding: 16px 32px !important;
-  font-size: 17px !important;
+  font-size: 18px !important;
 }
 
 .btn-sm {
@@ -542,7 +542,7 @@ select.form-select option {
   border: 1px solid rgba(201, 169, 97, 0.2) !important;
   padding: 4px 12px !important;
   border-radius: 4px !important;
-  font-size: 13px !important;
+  font-size: 14px !important;
   display: inline-block !important;
 }
 
@@ -591,7 +591,7 @@ select.form-select option {
 .breadcrumb-item + .breadcrumb-item::before {
   content: "/" !important;
   padding: 0 8px !important;
-  color: #E5E5E5 !important;
+  color: #6c757d !important;
 }
 
 /* ALERT */
@@ -604,13 +604,13 @@ select.form-select option {
 .alert-info {
   background: #f0f9ff !important;
   border: 1px solid #93c5fd !important;
-  color: #1e40af !important;
+  color: #B8941F !important;
 }
 
 .alert-success {
   background: #f0fdf4 !important;
   border: 1px solid #86efac !important;
-  color: #166534 !important;
+  color: #B8941F !important;
 }
 
 /* DROPDOWN */
@@ -874,7 +874,7 @@ html .g-5, html .gy-5 { --bs-gutter-y: 48px !important; }
   }
   
   h1 { font-size: 32px !important; }
-  h2 { font-size: 28px !important; }
+  h2 { font-size: 32px !important; }
   
   .hero, .section {
     padding: 32px 0 !important;
@@ -988,7 +988,7 @@ body {
 .identity-card .form-label {
   color: #4A4A4A;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 8px;
 }
 
@@ -1069,7 +1069,7 @@ body {
 .identity-card a {
   color: #B8941F;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
   transition: color 0.3s ease;
 }
 
@@ -1091,7 +1091,7 @@ body {
   display: block;
   margin: 12px 0;
   color: #B8941F;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 /* External login section */
@@ -1242,7 +1242,7 @@ body {
   margin-top: 4px;
   margin-bottom: 12px;
   font-size: 14px;
-  color: #dc3545 !important;
+  color: #DC3545 !important;
 }
 
 .identity-card .form-floating + .text-danger {
@@ -1257,7 +1257,7 @@ body {
   
   .identity-card h1,
   .identity-card h2 {
-    font-size: 28px;
+    font-size: 32px;
 
 
 /* ============================================
@@ -1393,7 +1393,7 @@ body {
 .manage-main-content .form-label {
   color: #4A4A4A;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 8px;
 }
 
@@ -1418,7 +1418,7 @@ body {
 }
 
 .manage-main-content .form-control::placeholder {
-  color: #AAAAAA;
+  color: #6c757d;
   font-style: italic;
 }
 
@@ -1509,7 +1509,7 @@ body {
 
 @media (max-width: 576px) {
   .manage-page-header h1 {
-    font-size: 28px;
+    font-size: 32px;
   }
   
   .manage-sidebar .nav-pills {
@@ -1518,7 +1518,7 @@ body {
   
   .manage-sidebar .nav-pills .nav-link {
     padding: 12px 16px;
-    font-size: 15px;
+    font-size: 14px;
   }
   
   .manage-card {
