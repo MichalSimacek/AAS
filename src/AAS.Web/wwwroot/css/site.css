@@ -935,11 +935,9 @@ body {
   overflow-y: scroll !important;
 }
 
-/* Stabilize form elements */
-.identity-card input,
-.identity-card button,
-.identity-card label,
-.identity-card .form-floating {
+/* Stabilize form elements - but exclude floating labels */
+.identity-card input:not(.form-floating > .form-control),
+.identity-card button {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
