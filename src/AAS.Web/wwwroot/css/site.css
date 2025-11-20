@@ -217,7 +217,7 @@ a.btn {
 
 .hero-description {
   max-width: 600px;
-  margin: 0 auto clamp(16px, 2vh, 24px);
+  margin: 0 auto 20px !important;
   color: #4A4A4A !important;
 }
 
