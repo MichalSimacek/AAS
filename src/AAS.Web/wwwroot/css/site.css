@@ -1198,6 +1198,17 @@ body {
   transform: scale(0.85) translateY(-8px) translateX(2px);
 }
 
+/* Hide placeholder on focus and when typing */
+.identity-card .form-floating > .form-control:focus::placeholder {
+  opacity: 0;
+  color: transparent;
+}
+
+.identity-card .form-floating > .form-control::placeholder {
+  opacity: 0;
+  color: transparent;
+}
+
 /* Responsive adjustments */
 @media (max-width: 576px) {
   .identity-card {
