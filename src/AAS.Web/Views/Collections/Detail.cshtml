@@ -255,6 +255,43 @@
 
 @section Scripts{
 <script>
+// Simple modal open/close functions
+function openInquiryForm() {
+  const modal = document.getElementById('interestModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+}
+
+function closeInquiryForm() {
+  const modal = document.getElementById('interestModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = ''; // Restore scrolling
+    // Reset form
+    const form = document.getElementById('inqForm');
+    if (form) form.reset();
+    // Hide success/error messages
+    document.getElementById('inqOk')?.classList.add('d-none');
+    document.getElementById('inqError')?.classList.add('d-none');
+  }
+}
+
+// Close modal when clicking on backdrop
+document.getElementById('interestModal')?.addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeInquiryForm();
+  }
+});
+
+// Close modal on ESC key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeInquiryForm();
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOMContentLoaded - Initializing Swiper...');
   
