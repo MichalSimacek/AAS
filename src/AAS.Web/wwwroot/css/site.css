@@ -1236,6 +1236,19 @@ body {
   color: transparent !important;
 }
 
+/* Validation errors styling */
+.identity-card .text-danger {
+  display: block;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #dc3545 !important;
+}
+
+.identity-card .form-floating + .text-danger {
+  margin-top: -8px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 576px) {
   .identity-card {
