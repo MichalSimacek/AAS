@@ -228,9 +228,44 @@ a.btn {
   filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.18));
 }
 
+.hero-title {
+  font-size: 40px !important;
+  margin-bottom: 16px !important;
+}
+
+.hero-lead {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #1A1A1A !important;
+  margin-bottom: 16px !important;
+  line-height: 1.5 !important;
+}
+
 .hero-description {
   max-width: 600px;
   margin: 0 auto 20px !important;
+  color: #4A4A4A !important;
+  font-size: 16px !important;
+}
+
+.hero-buttons {
+  display: flex !important;
+  gap: 16px !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+}
+
+.section-lead {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #1A1A1A !important;
+  margin-bottom: 24px !important;
+  line-height: 1.5 !important;
+}
+
+.section-text {
+  font-size: 16px !important;
+  margin-bottom: 24px !important;
   color: #4A4A4A !important;
 }
 
