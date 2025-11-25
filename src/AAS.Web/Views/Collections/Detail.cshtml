@@ -99,6 +99,28 @@
               </div>
             }
             
+            @* Social Share Section *@
+            <div class="mt-4">
+              <h6 class="mb-3" style="color: #6c757d; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Share this collection</h6>
+              <div class="social-share-buttons">
+                <a href="#" onclick="shareOnFacebook(); return false;" class="social-btn social-facebook" title="Share on Facebook">
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" onclick="shareOnTwitter(); return false;" class="social-btn social-twitter" title="Share on X (Twitter)">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+                <a href="#" onclick="shareOnLinkedIn(); return false;" class="social-btn social-linkedin" title="Share on LinkedIn">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="#" onclick="copyLinkToClipboard(); return false;" class="social-btn social-link" title="Copy link">
+                  <i class="bi bi-link-45deg"></i>
+                </a>
+              </div>
+              <small id="copyMessage" style="display: none; color: #2E7D32; font-size: 12px;">
+                <i class="bi bi-check-circle me-1"></i>Link copied to clipboard!
+              </small>
+            </div>
+            
             @* Comments Section - Directly Below Button *@
             <div class="mt-4">
               <h5 class="mb-3">@L["Comments"]</h5>
