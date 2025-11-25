@@ -171,151 +171,271 @@
 </div>
 
 <style>
-.admin-header {
-    margin-bottom: 3rem;
+/* Admin Collections Page */
+.admin-collections-page {
+    background: #F8F9FA;
+    min-height: 100vh;
 }
 
-/* Baroque ornamental divider */
-.ornament-divider {
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #C9A961, transparent);
-    margin: 2rem 0;
-    border-radius: 2px;
-    opacity: 0.3;
+.page-header {
+    background: white;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 24px 0;
+    margin-bottom: 24px;
 }
 
-.ornament-divider-small {
-    height: 1px;
-    background: #E5E5E5;
-    margin-bottom: 1rem;
-}
-
-.empty-state {
-    text-align: center;
-    padding: 5rem 2rem;
-    background: #FAFAFA;
-    border: 2px dashed #E5E5E5;
-    border-radius: 8px;
-    margin: 3rem 0;
-}
-
-.empty-state-icon {
-    font-size: 4rem;
-    color: #C9A961;
-    margin-bottom: 1rem;
-    opacity: 0.4;
-}
-
-.empty-state h3 {
-    color: #1A1A1A;
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 0.5rem;
-}
-
-.empty-state p {
-    color: #6B6B6B;
-    margin-bottom: 0;
-}
-
-.collections-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.collection-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E5E5;
-    border-radius: 8px;
-    padding: 1.75rem;
-    transition: all 0.3s ease;
-}
-
-.collection-card:hover {
-    transform: translateY(-4px);
-    border-color: #C9A961;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.collection-card-header {
+.header-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    gap: 1rem;
-}
-
-.collection-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #1A1A1A;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-.collection-meta {
-    display: flex;
     align-items: center;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.badge-gold {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: rgba(201, 169, 97, 0.1);
-    border: 1px solid rgba(201, 169, 97, 0.2);
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.page-subtitle {
+    margin: 8px 0 0 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Empty State */
+.empty-state-card {
+    background: white;
+    border-radius: 12px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.empty-icon {
+    font-size: 64px;
     color: #B8941F;
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    border-radius: 3px;
+    margin-bottom: 20px;
+    opacity: 0.5;
 }
 
-.collection-description {
-    color: #4A4A4A;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+.empty-state-card h3 {
+    font-size: 24px;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+}
+
+.empty-state-card p {
+    color: #6c757d;
+    margin-bottom: 24px;
+}
+
+/* Collections Table */
+.collections-table-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     overflow: hidden;
 }
 
-.collection-actions {
-    display: flex;
-    gap: 0.5rem;
+.collections-table {
+    margin: 0;
+    width: 100%;
 }
 
-.collection-footer {
-    margin-top: 1rem;
+.collections-table thead th {
+    background: #F8F9FA;
+    border-bottom: 2px solid #E5E5E5;
+    padding: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #6c757d;
+    letter-spacing: 0.5px;
 }
 
-.footer-content {
+.collections-table tbody tr {
+    border-bottom: 1px solid #E5E5E5;
+    transition: background 0.2s ease;
+}
+
+.collections-table tbody tr:hover {
+    background: #F8F9FA;
+}
+
+.collections-table td {
+    padding: 16px;
+    vertical-align: middle;
+}
+
+.collection-thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #E5E5E5;
+}
+
+.collection-thumbnail-placeholder {
+    width: 50px;
+    height: 50px;
+    background: #F8F9FA;
+    border-radius: 8px;
+    border: 1px solid #E5E5E5;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 20px;
+}
+
+.collection-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.collection-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.collection-badges {
+    display: flex;
+    gap: 8px;
     align-items: center;
 }
 
-.btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
+.badge-category {
+    padding: 4px 10px;
+    background: #F8F9FA;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+}
+
+.badge-verified {
+    padding: 4px 8px;
+    background: #E8F5E9;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2E7D32;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-available {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.status-inauction {
+    background: #FFF3E0;
+    color: #EF6C00;
+}
+
+.status-sold {
+    background: #FCE4EC;
+    color: #C2185B;
+}
+
+.collection-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #B8941F;
+}
+
+.image-count {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.btn-action {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid #E5E5E5;
+    background: white;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-view:hover {
+    background: #E3F2FD;
+    border-color: #1976D2;
+    color: #1976D2;
+}
+
+.btn-edit:hover {
+    background: #FFF3E0;
+    border-color: #EF6C00;
+    color: #EF6C00;
+}
+
+.btn-delete:hover {
+    background: #FCE4EC;
+    border-color: #C2185B;
+    color: #C2185B;
+}
+
+@@media (max-width: 1200px) {
+    .collections-table {
+        display: block;
+        overflow-x: auto;
+    }
 }
 
 @@media (max-width: 768px) {
-    .collections-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .collection-card-header {
+    .header-content {
         flex-direction: column;
+        align-items: flex-start;
     }
-
-    .collection-actions {
+    
+    .header-actions {
         width: 100%;
     }
-
-    .collection-actions .btn {
+    
+    .header-actions .btn {
         flex: 1;
     }
 }
