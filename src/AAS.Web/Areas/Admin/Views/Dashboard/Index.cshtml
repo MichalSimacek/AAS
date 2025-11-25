@@ -1,0 +1,460 @@
+@model IEnumerable<AAS.Web.Models.Collection>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<style>
+/* Modern Admin Dashboard Styles */
+.admin-dashboard {
+    background: #F8F9FA;
+    min-height: 100vh;
+    padding: 40px 0;
+}
+
+.dashboard-header {
+    margin-bottom: 40px;
+}
+
+.dashboard-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+}
+
+.dashboard-subtitle {
+    color: #6c757d;
+    font-size: 16px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid #B8941F;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.stat-icon.collections {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.stat-icon.available {
+    background: #E3F2FD;
+    color: #1976D2;
+}
+
+.stat-icon.sold {
+    background: #FCE4EC;
+    color: #C2185B;
+}
+
+.stat-icon.inquiries {
+    background: #FFF3E0;
+    color: #EF6C00;
+}
+
+.stat-label {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 4px;
+}
+
+.stat-trend {
+    font-size: 12px;
+    color: #2E7D32;
+}
+
+.stat-trend.negative {
+    color: #C2185B;
+}
+
+.action-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.action-card {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-4px);
+}
+
+.action-card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #B8941F 0%, #C9A961 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 20px;
+}
+
+.action-card-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+}
+
+.action-card-desc {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.action-btn {
+    background: #B8941F;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s ease;
+}
+
+.action-btn:hover {
+    background: #C9A961;
+    color: white;
+}
+
+.recent-section {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #F8F9FA;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1A1A1A;
+}
+
+.view-all-link {
+    color: #B8941F;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.view-all-link:hover {
+    color: #C9A961;
+}
+
+.collection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.collection-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #F8F9FA;
+    transition: background 0.2s ease;
+}
+
+.collection-item:hover {
+    background: #E9ECEF;
+}
+
+.collection-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.collection-thumb-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: #DEE2E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    flex-shrink: 0;
+}
+
+.collection-info {
+    flex: 1;
+}
+
+.collection-title {
+    font-weight: 600;
+    color: #1A1A1A;
+    margin-bottom: 4px;
+}
+
+.collection-meta {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.collection-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #DEE2E6;
+    background: white;
+    color: #6c757d;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+    background: #B8941F;
+    border-color: #B8941F;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .collection-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+</style>
+
+<div class="admin-dashboard">
+    <div class="container">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">
+                <i class="bi bi-speedometer2 me-2"></i>Admin Dashboard
+            </h1>
+            <p class="dashboard-subtitle">Welcome back! Here's what's happening with your collections.</p>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon collections">
+                    <i class="bi bi-collection"></i>
+                </div>
+                <div class="stat-label">Total Collections</div>
+                <div class="stat-value">@ViewBag.TotalCollections</div>
+                <div class="stat-trend">
+                    <i class="bi bi-arrow-up"></i> Active catalog
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon available">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+                <div class="stat-label">Available</div>
+                <div class="stat-value">@ViewBag.AvailableCollections</div>
+                <div class="stat-trend">Ready for sale</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon sold">
+                    <i class="bi bi-cart-check"></i>
+                </div>
+                <div class="stat-label">Sold</div>
+                <div class="stat-value">@ViewBag.SoldCollections</div>
+                <div class="stat-trend">Completed sales</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon inquiries">
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <div class="stat-label">Inquiries</div>
+                <div class="stat-value">@ViewBag.TotalInquiries</div>
+                <div class="stat-trend">
+                    @if (ViewBag.RecentInquiries > 0)
+                    {
+                        <i class="bi bi-arrow-up"></i>
+                        <text>@ViewBag.RecentInquiries new this week</text>
+                    }
+                    else
+                    {
+                        <text>No new inquiries</text>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="action-cards">
+            <div class="action-card">
+                <div class="action-card-icon">
+                    <i class="bi bi-plus-lg"></i>
+                </div>
+                <h3 class="action-card-title">Add Collection</h3>
+                <p class="action-card-desc">Create a new collection with images, details and pricing</p>
+                <a href="/Admin/Collections/Create" class="action-btn">
+                    <i class="bi bi-plus-circle me-2"></i>Create New
+                </a>
+            </div>
+
+            <div class="action-card">
+                <div class="action-card-icon">
+                    <i class="bi bi-grid"></i>
+                </div>
+                <h3 class="action-card-title">Manage Collections</h3>
+                <p class="action-card-desc">View, edit, and organize all your collections</p>
+                <a href="/Admin/Collections" class="action-btn">
+                    <i class="bi bi-list me-2"></i>View All
+                </a>
+            </div>
+
+            <div class="action-card">
+                <div class="action-card-icon">
+                    <i class="bi bi-envelope-open"></i>
+                </div>
+                <h3 class="action-card-title">View Inquiries</h3>
+                <p class="action-card-desc">Check customer inquiries and messages</p>
+                <a href="/Admin/Inquiries" class="action-btn">
+                    <i class="bi bi-inbox me-2"></i>View Inbox
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Collections -->
+        @if (Model.Any())
+        {
+            <div class="recent-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="bi bi-clock-history me-2"></i>Recent Collections
+                    </h2>
+                    <a href="/Admin/Collections" class="view-all-link">
+                        View All <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="collection-list">
+                    @foreach (var collection in Model)
+                    {
+                        var firstImage = collection.Images.FirstOrDefault();
+                        <div class="collection-item">
+                            @if (firstImage != null)
+                            {
+                                <img src="/uploads/images/@firstImage.FileName-480.jpg" 
+                                     alt="@collection.Title" 
+                                     class="collection-thumb" />
+                            }
+                            else
+                            {
+                                <div class="collection-thumb-placeholder">
+                                    <i class="bi bi-image"></i>
+                                </div>
+                            }
+                            
+                            <div class="collection-info">
+                                <div class="collection-title">@collection.Title</div>
+                                <div class="collection-meta">
+                                    <span class="badge 
+                                        @(collection.Status == AAS.Web.Models.CollectionStatus.Available ? "bg-success" : 
+                                          collection.Status == AAS.Web.Models.CollectionStatus.Sold ? "bg-danger" : "bg-warning")">
+                                        @collection.Status
+                                    </span>
+                                    <span class="ms-2">@collection.Category</span>
+                                    @if (collection.Price.HasValue)
+                                    {
+                                        <span class="ms-2" style="color: #B8941F; font-weight: 600;">
+                                            @(collection.Currency == AAS.Web.Models.Currency.EUR ? "€" : "$")@string.Format("{0:N0}", collection.Price)
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                            
+                            <div class="collection-actions">
+                                <a href="/collections/@collection.Slug" class="btn-icon" title="View">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a href="/Admin/Collections/Edit/@collection.Id" class="btn-icon" title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
