@@ -718,7 +718,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Edit comment
+  // Edit comment - Open modern dialog
   window.editComment = function(commentId, currentTextElement) {
     // Get text from data attribute
     let currentText = '';
@@ -733,8 +733,58 @@ document.addEventListener('DOMContentLoaded', function() {
     textarea.innerHTML = currentText;
     const decodedText = textarea.value;
     
-    const newText = prompt('@L["Edit your comment:"]', decodedText);
-    if (newText === null || newText.trim() === '' || newText === decodedText) return;
+    // Open the modern edit dialog
+    openEditCommentDialog(commentId, decodedText);
+  };
+  
+  // Open edit dialog
+  function openEditCommentDialog(commentId, currentText) {
+    const modal = document.getElementById('editCommentModal');
+    const textArea = document.getElementById('editCommentText');
+    
+    textArea.value = currentText;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Focus textarea and select text
+    setTimeout(() => {
+      textArea.focus();
+      textArea.setSelectionRange(0, textArea.value.length);
+    }, 100);
+    
+    // Store comment ID for submission
+    modal.setAttribute('data-comment-id', commentId);
+  }
+  
+  // Close edit dialog
+  window.closeEditCommentDialog = function() {
+    const modal = document.getElementById('editCommentModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+  
+  // Submit edited comment
+  window.submitEditComment = function() {
+    const modal = document.getElementById('editCommentModal');
+    const commentId = modal.getAttribute('data-comment-id');
+    const textArea = document.getElementById('editCommentText');
+    const newText = textArea.value.trim();
+    
+    if (!newText) {
+      alert('@L["Comment cannot be empty"]');
+      return;
+    }
+    
+    if (newText.length > 2000) {
+      alert('@L["Comment is too long (max 2000 characters)"]');
+      return;
+    }
+    
+    // Show loading
+    const submitBtn = document.getElementById('submitEditBtn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> @L["Saving..."]';
     
     const formData = new FormData();
     formData.append('text', newText);
@@ -750,11 +800,20 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(response => {
       if (!response.ok) throw new Error('Failed to update comment');
-      loadComments();
+      return response.json();
+    })
+    .then(data => {
+      console.log('Comment updated successfully:', data);
+      closeEditCommentDialog();
+      loadComments(); // Reload all comments to show the update
     })
     .catch(error => {
       console.error('Error:', error);
       alert('@L["Failed to update comment. Please try again."]');
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
     });
   };
   
