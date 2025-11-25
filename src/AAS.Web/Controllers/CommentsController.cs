@@ -116,15 +116,35 @@ namespace AAS.Web.Controllers
                 if (string.IsNullOrWhiteSpace(text) || text.Length > 2000)
                     return BadRequest(new { error = "Invalid comment text" });
 
+                _logger.LogInformation("Updating comment {Id}: Old text length={OldLength}, New text length={NewLength}", 
+                    id, comment.Text.Length, text.Trim().Length);
+
                 comment.Text = text.Trim();
                 comment.UpdatedAt = DateTime.UtcNow;
 
                 await _db.SaveChangesAsync();
 
-                // Reload comment from database to ensure fresh data
-                await _db.Entry(comment).ReloadAsync();
+                // Detach and reload to ensure fresh data
+                _db.Entry(comment).State = EntityState.Detached;
+                
+                // Reload with user data
+                var updatedComment = await _db.Comments
+                    .Include(c => c.User)
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(c => c.Id == id);
 
-                return Ok(new { comment.Id, comment.Text, comment.UpdatedAt });
+                if (updatedComment == null)
+                    return NotFound(new { error = "Comment not found after update" });
+
+                _logger.LogInformation("Comment {Id} updated successfully. New text: {Text}", id, updatedComment.Text);
+
+                return Ok(new 
+                { 
+                    updatedComment.Id, 
+                    updatedComment.Text, 
+                    updatedComment.UpdatedAt,
+                    UserName = updatedComment.User?.UserName ?? "Unknown"
+                });
             }
             catch (Exception ex)
             {
