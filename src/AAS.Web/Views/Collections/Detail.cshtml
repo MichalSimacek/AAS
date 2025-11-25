@@ -303,6 +303,26 @@
 </div>
 
 <style>
+/* Comments Highlight Animation */
+.comment-just-updated {
+  animation: highlightComment 2s ease;
+  border: 2px solid #B8941F !important;
+}
+
+@@keyframes highlightComment {
+  0% {
+    background-color: #FFF9E6;
+    transform: scale(1.02);
+  }
+  50% {
+    background-color: #FFF9E6;
+  }
+  100% {
+    background-color: white;
+    transform: scale(1);
+  }
+}
+
 /* Social Share Buttons */
 .social-share-buttons {
   display: flex;
