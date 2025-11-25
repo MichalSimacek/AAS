@@ -36,7 +36,16 @@ echo "[$(date)] Starting backup..."
 
 # 1. Backup PostgreSQL database
 echo "[$(date)] Backing up PostgreSQL database..."
-docker exec aas-db-prod pg_dump -U postgres aas > $BACKUP_DIR/database.sql
+# Load environment variables from .env if exists
+if [ -f "/AAS/.env" ]; then
+    export $(grep -v '^#' /AAS/.env | xargs)
+fi
+
+# Use DB credentials from environment or defaults
+DB_USER=${DB_USER:-aasuser}
+DB_NAME=${DB_NAME:-aas_production}
+
+docker exec aas-db-prod pg_dump -U $DB_USER $DB_NAME > $BACKUP_DIR/database.sql
 if [ $? -eq 0 ]; then
     echo "[$(date)] Database backup successful"
     gzip $BACKUP_DIR/database.sql
