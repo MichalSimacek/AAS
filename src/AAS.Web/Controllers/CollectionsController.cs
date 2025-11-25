@@ -65,6 +65,9 @@ namespace AAS.Web.Controllers
 
             ViewBag.Translations = translations;
             ViewBag.Category = category;
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.TotalCount = totalCount;
             return View(collections);
         }
 
