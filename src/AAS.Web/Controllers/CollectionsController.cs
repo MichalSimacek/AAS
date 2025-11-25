@@ -19,13 +19,19 @@ namespace AAS.Web.Controllers
             // Load collections with first image
             var q = _db.Collections
                 .Include(c => c.Images.OrderBy(i => i.SortOrder).Take(1))
-                .OrderByDescending(c => c.CreatedUtc)
                 .AsQueryable();
 
             if (category.HasValue)
                 q = q.Where(c => c.Category == category);
 
+            // Get total count for pagination
+            var totalCount = await q.CountAsync();
+            var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
+
+            // Order by status: Available (0) → InAuction (1) → Sold (2), then by CreatedUtc descending
             var collections = await q
+                .OrderBy(c => c.Status)
+                .ThenByDescending(c => c.CreatedUtc)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .AsNoTracking()
