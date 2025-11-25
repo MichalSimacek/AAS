@@ -5,8 +5,32 @@ function setLang(code) {
   location.reload();
 }
 
+let isSubmitting = false;
+
 async function submitInquiry() {
+  // Prevent multiple submissions
+  if (isSubmitting) {
+    console.log('Already submitting, please wait...');
+    return;
+  }
+  
   const form = document.getElementById("inqForm");
+  const submitBtn = document.querySelector('button[onclick="submitInquiry()"]');
+  
+  // Validate form
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  
+  // Set submitting state
+  isSubmitting = true;
+  
+  // Disable button and show loading
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+  }
   
   // Get form data - FormData works with ASP.NET MVC model binding
   const formData = new FormData(form);
@@ -35,14 +59,33 @@ async function submitInquiry() {
       setTimeout(() => {
         closeInquiryForm();
         form.style.display = ''; // Show form again for next use
+        form.reset();
+        // Reset submitting state
+        isSubmitting = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Send';
+        }
       }, 2000);
     } else {
       // Show error message inline instead of alert
       showInlineError(result.message || result.errors?.join(', ') || "Failed to submit inquiry. Please try again.");
+      // Reset submitting state
+      isSubmitting = false;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Send';
+      }
     }
   } catch (error) {
     console.error('Error submitting inquiry:', error);
     showInlineError("An error occurred. Please try again later.");
+    // Reset submitting state
+    isSubmitting = false;
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Send';
+    }
   }
 }
 
