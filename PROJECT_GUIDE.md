@@ -1,903 +1,521 @@
-# 🏛️ Aristocratic Artwork Sale - Developer Guide
+# 🏛️ Aristocratic Artwork Sale - Complete Project Guide
 
-> **🔴 KRITICKÉ:** Tento dokument MUSÍ být přečten před jakýmikoliv změnami v projektu!
-> Obsahuje kritické poznatky získané během rozsáhlého debuggingu a deployment procesu.
-
----
-
-## ⚠️ DŮLEŽITÉ - CESTY V PROJEKTU
-
-### 🔴 KOŘENOVÝ ADRESÁŘ
-**Produkční server:** `/AAS` (NIKDY ne `/app`!)  
-**Persistent storage:** `/mnt/data` (databáze, nahrané soubory, logy)
-
-**❌ NEPOUŽÍVEJ:** `/app` - to je jen development prostředí!  
-**✅ POUŽÍVEJ:** `/AAS` - to je produkční cesta!
+> **🔴 CRITICAL:** This document MUST be read before making any changes to the project!
 
 ---
 
-## 📋 Obsah
-1. [Přehled projektu](#přehled-projektu)
-2. [Struktura projektu a cesty](#struktura-projektu-a-cesty)
-3. [Entity Framework Core - KRITICKÉ POZNATKY](#entity-framework-core---kritické-poznatky)
-4. [Deployment proces](#deployment-proces)
-5. [Databázová struktura](#databázová-struktura)
-6. [Persistent Storage (/mnt/data)](#persistent-storage-mntdata)
-7. [Důležité příkazy](#důležité-příkazy)
+## 📋 Table of Contents
+1. [Project Overview](#project-overview)
+2. [Technology Stack](#technology-stack)
+3. [Project Structure](#project-structure)
+4. [Key Features](#key-features)
+5. [Development Setup](#development-setup)
+6. [Deployment](#deployment)
+7. [Backup System](#backup-system)
 8. [Known Issues & Solutions](#known-issues--solutions)
 9. [Best Practices](#best-practices)
 
 ---
 
-## 🎯 Přehled projektu
+## 🎯 Project Overview
 
-**Název:** Aristocratic Artwork Sale (AAS)  
-**Framework:** ASP.NET Core 8.0 (MVC + Razor Views)  
-**Databáze:** PostgreSQL  
-**ORM:** Entity Framework Core  
-**Kontejnerizace:** Docker + Docker Compose  
-**Web Server:** Nginx (Reverse Proxy)  
-**Kořenový adresář:** `/AAS` (production)  
-**Persistent storage:** `/mnt/data`
-
-**Aktuální funkce:**
-- ✅ Správa uměleckých sbírek (Collections)
-- ✅ Autentizace a autorizace uživatelů
-- ✅ Blog systém (BlogPosts)
-- ✅ Komentáře u sbírek (Comments)
-- ✅ "AAS Verified" odznak pro ověřené sbírky
-- ⚠️ DeepL překladová služba (registrována, ale neimplementována)
+**Name:** Aristocratic Artwork Sale (AAS)  
+**Description:** Online platform for selling aristocratic artwork, antiques, and collectibles  
+**Production URL:** https://aristocraticartworksale.com  
+**Production Server:** `/AAS` directory  
+**Persistent Storage:** `/mnt/data`
 
 ---
 
-## 📁 Struktura projektu a cesty
+## 🛠️ Technology Stack
 
-### 🔴 PRODUKČNÍ PROSTŘEDÍ
+### Backend
+- **Framework:** ASP.NET Core 8.0 (MVC + Razor Pages)
+- **Language:** C# 12
+- **ORM:** Entity Framework Core 8.0
+- **Database:** PostgreSQL 15
+
+### Frontend
+- **Views:** Razor Pages (.cshtml)
+- **CSS Framework:** Bootstrap 5.3.3
+- **Icons:** Bootstrap Icons
+- **Fonts:** Google Fonts (Inter, Playfair Display)
+- **Image Slider:** Swiper.js
+
+### Infrastructure
+- **Containerization:** Docker + Docker Compose
+- **Web Server:** Nginx (Reverse Proxy + Static Files)
+- **SSL/TLS:** Certbot (Let's Encrypt)
+- **Email:** SMTP (Configured via environment variables)
+- **Backup:** FTP to Master.cz (backup15.master.cz)
+
+### Additional Services
+- **Anti-DDoS:** Riorey Protection
+- **Monitoring:** NRPE (Nagios)
+- **Hosting:** Master.cz VPS
+
+---
+
+## 📁 Project Structure
 
 ```
-/AAS/                                # ⭐ KOŘENOVÝ ADRESÁŘ (PRODUCTION)
-├── AAS.sln                          # Solution file
-├── docker-compose.prod.yml          # Production Docker Compose
-├── Dockerfile.prod                  # Production Dockerfile (multi-stage build)
-├── nginx.conf                       # Nginx konfigurace (reverse proxy)
-├── PROJECT_GUIDE.md                 # ⭐ TENTO SOUBOR - přečti před změnami!
-├── test_result.md                   # Testing protokol a výsledky
+/AAS/                                    # ⭐ ROOT DIRECTORY (PRODUCTION)
+├── src/
+│   └── AAS.Web/
+│       ├── AAS.Web.csproj
+│       ├── Program.cs                   # Application startup
+│       ├── appsettings.json
+│       ├── appsettings.Production.json
+│       │
+│       ├── Controllers/
+│       │   ├── CollectionsController.cs
+│       │   ├── InquriesController.cs    # Note: typo in filename
+│       │   ├── CommentsController.cs
+│       │   └── HowToController.cs
+│       │
+│       ├── Models/
+│       │   ├── Collection.cs
+│       │   ├── Inquiry.cs
+│       │   ├── Comment.cs
+│       │   ├── Enum.cs
+│       │   └── ApplicationUser.cs
+│       │
+│       ├── Data/
+│       │   └── AppDbContext.cs
+│       │
+│       ├── Services/
+│       │   ├── EmailService.cs
+│       │   └── EmailSenderAdapter.cs
+│       │
+│       ├── Areas/
+│       │   ├── Admin/
+│       │   │   ├── Controllers/
+│       │   │   │   ├── DashboardController.cs
+│       │   │   │   ├── CollectionsController.cs
+│       │   │   │   └── InquiriesController.cs
+│       │   │   └── Views/
+│       │   │       ├── Dashboard/Index.cshtml
+│       │   │       ├── Collections/Index.cshtml
+│       │   │       └── Inquiries/Index.cshtml
+│       │   └── Identity/
+│       │       └── Pages/Account/
+│       │
+│       ├── Resources/                   # Localization (10 languages)
+│       │   ├── SharedResources.cs.resx  # Czech (default)
+│       │   ├── SharedResources.resx     # English
+│       │   ├── SharedResources.de.resx  # German
+│       │   ├── SharedResources.es.resx  # Spanish
+│       │   ├── SharedResources.fr.resx  # French
+│       │   ├── SharedResources.hi.resx  # Hindi
+│       │   ├── SharedResources.ja.resx  # Japanese
+│       │   ├── SharedResources.pt.resx  # Portuguese
+│       │   ├── SharedResources.ru.resx  # Russian
+│       │   └── SharedResources.zh.resx  # Chinese
+│       │
+│       ├── Views/
+│       │   ├── Home/Index.cshtml
+│       │   ├── Collections/
+│       │   │   ├── Index.cshtml         # With pagination
+│       │   │   └── Detail.cshtml        # With social share
+│       │   ├── HowTo/Index.cshtml
+│       │   ├── Contacts/Index.cshtml
+│       │   └── Shared/
+│       │       └── _Layout.cshtml
+│       │
+│       └── wwwroot/
+│           ├── css/site.css             # Main stylesheet
+│           ├── js/site.js               # Main JavaScript
+│           └── uploads/                 # Uploaded files
 │
-└── src/
-    └── AAS.Web/
-        ├── AAS.Web.csproj           # Project file
-        ├── Program.cs               # ⚠️ Startup logika + auto-migrace
-        ├── appsettings.json         # Konfigurace (development)
-        ├── appsettings.Production.json  # Konfigurace (production)
-        │
-        ├── Controllers/             # MVC Controllers
-        │   ├── AccountController.cs
-        │   ├── CollectionsController.cs
-        │   ├── BlogController.cs    # Blog management
-        │   └── CommentsController.cs # Comment system
-        │
-        ├── Models/                  # Data models
-        │   ├── Collection.cs        # ⚠️ Obsahuje AASVerified property
-        │   ├── BlogPost.cs          # Blog model
-        │   ├── Comment.cs           # Comment model
-        │   └── ApplicationUser.cs
-        │
-        ├── Data/
-        │   └── AppDbContext.cs      # ⚠️ EF Core DbContext - KRITICKÝ
-        │
-        ├── Migrations/              # ⚠️⚠️⚠️ KRITICKÁ SLOŽKA!
-        │   │                        # Viz sekce "EF Core - KRITICKÉ POZNATKY"
-        │   ├── 20251106210415_InitialCreate.cs
-        │   ├── 20251108003259_AddCollectionTranslations.cs
-        │   ├── 20251108155050_SecurityAuditValidation.cs
-        │   ├── 20251117232553_AddPriceStatusVerified.cs
-        │   ├── 20251117232553_AddPriceStatusVerified.Designer.cs
-        │   ├── 20251117232619_AddCommentsAndBlog.cs  # ⚠️ Byla PRÁZDNÁ
-        │   ├── 20251117232619_AddCommentsAndBlog.Designer.cs
-        │   └── AppDbContextModelSnapshot.cs
-        │
-        ├── Services/
-        │   ├── DeepLService.cs      # ⚠️ Registrována, ale nepoužívá se
-        │   └── EmailService.cs
-        │
-        ├── Resources/               # Lokalizační RESX soubory
-        │   ├── Views.Home.Index.en.resx
-        │   ├── Views.Home.Index.cs.resx
-        │   └── ...                  # ⚠️ Některé překlady chybí
-        │
-        └── Views/                   # Razor views
-            ├── Blog/
-            ├── Collections/
-            ├── Comments/
-            └── Shared/
+├── nginx/
+│   └── nginx.prod.conf                  # Nginx configuration
+│
+├── docker-compose.prod.yml              # Production Docker setup
+├── Dockerfile.prod                      # Multi-stage build
+├── backup-setup.sh                      # Backup installation script
+├── setup-remote-sync.sh                 # Remote backup setup
+└── PROJECT_GUIDE.md                     # This file
 
-/mnt/data/                           # ⭐ PERSISTENT STORAGE
-├── postgres/                        # PostgreSQL data (databázové soubory)
-├── uploads/                         # Nahrané soubory (obrázky sbírek, atd.)
-├── logs/                            # Aplikační logy
-└── backups/                         # Databázové zálohy
-```
-
-### 🔴 PRAVIDLA PRO CESTY
-
-1. **Vždy používej `/AAS` jako kořenový adresář v produkci**
-2. **Persistent data MUSÍ být v `/mnt/data`** (jinak se ztratí při restartu kontejneru!)
-3. **NIKDY nepiš hardcoded `/app`** - to je jen development
-4. **Volume mappings v docker-compose.yml musí ukazovat na `/mnt/data`**
-
-**Příklad správné konfigurace v docker-compose:**
-```yaml
-volumes:
-  - /mnt/data/postgres:/var/lib/postgresql/data
-  - /mnt/data/uploads:/AAS/wwwroot/uploads
-  - /mnt/data/logs:/AAS/logs
+/mnt/data/                               # ⭐ PERSISTENT STORAGE
+├── postgres/                            # PostgreSQL data
+├── uploads/                             # Uploaded images
+├── logs/                                # Application logs
+└── backups/                             # Database backups
 ```
 
 ---
 
-## ⚠️ Entity Framework Core - KRITICKÉ POZNATKY
+## ✨ Key Features
 
-### 🔴 HLAVNÍ PROBLÉMY, KTERÉ BYLY ŘEŠENY
+### Public Features
+- ✅ **Multi-language support** (10 languages with automatic detection)
+- ✅ **Collection browsing** with pagination (12 per page)
+- ✅ **Collection detail** with image gallery (lightbox)
+- ✅ **Social sharing** (Facebook, Twitter/X, LinkedIn, Copy Link)
+- ✅ **Inquiry forms** (with email notifications)
+- ✅ **Comment system** (authenticated users)
+- ✅ **Responsive design** (mobile-friendly)
+- ✅ **Status-based sorting** (Available → In Auction → Sold)
 
-#### 1. **Duplicitní složky migrací**
-**Problém:** Existovaly DVĚ složky:
-- `/src/AAS.Web/Database/Migrations/` (stará, nesprávná)
-- `/src/AAS.Web/Migrations/` (správná)
+### Admin Features
+- ✅ **Modern dashboard** with statistics
+- ✅ **Collection management** (Create, Edit, Delete)
+- ✅ **Image upload** with sortable gallery
+- ✅ **Inquiry inbox** (view customer messages)
+- ✅ **User management** (ASP.NET Identity)
 
-**Důsledek:** EF Core nemohlo najít nové migrace.
-
-**Řešení:** Všechny migrace byly konsolidovány do `/src/AAS.Web/Migrations/`.
-
-**⚠️ PRAVIDLO:** Vždy kontroluj, že existuje pouze JEDNA složka `Migrations`!
-
-**Správná cesta:** `/AAS/src/AAS.Web/Migrations/`
-
----
-
-#### 2. **Chybějící .Designer.cs soubory**
-**Problém:** Migrace bez `.Designer.cs` souborů jsou pro EF Core **neplatné**!
-
-**Příklad:**
-```
-✅ SPRÁVNĚ:
-20251117232553_AddPriceStatusVerified.cs
-20251117232553_AddPriceStatusVerified.Designer.cs
-
-❌ ŠPATNĚ:
-20251117232553_AddPriceStatusVerified.cs
-(chybí Designer.cs)
-```
-
-**⚠️ PRAVIDLO:** Každá migrace MUSÍ mít svůj `.Designer.cs` soubor!
+### Technical Features
+- ✅ **No Bootstrap modal issues** (custom implementation)
+- ✅ **Optimized typography** (7 font sizes, 6 colors)
+- ✅ **FOUC prevention** (critical CSS inline)
+- ✅ **Floating labels** (Login/Register forms)
+- ✅ **Automatic backups** (daily at 2:00 AM)
+- ✅ **Docker containerization** (with health checks)
 
 ---
 
-#### 3. **Nesprávný formát názvů migrací**
-**Problém:** Některé migrace měly nesprávný formát názvu nebo chybný rok.
+## 🚀 Development Setup
 
-**Správný formát:**
-```
-YYYYMMDDHHMMSS_MigraceName.cs
-```
+### Prerequisites
+- .NET SDK 8.0
+- Docker & Docker Compose
+- PostgreSQL client (optional, for local development)
 
-**Příklady:**
-```
-✅ 20251117232553_AddPriceStatusVerified.cs
-❌ 20211117232553_... (špatný rok)
-❌ AddPriceStatusVerified.cs (chybí timestamp)
-```
+### Local Development (Not Recommended - Use Production Server)
+
+This project is designed to run directly on the production server at `/AAS`. Local development is not fully supported.
 
 ---
 
-#### 4. **Prázdná migrace AddCommentsAndBlog**
-**Problém:** Migrace `20251117232619_AddCommentsAndBlog.cs` byla vygenerována s prázdnými metodami:
+## 📦 Deployment
 
-```csharp
-public partial class AddCommentsAndBlog : Migration
-{
-    protected override void Up(MigrationBuilder migrationBuilder)
-    {
-        // ⚠️ PRÁZDNÉ!
-    }
-
-    protected override void Down(MigrationBuilder migrationBuilder)
-    {
-        // ⚠️ PRÁZDNÉ!
-    }
-}
-```
-
-**Důsledek:** Tabulky `BlogPosts` a `Comments` nebyly vytvořeny.
-
-**Dočasné řešení:** Tabulky vytvořeny manuálně pomocí SQL:
-```sql
-CREATE TABLE "BlogPosts" (...);
-CREATE TABLE "Comments" (...);
-```
-
-**⚠️ ROOT CAUSE:** Neznámý - možný problém s EF Core konfigurací nebo generátorem.
-
-**TODO:** Vyšetřit, proč byla migrace vygenerována prázdná.
-
----
-
-### 🛠️ Jak správně pracovat s migracemi
-
-#### Přidání nové migrace:
+### Production Deployment Process
 
 ```bash
-# 🔴 DŮLEŽITÉ: Používej /AAS jako kořenový adresář!
+# 1. Connect to server
+ssh root@YOUR_SERVER_IP
 
-# 1. Vstup do SDK kontejneru (pokud není SDK na productionu)
-docker run -it --rm \
-  -v /AAS:/AAS \
-  -w /AAS/src/AAS.Web \
-  --network aas_default \
-  -e ConnectionStrings__DefaultConnection="Host=db;Database=aasdb;Username=aasuser;Password=aaspassword" \
-  mcr.microsoft.com/dotnet/sdk:8.0 \
-  bash
+# 2. Navigate to project
+cd /AAS
 
-# 2. Instalace EF Core tools
-dotnet tool install --global dotnet-ef --version 8.0.11
-export PATH="$PATH:/root/.dotnet/tools"
+# 3. Pull latest changes
+git pull
 
-# 3. Přidání migrace
-dotnet ef migrations add MigrationName
+# 4. Rebuild containers (with cache clearing if needed)
+docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml build --no-cache  # Use --no-cache if migrations changed
+docker compose -f docker-compose.prod.yml up -d
 
-# 4. Kontrola, že byly vytvořeny OBA soubory:
-ls Migrations/
-# Mělo by zobrazit:
-# YYYYMMDDHHMMSS_MigrationName.cs
-# YYYYMMDDHHMMSS_MigrationName.Designer.cs
-
-# 5. Kontrola obsahu migrace (nesmí být prázdná!)
-cat Migrations/YYYYMMDDHHMMSS_MigrationName.cs
+# 5. Check logs
+docker logs aas-web-prod -f --tail=100
 ```
 
-#### Ověření migrací před deploymentem:
-
-```bash
-# Zobraz seznam migrací
-dotnet ef migrations list
-
-# Zkontroluj strukturu v PRODUKČNÍ CESTĚ
-ls -la /AAS/src/AAS.Web/Migrations/
-
-# Ujisti se:
-# 1. Každá .cs migrace má svůj .Designer.cs
-# 2. Názvy souborů mají správný formát YYYYMMDDHHMMSS_Name
-# 3. Migrace nejsou prázdné (otevři a zkontroluj obsah)
-```
-
----
-
-## 🚀 Deployment proces
-
-### Docker Build
-
-**⚠️ DŮLEŽITÉ:** Vždy používej `--no-cache` pokud měníš migrace nebo kód:
-
-```bash
-docker-compose -f docker-compose.prod.yml build --no-cache
-```
-
-**Důvod:** Docker cache může obsahovat staré verze souborů, což způsobí deployment selhání.
-
-### Multi-stage Dockerfile struktur
-
-```dockerfile
-# Stage 1: Build (s .NET SDK)
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /AAS
-COPY . .
-RUN dotnet restore
-RUN dotnet publish -c Release -o /AAS/publish
-
-# Stage 2: Runtime (bez SDK - menší image)
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
-WORKDIR /AAS
-COPY --from=build /AAS/publish .
-ENTRYPOINT ["dotnet", "AAS.Web.dll"]
-```
-
-**⚠️ Poznámka:** Runtime image NEMÁ .NET SDK, takže nemůžeš spouštět `dotnet ef` příkazy na productionu!
-
-**🔴 Volume mappings pro persistent data:**
-```yaml
-volumes:
-  postgres_data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /mnt/data/postgres
-  
-  uploads:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /mnt/data/uploads
-```
-
-### Automatické migrace v Program.cs
-
-```csharp
-// Toto zajišťuje automatickou aplikaci migrací při startu
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    await db.Database.MigrateAsync();
-}
-```
-
-**⚠️ Pokud jsou migrace neplatné (chybějící Designer, prázdné), aplikace spadne při startu!**
-
----
-
-## 💾 Persistent Storage (/mnt/data)
-
-### 🔴 CO JE /mnt/data?
-
-`/mnt/data` je **persistent storage** na produkčním serveru. Všechna data, která musí přežít restart kontejneru, MUSÍ být uložena zde!
-
-### Struktura /mnt/data:
-
-```
-/mnt/data/
-├── postgres/                        # 🔴 PostgreSQL databázové soubory
-│   └── data/                        # NIKDY nesmaž tuto složku!
-│
-├── uploads/                         # 🔴 Nahrané soubory od uživatelů
-│   ├── collections/                 # Obrázky sbírek
-│   ├── blog/                        # Obrázky z blogů
-│   └── avatars/                     # Avatary uživatelů
-│
-├── logs/                            # 🔴 Aplikační logy
-│   ├── app.log
-│   ├── errors.log
-│   └── nginx-access.log
-│
-└── backups/                         # 🔴 Databázové zálohy
-    ├── daily/
-    └── weekly/
-```
-
-### ⚠️ PRAVIDLA PRO /mnt/data:
-
-1. **NIKDY nesmaž obsah `/mnt/data/postgres`** - ztratíš celou databázi!
-2. **Nahrané soubory musí jít do `/mnt/data/uploads`** - jinak zmizí při restartu
-3. **Logy musí jít do `/mnt/data/logs`** - pro dlouhodobé sledování
-4. **Pravidelně zálohuj do `/mnt/data/backups`**
-
-### Konfigurace v kódu:
-
-```csharp
-// ✅ SPRÁVNĚ: Použij persistent path
-var uploadPath = "/mnt/data/uploads/collections";
-
-// ❌ ŠPATNĚ: Data zmizí při restartu kontejneru
-var uploadPath = "/AAS/wwwroot/uploads";
-```
-
-### Docker Volume Mappings:
+### Docker Services
 
 ```yaml
-services:
-  db:
-    volumes:
-      - /mnt/data/postgres:/var/lib/postgresql/data
-  
-  web:
-    volumes:
-      - /mnt/data/uploads:/AAS/wwwroot/uploads
-      - /mnt/data/logs:/AAS/logs
+Services:
+  - web:        ASP.NET Core application (port 5000)
+  - db:         PostgreSQL 15 (internal only)
+  - nginx:      Reverse proxy (ports 80, 443)
 ```
 
-### Kontrola místa na disku:
+### Environment Variables
 
-```bash
-# Zkontroluj volné místo
-df -h /mnt/data
+Critical variables in `/AAS/src/AAS.Web/.env`:
 
-# Velikost jednotlivých složek
-du -sh /mnt/data/*
+```env
+# Database
+DB_HOST=db
+DB_PORT=5432
+DB_NAME=aas_production
+DB_USER=aasuser
+DB_PASSWORD=your_password
 
-# Největší soubory
-find /mnt/data -type f -size +100M -exec ls -lh {} \;
-```
+# Admin Account
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=your_password
 
----
-
-## 🗄️ Databázová struktura
-
-### PostgreSQL konfigurace
-
-**Connection String:**
-```
-Host=db;Database=aasdb;Username=aasuser;Password=aaspassword
-```
-
-**Důležité tabulky:**
-
-#### Collections
-```sql
-Columns:
-- Id (PK)
-- Name
-- Description
-- Price (decimal) -- Přidáno v AddPriceStatusVerified
-- Status (string) -- Přidáno v AddPriceStatusVerified
-- AASVerified (boolean) -- ⚠️ Přidáno MANUÁLNĚ (migrace byla prázdná)
-- ...
-```
-
-#### BlogPosts
-```sql
--- ⚠️ Vytvořeno MANUÁLNĚ (migrace AddCommentsAndBlog byla prázdná)
-Columns:
-- Id (PK)
-- Title
-- Content
-- AuthorId (FK -> AspNetUsers)
-- CreatedAt
-- UpdatedAt
-- ...
-```
-
-#### Comments
-```sql
--- ⚠️ Vytvořeno MANUÁLNĚ (migrace AddCommentsAndBlog byla prázdná)
-Columns:
-- Id (PK)
-- CollectionId (FK -> Collections)
-- UserId (FK -> AspNetUsers)
-- Text
-- CreatedAt
-- ...
-```
-
-### Přístup k databázi
-
-```bash
-# Vstup do PostgreSQL kontejneru
-docker exec -it <postgres_container_name> psql -U aasuser -d aasdb
-
-# Užitečné SQL příkazy
-\dt                    # Seznam tabulek
-\d "Collections"       # Struktura tabulky
-SELECT * FROM "__EFMigrationsHistory";  # Historie aplikovaných migrací
+# Email SMTP
+EMAIL_SMTP_HOST=smtp.example.com
+EMAIL_SMTP_PORT=587
+EMAIL_USERNAME=your_email
+EMAIL_PASSWORD=your_password
+EMAIL_FROM=noreply@aristocraticartworksale.com
+EMAIL_TO=info@aristocraticartworksale.com
 ```
 
 ---
 
-## 🔧 Důležité příkazy
+## 💾 Backup System
 
-### Docker
+### Automated Backups
+
+**Schedule:** Daily at 2:00 AM  
+**Retention:** 7 days local, unlimited on remote FTP  
+**Location:** `/AAS/local-backups/` (local) + Master.cz FTP (remote)
+
+### What Gets Backed Up
+
+1. **PostgreSQL Database** (compressed with gzip)
+2. **Uploaded Files** (`/mnt/data/uploads`)
+3. **Configuration Files** (`docker-compose.prod.yml`, `.env`)
+4. **Backup Metadata** (backup_info.txt)
+
+### Backup Configuration
+
+**FTP Server:** backup15.master.cz  
+**Username:** bcp-id-9316  
+**Password:** Stored in `/root/.backup_credentials`  
+**Capacity:** 100 GB
+
+### Manual Backup
 
 ```bash
-# Build s --no-cache (doporučeno při změnách migrací)
-docker-compose -f docker-compose.prod.yml build --no-cache
+# Run backup manually
+/AAS/backup.sh
 
-# Start služeb
-docker-compose -f docker-compose.prod.yml up -d
+# Check backup logs
+tail -f /var/log/aas-backup.log
 
-# Stop služeb
-docker-compose -f docker-compose.prod.yml down
-
-# Zobrazit logy
-docker-compose -f docker-compose.prod.yml logs -f web
-
-# Rebuild a restart
-docker-compose -f docker-compose.prod.yml down
-docker-compose -f docker-compose.prod.yml build --no-cache
-docker-compose -f docker-compose.prod.yml up -d
+# List backups
+ls -lh /AAS/local-backups/
 ```
 
-### Debugging
+### Restore from Backup
 
 ```bash
-# Kontrola běžících kontejnerů
-docker ps
+# 1. Choose backup
+cd /AAS/local-backups/20251125_020000/
 
-# Vstup do web kontejneru
-docker exec -it <web_container_name> bash
+# 2. Restore database
+gunzip database.sql.gz
+docker exec -i aas-db-prod psql -U aasuser aas_production < database.sql
 
-# Logy aplikace
-docker logs <web_container_name> --tail 100 -f
+# 3. Restore uploads
+tar -xzf uploads.tar.gz -C /AAS/
 
-# Vstup do DB
-docker exec -it <db_container_name> psql -U aasuser -d aasdb
+# 4. Set permissions
+chown -R 33:33 /AAS/uploads  # www-data user
+
+# 5. Restart services
+cd /AAS
+docker compose -f docker-compose.prod.yml restart
 ```
 
-### Entity Framework (v SDK kontejneru)
+### Backup Setup (First Time)
 
 ```bash
-# 🔴 DŮLEŽITÉ: Používej /AAS jako kořenový adresář!
+# 1. Run backup setup
+cd /AAS
+chmod +x backup-setup.sh setup-remote-sync.sh
+./backup-setup.sh
 
-# Start SDK kontejneru
-docker run -it --rm \
-  -v /AAS:/AAS \
-  -v /mnt/data/postgres:/var/lib/postgresql/data \
-  -w /AAS/src/AAS.Web \
-  --network aas_default \
-  -e ConnectionStrings__DefaultConnection="Host=db;Database=aasdb;Username=aasuser;Password=aaspassword" \
-  mcr.microsoft.com/dotnet/sdk:8.0 \
-  bash
+# 2. Get password from:
+# https://admin.masterdc.com/sharing/showpass?id=2908&hash=9081592-4602710001763-3161599
 
-# V kontejneru:
-dotnet tool install --global dotnet-ef --version 8.0.11
-export PATH="$PATH:/root/.dotnet/tools"
+# 3. Configure remote sync
+./setup-remote-sync.sh
 
-dotnet ef migrations list
-dotnet ef migrations add MigrationName
-dotnet ef database update
-```
-
-### Práce s /mnt/data
-
-```bash
-# Kontrola persistent storage
-ls -lah /mnt/data/
-
-# Backup databáze
-docker exec <db_container> pg_dump -U aasuser aasdb > /mnt/data/backups/backup_$(date +%Y%m%d).sql
-
-# Restore databáze
-docker exec -i <db_container> psql -U aasuser -d aasdb < /mnt/data/backups/backup_20250117.sql
-
-# Vyčištění starých logů
-find /mnt/data/logs -name "*.log" -mtime +30 -delete
-
-# Kontrola velikosti uploads
-du -sh /mnt/data/uploads/*
+# 4. Test backup
+./backup.sh
 ```
 
 ---
 
 ## 🐛 Known Issues & Solutions
 
-### Issue #1: "Relation 'BlogPosts' does not exist"
+### Issue #1: Duplicate Inquiry Emails
 
-**Symptom:** Aplikace spadne při startu s `Npgsql.PostgresException: relation "BlogPosts" does not exist`
+**Solution:** Implemented debouncing with `isSubmitting` flag in `site.js`
 
-**Root Cause:** Migrace `AddCommentsAndBlog` byla prázdná, takže tabulky nebyly vytvořeny.
+### Issue #2: Bootstrap Modal Problems
 
-**Solution:**
-1. Zkontroluj obsah migrace `/src/AAS.Web/Migrations/20251117232619_AddCommentsAndBlog.cs`
-2. Pokud je prázdná, vytvoř tabulky manuálně (viz SQL výše)
-3. Pro dlouhodobé řešení: Vyšetři, proč byla migrace vygenerována prázdná
+**Solution:** Replaced all Bootstrap modals with custom implementation using `display: none/flex`
 
----
+### Issue #3: FOUC (Flash of Unstyled Content)
 
-### Issue #2: "No migrations were found"
+**Solution:** Added critical CSS inline in `<head>`, changed font-display to `optional`
 
-**Symptom:** EF Core hlásí, že nenašlo žádné migrace, i když existují.
+### Issue #4: Floating Labels Not Working
 
-**Possible Causes:**
-1. Migrace jsou ve špatné složce (např. `/Database/Migrations/` místo `/Migrations/`)
-2. Chybí `.Designer.cs` soubory
-3. Nesprávný formát názvů souborů
-4. Používáš `/app` místo `/AAS` v cestách
+**Solution:** Added `.identity-card` wrapper, fixed CSS conflicts with `transform: none !important`
 
-**Solution:**
-1. Zkontroluj, že všechny migrace jsou v `/AAS/src/AAS.Web/Migrations/` (ne `/app`!)
-2. Ověř, že každá .cs migrace má svůj .Designer.cs
-3. Ověř správný formát názvů (YYYYMMDDHHMMSS_Name)
-4. Ujisti se, že Docker volumes ukazují na `/AAS` a `/mnt/data`
+### Issue #5: Typography Inconsistency
 
----
-
-### Issue #3: Docker build používá starou verzi kódu
-
-**Symptom:** Změny v kódu se neprojeví po rebuildu.
-
-**Root Cause:** Docker cache obsahuje staré vrstvy.
-
-**Solution:**
-```bash
-docker-compose -f docker-compose.prod.yml build --no-cache
-```
-
----
-
-### Issue #4: Package version incompatibilities
-
-**Symptom:** Chyby typu "Package X version Y is not compatible with framework Z"
-
-**Solution:**
-1. Zkontroluj verze v `AAS.Web.csproj`
-2. Ujisti se, že všechny EF Core balíčky mají stejnou verzi (8.0.11)
-3. Použij `dotnet restore --force-evaluate`
-
----
-
-### Issue #5: Network issues v Docker kontejneru
-
-**Symptom:** SDK kontejner nemůže dosáhnout DB kontejneru.
-
-**Solution:**
-```bash
-# Přidej --network flag při spuštění:
-docker run ... --network aas_default ...
-
-# Nebo zjisti správný network:
-docker network ls
-```
-
----
-
-### Issue #6: Data zmizela po restartu kontejneru
-
-**Symptom:** Nahrané soubory, databáze nebo logy zmizely po restartu.
-
-**Root Cause:** Data nebyla uložena v `/mnt/data` persistent storage.
-
-**Solution:**
-1. **Okamžitě přesuň data do `/mnt/data`:**
-   ```bash
-   # Backup databáze
-   docker exec <db_container> pg_dump -U aasuser aasdb > /mnt/data/backups/emergency_backup.sql
-   
-   # Přesuň uploads
-   docker cp <web_container>:/AAS/wwwroot/uploads /mnt/data/uploads
-   ```
-
-2. **Oprav docker-compose.yml volumes:**
-   ```yaml
-   volumes:
-     - /mnt/data/postgres:/var/lib/postgresql/data
-     - /mnt/data/uploads:/AAS/wwwroot/uploads
-     - /mnt/data/logs:/AAS/logs
-   ```
-
-3. **Restart kontejnerů:**
-   ```bash
-   docker-compose -f docker-compose.prod.yml down
-   docker-compose -f docker-compose.prod.yml up -d
-   ```
-
-**⚠️ Prevention:** VŽDY používej `/mnt/data` pro persistent data!
+**Solution:** Reduced from 11 font sizes to 7, and 11 colors to 6
 
 ---
 
 ## ✅ Best Practices
 
-### 0. 🔴 KRITICKÉ - CESTY
+### Before Making Changes
 
-- [ ] **VŽDY používej `/AAS` jako kořenový adresář (ne `/app`!)**
-- [ ] **VŽDY ukládej persistent data do `/mnt/data`**
-- [ ] Zkontroluj Docker volumes před startem kontejnerů
-- [ ] Ověř, že cesty v kódu ukazují na `/AAS` a `/mnt/data`
+- [ ] Read this guide completely
+- [ ] Check current git branch
+- [ ] Test changes locally if possible
+- [ ] Create backup before major changes
 
-### 1. Před přidáním nové migrace
+### Code Style
 
-- [ ] Zkontroluj, že máš POUZE jednu složku `Migrations` v `/AAS/src/AAS.Web/`
-- [ ] Ujisti se, že poslední migrace byly aplikovány úspěšně
-- [ ] Prověď `dotnet ef migrations list` před přidáním nové
+- [ ] Use semantic HTML5 elements
+- [ ] Follow C# naming conventions (PascalCase for classes/methods)
+- [ ] Keep controllers thin, logic in services
+- [ ] Use async/await for all I/O operations
+- [ ] Add try-catch for error handling
 
-### 2. Po vygenerování migrace
+### CSS Guidelines
 
-- [ ] Zkontroluj, že byly vytvořeny OBA soubory (.cs + .Designer.cs)
-- [ ] Otevři .cs soubor a ověř, že není prázdný
-- [ ] Zkontroluj správný formát názvu (YYYYMMDDHHMMSS_Name)
-- [ ] Ověř správnou cestu: `/AAS/src/AAS.Web/Migrations/`
-- [ ] Commitni do gitu IHNED (aby se nepřepsaly)
+- [ ] Use existing typography scale (14, 16, 18, 20, 24, 32, 40px)
+- [ ] Use color palette (#1A1A1A, #4A4A4A, #B8941F, #FFFFFF, #DC3545, #6c757d)
+- [ ] Avoid !important unless absolutely necessary
+- [ ] Prefix custom CSS classes with project-specific names
+- [ ] Use `@@media` instead of `@media` in .cshtml files (Razor escape)
 
-### 3. Před deploymentem
+### JavaScript Guidelines
 
-- [ ] **Zkontroluj VŠECHNY cesty - musí být `/AAS` a `/mnt/data`!**
-- [ ] Zkontroluj všechny migrace v `/AAS/src/AAS.Web/Migrations/` složce
-- [ ] Prověř, že žádná není prázdná
-- [ ] Ověř Docker volumes v docker-compose.yml
-- [ ] Build s `--no-cache` pokud měníš migrace
-- [ ] Testuj na lokální DB před nasazením
-- [ ] Backup databáze do `/mnt/data/backups`
+- [ ] Use `const` and `let`, avoid `var`
+- [ ] Add event listener cleanup
+- [ ] Debounce expensive operations
+- [ ] Use `async/await` for fetch calls
+- [ ] Add loading states for buttons
 
-### 4. Po deploymenu
+### Database Guidelines
 
-- [ ] Zkontroluj logy aplikace (`docker logs ...`)
-- [ ] Ověř, že aplikace běží bez chyb
-- [ ] Zkontroluj v DB, že migrace byly aplikovány:
-  ```sql
-  SELECT * FROM "__EFMigrationsHistory" ORDER BY "MigrationId" DESC;
-  ```
+- [ ] Always use async methods (`ToListAsync`, `FirstOrDefaultAsync`)
+- [ ] Use `.AsNoTracking()` for read-only queries
+- [ ] Include related entities explicitly
+- [ ] Add indexes for frequently queried columns
+- [ ] Use transactions for multi-step operations
 
-### 5. Při debuggingu
+### Deployment Guidelines
 
-- [ ] **Zkontroluj, že používáš správné cesty (`/AAS`, ne `/app`)**
-- [ ] **Ověř, že persistent data jsou v `/mnt/data`**
-- [ ] Vždy čti logy od začátku, ne jen poslední řádky
-- [ ] Používej `--tail 200` pro delší history
-- [ ] Kontroluj ConnectionString v různých prostředích
-- [ ] Ověř network connectivity mezi kontejnery
-- [ ] Zkontroluj volné místo: `df -h /mnt/data`
+- [ ] Test on staging/development first
+- [ ] Use `--no-cache` when changing migrations
+- [ ] Check Docker logs after deployment
+- [ ] Verify database migrations applied
+- [ ] Test critical user flows (login, inquiry, etc.)
 
 ---
 
-## 📝 Pending Tasks (TODO)
+## 🔧 Common Commands
 
-### Vysoká priorita
-- [ ] **Vyšetřit root cause prázdné migrace AddCommentsAndBlog**
-  - Proč EF Core vygenerovalo prázdnou migraci?
-  - Zkontrolovat DbContext konfiguraci
-  - Ověřit, že DbSet<BlogPost> a DbSet<Comment> jsou správně registrovány
+### Docker
 
-### Střední priorita
-- [ ] **Dokončit lokalizaci**
-  - Přidat překlady pro Blog a Comments do všech .resx souborů
-  - Testovat prepínání jazyků
+```bash
+# View logs
+docker logs aas-web-prod -f --tail=100
+docker logs aas-db-prod -f --tail=100
 
-- [ ] **Implementovat DeepL službu**
-  - Získat DeepL API klíč od uživatele
-  - Implementovat automatický překlad obsahu
-  - Integrovat do blog a comment systému
+# Restart services
+docker compose -f docker-compose.prod.yml restart
 
-### Nízká priorita
-- [ ] Optimalizovat Docker image size
-- [ ] Přidat health check endpoints
-- [ ] Zlepšit error handling v controllers
+# Rebuild
+docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml build --no-cache
+docker compose -f docker-compose.prod.yml up -d
 
----
-
-## 🔍 Debugging Checklist
-
-Když něco nefunguje, projdi tento checklist:
-
-0. **🔴 NEJDŘÍV - CESTY!**
-   ```bash
-   # Používáš správné cesty?
-   pwd  # Mělo by ukazovat na /AAS, NE /app
-   ls -la /AAS
-   ls -la /mnt/data
-   
-   # Docker volumes správně namapované?
-   docker inspect <container> | grep -A 10 "Mounts"
-   ```
-
-1. **Aplikace nespadne při startu?**
-   ```bash
-   docker logs <web_container> --tail 200
-   ```
-
-2. **Migrace jsou v pořádku?**
-   ```bash
-   # 🔴 SPRÁVNÁ CESTA: /AAS (ne /app!)
-   ls -la /AAS/src/AAS.Web/Migrations/
-   # Zkontroluj: formát názvů, .Designer.cs, nejsou prázdné
-   ```
-
-3. **DB je dostupná a data jsou v /mnt/data?**
-   ```bash
-   docker exec -it <db_container> psql -U aasuser -d aasdb -c "\dt"
-   
-   # Zkontroluj persistent storage
-   ls -la /mnt/data/postgres
-   ```
-
-4. **Tabulky existují?**
-   ```sql
-   SELECT table_name FROM information_schema.tables 
-   WHERE table_schema='public';
-   ```
-
-5. **Migrace byly aplikovány?**
-   ```sql
-   SELECT * FROM "__EFMigrationsHistory" ORDER BY "MigrationId";
-   ```
-
-6. **ConnectionString a cesty jsou správné?**
-   ```bash
-   # 🔴 SPRÁVNÁ CESTA: /AAS (ne /app!)
-   cat /AAS/src/AAS.Web/appsettings.Production.json
-   
-   # Zkontroluj upload cesty v kódu
-   grep -r "/app" /AAS/src/AAS.Web/Controllers/
-   # ❌ Pokud najde něco, OPRAV NA /AAS nebo /mnt/data!
-   ```
-
-7. **Persistent data přežijí restart?**
-   ```bash
-   # Před restartem
-   ls -la /mnt/data/uploads > /tmp/before.txt
-   
-   # Restart
-   docker-compose restart
-   
-   # Po restartu
-   ls -la /mnt/data/uploads > /tmp/after.txt
-   diff /tmp/before.txt /tmp/after.txt
-   # Mělo by být prázdné!
-   ```
-
----
-
-## 🎓 Lessons Learned
-
-### 0. 🔴 CESTY, CESTY, CESTY!
-- **NIKDY nepoužívej `/app` na produkci - VŽDY `/AAS`!**
-- **Persistent data MUSÍ být v `/mnt/data`**
-- Hardcodované cesty způsobují OBROVSKÉ problémy
-- Zkontroluj Docker volumes PŘED každým deploymentem
-- **Toto nám už způsobilo spoustu problémů - neudělej to znovu!**
-
-### 1. EF Core migrace jsou zrádné
-- Vždy kontroluj, že migrace nejsou prázdné
-- .Designer.cs soubory jsou POVINNÉ
-- Formát názvů je kritický
-- Správná cesta: `/AAS/src/AAS.Web/Migrations/`
-
-### 2. Docker cache může způsobit problémy
-- Při změnách migrací vždy `--no-cache`
-- Staré vrstvy = staré problémy
-
-### 3. Production debugging je těžký
-- Runtime image nemá SDK
-- Musíš používat separátní SDK kontejner pro EF tools
-- Logy jsou tvůj nejlepší přítel (v `/mnt/data/logs`)
-
-### 4. Manuální SQL je OK jako hotfix
-- Ale není dlouhodobé řešení
-- Vždy se vrať a oprav root cause
-
-### 5. Persistent storage je kritický
-- Data mimo `/mnt/data` zmizí při restartu!
-- Databáze, uploads, logy - VŠE do `/mnt/data`
-- Pravidelně zálohuj do `/mnt/data/backups`
-
-### 6. Dokumentace je klíčová
-- Tento soubor by měl ušetřit hodiny debuggingu
-- Aktualizuj ho při každé velké změně
-- **VŽDY si ho přečti před začátkem práce!**
-
----
-
-## 📞 Kontakt & Podpora
-
-Pokud narazíš na problém, který není v tomto dokumentu:
-
-1. Zkontroluj logy (`docker logs`)
-2. Zkontroluj databázi (PostgreSQL console)
-3. Zkontroluj migrace (formát, Designer soubory, obsah)
-4. Použij troubleshoot_agent pro deep RCA
-5. Aktualizuj tento dokument s řešením!
-
----
-
-**Poslední aktualizace:** 2025-01-17  
-**Verze aplikace:** 1.0 (Blog + Comments + AAS Verified)  
-**Status:** ✅ Funkční (s manuálními opravami)
-
----
-
-## 🚨 KRITICKÁ PŘIPOMÍNKA
-
+# Access container
+docker exec -it aas-web-prod bash
+docker exec -it aas-db-prod psql -U aasuser -d aas_production
 ```
-╔════════════════════════════════════════════════════════════╗
-║                                                            ║
-║  🔴 PRODUKČNÍ CESTY - NIKDY NEZAPOMEŇ!                    ║
-║                                                            ║
-║  ✅ Kořenový adresář:     /AAS                            ║
-║  ✅ Persistent storage:   /mnt/data                       ║
-║                                                            ║
-║  ❌ NIKDY nepoužívej:     /app                            ║
-║                                                            ║
-║  Toto způsobilo SPOUSTU problémů v minulosti!             ║
-║  Zkontroluj VŠECHNY cesty před jakoukoliv změnou!         ║
-║                                                            ║
-╚════════════════════════════════════════════════════════════╝
+
+### Database
+
+```bash
+# Connect to PostgreSQL
+docker exec -it aas-db-prod psql -U aasuser -d aas_production
+
+# Useful SQL
+\dt                    # List tables
+\d "Collections"       # Table structure
+SELECT * FROM "__EFMigrationsHistory";  # Migration history
+
+# Backup
+docker exec aas-db-prod pg_dump -U aasuser aas_production > backup.sql
+
+# Restore
+docker exec -i aas-db-prod psql -U aasuser -d aas_production < backup.sql
+```
+
+### Monitoring
+
+```bash
+# Check disk usage
+df -h /mnt/data
+
+# Check backup status
+tail -f /var/log/aas-backup.log
+
+# Check cron jobs
+crontab -l
+
+# Service status
+systemctl status cron
+systemctl status nagios-nrpe-server
 ```
 
 ---
 
-**⚠️ CHECKLIST PŘED ZAČÁTKEM PRÁCE:**
-- [ ] **Přečetl jsi sekci "DŮLEŽITÉ - CESTY V PROJEKTU"?**
-- [ ] **Víš, že používáš `/AAS` a `/mnt/data` (NE `/app`)?**
-- [ ] Přečetl jsi sekci "EF Core - KRITICKÉ POZNATKY"?
-- [ ] Znáš Deployment proces?
-- [ ] Víš, jak debugovat migrace?
-- [ ] Rozumíš persistent storage v `/mnt/data`?
+## 📞 Support & Contact
 
-**Pokud máš VŠECHNY checkboxy, jsi připraven pro další vývoj! 🚀**
+**Hosting:** Master.cz  
+**Anti-DDoS:** Riorey Protection  
+**Backup:** FTP (backup15.master.cz)  
+**Monitoring:** NRPE/Nagios
 
-**Pokud ne, VRAŤ SE A PŘEČTI SI TENTO DOKUMENT ZNOVU!** ⚠️
+### Key URLs
+- **Production:** https://aristocraticartworksale.com
+- **Admin:** https://aristocraticartworksale.com/Admin
+- **Backup Password:** https://admin.masterdc.com/sharing/showpass?id=2908&hash=9081592-4602710001763-3161599
+
+---
+
+## 📝 Changelog
+
+### 2025-01-25
+- ✅ Added automated backup system (daily 2AM)
+- ✅ Configured remote FTP sync to Master.cz
+- ✅ Set up NRPE monitoring
+- ✅ Updated PROJECT_GUIDE.md with complete information
+
+### 2025-01-20
+- ✅ Modernized Admin Dashboard
+- ✅ Improved Collections Management UI
+- ✅ Fixed all Bootstrap modal issues
+
+### 2025-01-19
+- ✅ Added social sharing buttons
+- ✅ Implemented pagination for collections
+- ✅ Fixed inquiry form duplicate emails
+- ✅ Simplified typography system
+- ✅ Fixed FOUC and floating labels
+
+---
+
+**Last Updated:** 2025-01-25  
+**Version:** 1.2  
+**Status:** ✅ Production Ready
+
+---
+
+## 🚨 CRITICAL REMINDERS
+
+```
+╔══════════════════════════════════════════════════════════╗
+║                                                          ║
+║  🔴 PRODUCTION PATHS - NEVER FORGET!                    ║
+║                                                          ║
+║  ✅ Root Directory:      /AAS                           ║
+║  ✅ Persistent Storage:  /mnt/data                      ║
+║  ✅ Backups:             /AAS/local-backups             ║
+║                                                          ║
+║  ❌ NEVER use:           /app                           ║
+║                                                          ║
+╚══════════════════════════════════════════════════════════╝
+```
+
+**Before starting work:**
+- [ ] Read this guide
+- [ ] Check backup status
+- [ ] Pull latest changes
+- [ ] Test in non-production environment if possible
