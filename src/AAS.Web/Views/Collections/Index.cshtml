@@ -103,6 +103,79 @@
           </div>
         }
       </div>
+      
+      @* Pagination *@
+      @if (ViewBag.TotalPages > 1)
+      {
+        var currentPage = (int)ViewBag.CurrentPage;
+        var totalPages = (int)ViewBag.TotalPages;
+        var category = ViewBag.Category as CollectionCategory?;
+        var categoryParam = category.HasValue ? $"&category={category.Value}" : "";
+        
+        <nav aria-label="Page navigation" class="mt-5">
+          <ul class="pagination justify-content-center">
+            @* Previous button *@
+            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+              <a class="page-link" href="?page=@(currentPage - 1)@categoryParam" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            
+            @* Page numbers *@
+            @{
+              var startPage = Math.Max(1, currentPage - 2);
+              var endPage = Math.Min(totalPages, currentPage + 2);
+              
+              // Show first page if not in range
+              if (startPage > 1)
+              {
+                <li class="page-item">
+                  <a class="page-link" href="?page=1@categoryParam">1</a>
+                </li>
+                if (startPage > 2)
+                {
+                  <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                  </li>
+                }
+              }
+              
+              // Show page numbers
+              for (int i = startPage; i <= endPage; i++)
+              {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                  <a class="page-link" href="?page=@i@categoryParam">@i</a>
+                </li>
+              }
+              
+              // Show last page if not in range
+              if (endPage < totalPages)
+              {
+                if (endPage < totalPages - 1)
+                {
+                  <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                  </li>
+                }
+                <li class="page-item">
+                  <a class="page-link" href="?page=@totalPages@categoryParam">@totalPages</a>
+                </li>
+              }
+            }
+            
+            @* Next button *@
+            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+              <a class="page-link" href="?page=@(currentPage + 1)@categoryParam" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+          
+          <p class="text-center text-secondary mt-3">
+            @L["Showing"] @((currentPage - 1) * 12 + 1) - @Math.Min(currentPage * 12, (int)ViewBag.TotalCount) @L["of"] @ViewBag.TotalCount @L["collections"]
+          </p>
+        </nav>
+      }
     }
   </div>
 </div>
