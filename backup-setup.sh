@@ -83,8 +83,17 @@ EOFINFO
 
 # 5. Sync to remote backup server
 echo "[$(date)] Syncing to remote backup server..."
-# Note: You need to set up SSH keys or use FTP
-# For now, we'll keep backups local. Follow instructions below to set up remote sync.
+# Load backup credentials if they exist
+if [ -f "/root/.backup_credentials" ]; then
+    source /root/.backup_credentials
+    if [ -f "/AAS/sync-to-remote.sh" ]; then
+        /AAS/sync-to-remote.sh
+    else
+        echo "[$(date)] Remote sync not configured yet. Run setup-remote-sync.sh"
+    fi
+else
+    echo "[$(date)] Remote sync not configured yet. Run setup-remote-sync.sh"
+fi
 
 # 6. Clean up old local backups (keep last 7 days)
 echo "[$(date)] Cleaning up old backups..."
