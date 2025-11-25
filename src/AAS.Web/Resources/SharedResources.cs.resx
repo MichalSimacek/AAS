@@ -344,4 +344,9 @@
 <data name="BuyOrSellDetails" xml:space="preserve"><value>Ať už chcete rozšířit svou sbírku nebo prodat cenné předměty, poskytujeme profesionální služby s naprostou diskrétností a nejvyššími cenami na trhu.</value></data>
 <data name="LearnMore" xml:space="preserve"><value>Zjistit více</value></data>
 
+<!-- Pagination -->
+<data name="Showing" xml:space="preserve"><value>Zobrazeno</value></data>
+<data name="of" xml:space="preserve"><value>z</value></data>
+<data name="collections" xml:space="preserve"><value>kolekcí</value></data>
+
 </root>
