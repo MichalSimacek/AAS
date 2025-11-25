@@ -38,78 +38,137 @@
             </div>
         </div>
 
-@if (!Model.Any())
-{
-    <div class="empty-state">
-        <div class="empty-state-icon">✦</div>
-        <h3>No Collections Yet</h3>
-        <p>Start by creating your first aristocratic collection</p>
-        <a href="/Admin/Collections/Create" class="btn btn-outline-primary mt-3" style="cursor: pointer; pointer-events: auto; z-index: 1000; position: relative;">Create Collection</a>
-    </div>
-}
-else
-{
-    <div class="collections-grid">
-        @foreach (var collection in Model)
+        <!-- Collections List -->
+        @if (!Model.Any())
         {
-            <div class="collection-card">
-                <div class="collection-card-header">
-                    <div>
-                        <h3 class="collection-title">@collection.Title</h3>
-                        <div class="collection-meta">
-                            <span class="badge badge-gold">@collection.Category</span>
-                            <span class="text-secondary ms-2">
-                                @{
-                                    var imageCount = ViewBag.ImageCounts?.ContainsKey(collection.Id) == true
-                                        ? ViewBag.ImageCounts[collection.Id]
-                                        : collection.Images?.Count() ?? 0;
-                                }
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                                    <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
-                                </svg>
-                                @imageCount images
-                            </span>
-                        </div>
-                    </div>
-                    <div class="collection-actions">
-                        <a href="/Admin/Collections/Edit/@collection.Id" class="btn btn-sm btn-outline-primary" style="pointer-events: auto; z-index: 1000; position: relative;">
-                            Edit
-                        </a>
-                        <button type="button" class="btn btn-sm btn-outline-danger delete-btn" data-id="@collection.Id" data-title="@collection.Title" style="pointer-events: auto; z-index: 1000; position: relative;">
-                            Delete
-                        </button>
-                    </div>
+            <div class="empty-state-card">
+                <div class="empty-icon">
+                    <i class="bi bi-inbox"></i>
                 </div>
-
-                @if (!string.IsNullOrEmpty(collection.Description))
-                {
-                    <p class="collection-description">@collection.Description</p>
-                }
-
-                <div class="collection-footer">
-                    <div class="ornament-divider-small"></div>
-                    <div class="footer-content">
-                        <small class="text-secondary">
-                            Created @collection.CreatedUtc.ToString("MMM dd, yyyy")
-                        </small>
-                        @if (!string.IsNullOrEmpty(collection.AudioPath))
+                <h3>No Collections Yet</h3>
+                <p>Start by creating your first collection</p>
+                <a href="/Admin/Collections/Create" class="btn btn-primary mt-3">
+                    <i class="bi bi-plus-circle me-2"></i>Create First Collection
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="collections-table-card">
+                <table class="table collections-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;"></th>
+                            <th>Title & Details</th>
+                            <th style="width: 120px;">Status</th>
+                            <th style="width: 150px;">Price</th>
+                            <th style="width: 100px;">Images</th>
+                            <th style="width: 120px;">Created</th>
+                            <th style="width: 180px; text-align: right;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var collection in Model.OrderBy(c => c.Status).ThenByDescending(c => c.CreatedUtc))
                         {
-                            <small class="text-gold">
-                                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                    <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                                    <path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z"/>
-                                    <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z"/>
-                                </svg>
-                                Audio
-                            </small>
+                            var firstImage = collection.Images?.OrderBy(i => i.SortOrder).FirstOrDefault();
+                            var imageCount = collection.Images?.Count() ?? 0;
+                            
+                            <tr class="collection-row">
+                                <td>
+                                    @if (firstImage != null)
+                                    {
+                                        <img src="/uploads/images/@firstImage.FileName-480.jpg" 
+                                             alt="@collection.Title" 
+                                             class="collection-thumbnail" />
+                                    }
+                                    else
+                                    {
+                                        <div class="collection-thumbnail-placeholder">
+                                            <i class="bi bi-image"></i>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="collection-info">
+                                        <h5 class="collection-name">@collection.Title</h5>
+                                        <div class="collection-badges">
+                                            <span class="badge-category">@collection.Category</span>
+                                            @if (collection.AASVerified)
+                                            {
+                                                <span class="badge-verified" title="AAS Verified">
+                                                    <i class="bi bi-patch-check-fill"></i> Verified
+                                                </span>
+                                            }
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-badge status-@collection.Status.ToString().ToLower()">
+                                        @if (collection.Status == AAS.Web.Models.CollectionStatus.Available)
+                                        {
+                                            <i class="bi bi-check-circle"></i>
+                                        }
+                                        else if (collection.Status == AAS.Web.Models.CollectionStatus.InAuction)
+                                        {
+                                            <i class="bi bi-megaphone"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="bi bi-x-circle"></i>
+                                        }
+                                        @collection.Status
+                                    </span>
+                                </td>
+                                <td>
+                                    @if (collection.Price.HasValue)
+                                    {
+                                        <span class="collection-price">
+                                            @(collection.Currency == AAS.Web.Models.Currency.EUR ? "€" : "$")@string.Format("{0:N0}", collection.Price)
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">-</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="image-count">
+                                        <i class="bi bi-images me-1"></i>@imageCount
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-muted small">@collection.CreatedUtc.ToString("dd.MM.yyyy")</span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="/collections/@collection.Slug" 
+                                           class="btn-action btn-view" 
+                                           target="_blank"
+                                           title="View">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="/Admin/Collections/Edit/@collection.Id" 
+                                           class="btn-action btn-edit"
+                                           title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <button type="button" 
+                                                class="btn-action btn-delete delete-btn" 
+                                                data-id="@collection.Id" 
+                                                data-title="@collection.Title"
+                                                title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
                         }
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </div>
         }
     </div>
-}
+</div>
 
 <style>
 .admin-header {
