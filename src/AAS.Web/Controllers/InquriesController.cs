@@ -75,9 +75,15 @@ namespace AAS.Web.Controllers
 
             try
             {
+                Console.WriteLine($"[INQUIRY] Saving inquiry to database...");
                 _db.Inquiries.Add(model);
                 await _db.SaveChangesAsync();
+                Console.WriteLine($"[INQUIRY] Inquiry saved with ID: {model.Id}");
+                
+                Console.WriteLine($"[INQUIRY] Sending email notification...");
                 await _email.SendInquiryAsync(model);
+                Console.WriteLine($"[INQUIRY] Email sent successfully for inquiry ID: {model.Id}");
+                
                 return Ok(new { success = true, message = "Inquiry submitted successfully" });
             }
             catch (Exception ex)
