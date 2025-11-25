@@ -791,6 +791,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const token = document.querySelector('[name="__RequestVerificationToken"]').value;
     
+    console.log('Updating comment:', commentId, 'with text:', newText);
+    
     fetch(`/api/Comments/${commentId}`, {
       method: 'PUT',
       headers: {
@@ -799,16 +801,27 @@ document.addEventListener('DOMContentLoaded', function() {
       body: formData
     })
     .then(response => {
-      if (!response.ok) throw new Error('Failed to update comment');
+      console.log('Update response status:', response.status);
+      if (!response.ok) {
+        return response.text().then(text => {
+          console.error('Update failed with response:', text);
+          throw new Error('Failed to update comment');
+        });
+      }
       return response.json();
     })
     .then(data => {
       console.log('Comment updated successfully:', data);
       closeEditCommentDialog();
-      loadComments(); // Reload all comments to show the update
+      
+      // Wait a moment then reload comments with cache busting
+      setTimeout(() => {
+        console.log('Reloading comments after update...');
+        loadComments();
+      }, 100);
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.error('Error updating comment:', error);
       alert('@L["Failed to update comment. Please try again."]');
     })
     .finally(() => {
