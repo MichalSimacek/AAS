@@ -588,7 +588,11 @@ document.addEventListener('DOMContentLoaded', function() {
   loadComments();
   
   function loadComments() {
-    console.log('Loading comments for collection:', collectionId);
+    loadCommentsAndHighlight(null);
+  }
+  
+  function loadCommentsAndHighlight(highlightId) {
+    console.log('Loading comments for collection:', collectionId, 'highlightId:', highlightId);
     // Add timestamp to prevent caching
     const timestamp = new Date().getTime();
     fetch(`/api/Comments/collection/${collectionId}?t=${timestamp}`, {
@@ -606,7 +610,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(comments => {
         console.log('Loaded comments (total:', comments.length, '):', comments);
-        renderComments(comments);
+        renderComments(comments, highlightId);
       })
       .catch(error => {
         console.error('Error loading comments:', error);
