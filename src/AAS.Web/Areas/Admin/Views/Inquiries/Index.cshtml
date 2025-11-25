@@ -1,0 +1,83 @@
+@model IEnumerable<AAS.Web.Models.Inquiry>
+@{
+    ViewData["Title"] = "Customer Inquiries";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="bi bi-envelope-open me-2"></i>Customer Inquiries</h1>
+        <a href="/Admin/Dashboard" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-2"></i>Back to Dashboard
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>No inquiries yet.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Collection</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var inquiry in Model)
+                    {
+                        <tr>
+                            <td>
+                                <small>@inquiry.CreatedUtc.ToString("dd.MM.yyyy HH:mm")</small>
+                            </td>
+                            <td>
+                                <strong>@inquiry.FirstName @inquiry.LastName</strong>
+                            </td>
+                            <td>
+                                <a href="mailto:@inquiry.Email">@inquiry.Email</a>
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(inquiry.Phone))
+                                {
+                                    <a href="tel:@inquiry.Phone">@inquiry.Phone</a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(inquiry.CollectionTitle))
+                                {
+                                    <span class="badge bg-secondary">@inquiry.CollectionTitle</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">General inquiry</span>
+                                }
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(inquiry.Message))
+                                {
+                                    <small>@(inquiry.Message.Length > 50 ? inquiry.Message.Substring(0, 50) + "..." : inquiry.Message)</small>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
