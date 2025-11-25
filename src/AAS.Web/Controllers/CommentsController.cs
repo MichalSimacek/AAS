@@ -104,7 +104,11 @@ namespace AAS.Web.Controllers
                 if (string.IsNullOrEmpty(userId))
                     return Unauthorized();
 
-                var comment = await _db.Comments.FindAsync(id);
+                // Use tracking query to ensure changes are saved
+                var comment = await _db.Comments
+                    .Include(c => c.User)
+                    .FirstOrDefaultAsync(c => c.Id == id);
+                    
                 if (comment == null)
                     return NotFound(new { error = "Comment not found" });
 
@@ -116,34 +120,32 @@ namespace AAS.Web.Controllers
                 if (string.IsNullOrWhiteSpace(text) || text.Length > 2000)
                     return BadRequest(new { error = "Invalid comment text" });
 
-                _logger.LogInformation("Updating comment {Id}: Old text length={OldLength}, New text length={NewLength}", 
-                    id, comment.Text.Length, text.Trim().Length);
+                var oldText = comment.Text;
+                _logger.LogInformation("Updating comment {Id}: Old text='{OldText}', New text='{NewText}'", 
+                    id, oldText, text.Trim());
 
+                // Update the entity
                 comment.Text = text.Trim();
                 comment.UpdatedAt = DateTime.UtcNow;
 
-                await _db.SaveChangesAsync();
+                // Mark as modified to ensure EF tracks the change
+                _db.Entry(comment).State = EntityState.Modified;
 
-                // Detach and reload to ensure fresh data
-                _db.Entry(comment).State = EntityState.Detached;
+                // Save changes
+                var changesSaved = await _db.SaveChangesAsync();
+                _logger.LogInformation("SaveChanges returned {ChangesSaved} for comment {Id}", changesSaved, id);
+
+                // Verify the save by reloading
+                await _db.Entry(comment).ReloadAsync();
                 
-                // Reload with user data
-                var updatedComment = await _db.Comments
-                    .Include(c => c.User)
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(c => c.Id == id);
-
-                if (updatedComment == null)
-                    return NotFound(new { error = "Comment not found after update" });
-
-                _logger.LogInformation("Comment {Id} updated successfully. New text: {Text}", id, updatedComment.Text);
+                _logger.LogInformation("After reload - Comment {Id} text is now: '{Text}'", id, comment.Text);
 
                 return Ok(new 
                 { 
-                    updatedComment.Id, 
-                    updatedComment.Text, 
-                    updatedComment.UpdatedAt,
-                    UserName = updatedComment.User?.UserName ?? "Unknown"
+                    comment.Id, 
+                    comment.Text, 
+                    comment.UpdatedAt,
+                    UserName = comment.User?.UserName ?? "Unknown"
                 });
             }
             catch (Exception ex)
