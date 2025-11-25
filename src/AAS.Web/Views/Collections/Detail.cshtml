@@ -1015,6 +1015,46 @@ document.addEventListener('DOMContentLoaded', function() {
 #editCommentModal button.btn-secondary:hover {
   background: #5a6268 !important;
 }
+
+#deleteCommentModal button.btn-danger:hover {
+  background: #c82333 !important;
+  border-color: #bd2130 !important;
+}
+
+#deleteCommentModal button.btn-secondary:hover {
+  background: #5a6268 !important;
+}
+</style>
+
+<!-- Modern Delete Comment Dialog -->
+<div id="deleteCommentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1056; align-items: center; justify-content: center;">
+  <div style="background: white; border-radius: 12px; max-width: 500px; width: 90%; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: modalSlideIn 0.3s ease;">
+    <div style="padding: 24px; border-bottom: 1px solid #E5E5E5; display: flex; justify-content: space-between; align-items: center;">
+      <h5 style="margin: 0; font-size: 20px; color: #DC3545; font-weight: 600;">
+        <i class="bi bi-exclamation-triangle-fill me-2" style="color: #DC3545;"></i>@L["Confirm Deletion"]
+      </h5>
+      <button type="button" onclick="closeDeleteCommentDialog()" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px; color: #4A4A4A; transition: color 0.2s;" onmouseover="this.style.color='#DC3545'" onmouseout="this.style.color='#4A4A4A'">&times;</button>
+    </div>
+    <div style="padding: 24px; text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <i class="bi bi-trash3" style="font-size: 48px; color: #DC3545; margin-bottom: 16px;"></i>
+      </div>
+      <h6 style="margin-bottom: 12px; color: #1A1A1A; font-weight: 600;">@L["Are you sure?"]</h6>
+      <p style="margin-bottom: 12px; color: #4A4A4A;">@L["Do you really want to delete this comment?"]</p>
+      <p style="margin: 0; color: #DC3545; font-size: 14px;">
+        <i class="bi bi-exclamation-triangle me-1"></i>@L["This action cannot be undone."]
+      </p>
+    </div>
+    <div style="padding: 24px; border-top: 1px solid #E5E5E5; display: flex; gap: 12px; justify-content: flex-end;">
+      <button type="button" class="btn btn-secondary" onclick="closeDeleteCommentDialog()" style="padding: 10px 24px; border-radius: 6px;">
+        <i class="bi bi-x-circle me-2"></i>@L["Cancel"]
+      </button>
+      <button type="button" id="confirmDeleteBtn" class="btn btn-danger" onclick="confirmDeleteComment()" style="padding: 10px 24px; border-radius: 6px;">
+        <i class="bi bi-trash3 me-2"></i>@L["Delete Comment"]
+      </button>
+    </div>
+  </div>
+</div>
 </style>
 
 <script>
