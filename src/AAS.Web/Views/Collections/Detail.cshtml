@@ -347,6 +347,58 @@
 
 @section Scripts{
 <script>
+// Social Share Functions
+function shareOnFacebook() {
+  const url = encodeURIComponent(window.location.href);
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, 'facebook-share', 'width=600,height=400');
+}
+
+function shareOnTwitter() {
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent('@Model.Title - Aristocratic Artwork Sale');
+  window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, 'twitter-share', 'width=600,height=400');
+}
+
+function shareOnLinkedIn() {
+  const url = encodeURIComponent(window.location.href);
+  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, 'linkedin-share', 'width=600,height=400');
+}
+
+async function copyLinkToClipboard() {
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    const message = document.getElementById('copyMessage');
+    if (message) {
+      message.style.display = 'block';
+      setTimeout(() => {
+        message.style.display = 'none';
+      }, 3000);
+    }
+  } catch (err) {
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = window.location.href;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      const message = document.getElementById('copyMessage');
+      if (message) {
+        message.style.display = 'block';
+        setTimeout(() => {
+          message.style.display = 'none';
+        }, 3000);
+      }
+    } catch (err) {
+      console.error('Failed to copy link:', err);
+      alert('Failed to copy link. Please copy manually: ' + window.location.href);
+    }
+    document.body.removeChild(textArea);
+  }
+}
+
 // Global lightboxSwiper reference
 var lightboxSwiper = null;
 
