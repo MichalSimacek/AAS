@@ -75,7 +75,7 @@ Server: $(hostname)
 Docker Containers:
 $(docker ps --format "table {{.Names}}\t{{.Status}}")
 
-Database Size: $(docker exec aas-db-prod psql -U postgres -d aas -c "SELECT pg_size_pretty(pg_database_size('aas'));" -t)
+Database Size: $(docker exec aas-db-prod psql -U $DB_USER -d $DB_NAME -c "SELECT pg_size_pretty(pg_database_size('$DB_NAME'));" -t 2>/dev/null || echo "N/A")
 
 Disk Usage:
 $(df -h /AAS)
