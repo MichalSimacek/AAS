@@ -644,6 +644,41 @@ select.form-select option {
   color: #6c757d !important;
 }
 
+/* PAGINATION */
+.pagination {
+  margin: 0;
+  gap: 8px;
+}
+
+.page-link {
+  color: #4A4A4A !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E5E5E5 !important;
+  border-radius: 6px !important;
+  padding: 10px 16px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.page-link:hover {
+  color: #FFFFFF !important;
+  background-color: #B8941F !important;
+  border-color: #B8941F !important;
+}
+
+.page-item.active .page-link {
+  color: #FFFFFF !important;
+  background-color: #B8941F !important;
+  border-color: #B8941F !important;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d !important;
+  background-color: #F5F5F5 !important;
+  border-color: #E5E5E5 !important;
+  cursor: not-allowed !important;
+}
+
 /* ALERT */
 .alert {
   padding: 16px !important;
