@@ -832,10 +832,13 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Comment updated successfully:', data);
       closeEditCommentDialog();
       
+      // Store the updated comment ID for highlighting
+      window.lastUpdatedCommentId = commentId;
+      
       // Wait a moment then reload comments with cache busting
       setTimeout(() => {
         console.log('Reloading comments after update...');
-        loadComments();
+        loadCommentsAndHighlight(commentId);
       }, 100);
     })
     .catch(error => {
