@@ -344,4 +344,9 @@
 <data name="BuyOrSellDetails" xml:space="preserve"><value>Whether you're looking to expand your collection or sell valuable items, we provide professional services with complete discretion and the highest prices in the market.</value></data>
 <data name="LearnMore" xml:space="preserve"><value>Learn More</value></data>
 
+<!-- Pagination -->
+<data name="Showing" xml:space="preserve"><value>Showing</value></data>
+<data name="of" xml:space="preserve"><value>of</value></data>
+<data name="collections" xml:space="preserve"><value>collections</value></data>
+
 </root>

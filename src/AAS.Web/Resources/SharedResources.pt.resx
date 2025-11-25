@@ -301,4 +301,9 @@
 
 <data name="Blog" xml:space="preserve"><value>Blog</value></data>
 
+<!-- Pagination -->
+<data name="Showing" xml:space="preserve"><value>Mostrando</value></data>
+<data name="of" xml:space="preserve"><value>de</value></data>
+<data name="collections" xml:space="preserve"><value>coleções</value></data>
+
 </root>

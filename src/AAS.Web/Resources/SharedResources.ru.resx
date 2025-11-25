@@ -301,4 +301,9 @@
 
 <data name="Blog" xml:space="preserve"><value>Блог</value></data>
 
+<!-- Pagination -->
+<data name="Showing" xml:space="preserve"><value>Показано</value></data>
+<data name="of" xml:space="preserve"><value>из</value></data>
+<data name="collections" xml:space="preserve"><value>коллекций</value></data>
+
 </root>

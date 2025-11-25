@@ -300,4 +300,9 @@
 <data name="LearnMore" xml:space="preserve"><value>Mehr erfahren</value></data>
 <data name="Blog" xml:space="preserve"><value>Blog</value></data>
 
+<!-- Pagination -->
+<data name="Showing" xml:space="preserve"><value>Anzeige</value></data>
+<data name="of" xml:space="preserve"><value>von</value></data>
+<data name="collections" xml:space="preserve"><value>Sammlungen</value></data>
+
 </root>
