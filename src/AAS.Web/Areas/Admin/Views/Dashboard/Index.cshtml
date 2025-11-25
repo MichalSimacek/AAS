@@ -405,67 +405,119 @@
             </div>
         </div>
 
-        <!-- Recent Collections -->
-        @if (Model.Any())
-        {
-            <div class="recent-section">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <i class="bi bi-clock-history me-2"></i>Recent Collections
-                    </h2>
-                    <a href="/Admin/Collections" class="view-all-link">
-                        View All <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
+        <!-- Two Column Layout for Recent Items -->
+        <div class="row g-4 mb-4">
+            <!-- Recent Activity -->
+            <div class="col-lg-6">
+                <div class="recent-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="bi bi-activity me-2"></i>Recent Activity
+                        </h2>
+                    </div>
 
-                <div class="collection-list">
-                    @foreach (var collection in Model)
+                    @if (ViewBag.RecentActivities != null && ViewBag.RecentActivities.Count > 0)
                     {
-                        var firstImage = collection.Images.FirstOrDefault();
-                        <div class="collection-item">
-                            @if (firstImage != null)
+                        <div class="activity-feed">
+                            @foreach (var activity in ViewBag.RecentActivities)
                             {
-                                <img src="/uploads/images/@firstImage.FileName-480.jpg" 
-                                     alt="@collection.Title" 
-                                     class="collection-thumb" />
-                            }
-                            else
-                            {
-                                <div class="collection-thumb-placeholder">
-                                    <i class="bi bi-image"></i>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: @activity.Color">
+                                        <i class="bi bi-@activity.Icon"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <div class="activity-message">@activity.Message</div>
+                                        <div class="activity-time">
+                                            <i class="bi bi-clock me-1"></i>
+                                            @{
+                                                var timeSpan = DateTime.UtcNow - activity.Timestamp;
+                                                var timeText = timeSpan.TotalMinutes < 60 
+                                                    ? $"{(int)timeSpan.TotalMinutes} minutes ago"
+                                                    : timeSpan.TotalHours < 24 
+                                                        ? $"{(int)timeSpan.TotalHours} hours ago"
+                                                        : $"{(int)timeSpan.TotalDays} days ago";
+                                            }
+                                            @timeText
+                                        </div>
+                                    </div>
                                 </div>
                             }
-                            
-                            <div class="collection-info">
-                                <div class="collection-title">@collection.Title</div>
-                                <div class="collection-meta">
-                                    <span class="badge 
-                                        @(collection.Status == AAS.Web.Models.CollectionStatus.Available ? "bg-success" : 
-                                          collection.Status == AAS.Web.Models.CollectionStatus.Sold ? "bg-danger" : "bg-warning")">
-                                        @collection.Status
-                                    </span>
-                                    <span class="ms-2">@collection.Category</span>
-                                    @if (collection.Price.HasValue)
-                                    {
-                                        <span class="ms-2" style="color: #B8941F; font-weight: 600;">
-                                            @(collection.Currency == AAS.Web.Models.Currency.EUR ? "€" : "$")@string.Format("{0:N0}", collection.Price)
-                                        </span>
-                                    }
-                                </div>
-                            </div>
-                            
-                            <div class="collection-actions">
-                                <a href="/collections/@collection.Slug" class="btn-icon" title="View">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                                <a href="/Admin/Collections/Edit/@collection.Id" class="btn-icon" title="Edit">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="empty-activity">
+                            <i class="bi bi-inbox" style="font-size: 48px; color: #DEE2E6; margin-bottom: 16px;"></i>
+                            <p class="text-muted">No recent activity</p>
                         </div>
                     }
                 </div>
             </div>
-        }
+
+            <!-- Recent Collections -->
+            <div class="col-lg-6">
+                @if (Model.Any())
+                {
+                    <div class="recent-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="bi bi-clock-history me-2"></i>Recent Collections
+                            </h2>
+                            <a href="/Admin/Collections" class="view-all-link">
+                                View All <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="collection-list">
+                            @foreach (var collection in Model)
+                            {
+                                var firstImage = collection.Images.FirstOrDefault();
+                                <div class="collection-item">
+                                    @if (firstImage != null)
+                                    {
+                                        <img src="/uploads/images/@firstImage.FileName-480.jpg" 
+                                             alt="@collection.Title" 
+                                             class="collection-thumb" />
+                                    }
+                                    else
+                                    {
+                                        <div class="collection-thumb-placeholder">
+                                            <i class="bi bi-image"></i>
+                                        </div>
+                                    }
+                                    
+                                    <div class="collection-info">
+                                        <div class="collection-title">@collection.Title</div>
+                                        <div class="collection-meta">
+                                            <span class="badge 
+                                                @(collection.Status == AAS.Web.Models.CollectionStatus.Available ? "bg-success" : 
+                                                  collection.Status == AAS.Web.Models.CollectionStatus.Sold ? "bg-danger" : "bg-warning")">
+                                                @collection.Status
+                                            </span>
+                                            <span class="ms-2">@collection.Category</span>
+                                            @if (collection.Price.HasValue)
+                                            {
+                                                <span class="ms-2" style="color: #B8941F; font-weight: 600;">
+                                                    @(collection.Currency == AAS.Web.Models.Currency.EUR ? "€" : "$")@string.Format("{0:N0}", collection.Price)
+                                                </span>
+                                            }
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="collection-actions">
+                                        <a href="/collections/@collection.Slug" class="btn-icon" title="View">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="/Admin/Collections/Edit/@collection.Id" class="btn-icon" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 </div>
