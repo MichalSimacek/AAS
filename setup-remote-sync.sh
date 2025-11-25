@@ -9,6 +9,22 @@ echo "==================================="
 BACKUP_SERVER="backup15.master.cz"
 BACKUP_USER="bcp-id-9316"
 
+# Check and install required tools
+echo "Checking for required tools..."
+if ! command -v lftp &> /dev/null; then
+    echo "Installing lftp..."
+    apt-get update -qq
+    apt-get install -y lftp
+fi
+
+if ! command -v curl &> /dev/null; then
+    echo "Installing curl..."
+    apt-get install -y curl
+fi
+
+echo "✅ Required tools installed"
+echo ""
+
 read -p "Have you retrieved the backup password? (y/n): " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -19,13 +35,9 @@ fi
 read -sp "Enter backup password: " BACKUP_PASSWORD
 echo
 
-# Test FTP connection
+# Test FTP connection using lftp
 echo "Testing FTP connection..."
-ftp -n $BACKUP_SERVER << EOF
-user $BACKUP_USER $BACKUP_PASSWORD
-pwd
-bye
-EOF
+lftp -c "set ftp:ssl-allow no; open -u $BACKUP_USER,$BACKUP_PASSWORD $BACKUP_SERVER; pwd; bye" 2>&1
 
 if [ $? -eq 0 ]; then
     echo "✅ FTP connection successful!"
