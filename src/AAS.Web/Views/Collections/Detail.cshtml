@@ -941,9 +941,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Close modal on ESC key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      const modal = document.getElementById('editCommentModal');
-      if (modal && modal.style.display === 'flex') {
+      const editModal = document.getElementById('editCommentModal');
+      const deleteModal = document.getElementById('deleteCommentModal');
+      
+      if (editModal && editModal.style.display === 'flex') {
         closeEditCommentDialog();
+      } else if (deleteModal && deleteModal.style.display === 'flex') {
+        closeDeleteCommentDialog();
       }
     }
   });
@@ -952,6 +956,12 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('editCommentModal')?.addEventListener('click', function(e) {
     if (e.target === this) {
       closeEditCommentDialog();
+    }
+  });
+  
+  document.getElementById('deleteCommentModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeDeleteCommentDialog();
     }
   });
 });
