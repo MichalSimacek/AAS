@@ -845,6 +845,104 @@ document.addEventListener('DOMContentLoaded', function() {
     div.textContent = text;
     return div.innerHTML;
   }
+  
+  // Close modal on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('editCommentModal');
+      if (modal && modal.style.display === 'flex') {
+        closeEditCommentDialog();
+      }
+    }
+  });
+  
+  // Close modal on backdrop click
+  document.getElementById('editCommentModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeEditCommentDialog();
+    }
+  });
+});
+</script>
+
+<!-- Modern Edit Comment Dialog -->
+<div id="editCommentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1055; align-items: center; justify-content: center;">
+  <div style="background: white; border-radius: 12px; max-width: 600px; width: 90%; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: modalSlideIn 0.3s ease;">
+    <div style="padding: 24px; border-bottom: 1px solid #E5E5E5; display: flex; justify-content: space-between; align-items: center;">
+      <h5 style="margin: 0; font-size: 20px; color: #1A1A1A; font-weight: 600;">
+        <i class="bi bi-pencil-square me-2" style="color: #B8941F;"></i>@L["Edit Comment"]
+      </h5>
+      <button type="button" onclick="closeEditCommentDialog()" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px; color: #4A4A4A; transition: color 0.2s;" onmouseover="this.style.color='#B8941F'" onmouseout="this.style.color='#4A4A4A'">&times;</button>
+    </div>
+    <div style="padding: 24px;">
+      <label for="editCommentText" style="display: block; margin-bottom: 8px; font-weight: 600; color: #1A1A1A;">@L["Your Comment"]</label>
+      <textarea 
+        id="editCommentText" 
+        rows="6" 
+        maxlength="2000"
+        style="width: 100%; padding: 12px; border: 2px solid #E5E5E5; border-radius: 8px; font-size: 16px; font-family: inherit; resize: vertical; transition: border-color 0.2s;"
+        onfocus="this.style.borderColor='#B8941F'"
+        onblur="this.style.borderColor='#E5E5E5'"
+        placeholder="@L["Write your comment here..."]"
+      ></textarea>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+        <small style="color: #6c757d;">
+          <i class="bi bi-info-circle me-1"></i>@L["Maximum 2000 characters"]
+        </small>
+        <small id="charCount" style="color: #6c757d;"></small>
+      </div>
+    </div>
+    <div style="padding: 24px; border-top: 1px solid #E5E5E5; display: flex; gap: 12px; justify-content: flex-end;">
+      <button type="button" class="btn btn-secondary" onclick="closeEditCommentDialog()" style="padding: 10px 24px; border-radius: 6px;">
+        <i class="bi bi-x-circle me-2"></i>@L["Cancel"]
+      </button>
+      <button type="button" id="submitEditBtn" class="btn btn-primary" onclick="submitEditComment()" style="padding: 10px 24px; border-radius: 6px; background: #B8941F; border-color: #B8941F;">
+        <i class="bi bi-check-circle me-2"></i>@L["Save Changes"]
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+@@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#editCommentModal button.btn-primary:hover {
+  background: #C9A961 !important;
+  border-color: #C9A961 !important;
+}
+
+#editCommentModal button.btn-secondary:hover {
+  background: #5a6268 !important;
+}
+</style>
+
+<script>
+// Character counter
+document.addEventListener('DOMContentLoaded', function() {
+  const textarea = document.getElementById('editCommentText');
+  const charCount = document.getElementById('charCount');
+  
+  if (textarea && charCount) {
+    textarea.addEventListener('input', function() {
+      const remaining = 2000 - this.value.length;
+      charCount.textContent = `${this.value.length} / 2000`;
+      
+      if (remaining < 100) {
+        charCount.style.color = '#DC3545';
+      } else {
+        charCount.style.color = '#6c757d';
+      }
+    });
+  }
 });
 </script>
 }
