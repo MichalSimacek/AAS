@@ -589,7 +589,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function loadComments() {
     console.log('Loading comments for collection:', collectionId);
-    fetch(`/api/Comments/collection/${collectionId}`)
+    // Add timestamp to prevent caching
+    const timestamp = new Date().getTime();
+    fetch(`/api/Comments/collection/${collectionId}?t=${timestamp}`, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache'
+      }
+    })
       .then(response => {
         console.log('Comments API response status:', response.status);
         if (!response.ok) {
@@ -598,7 +605,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return response.json();
       })
       .then(comments => {
-        console.log('Loaded comments:', comments.length, comments);
+        console.log('Loaded comments (total:', comments.length, '):', comments);
         renderComments(comments);
       })
       .catch(error => {
