@@ -3,6 +3,36 @@
 @using System.Web
 @{
   var images = Model.Images.OrderBy(i => i.SortOrder).ToList();
+  var firstImage = images.FirstOrDefault();
+  var imageUrl = firstImage != null ? $"{Context.Request.Scheme}://{Context.Request.Host}/uploads/images/{firstImage.FileName}-1600.jpg" : "";
+  var pageUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}";
+  var description = !string.IsNullOrEmpty(Model.Description) && Model.Description.Length > 160 
+    ? Model.Description.Substring(0, 160) + "..." 
+    : Model.Description ?? "Aristocratic Artwork Sale";
+}
+
+@section Meta {
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="@pageUrl" />
+  <meta property="og:title" content="@Model.Title - Aristocratic Artwork Sale" />
+  <meta property="og:description" content="@description" />
+  @if (!string.IsNullOrEmpty(imageUrl))
+  {
+    <meta property="og:image" content="@imageUrl" />
+    <meta property="og:image:width" content="1600" />
+    <meta property="og:image:height" content="1200" />
+  }
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="@pageUrl" />
+  <meta property="twitter:title" content="@Model.Title - Aristocratic Artwork Sale" />
+  <meta property="twitter:description" content="@description" />
+  @if (!string.IsNullOrEmpty(imageUrl))
+  {
+    <meta property="twitter:image" content="@imageUrl" />
+  }
 }
 
 <div class="section">
