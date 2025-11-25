@@ -240,14 +240,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Delete image modal functions
+    function openDeleteModal() {
+        document.getElementById('deleteImageModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeDeleteModal() {
+        document.getElementById('deleteImageModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    
+    // Close on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDeleteModal();
+        }
+    });
+    
+    // Close on backdrop click
+    document.getElementById('deleteImageModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeDeleteModal();
+        }
+    });
+    
     // Delete image functionality
     document.querySelectorAll('.btn-delete-image').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var imageId = this.getAttribute('data-image-id');
             var collectionId = this.getAttribute('data-collection-id');
             document.getElementById('deleteImageForm').action = '/Admin/Collections/DeleteImage/' + collectionId + '/' + imageId;
-            var modal = new bootstrap.Modal(document.getElementById('deleteImageModal'));
-            modal.show();
+            openDeleteModal();
         });
     });
     
