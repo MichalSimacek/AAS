@@ -813,5 +813,98 @@ document.addEventListener('DOMContentLoaded', function() {
             openDeleteModal(id, title);
         });
     });
+
+    // Enhanced filtering functionality
+    const searchInput = document.getElementById('search');
+    const filtersForm = document.querySelector('.filters-form');
+    let searchTimeout;
+
+    // Live search with debounce
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                if (this.value.length >= 2 || this.value.length === 0) {
+                    submitFilters();
+                }
+            }, 500);
+        });
+
+        // Submit on Enter key
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitFilters();
+            }
+        });
+    }
+
+    // Auto-submit on filter change
+    const filterSelects = document.querySelectorAll('.filters-form select');
+    const priceInputs = document.querySelectorAll('.price-input');
+
+    filterSelects.forEach(select => {
+        select.addEventListener('change', function() {
+            submitFilters();
+        });
+    });
+
+    priceInputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            if (this.value !== this.dataset.originalValue) {
+                submitFilters();
+            }
+        });
+
+        // Store original value for comparison
+        input.dataset.originalValue = input.value || '';
+
+        // Submit on Enter
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitFilters();
+            }
+        });
+    });
+
+    function submitFilters() {
+        // Add loading state
+        const filterBtn = document.querySelector('.filter-btn');
+        if (filterBtn) {
+            filterBtn.disabled = true;
+            filterBtn.innerHTML = '<i class="bi bi-hourglass-split me-1"></i>Filtering...';
+        }
+
+        // Submit form
+        filtersForm.submit();
+    }
+
+    // Clear filters functionality
+    const resetBtn = document.querySelector('.btn[href="/Admin/Collections"]');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Clear all form inputs
+            searchInput.value = '';
+            filterSelects.forEach(select => select.selectedIndex = 0);
+            priceInputs.forEach(input => input.value = '');
+            
+            // Redirect to clean URL
+            window.location.href = '/Admin/Collections';
+        });
+    }
+
+    // URL highlighting for filtered state
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasFilters = urlParams.toString().length > 0;
+    
+    if (hasFilters) {
+        const filtersSection = document.querySelector('.filters-section');
+        if (filtersSection) {
+            filtersSection.style.borderLeft = '4px solid #B8941F';
+        }
+    }
 });
 </script>
