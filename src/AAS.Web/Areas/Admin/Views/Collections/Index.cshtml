@@ -75,17 +75,17 @@
                         </label>
                         <select id="category" name="category" class="form-select">
                             <option value="">All Categories</option>
-                            <option value="0" @(ViewBag.Category?.Equals(0) == true ? "selected=\"selected\"" : "")>Porcelain</option>
-                            <option value="1" @(ViewBag.Category?.Equals(1) == true ? "selected=\"selected\"" : "")>Glass</option>
-                            <option value="2" @(ViewBag.Category?.Equals(2) == true ? "selected=\"selected\"" : "")>Silver</option>
-                            <option value="3" @(ViewBag.Category?.Equals(3) == true ? "selected=\"selected\"" : "")>Crystal</option>
-                            <option value="4" @(ViewBag.Category?.Equals(4) == true ? "selected=\"selected\"" : "")>Ceramic</option>
-                            <option value="5" @(ViewBag.Category?.Equals(5) == true ? "selected=\"selected\"" : "")>Furniture</option>
-                            <option value="6" @(ViewBag.Category?.Equals(6) == true ? "selected=\"selected\"" : "")>Jewelry</option>
-                            <option value="7" @(ViewBag.Category?.Equals(7) == true ? "selected=\"selected\"" : "")>Art</option>
-                            <option value="8" @(ViewBag.Category?.Equals(8) == true ? "selected=\"selected\"" : "")>Textiles</option>
-                            <option value="9" @(ViewBag.Category?.Equals(9) == true ? "selected=\"selected\"" : "")>Books</option>
-                            <option value="10" @(ViewBag.Category?.Equals(10) == true ? "selected=\"selected\"" : "")>Other</option>
+                            <option value="0" @Html.Raw(ViewBag.Category?.Equals(0) == true ? "selected" : "")>Porcelain</option>
+                            <option value="1" @Html.Raw(ViewBag.Category?.Equals(1) == true ? "selected" : "")>Glass</option>
+                            <option value="2" @Html.Raw(ViewBag.Category?.Equals(2) == true ? "selected" : "")>Silver</option>
+                            <option value="3" @Html.Raw(ViewBag.Category?.Equals(3) == true ? "selected" : "")>Crystal</option>
+                            <option value="4" @Html.Raw(ViewBag.Category?.Equals(4) == true ? "selected" : "")>Ceramic</option>
+                            <option value="5" @Html.Raw(ViewBag.Category?.Equals(5) == true ? "selected" : "")>Furniture</option>
+                            <option value="6" @Html.Raw(ViewBag.Category?.Equals(6) == true ? "selected" : "")>Jewelry</option>
+                            <option value="7" @Html.Raw(ViewBag.Category?.Equals(7) == true ? "selected" : "")>Art</option>
+                            <option value="8" @Html.Raw(ViewBag.Category?.Equals(8) == true ? "selected" : "")>Textiles</option>
+                            <option value="9" @Html.Raw(ViewBag.Category?.Equals(9) == true ? "selected" : "")>Books</option>
+                            <option value="10" @Html.Raw(ViewBag.Category?.Equals(10) == true ? "selected" : "")>Other</option>
                         </select>
                     </div>
 
