@@ -152,8 +152,22 @@
                         </label>
                         <select id="verified" name="verified" class="form-select">
                             <option value="">All Items</option>
-                            <option value="true" @Html.Raw(ViewBag.Verified?.Equals(true) == true ? "selected" : "")>Verified Only</option>
-                            <option value="false" @Html.Raw(ViewBag.Verified?.Equals(false) == true ? "selected" : "")>Unverified Only</option>
+                            @if (ViewBag.Verified?.Equals(true) == true)
+                            {
+                                <option value="true" selected>Verified Only</option>
+                            }
+                            else
+                            {
+                                <option value="true">Verified Only</option>
+                            }
+                            @if (ViewBag.Verified?.Equals(false) == true)
+                            {
+                                <option value="false" selected>Unverified Only</option>
+                            }
+                            else
+                            {
+                                <option value="false">Unverified Only</option>
+                            }
                         </select>
                     </div>
 
