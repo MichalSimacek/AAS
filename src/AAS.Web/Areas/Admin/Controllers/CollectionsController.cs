@@ -94,7 +94,6 @@ namespace AAS.Web.Areas.Admin.Controllers
             ViewBag.MinPrice = minPrice;
             ViewBag.MaxPrice = maxPrice;
             ViewBag.Verified = verified;
-            ViewBag.TotalCount = Model.Count();
             ViewBag.FilteredCount = items.Count;
 
             return View(items.Select(x => x.Collection).ToList());
