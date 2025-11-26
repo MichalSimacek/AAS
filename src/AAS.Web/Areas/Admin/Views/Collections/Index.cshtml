@@ -38,6 +38,142 @@
             </div>
         </div>
 
+        <!-- Search and Filter Section -->
+        <div class="filters-section">
+            <form method="get" class="filters-form">
+                <div class="filters-row">
+                    <!-- Search Box -->
+                    <div class="filter-group search-group">
+                        <label for="search" class="filter-label">
+                            <i class="bi bi-search me-1"></i>Search
+                        </label>
+                        <input type="text" 
+                               id="search" 
+                               name="search" 
+                               value="@ViewBag.Search" 
+                               placeholder="Title or description..." 
+                               class="form-control search-input">
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div class="filter-group">
+                        <label for="status" class="filter-label">
+                            <i class="bi bi-flag me-1"></i>Status
+                        </label>
+                        <select id="status" name="status" class="form-select">
+                            <option value="">All Statuses</option>
+                            <option value="0" @(ViewBag.Status?.Equals(0) == true ? "selected" : "")>Available</option>
+                            <option value="1" @(ViewBag.Status?.Equals(1) == true ? "selected" : "")>Sold</option>
+                            <option value="2" @(ViewBag.Status?.Equals(2) == true ? "selected" : "")>In Auction</option>
+                        </select>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <label for="category" class="filter-label">
+                            <i class="bi bi-tag me-1"></i>Category
+                        </label>
+                        <select id="category" name="category" class="form-select">
+                            <option value="">All Categories</option>
+                            <option value="0" @(ViewBag.Category?.Equals(0) == true ? "selected" : "")>Porcelain</option>
+                            <option value="1" @(ViewBag.Category?.Equals(1) == true ? "selected" : "")>Glass</option>
+                            <option value="2" @(ViewBag.Category?.Equals(2) == true ? "selected" : "")>Silver</option>
+                            <option value="3" @(ViewBag.Category?.Equals(3) == true ? "selected" : "")>Crystal</option>
+                            <option value="4" @(ViewBag.Category?.Equals(4) == true ? "selected" : "")>Ceramic</option>
+                            <option value="5" @(ViewBag.Category?.Equals(5) == true ? "selected" : "")>Furniture</option>
+                            <option value="6" @(ViewBag.Category?.Equals(6) == true ? "selected" : "")>Jewelry</option>
+                            <option value="7" @(ViewBag.Category?.Equals(7) == true ? "selected" : "")>Art</option>
+                            <option value="8" @(ViewBag.Category?.Equals(8) == true ? "selected" : "")>Textiles</option>
+                            <option value="9" @(ViewBag.Category?.Equals(9) == true ? "selected" : "")>Books</option>
+                            <option value="10" @(ViewBag.Category?.Equals(10) == true ? "selected" : "")>Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="bi bi-currency-euro me-1"></i>Price Range
+                        </label>
+                        <div class="price-range-inputs">
+                            <input type="number" 
+                                   name="minPrice" 
+                                   value="@ViewBag.MinPrice" 
+                                   placeholder="Min €" 
+                                   class="form-control price-input"
+                                   min="0"
+                                   step="1">
+                            <span class="price-separator">-</span>
+                            <input type="number" 
+                                   name="maxPrice" 
+                                   value="@ViewBag.MaxPrice" 
+                                   placeholder="Max €" 
+                                   class="form-control price-input"
+                                   min="0"
+                                   step="1">
+                        </div>
+                    </div>
+
+                    <!-- Verified Filter -->
+                    <div class="filter-group">
+                        <label for="verified" class="filter-label">
+                            <i class="bi bi-patch-check me-1"></i>Verified
+                        </label>
+                        <select id="verified" name="verified" class="form-select">
+                            <option value="">All Items</option>
+                            <option value="true" @(ViewBag.Verified?.Equals(true) == true ? "selected" : "")>Verified Only</option>
+                            <option value="false" @(ViewBag.Verified?.Equals(false) == true ? "selected" : "")>Unverified Only</option>
+                        </select>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="filter-actions">
+                        <button type="submit" class="btn btn-primary filter-btn">
+                            <i class="bi bi-funnel me-1"></i>Filter
+                        </button>
+                        <a href="/Admin/Collections" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Reset
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Results Summary -->
+                @if (!string.IsNullOrWhiteSpace(ViewBag.Search as string) || 
+                     ViewBag.Status != null || ViewBag.Category != null || 
+                     ViewBag.MinPrice != null || ViewBag.MaxPrice != null || 
+                     ViewBag.Verified != null)
+                {
+                    <div class="results-summary">
+                        <span class="results-count">
+                            <i class="bi bi-info-circle me-1"></i>
+                            Showing @ViewBag.FilteredCount results
+                            @if (!string.IsNullOrWhiteSpace(ViewBag.Search as string))
+                            {
+                                <span class="filter-tag">Search: "@ViewBag.Search"</span>
+                            }
+                            @if (ViewBag.Status != null)
+                            {
+                                <span class="filter-tag">Status: @((AAS.Web.Models.CollectionStatus)ViewBag.Status)</span>
+                            }
+                            @if (ViewBag.Category != null)
+                            {
+                                <span class="filter-tag">Category: @((AAS.Web.Models.CollectionCategory)ViewBag.Category)</span>
+                            }
+                            @if (ViewBag.MinPrice != null || ViewBag.MaxPrice != null)
+                            {
+                                <span class="filter-tag">
+                                    Price: @(ViewBag.MinPrice?.ToString() ?? "0")€ - @(ViewBag.MaxPrice?.ToString() ?? "∞")€
+                                </span>
+                            }
+                            @if (ViewBag.Verified != null)
+                            {
+                                <span class="filter-tag">@(ViewBag.Verified == true ? "Verified" : "Unverified")</span>
+                            }
+                        </span>
+                    </div>
+                }
+            </form>
+        </div>
+
         <!-- Collections List -->
         @if (!Model.Any())
         {
