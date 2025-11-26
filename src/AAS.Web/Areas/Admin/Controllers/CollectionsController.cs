@@ -28,10 +28,55 @@ namespace AAS.Web.Areas.Admin.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            string? search = null, 
+            int? status = null, 
+            int? category = null, 
+            decimal? minPrice = null, 
+            decimal? maxPrice = null,
+            bool? verified = null)
         {
+            var query = _db.Collections.AsQueryable();
+
+            // Apply search filter
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var searchLower = search.ToLower();
+                query = query.Where(c => c.Title.ToLower().Contains(searchLower) ||
+                                   c.Description.ToLower().Contains(searchLower));
+            }
+
+            // Apply status filter
+            if (status.HasValue)
+            {
+                query = query.Where(c => (int)c.Status == status.Value);
+            }
+
+            // Apply category filter
+            if (category.HasValue)
+            {
+                query = query.Where(c => (int)c.Category == category.Value);
+            }
+
+            // Apply price range filters
+            if (minPrice.HasValue)
+            {
+                query = query.Where(c => c.Price >= minPrice.Value);
+            }
+
+            if (maxPrice.HasValue)
+            {
+                query = query.Where(c => c.Price <= maxPrice.Value);
+            }
+
+            // Apply verified filter
+            if (verified.HasValue)
+            {
+                query = query.Where(c => c.AASVerified == verified.Value);
+            }
+
             // PERFORMANCE FIX: Don't load images for list view, only count
-            var items = await _db.Collections
+            var items = await query
                 .Select(c => new
                 {
                     Collection = c,
@@ -41,8 +86,17 @@ namespace AAS.Web.Areas.Admin.Controllers
                 .AsNoTracking()
                 .ToListAsync();
 
-            // Pass image counts via ViewBag
+            // Pass image counts and filter values via ViewBag
             ViewBag.ImageCounts = items.ToDictionary(x => x.Collection.Id, x => x.ImageCount);
+            ViewBag.Search = search;
+            ViewBag.Status = status;
+            ViewBag.Category = category;
+            ViewBag.MinPrice = minPrice;
+            ViewBag.MaxPrice = maxPrice;
+            ViewBag.Verified = verified;
+            ViewBag.TotalCount = Model.Count();
+            ViewBag.FilteredCount = items.Count;
+
             return View(items.Select(x => x.Collection).ToList());
         }
 
