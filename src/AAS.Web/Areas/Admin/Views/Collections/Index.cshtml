@@ -575,6 +575,185 @@
         flex: 1;
     }
 }
+
+/* Search and Filter Section */
+.filters-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+    padding: 24px;
+}
+
+.filters-form {
+    margin: 0;
+}
+
+.filters-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr 1fr auto;
+    gap: 20px;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-group {
+    min-width: 250px;
+}
+
+.filter-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.search-input,
+.form-select,
+.price-input {
+    border: 1px solid #E5E5E5;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus,
+.form-select:focus,
+.price-input:focus {
+    border-color: #B8941F;
+    box-shadow: 0 0 0 3px rgba(184, 148, 31, 0.1);
+    outline: none;
+}
+
+.price-range-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.price-input {
+    flex: 1;
+    min-width: 80px;
+}
+
+.price-separator {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    background: #B8941F;
+    border-color: #B8941F;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+.filter-btn:hover {
+    background: #A0821B;
+    border-color: #A0821B;
+}
+
+.results-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #E5E5E5;
+}
+
+.results-count {
+    font-size: 14px;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-tag {
+    background: #F8F9FA;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #495057;
+}
+
+/* Responsive Design for Filters */
+@media (max-width: 1400px) {
+    .filters-row {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr auto;
+        gap: 16px;
+    }
+    
+    .filter-group:nth-child(5) {
+        grid-column: 1 / -1;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .filters-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    
+    .search-group {
+        grid-column: 1 / -1;
+        min-width: auto;
+    }
+    
+    .filter-actions {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .filters-section {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+    
+    .filters-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .filter-actions {
+        flex-direction: column;
+    }
+    
+    .filter-actions .btn {
+        width: 100%;
+    }
+    
+    .results-summary {
+        margin-top: 16px;
+        padding-top: 16px;
+    }
+    
+    .results-count {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
 </style>
 
 <!-- Delete Confirmation Modal - Simple Implementation -->
