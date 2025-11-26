@@ -62,9 +62,35 @@
                         </label>
                         <select id="status" name="status" class="form-select">
                             <option value="">All Statuses</option>
-                            <option value="0" @Html.Raw(ViewBag.Status?.Equals(0) == true ? "selected" : "")>Available</option>
-                            <option value="1" @Html.Raw(ViewBag.Status?.Equals(1) == true ? "selected" : "")>Sold</option>
-                            <option value="2" @Html.Raw(ViewBag.Status?.Equals(2) == true ? "selected" : "")>In Auction</option>
+                            @{
+                                var statusSelected0 = ViewBag.Status?.Equals(0) == true;
+                                var statusSelected1 = ViewBag.Status?.Equals(1) == true;
+                                var statusSelected2 = ViewBag.Status?.Equals(2) == true;
+                            }
+                            @if (statusSelected0)
+                            {
+                                <option value="0" selected>Available</option>
+                            }
+                            else
+                            {
+                                <option value="0">Available</option>
+                            }
+                            @if (statusSelected1)
+                            {
+                                <option value="1" selected>Sold</option>
+                            }
+                            else
+                            {
+                                <option value="1">Sold</option>
+                            }
+                            @if (statusSelected2)
+                            {
+                                <option value="2" selected>In Auction</option>
+                            }
+                            else
+                            {
+                                <option value="2">In Auction</option>
+                            }
                         </select>
                     </div>
 
