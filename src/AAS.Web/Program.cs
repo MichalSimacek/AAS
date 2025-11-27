@@ -184,7 +184,7 @@ app.Use((ctx, next) =>
               "img-src 'self' data: https: blob:; " +
               "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; " +
               "media-src 'self' blob:; " +
-              "connect-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; " +
+              "connect-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.google-analytics.com; " +
               "frame-ancestors 'none'; " +
               "base-uri 'self'; " +
               "form-action 'self'";
