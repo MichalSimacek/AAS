@@ -65,8 +65,14 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const navItems = document.querySelectorAll('.nav-item');
+    // Only select nav items within settings sidebar
+    const sidebar = document.querySelector('.settings-sidebar');
+    if (!sidebar) return; // Exit if sidebar doesn't exist
+    
+    const navItems = sidebar.querySelectorAll('.nav-item');
     const contentArea = document.getElementById('settings-main-content');
+    
+    if (!contentArea || navItems.length === 0) return;
     
     // Map sections to URLs
     const sectionUrls = {
@@ -80,18 +86,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPath = window.location.pathname;
     navItems.forEach(item => {
         const section = item.dataset.section;
-        if (currentPath.includes(sectionUrls[section])) {
+        const targetUrl = sectionUrls[section];
+        
+        if (targetUrl && currentPath.includes(targetUrl)) {
             navItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
         }
     });
     
+    // Add click handlers only to sidebar nav items
     navItems.forEach(item => {
         item.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation(); // Prevent event bubbling
             
             const section = this.dataset.section;
             const url = sectionUrls[section];
+            
+            // Safety check
+            if (!url) {
+                console.error('No URL found for section:', section);
+                return;
+            }
+            
+            // Don't reload if already on this page
+            if (window.location.pathname === url) {
+                return;
+            }
             
             // Update active state
             navItems.forEach(i => i.classList.remove('active'));
@@ -100,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Fade out current content
             contentArea.style.opacity = '0';
             contentArea.style.transform = 'translateX(20px)';
+            contentArea.style.transition = 'all 0.2s ease';
             
             // Load new content after fade
             setTimeout(() => {
