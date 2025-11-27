@@ -306,4 +306,23 @@
 <data name="of" xml:space="preserve"><value>de</value></data>
 <data name="collections" xml:space="preserve"><value>colecciones</value></data>
 
+<!-- GDPR Cookie Consent -->
+<data name="Cookie Settings" xml:space="preserve"><value>Configuración de cookies</value></data>
+<data name="We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies." xml:space="preserve"><value>Utilizamos cookies y tecnologías similares para mejorar su experiencia de navegación, analizar el tráfico del sitio web y entender de dónde vienen nuestros visitantes. Al hacer clic en 'Aceptar todo', acepta nuestro uso de cookies.</value></data>
+<data name="How Google uses data" xml:space="preserve"><value>Cómo Google usa los datos</value></data>
+<data name="Privacy Policy" xml:space="preserve"><value>Política de privacidad</value></data>
+<data name="Decline" xml:space="preserve"><value>Rechazar</value></data>
+<data name="Settings" xml:space="preserve"><value>Configuración</value></data>
+<data name="Accept All" xml:space="preserve"><value>Aceptar todo</value></data>
+<data name="Cookie Preferences" xml:space="preserve"><value>Preferencias de cookies</value></data>
+<data name="Essential Cookies" xml:space="preserve"><value>Cookies esenciales</value></data>
+<data name="These cookies are necessary for the website to function and cannot be switched off." xml:space="preserve"><value>Estas cookies son necesarias para que el sitio web funcione y no se pueden desactivar.</value></data>
+<data name="Analytics Cookies" xml:space="preserve"><value>Cookies de análisis</value></data>
+<data name="These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously." xml:space="preserve"><value>Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web recopilando e informando información de forma anónima.</value></data>
+<data name="Marketing Cookies" xml:space="preserve"><value>Cookies de marketing</value></data>
+<data name="These cookies are used to make advertising messages more relevant to you and your interests." xml:space="preserve"><value>Estas cookies se utilizan para hacer que los mensajes publicitarios sean más relevantes para usted y sus intereses.</value></data>
+<data name="Save Preferences" xml:space="preserve"><value>Guardar preferencias</value></data>
+<data name="Close" xml:space="preserve"><value>Cerrar</value></data>
+<data name="Back" xml:space="preserve"><value>Atrás</value></data>
+
 </root>
