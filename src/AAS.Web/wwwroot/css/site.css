@@ -1635,29 +1635,80 @@ body {
   text-decoration: none;
 }
 
-/* Alert messages */
-.manage-main-content .alert {
-  border-radius: 12px;
-  border: none;
-  margin-bottom: 28px;
-  padding: 18px 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(10px);
+/* Alerts */
+.alert {
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-/* Danger card for delete account */
-.manage-card.border-danger {
-  border: 2px solid #DC3545 !important;
-  box-shadow: 0 8px 32px rgba(220, 53, 69, 0.15);
+.alert-success {
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  color: #166534;
 }
 
-.manage-card.border-danger::before {
-  background: linear-gradient(90deg, #DC3545 0%, #E74C3C 50%, #DC3545 100%);
-  opacity: 1;
+.alert-warning {
+  background: #FFFBEB;
+  border: 1px solid #FED7AA;
+  color: #92400E;
 }
 
-.manage-card.border-danger .manage-card-title {
-  color: #DC3545;
+.alert-danger {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #991B1B;
+}
+
+/* Danger Card */
+.settings-card.danger-zone {
+  border-color: #FCA5A5;
+  background: linear-gradient(to bottom, #FEF2F2, #FFFFFF);
+}
+
+.settings-card.danger-zone .settings-card-title {
+  color: #DC2626;
+}
+
+.settings-card.danger-zone .settings-card-title i {
+  color: #DC2626;
+}
+
+/* Info Box */
+.info-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.info-box.warning {
+  background: #FFFBEB;
+  border-color: #FED7AA;
+}
+
+.info-box.warning p {
+  color: #92400E;
+}
+
+.info-box.danger {
+  background: #FEF2F2;
+  border-color: #FECACA;
+}
+
+.info-box.danger p {
+  color: #991B1B;
+  font-weight: 600;
 }
 
 /* Responsive manage layout */
