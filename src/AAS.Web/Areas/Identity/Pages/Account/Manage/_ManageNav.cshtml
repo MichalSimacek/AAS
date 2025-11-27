@@ -1,28 +1,33 @@
 @using Microsoft.AspNetCore.Identity
 @using AAS.Web.Areas.Identity.Pages.Account.Manage
 @inject SignInManager<IdentityUser> SignInManager
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
 <ul class="nav nav-pills flex-column mb-4">
     <li class="nav-item">
         <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
-            <i class="bi bi-person"></i> Profile
+            <i class="bi bi-person-circle"></i> 
+            <span>@L["Profile"]</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">
-            <i class="bi bi-key"></i> Password
+            <i class="bi bi-key-fill"></i> 
+            <span>@L["Password nav"]</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">
-            <i class="bi bi-envelope"></i> Email
+            <i class="bi bi-envelope-at"></i> 
+            <span>@L["Email nav"]</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
-            <i class="bi bi-shield-check"></i> Personal Data
+            <i class="bi bi-shield-lock"></i> 
+            <span>@L["Personal Data"]</span>
         </a>
     </li>
 </ul>
