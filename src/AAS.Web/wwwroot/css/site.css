@@ -1725,37 +1725,39 @@ body {
   color: #92400E;
 }
 
-/* Alerts */
+/* Soft Alerts */
 .alert {
-  padding: 16px 20px;
-  border-radius: 8px;
-  margin-bottom: 24px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  margin-bottom: 28px;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
+  border: 2px solid;
 }
 
 .alert-success {
-  background: #F0FDF4;
-  border: 1px solid #BBF7D0;
-  color: #166534;
+  background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+  border-color: #A7F3D0;
+  color: #065F46;
 }
 
 .alert-warning {
-  background: #FFFBEB;
-  border: 1px solid #FED7AA;
+  background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+  border-color: #FDE68A;
   color: #92400E;
 }
 
 .alert-danger {
-  background: #FEF2F2;
-  border: 1px solid #FECACA;
+  background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+  border-color: #FECACA;
   color: #991B1B;
 }
 
 /* Danger Card */
 .settings-card.danger-zone {
-  border-color: #FCA5A5;
-  background: linear-gradient(to bottom, #FEF2F2, #FFFFFF);
+  border: 2px solid #FECACA;
+  background: linear-gradient(135deg, #FEF2F2 0%, #FFFFFF 100%);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
 }
 
 .settings-card.danger-zone .settings-card-title {
@@ -1763,28 +1765,32 @@ body {
 }
 
 .settings-card.danger-zone .settings-card-title i {
+  background: linear-gradient(135deg, #FEE2E2, #FCA5A5);
   color: #DC2626;
 }
 
-/* Info Box */
+/* Info Boxes */
 .info-box {
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  padding: 16px;
+  background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+  border: 2px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 20px;
   margin-bottom: 24px;
 }
 
 .info-box p {
   margin: 0;
   font-size: 14px;
-  color: #475569;
-  line-height: 1.6;
+  color: #374151;
+  line-height: 1.7;
+  display: flex;
+  align-items: start;
+  gap: 10px;
 }
 
 .info-box.warning {
-  background: #FFFBEB;
-  border-color: #FED7AA;
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border-color: #FDE68A;
 }
 
 .info-box.warning p {
@@ -1792,7 +1798,7 @@ body {
 }
 
 .info-box.danger {
-  background: #FEF2F2;
+  background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
   border-color: #FECACA;
 }
 
