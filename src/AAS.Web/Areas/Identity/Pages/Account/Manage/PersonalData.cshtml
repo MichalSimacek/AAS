@@ -12,22 +12,22 @@
     <div class="settings-card-header">
         <h2 class="settings-card-title">
             <i class="bi bi-database"></i>
-            @L["Personal Data"]
+            Personal Data
         </h2>
-        <p class="settings-card-description">Download or delete your personal data stored in your account.</p>
+        <p class="settings-card-description">Download or manage your personal information.</p>
     </div>
     
     <div class="info-box">
         <p>
-            <i class="bi bi-info-circle-fill" style="color: #3B82F6; margin-right: 8px;"></i>
-            @L["Personal data description"]
+            <i class="bi bi-info-circle-fill" style="color: #3B82F6;"></i>
+            Your account contains personal data that you have provided. You can download this data at any time.
         </p>
     </div>
     
     <form method="post">
         <button class="btn-primary" type="submit" asp-page-handler="DownloadData">
             <i class="bi bi-download"></i>
-            @L["Download data button"]
+            Download My Data
         </button>
     </form>
 </div>
@@ -36,15 +36,15 @@
     <div class="settings-card-header">
         <h2 class="settings-card-title">
             <i class="bi bi-exclamation-triangle"></i>
-            @L["Delete Account"]
+            Delete Account
         </h2>
-        <p class="settings-card-description">Permanently delete your account and all associated data.</p>
+        <p class="settings-card-description">Permanently remove your account and all data.</p>
     </div>
     
     <div class="info-box danger">
         <p>
-            <i class="bi bi-exclamation-octagon-fill" style="margin-right: 8px;"></i>
-            @L["Delete warning"]
+            <i class="bi bi-exclamation-octagon-fill"></i>
+            This action is permanent and cannot be undone. All your data will be deleted forever.
         </p>
     </div>
     
@@ -52,14 +52,14 @@
         @Html.AntiForgeryToken()
         
         <div class="form-group">
-            <label asp-for="Input.Password" class="form-label">@L["Confirm password label"]</label>
-            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" placeholder="Enter your password to confirm deletion" type="password" />
+            <label asp-for="Input.Password" class="form-label">Confirm with Password</label>
+            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" placeholder="Enter your password to confirm" type="password" style="border-color: #FCA5A5;" />
             <span asp-validation-for="Input.Password" class="text-danger"></span>
         </div>
         
         <button class="btn-danger" type="submit">
-            <i class="bi bi-trash3"></i>
-            @L["Delete account button"]
+            <i class="bi bi-trash3-fill"></i>
+            Delete Account Permanently
         </button>
     </form>
 </div>
