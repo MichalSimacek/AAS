@@ -1568,66 +1568,70 @@ body {
   line-height: 1.6;
 }
 
-/* Modern Form Elements */
+/* Soft Form Elements */
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .form-label {
   display: block;
   font-size: 14px;
   font-weight: 600;
-  color: #334155;
-  margin-bottom: 8px;
+  color: #374151;
+  margin-bottom: 10px;
   letter-spacing: -0.01em;
 }
 
 .form-control {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 18px;
   font-size: 15px;
-  color: #0F172A;
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 8px;
-  transition: all 0.15s ease;
+  color: #111827;
+  background: #F9FAFB;
+  border: 2px solid #E5E7EB;
+  border-radius: 16px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
 }
 
 .form-control:hover {
-  border-color: #CBD5E1;
+  background: #FFFFFF;
+  border-color: #D1D5DB;
 }
 
 .form-control:focus {
   outline: none;
-  border-color: #B8941F;
-  box-shadow: 0 0 0 3px rgba(184, 148, 31, 0.1);
   background: #FFFFFF;
+  border-color: #FDE68A;
+  box-shadow: 0 0 0 4px rgba(254, 243, 199, 0.5);
 }
 
 .form-control:disabled {
-  background: #F8FAFC;
-  color: #94A3B8;
-  border-color: #E2E8F0;
+  background: #F3F4F6;
+  color: #9CA3AF;
+  border-color: #E5E7EB;
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .form-control::placeholder {
-  color: #94A3B8;
+  color: #9CA3AF;
   font-size: 14px;
 }
 
 .form-hint {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 13px;
-  color: #64748B;
-  margin-top: 6px;
+  color: #6B7280;
+  margin-top: 8px;
   line-height: 1.5;
 }
 
 .form-hint i {
-  font-size: 12px;
-  margin-right: 4px;
+  font-size: 13px;
+  color: #9CA3AF;
 }
 
 /* Modern Buttons */
