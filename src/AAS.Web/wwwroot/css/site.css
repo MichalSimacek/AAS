@@ -1362,11 +1362,14 @@ body {
    ============================================ */
 
 /* Manage account container */
-.manage-account-container {
-  background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
-  min-height: 600px;
-  contain: layout;
-  will-change: auto;
+/* ========================================
+   MODERN ACCOUNT SETTINGS - PROFESSIONAL REDESIGN
+   ======================================== */
+
+.account-settings-wrapper {
+  background: #FAFBFC;
+  min-height: calc(100vh - 200px);
+  padding: 60px 0 80px;
 }
 
 /* Page header */
