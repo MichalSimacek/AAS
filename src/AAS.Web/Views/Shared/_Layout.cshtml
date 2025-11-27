@@ -269,10 +269,22 @@
       function showCookieBanner() {
         const banner = document.getElementById('cookie-consent-banner');
         banner.style.display = 'flex';
+        // Ensure popup positioning
+        banner.style.position = 'fixed';
+        banner.style.top = '0';
+        banner.style.left = '0';
+        banner.style.right = '0';
+        banner.style.bottom = '0';
+        banner.style.zIndex = '9999';
+        banner.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        banner.style.alignItems = 'center';
+        banner.style.justifyContent = 'center';
+        
         // Focus trap for accessibility
         banner.focus();
         // Prevent background scrolling
         document.body.style.overflow = 'hidden';
+        console.log('Cookie banner shown as popup overlay');
       }
 
       function hideCookieBanner() {
