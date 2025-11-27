@@ -1,0 +1,296 @@
+@{
+    ViewData["Title"] = "Privacy Policy - Zásady ochrany osobních údajů";
+    ViewData["Description"] = "Privacy Policy and GDPR compliance information for Aristocratic Artwork Sale";
+}
+
+<div class="privacy-policy-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-8">
+                <h1>Privacy Policy - Zásady ochrany osobních údajů</h1>
+                <p class="updated-date"><strong>Last updated:</strong> @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+
+                <section class="privacy-section">
+                    <h2>1. Information We Collect / Informace, které shromažďujeme</h2>
+                    <p>We collect information you provide directly to us, such as when you create an account, make inquiries about collections, or contact us.</p>
+                    <p><em>Shromažďujeme informace, které nám přímo poskytujete, například když si vytvoříte účet, dotazujete se na kolekce nebo nás kontaktujete.</em></p>
+                    
+                    <h3>Personal Information:</h3>
+                    <ul>
+                        <li>Name, email address, phone number</li>
+                        <li>Account credentials and preferences</li>
+                        <li>Inquiry and communication records</li>
+                        <li>Payment information (processed securely by third parties)</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>2. Google Analytics and Cookies</h2>
+                    <p>We use Google Analytics to understand how visitors interact with our website. This helps us improve our services and user experience.</p>
+                    
+                    <h3>Google Analytics Data Processing:</h3>
+                    <ul>
+                        <li><strong>IP Anonymization:</strong> We enable IP anonymization in Google Analytics</li>
+                        <li><strong>Data Retention:</strong> Analytics data is retained for 26 months</li>
+                        <li><strong>Advertising Features:</strong> We do not use Google Ads remarketing or advertising features</li>
+                        <li><strong>Data Sharing:</strong> Analytics data is not shared with other Google products</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4>🔒 GDPR Compliance</h4>
+                        <p>We implement Google's Consent Mode v2 to ensure compliance with GDPR and other privacy regulations. Your consent choices are respected and implemented technically.</p>
+                    </div>
+
+                    <h3>How Google Uses Information from Sites That Use Our Services:</h3>
+                    <p>To learn more about how Google processes data from websites that use their services, please visit: 
+                       <a href="https://www.google.com/policies/privacy/partners/" target="_blank" rel="noopener">
+                           How Google uses information from sites or apps that use our services
+                       </a>
+                    </p>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>3. Cookie Categories</h2>
+                    
+                    <div class="cookie-category-card">
+                        <h3>🔧 Essential Cookies (Always Active)</h3>
+                        <p>These cookies are necessary for the website to function properly. They cannot be disabled.</p>
+                        <ul>
+                            <li>Session management and authentication</li>
+                            <li>Language preferences</li>
+                            <li>Security tokens (CSRF protection)</li>
+                            <li>Cookie consent preferences</li>
+                        </ul>
+                    </div>
+
+                    <div class="cookie-category-card">
+                        <h3>📊 Analytics Cookies (Optional)</h3>
+                        <p>Help us understand website usage and improve user experience.</p>
+                        <ul>
+                            <li>Google Analytics (_ga, _ga_*, _gid)</li>
+                            <li>Page view tracking</li>
+                            <li>User journey analysis (anonymized)</li>
+                            <li>Performance monitoring</li>
+                        </ul>
+                    </div>
+
+                    <div class="cookie-category-card">
+                        <h3>📢 Marketing Cookies (Optional)</h3>
+                        <p>Currently not in use. Reserved for future advertising campaigns.</p>
+                        <ul>
+                            <li>Advertising personalization (if enabled in future)</li>
+                            <li>Conversion tracking (if enabled in future)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>4. Your Rights (GDPR)</h2>
+                    <p>Under GDPR, you have the following rights regarding your personal data:</p>
+                    
+                    <div class="rights-grid">
+                        <div class="right-item">
+                            <h4>📋 Access</h4>
+                            <p>Request access to your personal data</p>
+                        </div>
+                        <div class="right-item">
+                            <h4>✏️ Rectification</h4>
+                            <p>Request correction of inaccurate data</p>
+                        </div>
+                        <div class="right-item">
+                            <h4>🗑️ Erasure</h4>
+                            <p>Request deletion of your data</p>
+                        </div>
+                        <div class="right-item">
+                            <h4>⏸️ Restriction</h4>
+                            <p>Request restriction of processing</p>
+                        </div>
+                        <div class="right-item">
+                            <h4>📤 Portability</h4>
+                            <p>Receive your data in portable format</p>
+                        </div>
+                        <div class="right-item">
+                            <h4>🚫 Object</h4>
+                            <p>Object to processing of your data</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>5. Contact Information</h2>
+                    <p>For privacy-related questions or to exercise your rights, contact us:</p>
+                    
+                    <div class="contact-info">
+                        <p><strong>Email:</strong> privacy@aristocraticartworksale.com</p>
+                        <p><strong>Data Controller:</strong> Aristocratic Artwork Sale</p>
+                        <p><strong>Response Time:</strong> We will respond to requests within 30 days</p>
+                    </div>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>6. Changes to This Policy</h2>
+                    <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically.</p>
+                </section>
+
+                <div class="privacy-footer">
+                    <p><strong>Compliance:</strong> This privacy policy is designed to comply with GDPR, Czech data protection laws, and Google Analytics Terms of Service.</p>
+                    <p><strong>Effective Date:</strong> @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.privacy-policy-page {
+    padding: 40px 0 80px 0;
+    background: #F8F9FA;
+    min-height: calc(100vh - 200px);
+}
+
+.privacy-policy-page h1 {
+    color: #1A1A1A;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.updated-date {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 40px;
+    font-size: 14px;
+}
+
+.privacy-section {
+    background: white;
+    padding: 32px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.privacy-section h2 {
+    color: #B8941F;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #F0F0F0;
+    padding-bottom: 8px;
+}
+
+.privacy-section h3 {
+    color: #1A1A1A;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.info-box {
+    background: #E8F4FD;
+    border-left: 4px solid #1976D2;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 6px;
+}
+
+.info-box h4 {
+    color: #1976D2;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.cookie-category-card {
+    background: #F8F9FA;
+    border-left: 4px solid #B8941F;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.cookie-category-card h3 {
+    color: #1A1A1A;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.rights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+}
+
+.right-item {
+    background: #F8F9FA;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #E5E5E5;
+}
+
+.right-item h4 {
+    color: #B8941F;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.contact-info {
+    background: #F0F8FF;
+    border: 1px solid #B3D9FF;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.privacy-footer {
+    background: #1A1A1A;
+    color: white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.privacy-policy-page ul {
+    padding-left: 24px;
+    margin-bottom: 16px;
+}
+
+.privacy-policy-page li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.privacy-policy-page a {
+    color: #B8941F;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.privacy-policy-page a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .privacy-policy-page {
+        padding: 20px 0 40px 0;
+    }
+    
+    .privacy-policy-page h1 {
+        font-size: 28px;
+    }
+    
+    .privacy-section {
+        padding: 20px;
+        margin-bottom: 16px;
+    }
+    
+    .rights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
