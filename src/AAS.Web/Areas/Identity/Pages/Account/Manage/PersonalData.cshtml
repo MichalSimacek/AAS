@@ -6,72 +6,62 @@
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
-<div class="manage-page-header">
-    <h1>@ViewData["Title"]</h1>
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="settings-card">
+    <div class="settings-card-header">
+        <h2 class="settings-card-title">
+            <i class="bi bi-database"></i>
+            @L["Personal Data"]
+        </h2>
+        <p class="settings-card-description">Download or delete your personal data stored in your account.</p>
+    </div>
+    
+    <div class="info-box">
+        <p>
+            <i class="bi bi-info-circle-fill" style="color: #3B82F6; margin-right: 8px;"></i>
+            @L["Personal data description"]
+        </p>
+    </div>
+    
+    <form method="post">
+        <button class="btn-primary" type="submit" asp-page-handler="DownloadData">
+            <i class="bi bi-download"></i>
+            @L["Download data button"]
+        </button>
+    </form>
 </div>
 
-<div class="manage-content-wrapper">
-    <div class="manage-sidebar">
-        <partial name="_ManageNav" />
+<div class="settings-card danger-zone">
+    <div class="settings-card-header">
+        <h2 class="settings-card-title">
+            <i class="bi bi-exclamation-triangle"></i>
+            @L["Delete Account"]
+        </h2>
+        <p class="settings-card-description">Permanently delete your account and all associated data.</p>
     </div>
-    <div class="manage-main-content">
-        <partial name="_StatusMessage" for="StatusMessage" />
+    
+    <div class="info-box danger">
+        <p>
+            <i class="bi bi-exclamation-octagon-fill" style="margin-right: 8px;"></i>
+            @L["Delete warning"]
+        </p>
+    </div>
+    
+    <form id="delete-user" method="post" asp-page-handler="DeleteAccount">
+        @Html.AntiForgeryToken()
         
-        <div class="manage-card">
-            <h4 class="manage-card-title">
-                <i class="bi bi-file-earmark-person-fill" style="color: #B8941F; margin-right: 12px; font-size: 28px; vertical-align: middle;"></i>
-                @L["Personal Data"]
-            </h4>
-            <div style="background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%); padding: 24px; border-radius: 12px; margin-bottom: 28px; border: 1px solid #E5E5E5;">
-                <p style="margin-bottom: 16px; color: #4A4A4A; line-height: 1.7;">
-                    <i class="bi bi-info-circle-fill" style="color: #B8941F; margin-right: 8px;"></i>
-                    @L["Personal data description"]
-                </p>
-                <p style="margin-bottom: 0; color: #DC3545; font-weight: 600;">
-                    <i class="bi bi-exclamation-triangle-fill" style="margin-right: 8px;"></i>
-                    @L["Delete warning"]
-                </p>
-            </div>
-            
-            <form method="post">
-                <button class="btn btn-primary" type="submit" asp-page-handler="DownloadData">
-                    <i class="bi bi-download me-2"></i>
-                    @L["Download data button"]
-                </button>
-            </form>
+        <div class="form-group">
+            <label asp-for="Input.Password" class="form-label">@L["Confirm password label"]</label>
+            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" placeholder="Enter your password to confirm deletion" type="password" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
         </div>
         
-        <div class="manage-card border-danger">
-            <h4 class="manage-card-title text-danger">
-                <i class="bi bi-shield-exclamation" style="margin-right: 12px; font-size: 28px; vertical-align: middle;"></i>
-                @L["Delete Account"]
-            </h4>
-            <form id="delete-user" method="post" asp-page-handler="DeleteAccount">
-                @Html.AntiForgeryToken()
-                
-                <div style="background: linear-gradient(135deg, #FFF5F5 0%, #FFEBEB 100%); padding: 20px; border-radius: 12px; margin-bottom: 28px; border: 2px solid #FED7D7;">
-                    <p class="text-danger" style="margin-bottom: 0; display: flex; align-items: start; gap: 12px;">
-                        <i class="bi bi-exclamation-octagon-fill" style="font-size: 24px; flex-shrink: 0; margin-top: 2px;"></i>
-                        <strong style="line-height: 1.6;">@L["Delete account warning"]</strong>
-                    </p>
-                </div>
-                
-                <div class="mb-4">
-                    <label asp-for="Input.Password" class="form-label">
-                        <i class="bi bi-lock-fill" style="color: #DC3545;"></i>
-                        @L["Confirm password label"]
-                    </label>
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" placeholder="Enter your password to confirm deletion" type="password" style="border-color: #DC3545;" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                
-                <button class="btn btn-danger" type="submit">
-                    <i class="bi bi-trash3-fill me-2"></i>
-                    @L["Delete account button"]
-                </button>
-            </form>
-        </div>
-    </div>
+        <button class="btn-danger" type="submit">
+            <i class="bi bi-trash3"></i>
+            @L["Delete account button"]
+        </button>
+    </form>
 </div>
 
 @section Scripts {
