@@ -313,7 +313,7 @@
 <data name="Accept All" xml:space="preserve"><value>Принять все</value></data>
 <data name="Decline" xml:space="preserve"><value>Отклонить</value></data>
 <data name="Settings" xml:space="preserve"><value>Настройки</value></data>
-<data name="Back" xml:space="preserve"><value>Назад</data>
+<data name="Back" xml:space="preserve"><value>Назад</value></data>
 <data name="Necessary Cookies" xml:space="preserve"><value>Необходимые cookie</value></data>
 <data name="Necessary Cookies Description" xml:space="preserve"><value>Эти файлы cookie необходимы для работы веб-сайта и не могут быть отключены.</value></data>
 <data name="Analytics Cookies" xml:space="preserve"><value>Аналитические cookie</value></data>
