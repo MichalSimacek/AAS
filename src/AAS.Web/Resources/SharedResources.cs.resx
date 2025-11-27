@@ -349,4 +349,22 @@
 <data name="of" xml:space="preserve"><value>z</value></data>
 <data name="collections" xml:space="preserve"><value>kolekcí</value></data>
 
+<!-- GDPR Cookie Consent -->
+<data name="Cookie Settings" xml:space="preserve"><value>Nastavení cookies</value></data>
+<data name="We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies." xml:space="preserve"><value>Používáme cookies a podobné technologie ke zlepšení vašeho procházení, analýze návštěvnosti webu a pochopení, odkud naši návštěvníci přicházejí. Kliknutím na 'Přijmout vše' souhlasíte s naším používáním cookies.</value></data>
+<data name="How Google uses data" xml:space="preserve"><value>Jak Google používá data</value></data>
+<data name="Privacy Policy" xml:space="preserve"><value>Zásady ochrany osobních údajů</value></data>
+<data name="Decline" xml:space="preserve"><value>Odmítnout</value></data>
+<data name="Settings" xml:space="preserve"><value>Nastavení</value></data>
+<data name="Accept All" xml:space="preserve"><value>Přijmout vše</value></data>
+<data name="Cookie Preferences" xml:space="preserve"><value>Preference cookies</value></data>
+<data name="Essential Cookies" xml:space="preserve"><value>Nezbytné cookies</value></data>
+<data name="These cookies are necessary for the website to function and cannot be switched off." xml:space="preserve"><value>Tyto cookies jsou nezbytné pro fungování webové stránky a nelze je vypnout.</value></data>
+<data name="Analytics Cookies" xml:space="preserve"><value>Analytické cookies</value></data>
+<data name="These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously." xml:space="preserve"><value>Tyto cookies nám pomáhají pochopit, jak návštěvníci interagují s naším webem, shromažďováním a hlášením informací anonymně.</value></data>
+<data name="Marketing Cookies" xml:space="preserve"><value>Marketingové cookies</value></data>
+<data name="These cookies are used to make advertising messages more relevant to you and your interests." xml:space="preserve"><value>Tyto cookies se používají k tomu, aby byly reklamní sdělení relevantnější pro vás a vaše zájmy.</value></data>
+<data name="Save Preferences" xml:space="preserve"><value>Uložit preference</value></data>
+<data name="Close" xml:space="preserve"><value>Zavřít</value></data>
+
 </root>
