@@ -256,19 +256,21 @@
       // ESC key support
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-          const settingsModal = document.getElementById('cookie-settings-modal');
-          if (settingsModal && settingsModal.style.display === 'flex') {
-            hideSettingsModal();
+          const banner = document.getElementById('cookie-consent-banner');
+          const settingsView = document.getElementById('cookie-settings-view');
+          
+          if (banner && banner.style.display === 'flex') {
+            // If in settings view, go back to main view
+            if (settingsView && settingsView.style.display === 'block') {
+              showMainView();
+            }
+            // Note: Don't close entire banner on ESC - user must make choice
           }
         }
       });
 
-      // Close settings modal on backdrop click
-      document.getElementById('cookie-settings-modal')?.addEventListener('click', function(e) {
-        if (e.target === this) {
-          hideSettingsModal();
-        }
-      });
+      // Remove old modal backdrop click handler since we no longer have separate modal
+      // The main banner stays open until user makes a choice
 
       function showCookieBanner() {
         const banner = document.getElementById('cookie-consent-banner');
