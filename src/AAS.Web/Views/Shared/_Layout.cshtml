@@ -143,28 +143,30 @@
 
   <!-- GDPR Cookie Consent Banner -->
   <div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(0, 0, 0, 0.8) !important; z-index: 9999 !important; align-items: center !important; justify-content: center !important; padding: 20px !important;">
-    <div class="cookie-consent-content" style="background: white !important; border-radius: 16px !important; padding: 40px !important; max-width: 600px !important; width: 100% !important; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important; text-align: center !important; position: relative !important; animation: popupSlideIn 0.4s ease-out !important;">
-      <div class="cookie-consent-text">
-        <h4>🍪 @L["Cookie Settings"]</h4>
-        <p>
-          @L["We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies."]
-        </p>
-        <p class="cookie-links">
-          <a href="https://www.google.com/policies/privacy/partners/" target="_blank">@L["How Google uses data"]</a> |
-          <a href="/Home/Privacy" target="_blank">@L["Privacy Policy"]</a>
-        </p>
+    <div class="cookie-consent-content" style="background: white !important; border-radius: 16px !important; padding: 40px !important; max-width: 700px !important; width: 100% !important; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important; text-align: center !important; position: relative !important; animation: popupSlideIn 0.4s ease-out !important;">
+      
+      <!-- Main Cookie Consent View -->
+      <div id="cookie-main-view">
+        <div class="cookie-consent-text">
+          <h4>🍪 @L["Cookie Settings"]</h4>
+          <p>
+            @L["We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies."]
+          </p>
+          <p class="cookie-links">
+            <a href="https://www.google.com/policies/privacy/partners/" target="_blank">@L["How Google uses data"]</a> |
+            <a href="/Home/Privacy" target="_blank">@L["Privacy Policy"]</a>
+          </p>
+        </div>
+        <div class="cookie-consent-buttons">
+          <button id="cookie-decline" class="btn btn-outline-secondary">@L["Decline"]</button>
+          <button id="cookie-settings" class="btn btn-outline-primary">@L["Settings"]</button>
+          <button id="cookie-accept" class="btn btn-primary">@L["Accept All"]</button>
+        </div>
       </div>
-      <div class="cookie-consent-buttons">
-        <button id="cookie-decline" class="btn btn-outline-secondary">@L["Decline"]</button>
-        <button id="cookie-settings" class="btn btn-outline-primary">@L["Settings"]</button>
-        <button id="cookie-accept" class="btn btn-primary">@L["Accept All"]</button>
-      </div>
-    </div>
 
-    <!-- Advanced Settings Modal -->
-    <div id="cookie-settings-modal" class="cookie-settings-modal" style="display: none;">
-      <div class="cookie-settings-content">
-        <h5>@L["Cookie Preferences"]</h5>
+      <!-- Settings View (initially hidden) -->
+      <div id="cookie-settings-view" style="display: none;">
+        <h5 style="color: #1A1A1A; margin-bottom: 30px; font-size: 28px; font-weight: 700; font-family: 'Playfair Display', serif;">@L["Cookie Preferences"]</h5>
         
         <div class="cookie-category">
           <div class="cookie-toggle">
@@ -200,11 +202,13 @@
         </div>
 
         <div class="cookie-settings-buttons">
+          <button id="settings-back" class="btn btn-secondary">← @L["Back"]</button>
           <button id="settings-save" class="btn btn-primary">@L["Save Preferences"]</button>
-          <button id="settings-close" class="btn btn-secondary">@L["Close"]</button>
         </div>
       </div>
     </div>
+
+    <!-- Remove the separate modal - no longer needed -->
   </div>
 
   <!-- Cookie Consent JavaScript -->
