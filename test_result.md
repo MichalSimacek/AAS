@@ -135,3 +135,33 @@ Build succeeded.
 1. User should test the build in their Docker environment
 2. Verify cookie consent banner displays correctly in Russian (and other languages)
 3. Consider adding complete cookie banner translations to remaining 4 languages (hi, ja, pt, zh)
+
+---
+
+## Issue #3: Footer Translation Not Working ✅ FIXED
+
+### Problem Description
+Footer text was hardcoded in English and did not change based on language selection:
+- "Aristocratic Artwork Sale" - hardcoded
+- "© 2024 All rights reserved. Discretion, Quality & Professionalism." - hardcoded
+
+### Fix Applied
+Modified `/app/src/AAS.Web/Views/Shared/_Layout.cshtml`:
+- Changed hardcoded "Aristocratic Artwork Sale" to `@L["Site Name"]`
+- Changed hardcoded footer text to `@string.Format(L["Footer rights text"], DateTime.UtcNow.Year)`
+
+### Verification
+✅ All 10 language resource files contain both required keys:
+- `Site Name`
+- `Footer rights text`
+
+### Example Translations
+| Language | Site Name | Footer Text |
+|----------|-----------|-------------|
+| English | Aristocratic Artwork Sale | © {0} All rights reserved. Discretion, Quality & Professionalism. |
+| Czech | Aristocratic Artwork Sale | © {0} Všechna práva vyhrazena. Diskrétnost, kvalita & profesionalita. |
+| Russian | Продажа аристократических произведений искусства | © {0} Все права защищены. Конфиденциальность, качество & профессионализм. |
+
+### Expected Result
+Footer should now display translated text based on selected language in the UI.
+
