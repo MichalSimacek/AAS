@@ -307,16 +307,19 @@
 <data name="collections" xml:space="preserve"><value>коллекций</value></data>
 
 <!-- GDPR Cookie Consent -->
+<data name="Cookie Banner Title" xml:space="preserve"><value>Мы используем файлы cookie</value></data>
+<data name="Cookie Banner Description" xml:space="preserve"><value>Мы используем файлы cookie и аналогичные технологии для улучшения вашего опыта просмотра. Выберите ваши предпочтения ниже.</value></data>
 <data name="Cookie Settings" xml:space="preserve"><value>Настройки cookie</value></data>
 <data name="Accept All" xml:space="preserve"><value>Принять все</value></data>
 <data name="Decline" xml:space="preserve"><value>Отклонить</value></data>
 <data name="Settings" xml:space="preserve"><value>Настройки</value></data>
-<data name="Back" xml:space="preserve"><value>Назад</value></data>
+<data name="Back" xml:space="preserve"><value>Назад</data>
+<data name="Necessary Cookies" xml:space="preserve"><value>Необходимые cookie</value></data>
+<data name="Necessary Cookies Description" xml:space="preserve"><value>Эти файлы cookie необходимы для работы веб-сайта и не могут быть отключены.</value></data>
+<data name="Analytics Cookies" xml:space="preserve"><value>Аналитические cookie</value></data>
+<data name="Analytics Cookies Description" xml:space="preserve"><value>Эти файлы cookie помогают нам понять, как посетители взаимодействуют с нашим веб-сайтом.</value></data>
+<data name="Save Preferences" xml:space="preserve"><value>Сохранить предпочтения</value></data>
+<data name="Privacy Policy" xml:space="preserve"><value>Политика конфиденциальности</value></data>
+
 </root>
-<!-- GDPR Cookie Consent -->
-<data name="Cookie Settings" xml:space="preserve"><value>Настройки cookie</value></data>
-<data name="Accept All" xml:space="preserve"><value>Принять все</value></data>
-<data name="Decline" xml:space="preserve"><value>Отклонить</value></data>
-<data name="Settings" xml:space="preserve"><value>Настройки</value></data>
-<data name="Back" xml:space="preserve"><value>Назад</value></data>
 
