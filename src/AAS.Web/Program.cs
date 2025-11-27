@@ -178,12 +178,12 @@ app.Use((ctx, next) =>
     // Note: 'unsafe-inline' is needed for Bootstrap and inline event handlers
     // Consider migrating to nonce-based CSP in future for better security
     var csp = "default-src 'self'; " +
-              "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com; " +
+              "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://www.googletagmanager.com; " +
               "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; " +
               "img-src 'self' data: https: blob:; " +
               "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; " +
               "media-src 'self' blob:; " +
-              "connect-src 'self' https://cdn.jsdelivr.net https://code.jquery.com; " +
+              "connect-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; " +
               "frame-ancestors 'none'; " +
               "base-uri 'self'; " +
               "form-action 'self'";
