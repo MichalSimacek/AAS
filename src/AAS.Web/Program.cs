@@ -174,8 +174,9 @@ app.Use((ctx, next) =>
         ctx.Response.Headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload";
     }
 
-    // CSP - Content Security Policy with nonce-based script protection
+    // CSP - Content Security Policy with Google Analytics support
     // Note: 'unsafe-inline' is needed for Bootstrap and inline event handlers
+    // Google Analytics domains included for GDPR-compliant tracking
     // Consider migrating to nonce-based CSP in future for better security
     var csp = "default-src 'self'; " +
               "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://www.googletagmanager.com; " +
