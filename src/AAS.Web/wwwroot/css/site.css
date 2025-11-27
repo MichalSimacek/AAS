@@ -2454,3 +2454,142 @@ body {
 .settings-card:nth-child(2) {
   animation-delay: 0.1s;
 }
+
+/* Status Badges */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 12px;
+  border: 2px solid;
+}
+
+.status-indicator.verified {
+  background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+  border-color: #A7F3D0;
+  color: #065F46;
+}
+
+.status-indicator.unverified {
+  background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+  border-color: #FDE68A;
+  color: #92400E;
+}
+
+.status-indicator i {
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .settings-wrapper {
+    gap: 24px;
+  }
+  
+  .settings-sidebar {
+    flex: 0 0 280px;
+    padding: 28px;
+    top: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .settings-sidebar {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+  
+  .sidebar-header {
+    text-align: center;
+  }
+  
+  .sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 8px;
+  }
+  
+  .nav-item {
+    flex-direction: column;
+    text-align: center;
+    min-width: 120px;
+    padding: 12px;
+  }
+  
+  .nav-content {
+    align-items: center;
+  }
+  
+  .nav-desc {
+    display: none;
+  }
+  
+  .settings-card {
+    padding: 28px 24px;
+    border-radius: 20px;
+  }
+  
+  .btn-primary,
+  .btn-danger {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Smooth Fade Animation */
+@keyframes smoothFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-card {
+  animation: smoothFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.settings-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.settings-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+/* Text Utilities */
+.text-success {
+  color: #10B981;
+}
+
+.text-warning {
+  color: #F59E0B;
+}
+
+.text-danger {
+  color: #EF4444;
+}
+
+.text-muted {
+  color: #6B7280;
+}
+
+/* Loading State */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
