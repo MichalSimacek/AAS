@@ -1,0 +1,21 @@
+
+<!-- GDPR Cookie Consent -->
+<data name="Cookie Settings" xml:space="preserve"><value>Настройки cookie</value></data>
+<data name="We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies." xml:space="preserve"><value>Мы используем файлы cookie и аналогичные технологии для улучшения вашего опыта просмотра, анализа трафика веб-сайта и понимания того, откуда приходят наши посетители. Нажимая «Принять все», вы соглашаетесь на использование нами файлов cookie.</value></data>
+<data name="How Google uses data" xml:space="preserve"><value>Как Google использует данные</value></data>
+<data name="Privacy Policy" xml:space="preserve"><value>Политика конфиденциальности</value></data>
+<data name="Decline" xml:space="preserve"><value>Отклонить</value></data>
+<data name="Settings" xml:space="preserve"><value>Настройки</value></data>
+<data name="Accept All" xml:space="preserve"><value>Принять все</value></data>
+<data name="Cookie Preferences" xml:space="preserve"><value>Предпочтения cookie</value></data>
+<data name="Essential Cookies" xml:space="preserve"><value>Основные cookie</value></data>
+<data name="These cookies are necessary for the website to function and cannot be switched off." xml:space="preserve"><value>Эти файлы cookie необходимы для функционирования веб-сайта и не могут быть отключены.</value></data>
+<data name="Analytics Cookies" xml:space="preserve"><value>Аналитические cookie</value></data>
+<data name="These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously." xml:space="preserve"><value>Эти файлы cookie помогают нам понять, как посетители взаимодействуют с нашим веб-сайтом, собирая и сообщая информацию анонимно.</value></data>
+<data name="Marketing Cookies" xml:space="preserve"><value>Маркетинговые cookie</value></data>
+<data name="These cookies are used to make advertising messages more relevant to you and your interests." xml:space="preserve"><value>Эти файлы cookie используются для того, чтобы рекламные сообщения были более актуальными для вас и ваших интересов.</value></data>
+<data name="Save Preferences" xml:space="preserve"><value>Сохранить настройки</value></data>
+<data name="Close" xml:space="preserve"><value>Закрыть</value></data>
+<data name="Back" xml:space="preserve"><value>Назад</value></data>
+
+</root>
