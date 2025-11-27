@@ -1394,113 +1394,60 @@ body {
   margin: 0;
 }
 
-/* Content wrapper - flex layout */
-.manage-content-wrapper {
+/* Tab Navigation - Modern Style */
+.account-settings-tabs {
   display: flex;
-  gap: 40px;
-  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #E2E8F0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Sidebar */
-.manage-sidebar {
-  flex: 0 0 300px;
-  min-width: 300px;
-}
-
-/* Main content area */
-.manage-main-content {
-  flex: 1;
-  min-width: 0;
-}
-
-/* Manage navigation */
-.manage-sidebar .nav-pills {
-  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.98) 100%);
-  backdrop-filter: blur(10px);
-  padding: 28px;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(229, 229, 229, 0.5);
-  position: sticky;
-  top: 100px;
-  transition: all 0.3s ease;
-}
-
-.manage-sidebar .nav-pills:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-.manage-sidebar .nav-pills .nav-link {
-  color: #4A4A4A;
-  padding: 18px 22px;
-  margin-bottom: 10px;
-  border-radius: 12px;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  font-weight: 500;
-  font-size: 16px;
+.account-tab {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
+  padding: 16px 24px;
+  color: #64748B;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s ease;
   white-space: nowrap;
   position: relative;
-  overflow: hidden;
 }
 
-.manage-sidebar .nav-pills .nav-link::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 0;
-  background: linear-gradient(180deg, #B8941F, #C9A961);
-  border-radius: 0 4px 4px 0;
-  transition: height 0.3s ease;
+.account-tab i {
+  font-size: 18px;
+  transition: transform 0.2s ease;
 }
 
-.manage-sidebar .nav-pills .nav-link:last-child {
-  margin-bottom: 0;
+.account-tab:hover {
+  color: #0F172A;
+  background: #F8FAFC;
 }
 
-.manage-sidebar .nav-pills .nav-link i {
-  font-size: 22px;
+.account-tab:hover i {
+  transform: translateY(-2px);
+}
+
+.account-tab.active {
   color: #B8941F;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
+  border-bottom-color: #B8941F;
+  font-weight: 600;
 }
 
-.manage-sidebar .nav-pills .nav-link:hover {
-  background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
-  color: #1A1A1A;
-  transform: translateX(8px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+.account-tab.active i {
+  color: #B8941F;
 }
 
-.manage-sidebar .nav-pills .nav-link:hover::before {
-  height: 60%;
-}
-
-.manage-sidebar .nav-pills .nav-link:hover i {
-  transform: scale(1.1);
-}
-
-.manage-sidebar .nav-pills .nav-link.active {
-  background: linear-gradient(135deg, #B8941F 0%, #C9A961 100%);
-  color: #FFFFFF;
-  box-shadow: 0 6px 20px rgba(184, 148, 31, 0.35), 0 2px 8px rgba(184, 148, 31, 0.2);
-  transform: translateX(4px);
-}
-
-.manage-sidebar .nav-pills .nav-link.active::before {
-  height: 80%;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.manage-sidebar .nav-pills .nav-link.active i {
-  color: #FFFFFF;
-  transform: scale(1.05);
+/* Content Area */
+.account-settings-content {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 /* Manage card */
