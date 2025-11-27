@@ -1412,60 +1412,110 @@ body {
   margin: 0;
 }
 
-/* Tab Navigation - Modern Style */
-.account-settings-tabs {
+/* Sidebar Navigation */
+.sidebar-nav {
   display: flex;
+  flex-direction: column;
   gap: 8px;
-  margin-bottom: 32px;
-  border-bottom: 2px solid #E2E8F0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
-.account-tab {
+.nav-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 16px 24px;
-  color: #64748B;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 15px;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
-.account-tab i {
-  font-size: 18px;
-  transition: transform 0.2s ease;
+.nav-item:hover {
+  background: #F9FAFB;
+  transform: translateX(4px);
 }
 
-.account-tab:hover {
-  color: #0F172A;
-  background: #F8FAFC;
+.nav-item.active {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+  box-shadow: 0 2px 8px rgba(184, 148, 31, 0.15);
 }
 
-.account-tab:hover i {
-  transform: translateY(-2px);
+.nav-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F3F4F6;
+  border-radius: 12px;
+  transition: all 0.25s ease;
 }
 
-.account-tab.active {
+.nav-item:hover .nav-icon {
+  background: #E5E7EB;
+  transform: scale(1.05);
+}
+
+.nav-item.active .nav-icon {
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.nav-icon i {
+  font-size: 20px;
+  color: #6B7280;
+  transition: color 0.25s ease;
+}
+
+.nav-item:hover .nav-icon i {
+  color: #374151;
+}
+
+.nav-item.active .nav-icon i {
   color: #B8941F;
-  border-bottom-color: #B8941F;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-title {
+  font-size: 15px;
   font-weight: 600;
+  color: #374151;
+  transition: color 0.25s ease;
 }
 
-.account-tab.active i {
-  color: #B8941F;
+.nav-item:hover .nav-title {
+  color: #111827;
 }
 
-/* Content Area */
-.account-settings-content {
-  max-width: 720px;
-  margin: 0 auto;
+.nav-item.active .nav-title {
+  color: #92400E;
+}
+
+.nav-desc {
+  font-size: 13px;
+  color: #9CA3AF;
+  transition: color 0.25s ease;
+}
+
+.nav-item:hover .nav-desc {
+  color: #6B7280;
+}
+
+.nav-item.active .nav-desc {
+  color: #B45309;
+}
+
+/* Main Content Area */
+.settings-content {
+  flex: 1;
+  min-width: 0;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Modern Card Style */
