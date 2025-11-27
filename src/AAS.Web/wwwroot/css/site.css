@@ -1650,15 +1650,15 @@ body {
 }
 
 .cookie-consent-content {
-  background: white;
-  border-radius: 16px;
-  padding: 40px;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  position: relative;
-  animation: popupSlideIn 0.4s ease-out;
+  background: white !important;
+  border-radius: 16px !important;
+  padding: 40px !important;
+  max-width: 600px !important;
+  width: 100% !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  text-align: center !important;
+  position: relative !important;
+  animation: popupSlideIn 0.4s ease-out !important;
 }
 
 @keyframes popupSlideIn {
