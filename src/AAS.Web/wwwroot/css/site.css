@@ -1363,13 +1363,20 @@ body {
 
 /* Manage account container */
 /* ========================================
-   MODERN ACCOUNT SETTINGS - PROFESSIONAL REDESIGN
+   SOFT & SMOOTH ACCOUNT SETTINGS DESIGN
    ======================================== */
 
-.account-settings-wrapper {
-  background: #FAFBFC;
-  min-height: calc(100vh - 200px);
-  padding: 60px 0 80px;
+.account-settings-container {
+  background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+  min-height: calc(100vh - 180px);
+  padding: 50px 0 80px;
+}
+
+.settings-wrapper {
+  display: flex;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Header Section */
