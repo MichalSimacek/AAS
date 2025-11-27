@@ -225,23 +225,45 @@
 
       // Event listeners
       document.getElementById('cookie-accept').addEventListener('click', function() {
+        console.log('Accept All clicked');
         acceptAllCookies();
       });
 
       document.getElementById('cookie-decline').addEventListener('click', function() {
+        console.log('Decline clicked');
         declineAllCookies();
       });
 
       document.getElementById('cookie-settings').addEventListener('click', function() {
+        console.log('Settings clicked');
         showSettingsModal();
       });
 
       document.getElementById('settings-save').addEventListener('click', function() {
+        console.log('Save preferences clicked');
         saveCustomSettings();
       });
 
       document.getElementById('settings-close').addEventListener('click', function() {
+        console.log('Close settings clicked');
         hideSettingsModal();
+      });
+
+      // ESC key support
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const settingsModal = document.getElementById('cookie-settings-modal');
+          if (settingsModal && settingsModal.style.display === 'flex') {
+            hideSettingsModal();
+          }
+        }
+      });
+
+      // Close settings modal on backdrop click
+      document.getElementById('cookie-settings-modal')?.addEventListener('click', function(e) {
+        if (e.target === this) {
+          hideSettingsModal();
+        }
       });
 
       function showCookieBanner() {
