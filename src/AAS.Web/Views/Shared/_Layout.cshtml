@@ -118,8 +118,8 @@
   
   <footer>
     <div class="container text-center">
-      <p class="mb-2"><strong>Aristocratic Artwork Sale</strong></p>
-      <p class="small mb-0">© @DateTime.UtcNow.Year All rights reserved. Discretion, Quality & Professionalism.</p>
+      <p class="mb-2"><strong>@L["Site Name"]</strong></p>
+      <p class="small mb-0">@string.Format(L["Footer rights text"], DateTime.UtcNow.Year)</p>
     </div>
   </footer>
 
