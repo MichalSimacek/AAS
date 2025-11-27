@@ -306,4 +306,10 @@
 <data name="of" xml:space="preserve"><value>的</value></data>
 <data name="collections" xml:space="preserve"><value>收藏</value></data>
 
+<!-- GDPR Cookie Consent -->
+<data name="Cookie Settings" xml:space="preserve"><value>Cookie设置</value></data>
+<data name="Accept All" xml:space="preserve"><value>全部接受</value></data>
+<data name="Decline" xml:space="preserve"><value>拒绝</value></data>
+<data name="Settings" xml:space="preserve"><value>设置</value></data>
+<data name="Back" xml:space="preserve"><value>返回</value></data>
 </root>

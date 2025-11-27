@@ -306,4 +306,10 @@
 <data name="of" xml:space="preserve"><value>में से</value></data>
 <data name="collections" xml:space="preserve"><value>संग्रह</value></data>
 
+<!-- GDPR Cookie Consent -->
+<data name="Cookie Settings" xml:space="preserve"><value>कुकीज़ सेटिंग्स</value></data>
+<data name="Accept All" xml:space="preserve"><value>सभी स्वीकार करें</value></data>
+<data name="Decline" xml:space="preserve"><value>अस्वीकार करें</value></data>
+<data name="Settings" xml:space="preserve"><value>सेटिंग्स</value></data>
+<data name="Back" xml:space="preserve"><value>वापस</value></data>
 </root>
