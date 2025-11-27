@@ -165,3 +165,107 @@ Modified `/app/src/AAS.Web/Views/Shared/_Layout.cshtml`:
 ### Expected Result
 Footer should now display translated text based on selected language in the UI.
 
+
+---
+
+## Issue #4: Account Settings UI Enhancement ✅ COMPLETED
+
+### Problem Description
+User reported that the Account Settings UI was not user-friendly, elegant, or smooth from a graphical perspective. The interface was basic and lacked visual appeal.
+
+### Changes Applied
+
+#### 1. **CSS Enhancements** (`/app/src/AAS.Web/wwwroot/css/site.css`)
+- **Modern Gradient Backgrounds**: Added subtle gradients to containers, cards, and navigation
+- **Glassmorphism Effects**: Implemented backdrop-filter blur effects for modern look
+- **Enhanced Shadows**: Upgraded box-shadows with layered depth (multiple shadow levels)
+- **Smooth Animations**: 
+  - Page fade-in animations
+  - Card stagger animations
+  - Hover state transitions with cubic-bezier easing
+  - Button shine effect on hover
+- **Improved Typography**: Increased font weights, added letter-spacing, better hierarchy
+- **Better Spacing**: Increased padding, gaps, and margins throughout
+- **Enhanced Focus States**: More prominent focus indicators with smooth transitions
+- **Icon Animations**: Scale and translate effects on hover
+- **Responsive Design**: Improved mobile breakpoints (992px and 768px)
+
+#### 2. **View File Updates**
+All Account Settings pages updated with:
+
+**Index.cshtml (Profile)**:
+- Added localization support with `IStringLocalizer`
+- Added icons to form labels (envelope, telephone)
+- Enhanced visual hierarchy with card title icons
+- Added helpful hints below inputs
+- Improved button with icon
+
+**ChangePassword.cshtml**:
+- Added localization support
+- Added security-themed icons (lock, shield-lock, check-circle)
+- Enhanced visual feedback with colored icons
+- Added password requirement hints
+- Improved spacing and button styling
+
+**Email.cshtml**:
+- Added localization support
+- Enhanced email confirmation status with colored badges
+- Added descriptive icons for each section
+- Improved verification button styling
+- Added helpful hints for new email
+
+**PersonalData.cshtml**:
+- Added localization support
+- Created visually distinct sections with gradient backgrounds
+- Enhanced danger zone with red-themed styling
+- Added warning boxes with icons
+- Improved information hierarchy
+
+**_ManageNav.cshtml**:
+- Added localization support
+- Updated icons to filled versions for better visibility
+- Wrapped text in spans for better control
+
+#### 3. **New Features**
+- Shimmer animation on page title underline
+- Left-border indicator on navigation hover/active
+- Card top-border accent on hover
+- Form label color change on input focus
+- Staggered card animations
+- Button shine effect
+- Enhanced disabled input styling with gradient
+- Icon scale and rotation on interactions
+
+### Visual Improvements Summary
+| Element | Before | After |
+|---------|--------|-------|
+| Cards | Flat with simple shadow | Gradient background, glassmorphism, animated |
+| Navigation | Basic hover | Smooth slide, border indicator, scale effects |
+| Buttons | Standard gradient | Enhanced gradient, shine effect, lift animation |
+| Inputs | Simple border | Multi-state styling, smooth focus, hover effects |
+| Icons | Static | Animated on hover, context-colored |
+| Typography | Standard | Enhanced hierarchy, better spacing |
+| Overall Feel | Basic | Elegant, smooth, modern |
+
+### Testing Status
+- ✅ All 4 management pages updated
+- ✅ Localization integrated throughout
+- ✅ Responsive design verified for 992px and 768px breakpoints
+- ✅ CSS animations and transitions added
+- ✅ Icon system enhanced
+
+### User Experience Improvements
+1. **Visual Feedback**: Every interaction now has smooth visual feedback
+2. **Clear Hierarchy**: Icons and typography create clear information hierarchy
+3. **Modern Aesthetics**: Glassmorphism and gradients for contemporary look
+4. **Accessibility**: Better focus indicators and color contrasts
+5. **Mobile Friendly**: Optimized layouts for smaller screens
+
+### Expected Result
+Account Settings pages now have:
+- Elegant, modern design with subtle animations
+- Better user-friendliness with icons and hints
+- Smooth transitions and interactions
+- Professional, polished appearance
+- Consistent visual language across all pages
+
