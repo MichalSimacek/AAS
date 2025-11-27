@@ -240,7 +240,7 @@
 
       document.getElementById('cookie-settings').addEventListener('click', function() {
         console.log('Settings clicked');
-        showSettingsModal();
+        showSettingsView();
       });
 
       document.getElementById('settings-save').addEventListener('click', function() {
@@ -248,9 +248,9 @@
         saveCustomSettings();
       });
 
-      document.getElementById('settings-close').addEventListener('click', function() {
-        console.log('Close settings clicked');
-        hideSettingsModal();
+      document.getElementById('settings-back').addEventListener('click', function() {
+        console.log('Back clicked');
+        showMainView();
       });
 
       // ESC key support
