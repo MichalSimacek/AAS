@@ -6,80 +6,61 @@
     ViewData["ActivePage"] = ManageNavPages.Email;
 }
 
-<div class="manage-page-header">
-    <h1>@ViewData["Title"]</h1>
-</div>
+<partial name="_StatusMessage" for="StatusMessage" />
 
-<div class="manage-content-wrapper">
-    <div class="manage-sidebar">
-        <partial name="_ManageNav" />
+<div class="settings-card">
+    <div class="settings-card-header">
+        <h2 class="settings-card-title">
+            <i class="bi bi-envelope-at"></i>
+            @L["Manage Email"]
+        </h2>
+        <p class="settings-card-description">Update your email address and verification status.</p>
     </div>
-    <div class="manage-main-content">
-        <partial name="_StatusMessage" for="StatusMessage" />
+    
+    <form id="email-form" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
         
-        <div class="manage-card">
-            <h4 class="manage-card-title">
-                <i class="bi bi-envelope-at-fill" style="color: #B8941F; margin-right: 12px; font-size: 28px; vertical-align: middle;"></i>
-                @L["Manage Email"]
-            </h4>
-            <form id="email-form" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-4" role="alert"></div>
-                
-                @if (Model.IsEmailConfirmed)
-                {
-                    <div class="mb-4">
-                        <label asp-for="Email" class="form-label">
-                            <i class="bi bi-envelope-fill" style="color: #B8941F;"></i>
-                            @L["Current Email"]
-                        </label>
-                        <input asp-for="Email" class="form-control" placeholder="@L["Email label placeholder"]" disabled />
-                        <small class="text-success" style="display: flex; align-items: center; gap: 6px; margin-top: 8px;">
-                            <i class="bi bi-check-circle-fill"></i>
-                            <strong>@L["Email confirmed"]</strong>
-                        </small>
-                    </div>
-                }
-                else
-                {
-                    <div class="mb-4">
-                        <label asp-for="Email" class="form-label">
-                            <i class="bi bi-envelope-fill" style="color: #B8941F;"></i>
-                            @L["Current Email"]
-                        </label>
-                        <input asp-for="Email" class="form-control" placeholder="@L["Email label placeholder"]" disabled />
-                        <small class="text-warning" style="display: flex; align-items: center; gap: 6px; margin-top: 8px;">
-                            <i class="bi bi-exclamation-triangle-fill"></i>
-                            <strong>@L["Email not confirmed"]</strong>
-                        </small>
-                        <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link p-0 mt-2" style="font-weight: 500;">
-                            <i class="bi bi-send-fill me-1"></i>
-                            @L["Send verification email"]
-                        </button>
-                    </div>
-                }
-                
-                <div class="mb-4">
-                    <label asp-for="Input.NewEmail" class="form-label">
-                        <i class="bi bi-envelope-plus-fill" style="color: #B8941F;"></i>
-                        @L["New email"]
-                    </label>
-                    <input asp-for="Input.NewEmail" class="form-control" autocomplete="email" aria-required="true" placeholder="@L["New email placeholder"]" type="email" />
-                    <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
-                    <small class="text-muted">
-                        <i class="bi bi-info-circle"></i>
-                        A confirmation email will be sent to verify the new address
-                    </small>
+        <div class="form-group">
+            <label asp-for="Email" class="form-label">@L["Current Email"]</label>
+            <input asp-for="Email" class="form-control" placeholder="@L["Email label placeholder"]" disabled />
+            
+            @if (Model.IsEmailConfirmed)
+            {
+                <div class="status-indicator verified">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span>@L["Email confirmed"]</span>
                 </div>
-                
-                <div style="margin-top: 32px;">
-                    <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="btn btn-primary">
-                        <i class="bi bi-arrow-right-circle-fill me-2"></i>
-                        @L["Change email"]
-                    </button>
+            }
+            else
+            {
+                <div class="status-indicator unverified">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <span>@L["Email not confirmed"]</span>
                 </div>
-            </form>
+                <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn-link" style="margin-top: 8px; padding: 4px 8px;">
+                    <i class="bi bi-send-fill"></i>
+                    @L["Send verification email"]
+                </button>
+            }
         </div>
-    </div>
+        
+        <div class="form-group">
+            <label asp-for="Input.NewEmail" class="form-label">@L["New email"]</label>
+            <input asp-for="Input.NewEmail" class="form-control" autocomplete="email" aria-required="true" placeholder="@L["New email placeholder"]" type="email" />
+            <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+            <span class="form-hint">
+                <i class="bi bi-info-circle"></i>
+                A confirmation email will be sent to verify the new address
+            </span>
+        </div>
+        
+        <div style="margin-top: 32px;">
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="btn-primary">
+                <i class="bi bi-arrow-right-circle"></i>
+                @L["Change email"]
+            </button>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
