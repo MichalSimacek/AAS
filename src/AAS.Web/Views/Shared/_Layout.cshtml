@@ -297,9 +297,10 @@
         document.body.style.overflow = '';
       }
 
-      function showSettingsModal() {
-        const modal = document.getElementById('cookie-settings-modal');
-        modal.style.display = 'flex';
+      function showSettingsView() {
+        document.getElementById('cookie-main-view').style.display = 'none';
+        document.getElementById('cookie-settings-view').style.display = 'block';
+        
         // Set current preferences in toggles
         const consent = getCookie(COOKIE_CONSENT_KEY);
         if (consent) {
@@ -307,11 +308,23 @@
           document.getElementById('analytics-toggle').checked = parsed.analytics || false;
           document.getElementById('marketing-toggle').checked = parsed.marketing || false;
         }
+        
+        // Update popup width for settings content
+        const content = document.querySelector('.cookie-consent-content');
+        content.style.maxWidth = '700px';
+        content.style.textAlign = 'left';
+        console.log('Switched to settings view');
       }
 
-      function hideSettingsModal() {
-        const modal = document.getElementById('cookie-settings-modal');
-        modal.style.display = 'none';
+      function showMainView() {
+        document.getElementById('cookie-settings-view').style.display = 'none';
+        document.getElementById('cookie-main-view').style.display = 'block';
+        
+        // Reset popup styling
+        const content = document.querySelector('.cookie-consent-content');
+        content.style.maxWidth = '600px';
+        content.style.textAlign = 'center';
+        console.log('Switched to main view');
       }
 
       function acceptAllCookies() {
