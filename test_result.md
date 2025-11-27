@@ -449,3 +449,254 @@ User reported that the Account Settings UI still "looked bad" and requested a co
 ### Result
 A professional, modern Account Settings interface that follows 2024/2025 design trends while maintaining excellent usability and accessibility.
 
+
+---
+
+## Issue #6: Soft, Rounded Sidebar Design with Smooth Transitions ✅ COMPLETED
+
+### User Requirements (Final Version)
+1. ✅ Ohraničené (borders around everything)
+2. ✅ Bez ostrých rohů (rounded corners everywhere)
+3. ✅ Sekce po levé straně (sidebar navigation)
+4. ✅ Plynulé přechody bez reload (smooth transitions)
+5. ✅ Nenápadné, jemné (soft, subtle design)
+
+### Complete Redesign Implementation
+
+#### Design Concept: "Soft & Smooth"
+
+**Core Principles:**
+- **Softness**: Gentle gradients, rounded corners (16px-24px)
+- **Smoothness**: Cubic-bezier transitions, no jarring changes
+- **Clarity**: Clean layouts with clear visual hierarchy
+- **Warmth**: Soft yellow/gold accents, not harsh
+
+#### Layout Architecture
+
+**Sidebar Navigation (Left)**
+- Fixed width: 320px
+- Sticky positioning
+- Soft white background with subtle shadow
+- Rounded: 24px
+- Contains:
+  - Header (Settings + subtitle)
+  - 4 navigation items with icons + descriptions
+
+**Content Area (Right)**
+- Flexible width
+- Card-based sections
+- Smooth fade transitions
+- Rounded: 24px
+
+#### Color Palette
+
+**Base Colors:**
+- Background: Linear gradient `#F9FAFB → #F3F4F6`
+- Cards: `#FFFFFF`
+- Borders: `#E5E7EB` (soft gray)
+
+**Accent Colors (Warm Yellow/Gold):**
+- Primary: `#FCD34D → #F59E0B` (gradient)
+- Light: `#FEF3C7`, `#FDE68A`
+- Dark: `#78350F`, `#92400E`
+
+**Status Colors:**
+- Success: `#ECFDF5 → #D1FAE5` (soft green)
+- Warning: `#FFFBEB → #FEF3C7` (soft yellow)
+- Danger: `#FEF2F2 → #FEE2E2` (soft red)
+
+#### Component Details
+
+**1. Sidebar Navigation**
+```
+- Border radius: 24px
+- Padding: 32px
+- Shadow: Subtle (0 2px 8px rgba)
+- Sticky: top 100px
+
+Nav Items:
+- Icon box: 44x44px, rounded 12px
+- Hover: Translate 4px, scale icon
+- Active: Yellow gradient background
+- Smooth: 0.25s cubic-bezier
+```
+
+**2. Settings Cards**
+```
+- Border radius: 24px
+- Padding: 40px
+- Border: 1px solid #E5E7EB
+- Hover: Lift 2px, enhance shadow
+- Header: Gold icon in soft background
+```
+
+**3. Form Elements**
+```
+- Border radius: 16px
+- Background: Soft gray (#F9FAFB)
+- Hover: White background
+- Focus: Yellow glow (4px ring)
+- Border: 2px (not 1px)
+```
+
+**4. Buttons**
+```
+Primary:
+- Gradient: #FCD34D → #F59E0B
+- Text: Dark gold (#78350F)
+- Shadow: Soft yellow
+- Hover: Lift 2px, enhance shadow
+- Border radius: 16px
+
+Danger:
+- Gradient: #FCA5A5 → #EF4444
+- Same soft treatment
+```
+
+**5. Transitions**
+```
+JavaScript fade:
+- Content opacity: 0
+- Transform: translateX(20px)
+- Duration: 200ms
+- Then navigate
+
+CSS animations:
+- Smooth fade in: 0.4s cubic-bezier
+- Staggered cards: 0.05s delay
+```
+
+#### Smooth Navigation System
+
+**How it works:**
+1. User clicks sidebar nav item
+2. JavaScript intercepts click
+3. Fade out current content (opacity + translateX)
+4. After 200ms, navigate to new URL
+5. New page loads with fade-in animation
+6. Active state updates automatically
+
+**Result:**
+- Feels like SPA (Single Page App)
+- No jarring page reloads
+- Smooth, professional experience
+
+#### Spacing System
+
+**Consistent Scale:**
+- 8px, 12px, 16px, 24px, 32px, 40px
+- Border radius: 12px, 16px, 24px
+- Card padding: 40px
+- Form groups: 28px margin
+- Section gaps: 32px
+
+#### Typography
+
+**Font Family:**
+- Inter (system: -apple-system, BlinkMacSystemFont)
+
+**Sizes:**
+- Sidebar title: 24px
+- Card title: 22px
+- Body: 15px
+- Labels: 14px
+- Hints: 13px
+
+**Weights:**
+- Headers: 700
+- Nav titles: 600
+- Labels: 600
+- Body: 400
+
+### Files Modified (6)
+
+1. **`_Layout.cshtml`**
+   - Sidebar structure with 4 nav items
+   - JavaScript for smooth transitions
+   - Content wrapper
+
+2. **`Index.cshtml`** (Profile)
+3. **`ChangePassword.cshtml`** (Security)
+4. **`Email.cshtml`**
+5. **`PersonalData.cshtml`**
+
+6. **`site.css`**
+   - ~600 lines of soft design CSS
+   - Sidebar styles
+   - Rounded everything
+   - Smooth transitions
+   - Responsive design
+
+### Design Comparison: Final Version
+
+| Feature | Implementation |
+|---------|---------------|
+| **Layout** | Sidebar left + content right |
+| **Borders** | Yes, everywhere (soft gray) |
+| **Corners** | Rounded 12-24px |
+| **Colors** | Soft gradients, warm yellow |
+| **Shadows** | Subtle, layered |
+| **Transitions** | Smooth 0.25s cubic-bezier |
+| **Navigation** | Fade out/in, no reload feel |
+| **Forms** | Rounded inputs, soft focus |
+| **Buttons** | Gradient, soft shadow, lift |
+| **Overall** | Soft, warm, professional |
+
+### Key Features
+
+1. **Sidebar Navigation**
+   - Always visible (sticky)
+   - Clear active states
+   - Descriptive labels
+   - Icon + title + description
+
+2. **Smooth Transitions**
+   - JavaScript-powered fades
+   - No jarring page loads
+   - Professional feel
+
+3. **Soft Design Language**
+   - Rounded corners everywhere
+   - Gentle gradients
+   - Soft shadows
+   - Warm colors
+
+4. **Responsive**
+   - Sidebar → horizontal on mobile
+   - Cards adjust padding
+   - Buttons go full-width
+
+### Testing Status
+- ✅ Sidebar navigation working
+- ✅ Smooth transitions implemented
+- ✅ All 4 pages styled
+- ✅ Rounded design applied
+- ✅ Soft color palette used
+- ✅ Responsive breakpoints tested
+
+### Expected User Experience
+
+**What makes this different:**
+1. **Soft aesthetic** - Nothing harsh or jarring
+2. **Smooth navigation** - Feels like modern SPA
+3. **Clear structure** - Sidebar always shows where you are
+4. **Warm feeling** - Yellow/gold creates inviting atmosphere
+5. **Professional** - Polished, production-ready quality
+
+**Design Inspiration:**
+- Notion (sidebar navigation)
+- Stripe (soft colors and shadows)
+- Linear (smooth transitions)
+- Tailwind UI (component quality)
+- Modern dashboard designs
+
+### Result
+A complete, professional Account Settings interface with:
+- Soft, rounded aesthetic
+- Sidebar navigation
+- Smooth page transitions
+- Warm, inviting color palette
+- Production-ready quality
+
+**This is the final implementation matching all user requirements! 🎨**
+
