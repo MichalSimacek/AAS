@@ -2,37 +2,113 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<div class="account-settings-wrapper">
+<div class="account-settings-container">
     <div class="container">
-        <div class="account-settings-header">
-            <h1 class="account-settings-title">Account Settings</h1>
-            <p class="account-settings-subtitle">Manage your profile, security, and preferences</p>
-        </div>
-        
-        <div class="account-settings-tabs">
-            <a href="/Identity/Account/Manage" class="account-tab @(ViewContext.RouteData.Values["page"]?.ToString().EndsWith("Index") == true ? "active" : "")">
-                <i class="bi bi-person"></i>
-                <span>Profile</span>
-            </a>
-            <a href="/Identity/Account/Manage/ChangePassword" class="account-tab @(ViewContext.RouteData.Values["page"]?.ToString().Contains("ChangePassword") == true ? "active" : "")">
-                <i class="bi bi-shield-lock"></i>
-                <span>Security</span>
-            </a>
-            <a href="/Identity/Account/Manage/Email" class="account-tab @(ViewContext.RouteData.Values["page"]?.ToString().Contains("Email") == true ? "active" : "")">
-                <i class="bi bi-envelope"></i>
-                <span>Email</span>
-            </a>
-            <a href="/Identity/Account/Manage/PersonalData" class="account-tab @(ViewContext.RouteData.Values["page"]?.ToString().Contains("PersonalData") == true ? "active" : "")">
-                <i class="bi bi-database"></i>
-                <span>Data & Privacy</span>
-            </a>
-        </div>
-        
-        <div class="account-settings-content">
-            @RenderBody()
+        <div class="settings-wrapper">
+            <!-- Sidebar Navigation -->
+            <aside class="settings-sidebar">
+                <div class="sidebar-header">
+                    <h2>Settings</h2>
+                    <p>Manage your account</p>
+                </div>
+                
+                <nav class="sidebar-nav">
+                    <a href="#profile" class="nav-item active" data-section="profile">
+                        <div class="nav-icon">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <div class="nav-content">
+                            <span class="nav-title">Profile</span>
+                            <span class="nav-desc">Personal information</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#security" class="nav-item" data-section="security">
+                        <div class="nav-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                        <div class="nav-content">
+                            <span class="nav-title">Security</span>
+                            <span class="nav-desc">Password & authentication</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#email" class="nav-item" data-section="email">
+                        <div class="nav-icon">
+                            <i class="bi bi-envelope-at"></i>
+                        </div>
+                        <div class="nav-content">
+                            <span class="nav-title">Email</span>
+                            <span class="nav-desc">Email preferences</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#privacy" class="nav-item" data-section="privacy">
+                        <div class="nav-icon">
+                            <i class="bi bi-database-lock"></i>
+                        </div>
+                        <div class="nav-content">
+                            <span class="nav-title">Privacy</span>
+                            <span class="nav-desc">Data & account deletion</span>
+                        </div>
+                    </a>
+                </nav>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <main class="settings-content" id="settings-main-content">
+                @RenderBody()
+            </main>
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navItems = document.querySelectorAll('.nav-item');
+    const contentArea = document.getElementById('settings-main-content');
+    
+    // Map sections to URLs
+    const sectionUrls = {
+        'profile': '/Identity/Account/Manage',
+        'security': '/Identity/Account/Manage/ChangePassword',
+        'email': '/Identity/Account/Manage/Email',
+        'privacy': '/Identity/Account/Manage/PersonalData'
+    };
+    
+    // Set active nav based on current URL
+    const currentPath = window.location.pathname;
+    navItems.forEach(item => {
+        const section = item.dataset.section;
+        if (currentPath.includes(sectionUrls[section])) {
+            navItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+        }
+    });
+    
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const section = this.dataset.section;
+            const url = sectionUrls[section];
+            
+            // Update active state
+            navItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Fade out current content
+            contentArea.style.opacity = '0';
+            contentArea.style.transform = 'translateX(20px)';
+            
+            // Load new content after fade
+            setTimeout(() => {
+                window.location.href = url;
+            }, 200);
+        });
+    });
+});
+</script>
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
