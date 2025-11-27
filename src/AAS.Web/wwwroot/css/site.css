@@ -2593,3 +2593,16 @@ body {
   opacity: 0.6;
   pointer-events: none;
 }
+
+/* Content transition for smooth navigation */
+.settings-content {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Prevent conflicts with other page navigation */
+.account-settings-container a:not(.nav-item):not(.btn-link) {
+  /* Normal links should work normally */
+  pointer-events: auto;
+}
