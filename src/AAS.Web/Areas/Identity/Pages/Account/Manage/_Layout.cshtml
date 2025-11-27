@@ -2,9 +2,35 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<div class="manage-account-container py-5">
+<div class="account-settings-wrapper">
     <div class="container">
-        @RenderBody()
+        <div class="account-settings-header">
+            <h1 class="account-settings-title">Account Settings</h1>
+            <p class="account-settings-subtitle">Manage your profile, security, and preferences</p>
+        </div>
+        
+        <div class="account-settings-tabs">
+            <a href="/Identity/Account/Manage" class="account-tab @(ViewContext.RouteData.Values["page"]?.ToString().EndsWith("Index") == true ? "active" : "")">
+                <i class="bi bi-person"></i>
+                <span>Profile</span>
+            </a>
+            <a href="/Identity/Account/Manage/ChangePassword" class="account-tab @(ViewContext.RouteData.Values["page"]?.ToString().Contains("ChangePassword") == true ? "active" : "")">
+                <i class="bi bi-shield-lock"></i>
+                <span>Security</span>
+            </a>
+            <a href="/Identity/Account/Manage/Email" class="account-tab @(ViewContext.RouteData.Values["page"]?.ToString().Contains("Email") == true ? "active" : "")">
+                <i class="bi bi-envelope"></i>
+                <span>Email</span>
+            </a>
+            <a href="/Identity/Account/Manage/PersonalData" class="account-tab @(ViewContext.RouteData.Values["page"]?.ToString().Contains("PersonalData") == true ? "active" : "")">
+                <i class="bi bi-database"></i>
+                <span>Data & Privacy</span>
+            </a>
+        </div>
+        
+        <div class="account-settings-content">
+            @RenderBody()
+        </div>
     </div>
 </div>
 
