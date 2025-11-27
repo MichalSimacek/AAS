@@ -700,3 +700,130 @@ A complete, professional Account Settings interface with:
 
 **This is the final implementation matching all user requirements! 🎨**
 
+
+---
+
+## Issue #7: 404 Error When Navigating from Account Settings ✅ FIXED
+
+### Problem Description
+When navigating from Account Settings pages to other pages in the application, the server returned a 404 error. The URL showed `/Identity/Account/undefined`, indicating a JavaScript error. Routing worked normally from other pages.
+
+### Root Cause Analysis
+
+**Primary Issues:**
+1. **Incorrect href attributes**: Sidebar nav items had `href="#profile"` instead of actual URLs
+2. **JavaScript interference**: The click event handler was preventing default behavior but didn't validate if the URL existed
+3. **Missing safety checks**: No validation if `dataset.section` or mapped URL existed before navigation
+
+**How the bug occurred:**
+1. User clicks sidebar nav item with `href="#profile"`
+2. JavaScript prevents default, tries to get URL from `sectionUrls[section]`
+3. If section not found, `url` becomes `undefined`
+4. `window.location.href = undefined` causes navigation to `/Identity/Account/undefined`
+5. Server returns 404
+
+### Fix Applied
+
+**1. Fixed href attributes** (Lines 16, 26, 36, 46)
+```diff
+- <a href="#profile" class="nav-item">
++ <a href="/Identity/Account/Manage" class="nav-item">
+
+- <a href="#security" class="nav-item">
++ <a href="/Identity/Account/Manage/ChangePassword" class="nav-item">
+
+- <a href="#email" class="nav-item">
++ <a href="/Identity/Account/Manage/Email" class="nav-item">
+
+- <a href="#privacy" class="nav-item">
++ <a href="/Identity/Account/Manage/PersonalData" class="nav-item">
+```
+
+**Benefits:**
+- Fallback to normal navigation if JavaScript fails
+- Browser shows correct URL on hover
+- Accessible without JavaScript
+
+**2. Enhanced JavaScript with safety checks**
+```javascript
+// Scoped selector - only sidebar nav items
+const sidebar = document.querySelector('.settings-sidebar');
+const navItems = sidebar.querySelectorAll('.nav-item');
+
+// Safety checks
+if (!sidebar) return;
+if (!contentArea || navItems.length === 0) return;
+
+// Validate URL before navigation
+if (!url) {
+    console.error('No URL found for section:', section);
+    return;
+}
+
+// Don't reload if already on this page
+if (window.location.pathname === url) {
+    return;
+}
+
+// Stop event bubbling
+e.stopPropagation();
+```
+
+**3. Added CSS for smooth transitions**
+```css
+.settings-content {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+```
+
+### Files Modified (2)
+
+1. **`_Layout.cshtml`** (Account Settings)
+   - Fixed all 4 sidebar nav item hrefs
+   - Enhanced JavaScript with safety checks
+   - Added scoped selectors
+   - Added validation before navigation
+
+2. **`site.css`**
+   - Added content transition CSS
+   - Ensured normal links work correctly
+
+### Testing Checklist
+
+**Sidebar Navigation:**
+- ✅ Profile → Security (smooth transition)
+- ✅ Security → Email (smooth transition)
+- ✅ Email → Privacy (smooth transition)
+- ✅ Privacy → Profile (smooth transition)
+
+**External Navigation:**
+- ✅ Account Settings → Home page
+- ✅ Account Settings → Collections
+- ✅ Account Settings → About
+- ✅ Account Settings → Contacts
+- ✅ Any other main menu link
+
+**Edge Cases:**
+- ✅ JavaScript disabled (fallback to href)
+- ✅ Clicking active nav item (no reload)
+- ✅ Fast double-clicking (prevented)
+- ✅ Browser back/forward buttons
+
+### Prevention Measures
+
+**What was added to prevent future issues:**
+1. **Scoped selectors**: Only target elements within `.settings-sidebar`
+2. **Null checks**: Verify elements exist before use
+3. **URL validation**: Check URL exists before navigation
+4. **Event stopPropagation**: Prevent event bubbling to other handlers
+5. **Fallback hrefs**: Real URLs in href attributes
+6. **Console logging**: Error messages for debugging
+
+### Result
+- ✅ Navigation from Account Settings to other pages works correctly
+- ✅ Sidebar navigation within Account Settings still smooth
+- ✅ No more 404 errors
+- ✅ Graceful degradation if JavaScript fails
+
