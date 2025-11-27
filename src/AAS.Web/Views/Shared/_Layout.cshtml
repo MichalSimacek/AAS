@@ -245,21 +245,35 @@
       });
 
       function showCookieBanner() {
-        document.getElementById('cookie-consent-banner').style.display = 'block';
-        document.body.style.marginBottom = '120px'; // Prevent content overlap
+        const banner = document.getElementById('cookie-consent-banner');
+        banner.style.display = 'flex';
+        // Focus trap for accessibility
+        banner.focus();
+        // Prevent background scrolling
+        document.body.style.overflow = 'hidden';
       }
 
       function hideCookieBanner() {
-        document.getElementById('cookie-consent-banner').style.display = 'none';
-        document.body.style.marginBottom = '0';
+        const banner = document.getElementById('cookie-consent-banner');
+        banner.style.display = 'none';
+        document.body.style.overflow = '';
       }
 
       function showSettingsModal() {
-        document.getElementById('cookie-settings-modal').style.display = 'block';
+        const modal = document.getElementById('cookie-settings-modal');
+        modal.style.display = 'flex';
+        // Set current preferences in toggles
+        const consent = getCookie(COOKIE_CONSENT_KEY);
+        if (consent) {
+          const parsed = JSON.parse(consent);
+          document.getElementById('analytics-toggle').checked = parsed.analytics || false;
+          document.getElementById('marketing-toggle').checked = parsed.marketing || false;
+        }
       }
 
       function hideSettingsModal() {
-        document.getElementById('cookie-settings-modal').style.display = 'none';
+        const modal = document.getElementById('cookie-settings-modal');
+        modal.style.display = 'none';
       }
 
       function acceptAllCookies() {
