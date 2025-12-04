@@ -67,8 +67,11 @@
     <script src="~/lib/tinymce/tinymce.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Get initial content from model
+            var initialContent = document.getElementById('ContentCs').value;
+            
             tinymce.init({
-                selector: '.tinymce-editor',
+                selector: '#tinymce-content',
                 height: 500,
                 menubar: true,
                 plugins: [
@@ -80,7 +83,28 @@
                          alignleft aligncenter alignright alignjustify | \
                          bullist numlist outdent indent | removeformat | help',
                 content_style: 'body { font-family: Arial, sans-serif; font-size: 14px }',
-                promotion: false
+                promotion: false,
+                setup: function(editor) {
+                    // Load initial content
+                    editor.on('init', function() {
+                        editor.setContent(initialContent);
+                    });
+                    
+                    // Copy content to hidden input on change
+                    editor.on('change', function() {
+                        document.getElementById('ContentCs').value = editor.getContent();
+                    });
+                    editor.on('keyup', function() {
+                        document.getElementById('ContentCs').value = editor.getContent();
+                    });
+                }
+            });
+            
+            // Ensure content is copied on form submit
+            document.querySelector('form').addEventListener('submit', function(e) {
+                if (tinymce.activeEditor) {
+                    document.getElementById('ContentCs').value = tinymce.activeEditor.getContent();
+                }
             });
         });
     </script>
