@@ -46,7 +46,12 @@ echo -e "${YELLOW}📦 Vytváření zálohy...${NC}"
 BACKUP_FILE="../aas-backup-$(date +%Y%m%d-%H%M%S).tar.gz"
 
 if [ "$DEPLOYMENT_TYPE" == "docker" ]; then
-    sudo docker-compose -f docker-compose.prod.yml down
+    # Try docker compose v2 first, fallback to v1
+    if command -v docker &> /dev/null && docker compose version &> /dev/null; then
+        sudo docker compose -f docker-compose.prod.yml down
+    else
+        sudo docker-compose -f docker-compose.prod.yml down
+    fi
     sudo tar -czf "$BACKUP_FILE" .
     echo -e "${GREEN}✅ Záloha vytvořena: $BACKUP_FILE${NC}"
 else
