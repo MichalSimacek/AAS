@@ -5,6 +5,20 @@
     ViewData["Title"] = L["Edit Blog Post"];
 }
 
+<script>
+// IMMEDIATELY remove any old textarea elements before page renders
+(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Remove all textareas with tinymce-editor class
+        var oldTextareas = document.querySelectorAll('textarea.tinymce-editor, textarea[name="ContentCs"]');
+        oldTextareas.forEach(function(ta) {
+            console.log('Removing old textarea:', ta);
+            ta.remove();
+        });
+    });
+})();
+</script>
+
 <div class="container-fluid px-4 py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3">@L["Edit Blog Post"]</h1>
