@@ -47,6 +47,13 @@ namespace AAS.Web.Services
             var containsHtml = text.Contains("<") && text.Contains(">");
             _logger.LogInformation($"DeepL TranslateAsync called: source={sourceLang}, target={targetLang}, textLength={text.Length}, containsHtml={containsHtml}");
 
+            // If text is too long, split into chunks and translate separately
+            if (text.Length > MAX_CHUNK_SIZE)
+            {
+                _logger.LogInformation($"Text is too long ({text.Length} chars), splitting into chunks...");
+                return await TranslateInChunksAsync(text, targetLang, sourceLang);
+            }
+
             try
             {
                 // Map language codes
