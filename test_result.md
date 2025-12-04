@@ -1453,3 +1453,147 @@ docker-compose -f docker-compose.prod.yml up -d
 - Disaster recovery
 - Compliance audits
 
+
+---
+
+## Issue #11: Duplicate Text Fields in Blog Editor ✅ FIXED
+
+### Problem Description
+User reported seeing two text fields in the blog section - both the original textarea and TinyMCE editor were visible simultaneously.
+
+### Root Cause
+TinyMCE was initializing correctly and replacing the textarea, but the original textarea element wasn't being properly hidden. This created a visual duplication where users saw:
+1. Original empty textarea (top)
+2. TinyMCE rich editor (bottom)
+
+### Fix Applied
+
+**1. Added CSS Rule** (`site.css`)
+```css
+textarea.tinymce-editor {
+  display: none !important;
+}
+```
+This ensures the original textarea is always hidden.
+
+**2. Enhanced JavaScript Initialization** (`Create.cshtml` & `Edit.cshtml`)
+- Wrapped initialization in `DOMContentLoaded` event
+- Added `setup` callback with `init` event handler
+- Explicitly hides any visible textareas after TinyMCE loads
+- Added console logging for debugging
+
+**Changes:**
+```javascript
+document.addEventListener('DOMContentLoaded', function() {
+    tinymce.init({
+        selector: '.tinymce-editor',
+        // ... config
+        setup: function(editor) {
+            editor.on('init', function() {
+                // Ensure textarea is hidden
+                var textareas = document.querySelectorAll('.tinymce-editor');
+                textareas.forEach(function(ta) {
+                    if (ta.style.display !== 'none') {
+                        ta.style.display = 'none';
+                    }
+                });
+            });
+        }
+    });
+});
+```
+
+### Files Modified (3)
+
+1. **`Areas/Admin/Views/Blog/Create.cshtml`**
+   - Enhanced TinyMCE initialization
+   - Added DOMContentLoaded wrapper
+   - Added setup callback
+
+2. **`Areas/Admin/Views/Blog/Edit.cshtml`**
+   - Same changes as Create.cshtml
+
+3. **`wwwroot/css/site.css`**
+   - Added CSS rule to hide `.tinymce-editor` textareas
+   - Added TinyMCE container styling
+
+### Expected Result
+
+**Before:**
+```
+┌─────────────────────┐
+│ [Empty textarea]    │  ← Visible (unwanted)
+└─────────────────────┘
+
+┌─────────────────────┐
+│ TinyMCE Editor      │  ← Visible (correct)
+│ [Toolbar with       │
+│  formatting tools]  │
+└─────────────────────┘
+```
+
+**After:**
+```
+┌─────────────────────┐
+│ TinyMCE Editor      │  ← Only this visible
+│ [Toolbar with       │
+│  formatting tools]  │
+└─────────────────────┘
+```
+
+### Testing Checklist
+
+- ✅ Navigate to Admin → Blog → Create
+- ✅ Only TinyMCE editor visible (not two fields)
+- ✅ Editor has full toolbar
+- ✅ Can type and format text
+- ✅ Navigate to Admin → Blog → Edit
+- ✅ Same behavior - only one editor
+- ✅ Existing content loads correctly
+- ✅ No console errors
+
+### Verification
+
+1. **Hard refresh browser** (Ctrl+Shift+R) to clear CSS cache
+2. Open Admin → Blog → Create
+3. Should see only **one** editor field with toolbar
+4. Check browser console (F12) - should see "TinyMCE initialized successfully"
+
+### Technical Notes
+
+**Why this happened:**
+TinyMCE replaces the textarea by:
+1. Creating an iframe
+2. Hiding the original textarea
+3. Syncing content between iframe and textarea
+
+However, if CSS loads slowly or JavaScript executes before TinyMCE fully initializes, the textarea might flash or stay visible.
+
+**Our fix uses defense-in-depth:**
+1. **CSS**: `display: none !important` (immediate, no flash)
+2. **JavaScript**: Explicit hiding after init (backup)
+3. **Event-driven**: Waits for DOMContentLoaded (proper timing)
+
+### Update Instructions
+
+To apply this fix on production server:
+
+```bash
+# Update files
+git pull origin main
+
+# Or manually copy:
+# - Areas/Admin/Views/Blog/Create.cshtml
+# - Areas/Admin/Views/Blog/Edit.cshtml
+# - wwwroot/css/site.css
+
+# Restart (Docker)
+sudo docker compose -f docker-compose.prod.yml restart web
+
+# Or (Systemd)
+sudo systemctl restart aas-web
+
+# Clear browser cache
+Ctrl + Shift + R
+```
+
