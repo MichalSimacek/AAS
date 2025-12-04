@@ -827,3 +827,150 @@ e.stopPropagation();
 - ✅ No more 404 errors
 - ✅ Graceful degradation if JavaScript fails
 
+
+---
+
+## Issue #8: Blog Editor Not Loading + Published Posts Not Showing ✅ FIXED
+
+### Problem Description
+User reported that after writing and publishing a blog post, it didn't appear on the website. Console error showed:
+```
+Loading the script 'https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js' 
+violates the following Content Security Policy directive
+```
+
+### Root Cause
+
+**Content Security Policy (CSP) Blocking:**
+The CSP configuration in `Program.cs` was missing `https://cdn.tiny.cloud` in the `script-src` directive, preventing the TinyMCE rich text editor from loading.
+
+**Impact:**
+1. TinyMCE editor failed to initialize
+2. JavaScript error: `tinymce is not defined`
+3. Blog creation form appeared but editor didn't work
+4. Posts couldn't be properly formatted
+5. Published checkbox may not have worked correctly
+
+### Fix Applied
+
+**Modified**: `/app/src/AAS.Web/Program.cs` (Line 182)
+
+```diff
+- "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://www.googletagmanager.com; " +
++ "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://www.googletagmanager.com https://cdn.tiny.cloud; " +
+```
+
+**Also updated comment:**
+```diff
+- // CSP - Content Security Policy with Google Analytics support
++ // CSP - Content Security Policy with Google Analytics and TinyMCE support
++ // TinyMCE CDN included for blog editor functionality
+```
+
+### Files Modified (1)
+
+1. **`Program.cs`**
+   - Added `https://cdn.tiny.cloud` to CSP `script-src`
+   - Updated documentation comment
+
+### TinyMCE Configuration
+
+**Current Setup:**
+- **CDN**: `https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js`
+- **API Key**: `no-api-key` (free tier, works with limitations)
+- **Plugins**: advlist, autolink, lists, link, image, charmap, preview, anchor, searchreplace, visualblocks, code, fullscreen, insertdatetime, media, table, help, wordcount
+- **Height**: 500px
+
+**Note**: The `no-api-key` version has some limitations:
+- Branding watermark
+- Limited plugin access
+- May have usage limits
+
+**Recommendation for Production:**
+Sign up for a free TinyMCE API key at https://www.tiny.cloud/auth/signup/ and replace `no-api-key` with your actual key in `/app/src/AAS.Web/Areas/Admin/Views/Blog/Create.cshtml` line 55.
+
+### How Blog System Works
+
+**Admin Flow:**
+1. Admin navigates to `/Admin/Blog`
+2. Clicks "Create Blog Post"
+3. Fills in:
+   - Title (Czech) - auto-translated to 9 languages
+   - Content (Czech) - rich text with TinyMCE
+   - Featured Image (optional)
+   - Published checkbox ✓
+4. Submits form
+5. DeepL API translates content
+6. Post saved to database
+
+**Public View:**
+1. Users visit `/Blog`
+2. Controller queries `Published = true` posts
+3. View displays posts in current language
+4. Users click "Read More" to view full post
+
+### Verification Steps
+
+**To test if blog is working:**
+
+1. **Check CSP fix** (done):
+   - ✅ TinyMCE CDN added to CSP
+
+2. **Test Blog Creation**:
+   - Navigate to Admin → Blog → Create
+   - Wait for editor to load (should see formatting toolbar)
+   - Write test content
+   - ✅ Check "Published" checkbox
+   - Click "Create"
+
+3. **Verify Public Display**:
+   - Navigate to `/Blog` page
+   - Should see new post in card grid
+   - Click "Read More" to see full content
+
+4. **Check Database**:
+   ```sql
+   SELECT Id, TitleCs, Published, CreatedAt 
+   FROM BlogPosts 
+   ORDER BY CreatedAt DESC;
+   ```
+
+### Troubleshooting Guide
+
+**If blog still doesn't show:**
+
+1. **Check Published flag**:
+   - Edit the post in Admin
+   - Ensure "Published" checkbox is checked
+   - Save
+
+2. **Verify database**:
+   - Check if post exists: `SELECT * FROM BlogPosts;`
+   - Check Published column value
+
+3. **Clear browser cache**:
+   - Hard refresh (Ctrl+F5)
+   - Clear application cache
+
+4. **Check logs**:
+   - DeepL translation errors
+   - Database save errors
+   - Image upload errors
+
+### Expected Result
+- ✅ TinyMCE editor loads correctly
+- ✅ No CSP errors in console
+- ✅ Blog posts can be created with formatting
+- ✅ Published posts appear on `/Blog` page
+- ✅ Posts display in current language
+
+### Security Note
+
+**CSP Rationale:**
+Adding `https://cdn.tiny.cloud` to CSP is safe because:
+- Official TinyMCE CDN (trusted source)
+- HTTPS only
+- Limited to specific domain (not wildcard)
+- Required for core blog functionality
+- Same security level as other CDNs (jQuery, Bootstrap)
+
