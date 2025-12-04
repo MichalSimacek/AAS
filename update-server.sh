@@ -179,15 +179,9 @@ echo ""
 echo -e "${GREEN}📝 Užitečné příkazy:${NC}"
 
 if [ "$DEPLOYMENT_TYPE" == "docker" ]; then
-    # Detect compose command for hints
-    if command -v docker &> /dev/null && docker compose version &> /dev/null; then
-        COMPOSE_HINT="docker compose"
-    else
-        COMPOSE_HINT="docker-compose"
-    fi
     echo "  - Logy:    sudo docker logs -f aas-web-prod"
-    echo "  - Restart: sudo $COMPOSE_HINT -f docker-compose.prod.yml restart"
-    echo "  - Stop:    sudo $COMPOSE_HINT -f docker-compose.prod.yml down"
+    echo "  - Restart: sudo $DOCKER_COMPOSE -f docker-compose.prod.yml restart"
+    echo "  - Stop:    sudo $DOCKER_COMPOSE -f docker-compose.prod.yml down"
 else
     echo "  - Logy:    sudo journalctl -u aas-web -f"
     echo "  - Restart: sudo systemctl restart aas-web"
