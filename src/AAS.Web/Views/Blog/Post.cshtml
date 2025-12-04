@@ -4,8 +4,8 @@
 
 @{
     var currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-    var title = AAS.Web.Controllers.BlogController.GetLocalizedTitle(Model, currentCulture);
-    var content = AAS.Web.Controllers.BlogController.GetLocalizedContent(Model, currentCulture);
+    var title = AAS.Web.Controllers.BlogController.GetLocalizedTitle(Model, currentCulture) ?? "Blog Post";
+    var content = AAS.Web.Controllers.BlogController.GetLocalizedContent(Model, currentCulture) ?? "";
     
     ViewData["Title"] = title;
 }
