@@ -38,7 +38,17 @@
                     {
                         // Strip all HTML tags for excerpt to avoid breaking HTML structure
                         var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
+                        // Decode HTML entities (e.g., &amp; → &, &scaron; → š, &iacute; → í)
+                        plainText = System.Net.WebUtility.HtmlDecode(plainText);
+                        // Trim whitespace
+                        plainText = plainText.Trim();
                         excerpt = plainText.Length > 200 ? plainText.Substring(0, 200) + "..." : plainText;
+                    }
+                    else if (!string.IsNullOrEmpty(content))
+                    {
+                        // Even for short content, decode HTML entities
+                        var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
+                        excerpt = System.Net.WebUtility.HtmlDecode(plainText).Trim();
                     }
                     
                     <div class="col-12 col-md-6 col-lg-4">
