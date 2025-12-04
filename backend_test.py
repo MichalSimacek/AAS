@@ -118,13 +118,20 @@ class BlogTestRunner:
                 # Check for form fields
                 soup = BeautifulSoup(response.text, 'html.parser')
                 title_field = soup.find('input', {'name': 'TitleCs'})
-                content_field = soup.find('textarea', {'name': 'ContentCs'})
+                content_field = soup.find('input', {'name': 'ContentCs'})  # Hidden input field
                 published_field = soup.find('input', {'name': 'Published'})
+                tinymce_div = soup.find('div', {'id': 'tinymce-content'})  # TinyMCE container
                 
                 if title_field and content_field:
                     self.log("✅ Required form fields found")
+                    if tinymce_div:
+                        self.log("✅ TinyMCE container found")
                 else:
                     self.log("❌ Missing required form fields", "ERROR")
+                    if not title_field:
+                        self.log("  Missing TitleCs field", "ERROR")
+                    if not content_field:
+                        self.log("  Missing ContentCs field", "ERROR")
                     return False, None
                     
                 return True, response.text
