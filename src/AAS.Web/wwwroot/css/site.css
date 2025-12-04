@@ -2606,3 +2606,14 @@ body {
   /* Normal links should work normally */
   pointer-events: auto;
 }
+
+/* TinyMCE Editor - Hide original textarea */
+textarea.tinymce-editor {
+  display: none !important;
+}
+
+/* TinyMCE container styling */
+.tox-tinymce {
+  border-radius: 8px !important;
+  border: 1px solid #E5E7EB !important;
+}
