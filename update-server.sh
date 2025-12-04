@@ -40,18 +40,27 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 0
 fi
 
+# Detect Docker Compose command
+if [ "$DEPLOYMENT_TYPE" == "docker" ]; then
+    if docker compose version &> /dev/null 2>&1; then
+        DOCKER_COMPOSE="docker compose"
+        echo -e "${GREEN}✅ Použiji: docker compose (v2)${NC}"
+    elif command -v docker-compose &> /dev/null; then
+        DOCKER_COMPOSE="docker-compose"
+        echo -e "${GREEN}✅ Použiji: docker-compose (v1)${NC}"
+    else
+        echo -e "${RED}❌ Docker Compose není nainstalován!${NC}"
+        exit 1
+    fi
+fi
+
 # Backup
 echo ""
 echo -e "${YELLOW}📦 Vytváření zálohy...${NC}"
 BACKUP_FILE="../aas-backup-$(date +%Y%m%d-%H%M%S).tar.gz"
 
 if [ "$DEPLOYMENT_TYPE" == "docker" ]; then
-    # Try docker compose v2 first, fallback to v1
-    if command -v docker &> /dev/null && docker compose version &> /dev/null; then
-        sudo docker compose -f docker-compose.prod.yml down
-    else
-        sudo docker-compose -f docker-compose.prod.yml down
-    fi
+    sudo $DOCKER_COMPOSE -f docker-compose.prod.yml down
     sudo tar -czf "$BACKUP_FILE" .
     echo -e "${GREEN}✅ Záloha vytvořena: $BACKUP_FILE${NC}"
 else
