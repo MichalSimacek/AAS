@@ -116,7 +116,7 @@ if [ "$DEPLOYMENT_TYPE" == "docker" ]; then
     
     echo ""
     echo -e "${GREEN}📊 Stav služeb:${NC}"
-    sudo docker-compose -f docker-compose.prod.yml ps
+    sudo $DOCKER_CMD -f docker-compose.prod.yml ps
     
     echo ""
     echo -e "${GREEN}📝 Poslední logy:${NC}"
