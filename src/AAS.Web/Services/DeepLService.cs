@@ -72,7 +72,9 @@ namespace AAS.Web.Services
                 var requestData = new Dictionary<string, string>
                 {
                     { "text", text },
-                    { "target_lang", targetLangCode }
+                    { "target_lang", targetLangCode },
+                    { "tag_handling", "html" }, // Enable HTML tag handling
+                    { "split_sentences", "nonewlines" } // Preserve paragraph structure
                 };
 
                 if (sourceLangCode != "auto")
@@ -91,7 +93,7 @@ namespace AAS.Web.Services
                 request.Headers.Add("Authorization", $"DeepL-Auth-Key {_apiKey}");
                 request.Content = content;
 
-                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60)); // Increased timeout for long content
                 var response = await _httpClient.SendAsync(request, cts.Token);
                 response.EnsureSuccessStatusCode();
 
