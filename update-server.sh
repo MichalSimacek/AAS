@@ -96,11 +96,19 @@ fi
 echo ""
 if [ "$DEPLOYMENT_TYPE" == "docker" ]; then
     echo -e "${YELLOW}🔨 Rebuilding Docker image...${NC}"
-    sudo docker-compose -f docker-compose.prod.yml build --no-cache web
+    
+    # Detect docker compose version
+    if command -v docker &> /dev/null && docker compose version &> /dev/null; then
+        DOCKER_CMD="docker compose"
+    else
+        DOCKER_CMD="docker-compose"
+    fi
+    
+    sudo $DOCKER_CMD -f docker-compose.prod.yml build --no-cache web
     
     echo ""
     echo -e "${YELLOW}🚀 Spouštím služby...${NC}"
-    sudo docker-compose -f docker-compose.prod.yml up -d
+    sudo $DOCKER_CMD -f docker-compose.prod.yml up -d
     
     echo ""
     echo -e "${YELLOW}⏳ Čekám na start (30s)...${NC}"
