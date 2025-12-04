@@ -15,8 +15,9 @@ namespace AAS.Web.Services
         private readonly string _apiKey;
         private readonly ILogger<DeepLService> _logger;
         
-        // DeepL API limits: Free API max 128KB, but we use conservative 50KB chunks to be safe
-        private const int MAX_CHUNK_SIZE = 50000; // characters
+        // DeepL API limits: Free API max 128KB, but we use very conservative chunks
+        // With HTML tags, 10KB text can easily become 50KB+ request
+        private const int MAX_CHUNK_SIZE = 10000; // characters (conservative for HTML content)
 
         // Language codes mapping (DeepL uses different codes)
         // Note: DeepL doesn't support Hindi (hi), so it will fallback to English translation
