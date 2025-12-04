@@ -41,7 +41,8 @@ namespace AAS.Web.Services
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty;
 
-            _logger.LogInformation($"DeepL TranslateAsync called: source={sourceLang}, target={targetLang}, textLength={text.Length}");
+            var containsHtml = text.Contains("<") && text.Contains(">");
+            _logger.LogInformation($"DeepL TranslateAsync called: source={sourceLang}, target={targetLang}, textLength={text.Length}, containsHtml={containsHtml}");
 
             try
             {
