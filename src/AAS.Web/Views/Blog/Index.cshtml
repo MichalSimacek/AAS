@@ -30,7 +30,7 @@
                 @foreach (var post in Model)
                 {
                     var title = AAS.Web.Controllers.BlogController.GetLocalizedTitle(post, currentCulture);
-                    var content = AAS.Web.Controllers.BlogController.GetLocalizedContent(post, currentCulture);
+                    var content = AAS.Web.Controllers.BlogController.GetLocalizedContent(post, currentCulture) ?? "";
                     var excerpt = content.Length > 200 ? content.Substring(0, 200) + "..." : content;
                     
                     <div class="col-12 col-md-6 col-lg-4">
