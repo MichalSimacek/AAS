@@ -200,5 +200,160 @@ namespace AAS.Web.Services
 
             return translations;
         }
+
+        private async Task<string> TranslateInChunksAsync(string text, string targetLang, string sourceLang)
+        {
+            try
+            {
+                var chunks = SplitIntoChunks(text, MAX_CHUNK_SIZE);
+                _logger.LogInformation($"Split text into {chunks.Count} chunks for translation");
+
+                var translatedChunks = new List<string>();
+                
+                for (int i = 0; i < chunks.Count; i++)
+                {
+                    _logger.LogInformation($"Translating chunk {i + 1}/{chunks.Count} (length: {chunks[i].Length})");
+                    
+                    // Translate single chunk using existing logic (but recursion-safe since chunk is smaller)
+                    var originalLength = text.Length;
+                    text = chunks[i]; // Temporarily replace text
+                    
+                    var translatedChunk = await TranslateSingleChunkAsync(chunks[i], targetLang, sourceLang);
+                    translatedChunks.Add(translatedChunk);
+                    
+                    text = string.Join("", chunks); // Restore for next iteration
+                    
+                    // Small delay to avoid rate limiting
+                    if (i < chunks.Count - 1)
+                    {
+                        await Task.Delay(200);
+                    }
+                }
+
+                var result = string.Join("", translatedChunks);
+                _logger.LogInformation($"Successfully translated all chunks. Total length: {result.Length}");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to translate text in chunks");
+                return text; // Return original on error
+            }
+        }
+
+        private async Task<string> TranslateSingleChunkAsync(string text, string targetLang, string sourceLang)
+        {
+            // This is the core translation logic without chunking
+            try
+            {
+                var targetLangCode = _langMap.ContainsKey(targetLang) ? _langMap[targetLang] : targetLang.ToUpper();
+                
+                string sourceLangCode;
+                if (sourceLang == "auto")
+                {
+                    sourceLangCode = "auto";
+                }
+                else if (sourceLang == "cs")
+                {
+                    sourceLangCode = "CS";
+                }
+                else if (_langMap.ContainsKey(sourceLang))
+                {
+                    sourceLangCode = _langMap[sourceLang];
+                }
+                else
+                {
+                    sourceLangCode = sourceLang.ToUpper();
+                }
+
+                var requestData = new Dictionary<string, string>
+                {
+                    { "text", text },
+                    { "target_lang", targetLangCode },
+                    { "tag_handling", "html" },
+                    { "split_sentences", "nonewlines" }
+                };
+
+                if (sourceLangCode != "auto")
+                {
+                    requestData.Add("source_lang", sourceLangCode);
+                }
+
+                var content = new FormUrlEncodedContent(requestData);
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://api-free.deepl.com/v2/translate");
+                request.Headers.Add("Authorization", $"DeepL-Auth-Key {_apiKey}");
+                request.Content = content;
+
+                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+                var response = await _httpClient.SendAsync(request, cts.Token);
+                response.EnsureSuccessStatusCode();
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var jsonDoc = JsonDocument.Parse(jsonResponse);
+                
+                var translations = jsonDoc.RootElement.GetProperty("translations");
+                if (translations.GetArrayLength() > 0)
+                {
+                    return translations[0].GetProperty("text").GetString() ?? text;
+                }
+
+                return text;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"DeepL chunk translation failed");
+                return text;
+            }
+        }
+
+        private List<string> SplitIntoChunks(string text, int maxChunkSize)
+        {
+            var chunks = new List<string>();
+            
+            if (text.Length <= maxChunkSize)
+            {
+                chunks.Add(text);
+                return chunks;
+            }
+
+            // For HTML content, try to split at paragraph boundaries to preserve structure
+            var containsHtml = text.Contains("<p>") || text.Contains("</p>");
+            
+            if (containsHtml)
+            {
+                // Split by paragraph tags
+                var paragraphs = text.Split(new[] { "</p>" }, StringSplitOptions.None);
+                var currentChunk = new StringBuilder();
+                
+                foreach (var para in paragraphs)
+                {
+                    var paraWithTag = para + (para == paragraphs.Last() ? "" : "</p>");
+                    
+                    if (currentChunk.Length + paraWithTag.Length > maxChunkSize && currentChunk.Length > 0)
+                    {
+                        chunks.Add(currentChunk.ToString());
+                        currentChunk.Clear();
+                    }
+                    
+                    currentChunk.Append(paraWithTag);
+                }
+                
+                if (currentChunk.Length > 0)
+                {
+                    chunks.Add(currentChunk.ToString());
+                }
+            }
+            else
+            {
+                // Simple character-based splitting for non-HTML
+                for (int i = 0; i < text.Length; i += maxChunkSize)
+                {
+                    var length = Math.Min(maxChunkSize, text.Length - i);
+                    chunks.Add(text.Substring(i, length));
+                }
+            }
+
+            return chunks;
+        }
     }
 }
