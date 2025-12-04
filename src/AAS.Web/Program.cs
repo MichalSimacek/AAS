@@ -114,9 +114,9 @@ services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, Em
 services.AddHttpClient<TranslationService>();
 services.AddSingleton<TranslationService>();
 
-// DeepL Translation Service
+// DeepL Translation Service - Singleton to match TranslationService lifecycle
 services.AddHttpClient();
-services.AddScoped<IDeepLService, DeepLService>();
+services.AddSingleton<IDeepLService, DeepLService>();
 
 services.AddHostedService<AdminSeeder>();
 
