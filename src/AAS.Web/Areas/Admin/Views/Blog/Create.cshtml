@@ -25,7 +25,7 @@
 
                 <div class="mb-3">
                     <label asp-for="ContentCs" class="form-label">@L["Blog Content"] (Čeština)</label>
-                    <textarea asp-for="ContentCs" class="form-control tinymce-editor" rows="15" required></textarea>
+                    <textarea asp-for="ContentCs" class="form-control tinymce-editor" rows="15" required style="display:none;"></textarea>
                     <span asp-validation-for="ContentCs" class="text-danger"></span>
                     <small class="form-text text-muted">@L["Content will be automatically translated to all supported languages"]</small>
                 </div>
