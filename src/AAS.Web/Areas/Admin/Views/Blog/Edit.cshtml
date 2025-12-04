@@ -67,8 +67,8 @@
     <script src="~/lib/tinymce/tinymce.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get initial content from model
-            var initialContent = document.getElementById('ContentCs').value;
+            // Get initial content from hidden input
+            var initialContent = document.getElementById('ContentCs').value || '';
             
             tinymce.init({
                 selector: '#tinymce-content',
@@ -84,26 +84,37 @@
                          bullist numlist outdent indent | removeformat | help',
                 content_style: 'body { font-family: Arial, sans-serif; font-size: 14px }',
                 promotion: false,
-                setup: function(editor) {
-                    // Load initial content
-                    editor.on('init', function() {
-                        editor.setContent(initialContent);
-                    });
+                init_instance_callback: function(editor) {
+                    console.log('TinyMCE initialized for edit');
                     
-                    // Copy content to hidden input on change
-                    editor.on('change', function() {
-                        document.getElementById('ContentCs').value = editor.getContent();
-                    });
-                    editor.on('keyup', function() {
-                        document.getElementById('ContentCs').value = editor.getContent();
+                    // Load initial content
+                    if (initialContent) {
+                        editor.setContent(initialContent);
+                    }
+                    
+                    // Sync content on every change
+                    editor.on('change keyup paste input', function() {
+                        var content = editor.getContent();
+                        document.getElementById('ContentCs').value = content;
+                        console.log('Content synced:', content.substring(0, 50) + '...');
                     });
                 }
             });
             
-            // Ensure content is copied on form submit
-            document.querySelector('form').addEventListener('submit', function(e) {
+            // Intercept form submit
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function(e) {
                 if (tinymce.activeEditor) {
-                    document.getElementById('ContentCs').value = tinymce.activeEditor.getContent();
+                    var content = tinymce.activeEditor.getContent();
+                    document.getElementById('ContentCs').value = content;
+                    console.log('Form submit - Content length:', content.length);
+                    
+                    // Client-side validation
+                    if (!content || content.trim() === '') {
+                        e.preventDefault();
+                        alert('Please enter blog content!');
+                        return false;
+                    }
                 }
             });
         });
