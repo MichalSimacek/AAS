@@ -31,7 +31,15 @@
                 {
                     var title = AAS.Web.Controllers.BlogController.GetLocalizedTitle(post, currentCulture);
                     var content = AAS.Web.Controllers.BlogController.GetLocalizedContent(post, currentCulture) ?? "";
-                    var excerpt = content.Length > 200 ? content.Substring(0, 200) + "..." : content;
+                    
+                    // Create safe excerpt without breaking HTML tags
+                    var excerpt = content;
+                    if (content.Length > 200)
+                    {
+                        // Strip all HTML tags for excerpt to avoid breaking HTML structure
+                        var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
+                        excerpt = plainText.Length > 200 ? plainText.Substring(0, 200) + "..." : plainText;
+                    }
                     
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card h-100">
