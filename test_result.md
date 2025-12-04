@@ -1188,3 +1188,268 @@ chmod -R 755 /app/src/AAS.Web/wwwroot/lib/tinymce/
 - No external dependencies
 - Professional-grade solution
 
+
+---
+
+## Issue #10: Ubuntu Server Deployment Documentation ✅ CREATED
+
+### User Request
+User asked: "Jak to nainstalovat na mém Ubuntu serveru?" (How to install on my Ubuntu server?)
+
+### Solution: Complete Deployment Guide Package
+
+Created **3 comprehensive documentation files** for Ubuntu server deployment:
+
+#### 1. UBUNTU_DEPLOYMENT.md (Main Guide)
+
+**Contents:**
+- **3 Deployment Methods:**
+  - Method 1: Docker Compose (Recommended)
+  - Method 2: Systemd Service (No Docker)
+  - Method 3: Nginx Reverse Proxy (Public hosting)
+
+**Covers:**
+- Prerequisites installation (Docker, .NET, PostgreSQL)
+- Step-by-step configuration
+- Environment variables setup
+- SSL/HTTPS with Let's Encrypt
+- Security hardening (Firewall, Fail2Ban)
+- Automated backups
+- Monitoring & logging
+- Troubleshooting guide
+- Post-deployment checklist
+- Maintenance procedures
+
+**Key Sections:**
+- Installation commands
+- Configuration files
+- Service management
+- Database setup
+- Nginx configuration
+- Security best practices
+- Backup automation
+- Common issues & fixes
+
+#### 2. quick-deploy.sh (Automated Installer)
+
+**Features:**
+- Interactive installer script
+- 3 installation modes:
+  - Docker Compose (automatic)
+  - Systemd (automatic)
+  - Dependencies only
+- Auto-generates secure passwords
+- Creates all config files
+- Starts services automatically
+- Validates installation
+
+**Usage:**
+```bash
+chmod +x quick-deploy.sh
+./quick-deploy.sh
+```
+
+**What it does:**
+1. Checks prerequisites
+2. Installs required packages
+3. Configures environment
+4. Builds/deploys application
+5. Starts services
+6. Validates deployment
+7. Shows useful commands
+
+#### 3. CHEATSHEET.md (Command Reference)
+
+**Quick reference for:**
+- Docker commands
+- Systemd service management
+- Nginx operations
+- Database commands
+- Monitoring tools
+- Update procedures
+- SSL/HTTPS management
+- Firewall configuration
+- Cleanup operations
+- Troubleshooting fixes
+- Log locations
+- Quick fixes for common issues
+
+### Files Created (3)
+
+1. **`/app/UBUNTU_DEPLOYMENT.md`** (~8000 words)
+   - Complete production deployment guide
+   - All 3 deployment methods
+   - Security, monitoring, backups
+
+2. **`/app/quick-deploy.sh`** (~250 lines)
+   - Automated installation script
+   - Interactive mode selection
+   - Auto-configuration
+
+3. **`/app/CHEATSHEET.md`** (~300 lines)
+   - Quick command reference
+   - Common operations
+   - Troubleshooting shortcuts
+
+### Deployment Methods Comparison
+
+| Feature | Docker Compose | Systemd | Nginx Proxy |
+|---------|---------------|---------|-------------|
+| **Complexity** | Low | Medium | High |
+| **Setup Time** | 10 min | 20 min | 30 min |
+| **Isolation** | ✅ Yes | ❌ No | ✅ Yes |
+| **Resource Usage** | Medium | Low | Low |
+| **Portability** | ✅ High | ❌ Low | ✅ High |
+| **Updates** | Easy | Medium | Easy |
+| **Best For** | Development/Testing | Production | Public hosting |
+
+### Key Features of Documentation
+
+**Comprehensive:**
+- Covers beginner to advanced scenarios
+- Multiple deployment options
+- Complete configuration examples
+- Security best practices
+
+**Practical:**
+- Copy-paste ready commands
+- Real-world examples
+- Tested procedures
+- Troubleshooting scenarios
+
+**Production-Ready:**
+- SSL/HTTPS setup
+- Automated backups
+- Monitoring setup
+- Security hardening
+- Performance optimization
+
+**User-Friendly:**
+- Clear step-by-step instructions
+- Explanatory comments
+- Visual separators
+- Quick reference tables
+- Common issues & solutions
+
+### Technology Stack Covered
+
+**Application:**
+- ASP.NET Core 8.0
+- PostgreSQL 16
+- Nginx
+- Docker & Docker Compose
+
+**Operating System:**
+- Ubuntu 20.04+
+- Systemd
+- UFW Firewall
+- Certbot (Let's Encrypt)
+
+**Tools:**
+- Git
+- .NET SDK
+- PostgreSQL client
+- Fail2Ban
+- Cron
+
+### Security Considerations Documented
+
+1. **Firewall Configuration** (UFW)
+2. **PostgreSQL Authentication** (md5)
+3. **SSL/HTTPS** (Let's Encrypt)
+4. **Fail2Ban** (Brute-force protection)
+5. **Environment Variables** (Secure storage)
+6. **File Permissions** (Proper ownership)
+7. **Security Headers** (Nginx)
+
+### Backup Strategy Documented
+
+1. **Automated Database Backups**
+   - Daily cron job
+   - 7-day retention
+   - Compressed storage
+
+2. **File Backups**
+   - Uploads directory
+   - Configuration files
+   - SSL certificates
+
+### Monitoring & Logging
+
+**Documented:**
+- Application logs (Docker/Systemd)
+- Nginx access/error logs
+- PostgreSQL logs
+- System logs (journalctl)
+- Disk space monitoring
+- Service health checks
+
+### Quick Start Guide
+
+**For Docker (Recommended):**
+```bash
+cd /var/www/aas
+chmod +x quick-deploy.sh
+./quick-deploy.sh
+# Select option 1 (Docker)
+# Application runs on http://localhost:5000
+```
+
+**Manual Docker:**
+```bash
+cd /var/www/aas
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+**For Systemd:**
+```bash
+./quick-deploy.sh
+# Select option 2 (Systemd)
+# Manually configure Nginx for public access
+```
+
+### Post-Deployment Steps
+
+1. Access application: `http://your-server-ip:5000`
+2. Create admin account
+3. Configure domain (optional)
+4. Setup SSL with Certbot
+5. Configure backups
+6. Test all functionality
+7. Monitor logs for errors
+
+### Expected Outcome
+
+**Users can now:**
+- Deploy application to Ubuntu server
+- Choose deployment method based on needs
+- Follow step-by-step instructions
+- Quickly reference common commands
+- Troubleshoot common issues
+- Maintain and update application
+- Secure production deployment
+- Setup automated backups
+- Monitor application health
+
+### Documentation Quality
+
+**Standards:**
+- ✅ Clear structure
+- ✅ Code examples tested
+- ✅ Security best practices
+- ✅ Production-ready
+- ✅ Troubleshooting included
+- ✅ Multiple deployment paths
+- ✅ Quick reference available
+- ✅ Automated installer provided
+
+### Future Maintenance
+
+**Documentation will help with:**
+- Onboarding new team members
+- Updating deployment procedures
+- Troubleshooting production issues
+- Scaling infrastructure
+- Disaster recovery
+- Compliance audits
+
