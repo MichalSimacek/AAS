@@ -2607,13 +2607,27 @@ body {
   pointer-events: auto;
 }
 
-/* TinyMCE Editor - Hide original textarea */
-textarea.tinymce-editor {
+/* TinyMCE Editor - FORCE hide and remove textareas */
+textarea.tinymce-editor,
+textarea[name="ContentCs"] {
   display: none !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* TinyMCE container styling */
 .tox-tinymce {
   border-radius: 8px !important;
   border: 1px solid #E5E7EB !important;
+}
+
+/* Ensure tinymce content div is visible */
+#tinymce-content {
+  display: block !important;
+  visibility: visible !important;
 }
