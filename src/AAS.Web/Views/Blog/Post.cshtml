@@ -39,7 +39,16 @@
             </p>
 
             <div class="blog-content">
-                @Html.Raw(content)
+                @if (!string.IsNullOrWhiteSpace(content))
+                {
+                    @Html.Raw(content)
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        @L["Content not available in the selected language. Please try switching to Czech."]
+                    </div>
+                }
             </div>
         </article>
 
