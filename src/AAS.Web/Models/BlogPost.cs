@@ -36,7 +36,6 @@ namespace AAS.Web.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         
-        [Required]
         public string AuthorId { get; set; } = string.Empty;
         
         public bool Published { get; set; } = false;
