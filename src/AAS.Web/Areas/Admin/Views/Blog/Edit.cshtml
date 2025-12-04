@@ -65,20 +65,36 @@
 @section Scripts {
     <script src="~/lib/tinymce/tinymce.min.js"></script>
     <script>
-        tinymce.init({
-            selector: '.tinymce-editor',
-            height: 500,
-            menubar: true,
-            plugins: [
-                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                'insertdatetime', 'media', 'table', 'help', 'wordcount'
-            ],
-            toolbar: 'undo redo | formatselect | bold italic backcolor | \
-                     alignleft aligncenter alignright alignjustify | \
-                     bullist numlist outdent indent | removeformat | help',
-            content_style: 'body { font-family: Arial, sans-serif; font-size: 14px }',
-            promotion: false  // Remove "Upgrade" button
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize TinyMCE
+            tinymce.init({
+                selector: '.tinymce-editor',
+                height: 500,
+                menubar: true,
+                plugins: [
+                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                    'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                ],
+                toolbar: 'undo redo | formatselect | bold italic backcolor | \
+                         alignleft aligncenter alignright alignjustify | \
+                         bullist numlist outdent indent | removeformat | help',
+                content_style: 'body { font-family: Arial, sans-serif; font-size: 14px }',
+                promotion: false,
+                setup: function(editor) {
+                    // When editor initializes, ensure original textarea is hidden
+                    editor.on('init', function() {
+                        console.log('TinyMCE initialized successfully');
+                        // Hide any duplicate textareas
+                        var textareas = document.querySelectorAll('.tinymce-editor');
+                        textareas.forEach(function(ta) {
+                            if (ta.style.display !== 'none') {
+                                ta.style.display = 'none';
+                            }
+                        });
+                    });
+                }
+            });
         });
     </script>
 }
