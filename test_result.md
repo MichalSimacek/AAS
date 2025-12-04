@@ -703,6 +703,170 @@ A complete, professional Account Settings interface with:
 
 ---
 
+## Issue #12: Blog Post Creation Flow Testing ✅ TESTED & FIXED
+
+### User Request
+Test blog post creation flow in ASP.NET Core application running on http://localhost:8001 with specific focus on a reported bug where blog posts are not being saved to database after form submission.
+
+### Testing Scope
+**Complete End-to-End Flow:**
+1. Admin login (admin@localhost / Admin123!@#$)
+2. Navigate to /Admin/Blog/Create
+3. Fill and submit blog creation form
+4. Verify post creation in admin list and public page
+5. Analyze diagnostic logs for model binding issues
+
+### Issues Discovered & Fixed
+
+#### Issue #12.1: Missing DEEPL_API_KEY Configuration ❌→✅
+**Problem:** Application crashed with 500 error when accessing blog create page
+```
+System.InvalidOperationException: DEEPL_API_KEY not configured
+```
+
+**Root Cause:** DeepL service constructor required API key but none was configured in development settings.
+
+**Fix Applied:** Added temporary development API key to `appsettings.Development.json`:
+```json
+"DEEPL_API_KEY": "test-key-for-development"
+```
+
+#### Issue #12.2: Database Connection Configuration ❌→✅
+**Problem:** Application failed to start due to database connection issues
+```
+Database connection string is not configured. Set DB_PASSWORD environment variable
+```
+
+**Root Cause:** Application expected environment variables for database connection.
+
+**Fix Applied:** Set required environment variables:
+```bash
+export DB_HOST=localhost
+export DB_PORT=5432  
+export DB_NAME=aas_db
+export DB_USER=aas_user
+export DB_PASSWORD=aas_password
+export ASPNETCORE_ENVIRONMENT=Development
+```
+
+#### Issue #12.3: Model Validation Error - AuthorId Required ❌→✅
+**Problem:** Blog post creation failed with ModelState validation error
+```
+ModelState.IsValid: False
+Error: The AuthorId field is required.
+```
+
+**Root Cause:** `BlogPost.AuthorId` had `[Required]` attribute but was set by controller after model validation.
+
+**Fix Applied:** Removed `[Required]` attribute from `AuthorId` in `BlogPost.cs` since it's always set by the controller from authenticated user claims.
+
+### Testing Results
+
+#### Comprehensive Test Suite Created
+Created `/app/backend_test.py` - automated test script covering:
+- Server connectivity verification
+- Admin authentication flow  
+- Blog create page accessibility
+- Form field detection (TinyMCE integration)
+- Blog post submission with real data
+- Verification in admin list and public page
+- Application log analysis for diagnostic messages
+
+#### Test Execution Results ✅ ALL PASSED
+```
+CONNECTIVITY: ✅ PASS
+LOGIN: ✅ PASS  
+CREATE PAGE: ✅ PASS
+POST CREATION: ✅ PASS
+ADMIN LIST: ✅ PASS
+PUBLIC PAGE: ✅ PASS
+LOGS: ✅ PASS
+
+OVERALL: 7/7 tests passed
+```
+
+#### Diagnostic Log Verification ✅
+Successfully captured diagnostic messages from BlogController:
+```
+===== BLOG POST CREATE ATTEMPT =====
+TitleCs: Test Blog Post
+ContentCs: This is test content for the blog post
+ContentCs Length: 38
+Published: True
+ModelState.IsValid: True
+```
+
+#### Database Verification ✅
+Confirmed blog post successfully saved to PostgreSQL database:
+```sql
+INSERT INTO "BlogPosts" (...) VALUES (...) RETURNING "Id";
+```
+
+#### Translation Service Status ⚠️ EXPECTED LIMITATION
+DeepL translation service returns 403 Forbidden (expected with test API key), but application handles this gracefully with fallback to original Czech text for all languages.
+
+### Blog Creation Flow Analysis
+
+#### What Works Correctly ✅
+1. **Authentication:** Admin login successful with provided credentials
+2. **Form Rendering:** TinyMCE editor loads correctly, all form fields present
+3. **Form Submission:** Data properly captured and validated
+4. **Model Binding:** Title, Content, and Published status correctly bound
+5. **Database Persistence:** Blog post successfully saved to database
+6. **Content Display:** Post appears in both admin list and public blog page
+7. **Error Handling:** Translation failures handled gracefully with fallback
+
+#### Technical Implementation Details
+- **TinyMCE Integration:** Uses hidden input field `ContentCs` synced with TinyMCE editor
+- **Multi-language Support:** Attempts DeepL translation, falls back to Czech for all languages
+- **File Upload:** Featured image upload functionality present (not tested)
+- **Authorization:** Proper admin role requirement enforced
+- **Validation:** Client-side and server-side validation working
+
+### Original Bug Status: ✅ RESOLVED
+
+**User's Reported Issue:** "Blog posts are not being saved to database after form submission"
+
+**Testing Conclusion:** The reported bug was caused by model validation failure due to missing `AuthorId` field validation. After fixing the validation issue, the complete blog creation flow works correctly:
+
+- ✅ Form submits successfully without errors
+- ✅ Blog post is saved to database  
+- ✅ Post appears in admin blog list
+- ✅ Post is visible on public blog page
+- ✅ All diagnostic logging working as expected
+
+### Files Modified (2)
+
+1. **`/app/src/AAS.Web/appsettings.Development.json`**
+   - Added DEEPL_API_KEY for development testing
+
+2. **`/app/src/AAS.Web/Models/BlogPost.cs`**  
+   - Removed `[Required]` attribute from `AuthorId` field
+
+### Testing Artifacts Created
+
+1. **`/app/backend_test.py`** - Comprehensive automated test suite
+   - 300+ lines of Python code
+   - Full end-to-end testing capability
+   - Detailed logging and error reporting
+   - Reusable for future testing
+
+### Production Recommendations
+
+1. **DeepL API Key:** Configure valid DeepL API key for production translation functionality
+2. **Environment Variables:** Ensure all required database environment variables are set
+3. **Model Validation:** Consider adding custom validation logic for `AuthorId` if needed
+4. **Monitoring:** The diagnostic logging provides excellent debugging capability
+
+### Expected User Experience
+Users can now successfully:
+- Access blog creation form without errors
+- Create and publish blog posts with rich text content
+- See published posts immediately on the website
+- Use the translation system (with proper API key)
+
+---
+
 ## Issue #7: 404 Error When Navigating from Account Settings ✅ FIXED
 
 ### Problem Description
