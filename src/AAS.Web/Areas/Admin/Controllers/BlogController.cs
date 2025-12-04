@@ -50,8 +50,24 @@ namespace AAS.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BlogPost post, IFormFile? featuredImage)
         {
+            // DIAGNOSTIC LOGGING
+            _logger.LogInformation("===== BLOG POST CREATE ATTEMPT =====");
+            _logger.LogInformation($"TitleCs: {post.TitleCs}");
+            _logger.LogInformation($"ContentCs: {post.ContentCs ?? "NULL"}");
+            _logger.LogInformation($"ContentCs Length: {post.ContentCs?.Length ?? 0}");
+            _logger.LogInformation($"Published: {post.Published}");
+            _logger.LogInformation($"ModelState.IsValid: {ModelState.IsValid}");
+            
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning("ModelState is INVALID. Errors:");
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        _logger.LogWarning($"  - {error.ErrorMessage}");
+                    }
+                }
                 return View(post);
             }
 
