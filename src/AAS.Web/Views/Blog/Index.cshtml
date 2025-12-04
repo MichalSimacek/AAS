@@ -52,9 +52,9 @@
                                 <p class="card-text text-muted small">
                                     <i class="bi bi-calendar"></i> @post.CreatedAt.ToString("dd.MM.yyyy")
                                 </p>
-                                <div class="card-text mb-3">
-                                    @Html.Raw(excerpt)
-                                </div>
+                                <p class="card-text mb-3">
+                                    @excerpt
+                                </p>
                                 <a href="/Blog/Post/@post.Id" class="btn btn-primary mt-auto">@L["Read More"]</a>
                             </div>
                         </div>
