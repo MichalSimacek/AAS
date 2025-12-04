@@ -191,14 +191,9 @@ fi
 echo ""
 echo -e "${YELLOW}🔄 Rollback (pokud něco nefunguje):${NC}"
 if [ "$DEPLOYMENT_TYPE" == "docker" ]; then
-    if command -v docker &> /dev/null && docker compose version &> /dev/null; then
-        COMPOSE_HINT="docker compose"
-    else
-        COMPOSE_HINT="docker-compose"
-    fi
-    echo "  sudo $COMPOSE_HINT -f docker-compose.prod.yml down"
+    echo "  sudo $DOCKER_COMPOSE -f docker-compose.prod.yml down"
     echo "  sudo tar -xzf $BACKUP_FILE"
-    echo "  sudo $COMPOSE_HINT -f docker-compose.prod.yml up -d"
+    echo "  sudo $DOCKER_COMPOSE -f docker-compose.prod.yml up -d"
 else
     echo "  sudo systemctl stop aas-web"
     echo "  sudo tar -xzf $BACKUP_FILE -C /"
