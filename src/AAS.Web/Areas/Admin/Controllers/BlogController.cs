@@ -105,29 +105,86 @@ namespace AAS.Web.Areas.Admin.Controllers
                 {
                     _logger.LogInformation("Starting DeepL translations for blog post...");
 
-                    // Translate Title (auto-detect source language)
-                    var titleTranslations = await _deepL.TranslateToAllLanguagesAsync(post.TitleCs, "auto");
-                    post.TitleEn = titleTranslations.GetValueOrDefault("en", post.TitleCs);
-                    post.TitleDe = titleTranslations.GetValueOrDefault("de", post.TitleCs);
-                    post.TitleEs = titleTranslations.GetValueOrDefault("es", post.TitleCs);
-                    post.TitleFr = titleTranslations.GetValueOrDefault("fr", post.TitleCs);
-                    post.TitleHi = titleTranslations.GetValueOrDefault("hi", post.TitleCs);
-                    post.TitleJa = titleTranslations.GetValueOrDefault("ja", post.TitleCs);
-                    post.TitlePt = titleTranslations.GetValueOrDefault("pt", post.TitleCs);
-                    post.TitleRu = titleTranslations.GetValueOrDefault("ru", post.TitleCs);
-                    post.TitleZh = titleTranslations.GetValueOrDefault("zh", post.TitleCs);
-
-                    // Translate Content (HTML from TinyMCE) - auto-detect source language
-                    var contentTranslations = await _deepL.TranslateToAllLanguagesAsync(post.ContentCs, "auto");
-                    post.ContentEn = contentTranslations.GetValueOrDefault("en", post.ContentCs);
-                    post.ContentDe = contentTranslations.GetValueOrDefault("de", post.ContentCs);
-                    post.ContentEs = contentTranslations.GetValueOrDefault("es", post.ContentCs);
-                    post.ContentFr = contentTranslations.GetValueOrDefault("fr", post.ContentCs);
-                    post.ContentHi = contentTranslations.GetValueOrDefault("hi", post.ContentCs);
-                    post.ContentJa = contentTranslations.GetValueOrDefault("ja", post.ContentCs);
-                    post.ContentPt = contentTranslations.GetValueOrDefault("pt", post.ContentCs);
-                    post.ContentRu = contentTranslations.GetValueOrDefault("ru", post.ContentCs);
-                    post.ContentZh = contentTranslations.GetValueOrDefault("zh", post.ContentCs);
+                    // Translate ONE BY ONE like Collections do (avoids parallel 413 errors)
+                    _logger.LogInformation("Starting sequential translations (title + content per language)");
+                    
+                    var targetLanguages = new[] { "en", "de", "es", "fr", "hi", "ja", "pt", "ru", "zh" };
+                    
+                    foreach (var lang in targetLanguages)
+                    {
+                        try
+                        {
+                            _logger.LogInformation($"Translating to {lang}...");
+                            
+                            // Translate title
+                            var translatedTitle = await _deepL.TranslateAsync(post.TitleCs, lang, "cs");
+                            
+                            // Translate content
+                            var translatedContent = await _deepL.TranslateAsync(post.ContentCs, lang, "cs");
+                            
+                            // Assign to corresponding properties
+                            switch (lang)
+                            {
+                                case "en":
+                                    post.TitleEn = translatedTitle;
+                                    post.ContentEn = translatedContent;
+                                    break;
+                                case "de":
+                                    post.TitleDe = translatedTitle;
+                                    post.ContentDe = translatedContent;
+                                    break;
+                                case "es":
+                                    post.TitleEs = translatedTitle;
+                                    post.ContentEs = translatedContent;
+                                    break;
+                                case "fr":
+                                    post.TitleFr = translatedTitle;
+                                    post.ContentFr = translatedContent;
+                                    break;
+                                case "hi":
+                                    post.TitleHi = translatedTitle;
+                                    post.ContentHi = translatedContent;
+                                    break;
+                                case "ja":
+                                    post.TitleJa = translatedTitle;
+                                    post.ContentJa = translatedContent;
+                                    break;
+                                case "pt":
+                                    post.TitlePt = translatedTitle;
+                                    post.ContentPt = translatedContent;
+                                    break;
+                                case "ru":
+                                    post.TitleRu = translatedTitle;
+                                    post.ContentRu = translatedContent;
+                                    break;
+                                case "zh":
+                                    post.TitleZh = translatedTitle;
+                                    post.ContentZh = translatedContent;
+                                    break;
+                            }
+                            
+                            _logger.LogInformation($"✓ {lang} translation completed");
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex, $"Translation failed for {lang}, using Czech as fallback");
+                            // Fallback to Czech if translation fails
+                            switch (lang)
+                            {
+                                case "en": post.TitleEn = post.TitleCs; post.ContentEn = post.ContentCs; break;
+                                case "de": post.TitleDe = post.TitleCs; post.ContentDe = post.ContentCs; break;
+                                case "es": post.TitleEs = post.TitleCs; post.ContentEs = post.ContentCs; break;
+                                case "fr": post.TitleFr = post.TitleCs; post.ContentFr = post.ContentCs; break;
+                                case "hi": post.TitleHi = post.TitleCs; post.ContentHi = post.ContentCs; break;
+                                case "ja": post.TitleJa = post.TitleCs; post.ContentJa = post.ContentCs; break;
+                                case "pt": post.TitlePt = post.TitleCs; post.ContentPt = post.ContentCs; break;
+                                case "ru": post.TitleRu = post.TitleCs; post.ContentRu = post.ContentCs; break;
+                                case "zh": post.TitleZh = post.TitleCs; post.ContentZh = post.ContentCs; break;
+                            }
+                        }
+                    }
+                    
+                    _logger.LogInformation("All translations completed");
 
                     _logger.LogInformation("DeepL translations completed successfully");
                 }
