@@ -94,8 +94,8 @@ services.AddDefaultIdentity<IdentityUser>(o =>
 
 // MVC + Localization
 services.AddLocalization();
-services.AddControllersWithViews().AddViewLocalization();
-services.AddRazorPages();
+services.AddControllersWithViews().AddViewLocalization().AddRazorRuntimeCompilation();
+services.AddRazorPages().AddRazorRuntimeCompilation();
 
 // SECURITY: Configure anti-forgery to accept tokens from headers (for AJAX requests)
 services.AddAntiforgery(options =>
