@@ -15,14 +15,6 @@ namespace AAS.Web.Controllers
         public IActionResult Index() => View();
 
         public IActionResult Privacy() => View();
-        
-        // DEBUG: Test current culture
-        public IActionResult CultureDebug()
-        {
-            var lang = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            var cultureName = System.Globalization.CultureInfo.CurrentUICulture.Name;
-            return Content($"DEBUG: lang={lang}, cultureName={cultureName}", "text/plain");
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
