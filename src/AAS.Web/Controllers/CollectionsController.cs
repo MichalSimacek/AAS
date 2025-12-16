@@ -41,6 +41,9 @@ namespace AAS.Web.Controllers
             // Original collection titles are in Czech (cs), so we need translations for ALL other languages
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             var translations = new Dictionary<int, string>();
+            
+            // DEBUG: Log current language
+            Console.WriteLine($"DEBUG CollectionsController.Index: lang={lang}, CurrentUICulture={CultureInfo.CurrentUICulture.Name}");
 
             // Only load translations if current language is NOT Czech (the original language)
             if (lang != "cs")
