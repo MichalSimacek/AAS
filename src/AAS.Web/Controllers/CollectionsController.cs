@@ -42,9 +42,6 @@ namespace AAS.Web.Controllers
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             var translations = new Dictionary<int, string>();
             
-            // DEBUG: Log current language
-            Console.WriteLine($"DEBUG CollectionsController.Index: lang={lang}, CurrentUICulture={CultureInfo.CurrentUICulture.Name}");
-
             // Only load translations if current language is NOT Czech (the original language)
             if (lang != "cs")
             {
@@ -77,17 +74,7 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
-        // GET /Collections/CultureDebug - explicit route to avoid matching Detail's {slug} route
-        [Route("Collections/CultureDebug")]
-        [HttpGet]
-        public IActionResult CultureDebug()
-        {
-            var lang = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            var cultureName = System.Globalization.CultureInfo.CurrentUICulture.Name;
-            return Content($"DEBUG: lang={lang}, cultureName={cultureName}", "text/plain");
-        }
-
-        [Route("collections/{slug:regex(^(?!CultureDebug$).+$)}")]
+        [Route("collections/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
             // PERFORMANCE: Use AsNoTracking for read-only operations
