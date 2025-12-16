@@ -84,7 +84,9 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
-        // GET /Collections/CultureDebug
+        // GET /Collections/CultureDebug - explicit route to avoid matching Detail's {slug} route
+        [Route("Collections/CultureDebug")]
+        [HttpGet]
         public IActionResult CultureDebug()
         {
             var lang = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
@@ -92,7 +94,7 @@ namespace AAS.Web.Controllers
             return Content($"DEBUG: lang={lang}, cultureName={cultureName}", "text/plain");
         }
 
-        [Route("collections/{slug}")]
+        [Route("collections/{slug:regex(^(?!CultureDebug$).+$)}")]
         public async Task<IActionResult> Details(string slug)
         {
             // PERFORMANCE: Use AsNoTracking for read-only operations
