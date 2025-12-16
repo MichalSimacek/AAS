@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>Коллекции</value></data>
-<data name="About us" xml:space="preserve"><value>О нас</value></data>
 <data name="Contacts" xml:space="preserve"><value>Контакты</value></data>
 <data name="Register" xml:space="preserve"><value>Регистрация</value></data>
 <data name="Login" xml:space="preserve"><value>Войти</value></data>
@@ -304,7 +303,6 @@
 <!-- Pagination -->
 <data name="Showing" xml:space="preserve"><value>Показано</value></data>
 <data name="of" xml:space="preserve"><value>из</value></data>
-<data name="collections" xml:space="preserve"><value>коллекций</value></data>
 
 <!-- GDPR Cookie Consent -->
 <data name="Cookie Banner Title" xml:space="preserve"><value>Мы используем файлы cookie</value></data>

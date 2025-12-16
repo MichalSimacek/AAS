@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>Kolekce</value></data>
-<data name="About us" xml:space="preserve"><value>O nás</value></data>
 <data name="Contacts" xml:space="preserve"><value>Kontakty</value></data>
 <data name="Register" xml:space="preserve"><value>Registrovat</value></data>
 <data name="Login" xml:space="preserve"><value>Přihlásit se</value></data>
@@ -347,7 +346,6 @@
 <!-- Pagination -->
 <data name="Showing" xml:space="preserve"><value>Zobrazeno</value></data>
 <data name="of" xml:space="preserve"><value>z</value></data>
-<data name="collections" xml:space="preserve"><value>kolekcí</value></data>
 
 <!-- GDPR Cookie Consent -->
 <data name="Cookie Settings" xml:space="preserve"><value>Nastavení cookies</value></data>

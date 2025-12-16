@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>Collections</value></data>
-<data name="About us" xml:space="preserve"><value>À propos</value></data>
 <data name="Contacts" xml:space="preserve"><value>Contacts</value></data>
 <data name="Register" xml:space="preserve"><value>S'inscrire</value></data>
 <data name="Login" xml:space="preserve"><value>Se connecter</value></data>
@@ -304,7 +303,6 @@
 <!-- Pagination -->
 <data name="Showing" xml:space="preserve"><value>Affichage</value></data>
 <data name="of" xml:space="preserve"><value>de</value></data>
-<data name="collections" xml:space="preserve"><value>collections</value></data>
 
 <!-- GDPR Cookie Consent -->
 <data name="Cookie Settings" xml:space="preserve"><value>Paramètres des cookies</value></data>

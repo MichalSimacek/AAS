@@ -11,7 +11,6 @@
 
 <!-- Navigation -->
 <data name="Collections" xml:space="preserve"><value>संग्रह</value></data>
-<data name="About us" xml:space="preserve"><value>हमारे बारे में</value></data>
 <data name="Contacts" xml:space="preserve"><value>संपर्क</value></data>
 <data name="Register" xml:space="preserve"><value>पंजीकरण करें</value></data>
 <data name="Login" xml:space="preserve"><value>लॉगिन करें</value></data>
@@ -304,7 +303,6 @@
 <!-- Pagination -->
 <data name="Showing" xml:space="preserve"><value>दिखाया जा रहा है</value></data>
 <data name="of" xml:space="preserve"><value>में से</value></data>
-<data name="collections" xml:space="preserve"><value>संग्रह</value></data>
 
 <!-- GDPR Cookie Consent -->
 <data name="Cookie Settings" xml:space="preserve"><value>कुकीज़ सेटिंग्स</value></data>
