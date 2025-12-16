@@ -56,8 +56,7 @@ namespace AAS.Web.Controllers
 
             return LocalRedirect(returnUrl);
         }
-    }
-}
+
         // DIAGNOSTIC: Test localization
         public IActionResult LocalizationTest([FromServices] Microsoft.Extensions.Localization.IStringLocalizer<AAS.Web.Resources.SharedResources> localizer)
         {
@@ -67,3 +66,5 @@ namespace AAS.Web.Controllers
             var result = $"Culture: {culture}\nAbout Us: {aboutUs}\nCollections: {collections}";
             return Content(result, "text/plain");
         }
+    }
+}
