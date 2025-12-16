@@ -207,7 +207,10 @@ app.Use((ctx, next) =>
     return next();
 });
 
-// Localization
+// Localization - configure culture detection in this order:
+// 1. Cookie (user's explicit choice via language selector)
+// 2. Accept-Language header (browser's default language)
+// 3. Default culture (fallback to English)
 var supported = config.GetSection("Localization:SupportedCultures").Get<string[]>() ?? new[] { "en" };
 var defaultCulture = config["Localization:DefaultCulture"] ?? "en";
 var cultures = Array.ConvertAll(supported, s => new CultureInfo(s));
@@ -217,7 +220,10 @@ var locOpts = new RequestLocalizationOptions
     SupportedCultures = cultures,
     SupportedUICultures = cultures
 };
-locOpts.RequestCultureProviders.Insert(0, new Microsoft.AspNetCore.Localization.CookieRequestCultureProvider());
+// Clear default providers and set custom order
+locOpts.RequestCultureProviders.Clear();
+locOpts.RequestCultureProviders.Add(new Microsoft.AspNetCore.Localization.CookieRequestCultureProvider());
+locOpts.RequestCultureProviders.Add(new Microsoft.AspNetCore.Localization.AcceptLanguageHeaderRequestCultureProvider());
 app.UseRequestLocalization(locOpts);
 
 app.UseStaticFiles();
