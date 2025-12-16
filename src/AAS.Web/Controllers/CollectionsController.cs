@@ -70,13 +70,6 @@ namespace AAS.Web.Controllers
             }
 
             ViewBag.Translations = translations;
-            ViewBag.DebugLang = lang; // DEBUG: Add language to ViewBag for debugging
-            ViewBag.DebugTranslationCount = translations.Count; // DEBUG: Show translation count
-            
-            // DEBUG: Add language info to response headers
-            Response.Headers.Append("X-Debug-Lang", lang);
-            Response.Headers.Append("X-Debug-TransCount", translations.Count.ToString());
-            
             ViewBag.Category = category;
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = totalPages;
