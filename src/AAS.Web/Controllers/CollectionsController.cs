@@ -111,7 +111,7 @@ namespace AAS.Web.Controllers
             
             if (lang != "cs")
             {
-                // Try to load translation from database
+                // Try to load translation from database for requested language
                 var translation = await _db.CollectionTranslations
                     .AsNoTracking()
                     .FirstOrDefaultAsync(t => t.CollectionId == item.Id && t.LanguageCode == lang);
@@ -123,9 +123,33 @@ namespace AAS.Web.Controllers
                 }
                 else
                 {
-                    // On-demand translation - source is Czech (cs), target is current language
-                    ViewBag.TranslatedTitle = await _tr.TranslateAsync(item.Title, "cs", lang);
-                    ViewBag.TranslatedDescription = await _tr.TranslateAsync(item.Description, "cs", lang);
+                    // Try on-demand translation first
+                    var onDemandTitle = await _tr.TranslateAsync(item.Title, "cs", lang);
+                    var onDemandDescription = await _tr.TranslateAsync(item.Description, "cs", lang);
+                    
+                    // If on-demand translation failed (returned original Czech text), try English fallback
+                    if (onDemandTitle == item.Title && lang != "en")
+                    {
+                        var englishTranslation = await _db.CollectionTranslations
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync(t => t.CollectionId == item.Id && t.LanguageCode == "en");
+                        
+                        if (englishTranslation != null)
+                        {
+                            ViewBag.TranslatedTitle = englishTranslation.TranslatedTitle;
+                            ViewBag.TranslatedDescription = englishTranslation.TranslatedDescription;
+                        }
+                        else
+                        {
+                            ViewBag.TranslatedTitle = onDemandTitle;
+                            ViewBag.TranslatedDescription = onDemandDescription;
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.TranslatedTitle = onDemandTitle;
+                        ViewBag.TranslatedDescription = onDemandDescription;
+                    }
                 }
             }
             else
