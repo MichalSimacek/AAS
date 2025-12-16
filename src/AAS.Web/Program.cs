@@ -93,7 +93,7 @@ services.AddDefaultIdentity<IdentityUser>(o =>
 .AddEntityFrameworkStores<AppDbContext>();
 
 // MVC + Localization
-services.AddLocalization();
+services.AddLocalization(options => options.ResourcesPath = "Resources");
 services.AddControllersWithViews().AddViewLocalization().AddRazorRuntimeCompilation();
 services.AddRazorPages().AddRazorRuntimeCompilation();
 
