@@ -38,10 +38,12 @@ namespace AAS.Web.Controllers
                 .ToListAsync();
 
             // Load pre-translated titles from database
+            // Original collection titles are in Czech (cs), so we need translations for ALL other languages
             var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             var translations = new Dictionary<int, string>();
 
-            if (lang != "en")
+            // Only load translations if current language is NOT Czech (the original language)
+            if (lang != "cs")
             {
                 var collectionIds = collections.Select(c => c.Id).ToList();
                 var dbTranslations = await _db.CollectionTranslations
@@ -58,7 +60,8 @@ namespace AAS.Web.Controllers
                     else
                     {
                         // Fallback to on-demand translation if not found in database
-                        translations[collection.Id] = await _tr.TranslateAsync(collection.Title, "en", lang);
+                        // Source language is Czech (cs), target is the current UI language
+                        translations[collection.Id] = await _tr.TranslateAsync(collection.Title, "cs", lang);
                     }
                 }
             }
