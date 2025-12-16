@@ -84,8 +84,9 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
-        [Route("collections/debug")]
-        public IActionResult Debug()
+        [HttpGet]
+        [Route("/debug-culture")]
+        public IActionResult DebugCulture()
         {
             var lang = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             var cultureName = System.Globalization.CultureInfo.CurrentUICulture.Name;
