@@ -199,11 +199,22 @@ class LocalizationTestRunner:
             back_button_text = None
             for element in potential_elements:
                 text = element.get_text().strip()
-                if any(keyword in text.lower() for keyword in ['back', 'zpět', 'zurück', 'назад', 'blog']):
-                    if 'blog' in text.lower():
-                        back_button_text = text
-                        back_button = element
-                        break
+                # Look for back-related keywords AND blog-related keywords
+                back_keywords = ['back', 'zpět', 'zurück', 'назад']
+                blog_keywords = ['blog', 'блог', 'блогу']
+                
+                has_back = any(keyword in text.lower() for keyword in back_keywords)
+                has_blog = any(keyword in text.lower() for keyword in blog_keywords)
+                
+                if has_back and has_blog:
+                    back_button_text = text
+                    back_button = element
+                    break
+                elif has_blog and element.get('href') == '/Blog':
+                    # Also accept simple "Blog" links that go to /Blog
+                    back_button_text = text
+                    back_button = element
+                    break
             
             if not back_button_text:
                 self.log(f"❌ 'Back to Blog' button not found for {lang_code}", "ERROR")
