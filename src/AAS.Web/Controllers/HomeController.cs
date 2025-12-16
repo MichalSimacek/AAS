@@ -58,3 +58,12 @@ namespace AAS.Web.Controllers
         }
     }
 }
+        // DIAGNOSTIC: Test localization
+        public IActionResult LocalizationTest([FromServices] Microsoft.Extensions.Localization.IStringLocalizer<AAS.Web.Resources.SharedResources> localizer)
+        {
+            var culture = System.Globalization.CultureInfo.CurrentUICulture.Name;
+            var aboutUs = localizer["About Us"].Value;
+            var collections = localizer["Collections"].Value;
+            var result = $"Culture: {culture}\nAbout Us: {aboutUs}\nCollections: {collections}";
+            return Content(result, "text/plain");
+        }
