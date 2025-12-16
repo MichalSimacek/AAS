@@ -1,127 +1,146 @@
-<analysis>
-The user's primary language is Czech (čeština). The next agent MUST respond in Czech.
+<analysis>**original_problem_statement:**
+The user initially requested documentation cleanup. Subsequently, the user, communicating in Czech, has been requesting a series of features and bug fixes for their Aristocratic Artwork Sale ASP.NET Core web application. The primary goals are to enhance the application's functionality, improve the user interface, and resolve bugs as they are reported.
 
-This trajectory covers an extensive series of debugging and feature implementation tasks on an ASP.NET Core application. The work can be divided into three main phases:
+**PRODUCT REQUIREMENTS:**
+- **Blog Post Creation**: Fix the underlying issue preventing newly created blog posts from being saved and appearing on the site. (DONE)
+- **Blog Post Detail View**: Fix a 500 error when viewing a blog post's detail page. (DONE)
+- **Blog Post Translation**: Fix issues preventing the content of blog posts from being translated correctly, especially for long articles with complex HTML. (DONE)
+- **Blog Post Excerpt Display**: Fix broken HTML and incorrect character encoding in the blog post previews on the main blog page. (DONE)
+- **Collection Title Translation**: Fix a bug where collection titles on the main collections page are not translated according to the selected language. (PENDING)
+- **UI Localization**: Translate hardcoded UI elements like the Back to Blog button. (PENDING)
 
-1.  **Documentation and Environment Correction:** Initially, the AI was tasked with creating a project guide (). A critical error was identified by the user: the production environment uses  as the root, not . The AI corrected all paths in the documentation and added details about the persistent storage volume at .
+**User's preferred language**: čeština (Czech). The next agent MUST respond in Czech.
 
-2.  **Frontend Bug Fixing (Localization & Comments):** The user reported UI issues. First, localization keys were displayed instead of text. The AI fixed this by adding missing keys to all 10 RESX resource files. A more complex bug followed where the newly-implemented comment section was not visible for logged-in users. This required deep JavaScript and CSS layout debugging, tracing the issue from potential JS errors (which were ruled out via console logs) to a final CSS layout problem, which was resolved by refactoring the HTML structure in .
+**what currently exists?**
+The application is a monolithic ASP.NET Core 8 project using Razor Pages, Entity Framework Core, and a PostgreSQL database. The agent has performed a massive recovery of the development environment, which was missing the .NET SDK and PostgreSQL. After restoring the environment, the agent fixed a series of critical bugs related to the blog functionality, including post creation, a 500 error on the detail page, and a complex translation issue caused by large HTML content. The blog system is now largely functional. The current focus has shifted to a newly reported bug regarding the translation of collection titles.
 
-3.  **Backend Feature Implementation (DeepL):** The final major task was to implement automatic content translation using the DeepL API for blog posts and collections. This involved another intense debugging cycle, tracing the issue from incorrect database entries (untranslated text) to misconfigured environment variables (, wrong API key name  vs , and using the wrong  file). After correcting the Docker Compose and environment files, the feature was successfully implemented, including support for auto-detecting the source language.
-</analysis>
+**Last working item**:
+- **Last item agent was working**: The user reported that on the collections overview page, the titles of the collections are not being translated according to the selected language; they always appear in Czech. The agent correctly identified that this is a new bug and was beginning to investigate by listing relevant files for the Collections feature.
+- **Status**: NOT STARTED
+- **Agent Testing Done**: N
+- **Which testing method agent to use?**: backend testing agent. The agent should first inspect the code, then formulate a test to replicate the issue and verify the fix. The test should involve checking the collection list page in different languages.
+- **User Testing Done**: Y (User confirmed the issue with a screenshot).
 
-<product_requirements>
-The primary objective was to enhance the Aristocratic Artwork Sale (AAS) application by adding and finalizing several key features. The initial build by a previous AI had foundational code but suffered from deployment and runtime issues.
+**All Pending/In progress Issue list**:
+- **Issue 1**: Collection titles on the overview page are not translated (P0)
+- **Issue 2**: The Back to Blog button on the post detail page is not translated (P2)
 
-**Completed Features:**
-1.  **Blog & Comment System:** A fully functional blog and a comment section for artwork collections have been implemented and debugged. Users can add, edit, and delete comments, with functionality correctly scoped to user roles (admin vs. regular user).
-2.  **AAS Verified Badge:** A visual indicator for verified collections is in place.
-3.  **Full Localization:** The UI has been localized into 10 languages (cs, en, de, es, fr, pt, ru, hi, ja, zh) by populating RESX resource files with the necessary keys.
-4.  **Dynamic Content Translation:** An integration with the DeepL API automatically translates dynamic content, such as collection descriptions and blog posts. The system is configured to auto-detect the source language for flexibility.
+**Issues Detail**:
+- **Issue 1**:
+    - **Description**: On the  page, the titles of the listed collections are always displayed in the original language (Czech), even when the user switches to a different language like English. This is inconsistent with other parts of the site.
+    - **Attempted fixes**: None yet. The agent was just about to start debugging this.
+    - **Next debug checklist**:
+        1. Examine the  action in . Verify how the list of collections is being queried. It's likely fetching the collections but not joining or selecting the correct translation from the  table based on the current UI culture.
+        2. Examine the corresponding view . Check how the title is being rendered. Is it using a helper method or directly accessing a property?
+        3. Compare the logic with the  action of the same controller, which presumably handles translation correctly for a single collection. The fix will likely involve adapting the data retrieval logic in the  action to fetch translations for all collections in the list.
+    - **Why fix this issue and what will be achieved with the fix?**: This is a key functionality bug that breaks the user experience for non-Czech speakers. Fixing it will ensure a consistent multilingual experience across the site.
+    - **Status**: NOT STARTED
+    - **Is recurring issue?**: N
+    - **Should Test frontend/backend/both after fix?**: backend
+    - **Blocked on other issue**: None.
+- **Issue 2**:
+    - **Description**: The Back to Blog button on the post detail page is hardcoded and not translated.
+    - **Next debug checklist**:
+        1. Find the hardcoded string Back to Blog in .
+        2. Replace it with a call to the localizer, e.g., .
+        3. Add the key BackToBlog with its translations to all  files.
+    - **Why fix this issue and what will be achieved with the fix?**: To achieve full localization of the UI.
+    - **Status**: NOT STARTED
+    - **Is recurring issue?**: N
+    - **Should Test frontend/backend/both after fix?**: frontend
+    - **Blocked on other issue**: None.
 
-**Core Problem Solved:** The project was plagued by a cascade of issues, from critical EF Core migration failures and incorrect environment paths ( vs ) to subtle frontend CSS bugs and misconfigured backend environment variables for the DeepL integration. The work focused on stabilizing the application and making these new features fully operational.
-</product_requirements>
+**In progress Task List**:
+(None)
 
-<key_technical_concepts>
-- **Framework:** ASP.NET Core 8.0 MVC
-- **Database:** PostgreSQL with Entity Framework Core
-- **Containerization:** Docker & Docker Compose. Key issues involved environment variable management ( vs ) and build-time compilation of RESX files.
-- **Localization:**  resource files for static UI text.
-- **API Integration:** DeepL API for dynamic text translation, managed through a dedicated .
-- **Frontend:** Razor Views with vanilla JavaScript for dynamic UI updates (e.g., comments section).
-- **Debugging:** Involved direct database queries (psql), checking container logs (), inspecting environment variables (KUBERNETES_SERVICE_PORT_HTTPS=443
-PYTHON_SHA256=8d3ed8ec5c88c1c95f5e558612a725450d2452813ddad5e58fdb1a53b1209b78
-KUBERNETES_SERVICE_PORT=443
-PYTHONUNBUFFERED=1
-PIP_NO_INPUT=1
-STRIPE_API_KEY=sk_test_emergent
-PREVIEW_PROXY_SERVICE_PORT_80_TCP_PROTO=tcp
-HOSTNAME=agent-env-a3496483-4466-4d62-a903-4791108e06be
-PYTHON_VERSION=3.11.14
-base_url=https://demobackend.emergentagent.com
-run_id=noble-showcase
-UV_COMPILE_BYTECODE=1
-PLUGIN_VENV_PATH=/opt/plugins-venv
-PREVIEW_PROXY_SERVICE_PORT_80_TCP_ADDR=34.118.225.58
-PREVIEW_PROXY_SERVICE_SERVICE_HOST=34.118.225.58
-PWD=/app
-code_server_password=f42f6afa
-PREVIEW_PROXY_SERVICE_PORT=tcp://34.118.225.58:80
-PREVIEW_PROXY_SERVICE_PORT_80_TCP=tcp://34.118.225.58:80
-HOME=/root
-LANG=C.UTF-8
-KUBERNETES_PORT_443_TCP=tcp://34.118.224.1:443
-VIRTUAL_ENV=/root/.venv
-GPG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D
-PLAYWRIGHT_BROWSERS_PATH=/pw-browsers
-integration_proxy_url=https://integrations.emergentagent.com
-preview_endpoint=https://artsale-admin.preview.emergentagent.com
-ENABLE_RELOAD=true
-SHLVL=0
-KUBERNETES_PORT_443_TCP_PROTO=tcp
-KUBERNETES_PORT_443_TCP_ADDR=34.118.224.1
-KUBERNETES_SERVICE_HOST=34.118.224.1
-KUBERNETES_PORT=tcp://34.118.224.1:443
-KUBERNETES_PORT_443_TCP_PORT=443
-PATH=/root/.venv/bin:/opt/plugins-venv/bin:/opt/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-monitor_polling_interval=1
-PREVIEW_PROXY_SERVICE_PORT_80_TCP_PORT=80
-NEXT_TELEMETRY_DISABLED=1
-PREVIEW_PROXY_SERVICE_SERVICE_PORT_HTTP=80
-NODE_VERSION=20
-DEBIAN_FRONTEND=noninteractive
-PREVIEW_PROXY_SERVICE_SERVICE_PORT=80
-_=/usr/bin/printenv), and analyzing browser console/element inspectors.
-</key_technical_concepts>
+**Upcoming and Future Tasks**
+(None)
 
-<code_architecture>
-The application is a monolithic ASP.NET Core project running in a Docker container, reverse-proxied by Nginx. The database (PostgreSQL) and persistent storage are managed in separate Docker volumes.
+**Completed work in this session**
+- **Full Environment Recovery**:
+  - Installed .NET 8 SDK and  tools in an environment that was missing them.
+  - Installed, configured, and started a PostgreSQL database server.
+  - Created a database, user, and applied all Entity Framework migrations.
+  - Resolved a critical dependency injection error ( service consuming a  service).
+  - Successfully configured and launched the ASP.NET Core application to run on the correct port (8001).
+- **Blog Creation Bug Fix**:
+  - Used the testing agent to diagnose and fix the root cause of blog posts not being saved. The fix involved removing a  attribute from the  property in , which was causing  validation to fail silently.
+- **Blog Detail Page 500 Error Fix**:
+  - Diagnosed and fixed a server-side rendering error () by adding the missing  to .
+- **Blog Translation Overhaul**:
+  - Fixed  to correctly handle HTML content by adding the  parameter.
+  - Resolved  errors from the DeepL API by refactoring the blog translation logic in  from a single batch call to sequential, per-language calls, mirroring the working logic from .
+- **Blog Excerpt UI Fixes**:
+  - Fixed a UI-breaking bug where excerpts with partial HTML tags would corrupt the page layout. Implemented a helper function to safely strip HTML.
+  - Fixed an issue where HTML entities (, ) were displayed as raw text in excerpts by adding .
 
-**Directory Structure:**
+**Code Architecture**
 
 
-**Key File Summaries & Changes:**
+**Key Technical Concepts**
+- **Backend**: ASP.NET Core, C#, Entity Framework Core
+- **Frontend**: Razor Pages, Bootstrap 5, Vanilla JavaScript, jQuery
+- **Database**: PostgreSQL
+- **Localization**:  files, 
+- **Translation API**: DeepL (via )
 
--   ****
-    -   **Importance:** A critical guide created to document the project's architecture, common pitfalls, and correct procedures, specifically addressing the  vs  path issue and EF Core migration problems.
-    -   **Changes:** Created and heavily edited to reflect the production environment's realities.
+**key DB schema**
+- **BlogPost**: {Id, TitleCs, ContentCs, TitleEn, ContentEn, ...} - *All translations in one wide record.*
+- **Collection**: {Id, Title, Description, ...}
+- **CollectionTranslation**: {Id, CollectionId, Language, Title, Description} - *Translations in a separate table (one-to-many).* This architectural difference is the key to understanding recent translation bugs.
 
--   ** &  / **
-    -   **Importance:** Define the services and their environment configuration. The source of the translation bug.
-    -   **Changes:**  was updated to pass the  variable. A  file was created by copying  to ensure Docker Compose loads the correct settings, including , , and the correct API key.
+**changes in tech stack**
+- The entire application environment (.NET SDK, PostgreSQL) was installed and configured from scratch by the agent in the current session.
 
--   ****
-    -   **Importance:** The view for displaying collection details and the comment section. It was the epicenter of a major UI bug.
-    -   **Changes:** The HTML structure was significantly refactored to correctly place the comment section inside the main content card, resolving a CSS layout issue where comments were invisible to logged-in users. JavaScript for handling comments was also improved.
+**All files of reference**
+- : **(Primary file for debugging)** Contains the server-side logic for fetching and displaying collections. The  action is the most likely place for the bug.
+- : The Razor view that renders the list of collections.
+- : The main collection model.
+- : The model for the related translations table.
+- : Contains the recently fixed logic for sequential translation, which can be used as a reference.
 
--   ** & **
-    -   **Importance:** These controllers handle the creation and updating of collections and blog posts.
-    -   **Changes:** Logic was updated to call the translation service. The source language parameter was changed from a hardcoded  to  to enable automatic language detection by DeepL.  was injected to fix a build error.
+**Critical Info for New Agent**
+- The immediate task is to fix the collection title translation bug. The root cause is likely in the  action of , which is not correctly querying the  table for the current language.
+- The application is launched manually with  and is not managed by the standard backend                          BACKOFF   Exited too quickly (process log may have details)
+code-server                      STOPPED   Not started
+frontend                         STOPPED   Dec 16 03:27 PM
+mongodb                          RUNNING   pid 32, uptime 0:00:05
+nginx-code-proxy                 RUNNING   pid 26, uptime 0:00:05
+supervisor>  service. You will need to use  and re-run this command to restart the app.
+- Pay close attention to the architectural difference in how blog posts and collections handle translations. Collections use a proper one-to-many relationship with a  table, which is more robust.
+- The user is responsive and helpful, providing logs and screenshots when requested.
 
--   ****
-    -   **Importance:** The service that directly communicates with the DeepL API.
-    -   **Changes:** A fallback was added for the unsupported Hindi language () to use English text. Logging was added to aid in debugging. The service was confirmed to correctly read the  from configuration.
+**documents created in this job**
+(None in this session beyond the original deployment guides)
 
--   ** (Folder)**
-    -   **Importance:** Contains all RESX files for UI localization.
-    -   **Changes:** All 10 language files were updated with missing keys for the How To section, Buy/Sell info, and the Blog navbar link.
-</code_architecture>
+**Last 10 User Messages and any pending user messages**
+1.  **User**: Confirms the sequential translation fix for the blog works but reports a new issue: HTML entities () are showing in the blog excerpt. (Status: **Completed**)
+2.  **User**: Asks an unrelated question about the necessity of port 111 on the production server. (Status: **Completed**)
+3.  **Agent**: Answers that port 111 is for RPC/NFS and is not needed and should be closed for security.
+4.  **User**: Reports a **new bug**: on the collections list page, collection titles are not being translated. (Status: **PENDING - THIS IS THE CURRENT P0 ISSUE**)
+5.  **User**: Asks why collection translations are broken when blog translations were just fixed. (Status: **In Progress**)
+6.  **Agent**: Investigates and explains the architectural difference: collections use a separate translation table while the blog uses multiple columns on the same table. The agent refactored the blog logic to be sequential like the collections logic to fix the entity too large error.
+7.  **User**: Confirms the blog translation fix and the HTML entity fix are working, but the blog list page is now broken (no Read More button). (Status: **Completed**)
+8.  **User**: Reports the Read More button is visible but not clickable. (Status: **Completed**)
+9.  **Agent**: Fixes the unclickable button by implementing a safe HTML-stripping function for the excerpt.
+10. **User**: Asks why collection translations are failing, given they have a seemingly better architecture. This leads back to the current bug. (Status: **In Progress**)
 
-<pending_tasks>
-- **Monitor GitHub Status:** The user is unable to push changes due to an external GitHub incident (500 Internal Server Error). The task is to wait for this to be resolved before attempting to save the work again. All internal development tasks have been completed.
-</pending_tasks>
+**Project Health Check:**
+- **Broken**: The collections overview page does not correctly display translated titles, which is a critical bug for a multilingual site.
+- **Mocked**: None.
 
-<current_work>
-The most recent work involved diagnosing and resolving a failure of the Save to GitHub feature. The user reported a  error. The AI correctly deduced that this was not an application or configuration issue but rather an external problem. By analyzing a user-provided screenshot of the GitHub status page, it was confirmed that GitHub was experiencing a service incident related to Git Operations.
+**3rd Party Integrations**
+- **DeepL**: Used for automatic translation of content. The API key is managed by the user in their production environment. The service logic is in .
+- **TinyMCE**: Rich text editor, self-hosted.
 
-Before this, the AI successfully completed the full implementation of the DeepL automatic translation feature. This involved an extensive debugging process that uncovered and fixed several layers of misconfiguration:
-1.  **Incorrect Environment Variables:** The container was running with .
-2.  **Wrong  File:** Docker Compose was reading a default  file, which was missing the correct settings, instead of . This was fixed by creating a correct  file.
-3.  **Wrong Variable Name in Compose:**  was passing  while the  expected . This was corrected.
+**Testing status**
+- Testing agent used after significant changes: YES (Successfully used to fix the initial blog creation bug).
+- Troubleshoot agent used after agent stuck in loop: YES (Successfully used to identify the initial critical environment mismatch).
+- Test files created: None.
+- Known regressions: The collection title translation appears to be a bug that has existed but was only just discovered after fixing the blog system.
 
-The final state of the application is that all requested features—comments, full localization, and dynamic DeepL translations for blogs and collections—are implemented and confirmed to be working by the user.
-</current_work>
+**Credentials to test flow:**
+Admin credentials for the site are  and , as found in .
 
-<optional_next_step>
-Wait for the user to confirm the GitHub incident is resolved and they have successfully saved the changes, or to provide a new development task.
-</optional_next_step>
+**What agent forgot to execute**
+- The agent was notified about the Back to Blog button not being translated but has not addressed it yet. It should be added to the backlog.</analysis>
