@@ -312,4 +312,5 @@
 <data name="Decline" xml:space="preserve"><value>拒绝</value></data>
 <data name="Settings" xml:space="preserve"><value>设置</value></data>
 <data name="Back" xml:space="preserve"><value>返回</value></data>
+<data name="Back to Blog" xml:space="preserve"><value>返回博客</value></data>
 </root>

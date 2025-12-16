@@ -312,4 +312,5 @@
 <data name="Decline" xml:space="preserve"><value>अस्वीकार करें</value></data>
 <data name="Settings" xml:space="preserve"><value>सेटिंग्स</value></data>
 <data name="Back" xml:space="preserve"><value>वापस</value></data>
+<data name="Back to Blog" xml:space="preserve"><value>ब्लॉग पर वापस जाएं</value></data>
 </root>

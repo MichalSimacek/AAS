@@ -324,4 +324,5 @@
 <data name="Save Preferences" xml:space="preserve"><value>Guardar preferencias</value></data>
 <data name="Back" xml:space="preserve"><value>Atrás</value></data>
 
+<data name="Back to Blog" xml:space="preserve"><value>Volver al Blog</value></data>
 </root>

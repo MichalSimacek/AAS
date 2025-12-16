@@ -312,4 +312,5 @@
 <data name="Decline" xml:space="preserve"><value>Recusar</value></data>
 <data name="Settings" xml:space="preserve"><value>Configurações</value></data>
 <data name="Back" xml:space="preserve"><value>Voltar</value></data>
+<data name="Back to Blog" xml:space="preserve"><value>Voltar ao Blog</value></data>
 </root>
