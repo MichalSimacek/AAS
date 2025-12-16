@@ -46,22 +46,42 @@ namespace AAS.Web.Controllers
             if (lang != "cs")
             {
                 var collectionIds = collections.Select(c => c.Id).ToList();
+                
+                // Load translations for requested language
                 var dbTranslations = await _db.CollectionTranslations
                     .Where(t => collectionIds.Contains(t.CollectionId) && t.LanguageCode == lang)
                     .AsNoTracking()
                     .ToDictionaryAsync(t => t.CollectionId, t => t.TranslatedTitle);
+                
+                // Also load English translations as fallback
+                var englishTranslations = lang != "en" 
+                    ? await _db.CollectionTranslations
+                        .Where(t => collectionIds.Contains(t.CollectionId) && t.LanguageCode == "en")
+                        .AsNoTracking()
+                        .ToDictionaryAsync(t => t.CollectionId, t => t.TranslatedTitle)
+                    : dbTranslations;
 
                 foreach (var collection in collections)
                 {
                     if (dbTranslations.TryGetValue(collection.Id, out var translatedTitle))
                     {
+                        // Use translation in requested language
                         translations[collection.Id] = translatedTitle;
                     }
                     else
                     {
-                        // Fallback to on-demand translation if not found in database
-                        // Source language is Czech (cs), target is the current UI language
-                        translations[collection.Id] = await _tr.TranslateAsync(collection.Title, "cs", lang);
+                        // Try on-demand translation first
+                        var onDemandTranslation = await _tr.TranslateAsync(collection.Title, "cs", lang);
+                        
+                        // If on-demand translation failed (returned original Czech text), use English fallback
+                        if (onDemandTranslation == collection.Title && englishTranslations.TryGetValue(collection.Id, out var englishTitle))
+                        {
+                            translations[collection.Id] = englishTitle;
+                        }
+                        else
+                        {
+                            translations[collection.Id] = onDemandTranslation;
+                        }
                     }
                 }
             }
