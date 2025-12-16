@@ -84,6 +84,14 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
+        [Route("collections/debug")]
+        public IActionResult Debug()
+        {
+            var lang = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+            var cultureName = System.Globalization.CultureInfo.CurrentUICulture.Name;
+            return Content($"DEBUG: lang={lang}, cultureName={cultureName}", "text/plain");
+        }
+
         [Route("collections/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
