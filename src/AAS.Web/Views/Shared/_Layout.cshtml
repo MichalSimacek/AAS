@@ -76,10 +76,29 @@
     .container { max-width: 1140px; margin: 0 auto; padding: 0 15px; width: 100%; }
     .identity-card { max-width: 520px; width: 100%; margin: 0 auto; padding: 48px; }
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=optional" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
+  <!-- Google Fonts - loaded only after consent to comply with GDPR -->
+  <!-- Fallback to system fonts if not loaded -->
+  <style>
+    /* Define font-face with system fallbacks */
+    :root {
+      --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+  </style>
+  <script>
+    // Load Google Fonts only after consent
+    window.loadGoogleFonts = function() {
+      if (window.fontsLoaded) return;
+      window.fontsLoaded = true;
+      
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap';
+      document.head.appendChild(link);
+      console.log('Google Fonts loaded after consent');
+    };
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/site.css?v=43-cookie-popup" />
   <link rel="icon" href="/images/logo.png"/>
