@@ -662,6 +662,37 @@
 
 @section Scripts{
 <script>
+// Image data
+const imageData = [
+  @for(int i = 0; i < images.Count; i++){
+    @:{
+    @:  src: '/uploads/images/@images[i].FileName-960.jpg',
+    @:  full: '/uploads/images/@images[i].FileName-1600.jpg'
+    @:}@(i < images.Count - 1 ? "," : "")
+  }
+];
+let currentImageIndex = 0;
+let currentZoom = 1;
+const minZoom = 0.5;
+const maxZoom = 4;
+const zoomStep = 0.25;
+
+// Thumbnail selection
+function selectThumbnail(element, index) {
+  // Update active state
+  document.querySelectorAll('.thumbnail-item').forEach(t => t.classList.remove('active'));
+  element.classList.add('active');
+  
+  // Update main image
+  const mainImage = document.getElementById('mainImage');
+  if (mainImage) {
+    mainImage.src = element.dataset.src;
+    mainImage.dataset.full = element.dataset.full;
+  }
+  
+  currentImageIndex = index;
+}
+
 // Social Share Functions
 function shareOnFacebook() {
   const url = encodeURIComponent(window.location.href);
@@ -690,7 +721,6 @@ async function copyLinkToClipboard() {
       }, 3000);
     }
   } catch (err) {
-    // Fallback for older browsers
     const textArea = document.createElement('textarea');
     textArea.value = window.location.href;
     textArea.style.position = 'fixed';
@@ -707,27 +737,28 @@ async function copyLinkToClipboard() {
         }, 3000);
       }
     } catch (err) {
-      console.error('Failed to copy link:', err);
       alert('Failed to copy link. Please copy manually: ' + window.location.href);
     }
     document.body.removeChild(textArea);
   }
 }
 
-// Global lightboxSwiper reference
-var lightboxSwiper = null;
-
-// Lightbox functions
+// Enhanced Lightbox with Zoom
 function openLightbox(slideIndex) {
+  currentImageIndex = slideIndex || 0;
+  currentZoom = 1;
+  
   const lightboxModal = document.getElementById('lightboxModal');
-  if (lightboxModal) {
-    lightboxModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+  const lightboxImage = document.getElementById('lightboxImage');
+  
+  if (lightboxModal && lightboxImage && imageData[currentImageIndex]) {
+    lightboxImage.src = imageData[currentImageIndex].full;
+    lightboxImage.style.transform = 'scale(1)';
+    updateZoomLevel();
+    updateCounter();
     
-    // Slide to the clicked image
-    if (lightboxSwiper && typeof slideIndex === 'number') {
-      lightboxSwiper.slideTo(slideIndex);
-    }
+    lightboxModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
   }
 }
 
@@ -736,22 +767,125 @@ function closeLightbox() {
   if (lightboxModal) {
     lightboxModal.style.display = 'none';
     document.body.style.overflow = '';
+    lightboxReset();
   }
 }
 
-// Close lightbox on ESC key
+function lightboxPrev() {
+  currentImageIndex = (currentImageIndex - 1 + imageData.length) % imageData.length;
+  updateLightboxImage();
+}
+
+function lightboxNext() {
+  currentImageIndex = (currentImageIndex + 1) % imageData.length;
+  updateLightboxImage();
+}
+
+function updateLightboxImage() {
+  const lightboxImage = document.getElementById('lightboxImage');
+  if (lightboxImage && imageData[currentImageIndex]) {
+    lightboxImage.style.opacity = '0.5';
+    lightboxImage.src = imageData[currentImageIndex].full;
+    lightboxImage.onload = function() {
+      lightboxImage.style.opacity = '1';
+    };
+    lightboxReset();
+    updateCounter();
+  }
+}
+
+function updateCounter() {
+  const counter = document.getElementById('lightboxCounter');
+  if (counter) {
+    counter.textContent = `${currentImageIndex + 1} / ${imageData.length}`;
+  }
+}
+
+function lightboxZoomIn() {
+  if (currentZoom < maxZoom) {
+    currentZoom = Math.min(currentZoom + zoomStep, maxZoom);
+    applyZoom();
+  }
+}
+
+function lightboxZoomOut() {
+  if (currentZoom > minZoom) {
+    currentZoom = Math.max(currentZoom - zoomStep, minZoom);
+    applyZoom();
+  }
+}
+
+function lightboxReset() {
+  currentZoom = 1;
+  const lightboxImage = document.getElementById('lightboxImage');
+  if (lightboxImage) {
+    lightboxImage.style.transform = 'scale(1)';
+    lightboxImage.style.transformOrigin = 'center center';
+  }
+  updateZoomLevel();
+}
+
+function applyZoom() {
+  const lightboxImage = document.getElementById('lightboxImage');
+  if (lightboxImage) {
+    lightboxImage.style.transform = `scale(${currentZoom})`;
+  }
+  updateZoomLevel();
+}
+
+function updateZoomLevel() {
+  const zoomLevel = document.getElementById('zoomLevel');
+  if (zoomLevel) {
+    zoomLevel.textContent = `${Math.round(currentZoom * 100)}%`;
+  }
+}
+
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeLightbox();
+  const lightboxModal = document.getElementById('lightboxModal');
+  if (lightboxModal && lightboxModal.style.display === 'flex') {
+    switch(e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        lightboxPrev();
+        break;
+      case 'ArrowRight':
+        lightboxNext();
+        break;
+      case '+':
+      case '=':
+        lightboxZoomIn();
+        break;
+      case '-':
+        lightboxZoomOut();
+        break;
+      case '0':
+        lightboxReset();
+        break;
+    }
   }
 });
+
+// Mouse wheel zoom
+document.getElementById('lightboxModal')?.addEventListener('wheel', function(e) {
+  if (e.target.closest('.lightbox-content')) {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      lightboxZoomIn();
+    } else {
+      lightboxZoomOut();
+    }
+  }
+}, { passive: false });
 
 // Simple modal open/close functions
 function openInquiryForm() {
   const modal = document.getElementById('interestModal');
   if (modal) {
     modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
   }
 }
 
@@ -759,11 +893,9 @@ function closeInquiryForm() {
   const modal = document.getElementById('interestModal');
   if (modal) {
     modal.style.display = 'none';
-    document.body.style.overflow = ''; // Restore scrolling
-    // Reset form
+    document.body.style.overflow = '';
     const form = document.getElementById('inqForm');
     if (form) form.reset();
-    // Hide success/error messages
     document.getElementById('inqOk')?.classList.add('d-none');
     document.getElementById('inqError')?.classList.add('d-none');
   }
@@ -781,86 +913,6 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeInquiryForm();
   }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOMContentLoaded - Initializing Swiper...');
-  
-  // Wait for Swiper to be available
-  var initAttempts = 0;
-  var maxAttempts = 10;
-  
-  function tryInitSwiper() {
-    initAttempts++;
-    
-    if (typeof Swiper !== 'undefined') {
-      console.log('Swiper found! Initializing galleries...');
-      
-      // Main gallery
-      var mainSwiper = new Swiper('.mySwiper', {
-        loop: true,
-        spaceBetween: 10,
-        pagination: {
-          el: '.mySwiper .swiper-pagination',
-          clickable: true,
-          type: 'bullets'
-        },
-        navigation: {
-          nextEl: '.mySwiper .swiper-button-next',
-          prevEl: '.mySwiper .swiper-button-prev'
-        },
-        keyboard: {
-          enabled: true,
-          onlyInViewport: false
-        }
-      });
-      
-      console.log('Main Swiper initialized successfully!');
-      
-      // Lightbox - Simple implementation without Bootstrap Modal
-      var lightboxModal = document.getElementById('lightboxModal');
-      
-      // Initialize lightbox Swiper once
-      if (lightboxModal) {
-        lightboxSwiper = new Swiper('.lightboxSwiper', {
-          loop: true,
-          spaceBetween: 10,
-          pagination: {
-            el: '.lightboxSwiper .swiper-pagination',
-            clickable: true,
-            type: 'bullets'
-          },
-          navigation: {
-            nextEl: '.lightboxSwiper .swiper-button-next',
-            prevEl: '.lightboxSwiper .swiper-button-prev'
-          },
-          keyboard: {
-            enabled: true,
-            onlyInViewport: false
-          }
-        });
-        console.log('Lightbox Swiper initialized!');
-        
-        // Open lightbox on image click
-        document.querySelectorAll('.gallery-image').forEach(function(img, idx) {
-          img.addEventListener('click', function() {
-            console.log('Image clicked, opening lightbox at index:', idx);
-            openLightbox(idx);
-          });
-        });
-        
-        console.log('Lightbox event listeners attached');
-      }
-      
-    } else if (initAttempts < maxAttempts) {
-      console.log('Swiper not ready yet, attempt ' + initAttempts + '/' + maxAttempts);
-      setTimeout(tryInitSwiper, 200);
-    } else {
-      console.error('Swiper failed to load after ' + maxAttempts + ' attempts');
-    }
-  }
-  
-  tryInitSwiper();
 });
 
 // Comments functionality
