@@ -16,18 +16,6 @@ namespace AAS.Web.Controllers
 
         public IActionResult Privacy() => View();
 
-        // DEBUG: Test localization
-        public IActionResult TestLocalization([FromServices] Microsoft.Extensions.Localization.IStringLocalizer<AAS.Web.Resources.SharedResources> localizer)
-        {
-            var result = new System.Text.StringBuilder();
-            result.AppendLine($"Culture: {System.Globalization.CultureInfo.CurrentUICulture.Name}");
-            result.AppendLine($"ResourceNotFound for 'Slogan': {localizer["Slogan"].ResourceNotFound}");
-            result.AppendLine($"Slogan value: {localizer["Slogan"].Value}");
-            result.AppendLine($"ResourceNotFound for 'BuyOrSellDetails': {localizer["BuyOrSellDetails"].ResourceNotFound}");
-            result.AppendLine($"BuyOrSellDetails value: {localizer["BuyOrSellDetails"].Value}");
-            return Content(result.ToString(), "text/plain");
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
