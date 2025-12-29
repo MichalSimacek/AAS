@@ -116,8 +116,10 @@ a:hover {
 a.social-btn,
 a.social-btn:hover,
 .social-btn i,
-.btn i {
-  color: #FFFFFF;
+.social-btn .bi,
+.btn i,
+.btn .bi {
+  color: #FFFFFF !important;
 }
 
 /* TYPOGRAPHY - HEADINGS */
