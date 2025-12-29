@@ -112,6 +112,14 @@ a:hover {
   color: var(--color-gold-light);
 }
 
+/* Preserve icon colors in buttons */
+a.social-btn,
+a.social-btn:hover,
+.social-btn i,
+.btn i {
+  color: #FFFFFF;
+}
+
 /* TYPOGRAPHY - HEADINGS */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
