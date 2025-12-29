@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+<resheader name="version"><value>2.0</value></resheader>
+<resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+<resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+<!-- Home Page -->
+<data name="Slogan" xml:space="preserve"><value>Diskrétnost, zaručená kvalita a profesionální péče o naše klienty jsou naší prioritou.</value></data>
+<data name="Home Description" xml:space="preserve"><value>Objevte výjimečná umělecká díla, starožitnosti, drahocenné šperky a luxusní hodinky. Poskytujeme nejvyšší ceny se zaručenou diskrétností a profesionalitou.</value></data>
+
+<!-- Navigation -->
+<data name="Collections" xml:space="preserve"><value>Kolekce</value></data>
+<data name="Contacts" xml:space="preserve"><value>Kontakty</value></data>
+<data name="Register" xml:space="preserve"><value>Registrovat</value></data>
+<data name="Login" xml:space="preserve"><value>Přihlásit se</value></data>
+<data name="Logout" xml:space="preserve"><value>Odhlásit se</value></data>
+<data name="Admin Panel" xml:space="preserve"><value>Administrátorský panel</value></data>
+<data name="Manage" xml:space="preserve"><value>Spravovat</value></data>
+
+<!-- Home Page Content -->
+<data name="Explore collections" xml:space="preserve"><value>Prohlédnout kolekce</value></data>
+<data name="Contact Us" xml:space="preserve"><value>Kontaktujte nás</value></data>
+<data name="Why Choose Us" xml:space="preserve"><value>Proč si vybrat nás</value></data>
+<data name="Excellence in Every Transaction" xml:space="preserve"><value>Excelence v každé transakci</value></data>
+<data name="Highest Prices" xml:space="preserve"><value>Nejvyšší ceny</value></data>
+<data name="Highest Prices Desc" xml:space="preserve"><value>Nabízíme nejkonkurenceschopnější ceny za vaše cenné předměty a zajistíme, abyste dostali jejich skutečnou hodnotu.</value></data>
+<data name="Complete Discretion" xml:space="preserve"><value>Naprostá diskrétnost</value></data>
+<data name="Complete Discretion Desc" xml:space="preserve"><value>Vaše soukromí je prvořadé. Všechny transakce jsou prováděny s maximální důvěrností.</value></data>
+<data name="Expert Service" xml:space="preserve"><value>Odborný servis</value></data>
+<data name="Expert Service Desc" xml:space="preserve"><value>V případě zájmu naši specialisté zajišťují na náklady prodávajícího profesionální posudky a individuální služby.</value></data>
+
+<!-- Categories -->
+<data name="Paintings" xml:space="preserve"><value>Obrazy</value></data>
+<data name="Jewelry" xml:space="preserve"><value>Šperky</value></data>
+<data name="Watches" xml:space="preserve"><value>Hodinky</value></data>
+<data name="Statues" xml:space="preserve"><value>Sochy</value></data>
+<data name="Other" xml:space="preserve"><value>Ostatní</value></data>
+<data name="All" xml:space="preserve"><value>Vše</value></data>
+
+<!-- Collection Details -->
+<data name="I'm interested" xml:space="preserve"><value>Mám zájem</value></data>
+<data name="Send inquiry" xml:space="preserve"><value>Odeslat poptávku</value></data>
+
+<!-- Forms -->
+<data name="First name" xml:space="preserve"><value>Jméno</value></data>
+<data name="Last name" xml:space="preserve"><value>Příjmení</value></data>
+<data name="Phone" xml:space="preserve"><value>Telefon</value></data>
+<data name="Email" xml:space="preserve"><value>E-mail</value></data>
+<data name="Message" xml:space="preserve"><value>Zpráva</value></data>
+<data name="Close" xml:space="preserve"><value>Zavřít</value></data>
+<data name="Send" xml:space="preserve"><value>Odeslat</value></data>
+<data name="Thank you. We will contact you soon." xml:space="preserve"><value>Děkujeme. Brzy vás budeme kontaktovat.</value></data>
+
+<!-- About Page -->
+<data name="About Us" xml:space="preserve"><value>O nás</value></data>
+<data name="Excellence in luxury artwork and collectibles" xml:space="preserve"><value>Excelence v luxusních uměleckých dílech a sběratelských předmětech</value></data>
+<data name="Who We Are" xml:space="preserve"><value>Kdo jsme</value></data>
+<data name="Who We Are Text" xml:space="preserve"><value>Jsme americká společnost se sídlem v Houstonu v Texasu, s celosvětovým zastoupením a pověstí excelence na trhu s luxusním zbožím. Náš tým odborných odhadců a specialistů přináší desítky let zkušeností v oblasti umění, starožitností, drahocenných šperků, luxusních hodinek a vzácných sběratelských předmětů. Ať již chcete prodat jeden kus nebo celou kolekci, poskytujeme personalizované služby přizpůsobené vašim jedinečným potřebám.</value></data>
+<data name="Our Services" xml:space="preserve"><value>Naše služby</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>Umění a obrazy:</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>Staří mistři, moderní umění a současná díla</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>Starožitnosti a sběratelské předměty:</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>Vzácný nábytek, porcelán a historické předměty</value></data>
+<data name="Luxury Jewelry" xml:space="preserve"><value>Luxusní šperky:</value></data>
+<data name="Luxury Jewelry Desc" xml:space="preserve"><value>Diamanty, drahé kameny a designové kousky</value></data>
+<data name="Fine Watches" xml:space="preserve"><value>Luxusní hodinky:</value></data>
+<data name="Fine Watches Desc" xml:space="preserve"><value>Rolex, Patek Philippe a další prestižní značky</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>Sochy a sochařství:</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>Bronz, mramor a smíšené techniky</value></data>
+<data name="Our Commitment" xml:space="preserve"><value>Náš závazek</value></data>
+<data name="Highest Prices Commitment" xml:space="preserve"><value>Poskytujeme nejkonkurenceschopnější ocenění na trhu</value></data>
+<data name="Complete Discretion Commitment" xml:space="preserve"><value>Vaše anonymita a soukromí jsou absolutně zaručeny</value></data>
+<data name="Professional Service" xml:space="preserve"><value>Profesionální služby</value></data>
+<data name="Professional Service Commitment" xml:space="preserve"><value>Spolehlivost a odbornost, které můžete důvěřovat</value></data>
+
+<!-- Contact Page -->
+<data name="Get in touch with our team" xml:space="preserve"><value>Spojte se s naším týmem specialistů. Jsme zde, abychom vám pomohli s jakýmikoli dotazy.</value></data>
+<data name="Reach Out to Us" xml:space="preserve"><value>Kontaktujte nás</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>Naši specialisté jsou k dispozici pro zodpovězení vašich otázek a poskytnutí odborného vedení. Garantujeme odpověď do 12 hodin.</value></data>
+<data name="Email Address" xml:space="preserve"><value>E-mailová adresa</value></data>
+<data name="Location" xml:space="preserve"><value>Umístění</value></data>
+<data name="Houston, Texas, USA" xml:space="preserve"><value>Houston, Texas, USA</value></data>
+<data name="Worldwide representation available" xml:space="preserve"><value>K dispozici celosvětové zastoupení</value></data>
+<data name="Response Time" xml:space="preserve"><value>Doba odpovědi</value></data>
+<data name="Within 12 hours" xml:space="preserve"><value>Do 12 hodin</value></data>
+<data name="Professional and confidential service" xml:space="preserve"><value>Profesionální a důvěrná služba</value></data>
+<data name="Privacy Notice" xml:space="preserve"><value>Upozornění na ochranu soukromí:</value></data>
+<data name="Privacy Notice Text" xml:space="preserve"><value>Veškerá komunikace je vedena s maximální důvěrností. Vaše osobní údaje a dotazy jsou u nás v bezpečí.</value></data>
+
+<!-- Admin Panel -->
+<data name="Manage Collections" xml:space="preserve"><value>Správa kolekcí</value></data>
+<data name="Collections Management" xml:space="preserve"><value>Správa kolekcí</value></data>
+<data name="Total" xml:space="preserve"><value>Celkem</value></data>
+<data name="collection(s)" xml:space="preserve"><value>kolekce</value></data>
+<data name="Create New Collection" xml:space="preserve"><value>Vytvořit novou kolekci</value></data>
+<data name="No Collections Yet" xml:space="preserve"><value>Zatím žádné kolekce</value></data>
+<data name="Start by creating your first aristocratic collection" xml:space="preserve"><value>Začněte vytvořením vaší první aristokratické kolekce</value></data>
+<data name="Create Collection" xml:space="preserve"><value>Vytvořit kolekci</value></data>
+<data name="Edit" xml:space="preserve"><value>Upravit</value></data>
+<data name="Delete" xml:space="preserve"><value>Smazat</value></data>
+<data name="Created" xml:space="preserve"><value>Vytvořeno</value></data>
+<data name="Audio" xml:space="preserve"><value>Audio</value></data>
+<data name="Confirm Delete" xml:space="preserve"><value>Potvrdit smazání</value></data>
+<data name="Are you sure you want to delete this collection?" xml:space="preserve"><value>Opravdu chcete smazat tuto kolekci?</value></data>
+<data name="This action cannot be undone." xml:space="preserve"><value>Tuto akci nelze vrátit zpět.</value></data>
+<data name="Cancel" xml:space="preserve"><value>Zrušit</value></data>
+<data name="Success!" xml:space="preserve"><value>Úspěch!</value></data>
+
+<!-- Admin Forms -->
+<data name="Title" xml:space="preserve"><value>Název</value></data>
+<data name="Description" xml:space="preserve"><value>Popis</value></data>
+<data name="Category" xml:space="preserve"><value>Kategorie</value></data>
+<data name="Select Category" xml:space="preserve"><value>Vyberte kategorii</value></data>
+<data name="Images" xml:space="preserve"><value>Obrázky</value></data>
+<data name="Audio File" xml:space="preserve"><value>Audio soubor</value></data>
+<data name="Submit" xml:space="preserve"><value>Odeslat</value></data>
+<data name="Add New Images" xml:space="preserve"><value>Přidat nové obrázky</value></data>
+<data name="Current Images" xml:space="preserve"><value>Aktuální obrázky</value></data>
+<data name="Drag to reorder" xml:space="preserve"><value>Přetáhněte pro změnu pořadí</value></data>
+
+<!-- Identity - Login -->
+<data name="Log in" xml:space="preserve"><value>Přihlásit se</value></data>
+<data name="Password" xml:space="preserve"><value>Heslo</value></data>
+<data name="Remember me?" xml:space="preserve"><value>Zapamatovat si mě?</value></data>
+<data name="Forgot your password?" xml:space="preserve"><value>Zapomněli jste heslo?</value></data>
+<data name="Register as a new user" xml:space="preserve"><value>Registrovat se jako nový uživatel</value></data>
+<data name="Resend email confirmation" xml:space="preserve"><value>Znovu odeslat potvrzení e-mailu</value></data>
+
+<!-- Identity - Register -->
+<data name="Confirm Password" xml:space="preserve"><value>Potvrdit heslo</value></data>
+
+<!-- Identity - Manage Account -->
+<data name="Account Settings" xml:space="preserve"><value>Nastavení účtu</value></data>
+<data name="Profile Information" xml:space="preserve"><value>Informace o profilu</value></data>
+<data name="Email / Username" xml:space="preserve"><value>E-mail / Uživatelské jméno</value></data>
+<data name="Phone number" xml:space="preserve"><value>Telefonní číslo</value></data>
+<data name="Save changes" xml:space="preserve"><value>Uložit změny</value></data>
+<data name="Profile" xml:space="preserve"><value>Profil</value></data>
+<data name="Personal Data" xml:space="preserve"><value>Osobní údaje</value></data>
+<data name="Change Password" xml:space="preserve"><value>Změnit heslo</value></data>
+<data name="Current Password" xml:space="preserve"><value>Současné heslo</value></data>
+<data name="New Password" xml:space="preserve"><value>Nové heslo</value></data>
+<data name="Confirm new password" xml:space="preserve"><value>Potvrdit nové heslo</value></data>
+<data name="Update password" xml:space="preserve"><value>Aktualizovat heslo</value></data>
+<data name="Confirm Email" xml:space="preserve"><value>Potvrdit e-mail</value></data>
+<data name="Thank you for confirming your email" xml:space="preserve"><value>Děkujeme za potvrzení vašeho e-mailu</value></data>
+<data name="Please confirm your account" xml:space="preserve"><value>Prosím potvrďte váš účet</value></data>
+
+<!-- Additional UI Texts -->
+<data name="Collections Description" xml:space="preserve"><value>Prozkoumejte náš pečlivě vybraný výběr umění, šperků, hodinek a sběratelských předmětů</value></data>
+<data name="No Collections Available" xml:space="preserve"><value>Žádné kolekce nejsou k dispozici</value></data>
+<data name="Check back soon message" xml:space="preserve"><value>Brzy se vraťte pro nové přírůstky do naší kolekce.</value></data>
+<data name="No Image" xml:space="preserve"><value>Bez obrázku</value></data>
+<data name="Home" xml:space="preserve"><value>Domů</value></data>
+<data name="Audio Description" xml:space="preserve"><value>Popis audia</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>Vyplňte formulář níže a náš specialista vás bude kontaktovat do 12 hodin.</value></data>
+<data name="Message placeholder" xml:space="preserve"><value>Řekněte nám o vašem zájmu...</value></data>
+<data name="Site Title" xml:space="preserve"><value>Aristocratic Artwork Sale</value></data>
+<data name="Site Meta Description" xml:space="preserve"><value>Diskrétnost, kvalita a profesionalita v oblasti umění, šperků, hodinek a sběratelských předmětů.</value></data>
+<data name="Site Name" xml:space="preserve"><value>Aristocratic Artwork Sale</value></data>
+<data name="Toggle navigation" xml:space="preserve"><value>Přepnout navigaci</value></data>
+<data name="Footer rights text" xml:space="preserve"><value>© {0} Všechna práva vyhrazena. Diskrétnost, kvalita &amp; profesionalita.</value></data>
+
+<!-- Admin - Collection Management -->
+<data name="Add new collection description" xml:space="preserve"><value>Přidat novou aristokratickou uměleckou kolekci</value></data>
+<data name="Error label" xml:space="preserve"><value>Chyba:</value></data>
+<data name="Fix errors message" xml:space="preserve"><value>Prosím opravte následující chyby:</value></data>
+<data name="Collection Details" xml:space="preserve"><value>Detaily kolekce</value></data>
+<data name="Enter collection title" xml:space="preserve"><value>Zadejte název kolekce</value></data>
+<data name="Select a Category" xml:space="preserve"><value>-- Vyberte kategorii --</value></data>
+<data name="Enter collection description" xml:space="preserve"><value>Zadejte popis kolekce</value></data>
+<data name="Media Files" xml:space="preserve"><value>Mediální soubory</value></data>
+<data name="Multiple file selection instruction" xml:space="preserve"><value>(Vyberte více pomocí Ctrl+Klik)</value></data>
+<data name="Image upload instructions" xml:space="preserve"><value>💡 Tip: Podržte Ctrl (nebo Cmd na Mac) pro výběr více souborů najednou. Podporované: JPG, PNG, WebP (max 10MB každý)</value></data>
+<data name="Audio file description" xml:space="preserve"><value>Volitelná klasická hudba (max 15MB)</value></data>
+<data name="Files selected message" xml:space="preserve"><value>✓ {0} soubor(ů) vybráno</value></data>
+<data name="Edit Collection" xml:space="preserve"><value>Upravit kolekci</value></data>
+<data name="Title help text" xml:space="preserve"><value>Ponechte nezměněno, pokud chcete pouze změnit pořadí obrázků</value></data>
+<data name="Add images" xml:space="preserve"><value>Přidat obrázky</value></data>
+<data name="Add images help text" xml:space="preserve"><value>Vyberte více obrázků k přidání do této kolekce</value></data>
+<data name="Save" xml:space="preserve"><value>Uložit</value></data>
+<data name="Drag instruction" xml:space="preserve"><value>Přetáhněte obrázky pro změnu jejich pořadí</value></data>
+<data name="Order" xml:space="preserve"><value>Pořadí:</value></data>
+<data name="Saving order message" xml:space="preserve"><value>Pořadí změněno. Ukládám...</value></data>
+<data name="Delete Image" xml:space="preserve"><value>Smazat obrázek</value></data>
+<data name="Order saved success" xml:space="preserve"><value>Pořadí úspěšně uloženo!</value></data>
+<data name="Error saving order" xml:space="preserve"><value>Chyba při ukládání pořadí:</value></data>
+<data name="Error saving order message" xml:space="preserve"><value>Chyba při ukládání pořadí. Zkuste to prosím znovu.</value></data>
+
+<!-- Form Placeholders -->
+<data name="Email placeholder" xml:space="preserve"><value>jmeno@priklad.cz</value></data>
+<data name="Password placeholder" xml:space="preserve"><value>heslo</value></data>
+<data name="Email label placeholder" xml:space="preserve"><value>Vaše e-mailová adresa</value></data>
+<data name="Phone placeholder" xml:space="preserve"><value>Zadejte telefonní číslo (volitelné)</value></data>
+<data name="Current password placeholder" xml:space="preserve"><value>Zadejte vaše současné heslo</value></data>
+<data name="New password placeholder" xml:space="preserve"><value>Zadejte nové heslo (min 12 znaků)</value></data>
+<data name="Confirm password placeholder" xml:space="preserve"><value>Zadejte znovu nové heslo</value></data>
+
+<!-- Email Management -->
+<data name="Manage Email" xml:space="preserve"><value>Spravovat e-mail</value></data>
+<data name="Current Email" xml:space="preserve"><value>Současný e-mail</value></data>
+<data name="Email confirmed" xml:space="preserve"><value>E-mail potvrzen</value></data>
+<data name="Email not confirmed" xml:space="preserve"><value>E-mail nebyl potvrzen</value></data>
+<data name="Send verification email" xml:space="preserve"><value>Odeslat ověřovací e-mail</value></data>
+<data name="New email" xml:space="preserve"><value>Nový e-mail</value></data>
+<data name="New email placeholder" xml:space="preserve"><value>Zadejte novou e-mailovou adresu</value></data>
+<data name="Change email" xml:space="preserve"><value>Změnit e-mail</value></data>
+
+<!-- Navigation Items -->
+<data name="Email nav" xml:space="preserve"><value>E-mail</value></data>
+<data name="Password nav" xml:space="preserve"><value>Heslo</value></data>
+
+<!-- Personal Data -->
+<data name="Personal data description" xml:space="preserve"><value>Váš účet obsahuje osobní údaje, které jste nám poskytli. Tato stránka vám umožňuje stáhnout nebo smazat tyto údaje.</value></data>
+<data name="Delete warning" xml:space="preserve"><value>Smazáním těchto údajů trvale odstraníte váš účet a toto nelze vrátit zpět.</value></data>
+<data name="Download data button" xml:space="preserve"><value>Stáhnout osobní údaje</value></data>
+<data name="Delete Account" xml:space="preserve"><value>Smazat účet</value></data>
+<data name="Delete account warning" xml:space="preserve"><value>Smazání vášho účtu je trvalé a nelze jej vrátit zpět.</value></data>
+<data name="Confirm password label" xml:space="preserve"><value>Potvrďte vaším heslem</value></data>
+<data name="Delete account button" xml:space="preserve"><value>Smazat účet trvale</value></data>
+
+<!-- Confirm Email Messages -->
+<data name="Confirm email success text" xml:space="preserve"><value>Děkujeme za potvrzení vašeho e-mailu. Nyní se můžete</value></data>
+<data name="log in link" xml:space="preserve"><value>přihlásit</value></data>
+
+<!-- Error Messages -->
+<data name="Rate limit error" xml:space="preserve"><value>Příliš mnoho dotazů. Zkuste to prosím později.</value></data>
+<data name="Message too long error" xml:space="preserve"><value>Zpráva je příliš dlouhá (max 5000 znaků)</value></data>
+<data name="Inquiry processing error" xml:space="preserve"><value>Při zpracování vašeho dotazu došlo k chybě</value></data>
+<data name="Audio format error" xml:space="preserve"><value>Povoleny jsou pouze MP3 soubory</value></data>
+<data name="Audio size error" xml:space="preserve"><value>Velikost audio souboru musí být menší než {0}MB</value></data>
+<data name="Image required error" xml:space="preserve"><value>Je vyžadován alespoň jeden obrázek</value></data>
+<data name="All images failed" xml:space="preserve"><value>Všechny obrázky se nepodařilo nahrát. Chyby: {0}</value></data>
+<data name="Collection created success" xml:space="preserve"><value>Kolekce '{0}' vytvořena s {1} obrázky</value></data>
+<data name="Images failed partial" xml:space="preserve"><value>{0} obrázek(ů) selhalo: {1}</value></data>
+<data name="Error creating collection" xml:space="preserve"><value>Chyba při vytváření kolekce: {0}</value></data>
+<data name="Fix validation errors" xml:space="preserve"><value>Prosím opravte chyby validace.</value></data>
+<data name="Collection updated success" xml:space="preserve"><value>Kolekce '{0}' úspěšně aktualizována.</value></data>
+<data name="Collection update error" xml:space="preserve"><value>Chyba při aktualizaci kolekce: {0}</value></data>
+<data name="Collection not found" xml:space="preserve"><value>Kolekce nenalezena.</value></data>
+<data name="Collection deleted success" xml:space="preserve"><value>Kolekce '{0}' úspěšně smazána.</value></data>
+<data name="Collection delete error" xml:space="preserve"><value>Chyba při mazání kolekce: {0}</value></data>
+<data name="Image not found" xml:space="preserve"><value>Obrázek nenalezen.</value></data>
+<data name="Image deleted success" xml:space="preserve"><value>Obrázek úspěšně smazán.</value></data>
+<data name="Image delete error" xml:space="preserve"><value>Chyba při mazání obrázku: {0}</value></data>
+<data name="Order updated success" xml:space="preserve"><value>Pořadí úspěšně aktualizováno</value></data>
+
+<data name="Available" xml:space="preserve"><value>Dostupné</value></data>
+<data name="Sold" xml:space="preserve"><value>Prodáno</value></data>
+<data name="InAuction" xml:space="preserve"><value>V aukci</value></data>
+<data name="Price" xml:space="preserve"><value>Cena</value></data>
+<data name="Status" xml:space="preserve"><value>Stav</value></data>
+<data name="Currency" xml:space="preserve"><value>Měna</value></data>
+<data name="Available for" xml:space="preserve"><value>Dostupné za</value></data>
+
+<!-- Komentáře -->
+<data name="Comments" xml:space="preserve"><value>Komentáře</value></data>
+<data name="Add Comment" xml:space="preserve"><value>Přidat komentář</value></data>
+<data name="Write your comment..." xml:space="preserve"><value>Napište váš komentář...</value></data>
+<data name="Submit Comment" xml:space="preserve"><value>Odeslat komentář</value></data>
+<data name="Sign in" xml:space="preserve"><value>Přihlásit se</value></data>
+<data name="to leave a comment" xml:space="preserve"><value>pro zanechání komentáře</value></data>
+<data name="No comments yet. Be the first to comment!" xml:space="preserve"><value>Zatím žádné komentáře. Buďte první, kdo komentuje!</value></data>
+<data name="Failed to load comments" xml:space="preserve"><value>Nepodařilo se načíst komentáře</value></data>
+<data name="Failed to post comment. Please try again." xml:space="preserve"><value>Nepodařilo se odeslat komentář. Zkuste to prosím znovu.</value></data>
+<data name="Edit your comment:" xml:space="preserve"><value>Upravte svůj komentář:</value></data>
+<data name="Failed to update comment. Please try again." xml:space="preserve"><value>Nepodařilo se aktualizovat komentář. Zkuste to prosím znovu.</value></data>
+<data name="Are you sure you want to delete this comment?" xml:space="preserve"><value>Opravdu chcete smazat tento komentář?</value></data>
+<data name="Failed to delete comment. Please try again." xml:space="preserve"><value>Nepodařilo se smazat komentář. Zkuste to prosím znovu.</value></data>
+<data name="edited" xml:space="preserve"><value>upraveno</value></data>
+
+<!-- Blog -->
+<data name="Blog" xml:space="preserve"><value>Blog</value></data>
+<data name="New Post" xml:space="preserve"><value>Nový příspěvek</value></data>
+<data name="Create Blog Post" xml:space="preserve"><value>Vytvořit příspěvek</value></data>
+<data name="Edit Blog Post" xml:space="preserve"><value>Upravit příspěvek</value></data>
+<data name="Delete Blog Post" xml:space="preserve"><value>Smazat příspěvek</value></data>
+<data name="Blog Title" xml:space="preserve"><value>Název příspěvku</value></data>
+<data name="Blog Content" xml:space="preserve"><value>Obsah příspěvku</value></data>
+<data name="Featured Image" xml:space="preserve"><value>Hlavní obrázek</value></data>
+<data name="Published" xml:space="preserve"><value>Publikováno</value></data>
+<data name="Draft" xml:space="preserve"><value>Koncept</value></data>
+<data name="Read More" xml:space="preserve"><value>Číst více</value></data>
+<data name="Back to Blog" xml:space="preserve"><value>Zpět na blog</value></data>
+<data name="No blog posts available" xml:space="preserve"><value>Žádné příspěvky nejsou k dispozici</value></data>
+
+<!-- AAS Ověřeno -->
+<data name="AASVerified" xml:space="preserve"><value>AAS Ověřeno</value></data>
+<data name="AASVerifiedTooltip" xml:space="preserve"><value>Autenticita předmětu garantována společností AAS</value></data>
+<data name="AASVerifiedBadge" xml:space="preserve"><value>AAS Ověřená známka</value></data>
+<data name="AASVerifiedExplanation" xml:space="preserve"><value>Známka AAS Ověřeno zaručuje, že tento předmět byl důkladně prozkoumán a ověřen naším týmem odborníků. Stojíme si za autenticitou a kvalitou každého ověřeného předmětu.</value></data>
+
+<!-- Průvodce -->
+<data name="How To" xml:space="preserve"><value>Jak na to</value></data>
+<data name="How to Sell" xml:space="preserve"><value>Jak prodat</value></data>
+<data name="How to Buy" xml:space="preserve"><value>Jak koupit</value></data>
+<data name="Selling Process" xml:space="preserve"><value>Proces prodeje</value></data>
+<data name="Buying Process" xml:space="preserve"><value>Proces nákupu</value></data>
+<data name="Step" xml:space="preserve"><value>Krok</value></data>
+
+<!-- How To stránka -->
+<data name="HowToBuySell" xml:space="preserve"><value>Jak koupit nebo prodat</value></data>
+<data name="HowToBuySellDescription" xml:space="preserve"><value>Váš průvodce nákupem a prodejem luxusních uměleckých děl a sběratelských předmětů s profesionální péčí a naprostou diskrétností</value></data>
+<data name="Note" xml:space="preserve"><value>Poznámka</value></data>
+
+<!-- Jak koupit -->
+<data name="HowToBuy" xml:space="preserve"><value>Jak koupit</value></data>
+<data name="HowToBuyStep1Title" xml:space="preserve"><value>Krok 1: Procházejte kolekce</value></data>
+<data name="HowToBuyStep1Text" xml:space="preserve"><value>Prozkoumejte naši pečlivě vybranou kolekci luxusních uměleckých děl, starožitností, šperků a hodinek. Každý předmět je důkladně prozkoumán a ověřen našimi odborníky.</value></data>
+<data name="HowToBuyStep2Title" xml:space="preserve"><value>Krok 2: Vyjádřete zájem</value></data>
+<data name="HowToBuyStep2Text" xml:space="preserve"><value>Když najdete předmět, který vás zaujme, klikněte na tlačítko "Mám zájem" a vyplňte kontaktní formulář. Váš dotaz bude zpracován s naprostou diskrétností.</value></data>
+<data name="HowToBuyStep3Title" xml:space="preserve"><value>Krok 3: Konzultace s odborníkem</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Náš specialista vás bude kontaktovat do 12 hodin, poskytne vám podrobné informace o předmětu a zodpoví všechny vaše otázky.</value></data>
+<data name="HowToBuyStep4Title" xml:space="preserve"><value>Krok 4: Dokončení transakce</value></data>
+<data name="HowToBuyStep4Text" xml:space="preserve"><value>Po dohodě na podmínkách zařídíme bezpečnou platbu a diskrétní doručení na vaši zvolenou adresu kdekoli na světě.</value></data>
+<data name="HowToBuyNote" xml:space="preserve"><value>Všechny transakce jsou provedeny s maximální diskrétností a bezpečností. Vaše soukromí je naší prioritou.</value></data>
+
+<!-- Jak prodat -->
+<data name="HowToSell" xml:space="preserve"><value>Jak prodat</value></data>
+<data name="HowToSellStep1Title" xml:space="preserve"><value>Krok 1: Kontaktujte nás</value></data>
+<data name="HowToSellStep1Text" xml:space="preserve"><value>Napište nám e-mail s popisem vašeho předmětu a přiložte fotografie. Čím více informací poskytnete, tím přesnější ocenění můžeme připravit.</value></data>
+<data name="HowToSellStep2Title" xml:space="preserve"><value>Krok 2: Odborné ocenění</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>Náš tým odborníků provede důkladné posouzení vašeho předmětu a poskytne vám profesionální tržní ocenění zdarma.</value></data>
+<data name="HowToSellStep3Title" xml:space="preserve"><value>Krok 3: Přijměte nabídku</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Pokud souhlasíte s naší nabídkou, domluvíme si vyzvednutí předmětu nebo bezpečnou přepravu. Všechny náklady na přepravu hradíme my.</value></data>
+<data name="HowToSellStep4Title" xml:space="preserve"><value>Krok 4: Okamžitá platba</value></data>
+<data name="HowToSellStep4Text" xml:space="preserve"><value>Po obdržení a ověření předmětu obdržíte platbu ihned prostřednictvím vámi preferované bezpečné platební metody.</value></data>
+<data name="HowToSellNote" xml:space="preserve"><value>Nabízíme nejvyšší ceny na trhu. Žádné skryté poplatky, žádné provize. Dostanete plnou dohodnutou částku.</value></data>
+
+<!-- AAS Verified sekce -->
+<data name="WhatIsAASVerified" xml:space="preserve"><value>Co znamená AAS Ověřeno?</value></data>
+<data name="WithAASVerified" xml:space="preserve"><value>S AAS Ověřeno</value></data>
+<data name="WithAASVerifiedText" xml:space="preserve"><value>Autenticita garantována našimi odborníky. Plná dokumentace a certifikát pravosti. Nejvyšší úroveň důvěry a kvality.</value></data>
+<data name="WithoutAASVerified" xml:space="preserve"><value>Bez AAS Ověřeno</value></data>
+<data name="WithoutAASVerifiedText" xml:space="preserve"><value>Předmět zatím nebyl ověřen naším týmem. Můžeme poskytnout ověření na vyžádání.</value></data>
+<data name="AASVerifiedDisclaimer" xml:space="preserve"><value>Všechny předměty s odznakem AAS Ověřeno jsou doprovázeny certifikátem pravosti a kompletní dokumentací o původu.</value></data>
+<data name="BrowseCollections" xml:space="preserve"><value>Procházet kolekce</value></data>
+
+<!-- Home page - BuyOrSell sekce -->
+<data name="BuyOrSellThroughUs" xml:space="preserve"><value>Kupujte nebo prodávejte s námi</value></data>
+<data name="BuyOrSellDescription" xml:space="preserve"><value>Váš důvěryhodný partner pro nákup a prodej luxusních uměleckých děl</value></data>
+<data name="BuyOrSellDetails" xml:space="preserve"><value>Ať už chcete rozšířit svou sbírku nebo prodat cenné předměty, poskytujeme profesionální služby s naprostou diskrétností a nejvyššími cenami na trhu.</value></data>
+<data name="LearnMore" xml:space="preserve"><value>Zjistit více</value></data>
+
+<!-- Pagination -->
+<data name="Showing" xml:space="preserve"><value>Zobrazeno</value></data>
+<data name="of" xml:space="preserve"><value>z</value></data>
+
+<!-- GDPR Cookie Consent -->
+<data name="Cookie Settings" xml:space="preserve"><value>Nastavení cookies</value></data>
+<data name="We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies." xml:space="preserve"><value>Používáme cookies a podobné technologie ke zlepšení vašeho procházení, analýze návštěvnosti webu a pochopení, odkud naši návštěvníci přicházejí. Kliknutím na 'Přijmout vše' souhlasíte s naším používáním cookies.</value></data>
+<data name="How Google uses data" xml:space="preserve"><value>Jak Google používá data</value></data>
+<data name="Privacy Policy" xml:space="preserve"><value>Zásady ochrany osobních údajů</value></data>
+<data name="Decline" xml:space="preserve"><value>Odmítnout</value></data>
+<data name="Settings" xml:space="preserve"><value>Nastavení</value></data>
+<data name="Accept All" xml:space="preserve"><value>Přijmout vše</value></data>
+<data name="Cookie Preferences" xml:space="preserve"><value>Preference cookies</value></data>
+<data name="Essential Cookies" xml:space="preserve"><value>Nezbytné cookies</value></data>
+<data name="These cookies are necessary for the website to function and cannot be switched off." xml:space="preserve"><value>Tyto cookies jsou nezbytné pro fungování webové stránky a nelze je vypnout.</value></data>
+<data name="Analytics Cookies" xml:space="preserve"><value>Analytické cookies</value></data>
+<data name="These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously." xml:space="preserve"><value>Tyto cookies nám pomáhají pochopit, jak návštěvníci interagují s naším webem, shromažďováním a hlášením informací anonymně.</value></data>
+<data name="Marketing Cookies" xml:space="preserve"><value>Marketingové cookies</value></data>
+<data name="These cookies are used to make advertising messages more relevant to you and your interests." xml:space="preserve"><value>Tyto cookies se používají k tomu, aby byly reklamní sdělení relevantnější pro vás a vaše zájmy.</value></data>
+<data name="Save Preferences" xml:space="preserve"><value>Uložit preference</value></data>
+<data name="Back" xml:space="preserve"><value>Zpět</value></data>
+
+</root>
