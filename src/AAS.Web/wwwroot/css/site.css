@@ -388,34 +388,40 @@ a.btn-outline-secondary {
 
 /* SECTIONS */
 .section {
-  padding: 40px 0 !important;
-  width: 100% !important;
-  background: #FFFFFF !important;
+  padding: 4rem 0;
+  width: 100%;
+  background: var(--color-bg);
 }
 
 .bg-light {
-  background: #FFFFFF !important;
+  background: var(--color-bg);
 }
 
 .section-title {
-  text-align: center !important;
-  margin-bottom: 12px !important;
-  color: #1A1A1A !important;
-  font-size: 32px !important;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-tight);
 }
 
 .section-subtitle {
-  text-align: center !important;
-  color: #4A4A4A !important;
-  margin-bottom: 24px !important;
-  font-size: 18px !important;
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  font-size: var(--text-lg);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
 }
 
 .page-heading {
-  text-align: center !important;
-  margin-bottom: 8px !important;
-  color: #1A1A1A !important;
-  font-size: 40px !important;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
 }
 
 .page-heading::after {
