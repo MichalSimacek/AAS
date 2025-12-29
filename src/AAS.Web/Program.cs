@@ -176,16 +176,16 @@ app.Use((ctx, next) =>
 
     // CSP - Content Security Policy with Google Analytics and TinyMCE support
     // Note: 'unsafe-inline' is needed for Bootstrap and inline event handlers
-    // Google Analytics domains included for GDPR-compliant tracking
+    // Google Analytics is loaded dynamically only after user consent (GDPR compliant)
     // TinyMCE CDN included for blog editor functionality
     // Consider migrating to nonce-based CSP in future for better security
     var csp = "default-src 'self'; " +
-              "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://www.googletagmanager.com https://cdn.tiny.cloud; " +
+              "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://cdn.tiny.cloud; " +
               "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; " +
               "img-src 'self' data: https: blob:; " +
               "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; " +
               "media-src 'self' blob:; " +
-              "connect-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.google-analytics.com; " +
+              "connect-src 'self' https://cdn.jsdelivr.net https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://*.google-analytics.com; " +
               "frame-ancestors 'none'; " +
               "base-uri 'self'; " +
               "form-action 'self'";
