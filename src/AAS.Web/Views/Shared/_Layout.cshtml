@@ -77,12 +77,13 @@
     .identity-card { max-width: 520px; width: 100%; margin: 0 auto; padding: 48px; }
   </style>
   <!-- Google Fonts - loaded only after consent to comply with GDPR -->
-  <!-- Fallback to system fonts if not loaded -->
+  <!-- Using Inter for both headings and body - elegant and highly readable -->
   <style>
-    /* Define font-face with system fallbacks */
     :root {
-      --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    body, h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-primary);
     }
   </style>
   <script>
@@ -93,7 +94,7 @@
       
       var link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap';
+      link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
       document.head.appendChild(link);
       console.log('Google Fonts loaded after consent');
     };
