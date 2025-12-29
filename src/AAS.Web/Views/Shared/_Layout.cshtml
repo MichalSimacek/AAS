@@ -404,11 +404,24 @@
       }
 
       function saveConsent(consent) {
-        setCookie(COOKIE_CONSENT_KEY, JSON.stringify(consent), CONSENT_EXPIRY_DAYS);
+        // URL-encode the JSON to handle special characters properly
+        setCookie(COOKIE_CONSENT_KEY, encodeURIComponent(JSON.stringify(consent)), CONSENT_EXPIRY_DAYS);
       }
 
       function applyConsentSettings(consent) {
-        // Update Google Analytics consent
+        // Load Google Analytics and Fonts only if user gave consent
+        if (consent.analytics) {
+          // Load GA
+          if (typeof window.loadGoogleAnalytics === 'function') {
+            window.loadGoogleAnalytics();
+          }
+          // Load Google Fonts (optional - only if analytics consent given)
+          if (typeof window.loadGoogleFonts === 'function') {
+            window.loadGoogleFonts();
+          }
+        }
+        
+        // Update GA consent state if already loaded
         if (typeof gtag !== 'undefined') {
           gtag('consent', 'update', {
             'analytics_storage': consent.analytics ? 'granted' : 'denied',
@@ -431,7 +444,14 @@
         for (let i = 0; i < ca.length; i++) {
           let c = ca[i];
           while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-          if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+          if (c.indexOf(nameEQ) === 0) {
+            // URL-decode the value
+            try {
+              return decodeURIComponent(c.substring(nameEQ.length, c.length));
+            } catch(e) {
+              return c.substring(nameEQ.length, c.length);
+            }
+          }
         }
         return null;
       }
