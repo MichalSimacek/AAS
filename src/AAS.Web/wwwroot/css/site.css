@@ -1,4 +1,53 @@
-/* ARISTOCRATIC ARTWORK SALE - STABLE LAYOUT */
+/* ARISTOCRATIC ARTWORK SALE - UNIFIED TYPOGRAPHY */
+
+/* ============================================
+   TYPOGRAPHY SYSTEM
+   - Primary Font: Inter (elegant, modern, readable)
+   - Heading Scale: 48px → 36px → 28px → 22px → 18px
+   - Body: 16px, Lead: 18px, Small: 14px
+   ============================================ */
+
+:root {
+  /* Font Family */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Font Sizes - Consistent Scale */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 28px;
+  --text-4xl: 36px;
+  --text-5xl: 48px;
+  
+  /* Font Weights */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  
+  /* Letter Spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  
+  /* Colors */
+  --color-text: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #6B6B6B;
+  --color-gold: #B8941F;
+  --color-gold-light: #C9A961;
+  --color-bg: #FFFFFF;
+  --color-border: #E5E5E5;
+}
 
 * {
   margin: 0;
@@ -7,24 +56,24 @@
 }
 
 html {
-  font-size: 16px !important;
+  font-size: 16px;
   height: 100%;
 }
 
 body {
-  background: #FFFFFF !important;
-  color: #1A1A1A !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 16px !important;
-  line-height: 1.6 !important;
-  overflow-x: hidden !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  visibility: visible !important;
 }
 
 /* Prevent layout shifts during page load */
@@ -36,58 +85,76 @@ body.loaded {
   visibility: visible;
 }
 
-/* Override any zoom scaling */
-* {
-  font-size: inherit;
-}
-
 p {
-  font-size: 16px !important;
-  line-height: 1.6 !important;
-  margin-bottom: 16px !important;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
 }
 
 /* FORCE WHITE BACKGROUND */
 header, main, footer, .container, .navbar, .card, section {
-  background: #FFFFFF !important;
+  background: var(--color-bg);
 }
 
 /* TEXT COLORS */
 body, p, span, div, li, td, th, label, input, textarea, select {
-  color: #1A1A1A !important;
+  color: var(--color-text);
 }
 
 a {
-  color: #B8941F !important;
-  text-decoration: none !important;
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #C9A961 !important;
+  color: var(--color-gold-light);
 }
 
-/* TYPOGRAPHY */
+/* TYPOGRAPHY - HEADINGS */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', Times, serif !important;
-  color: #1A1A1A !important;
-  font-weight: 600 !important;
-  line-height: 1.3 !important;
-  margin-bottom: 16px !important;
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  margin-bottom: 1rem;
+  letter-spacing: var(--tracking-tight);
 }
 
-h1 { font-size: 40px !important; }
-h2 { font-size: 32px !important; }
-h3 { font-size: 24px !important; }
-h4 { font-size: 20px !important; }
+h1 { 
+  font-size: var(--text-5xl); 
+  font-weight: var(--font-bold);
+}
+
+h2 { 
+  font-size: var(--text-4xl); 
+}
+
+h3 { 
+  font-size: var(--text-3xl); 
+}
+
+h4 { 
+  font-size: var(--text-2xl); 
+}
+
+h5 { 
+  font-size: var(--text-xl); 
+}
+
+h6 { 
+  font-size: var(--text-lg); 
+}
 
 /* CONTAINER - STABLE WIDTH */
 .container {
-  width: 100% !important;
-  max-width: 1140px !important;
-  margin: 0 auto !important;
-  padding-left: 15px !important;
-  padding-right: 15px !important;
-  background: #FFFFFF !important;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: var(--color-bg);
 }
 
 /* HEADER */
