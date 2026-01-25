@@ -307,14 +307,14 @@
   </div>
 </div>
 
-<div id="interestModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1055; align-items: center; justify-content: center;">
-  <div style="background: white; border-radius: 8px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; margin: 20px;">
-    <div style="padding: 24px; border-bottom: 1px solid #E5E5E5; display: flex; justify-content: space-between; align-items: center;">
-      <h5 style="margin: 0; font-size: 20px; font-family: 'Playfair Display', serif;">@L["Send inquiry"]</h5>
-      <button type="button" onclick="closeInquiryForm()" style="background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">&times;</button>
+<div id="interestModal" class="detail-modal">
+  <div class="detail-modal-content">
+    <div class="detail-modal-header">
+      <h5><i class="bi bi-heart text-gold me-2"></i>@L["Send inquiry"]</h5>
+      <button type="button" onclick="closeInquiryForm()" class="detail-modal-close">&times;</button>
     </div>
-    <div style="padding: 24px;">
-        <p class="text-secondary mb-4">Fill out the form below and our specialist will contact you within 12 hours.</p>
+    <div class="detail-modal-body">
+        <p class="text-muted mb-4">@L["Fill out the form below and our specialist will contact you within 12 hours."]</p>
         <form id="inqForm">
           @Html.AntiForgeryToken()
           <input type="hidden" name="collectionId" value="@Model.Id" />
@@ -337,13 +337,13 @@
           </div>
           <div class="mb-3">
             <label class="form-label">@L["Message"]</label>
-            <textarea class="form-control" name="Message" rows="4" maxlength="5000" placeholder="Tell us about your interest..."></textarea>
+            <textarea class="form-control" name="Message" rows="4" maxlength="5000" placeholder="@L["Tell us about your interest..."]"></textarea>
           </div>
         </form>
         <div id="inqOk" class="alert alert-success d-none">@L["Thank you. We will contact you soon."]</div>
         <div id="inqError" class="alert alert-danger d-none"></div>
       </div>
-      <div style="padding: 24px; border-top: 1px solid #E5E5E5; display: flex; gap: 12px; justify-content: flex-end;">
+      <div class="detail-modal-footer">
         <button type="button" class="btn btn-outline-secondary" onclick="closeInquiryForm()">@L["Close"]</button>
         <button type="button" class="btn btn-primary" onclick="submitInquiry()">
           <i class="bi bi-send me-2"></i>@L["Send"]
