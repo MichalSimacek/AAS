@@ -7,26 +7,47 @@
     var currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 }
 
-<div class="section">
+<!-- Hero Section -->
+<section class="hero" style="min-height: 50vh; padding: 80px 0;">
+    <div class="hero-content">
+        <p class="text-accent text-gold mb-3 animate-fade-in">@L["News & Insights"]</p>
+        <h1 class="hero-title animate-fade-in delay-1" style="font-size: var(--text-5xl);">@L["Blog"]</h1>
+        <div class="hero-divider animate-fade-in delay-2"></div>
+        <p class="hero-subtitle animate-fade-in delay-3">
+            @L["Stay informed about the world of luxury collectibles and fine art"]
+        </p>
+    </div>
+</section>
+
+<!-- Blog Posts Section -->
+<section class="section">
     <div class="container">
-        <nav aria-label="breadcrumb" class="mb-4">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">@L["Home"]</a></li>
-                <li class="breadcrumb-item active" aria-current="page">@L["Blog"]</li>
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-5 reveal">
+            <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
+                <li class="breadcrumb-item">
+                    <a href="/" class="text-gold"><i class="bi bi-house me-1"></i>@L["Home"]</a>
+                </li>
+                <li class="breadcrumb-item active text-muted" aria-current="page">@L["Blog"]</li>
             </ol>
         </nav>
 
-        <h1 class="page-heading">@L["Blog"]</h1>
-
         @if (!Model.Any())
         {
-            <div class="alert alert-info">
-                @L["No blog posts available"]
+            <div class="text-center py-5 reveal">
+                <div class="step-indicator mx-auto mb-4 animate-glow" style="width: 100px; height: 100px;">
+                    <i class="bi bi-journal-text" style="font-size: 48px;"></i>
+                </div>
+                <h3 class="mb-3">@L["No blog posts available"]</h3>
+                <p class="text-muted mb-4">@L["Check back soon for news and insights"]</p>
+                <a href="/Collections/Landing" class="btn btn-primary">
+                    <i class="bi bi-grid me-2"></i>@L["Browse Collections"]
+                </a>
             </div>
         }
         else
         {
-            <div class="row g-4">
+            <div class="row g-4 stagger-children">
                 @foreach (var post in Model)
                 {
                     var title = AAS.Web.Controllers.BlogController.GetLocalizedTitle(post, currentCulture);
@@ -36,41 +57,201 @@
                     var excerpt = content;
                     if (content.Length > 200)
                     {
-                        // Strip all HTML tags for excerpt to avoid breaking HTML structure
                         var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
-                        // Decode HTML entities (e.g., &amp; → &, &scaron; → š, &iacute; → í)
                         plainText = System.Net.WebUtility.HtmlDecode(plainText);
-                        // Trim whitespace
                         plainText = plainText.Trim();
                         excerpt = plainText.Length > 200 ? plainText.Substring(0, 200) + "..." : plainText;
                     }
                     else if (!string.IsNullOrEmpty(content))
                     {
-                        // Even for short content, decode HTML entities
                         var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
                         excerpt = System.Net.WebUtility.HtmlDecode(plainText).Trim();
                     }
                     
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card h-100">
-                            @if (!string.IsNullOrEmpty(post.FeaturedImage))
-                            {
-                                <img src="@post.FeaturedImage" class="card-img-top" alt="@title" style="height: 200px; object-fit: cover;" />
-                            }
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">@title</h5>
-                                <p class="card-text text-muted small">
-                                    <i class="bi bi-calendar"></i> @post.CreatedAt.ToString("dd.MM.yyyy")
-                                </p>
-                                <p class="card-text mb-3">
-                                    @excerpt
-                                </p>
-                                <a href="/Blog/Post/@post.Id" class="btn btn-primary mt-auto">@L["Read More"]</a>
+                    <div class="col-12 col-md-6 col-lg-4 reveal">
+                        <a href="/Blog/Post/@post.Id" class="blog-card" data-testid="blog-post-@post.Id">
+                            <div class="blog-card-inner gradient-border">
+                                @if (!string.IsNullOrEmpty(post.FeaturedImage))
+                                {
+                                    <div class="blog-card-image">
+                                        <img src="@post.FeaturedImage" alt="@title" loading="lazy" />
+                                        <div class="blog-card-overlay"></div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="blog-card-placeholder">
+                                        <i class="bi bi-journal-richtext"></i>
+                                    </div>
+                                }
+                                <div class="blog-card-content">
+                                    <div class="blog-card-meta">
+                                        <span class="text-gold">
+                                            <i class="bi bi-calendar3 me-1"></i>
+                                            @post.CreatedAt.ToString("dd.MM.yyyy")
+                                        </span>
+                                    </div>
+                                    <h3 class="blog-card-title">@title</h3>
+                                    <p class="blog-card-excerpt">@excerpt</p>
+                                    <span class="blog-card-link">
+                                        @L["Read More"] <i class="bi bi-arrow-right ms-2"></i>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 }
             </div>
         }
     </div>
-</div>
+</section>
+
+<!-- CTA Section -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="text-center reveal">
+            <p class="text-accent text-gold mb-3">@L["Have Questions?"]</p>
+            <h2 style="font-size: var(--text-3xl); margin-bottom: 1.5rem;">@L["Get in Touch"]</h2>
+            <p class="text-muted mb-4" style="max-width: 600px; margin: 0 auto;">
+                @L["Our team of experts is ready to assist you with any inquiries"]
+            </p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="/Contacts" class="btn btn-primary">
+                    <i class="bi bi-envelope me-2"></i>@L["Contact Us"]
+                </a>
+                <a href="/HowTo" class="btn btn-outline-secondary">
+                    <i class="bi bi-book me-2"></i>@L["How It Works"]
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Blog Card Styles */
+.blog-card {
+    display: block;
+    text-decoration: none;
+    height: 100%;
+}
+
+.blog-card-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.blog-card:hover .blog-card-inner {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card), var(--shadow-glow-gold);
+}
+
+.blog-card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.blog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85);
+    transition: all var(--transition-slow);
+}
+
+.blog-card:hover .blog-card-image img {
+    filter: brightness(1);
+    transform: scale(1.05);
+}
+
+.blog-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(5, 5, 5, 0.8) 100%);
+}
+
+.blog-card-placeholder {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-bg-elevated) 0%, var(--color-primary-deep) 100%);
+}
+
+.blog-card-placeholder i {
+    font-size: 64px;
+    color: var(--color-gold-dim);
+    opacity: 0.5;
+}
+
+.blog-card-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card-meta {
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+}
+
+.blog-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--color-text-main);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    transition: color var(--transition-fast);
+}
+
+.blog-card:hover .blog-card-title {
+    color: var(--color-gold);
+}
+
+.blog-card-excerpt {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    flex: 1;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.blog-card-link {
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+    transition: all var(--transition-fast);
+}
+
+.blog-card:hover .blog-card-link {
+    color: var(--color-gold-light);
+}
+
+.blog-card-link i {
+    transition: transform var(--transition-fast);
+}
+
+.blog-card:hover .blog-card-link i {
+    transform: translateX(4px);
+}
+
+/* Breadcrumb styling */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "/";
+    color: var(--color-text-dim);
+}
+</style>
