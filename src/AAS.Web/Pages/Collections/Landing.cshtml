@@ -27,6 +27,19 @@
         categoryImages[cat] = featuredImage;
     }
     
+    // Get preview items for each category (up to 3 items per category)
+    var categoryPreviews = new Dictionary<CollectionCategory, List<Collection>>();
+    foreach (CollectionCategory cat in Enum.GetValues(typeof(CollectionCategory)))
+    {
+        var previews = await Db.Collections
+            .Include(c => c.Images)
+            .Where(c => c.Category == cat)
+            .OrderByDescending(c => c.CreatedAt)
+            .Take(3)
+            .ToListAsync();
+        categoryPreviews[cat] = previews;
+    }
+    
     var categories = new[] {
         new { Cat = CollectionCategory.Paintings, Icon = "bi-palette", Key = "Paintings" },
         new { Cat = CollectionCategory.Jewelry, Icon = "bi-gem", Key = "Jewelry" },
