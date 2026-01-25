@@ -30,6 +30,7 @@ ASP.NET Core web application for selling aristocratic artwork, antiques, jewelry
 - Restrained luxury
 - Dark theme with purple gradients
 - Gold accents for CTAs and highlights
+- Scroll-reveal animations for luxurious feel
 
 ---
 
@@ -49,8 +50,24 @@ ASP.NET Core web application for selling aristocratic artwork, antiques, jewelry
 - Elegant serif typography for headings
 - Category cards with purple gradient and gold icons
 - Footer with 3-column layout and social icons
-- Consistent dark theme across all pages
+- Consistent dark theme across ALL pages
 - Glass-morphism effects on cards
+- Scroll-reveal animations using Intersection Observer
+
+### Pages Redesigned (2026-01-25) ✅
+- Home page (`/`)
+- About page (`/About`)
+- Contact page (`/Contacts`)
+- HowTo page (`/HowTo`)
+- Blog Index (`/Blog`)
+- Blog Post detail (`/Blog/Post/{id}`)
+- Collections Landing (`/Collections/Landing`)
+- Collections Index (`/Collections`)
+- Collections Detail (`/Collections/Detail/{id}`)
+
+### "Coming soon" Replaced with "Discover" (2026-01-25) ✅
+- Collections Landing page now shows "Discover" for empty categories
+- Added preview cards section for latest items from each category
 
 ### Previous Features (preserved)
 - Collections Landing page with 5 category cards
@@ -67,28 +84,47 @@ ASP.NET Core web application for selling aristocratic artwork, antiques, jewelry
 ```
 /app/src/AAS.Web/
 ├── wwwroot/css/
-│   └── site.css              # Complete redesign with dark theme
+│   └── site.css              # Complete redesign with dark theme + animations
 ├── Pages/Collections/
-│   └── Landing.cshtml        # Category landing page
+│   └── Landing.cshtml        # Category landing with dynamic previews
 ├── Views/
 │   ├── Home/Index.cshtml     # Redesigned home page
-│   ├── Collections/Index.cshtml  # Collection grid
-│   └── Shared/_Layout.cshtml # Navigation, footer, fonts
+│   ├── About/Index.cshtml    # Redesigned with stats & services
+│   ├── Contacts/Index.cshtml # Redesigned contact form
+│   ├── HowTo/Index.cshtml    # Redesigned steps
+│   ├── Blog/
+│   │   ├── Index.cshtml      # Redesigned blog list
+│   │   └── Post.cshtml       # Redesigned blog post detail
+│   ├── Collections/
+│   │   ├── Index.cshtml      # Collection grid
+│   │   └── Detail.cshtml     # Redesigned collection detail
+│   └── Shared/_Layout.cshtml # Navigation, footer, fonts, animations
 └── Resources/                # 10 language files
 ```
 
 ---
 
 ## Test Reports
-- `/app/test_reports/iteration_3.json` - Design redesign tests (100% pass)
+- `/app/test_reports/iteration_3.json` - Initial redesign tests (100% pass)
+- `/app/test_reports/iteration_4.json` - Full redesign verification (100% pass)
 
 ---
 
 ## Technical Notes
-- Google Fonts: Playfair Display, Cinzel, Manrope
+- Google Fonts: Playfair Display, Cinzel, Manrope (loaded after GDPR consent)
 - CSS Variables for consistent theming
 - Hover effects with smooth transitions
 - Purple radial gradients in hero sections
+- Scroll-reveal animations via Intersection Observer API
+- CSS keyframe animations (fade-in-up, spotlight-bg, glow)
 
 ## Test Credentials
 - Admin: admin@localhost / Admin123!@#$
+
+---
+
+## Backlog / Future Enhancements
+1. ~~Replace "Coming soon" with dynamic previews~~ ✅ DONE
+2. Add more micro-interactions to enhance the luxury feel
+3. Implement lazy loading for images
+4. Add dark/light theme toggle (currently dark only)
