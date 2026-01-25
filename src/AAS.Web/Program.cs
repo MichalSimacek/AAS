@@ -239,12 +239,6 @@ app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
-// Collection detail - must be before generic routes
-app.MapControllerRoute(
-    name: "collection-detail",
-    pattern: "item/{id}",
-    defaults: new { controller = "Collections", action = "Details" });
-
 // Default route
 app.MapControllerRoute(
     name: "default",
