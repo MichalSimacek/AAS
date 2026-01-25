@@ -370,4 +370,7 @@
 <data name="items" xml:space="preserve"><value>položek</value></data>
 <data name="Coming soon" xml:space="preserve"><value>Již brzy</value></data>
 <data name="Explore" xml:space="preserve"><value>Prozkoumat</value></data>
+<data name="ViewAllCollections" xml:space="preserve"><value>Zobrazit všechny kolekce</value></data>
+<data name="Navigation" xml:space="preserve"><value>Navigace</value></data>
+<data name="Browse" xml:space="preserve"><value>Procházet</value></data>
 </root>

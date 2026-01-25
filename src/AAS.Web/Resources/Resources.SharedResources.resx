@@ -370,4 +370,7 @@
 <data name="items" xml:space="preserve"><value>items</value></data>
 <data name="Coming soon" xml:space="preserve"><value>Coming soon</value></data>
 <data name="Explore" xml:space="preserve"><value>Explore</value></data>
+<data name="ViewAllCollections" xml:space="preserve"><value>View All Collections</value></data>
+<data name="Navigation" xml:space="preserve"><value>Navigation</value></data>
+<data name="Browse" xml:space="preserve"><value>Browse</value></data>
 </root>
