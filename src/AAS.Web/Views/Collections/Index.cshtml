@@ -2,190 +2,147 @@
 @using AAS.Web.Models
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
-<div class="section">
+<!-- Collections Page -->
+<section class="section">
   <div class="container">
-    <h1 class="page-heading">@L["Collections"]</h1>
-    <p class="page-description">
-      @L["Home Description"]
-    </p>
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <p class="text-accent text-gold mb-3">@L["Browse"]</p>
+      <h1 style="font-family: var(--font-heading); font-size: var(--text-5xl);">@L["Collections"]</h1>
+      <p class="lead text-muted mt-3" style="max-width: 600px; margin: 0 auto;">
+        @L["Home Description"]
+      </p>
+    </div>
 
-    <div class="d-flex justify-content-center flex-wrap gap-2 mb-5">
-      <a class="btn btn-sm btn-outline-secondary" href="/Collections?category=@CollectionCategory.Paintings">@L["Paintings"]</a>
-      <a class="btn btn-sm btn-outline-secondary" href="/Collections?category=@CollectionCategory.Jewelry">@L["Jewelry"]</a>
-      <a class="btn btn-sm btn-outline-secondary" href="/Collections?category=@CollectionCategory.Watches">@L["Watches"]</a>
-      <a class="btn btn-sm btn-outline-secondary" href="/Collections?category=@CollectionCategory.Statues">@L["Statues"]</a>
-      <a class="btn btn-sm btn-outline-secondary" href="/Collections?category=@CollectionCategory.Other">@L["Decorative Arts"]</a>
+    <!-- Category Filter -->
+    <div class="category-filter justify-content-center mb-5">
+      <a class="btn btn-sm @(ViewBag.Category == null ? "active" : "")" href="/Collections">@L["All"]</a>
+      <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Paintings" ? "active" : "")" href="/Collections?category=Paintings">@L["Paintings"]</a>
+      <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Jewelry" ? "active" : "")" href="/Collections?category=Jewelry">@L["Jewelry"]</a>
+      <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Watches" ? "active" : "")" href="/Collections?category=Watches">@L["Watches"]</a>
+      <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Statues" ? "active" : "")" href="/Collections?category=Statues">@L["Statues"]</a>
+      <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Other" ? "active" : "")" href="/Collections?category=Other">@L["Decorative Arts"]</a>
     </div>
 
     @if (!Model.Any())
     {
       <div class="text-center py-5">
-        <h3>@L["No Collections Yet"]</h3>
-        <p class="text-secondary">@L["Start by creating your first aristocratic collection"]</p>
+        <div class="mb-4">
+          <i class="bi bi-collection" style="font-size: 64px; color: var(--color-text-dim);"></i>
+        </div>
+        <h3 class="mb-3">@L["No Collections Yet"]</h3>
+        <p class="text-muted">@L["Start by creating your first aristocratic collection"]</p>
+        <a href="/Collections/Landing" class="btn btn-outline-secondary mt-3">
+          <i class="bi bi-arrow-left me-2"></i>@L["Back"]
+        </a>
       </div>
     }
     else
     {
-      <div class="row g-4">
+      <div class="collection-grid">
         @foreach (var c in Model)
         {
           var first = c.Images.OrderBy(i => i.SortOrder).FirstOrDefault();
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <a class="card" href="/item/@c.Slug" style="text-decoration: none; color: inherit;">
-              <div style="position: relative;">
-                @if(first != null){
-                  <img class="card-img-top" loading="lazy" alt="@c.Title" style="width: 100%; height: 250px; object-fit: cover;"
-                       src="/uploads/images/@first.FileName-480.jpg"
-                       srcset="/uploads/images/@first.FileName-480.jpg 480w, /uploads/images/@first.FileName-960.jpg 960w, /uploads/images/@first.FileName-1600.jpg 1600w"
-                       sizes="(max-width: 768px) 50vw, 25vw" />
-                }
-                else
-                {
-                  <div style="width: 100%; height: 250px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; color: #999;">
-                    @L["Images"]
-                  </div>
-                }
-                
-                @* AAS Verified badge - top left *@
-                @if (c.AASVerified)
-                {
-                  <div style="position: absolute; top: 10px; left: 10px; z-index: 10;" title="@L["AASVerifiedTooltip"]">
-                    <img src="~/images/aas-verified-badge.svg" alt="AAS Verified" style="width: 50px; height: 50px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" />
-                  </div>
-                }
-                
-                @* Status badge overlay - top right *@
-                <div style="position: absolute; top: 10px; right: 10px;">
-                  @if (c.Status == AAS.Web.Models.CollectionStatus.Sold)
-                  {
-                    <span class="badge bg-danger fs-6 px-3 py-2" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);">@L["Sold"]</span>
-                  }
-                  else if (c.Status == AAS.Web.Models.CollectionStatus.InAuction)
-                  {
-                    <span class="badge bg-warning fs-6 px-3 py-2" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);">@L["InAuction"]</span>
-                  }
-                  else if (c.Status == AAS.Web.Models.CollectionStatus.Available)
-                  {
-                    <span class="badge bg-success fs-6 px-3 py-2" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);">@L["Available"]</span>
+          <a class="collection-card" href="/item/@c.Slug" data-testid="collection-@c.Slug">
+            <div style="position: relative; overflow: hidden;">
+              @if(first != null)
+              {
+                <img loading="lazy" alt="@c.Title"
+                     src="/uploads/images/@first.FileName-480.jpg"
+                     srcset="/uploads/images/@first.FileName-480.jpg 480w, /uploads/images/@first.FileName-960.jpg 960w"
+                     sizes="(max-width: 768px) 50vw, 25vw" />
+              }
+              else
+              {
+                <div style="width: 100%; height: 280px; background: var(--color-bg-elevated); display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-image" style="font-size: 48px; color: var(--color-text-dim);"></i>
+                </div>
+              }
+              
+              @* AAS Verified badge *@
+              @if (c.AASVerified)
+              {
+                <div style="position: absolute; top: 12px; left: 12px;">
+                  <span class="badge badge-purple">
+                    <i class="bi bi-patch-check me-1"></i>AAS Verified
+                  </span>
+                </div>
+              }
+              
+              @* Status badge *@
+              @if (c.Status == CollectionStatus.Sold)
+              {
+                <div style="position: absolute; top: 12px; right: 12px;">
+                  <span class="badge" style="background: rgba(128, 0, 32, 0.9); color: #fff;">@L["Sold"]</span>
+                </div>
+              }
+              else if (c.Status == CollectionStatus.Reserved)
+              {
+                <div style="position: absolute; top: 12px; right: 12px;">
+                  <span class="badge" style="background: rgba(234, 179, 8, 0.9); color: #000;">@L["Reserved"]</span>
+                </div>
+              }
+            </div>
+            
+            <div class="card-body">
+              @* Price display *@
+              @if (c.Status == CollectionStatus.Available && !string.IsNullOrWhiteSpace(c.Price))
+              {
+                <div class="collection-price mb-2">
+                  @{
+                    if (decimal.TryParse(c.Price, out decimal priceValue))
+                    {
+                      if (c.Currency == Currency.EUR)
+                      {
+                        @string.Format("{0:N0} €", priceValue)
+                      }
+                      else
+                      {
+                        @string.Format("$ {0:N0}", priceValue)
+                      }
+                    }
+                    else
+                    {
+                      @c.Price
+                    }
                   }
                 </div>
-              </div>
+              }
               
-              <div class="card-body">
-                @* Price display *@
-                @if (c.Status == AAS.Web.Models.CollectionStatus.Available && !string.IsNullOrWhiteSpace(c.Price))
-                {
-                  <div class="mb-2">
-                    <strong style="color: var(--gold); font-size: 1.1rem;">
-                      @{
-                        // Try to parse as decimal for formatted display
-                        if (decimal.TryParse(c.Price, out decimal priceValue))
-                        {
-                          if (c.Currency == AAS.Web.Models.Currency.EUR)
-                          {
-                            @string.Format("{0:N0} €", priceValue)
-                          }
-                          else
-                          {
-                            @string.Format("$ {0:N0}", priceValue)
-                          }
-                        }
-                        else
-                        {
-                          // Display as text (e.g., "Price on request")
-                          @c.Price
-                        }
-                      }
-                    </strong>
-                  </div>
+              <h5 class="card-title">
+                @{
+                  var translations = ViewBag.Translations as Dictionary<int, string>;
+                  var title = (translations != null && translations.ContainsKey(c.Id)) ? translations[c.Id] : c.Title;
                 }
-                
-                <h5 class="card-title">
-                  @{
-                    var translations = ViewBag.Translations as Dictionary<int, string>;
-                    var title = (translations != null && translations.ContainsKey(c.Id)) ? translations[c.Id] : c.Title;
-                  }
-                  @title
-                </h5>
-                <span class="badge badge-gold">@L[c.Category.ToString()]</span>
-              </div>
-            </a>
-          </div>
+                @title
+              </h5>
+              <span class="badge badge-gold">@L[c.Category.ToString()]</span>
+            </div>
+          </a>
         }
       </div>
       
       @* Pagination *@
-      @if (ViewBag.TotalPages > 1)
+      @{
+        var currentPage = ViewBag.CurrentPage ?? 1;
+        var totalPages = ViewBag.TotalPages ?? 1;
+        var category = ViewBag.Category;
+      }
+      @if (totalPages > 1)
       {
-        var currentPage = (int)ViewBag.CurrentPage;
-        var totalPages = (int)ViewBag.TotalPages;
-        var category = ViewBag.Category as CollectionCategory?;
-        var categoryParam = category.HasValue ? $"&category={category.Value}" : "";
-        
-        <nav aria-label="Page navigation" class="mt-5">
-          <ul class="pagination justify-content-center">
-            @* Previous button *@
-            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-              <a class="page-link" href="?page=@(currentPage - 1)@categoryParam" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            
-            @* Page numbers *@
-            @{
-              var startPage = Math.Max(1, currentPage - 2);
-              var endPage = Math.Min(totalPages, currentPage + 2);
-              
-              // Show first page if not in range
-              if (startPage > 1)
-              {
-                <li class="page-item">
-                  <a class="page-link" href="?page=1@categoryParam">1</a>
-                </li>
-                if (startPage > 2)
-                {
-                  <li class="page-item disabled">
-                    <span class="page-link">...</span>
-                  </li>
-                }
-              }
-              
-              // Show page numbers
-              for (int i = startPage; i <= endPage; i++)
-              {
-                <li class="page-item @(i == currentPage ? "active" : "")">
-                  <a class="page-link" href="?page=@i@categoryParam">@i</a>
-                </li>
-              }
-              
-              // Show last page if not in range
-              if (endPage < totalPages)
-              {
-                if (endPage < totalPages - 1)
-                {
-                  <li class="page-item disabled">
-                    <span class="page-link">...</span>
-                  </li>
-                }
-                <li class="page-item">
-                  <a class="page-link" href="?page=@totalPages@categoryParam">@totalPages</a>
-                </li>
-              }
+        <nav class="mt-5 d-flex justify-content-center">
+          <ul class="pagination">
+            @for (int i = 1; i <= totalPages; i++)
+            {
+              var activeClass = i == currentPage ? "active" : "";
+              var href = category != null ? $"/Collections?category={category}&page={i}" : $"/Collections?page={i}";
+              <li class="page-item @activeClass">
+                <a class="page-link" href="@href" style="background: var(--color-bg-surface); border-color: var(--color-border); color: var(--color-text-muted);">@i</a>
+              </li>
             }
-            
-            @* Next button *@
-            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-              <a class="page-link" href="?page=@(currentPage + 1)@categoryParam" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
           </ul>
-          
-          <p class="text-center text-secondary mt-3">
-            @L["Showing"] @((currentPage - 1) * 12 + 1) - @Math.Min(currentPage * 12, (int)ViewBag.TotalCount) @L["of"] @ViewBag.TotalCount @L["collections"]
-          </p>
         </nav>
       }
     }
   </div>
-</div>
+</section>
