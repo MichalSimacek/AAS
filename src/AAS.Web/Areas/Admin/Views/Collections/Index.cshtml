@@ -301,10 +301,19 @@
                                     </span>
                                 </td>
                                 <td>
-                                    @if (collection.Price.HasValue)
+                                    @if (!string.IsNullOrWhiteSpace(collection.Price))
                                     {
                                         <span class="collection-price">
-                                            @(collection.Currency == AAS.Web.Models.Currency.EUR ? "€" : "$")@string.Format("{0:N0}", collection.Price)
+                                            @{
+                                                if (decimal.TryParse(collection.Price, out decimal pval))
+                                                {
+                                                    @((collection.Currency == AAS.Web.Models.Currency.EUR ? "€" : "$") + string.Format("{0:N0}", pval))
+                                                }
+                                                else
+                                                {
+                                                    @collection.Price
+                                                }
+                                            }
                                         </span>
                                     }
                                     else
