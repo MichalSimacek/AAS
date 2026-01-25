@@ -97,7 +97,7 @@
               }
               else if (Model.Status == AAS.Web.Models.CollectionStatus.Available)
               {
-                @if (Model.Price.HasValue)
+                @if (!string.IsNullOrWhiteSpace(Model.Price))
                 {
                   <div class="d-flex justify-content-between align-items-center w-100">
                     <div>
@@ -106,13 +106,24 @@
                     <div class="text-end">
                       <div class="text-muted small">@L["Available for"]</div>
                       <h4 class="mb-0 fw-bold" style="color: var(--gold);">
-                        @if (Model.Currency == AAS.Web.Models.Currency.EUR)
-                        {
-                          @string.Format("{0:N0} €", Model.Price)
-                        }
-                        else
-                        {
-                          @string.Format("$ {0:N0}", Model.Price)
+                        @{
+                          // Try to parse as decimal for formatted display
+                          if (decimal.TryParse(Model.Price, out decimal priceValue))
+                          {
+                            if (Model.Currency == AAS.Web.Models.Currency.EUR)
+                            {
+                              @string.Format("{0:N0} €", priceValue)
+                            }
+                            else
+                            {
+                              @string.Format("$ {0:N0}", priceValue)
+                            }
+                          }
+                          else
+                          {
+                            // Display as text (e.g., "Price on request")
+                            @Model.Price
+                          }
                         }
                       </h4>
                     </div>
