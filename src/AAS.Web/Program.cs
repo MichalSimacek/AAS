@@ -242,7 +242,7 @@ app.MapControllerRoute(
 // Collection detail - must be before generic routes
 app.MapControllerRoute(
     name: "collection-detail",
-    pattern: "item/{slug}",
+    pattern: "item/{id}",
     defaults: new { controller = "Collections", action = "Details" });
 
 // Default route
