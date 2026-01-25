@@ -13,7 +13,6 @@ namespace AAS.Web.Controllers
         public CollectionsController(AppDbContext db, TranslationService tr) { _db = db; _tr = tr; }
 
         // Landing page for collections - shows category cards
-        [Route("Collections/Landing")]
         public async Task<IActionResult> Landing()
         {
             // Get counts for each category
