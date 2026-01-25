@@ -1,65 +1,147 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
+<!-- Hero Section -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-accent"></div>
-    <div class="hero-logo-container">
-      <img src="/images/logo-hero.png" alt="Aristocratic Artwork Sale" class="hero-logo" />
-    </div>
-    <h1 class="hero-title">Aristocratic Artwork Sale</h1>
-    <p class="hero-lead">@L["Slogan"]</p>
-    <p class="hero-description">
+  <div class="hero-content">
+    <p class="text-accent text-gold mb-4">@L["Slogan"]</p>
+    <h1 class="hero-title">Aristocratic<br/>Artwork Sale</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">
       @L["Home Description"]
     </p>
-    <div class="hero-buttons">
-      <a class="btn btn-lg btn-primary" href="/Collections">@L["Explore collections"]</a>
-      <a class="btn btn-lg btn-outline-primary" href="/Contacts">@L["Contact Us"]</a>
+    <div class="d-flex gap-3 justify-content-center flex-wrap mt-5">
+      <a class="btn btn-primary btn-lg" href="/Collections/Landing">@L["Explore collections"]</a>
+      <a class="btn btn-outline-secondary btn-lg" href="/Contacts">@L["Contact Us"]</a>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container text-center">
-    <h2 class="section-title">@L["BuyOrSellThroughUs"]</h2>
-    <p class="section-lead">@L["BuyOrSellDescription"]</p>
-    <p class="section-text">@L["BuyOrSellDetails"]</p>
-    <a href="/HowTo" class="btn btn-primary btn-lg">
-      <i class="bi bi-info-circle me-2"></i>
-      @L["LearnMore"]
-    </a>
+<!-- Buy or Sell Section -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <p class="text-accent text-gold mb-3">@L["BuyOrSellThroughUs"]</p>
+        <h2 class="mb-4" style="font-size: var(--text-4xl);">@L["BuyOrSellDescription"]</h2>
+        <p class="lead text-muted mb-4">@L["BuyOrSellDetails"]</p>
+        <a href="/HowTo" class="btn btn-primary">
+          <i class="bi bi-arrow-right me-2"></i>@L["LearnMore"]
+        </a>
+      </div>
+      <div class="col-lg-6">
+        <div class="card-glass p-5 text-center">
+          <div class="mb-4">
+            <i class="bi bi-shield-check" style="font-size: 64px; color: var(--color-gold);"></i>
+          </div>
+          <h3 class="mb-3">@L["WhatIsAASVerified"]</h3>
+          <p class="text-muted">@L["AASVerifiedExplanation"]</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- Why Choose Us Section -->
 <section class="section">
   <div class="container">
-    <h2 class="section-title">@L["Why Choose Us"]</h2>
-    <p class="section-subtitle">@L["Excellence in Every Transaction"]</p>
+    <div class="text-center mb-5">
+      <p class="text-accent text-gold mb-3">@L["Excellence in Every Transaction"]</p>
+      <h2>@L["Why Choose Us"]</h2>
+    </div>
     
     <div class="row g-4">
       <div class="col-12 col-md-4">
-        <div class="card text-center">
-          <div class="card-body">
-            <h3 class="card-title">@L["Highest Prices"]</h3>
-            <p class="card-text">@L["Highest Prices Desc"]</p>
+        <div class="card h-100">
+          <div class="card-body text-center p-4">
+            <div class="mb-4">
+              <i class="bi bi-cash-stack" style="font-size: 48px; color: var(--color-gold);"></i>
+            </div>
+            <h4 class="card-title mb-3">@L["Highest Prices"]</h4>
+            <p class="card-text text-muted">@L["Highest Prices Desc"]</p>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4">
-        <div class="card text-center">
-          <div class="card-body">
-            <h3 class="card-title">@L["Complete Discretion"]</h3>
-            <p class="card-text">@L["Complete Discretion Desc"]</p>
+        <div class="card h-100">
+          <div class="card-body text-center p-4">
+            <div class="mb-4">
+              <i class="bi bi-shield-lock" style="font-size: 48px; color: var(--color-gold);"></i>
+            </div>
+            <h4 class="card-title mb-3">@L["Complete Discretion"]</h4>
+            <p class="card-text text-muted">@L["Complete Discretion Desc"]</p>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4">
-        <div class="card text-center">
-          <div class="card-body">
-            <h3 class="card-title">@L["Expert Service"]</h3>
-            <p class="card-text">@L["Expert Service Desc"]</p>
+        <div class="card h-100">
+          <div class="card-body text-center p-4">
+            <div class="mb-4">
+              <i class="bi bi-award" style="font-size: 48px; color: var(--color-gold);"></i>
+            </div>
+            <h4 class="card-title mb-3">@L["Expert Service"]</h4>
+            <p class="card-text text-muted">@L["Expert Service Desc"]</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Preview Section -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="text-accent text-gold mb-3">@L["Browse"]</p>
+      <h2>@L["Explore collections"]</h2>
+    </div>
+    
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="/Collections?category=Paintings" class="card text-center text-decoration-none h-100">
+          <div class="card-body p-4">
+            <i class="bi bi-palette mb-3" style="font-size: 36px; color: var(--color-primary-light);"></i>
+            <h6 class="mb-0">@L["Paintings"]</h6>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="/Collections?category=Jewelry" class="card text-center text-decoration-none h-100">
+          <div class="card-body p-4">
+            <i class="bi bi-gem mb-3" style="font-size: 36px; color: var(--color-primary-light);"></i>
+            <h6 class="mb-0">@L["Jewelry"]</h6>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="/Collections?category=Watches" class="card text-center text-decoration-none h-100">
+          <div class="card-body p-4">
+            <i class="bi bi-stopwatch mb-3" style="font-size: 36px; color: var(--color-primary-light);"></i>
+            <h6 class="mb-0">@L["Watches"]</h6>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="/Collections?category=Statues" class="card text-center text-decoration-none h-100">
+          <div class="card-body p-4">
+            <i class="bi bi-person-bounding-box mb-3" style="font-size: 36px; color: var(--color-primary-light);"></i>
+            <h6 class="mb-0">@L["Statues"]</h6>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="/Collections?category=Other" class="card text-center text-decoration-none h-100">
+          <div class="card-body p-4">
+            <i class="bi bi-stars mb-3" style="font-size: 36px; color: var(--color-primary-light);"></i>
+            <h6 class="mb-0">@L["Decorative Arts"]</h6>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5">
+      <a href="/Collections/Landing" class="btn btn-primary btn-lg">
+        @L["ViewAllCollections"] <i class="bi bi-arrow-right ms-2"></i>
+      </a>
     </div>
   </div>
 </section>
