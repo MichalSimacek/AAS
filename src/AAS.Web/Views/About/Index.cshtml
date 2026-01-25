@@ -3,67 +3,178 @@
     ViewData["Title"] = L["About Us"];
 }
 
-<div class="section">
-  <div class="container">
-    <h1 class="page-heading">@L["About Us"]</h1>
-    <p class="page-description">
-      @L["Excellence in luxury artwork and collectibles"]
-    </p>
-
-    <div class="row g-4">
-      <div class="col-12 col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h2>@L["Who We Are"]</h2>
-            <p>@L["Who We Are Text"]</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-12 col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h2>@L["Our Services"]</h2>
-            <ul class="list-unstyled">
-              <li class="mb-3">
-                <strong>@L["Fine Art & Paintings"]</strong> @L["Fine Art & Paintings Desc"]
-              </li>
-              <li class="mb-3">
-                <strong>@L["Antiques & Collectibles"]</strong> @L["Antiques & Collectibles Desc"]
-              </li>
-              <li class="mb-3">
-                <strong>@L["Luxury Jewelry"]</strong> @L["Luxury Jewelry Desc"]
-              </li>
-              <li class="mb-3">
-                <strong>@L["Fine Watches"]</strong> @L["Fine Watches Desc"]
-              </li>
-              <li class="mb-0">
-                <strong>@L["Sculptures & Statues"]</strong> @L["Sculptures & Statues Desc"]
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<!-- Hero Section -->
+<section class="about-hero">
+  <div class="decorative-corner top-left"></div>
+  <div class="decorative-corner top-right"></div>
+  <div class="container position-relative">
+    <div class="text-center">
+      <p class="text-accent text-gold mb-3 animate-fade-in">@L["About Us"]</p>
+      <h1 class="hero-title animate-fade-in delay-1">Aristocratic<br/>Artwork Sale</h1>
+      <div class="hero-divider animate-fade-in delay-2"></div>
+      <p class="hero-subtitle animate-fade-in delay-3">
+        @L["Excellence in luxury artwork and collectibles"]
+      </p>
     </div>
+  </div>
+  <div class="decorative-corner bottom-left"></div>
+  <div class="decorative-corner bottom-right"></div>
+</section>
 
-    <div class="card mt-4">
-      <div class="card-body text-center p-4">
-        <h2 class="mb-4">@L["Our Commitment"]</h2>
+<!-- Who We Are Section -->
+<section class="section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0 reveal-left">
+        <p class="text-accent text-gold mb-3">@L["Our Story"]</p>
+        <h2 style="font-size: var(--text-4xl); margin-bottom: 1.5rem;">@L["Who We Are"]</h2>
+        <p class="lead text-muted mb-4">@L["Who We Are Text"]</p>
+        
+        <div class="quote-block">
+          <p class="mb-0">"@L["Excellence in Every Transaction"]"</p>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal-right">
         <div class="row g-4">
-          <div class="col-12 col-md-4">
-            <h3>@L["Highest Prices"]</h3>
-            <p class="text-secondary mb-0">@L["Highest Prices Commitment"]</p>
+          <div class="col-6">
+            <div class="stat-item gradient-border p-4">
+              <div class="stat-number animate-text-glow">25+</div>
+              <div class="stat-label">@L["Years Experience"]</div>
+            </div>
           </div>
-          <div class="col-12 col-md-4">
-            <h3>@L["Complete Discretion"]</h3>
-            <p class="text-secondary mb-0">@L["Complete Discretion Commitment"]</p>
+          <div class="col-6">
+            <div class="stat-item gradient-border p-4">
+              <div class="stat-number animate-text-glow">500+</div>
+              <div class="stat-label">@L["Items Sold"]</div>
+            </div>
           </div>
-          <div class="col-12 col-md-4">
-            <h3>@L["Professional Service"]</h3>
-            <p class="text-secondary mb-0">@L["Professional Service Commitment"]</p>
+          <div class="col-6">
+            <div class="stat-item gradient-border p-4">
+              <div class="stat-number animate-text-glow">100%</div>
+              <div class="stat-label">@L["Complete Discretion"]</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stat-item gradient-border p-4">
+              <div class="stat-number animate-text-glow">5★</div>
+              <div class="stat-label">@L["Client Rating"]</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- Our Services Section -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="text-accent text-gold mb-3">@L["What We Offer"]</p>
+      <h2 style="font-size: var(--text-4xl);">@L["Our Services"]</h2>
+    </div>
+    
+    <div class="row g-4 stagger-children">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="feature-card h-100">
+          <div class="icon icon-glow">
+            <i class="bi bi-palette"></i>
+          </div>
+          <h4 class="mb-3">@L["Fine Art & Paintings"]</h4>
+          <p class="text-muted mb-0">@L["Fine Art & Paintings Desc"]</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="feature-card h-100">
+          <div class="icon icon-glow">
+            <i class="bi bi-gem"></i>
+          </div>
+          <h4 class="mb-3">@L["Luxury Jewelry"]</h4>
+          <p class="text-muted mb-0">@L["Luxury Jewelry Desc"]</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="feature-card h-100">
+          <div class="icon icon-glow">
+            <i class="bi bi-stopwatch"></i>
+          </div>
+          <h4 class="mb-3">@L["Fine Watches"]</h4>
+          <p class="text-muted mb-0">@L["Fine Watches Desc"]</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="feature-card h-100">
+          <div class="icon icon-glow">
+            <i class="bi bi-trophy"></i>
+          </div>
+          <h4 class="mb-3">@L["Antiques & Collectibles"]</h4>
+          <p class="text-muted mb-0">@L["Antiques & Collectibles Desc"]</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="feature-card h-100">
+          <div class="icon icon-glow">
+            <i class="bi bi-person-bounding-box"></i>
+          </div>
+          <h4 class="mb-3">@L["Sculptures & Statues"]</h4>
+          <p class="text-muted mb-0">@L["Sculptures & Statues Desc"]</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="feature-card h-100">
+          <div class="icon icon-glow">
+            <i class="bi bi-stars"></i>
+          </div>
+          <h4 class="mb-3">@L["Decorative Arts"]</h4>
+          <p class="text-muted mb-0">@L["Expert valuations and sales of decorative art pieces"]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Commitment Section -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <p class="text-accent text-gold mb-3">@L["Our Promise"]</p>
+      <h2 style="font-size: var(--text-4xl);">@L["Our Commitment"]</h2>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4 reveal">
+        <div class="text-center">
+          <div class="step-indicator mx-auto mb-4 animate-glow">
+            <i class="bi bi-cash-stack"></i>
+          </div>
+          <h4 class="mb-3">@L["Highest Prices"]</h4>
+          <p class="text-muted">@L["Highest Prices Commitment"]</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="text-center">
+          <div class="step-indicator mx-auto mb-4 animate-glow">
+            <i class="bi bi-shield-lock"></i>
+          </div>
+          <h4 class="mb-3">@L["Complete Discretion"]</h4>
+          <p class="text-muted">@L["Complete Discretion Commitment"]</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="text-center">
+          <div class="step-indicator mx-auto mb-4 animate-glow">
+            <i class="bi bi-award"></i>
+          </div>
+          <h4 class="mb-3">@L["Professional Service"]</h4>
+          <p class="text-muted">@L["Professional Service Commitment"]</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5 reveal">
+      <a href="/Contacts" class="btn btn-primary btn-lg">
+        <i class="bi bi-envelope me-2"></i>@L["Contact Us"]
+      </a>
+    </div>
+  </div>
+</section>
