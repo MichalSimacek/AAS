@@ -121,7 +121,7 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
-        [Route("collections/{slug}")]
+        [Route("collections/{slug:regex(^(?!Landing$|Index$).*$)}")]
         public async Task<IActionResult> Details(string slug)
         {
             // PERFORMANCE: Use AsNoTracking for read-only operations
