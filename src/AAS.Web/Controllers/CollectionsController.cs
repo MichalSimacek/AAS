@@ -38,8 +38,6 @@ namespace AAS.Web.Controllers
             return View();
         }
 
-        [Route("Collections")]
-        [Route("Collections/Index")]
         public async Task<IActionResult> Index(CollectionCategory? category, int page = 1)
         {
             const int pageSize = 12;
