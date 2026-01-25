@@ -123,11 +123,14 @@ namespace AAS.Web.Controllers
         [HttpGet("collections/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
-            // Skip if slug matches action names
-            if (slug.Equals("Landing", StringComparison.OrdinalIgnoreCase) ||
-                slug.Equals("Index", StringComparison.OrdinalIgnoreCase))
+            // Redirect to appropriate action if slug matches action names
+            if (slug.Equals("Landing", StringComparison.OrdinalIgnoreCase))
             {
-                return NotFound();
+                return RedirectToAction("Landing");
+            }
+            if (slug.Equals("Index", StringComparison.OrdinalIgnoreCase))
+            {
+                return RedirectToAction("Index");
             }
             
             // PERFORMANCE: Use AsNoTracking for read-only operations
