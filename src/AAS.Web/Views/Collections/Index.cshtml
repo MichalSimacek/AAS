@@ -73,17 +73,28 @@
               
               <div class="card-body">
                 @* Price display *@
-                @if (c.Status == AAS.Web.Models.CollectionStatus.Available && c.Price.HasValue)
+                @if (c.Status == AAS.Web.Models.CollectionStatus.Available && !string.IsNullOrWhiteSpace(c.Price))
                 {
                   <div class="mb-2">
                     <strong style="color: var(--gold); font-size: 1.1rem;">
-                      @if (c.Currency == AAS.Web.Models.Currency.EUR)
-                      {
-                        @string.Format("{0:N0} €", c.Price)
-                      }
-                      else
-                      {
-                        @string.Format("$ {0:N0}", c.Price)
+                      @{
+                        // Try to parse as decimal for formatted display
+                        if (decimal.TryParse(c.Price, out decimal priceValue))
+                        {
+                          if (c.Currency == AAS.Web.Models.Currency.EUR)
+                          {
+                            @string.Format("{0:N0} €", priceValue)
+                          }
+                          else
+                          {
+                            @string.Format("$ {0:N0}", priceValue)
+                          }
+                        }
+                        else
+                        {
+                          // Display as text (e.g., "Price on request")
+                          @c.Price
+                        }
                       }
                     </strong>
                   </div>
