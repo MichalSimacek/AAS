@@ -222,6 +222,88 @@
   }
   </script>
 
+  <!-- Background Music Controller -->
+  <script>
+  (function() {
+    const MUSIC_STATE_KEY = 'aas_music_state';
+    const MUSIC_TIME_KEY = 'aas_music_time';
+    
+    const audio = document.getElementById('background-music');
+    const toggleBtn = document.getElementById('music-toggle');
+    const musicIcon = document.getElementById('music-icon');
+    
+    if (!audio || !toggleBtn) return;
+    
+    // Load saved state
+    const savedState = sessionStorage.getItem(MUSIC_STATE_KEY);
+    const savedTime = parseFloat(sessionStorage.getItem(MUSIC_TIME_KEY)) || 0;
+    
+    // Set initial state based on saved preference (default: muted/paused)
+    let isPlaying = savedState === 'playing';
+    
+    // Set volume
+    audio.volume = 0.3;
+    
+    // Restore playback position
+    if (savedTime > 0) {
+      audio.currentTime = savedTime;
+    }
+    
+    function updateUI() {
+      if (isPlaying) {
+        toggleBtn.classList.add('playing');
+        toggleBtn.classList.remove('muted');
+        musicIcon.className = 'bi bi-music-note-beamed';
+      } else {
+        toggleBtn.classList.remove('playing');
+        toggleBtn.classList.add('muted');
+        musicIcon.className = 'bi bi-volume-mute';
+      }
+    }
+    
+    function saveState() {
+      sessionStorage.setItem(MUSIC_STATE_KEY, isPlaying ? 'playing' : 'paused');
+      sessionStorage.setItem(MUSIC_TIME_KEY, audio.currentTime.toString());
+    }
+    
+    // Toggle music on button click
+    toggleBtn.addEventListener('click', function() {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        audio.play().catch(function(e) {
+          console.log('Autoplay blocked, user interaction required');
+        });
+        isPlaying = true;
+      }
+      updateUI();
+      saveState();
+    });
+    
+    // Save time periodically
+    audio.addEventListener('timeupdate', function() {
+      sessionStorage.setItem(MUSIC_TIME_KEY, audio.currentTime.toString());
+    });
+    
+    // Save state before page unload
+    window.addEventListener('beforeunload', saveState);
+    
+    // Auto-play if was playing before navigation
+    if (isPlaying) {
+      audio.play().catch(function(e) {
+        // Autoplay blocked by browser - wait for user interaction
+        isPlaying = false;
+        updateUI();
+        saveState();
+      });
+    }
+    
+    // Initial UI update
+    updateUI();
+  })();
+  </script>
+
   <!-- GDPR Cookie Consent Banner -->
   <div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(0, 0, 0, 0.8) !important; z-index: 9999 !important; align-items: center !important; justify-content: center !important; padding: 20px !important;">
     <div class="cookie-consent-content" style="background: white !important; border-radius: 16px !important; padding: 40px !important; max-width: 700px !important; width: 100% !important; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important; text-align: center !important; position: relative !important; animation: popupSlideIn 0.4s ease-out !important;">
