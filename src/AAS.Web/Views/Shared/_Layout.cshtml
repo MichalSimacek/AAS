@@ -286,6 +286,54 @@
   })();
   </script>
 
+  <!-- Scroll Reveal Animation Controller -->
+  <script>
+  (function() {
+    // Intersection Observer for scroll reveal animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.1
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Optional: unobserve after reveal for performance
+          // revealObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all reveal elements
+    document.addEventListener('DOMContentLoaded', function() {
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+      revealElements.forEach(el => revealObserver.observe(el));
+      
+      // Add stagger delays to grid items
+      document.querySelectorAll('.stagger-children').forEach(parent => {
+        const children = parent.children;
+        Array.from(children).forEach((child, index) => {
+          child.style.transitionDelay = `${index * 0.1}s`;
+        });
+      });
+    });
+    
+    // Parallax effect for mouse movement
+    document.addEventListener('mousemove', function(e) {
+      const parallaxElements = document.querySelectorAll('.parallax-mouse');
+      const x = (window.innerWidth / 2 - e.clientX) / 50;
+      const y = (window.innerHeight / 2 - e.clientY) / 50;
+      
+      parallaxElements.forEach(el => {
+        const speed = el.dataset.speed || 1;
+        el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+      });
+    });
+  })();
+  </script>
+
   <!-- GDPR Cookie Consent Banner -->
   <div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(0, 0, 0, 0.8) !important; z-index: 9999 !important; align-items: center !important; justify-content: center !important; padding: 20px !important;">
     <div class="cookie-consent-content" style="background: white !important; border-radius: 16px !important; padding: 40px !important; max-width: 700px !important; width: 100% !important; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important; text-align: center !important; position: relative !important; animation: popupSlideIn 0.4s ease-out !important;">
