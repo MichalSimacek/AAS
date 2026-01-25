@@ -34,7 +34,7 @@
         var previews = await Db.Collections
             .Include(c => c.Images)
             .Where(c => c.Category == cat)
-            .OrderByDescending(c => c.CreatedAt)
+            .OrderByDescending(c => c.CreatedUtc)
             .Take(3)
             .ToListAsync();
         categoryPreviews[cat] = previews;
