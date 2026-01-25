@@ -115,28 +115,28 @@
           </a>
         }
       </div>
-      
-      @* Pagination *@
-      @{
-        var currentPage = ViewBag.CurrentPage ?? 1;
-        var totalPages = ViewBag.TotalPages ?? 1;
-        var category = ViewBag.Category;
-      }
-      @if (totalPages > 1)
-      {
-        <nav class="mt-5 d-flex justify-content-center">
-          <ul class="pagination">
-            @for (int i = 1; i <= totalPages; i++)
-            {
-              var activeClass = i == currentPage ? "active" : "";
-              var href = category != null ? $"/Collections?category={category}&page={i}" : $"/Collections?page={i}";
-              <li class="page-item @activeClass">
-                <a class="page-link" href="@href" style="background: var(--color-bg-surface); border-color: var(--color-border); color: var(--color-text-muted);">@i</a>
-              </li>
-            }
-          </ul>
-        </nav>
-      }
+    }
+    
+    @* Pagination *@
+    @{
+      var currentPage = ViewBag.CurrentPage ?? 1;
+      var totalPages = ViewBag.TotalPages ?? 1;
+      var filterCategory = ViewBag.Category;
+    }
+    @if (Model.Any() && (int)totalPages > 1)
+    {
+      <nav class="mt-5 d-flex justify-content-center">
+        <ul class="pagination">
+          @for (int i = 1; i <= (int)totalPages; i++)
+          {
+            var activeClass = i == (int)currentPage ? "active" : "";
+            var href = filterCategory != null ? $"/Collections?category={filterCategory}&page={i}" : $"/Collections?page={i}";
+            <li class="page-item @activeClass">
+              <a class="page-link" href="@href" style="background: var(--color-bg-surface); border-color: var(--color-border); color: var(--color-text-muted);">@i</a>
+            </li>
+          }
+        </ul>
+      </nav>
     }
   </div>
 </section>
