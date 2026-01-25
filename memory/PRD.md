@@ -63,7 +63,11 @@ ASP.NET Core web application for selling aristocratic artwork, antiques, jewelry
 - Blog Post detail (`/Blog/Post/{id}`)
 - Collections Landing (`/Collections/Landing`)
 - Collections Index (`/Collections`)
-- Collections Detail (`/Collections/Detail/{id}`)
+- Collections Detail (`/Collections/Details/{slug}`)
+
+### Bug Fixes (2026-01-25) ✅
+- **Collection routing fixed**: Links now correctly point to `/Collections/Details/{slug}` instead of broken `/item/{slug}`
+- **Music player removed**: Background music feature removed as it didn't work properly
 
 ### "Coming soon" Replaced with "Discover" (2026-01-25) ✅
 - Collections Landing page now shows "Discover" for empty categories
@@ -71,7 +75,6 @@ ASP.NET Core web application for selling aristocratic artwork, antiques, jewelry
 
 ### Previous Features (preserved)
 - Collections Landing page with 5 category cards
-- Background music with toggle button
 - Multi-language support (10 languages)
 - GDPR-compliant cookie consent
 - Collection category filter (Decorative Arts renamed)
@@ -96,9 +99,9 @@ ASP.NET Core web application for selling aristocratic artwork, antiques, jewelry
 │   │   ├── Index.cshtml      # Redesigned blog list
 │   │   └── Post.cshtml       # Redesigned blog post detail
 │   ├── Collections/
-│   │   ├── Index.cshtml      # Collection grid
+│   │   ├── Index.cshtml      # Collection grid (routing fixed)
 │   │   └── Detail.cshtml     # Redesigned collection detail
-│   └── Shared/_Layout.cshtml # Navigation, footer, fonts, animations
+│   └── Shared/_Layout.cshtml # Navigation, footer, fonts, animations (music removed)
 └── Resources/                # 10 language files
 ```
 
@@ -125,6 +128,8 @@ ASP.NET Core web application for selling aristocratic artwork, antiques, jewelry
 
 ## Backlog / Future Enhancements
 1. ~~Replace "Coming soon" with dynamic previews~~ ✅ DONE
-2. Add more micro-interactions to enhance the luxury feel
-3. Implement lazy loading for images
-4. Add dark/light theme toggle (currently dark only)
+2. ~~Fix collection routing~~ ✅ DONE
+3. ~~Remove broken music player~~ ✅ DONE
+4. Add more micro-interactions to enhance the luxury feel
+5. Implement lazy loading for images
+6. Add dark/light theme toggle (currently dark only)
