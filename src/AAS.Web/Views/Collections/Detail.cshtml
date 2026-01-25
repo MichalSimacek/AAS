@@ -146,8 +146,8 @@
             }
             
             @* Social Share Section *@
-            <div class="mt-4">
-              <h6 class="mb-3" style="color: #6c757d; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Share this collection</h6>
+            <div class="mt-4 detail-share-section">
+              <h6 class="detail-section-title">@L["Share this collection"]</h6>
               <div class="social-share-buttons">
                 <a href="#" onclick="shareOnFacebook(); return false;" class="social-btn social-facebook" title="Share on Facebook">
                   <i class="bi bi-facebook"></i>
@@ -162,40 +162,43 @@
                   <i class="bi bi-link-45deg"></i>
                 </a>
               </div>
-              <small id="copyMessage" style="display: none; color: #2E7D32; font-size: 12px;">
-                <i class="bi bi-check-circle me-1"></i>Link copied to clipboard!
+              <small id="copyMessage" class="copy-success-message">
+                <i class="bi bi-check-circle me-1"></i>@L["Link copied to clipboard!"]
               </small>
             </div>
             
             @* Comments Section - Directly Below Button *@
-            <div class="mt-4">
-              <h5 class="mb-3">@L["Comments"]</h5>
+            <div class="mt-4 detail-comments-section">
+              <h5 class="detail-section-title mb-3">@L["Comments"]</h5>
               
               @* Comment Form (only for logged in users) *@
               @if (User.Identity?.IsAuthenticated == true)
               {
-                <div class="mb-3 p-3 bg-light rounded">
+                <div class="comment-form-container mb-3">
                   <form id="commentForm">
                     @Html.AntiForgeryToken()
                     <input type="hidden" name="collectionId" value="@Model.Id" />
                     <div class="mb-2">
                       <textarea class="form-control" id="commentText" name="text" rows="3" maxlength="2000" required placeholder="@L["Write your comment..."]"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">@L["Submit Comment"]</button>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                      <i class="bi bi-send me-1"></i>@L["Submit Comment"]
+                    </button>
                   </form>
                 </div>
               }
               else
               {
-                <div class="alert alert-info mb-3">
-                  <a href="/Identity/Account/Login?returnUrl=@HttpUtility.UrlEncode(Context.Request.Path)">@L["Sign in"]</a> @L["to leave a comment"]
+                <div class="comment-login-notice mb-3">
+                  <i class="bi bi-lock me-2 text-gold"></i>
+                  <a href="/Identity/Account/Login?returnUrl=@HttpUtility.UrlEncode(Context.Request.Path)" class="text-gold">@L["Sign in"]</a> @L["to leave a comment"]
                 </div>
               }
               
               @* Comments List *@
               <div id="commentsList">
                 <div class="text-center py-3">
-                  <div class="spinner-border spinner-border-sm" role="status">
+                  <div class="spinner-border spinner-border-sm text-gold" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div>
                 </div>
