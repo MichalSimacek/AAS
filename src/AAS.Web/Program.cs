@@ -252,4 +252,8 @@ app.MapControllerRoute(
 
 app.MapControllers();
 app.MapRazorPages();
+
+// Debug route
+app.MapGet("/debug/routes", () => "Routing works!");
+
 app.Run();
