@@ -312,4 +312,8 @@
 <data name="Settings" xml:space="preserve"><value>सेटिंग्स</value></data>
 <data name="Back" xml:space="preserve"><value>वापस</value></data>
 <data name="Back to Blog" xml:space="preserve"><value>ब्लॉग पर वापस जाएं</value></data>
+<data name="item" xml:space="preserve"><value>आइटम</value></data>
+<data name="items" xml:space="preserve"><value>आइटम</value></data>
+<data name="Coming soon" xml:space="preserve"><value>जल्द आ रहा है</value></data>
+<data name="Explore" xml:space="preserve"><value>अन्वेषण करें</value></data>
 </root>

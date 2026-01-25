@@ -312,4 +312,8 @@
 <data name="Settings" xml:space="preserve"><value>Configurações</value></data>
 <data name="Back" xml:space="preserve"><value>Voltar</value></data>
 <data name="Back to Blog" xml:space="preserve"><value>Voltar ao Blog</value></data>
+<data name="item" xml:space="preserve"><value>item</value></data>
+<data name="items" xml:space="preserve"><value>itens</value></data>
+<data name="Coming soon" xml:space="preserve"><value>Em breve</value></data>
+<data name="Explore" xml:space="preserve"><value>Explorar</value></data>
 </root>

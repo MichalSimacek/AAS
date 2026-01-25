@@ -324,4 +324,8 @@
 <data name="Back" xml:space="preserve"><value>Atrás</value></data>
 
 <data name="Back to Blog" xml:space="preserve"><value>Volver al Blog</value></data>
+<data name="item" xml:space="preserve"><value>artículo</value></data>
+<data name="items" xml:space="preserve"><value>artículos</value></data>
+<data name="Coming soon" xml:space="preserve"><value>Próximamente</value></data>
+<data name="Explore" xml:space="preserve"><value>Explorar</value></data>
 </root>

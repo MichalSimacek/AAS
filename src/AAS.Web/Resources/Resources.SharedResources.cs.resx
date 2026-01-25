@@ -366,4 +366,8 @@
 <data name="Save Preferences" xml:space="preserve"><value>Uložit preference</value></data>
 <data name="Back" xml:space="preserve"><value>Zpět</value></data>
 
+<data name="item" xml:space="preserve"><value>položka</value></data>
+<data name="items" xml:space="preserve"><value>položek</value></data>
+<data name="Coming soon" xml:space="preserve"><value>Již brzy</value></data>
+<data name="Explore" xml:space="preserve"><value>Prozkoumat</value></data>
 </root>
