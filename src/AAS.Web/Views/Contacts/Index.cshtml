@@ -3,47 +3,136 @@
     ViewData["Title"] = L["Contact Us"];
 }
 
-<div class="section">
-  <div class="container">
-    <h1 class="page-heading">@L["Contact Us"]</h1>
-    <p class="page-description">
+<!-- Hero Section -->
+<section class="hero" style="min-height: 50vh; padding: 80px 0;">
+  <div class="hero-content">
+    <p class="text-accent text-gold mb-3 animate-fade-in">@L["Get In Touch"]</p>
+    <h1 class="hero-title animate-fade-in delay-1" style="font-size: var(--text-5xl);">@L["Contact Us"]</h1>
+    <div class="hero-divider animate-fade-in delay-2"></div>
+    <p class="hero-subtitle animate-fade-in delay-3">
       @L["Get in touch with our team"]
     </p>
+  </div>
+</section>
 
-    <div class="row g-4" style="justify-content: center;">
-      <div class="col-12 col-lg-8">
-        <div class="card">
-          <div class="card-body p-4">
-            <div class="text-center mb-4">
-              <h2>@L["Reach Out to Us"]</h2>
-              <p class="text-secondary">
-                @L["Reach Out to Us Text"]
-              </p>
+<!-- Contact Section -->
+<section class="section">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Contact Info -->
+      <div class="col-lg-5 reveal-left">
+        <p class="text-accent text-gold mb-3">@L["Reach Out"]</p>
+        <h2 style="font-size: var(--text-3xl); margin-bottom: 1.5rem;">@L["Reach Out to Us"]</h2>
+        <p class="text-muted mb-5">@L["Reach Out to Us Text"]</p>
+        
+        <div class="mb-4">
+          <div class="d-flex align-items-start gap-3 mb-4">
+            <div class="step-indicator" style="width: 50px; height: 50px; flex-shrink: 0;">
+              <i class="bi bi-envelope" style="font-size: 20px;"></i>
             </div>
-
-            <div class="mb-4">
-              <h3>@L["Email Address"]</h3>
-              <p class="mb-2">
-                <a href="mailto:info@aristocraticartworksale.com">
-                  <strong>info&#64;aristocraticartworksale.com</strong>
-                </a>
-              </p>
-              
-              <h3 class="mt-4">@L["Location"]</h3>
-              <p class="mb-2 text-secondary">@L["Houston, Texas, USA"]</p>
-              <p class="small text-secondary">@L["Worldwide representation available"]</p>
-              
-              <h3 class="mt-4">@L["Response Time"]</h3>
-              <p class="mb-2 text-secondary">@L["Within 12 hours"]</p>
-              <p class="small text-secondary">@L["Professional and confidential service"]</p>
+            <div>
+              <h5 class="mb-1">@L["Email Address"]</h5>
+              <a href="mailto:info@aristocraticartworksale.com" class="text-gold">
+                info&#64;aristocraticartworksale.com
+              </a>
             </div>
-
-            <div class="alert alert-info">
-              <strong>@L["Privacy Notice"]</strong> @L["Privacy Notice Text"]
+          </div>
+          
+          <div class="d-flex align-items-start gap-3 mb-4">
+            <div class="step-indicator" style="width: 50px; height: 50px; flex-shrink: 0;">
+              <i class="bi bi-geo-alt" style="font-size: 20px;"></i>
             </div>
+            <div>
+              <h5 class="mb-1">@L["Location"]</h5>
+              <p class="text-muted mb-1">@L["Houston, Texas, USA"]</p>
+              <p class="text-muted small mb-0">@L["Worldwide representation available"]</p>
+            </div>
+          </div>
+          
+          <div class="d-flex align-items-start gap-3 mb-4">
+            <div class="step-indicator" style="width: 50px; height: 50px; flex-shrink: 0;">
+              <i class="bi bi-clock" style="font-size: 20px;"></i>
+            </div>
+            <div>
+              <h5 class="mb-1">@L["Response Time"]</h5>
+              <p class="text-muted mb-1">@L["Within 12 hours"]</p>
+              <p class="text-muted small mb-0">@L["Professional and confidential service"]</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="mt-5">
+          <p class="text-accent text-gold mb-3">@L["Follow Us"]</p>
+          <div class="social-icons">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="col-lg-7 reveal-right">
+        <div class="gradient-border p-5">
+          <h3 class="mb-4 shimmer-gold">@L["Send Us a Message"]</h3>
+          
+          <form class="contact-form" method="post" asp-action="Submit">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">@L["Your Name"]</label>
+                <input type="text" class="form-control" name="name" required placeholder="@L["Enter your name"]">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">@L["Email Address"]</label>
+                <input type="email" class="form-control" name="email" required placeholder="@L["Enter your email"]">
+              </div>
+              <div class="col-12">
+                <label class="form-label">@L["Subject"]</label>
+                <input type="text" class="form-control" name="subject" placeholder="@L["What is this about?"]">
+              </div>
+              <div class="col-12">
+                <label class="form-label">@L["Message"]</label>
+                <textarea class="form-control" name="message" rows="5" required placeholder="@L["Tell us about your inquiry..."]"></textarea>
+              </div>
+              <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  <i class="bi bi-send me-2"></i>@L["Send Message"]
+                </button>
+              </div>
+            </div>
+          </form>
+          
+          <div class="mt-4 p-3" style="background: rgba(75, 0, 130, 0.1); border-radius: var(--radius-md); border: 1px solid rgba(75, 0, 130, 0.2);">
+            <p class="text-muted small mb-0">
+              <i class="bi bi-shield-check me-2 text-gold"></i>
+              <strong>@L["Privacy Notice"]:</strong> @L["Privacy Notice Text"]
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- CTA Section -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="text-accent text-gold mb-3">@L["Ready to Begin?"]</p>
+      <h2 style="font-size: var(--text-3xl); margin-bottom: 1.5rem;">@L["Start Your Journey With Us"]</h2>
+      <p class="text-muted mb-4" style="max-width: 600px; margin: 0 auto;">
+        @L["BuyOrSellDetails"]
+      </p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="/HowTo" class="btn btn-primary">
+          <i class="bi bi-book me-2"></i>@L["LearnMore"]
+        </a>
+        <a href="/Collections/Landing" class="btn btn-outline-secondary">
+          <i class="bi bi-grid me-2"></i>@L["Browse Collections"]
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
