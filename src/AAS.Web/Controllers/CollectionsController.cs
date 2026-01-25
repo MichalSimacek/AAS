@@ -120,7 +120,7 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
-        [HttpGet("collections/{slug}")]
+        [HttpGet("collection/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
             // Redirect to appropriate action if slug matches action names
