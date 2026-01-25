@@ -75,6 +75,42 @@
     main { flex: 1 0 auto; width: 100%; contain: layout style; }
     .container { max-width: 1140px; margin: 0 auto; padding: 0 15px; width: 100%; }
     .identity-card { max-width: 520px; width: 100%; margin: 0 auto; padding: 48px; }
+    
+    /* Music Toggle Button */
+    .music-toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #B8941F 0%, #C9A961 100%);
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(184, 148, 31, 0.4);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .music-toggle-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(184, 148, 31, 0.5);
+    }
+    .music-toggle-btn.playing {
+      animation: pulse-music 2s infinite;
+    }
+    .music-toggle-btn.muted {
+      background: #6c757d;
+      box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
+    }
+    @keyframes pulse-music {
+      0%, 100% { box-shadow: 0 4px 15px rgba(184, 148, 31, 0.4); }
+      50% { box-shadow: 0 4px 25px rgba(184, 148, 31, 0.7); }
+    }
   </style>
   <!-- Google Fonts - loaded only after consent to comply with GDPR -->
   <!-- Using Inter for both headings and body - elegant and highly readable -->
