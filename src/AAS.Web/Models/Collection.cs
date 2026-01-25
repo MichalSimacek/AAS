@@ -15,7 +15,8 @@ namespace AAS.Web.Models
         
         // Price and availability
         public CollectionStatus Status { get; set; } = CollectionStatus.Available;
-        [Column(TypeName = "decimal(18,2)")] public decimal? Price { get; set; }
+        // Changed from decimal to string to allow text values like "Price on request"
+        [MaxLength(100)] public string? Price { get; set; }
         public Currency Currency { get; set; } = Currency.EUR;
         
         // AAS Verification - authenticity guaranteed by AAS
