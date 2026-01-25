@@ -581,10 +581,19 @@
                                                 @collection.Status
                                             </span>
                                             <span class="ms-2">@collection.Category</span>
-                                            @if (collection.Price.HasValue)
+                                            @if (!string.IsNullOrWhiteSpace(collection.Price))
                                             {
                                                 <span class="ms-2" style="color: #B8941F; font-weight: 600;">
-                                                    @(collection.Currency == AAS.Web.Models.Currency.EUR ? "€" : "$")@string.Format("{0:N0}", collection.Price)
+                                                    @{
+                                                        if (decimal.TryParse(collection.Price, out decimal pval))
+                                                        {
+                                                            @((collection.Currency == AAS.Web.Models.Currency.EUR ? "€" : "$") + string.Format("{0:N0}", pval))
+                                                        }
+                                                        else
+                                                        {
+                                                            @collection.Price
+                                                        }
+                                                    }
                                                 </span>
                                             }
                                         </div>
