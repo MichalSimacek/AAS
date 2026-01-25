@@ -120,7 +120,6 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
-        [Route("item/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
             // PERFORMANCE: Use AsNoTracking for read-only operations
