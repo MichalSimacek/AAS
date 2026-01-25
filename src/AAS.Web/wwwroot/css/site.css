@@ -645,52 +645,6 @@ footer a:hover {
 }
 
 /* ============================================
-   MUSIC TOGGLE
-   ============================================ */
-.music-toggle-btn {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-normal);
-  box-shadow: var(--shadow-card);
-}
-
-.music-toggle-btn:hover {
-  border-color: var(--color-gold-dim);
-  color: var(--color-gold);
-  transform: scale(1.05);
-}
-
-.music-toggle-btn.playing {
-  background: linear-gradient(135deg, var(--color-primary-deep) 0%, var(--color-primary) 100%);
-  border-color: var(--color-primary-light);
-  color: var(--color-gold);
-  animation: pulse-glow 2s infinite;
-}
-
-.music-toggle-btn.muted {
-  background: var(--color-bg-elevated);
-  color: var(--color-text-dim);
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: var(--shadow-card), 0 0 15px rgba(75, 0, 130, 0.3); }
-  50% { box-shadow: var(--shadow-card), 0 0 25px rgba(75, 0, 130, 0.5); }
-}
-
-/* ============================================
    COOKIE CONSENT
    ============================================ */
 .cookie-banner {
