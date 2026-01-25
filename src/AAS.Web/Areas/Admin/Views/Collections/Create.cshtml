@@ -100,8 +100,9 @@
                             <label for="Price" class="form-label-modern">
                                 <i class="bi bi-cash me-1"></i> Price (Optional)
                             </label>
-                            <input asp-for="Price" type="number" step="0.01" min="0" class="form-control-modern" placeholder="0.00" />
+                            <input asp-for="Price" type="text" class="form-control-modern" placeholder="e.g., 1500 or Price on request" maxlength="100" />
                             <span asp-validation-for="Price" class="text-danger small"></span>
+                            <small class="form-text text-muted">Enter price or text like "Price on request"</small>
                         </div>
                     </div>
 
