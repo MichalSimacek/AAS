@@ -40,6 +40,8 @@ namespace AAS.Web.Controllers
             return View();
         }
 
+        [HttpGet("")]
+        [HttpGet("Index")]
         public async Task<IActionResult> Index(CollectionCategory? category, int page = 1)
         {
             const int pageSize = 12;
