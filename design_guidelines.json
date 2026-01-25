@@ -1,0 +1,149 @@
+{
+  "project_name": "Aristocratic Artwork Sale",
+  "tech_stack": {
+    "framework": "ASP.NET Core 8",
+    "templating": "Razor Views (.cshtml)",
+    "styling": "Bootstrap 5 (Base) + Custom CSS (site.css)",
+    "icons": "FontAwesome (via CDN) or Bootstrap Icons"
+  },
+  "design_philosophy": {
+    "theme": "Aristocratic Nonchalance",
+    "core_values": [
+      "Fusion over Imitation: Mix Baroque opulence with Modern Minimalism",
+      "Emotion First: Mystery, Exclusivity, Heritage",
+      "Content is King: Gallery-style layouts, negative space is luxury",
+      "Contrast: Deep dark backgrounds vs. luminous gold/silver accents"
+    ],
+    "anti_patterns": [
+      "Standard Bootstrap Blue (#0d6efd)",
+      "Rounded-pill buttons (Use sharp or slightly rounded corners)",
+      "Generic 'Inter' or 'Roboto' fonts for headings",
+      "Flat, boring cards (Use texture, borders, or glassmorphism)"
+    ]
+  },
+  "typography": {
+    "font_families": {
+      "headings": "'Playfair Display', serif",
+      "body": "'Manrope', sans-serif",
+      "accent": "'Cinzel', serif"
+    },
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Manrope:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap",
+    "rules": {
+      "h1": "font-family: 'Playfair Display'; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;",
+      "h2": "font-family: 'Playfair Display'; font-weight: 400; letter-spacing: 0.02em;",
+      "h3": "font-family: 'Cinzel'; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;",
+      "body": "font-family: 'Manrope'; font-weight: 300; line-height: 1.6;",
+      "button": "font-family: 'Cinzel'; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;"
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": "#4B0082",
+      "primary_dark": "#301934",
+      "secondary": "#D4AF37",
+      "secondary_light": "#F5E6C4",
+      "background": "#0A0A0A",
+      "surface": "#121212",
+      "text_primary": "#F5F5F5",
+      "text_secondary": "#A0A0A0",
+      "accent_red": "#800020",
+      "border_color": "rgba(212, 175, 55, 0.2)"
+    },
+    "css_variables": {
+      "--color-bg-main": "#050505",
+      "--color-bg-surface": "#100c14",
+      "--color-primary": "#4B0082",
+      "--color-primary-deep": "#240046",
+      "--color-gold": "#D4AF37",
+      "--color-gold-dim": "#8a702a",
+      "--color-text-main": "#e0e0e0",
+      "--color-text-muted": "#9ca3af",
+      "--color-border": "rgba(212, 175, 55, 0.15)"
+    }
+  },
+  "visual_enhancers": {
+    "textures": {
+      "noise": "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjA1Ii8+PC9zdmc+')",
+      "velvet_overlay": "linear-gradient(to bottom, rgba(48, 25, 52, 0.8), rgba(10, 10, 10, 0.95))"
+    },
+    "shadows": {
+      "card": "0 10px 30px -10px rgba(0, 0, 0, 0.8)",
+      "glow": "0 0 20px rgba(75, 0, 130, 0.4)",
+      "gold_glow": "0 0 15px rgba(212, 175, 55, 0.2)"
+    },
+    "borders": {
+      "thin_gold": "1px solid rgba(212, 175, 55, 0.3)",
+      "glass": "1px solid rgba(255, 255, 255, 0.05)"
+    }
+  },
+  "layout_strategies": {
+    "container": {
+      "width": "max-width: 1400px;",
+      "padding": "padding: 0 2rem;"
+    },
+    "grid_system": {
+      "marketing": "Use Bootstrap 'row' but override with custom gaps. Example: .row-aristocratic { --bs-gutter-x: 3rem; --bs-gutter-y: 3rem; }",
+      "gallery": "Use CSS Grid for masonry layouts. .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }"
+    },
+    "spacing": {
+      "section_padding": "padding-top: 8rem; padding-bottom: 8rem;",
+      "element_margin": "margin-bottom: 2rem;"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "Background: Transparent; Border: 1px solid var(--color-gold); Color: var(--color-gold); Text-Transform: Uppercase; Letter-Spacing: 2px; Padding: 1rem 2.5rem; Transition: all 0.4s ease. Hover: Background: var(--color-gold); Color: #000;",
+      "secondary": "Background: var(--color-primary-deep); Color: #fff; Border: none; Hover: Background: var(--color-primary);"
+    },
+    "cards": {
+      "collection_card": "Background: var(--color-bg-surface); Border: 1px solid var(--color-border); Position: relative; Overflow: hidden; Transition: transform 0.3s ease. Hover: transform: translateY(-5px); Border-color: var(--color-gold);",
+      "feature_card": "Glassmorphism effect: Background: rgba(255,255,255,0.03); Backdrop-filter: blur(10px); Border: 1px solid rgba(255,255,255,0.05);"
+    },
+    "navbar": {
+      "style": "Background: rgba(5, 5, 5, 0.8); Backdrop-filter: blur(12px); Border-bottom: 1px solid var(--color-border);",
+      "links": "Font-family: 'Manrope'; Text-transform: uppercase; Letter-spacing: 1px; Color: var(--color-text-muted); Hover: Color: var(--color-gold);"
+    }
+  },
+  "image_urls": {
+    "hero": [
+      "https://images.pexels.com/photos/952590/pexels-photo-952590.jpeg",
+      "https://images.pexels.com/photos/4060587/pexels-photo-4060587.jpeg"
+    ],
+    "collections": {
+      "watches": "https://images.unsplash.com/photo-1765571814233-00a6e91c21a3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBhbnRpcXVlJTIwcG9ja2V0JTIwd2F0Y2glMjBkYXJrJTIwbW9vZHklMjBsaWdodGluZ3xlbnwwfHx8fDE3NjkzNzk0MTN8MA&ixlib=rb-4.1.0&q=85",
+      "jewelry": "https://images.pexels.com/photos/16975982/pexels-photo-16975982.jpeg",
+      "sculpture": "https://images.unsplash.com/photo-1761313616119-48e21b5b0b37?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxtYXJibGUlMjBidXN0JTIwc2N1bHB0dXJlJTIwZHJhbWF0aWMlMjBsaWdodGluZyUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc2OTM3OTQxNnww&ixlib=rb-4.1.0&q=85",
+      "paintings": "https://images.pexels.com/photos/16560119/pexels-photo-16560119.jpeg"
+    },
+    "textures": [
+      "https://images.unsplash.com/photo-1764258254975-b3866a24a2fe?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwxfHxkYXJrJTIwcHVycGxlJTIwdmVsdmV0JTIwdGV4dHVyZSUyMGZhYnJpY3xlbnwwfHx8fDE3NjkzNzk0MTl8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1665764045207-a0f035401210?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwyfHxkYXJrJTIwcHVycGxlJTIwdmVsdmV0JTIwdGV4dHVyZSUyMGZhYnJpY3xlbnwwfHx8fDE3NjkzNzk0MTl8MA&ixlib=rb-4.1.0&q=85"
+    ]
+  },
+  "css_architecture": {
+    "file_structure": "Keep all custom styles in wwwroot/css/site.css. Do not use inline styles in .cshtml files unless absolutely necessary for dynamic values.",
+    "z_index_strategy": {
+      "navbar": 1000,
+      "modal": 1050,
+      "dropdown": 1000,
+      "overlay": 900
+    }
+  },
+  "instructions_to_main_agent": [
+    "1. Update wwwroot/css/site.css with the CSS Variables and Global Styles defined above.",
+    "2. Update _Layout.cshtml to include the Google Fonts link.",
+    "3. Refactor the Navbar in _Layout.cshtml to remove standard Bootstrap classes (bg-light, navbar-light) and apply custom 'navbar-aristocratic' classes.",
+    "4. Redesign the Home/Index.cshtml Hero section using the 'Hero' image URLs and the 'Playfair Display' typography.",
+    "5. Update the Collections/Index.cshtml grid to use the 'Gallery' grid layout.",
+    "6. Ensure all buttons use the 'Cinzel' font and the gold border style.",
+    "7. Apply the 'noise' texture to the body background to give it a premium feel.",
+    "8. DO NOT change the C# logic or the Razor Page models. Only modify the HTML structure and CSS classes."
+  ],
+  "universal_guidelines": [
+    "Avoid 'Bootstrap Blue' at all costs.",
+    "Use generous padding (min 4rem top/bottom for sections).",
+    "Ensure text contrast is high (Gold on Black, White on Black).",
+    "Use 'text-transform: uppercase' with 'letter-spacing: 2px' for small labels to add elegance.",
+    "Images should have a subtle 'filter: brightness(0.8)' by default and 'brightness(1)' on hover."
+  ]
+}
