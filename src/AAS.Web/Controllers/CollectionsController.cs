@@ -12,6 +12,32 @@ namespace AAS.Web.Controllers
         private readonly AppDbContext _db; private readonly TranslationService _tr;
         public CollectionsController(AppDbContext db, TranslationService tr) { _db = db; _tr = tr; }
 
+        // Landing page for collections - shows category cards
+        public async Task<IActionResult> Landing()
+        {
+            // Get counts for each category
+            var categoryCounts = await _db.Collections
+                .GroupBy(c => c.Category)
+                .Select(g => new { Category = g.Key, Count = g.Count() })
+                .ToDictionaryAsync(x => x.Category, x => x.Count);
+            
+            // Get a featured image for each category
+            var categoryImages = new Dictionary<CollectionCategory, string?>();
+            foreach (CollectionCategory cat in Enum.GetValues(typeof(CollectionCategory)))
+            {
+                var featuredImage = await _db.Collections
+                    .Where(c => c.Category == cat)
+                    .SelectMany(c => c.Images.OrderBy(i => i.SortOrder).Take(1))
+                    .Select(i => i.FileName)
+                    .FirstOrDefaultAsync();
+                categoryImages[cat] = featuredImage;
+            }
+            
+            ViewBag.CategoryCounts = categoryCounts;
+            ViewBag.CategoryImages = categoryImages;
+            return View();
+        }
+
         public async Task<IActionResult> Index(CollectionCategory? category, int page = 1)
         {
             const int pageSize = 12;
