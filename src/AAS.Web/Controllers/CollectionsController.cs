@@ -121,9 +121,16 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
-        [Route("collections/{slug:regex(^(?!Landing$|Index$).*$)}")]
+        [HttpGet("collections/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
+            // Skip if slug matches action names
+            if (slug.Equals("Landing", StringComparison.OrdinalIgnoreCase) ||
+                slug.Equals("Index", StringComparison.OrdinalIgnoreCase))
+            {
+                return NotFound();
+            }
+            
             // PERFORMANCE: Use AsNoTracking for read-only operations
             var item = await _db.Collections
                 .Include(c => c.Images.OrderBy(i => i.SortOrder))
