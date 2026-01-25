@@ -1,145 +1,192 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+@{
+    ViewData["Title"] = L["HowToBuySell"];
+}
 
-<div class="section">
+<!-- Hero Section -->
+<section class="hero" style="min-height: 50vh; padding: 80px 0;">
+  <div class="hero-content">
+    <p class="text-accent text-gold mb-3 animate-fade-in">@L["Guide"]</p>
+    <h1 class="hero-title animate-fade-in delay-1" style="font-size: var(--text-5xl);">@L["HowToBuySell"]</h1>
+    <div class="hero-divider animate-fade-in delay-2"></div>
+    <p class="hero-subtitle animate-fade-in delay-3">
+      @L["HowToBuySellDescription"]
+    </p>
+  </div>
+</section>
+
+<!-- Buy & Sell Sections -->
+<section class="section">
   <div class="container">
-    <nav aria-label="breadcrumb" class="mb-4">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">@L["Home"]</a></li>
-        <li class="breadcrumb-item active" aria-current="page">@L["HowToBuySell"]</li>
-      </ol>
-    </nav>
-
-    <h1 class="page-heading">@L["HowToBuySell"]</h1>
-    <p class="lead text-center mb-5">@L["HowToBuySellDescription"]</p>
-
-    <div class="row g-4">
-      <div class="col-12 col-md-6">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="h3 mb-4">
-              <i class="bi bi-cart-check text-success me-2"></i>
-              @L["HowToBuy"]
-            </h2>
-            
-            <div class="mb-4">
-              <h3 class="h5">@L["HowToBuyStep1Title"]</h3>
-              <p>@L["HowToBuyStep1Text"]</p>
+    <div class="row g-5">
+      
+      <!-- How to Buy -->
+      <div class="col-lg-6 reveal-left">
+        <div class="gradient-border p-4 p-lg-5 h-100">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="step-indicator animate-glow">
+              <i class="bi bi-cart-check" style="font-size: 28px;"></i>
             </div>
-            
-            <div class="mb-4">
-              <h3 class="h5">@L["HowToBuyStep2Title"]</h3>
-              <p>@L["HowToBuyStep2Text"]</p>
-            </div>
-            
-            <div class="mb-4">
-              <h3 class="h5">@L["HowToBuyStep3Title"]</h3>
-              <p>@L["HowToBuyStep3Text"]</p>
-            </div>
-            
-            <div class="mb-4">
-              <h3 class="h5">@L["HowToBuyStep4Title"]</h3>
-              <p>@L["HowToBuyStep4Text"]</p>
-            </div>
-
-            <div class="alert alert-info mt-4">
-              <strong>@L["Note"]:</strong> @L["HowToBuyNote"]
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6">
-        <div class="card h-100">
-          <div class="card-body">
-            <h2 class="h3 mb-4">
-              <i class="bi bi-currency-dollar text-primary me-2"></i>
-              @L["HowToSell"]
-            </h2>
-            
-            <div class="mb-4">
-              <h3 class="h5">@L["HowToSellStep1Title"]</h3>
-              <p>@L["HowToSellStep1Text"]</p>
-              <p class="mt-3">
-                <i class="bi bi-envelope me-2 text-primary"></i>
-                <strong>info@aristocraticartworksale.com</strong>
-              </p>
-            </div>
-            
-            <div class="mb-4">
-              <h3 class="h5">@L["HowToSellStep2Title"]</h3>
-              <p>@L["HowToSellStep2Text"]</p>
-            </div>
-            
-            <div class="mb-4">
-              <h3 class="h5">@L["HowToSellStep3Title"]</h3>
-              <p>@L["HowToSellStep3Text"]</p>
-            </div>
-            
-            <div class="mb-4">
-              <h3 class="h5">@L["HowToSellStep4Title"]</h3>
-              <p>@L["HowToSellStep4Text"]</p>
-            </div>
-
-            <div class="alert alert-warning mt-4">
-              <strong>@L["Note"]:</strong> @L["HowToSellNote"]
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card mt-5">
-      <div class="card-body text-center p-5">
-        <div class="mb-4">
-          <img src="~/images/aas-verified-badge.svg" alt="AAS Verified" style="width: 80px; height: 80px;" />
-        </div>
-        <h2 class="h3 mb-3">@L["WhatIsAASVerified"]</h2>
-        <p class="lead">@L["AASVerifiedExplanation"]</p>
-        
-        <div class="row g-4 mt-4">
-          <div class="col-12 col-md-6">
-            <div class="alert alert-success">
-              <h4 class="h5">
-                <img src="~/images/aas-verified-badge.svg" alt="Verified" style="width: 30px; height: 30px;" class="me-2" />
-                @L["WithAASVerified"]
-              </h4>
-              <p class="mb-0">@L["WithAASVerifiedText"]</p>
-            </div>
+            <h2 style="font-size: var(--text-3xl); margin: 0;">@L["HowToBuy"]</h2>
           </div>
           
-          <div class="col-12 col-md-6">
-            <div class="alert alert-light border">
-              <h4 class="h5">@L["WithoutAASVerified"]</h4>
-              <p class="mb-0">@L["WithoutAASVerifiedText"]</p>
+          <div class="howto-step">
+            <div class="step-number">
+              <div class="step-indicator" style="width: 50px; height: 50px; font-size: var(--text-lg);">1</div>
             </div>
+            <h4 class="mb-2 text-gold">@L["HowToBuyStep1Title"]</h4>
+            <p class="text-muted">@L["HowToBuyStep1Text"]</p>
+          </div>
+          
+          <div class="howto-step">
+            <div class="step-number">
+              <div class="step-indicator" style="width: 50px; height: 50px; font-size: var(--text-lg);">2</div>
+            </div>
+            <h4 class="mb-2 text-gold">@L["HowToBuyStep2Title"]</h4>
+            <p class="text-muted">@L["HowToBuyStep2Text"]</p>
+          </div>
+          
+          <div class="howto-step">
+            <div class="step-number">
+              <div class="step-indicator" style="width: 50px; height: 50px; font-size: var(--text-lg);">3</div>
+            </div>
+            <h4 class="mb-2 text-gold">@L["HowToBuyStep3Title"]</h4>
+            <p class="text-muted">@L["HowToBuyStep3Text"]</p>
+          </div>
+          
+          <div class="howto-step">
+            <div class="step-number">
+              <div class="step-indicator" style="width: 50px; height: 50px; font-size: var(--text-lg);">4</div>
+            </div>
+            <h4 class="mb-2 text-gold">@L["HowToBuyStep4Title"]</h4>
+            <p class="text-muted">@L["HowToBuyStep4Text"]</p>
+          </div>
+          
+          <div class="mt-4 p-3" style="background: rgba(34, 197, 94, 0.1); border-radius: var(--radius-md); border: 1px solid rgba(34, 197, 94, 0.2);">
+            <p class="text-muted small mb-0">
+              <i class="bi bi-info-circle me-2" style="color: #22c55e;"></i>
+              <strong>@L["Note"]:</strong> @L["HowToBuyNote"]
+            </p>
           </div>
         </div>
-
-        <p class="mt-4 text-muted">@L["AASVerifiedDisclaimer"]</p>
+      </div>
+      
+      <!-- How to Sell -->
+      <div class="col-lg-6 reveal-right">
+        <div class="gradient-border p-4 p-lg-5 h-100">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="step-indicator animate-glow">
+              <i class="bi bi-currency-dollar" style="font-size: 28px;"></i>
+            </div>
+            <h2 style="font-size: var(--text-3xl); margin: 0;">@L["HowToSell"]</h2>
+          </div>
+          
+          <div class="howto-step">
+            <div class="step-number">
+              <div class="step-indicator" style="width: 50px; height: 50px; font-size: var(--text-lg);">1</div>
+            </div>
+            <h4 class="mb-2 text-gold">@L["HowToSellStep1Title"]</h4>
+            <p class="text-muted mb-2">@L["HowToSellStep1Text"]</p>
+            <p class="mb-0">
+              <a href="mailto:info@aristocraticartworksale.com" class="text-gold">
+                <i class="bi bi-envelope me-2"></i>info@aristocraticartworksale.com
+              </a>
+            </p>
+          </div>
+          
+          <div class="howto-step">
+            <div class="step-number">
+              <div class="step-indicator" style="width: 50px; height: 50px; font-size: var(--text-lg);">2</div>
+            </div>
+            <h4 class="mb-2 text-gold">@L["HowToSellStep2Title"]</h4>
+            <p class="text-muted">@L["HowToSellStep2Text"]</p>
+          </div>
+          
+          <div class="howto-step">
+            <div class="step-number">
+              <div class="step-indicator" style="width: 50px; height: 50px; font-size: var(--text-lg);">3</div>
+            </div>
+            <h4 class="mb-2 text-gold">@L["HowToSellStep3Title"]</h4>
+            <p class="text-muted">@L["HowToSellStep3Text"]</p>
+          </div>
+          
+          <div class="howto-step">
+            <div class="step-number">
+              <div class="step-indicator" style="width: 50px; height: 50px; font-size: var(--text-lg);">4</div>
+            </div>
+            <h4 class="mb-2 text-gold">@L["HowToSellStep4Title"]</h4>
+            <p class="text-muted">@L["HowToSellStep4Text"]</p>
+          </div>
+          
+          <div class="mt-4 p-3" style="background: rgba(234, 179, 8, 0.1); border-radius: var(--radius-md); border: 1px solid rgba(234, 179, 8, 0.2);">
+            <p class="text-muted small mb-0">
+              <i class="bi bi-exclamation-triangle me-2" style="color: #eab308;"></i>
+              <strong>@L["Note"]:</strong> @L["HowToSellNote"]
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="text-center mt-5">
-      <a href="/Collections" class="btn btn-primary btn-lg me-3">
-        <i class="bi bi-search me-2"></i>
-        @L["BrowseCollections"]
-      </a>
-      <a href="/Contacts" class="btn btn-outline-secondary btn-lg">
-        <i class="bi bi-envelope me-2"></i>
-        @L["ContactUs"]
-      </a>
+<!-- AAS Verified Section -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <div class="mb-4">
+        <div class="step-indicator mx-auto animate-glow" style="width: 100px; height: 100px;">
+          <i class="bi bi-patch-check-fill" style="font-size: 48px;"></i>
+        </div>
+      </div>
+      <p class="text-accent text-gold mb-3">@L["Authentication"]</p>
+      <h2 style="font-size: var(--text-4xl);">@L["WhatIsAASVerified"]</h2>
+      <p class="lead text-muted mt-3" style="max-width: 700px; margin: 0 auto;">
+        @L["AASVerifiedExplanation"]
+      </p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-6 reveal-left">
+        <div class="feature-card h-100" style="border-left: 4px solid #22c55e;">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <i class="bi bi-patch-check-fill text-gold" style="font-size: 32px;"></i>
+            <h4 class="mb-0">@L["WithAASVerified"]</h4>
+          </div>
+          <p class="text-muted mb-0">@L["WithAASVerifiedText"]</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 reveal-right">
+        <div class="feature-card h-100" style="border-left: 4px solid var(--color-text-dim);">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <i class="bi bi-question-circle text-muted" style="font-size: 32px;"></i>
+            <h4 class="mb-0">@L["WithoutAASVerified"]</h4>
+          </div>
+          <p class="text-muted mb-0">@L["WithoutAASVerifiedText"]</p>
+        </div>
+      </div>
+    </div>
+    
+    <p class="text-center text-muted mt-5 reveal">@L["AASVerifiedDisclaimer"]</p>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <p class="text-accent text-gold mb-3">@L["Ready to Start?"]</p>
+      <h2 style="font-size: var(--text-3xl); margin-bottom: 2rem;">@L["Begin Your Journey Today"]</h2>
+      
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="/Collections/Landing" class="btn btn-primary btn-lg">
+          <i class="bi bi-search me-2"></i>@L["BrowseCollections"]
+        </a>
+        <a href="/Contacts" class="btn btn-outline-secondary btn-lg">
+          <i class="bi bi-envelope me-2"></i>@L["ContactUs"]
+        </a>
+      </div>
     </div>
   </div>
-</div>
-
-<style>
-.card {
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.card-body h3.h5 {
-  color: var(--gold);
-  font-weight: 600;
-}
-</style>
+</section>
