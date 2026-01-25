@@ -108,6 +108,12 @@ namespace AAS.Web.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             
+            // Sanitize Price input to prevent XSS
+            if (!string.IsNullOrWhiteSpace(model.Price))
+            {
+                model.Price = System.Web.HttpUtility.HtmlEncode(model.Price.Trim().Substring(0, Math.Min(model.Price.Length, 100)));
+            }
+            
             // Generate unique slug
             var baseSlug = _slug.ToSlug(model.Title);
             var slug = baseSlug;
