@@ -250,10 +250,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllers();
 app.MapRazorPages();
-
-// Debug route
-app.MapGet("/debug/routes", () => "Routing works!");
 
 app.Run();
