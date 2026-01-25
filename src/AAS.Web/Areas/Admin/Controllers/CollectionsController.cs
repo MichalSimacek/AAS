@@ -375,16 +375,19 @@ namespace AAS.Web.Areas.Admin.Controllers
                         Console.WriteLine($"[EDIT POST DEBUG] Updated Status to: {existing.Status} ({statusInt})");
                     }
                     
-                    // Parse and update Price (only if provided)
-                    if (!string.IsNullOrWhiteSpace(priceStr) && decimal.TryParse(priceStr, out decimal price))
+                    // Update Price (now a string field - can contain text or numbers)
+                    // Sanitize the price input to prevent XSS
+                    if (!string.IsNullOrWhiteSpace(priceStr))
                     {
-                        existing.Price = price;
+                        // Sanitize: trim, limit length, encode special chars
+                        existing.Price = System.Web.HttpUtility.HtmlEncode(priceStr.Trim().Substring(0, Math.Min(priceStr.Length, 100)));
                         Console.WriteLine($"[EDIT POST DEBUG] Updated Price to: {existing.Price}");
                     }
-                    else if (string.IsNullOrWhiteSpace(priceStr))
+                    else
                     {
-                        // Keep existing price if not provided
-                        Console.WriteLine($"[EDIT POST DEBUG] Price field empty, keeping existing value: {existing.Price}");
+                        // Clear price if empty
+                        existing.Price = null;
+                        Console.WriteLine($"[EDIT POST DEBUG] Price field cleared");
                     }
                     
                     // Parse and update Currency
