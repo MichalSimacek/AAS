@@ -120,13 +120,13 @@ namespace AAS.Web.Controllers
             return View(collections);
         }
 
-        public async Task<IActionResult> Details(string slug)
+        public async Task<IActionResult> Details(string id)
         {
             // PERFORMANCE: Use AsNoTracking for read-only operations
             var item = await _db.Collections
                 .Include(c => c.Images.OrderBy(i => i.SortOrder))
                 .AsNoTracking()
-                .FirstOrDefaultAsync(c => c.Slug == slug);
+                .FirstOrDefaultAsync(c => c.Slug == id);
 
             if (item == null) return NotFound();
 
