@@ -36,6 +36,7 @@
 <data name="Watches" xml:space="preserve"><value>Hodinky</value></data>
 <data name="Statues" xml:space="preserve"><value>Sochy</value></data>
 <data name="Other" xml:space="preserve"><value>Ostatní</value></data>
+<data name="Decorative Arts" xml:space="preserve"><value>Dekorativní umění</value></data>
 <data name="All" xml:space="preserve"><value>Vše</value></data>
 
 <!-- Collection Details -->
@@ -321,9 +322,9 @@
 <data name="HowToSellStep1Title" xml:space="preserve"><value>Krok 1: Kontaktujte nás</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>Napište nám e-mail s popisem vašeho předmětu a přiložte fotografie. Čím více informací poskytnete, tím přesnější ocenění můžeme připravit.</value></data>
 <data name="HowToSellStep2Title" xml:space="preserve"><value>Krok 2: Odborné ocenění</value></data>
-<data name="HowToSellStep2Text" xml:space="preserve"><value>Náš tým odborníků provede důkladné posouzení vašeho předmětu a poskytne vám profesionální tržní ocenění zdarma.</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>V případě zájmu provede náš tým odborníků důkladné posouzení vašeho předmětu a poskytne vám expertízu nejvyšší úrovně mezinárodní laboratoře na náklady prodávajícího.</value></data>
 <data name="HowToSellStep3Title" xml:space="preserve"><value>Krok 3: Přijměte nabídku</value></data>
-<data name="HowToSellStep3Text" xml:space="preserve"><value>Pokud souhlasíte s naší nabídkou, domluvíme si vyzvednutí předmětu nebo bezpečnou přepravu. Všechny náklady na přepravu hradíme my.</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Pokud souhlasíte s nabídkou, dohodneme se na pohodlném a bezpečném způsobu předání předmětů pro obě strany.</value></data>
 <data name="HowToSellStep4Title" xml:space="preserve"><value>Krok 4: Okamžitá platba</value></data>
 <data name="HowToSellStep4Text" xml:space="preserve"><value>Po obdržení a ověření předmětu obdržíte platbu ihned prostřednictvím vámi preferované bezpečné platební metody.</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>Nabízíme nejvyšší ceny na trhu. Žádné skryté poplatky, žádné provize. Dostanete plnou dohodnutou částku.</value></data>

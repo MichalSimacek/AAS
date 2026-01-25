@@ -36,6 +36,7 @@
 <data name="Watches" xml:space="preserve"><value>Uhren</value></data>
 <data name="Statues" xml:space="preserve"><value>Statuen</value></data>
 <data name="Other" xml:space="preserve"><value>Andere</value></data>
+<data name="Decorative Arts" xml:space="preserve"><value>Dekorative Kunst</value></data>
 <data name="All" xml:space="preserve"><value>Alle</value></data>
 
 <!-- Collection Details -->
@@ -276,9 +277,9 @@
 <data name="HowToSellStep1Title" xml:space="preserve"><value>Schritt 1: Kontaktieren Sie uns</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>Senden Sie uns eine E-Mail mit einer Beschreibung Ihres Objekts und fügen Sie Fotos bei. Je mehr Informationen Sie bereitstellen, desto genauer kann unsere Bewertung sein.</value></data>
 <data name="HowToSellStep2Title" xml:space="preserve"><value>Schritt 2: Expertenbewertung</value></data>
-<data name="HowToSellStep2Text" xml:space="preserve"><value>Unser Expertenteam führt eine gründliche Bewertung Ihres Objekts durch und stellt Ihnen kostenlos eine professionelle Marktbewertung zur Verfügung.</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>Bei Interesse führt unser Expertenteam eine gründliche Bewertung Ihres Artikels durch und bietet Ihnen eine internationale Laborexpertise auf höchstem Niveau auf Kosten des Verkäufers.</value></data>
 <data name="HowToSellStep3Title" xml:space="preserve"><value>Schritt 3: Angebot annehmen</value></data>
-<data name="HowToSellStep3Text" xml:space="preserve"><value>Wenn Sie mit unserem Angebot einverstanden sind, vereinbaren wir die Abholung des Objekts oder einen sicheren Versand. Alle Transportkosten werden von uns übernommen.</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Wenn Sie dem Angebot zustimmen, vereinbaren wir eine bequeme und sichere Übergabe der Artikel für beide Parteien.</value></data>
 <data name="HowToSellStep4Title" xml:space="preserve"><value>Schritt 4: Sofortige Zahlung</value></data>
 <data name="HowToSellStep4Text" xml:space="preserve"><value>Nach Erhalt und Überprüfung des Objekts erhalten Sie sofort die Zahlung über Ihre bevorzugte sichere Zahlungsmethode.</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>Wir bieten die höchsten Preise auf dem Markt. Keine versteckten Gebühren, keine Provisionen. Sie erhalten den vollen vereinbarten Betrag.</value></data>

@@ -36,6 +36,7 @@
 <data name="Watches" xml:space="preserve"><value>Montres</value></data>
 <data name="Statues" xml:space="preserve"><value>Statues</value></data>
 <data name="Other" xml:space="preserve"><value>Autre</value></data>
+<data name="Decorative Arts" xml:space="preserve"><value>Arts Décoratifs</value></data>
 <data name="All" xml:space="preserve"><value>Tous</value></data>
 
 <!-- Collection Details -->
@@ -276,9 +277,9 @@
 <data name="HowToSellStep1Title" xml:space="preserve"><value>Étape 1 : Contactez-nous</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>Envoyez-nous un e-mail avec une description de votre article et joignez des photos. Plus vous fournissez d'informations, plus notre évaluation sera précise.</value></data>
 <data name="HowToSellStep2Title" xml:space="preserve"><value>Étape 2 : Évaluation d'expert</value></data>
-<data name="HowToSellStep2Text" xml:space="preserve"><value>Notre équipe d'experts effectuera une évaluation approfondie de votre article et vous fournira une estimation professionnelle du marché sans frais.</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>En cas d'intérêt, notre équipe d'experts effectuera une évaluation approfondie de votre article et vous fournira une expertise de laboratoire international au plus haut niveau aux frais du vendeur.</value></data>
 <data name="HowToSellStep3Title" xml:space="preserve"><value>Étape 3 : Accepter l'offre</value></data>
-<data name="HowToSellStep3Text" xml:space="preserve"><value>Si vous acceptez notre offre, nous organiserons l'enlèvement de l'article ou l'expédition sécurisée. Tous les frais de transport sont pris en charge par nous.</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>Si vous acceptez l'offre, nous conviendrons d'un moyen pratique et sûr de remettre les articles pour les deux parties.</value></data>
 <data name="HowToSellStep4Title" xml:space="preserve"><value>Étape 4 : Paiement immédiat</value></data>
 <data name="HowToSellStep4Text" xml:space="preserve"><value>Dès réception et vérification de l'article, vous recevrez le paiement immédiatement via votre méthode de paiement sécurisée préférée.</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>Nous offrons les prix les plus élevés du marché. Pas de frais cachés, pas de commissions. Vous recevez le montant total convenu.</value></data>

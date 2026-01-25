@@ -36,6 +36,7 @@
 <data name="Watches" xml:space="preserve"><value>Watches</value></data>
 <data name="Statues" xml:space="preserve"><value>Statues</value></data>
 <data name="Other" xml:space="preserve"><value>Other</value></data>
+<data name="Decorative Arts" xml:space="preserve"><value>Decorative Arts</value></data>
 <data name="All" xml:space="preserve"><value>All</value></data>
 
 <!-- Collection Details -->
@@ -321,9 +322,9 @@
 <data name="HowToSellStep1Title" xml:space="preserve"><value>Step 1: Contact Us</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>Email us with a description of your item and attach photos. The more information you provide, the more accurate our valuation can be.</value></data>
 <data name="HowToSellStep2Title" xml:space="preserve"><value>Step 2: Expert Valuation</value></data>
-<data name="HowToSellStep2Text" xml:space="preserve"><value>Our team of experts will conduct a thorough assessment of your item and provide you with a professional market valuation at no cost.</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>In case of interest, our team of experts will conduct a thorough assessment of your item and provide you with a highest level international laboratory expertise at seller's expenses.</value></data>
 <data name="HowToSellStep3Title" xml:space="preserve"><value>Step 3: Accept Offer</value></data>
-<data name="HowToSellStep3Text" xml:space="preserve"><value>If you agree to our offer, we'll arrange pickup of the item or secure shipping. All transportation costs are covered by us.</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>If you agree to the offer, we will agree on a convenient and safe way to hand over the items for both parties.</value></data>
 <data name="HowToSellStep4Title" xml:space="preserve"><value>Step 4: Immediate Payment</value></data>
 <data name="HowToSellStep4Text" xml:space="preserve"><value>Upon receipt and verification of the item, you'll receive payment immediately via your preferred secure payment method.</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>We offer the highest prices in the market. No hidden fees, no commissions. You receive the full agreed amount.</value></data>

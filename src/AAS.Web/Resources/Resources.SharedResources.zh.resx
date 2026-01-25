@@ -36,6 +36,7 @@
 <data name="Watches" xml:space="preserve"><value>腕表</value></data>
 <data name="Statues" xml:space="preserve"><value>雕像</value></data>
 <data name="Other" xml:space="preserve"><value>其他</value></data>
+<data name="Decorative Arts" xml:space="preserve"><value>装饰艺术</value></data>
 <data name="All" xml:space="preserve"><value>全部</value></data>
 
 <!-- Collection Details -->
@@ -276,9 +277,9 @@
 <data name="HowToSellStep1Title" xml:space="preserve"><value>步骤1：联系我们</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>向我们发送电子邮件，描述您的物品并附上照片。您提供的信息越多，我们的估价就越准确。</value></data>
 <data name="HowToSellStep2Title" xml:space="preserve"><value>步骤2：专家评估</value></data>
-<data name="HowToSellStep2Text" xml:space="preserve"><value>我们的专家团队将对您的物品进行全面评估，并免费为您提供专业的市场估价。</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>如有兴趣，我们的专家团队将对您的物品进行全面评估，并由卖方承担费用，为您提供最高水平的国际实验室鉴定。</value></data>
 <data name="HowToSellStep3Title" xml:space="preserve"><value>步骤3：接受报价</value></data>
-<data name="HowToSellStep3Text" xml:space="preserve"><value>如果您同意我们的报价，我们将安排取件或安全运输。所有运输费用由我们承担。</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>如果您同意报价，我们将为双方商定一种方便且安全的物品交接方式。</value></data>
 <data name="HowToSellStep4Title" xml:space="preserve"><value>步骤4：即时付款</value></data>
 <data name="HowToSellStep4Text" xml:space="preserve"><value>收到并验证物品后，您将立即通过您首选的安全付款方式收到付款。</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>我们提供市场上最高的价格。没有隐藏费用，没有佣金。您将收到全额协议金额。</value></data>

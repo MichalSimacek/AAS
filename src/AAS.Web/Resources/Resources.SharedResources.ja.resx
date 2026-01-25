@@ -36,6 +36,7 @@
 <data name="Watches" xml:space="preserve"><value>時計</value></data>
 <data name="Statues" xml:space="preserve"><value>彫像</value></data>
 <data name="Other" xml:space="preserve"><value>その他</value></data>
+<data name="Decorative Arts" xml:space="preserve"><value>装飾芸術</value></data>
 <data name="All" xml:space="preserve"><value>すべて</value></data>
 
 <!-- Collection Details -->
@@ -276,9 +277,9 @@
 <data name="HowToSellStep1Title" xml:space="preserve"><value>ステップ1：お問い合わせ</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>アイテムの説明と写真を添付してメールでお問い合わせください。情報が多いほど、より正確な評価が可能になります。</value></data>
 <data name="HowToSellStep2Title" xml:space="preserve"><value>ステップ2：専門家による評価</value></data>
-<data name="HowToSellStep2Text" xml:space="preserve"><value>専門家チームがアイテムを徹底的に評価し、無料でプロフェッショナルな市場評価を提供します。</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>ご関心がある場合、当社の専門家チームがお客様の品物を徹底的に査定し、売り手負担で最高レベルの国際的な研究所の専門知識を提供いたします。</value></data>
 <data name="HowToSellStep3Title" xml:space="preserve"><value>ステップ3：オファーの承認</value></data>
-<data name="HowToSellStep3Text" xml:space="preserve"><value>オファーに同意いただければ、アイテムの引き取りまたは安全な配送を手配します。すべての輸送費用は当社が負担します。</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>オファーに同意いただける場合、双方にとって便利で安全な品物の受け渡し方法を合意いたします。</value></data>
 <data name="HowToSellStep4Title" xml:space="preserve"><value>ステップ4：即時支払い</value></data>
 <data name="HowToSellStep4Text" xml:space="preserve"><value>アイテムの受領と検証後、お好みの安全な支払い方法で即座に支払いを受け取ります。</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>市場で最高の価格を提供します。隠れた手数料や手数料はありません。合意した全額を受け取ります。</value></data>

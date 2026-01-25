@@ -36,6 +36,7 @@
 <data name="Watches" xml:space="preserve"><value>घड़ियां</value></data>
 <data name="Statues" xml:space="preserve"><value>मूर्तियां</value></data>
 <data name="Other" xml:space="preserve"><value>अन्य</value></data>
+<data name="Decorative Arts" xml:space="preserve"><value>सजावटी कला</value></data>
 <data name="All" xml:space="preserve"><value>सभी</value></data>
 
 <!-- Collection Details -->
@@ -276,9 +277,9 @@
 <data name="HowToSellStep1Title" xml:space="preserve"><value>चरण 1: हमसे संपर्क करें</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>अपनी वस्तु का विवरण लेकर हमें ईमेल करें और फोटो संलग्न करें। आप जितनी अधिक जानकारी प्रदान करेंगे, हमारा मूल्यांकन उतना ही सटीक हो सकता है।</value></data>
 <data name="HowToSellStep2Title" xml:space="preserve"><value>चरण 2: विशेषज्ञ मूल्यांकन</value></data>
-<data name="HowToSellStep2Text" xml:space="preserve"><value>हमारी विशेषज्ञ टीम आपकी वस्तु का पूर्ण मूल्यांकन करेगी और आपको बिना किसी लागत के पेशेवर बाजार मूल्यांकन प्रदान करेगी।</value></data>
+<data name="HowToSellStep2Text" xml:space="preserve"><value>रुचि होने पर, हमारे विशेषज्ञों की टीम आपकी वस्तु का गहन मूल्यांकन करेगी और विक्रेता के खर्च पर आपको उच्चतम स्तर की अंतर्राष्ट्रीय प्रयोगशाला विशेषज्ञता प्रदान करेगी।</value></data>
 <data name="HowToSellStep3Title" xml:space="preserve"><value>चरण 3: प्रस्ताव स्वीकार करें</value></data>
-<data name="HowToSellStep3Text" xml:space="preserve"><value>यदि आप हमारे प्रस्ताव से सहमत हैं, तो हम वस्तु को उठाने या सुरक्षित शिपिंग की व्यवस्था करेंगे। सभी परिवहन लागत हम द्वारा कवर की जाती है।</value></data>
+<data name="HowToSellStep3Text" xml:space="preserve"><value>यदि आप प्रस्ताव से सहमत हैं, तो हम दोनों पक्षों के लिए वस्तुओं को सौंपने का एक सुविधाजनक और सुरक्षित तरीका तय करेंगे।</value></data>
 <data name="HowToSellStep4Title" xml:space="preserve"><value>चरण 4: तत्काल भुगतान</value></data>
 <data name="HowToSellStep4Text" xml:space="preserve"><value>वस्तु की प्राप्ति और सत्यापन पर, आपको अपनी पसंदीदा सुरक्षित भुगतान विधि के माध्यम से तुरंत भुगतान प्राप्त होगा।</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>हम बाजार में सबसे अधिक कीमतों की पेशकश करते हैं। कोई छिपी हुई फीस नहीं, कोई कमीशन नहीं। आपको पूरी सहमत राशि मिलती है।</value></data>
