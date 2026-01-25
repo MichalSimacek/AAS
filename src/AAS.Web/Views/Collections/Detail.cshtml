@@ -356,20 +356,211 @@
 </div>
 
 <style>
-/* Thumbnail Grid Styles */
+/* Collection Detail Page Styles - Aristocratic Theme */
+
+/* Gallery Card */
+.detail-gallery-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.main-image-container {
+  position: relative;
+  background: var(--color-bg-elevated);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  max-height: 500px;
+}
+
+.main-gallery-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  transition: transform var(--transition-slow);
+}
+
+/* Thumbnail Grid */
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 8px;
+  padding: 12px;
+  background: var(--color-bg-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.thumbnail-item {
+  aspect-ratio: 1;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.thumbnail-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--color-bg-elevated);
+}
+
 .thumbnail-item:hover {
-  border-color: var(--gold, #B8941F) !important;
+  border-color: var(--color-gold-dim) !important;
   transform: scale(1.05);
 }
 
 .thumbnail-item.active {
-  border-color: var(--gold, #B8941F) !important;
-  box-shadow: 0 0 0 2px rgba(184, 148, 31, 0.3);
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
 }
 
-.main-image-container {
-  min-height: 350px;
-  max-height: 500px;
+/* Price Section */
+.detail-price-section {
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.detail-badge-sold {
+  background: rgba(128, 0, 32, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(128, 0, 32, 0.3);
+  font-size: var(--text-lg);
+  padding: 0.5rem 1.5rem;
+}
+
+.detail-badge-auction {
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  font-size: var(--text-lg);
+  padding: 0.5rem 1.5rem;
+}
+
+.detail-badge-available {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  font-size: var(--text-base);
+  padding: 0.5rem 1rem;
+}
+
+.detail-price {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+/* Share & Comments Sections */
+.detail-share-section,
+.detail-comments-section {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.detail-section-title {
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-dim);
+  margin-bottom: 0.75rem;
+}
+
+.copy-success-message {
+  display: none;
+  color: #22c55e;
+  font-size: var(--text-xs);
+}
+
+/* Comment Form */
+.comment-form-container {
+  background: var(--color-bg-elevated);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.comment-login-notice {
+  background: var(--color-bg-elevated);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+/* Info Card */
+.detail-info-card {
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: fit-content;
+}
+
+.detail-info-content {
+  padding: 2rem;
+}
+
+.detail-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.detail-description {
+  white-space: pre-wrap;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+/* AAS Verified Badge */
+.aas-verified-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: var(--radius-md);
+}
+
+.aas-verified-badge img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Audio Card */
+.detail-audio-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.detail-audio-card h5 {
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.detail-audio-card audio {
+  width: 100%;
+  filter: invert(0.9);
+}
+
+/* Breadcrumb styling */
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "/";
+  color: var(--color-text-dim);
 }
 
 @@media (max-width: 768px) {
@@ -382,6 +573,14 @@
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)) !important;
     gap: 6px !important;
     padding: 8px !important;
+  }
+  
+  .detail-info-content {
+    padding: 1.5rem;
+  }
+  
+  .detail-title {
+    font-size: var(--text-2xl);
   }
 }
 
