@@ -123,16 +123,6 @@ namespace AAS.Web.Controllers
         [HttpGet("collection/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
-            // Redirect to appropriate action if slug matches action names
-            if (slug.Equals("Landing", StringComparison.OrdinalIgnoreCase))
-            {
-                return RedirectToAction("Landing");
-            }
-            if (slug.Equals("Index", StringComparison.OrdinalIgnoreCase))
-            {
-                return RedirectToAction("Index");
-            }
-            
             // PERFORMANCE: Use AsNoTracking for read-only operations
             var item = await _db.Collections
                 .Include(c => c.Images.OrderBy(i => i.SortOrder))
