@@ -32,8 +32,6 @@ namespace AAS.Web.Areas.Admin.Controllers
             string? search = null, 
             int? status = null, 
             int? category = null, 
-            decimal? minPrice = null, 
-            decimal? maxPrice = null,
             bool? verified = null)
         {
             var query = _db.Collections.AsQueryable();
@@ -58,16 +56,7 @@ namespace AAS.Web.Areas.Admin.Controllers
                 query = query.Where(c => (int)c.Category == category.Value);
             }
 
-            // Apply price range filters
-            if (minPrice.HasValue)
-            {
-                query = query.Where(c => c.Price >= minPrice.Value);
-            }
-
-            if (maxPrice.HasValue)
-            {
-                query = query.Where(c => c.Price <= maxPrice.Value);
-            }
+            // Price filter removed - Price is now a string field that can contain text values
 
             // Apply verified filter
             if (verified.HasValue)
@@ -91,8 +80,6 @@ namespace AAS.Web.Areas.Admin.Controllers
             ViewBag.Search = search;
             ViewBag.Status = status;
             ViewBag.Category = category;
-            ViewBag.MinPrice = minPrice;
-            ViewBag.MaxPrice = maxPrice;
             ViewBag.Verified = verified;
             ViewBag.FilteredCount = items.Count;
 
