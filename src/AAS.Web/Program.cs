@@ -238,12 +238,6 @@ app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
-// Explicit route for Collections Landing page
-app.MapControllerRoute(
-    name: "collections-landing",
-    pattern: "Collections/Landing",
-    defaults: new { controller = "Collections", action = "Landing" });
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
