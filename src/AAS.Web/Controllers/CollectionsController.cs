@@ -7,12 +7,14 @@ using System.Globalization;
 
 namespace AAS.Web.Controllers
 {
+    [Route("[controller]")]
     public class CollectionsController : Controller
     {
         private readonly AppDbContext _db; private readonly TranslationService _tr;
         public CollectionsController(AppDbContext db, TranslationService tr) { _db = db; _tr = tr; }
 
         // Landing page for collections - shows category cards
+        [HttpGet("Landing")]
         public async Task<IActionResult> Landing()
         {
             // Get counts for each category
