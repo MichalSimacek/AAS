@@ -691,15 +691,14 @@ footer a:hover {
   pointer-events: none;
 }
 
-.landing-hero .container {
+.landing-hero-container {
   position: relative;
   z-index: 1;
-  background: transparent;
   width: 100%;
-  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 2rem;
 }
 
 .landing-hero .hero-content {
@@ -709,7 +708,6 @@ footer a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
 }
 
 .landing-hero .hero-title {
