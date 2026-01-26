@@ -692,6 +692,17 @@ footer a:hover {
   position: relative;
   z-index: 1;
   background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-hero .hero-content {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .landing-hero .hero-title {
