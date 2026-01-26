@@ -675,6 +675,9 @@ footer a:hover {
   padding: 100px 0;
   text-align: center;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .landing-hero::before {
@@ -692,6 +695,8 @@ footer a:hover {
   position: relative;
   z-index: 1;
   background: transparent;
+  width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -700,9 +705,11 @@ footer a:hover {
 .landing-hero .hero-content {
   text-align: center;
   width: 100%;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
 }
 
 .landing-hero .hero-title {
