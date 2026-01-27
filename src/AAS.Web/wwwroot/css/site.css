@@ -1816,3 +1816,27 @@ footer a:hover {
     margin-bottom: 1.5rem;
   }
 }
+
+/* ============================================
+   HOME PAGE HERO LOGO
+   ============================================ */
+.home-hero-logo {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
+  transition: all var(--transition-slow);
+}
+
+.home-hero-logo:hover {
+  filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.6));
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .home-hero-logo {
+    max-width: 280px;
+    margin-bottom: 1.5rem;
+  }
+}
