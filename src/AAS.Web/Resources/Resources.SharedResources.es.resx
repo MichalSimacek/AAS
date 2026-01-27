@@ -328,4 +328,7 @@
 <data name="items" xml:space="preserve"><value>artículos</value></data>
 <data name="Coming soon" xml:space="preserve"><value>Próximamente</value></data>
 <data name="Explore" xml:space="preserve"><value>Explorar</value></data>
+  <data name="GoldSilver" xml:space="preserve">
+    <value>Gold &amp; Silver</value>
+  </data>
 </root>

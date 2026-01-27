@@ -316,4 +316,7 @@
 <data name="items" xml:space="preserve"><value>アイテム</value></data>
 <data name="Coming soon" xml:space="preserve"><value>近日公開</value></data>
 <data name="Explore" xml:space="preserve"><value>探索する</value></data>
+  <data name="GoldSilver" xml:space="preserve">
+    <value>Gold &amp; Silver</value>
+  </data>
 </root>

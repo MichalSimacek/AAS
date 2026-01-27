@@ -373,4 +373,7 @@
 <data name="ViewAllCollections" xml:space="preserve"><value>Zobrazit všechny kolekce</value></data>
 <data name="Navigation" xml:space="preserve"><value>Navigace</value></data>
 <data name="Browse" xml:space="preserve"><value>Procházet</value></data>
+  <data name="GoldSilver" xml:space="preserve">
+    <value>Gold &amp; Silver</value>
+  </data>
 </root>

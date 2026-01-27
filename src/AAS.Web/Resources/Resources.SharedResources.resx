@@ -373,4 +373,7 @@
 <data name="ViewAllCollections" xml:space="preserve"><value>View All Collections</value></data>
 <data name="Navigation" xml:space="preserve"><value>Navigation</value></data>
 <data name="Browse" xml:space="preserve"><value>Browse</value></data>
+  <data name="GoldSilver" xml:space="preserve">
+    <value>Gold &amp; Silver</value>
+  </data>
 </root>
