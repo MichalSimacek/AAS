@@ -43,6 +43,14 @@
         <li class="breadcrumb-item"><a href="/Collections" class="text-gold">@L["Collections"]</a></li>
         <li class="breadcrumb-item active text-muted" aria-current="page">@(ViewBag.TranslatedTitle as string ?? Model.Title)</li>
       </ol>
+      
+      @* Admin Edit Button *@
+      @if (User.IsInRole("Admin"))
+      {
+        <a href="/Admin/Collections/Edit/@Model.Id" class="admin-edit-btn" title="@L["Edit Collection"]" data-testid="admin-edit-btn">
+          <i class="bi bi-pencil-square"></i>
+        </a>
+      }
     </nav>
 
     <div class="row g-4">
