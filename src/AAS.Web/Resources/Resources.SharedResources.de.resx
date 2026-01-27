@@ -330,4 +330,7 @@
   <data name="GoldSilver" xml:space="preserve">
     <value>Gold &amp; Silver</value>
   </data>
+  <data name="Gold &amp; Silver" xml:space="preserve">
+    <value>Gold &amp; Silver</value>
+  </data>
 </root>
