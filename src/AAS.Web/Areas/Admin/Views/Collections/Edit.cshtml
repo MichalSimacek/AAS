@@ -67,7 +67,13 @@
                     <label for="Description" class="form-label-modern">
                         <i class="bi bi-text-paragraph me-1"></i> Description
                     </label>
-                    <textarea asp-for="Description" name="Description" rows="6" class="form-control-modern">@(Model.Description?.TrimStart() ?? "")</textarea>
+                    @{
+                        var descValue = Model.Description ?? "";
+                        // Clean each line's leading whitespace
+                        var cleanLines = descValue.Split('\n').Select(l => l.TrimStart());
+                        var cleanDesc = string.Join("\n", cleanLines).Trim();
+                    }
+                    <textarea asp-for="Description" name="Description" rows="6" class="form-control-modern">@cleanDesc</textarea>
                     <small class="form-text text-muted">Detailed description of the collection item</small>
                 </div>
             </div>
