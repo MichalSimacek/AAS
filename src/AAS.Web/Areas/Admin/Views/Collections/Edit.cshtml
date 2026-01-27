@@ -67,7 +67,7 @@
                     <label for="Description" class="form-label-modern">
                         <i class="bi bi-text-paragraph me-1"></i> Description
                     </label>
-                    <textarea asp-for="Description" name="Description" rows="6" class="form-control-modern">@Model.Description</textarea>
+                    <textarea asp-for="Description" name="Description" rows="6" class="form-control-modern">@(Model.Description?.TrimStart() ?? "")</textarea>
                     <small class="form-text text-muted">Detailed description of the collection item</small>
                 </div>
             </div>
