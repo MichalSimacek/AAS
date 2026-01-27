@@ -243,7 +243,13 @@
             <h1 class="detail-title">@Html.Raw(Html.Encode(ViewBag.TranslatedTitle as string ?? Model.Title))</h1>
             
             <div class="detail-description">
-              @Html.Raw(Html.Encode(ViewBag.TranslatedDescription as string ?? Model.Description).Replace("\n", "<br/>"))
+              @{
+                var descText = (ViewBag.TranslatedDescription as string ?? Model.Description ?? "").Trim();
+                // Remove leading whitespace from each line
+                var lines = descText.Split('\n').Select(line => line.TrimStart());
+                var cleanedDesc = string.Join("<br/>", lines.Select(l => Html.Encode(l)));
+              }
+              @Html.Raw(cleanedDesc)
             </div>
           </div>
         </div>
