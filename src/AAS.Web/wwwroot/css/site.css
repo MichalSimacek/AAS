@@ -1792,3 +1792,27 @@ footer a:hover {
 .admin-edit-btn:active {
   transform: scale(0.95);
 }
+
+/* ============================================
+   LANDING PAGE LOGO
+   ============================================ */
+.landing-logo {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+  transition: all var(--transition-slow);
+}
+
+.landing-logo:hover {
+  filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.5));
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .landing-logo {
+    max-width: 200px;
+    margin-bottom: 1.5rem;
+  }
+}
