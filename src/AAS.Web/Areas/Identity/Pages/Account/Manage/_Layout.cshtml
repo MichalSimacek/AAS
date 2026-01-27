@@ -2,128 +2,535 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<div class="account-settings-container">
+<div class="account-settings-page">
+    <!-- Hero Section -->
+    <section class="settings-hero">
+        <div class="settings-hero-content">
+            <p class="text-accent text-gold mb-3 animate-fade-in">@L["Manage Account"]</p>
+            <h1 class="settings-hero-title animate-fade-in delay-1">@L["Account Settings"]</h1>
+            <div class="hero-divider animate-fade-in delay-2"></div>
+        </div>
+    </section>
+    
     <div class="container">
         <div class="settings-wrapper">
             <!-- Sidebar Navigation -->
-            <aside class="settings-sidebar">
+            <aside class="settings-sidebar gradient-border">
                 <div class="sidebar-header">
-                    <h2>Settings</h2>
-                    <p>Manage your account</p>
+                    <h3><i class="bi bi-gear-wide-connected text-gold me-2"></i>Settings</h3>
                 </div>
                 
-                <nav class="sidebar-nav">
-                    <a href="/Identity/Account/Manage" class="nav-item active" data-section="profile">
+                <nav class="sidebar-nav" id="settings-nav">
+                    <a href="/Identity/Account/Manage" class="nav-item" data-section="profile" data-url="/Identity/Account/Manage">
                         <div class="nav-icon">
                             <i class="bi bi-person-circle"></i>
                         </div>
                         <div class="nav-content">
-                            <span class="nav-title">Profile</span>
+                            <span class="nav-title">@L["Profile"]</span>
                             <span class="nav-desc">Personal information</span>
                         </div>
+                        <i class="bi bi-chevron-right nav-arrow"></i>
                     </a>
                     
-                    <a href="/Identity/Account/Manage/ChangePassword" class="nav-item" data-section="security">
+                    <a href="/Identity/Account/Manage/ChangePassword" class="nav-item" data-section="security" data-url="/Identity/Account/Manage/ChangePassword">
                         <div class="nav-icon">
                             <i class="bi bi-shield-lock"></i>
                         </div>
                         <div class="nav-content">
-                            <span class="nav-title">Security</span>
-                            <span class="nav-desc">Password & authentication</span>
+                            <span class="nav-title">@L["Password nav"]</span>
+                            <span class="nav-desc">Security settings</span>
                         </div>
+                        <i class="bi bi-chevron-right nav-arrow"></i>
                     </a>
                     
-                    <a href="/Identity/Account/Manage/Email" class="nav-item" data-section="email">
+                    <a href="/Identity/Account/Manage/Email" class="nav-item" data-section="email" data-url="/Identity/Account/Manage/Email">
                         <div class="nav-icon">
                             <i class="bi bi-envelope-at"></i>
                         </div>
                         <div class="nav-content">
-                            <span class="nav-title">Email</span>
+                            <span class="nav-title">@L["Email nav"]</span>
                             <span class="nav-desc">Email preferences</span>
                         </div>
+                        <i class="bi bi-chevron-right nav-arrow"></i>
                     </a>
                     
-                    <a href="/Identity/Account/Manage/PersonalData" class="nav-item" data-section="privacy">
+                    <a href="/Identity/Account/Manage/PersonalData" class="nav-item" data-section="privacy" data-url="/Identity/Account/Manage/PersonalData">
                         <div class="nav-icon">
                             <i class="bi bi-database-lock"></i>
                         </div>
                         <div class="nav-content">
-                            <span class="nav-title">Privacy</span>
+                            <span class="nav-title">@L["Personal Data"]</span>
                             <span class="nav-desc">Data & account deletion</span>
                         </div>
+                        <i class="bi bi-chevron-right nav-arrow"></i>
                     </a>
                 </nav>
             </aside>
             
             <!-- Main Content Area -->
             <main class="settings-content" id="settings-main-content">
-                @RenderBody()
+                <div class="settings-content-inner">
+                    @RenderBody()
+                </div>
             </main>
         </div>
     </div>
 </div>
 
+<style>
+/* Account Settings Page Styles */
+.account-settings-page {
+    min-height: 100vh;
+    padding-bottom: 4rem;
+}
+
+.settings-hero {
+    background: linear-gradient(135deg, var(--color-bg-main) 0%, var(--color-primary-deep) 50%, var(--color-bg-main) 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+    position: relative;
+}
+
+.settings-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(75, 0, 130, 0.4) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.settings-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.settings-hero-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-5xl);
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
+}
+
+.settings-wrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2rem;
+    margin-top: -40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Sidebar */
+.settings-sidebar {
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 0;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar-header h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+.sidebar-nav {
+    padding: 0.5rem;
+}
+
+.sidebar-nav .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    margin-bottom: 0.25rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-nav .nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-gold);
+    transform: scaleY(0);
+    transition: transform var(--transition-fast);
+}
+
+.sidebar-nav .nav-item:hover {
+    background: var(--color-bg-elevated);
+}
+
+.sidebar-nav .nav-item:hover .nav-icon {
+    color: var(--color-gold);
+}
+
+.sidebar-nav .nav-item.active {
+    background: linear-gradient(90deg, rgba(75, 0, 130, 0.2) 0%, transparent 100%);
+}
+
+.sidebar-nav .nav-item.active::before {
+    transform: scaleY(1);
+}
+
+.sidebar-nav .nav-item.active .nav-icon {
+    color: var(--color-gold);
+}
+
+.sidebar-nav .nav-item.active .nav-title {
+    color: var(--color-gold);
+}
+
+.nav-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--color-text-muted);
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.nav-content {
+    flex: 1;
+}
+
+.nav-title {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text-main);
+    font-size: var(--text-base);
+    transition: color var(--transition-fast);
+}
+
+.nav-desc {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-text-dim);
+    margin-top: 2px;
+}
+
+.nav-arrow {
+    color: var(--color-text-dim);
+    font-size: 14px;
+    transition: all var(--transition-fast);
+}
+
+.sidebar-nav .nav-item:hover .nav-arrow {
+    color: var(--color-gold);
+    transform: translateX(4px);
+}
+
+/* Main Content */
+.settings-content {
+    min-height: 500px;
+}
+
+.settings-content-inner {
+    animation: fadeSlideIn 0.3s ease;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Settings Cards */
+.settings-card {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.settings-card-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.settings-card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--color-text-main);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.settings-card-title i {
+    color: var(--color-gold);
+}
+
+.settings-card-description {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    margin: 0;
+}
+
+/* Danger Zone */
+.settings-card.danger-zone {
+    border-color: rgba(220, 53, 69, 0.3);
+    background: linear-gradient(135deg, var(--color-bg-surface) 0%, rgba(220, 53, 69, 0.05) 100%);
+}
+
+.settings-card.danger-zone .settings-card-title {
+    color: #ff6b6b;
+}
+
+.settings-card.danger-zone .settings-card-title i {
+    color: #ff6b6b;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin-bottom: 0.5rem;
+    font-size: var(--text-sm);
+}
+
+.form-hint {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-text-dim);
+    margin-top: 0.5rem;
+}
+
+.form-hint i {
+    margin-right: 0.25rem;
+}
+
+/* Status Indicators */
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-top: 0.75rem;
+}
+
+.status-indicator.verified {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-indicator.unverified {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+/* Info Boxes */
+.info-box {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-box p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+}
+
+.info-box.danger {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: rgba(220, 53, 69, 0.3);
+}
+
+.info-box.danger p {
+    color: #ff6b6b;
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--color-primary-deep) 0%, var(--color-primary) 100%);
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold-dim);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(220, 53, 69, 0.2);
+    color: #ff6b6b;
+    border: 1px solid rgba(220, 53, 69, 0.4);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-danger:hover {
+    background: rgba(220, 53, 69, 0.3);
+    box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
+}
+
+.btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+    color: var(--color-gold);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    padding: 0;
+    transition: color var(--transition-fast);
+}
+
+.btn-link:hover {
+    color: var(--color-gold-light);
+}
+
+/* Responsive */
+@@media (max-width: 992px) {
+    .settings-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .settings-sidebar {
+        position: static;
+    }
+    
+    .sidebar-nav {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .sidebar-nav .nav-item {
+        flex-direction: column;
+        text-align: center;
+        min-width: 100px;
+        padding: 1rem;
+    }
+    
+    .sidebar-nav .nav-item::before {
+        width: 100%;
+        height: 3px;
+        top: auto;
+        bottom: 0;
+        transform: scaleX(0);
+    }
+    
+    .sidebar-nav .nav-item.active::before {
+        transform: scaleX(1);
+    }
+    
+    .nav-icon {
+        margin: 0 auto;
+    }
+    
+    .nav-content {
+        text-align: center;
+    }
+    
+    .nav-desc, .nav-arrow {
+        display: none;
+    }
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Only select nav items within settings sidebar
-    const sidebar = document.querySelector('.settings-sidebar');
-    if (!sidebar) return; // Exit if sidebar doesn't exist
-    
-    const navItems = sidebar.querySelectorAll('.nav-item');
+    const navItems = document.querySelectorAll('#settings-nav .nav-item');
     const contentArea = document.getElementById('settings-main-content');
     
-    if (!contentArea || navItems.length === 0) return;
+    if (!navItems.length || !contentArea) return;
     
-    // Map sections to URLs
-    const sectionUrls = {
-        'profile': '/Identity/Account/Manage',
-        'security': '/Identity/Account/Manage/ChangePassword',
-        'email': '/Identity/Account/Manage/Email',
-        'privacy': '/Identity/Account/Manage/PersonalData'
-    };
-    
-    // Set active nav based on current URL
-    const currentPath = window.location.pathname;
+    // Set active state based on current URL
+    const currentPath = window.location.pathname.toLowerCase();
     navItems.forEach(item => {
-        const section = item.dataset.section;
-        const targetUrl = sectionUrls[section];
-        
-        if (targetUrl && currentPath.includes(targetUrl)) {
+        const url = item.dataset.url?.toLowerCase();
+        if (url && currentPath === url) {
             navItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
         }
     });
     
-    // Add click handlers only to sidebar nav items
+    // Handle navigation with smooth transitions
     navItems.forEach(item => {
         item.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation(); // Prevent event bubbling
             
-            const section = this.dataset.section;
-            const url = sectionUrls[section];
-            
-            // Safety check
-            if (!url) {
-                console.error('No URL found for section:', section);
-                return;
-            }
-            
-            // Don't reload if already on this page
-            if (window.location.pathname === url) {
-                return;
-            }
+            const url = this.dataset.url;
+            if (!url || window.location.pathname === url) return;
             
             // Update active state
             navItems.forEach(i => i.classList.remove('active'));
             this.classList.add('active');
             
-            // Fade out current content
-            contentArea.style.opacity = '0';
-            contentArea.style.transform = 'translateX(20px)';
-            contentArea.style.transition = 'all 0.2s ease';
+            // Animate content out
+            const contentInner = contentArea.querySelector('.settings-content-inner');
+            if (contentInner) {
+                contentInner.style.opacity = '0';
+                contentInner.style.transform = 'translateX(20px)';
+                contentInner.style.transition = 'all 0.2s ease';
+            }
             
-            // Load new content after fade
+            // Navigate after animation
             setTimeout(() => {
                 window.location.href = url;
             }, 200);
