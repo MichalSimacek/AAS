@@ -16,11 +16,11 @@
 
     <!-- Category Filter -->
     <div class="category-filter justify-content-center mb-5">
-      <a class="btn btn-sm @(ViewBag.Category == null ? "active" : "")" href="/Collections">@L["All"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Paintings" ? "active" : "")" href="/Collections?category=Paintings">@L["Paintings"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Jewelry" ? "active" : "")" href="/Collections?category=Jewelry">@L["Jewelry"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Watches" ? "active" : "")" href="/Collections?category=Watches">@L["Watches"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Statues" ? "active" : "")" href="/Collections?category=Statues">@L["Statues"]</a>
+      <a class="btn btn-sm @(ViewBag.Category?.ToString() == "GoldSilver" ? "active" : "")" href="/Collections?category=GoldSilver">@L["Gold & Silver"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Other" ? "active" : "")" href="/Collections?category=Other">@L["Decorative Arts"]</a>
     </div>
 
