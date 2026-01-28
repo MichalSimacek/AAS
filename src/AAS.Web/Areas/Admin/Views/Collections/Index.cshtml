@@ -258,9 +258,13 @@
                                 <td>
                                     @if (firstImage != null)
                                     {
-                                        <img src="/uploads/images/@firstImage.FileName-480.jpg" 
+                                        <img src="/uploads/images/@(firstImage.FileName)-480.jpg" 
                                              alt="@collection.Title" 
-                                             class="collection-thumbnail" />
+                                             class="collection-thumbnail"
+                                             onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                                        <div class="collection-thumbnail-placeholder" style="display: none;">
+                                            <i class="bi bi-image"></i>
+                                        </div>
                                     }
                                     else
                                     {
