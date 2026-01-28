@@ -584,6 +584,19 @@
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)) !important;
     gap: 6px !important;
     padding: 8px !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .thumbnail-item {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-width: 60px;
+  }
+  
+  .thumbnail-item img {
+    pointer-events: none;
   }
   
   .detail-info-content {
