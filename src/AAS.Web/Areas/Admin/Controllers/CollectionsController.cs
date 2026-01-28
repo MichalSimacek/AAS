@@ -64,26 +64,29 @@ namespace AAS.Web.Areas.Admin.Controllers
                 query = query.Where(c => c.AASVerified == verified.Value);
             }
 
-            // PERFORMANCE FIX: Don't load images for list view, only count
+            // Load collections with first image for thumbnail display
             var items = await query
-                .Select(c => new
-                {
-                    Collection = c,
-                    ImageCount = c.Images.Count()
-                })
-                .OrderByDescending(x => x.Collection.CreatedUtc)
+                .Include(c => c.Images.OrderBy(i => i.SortOrder).Take(1))
+                .OrderByDescending(c => c.CreatedUtc)
                 .AsNoTracking()
                 .ToListAsync();
 
-            // Pass image counts and filter values via ViewBag
-            ViewBag.ImageCounts = items.ToDictionary(x => x.Collection.Id, x => x.ImageCount);
+            // Get image counts separately for performance
+            var imageCounts = await _db.CollectionImages
+                .Where(i => items.Select(c => c.Id).Contains(i.CollectionId))
+                .GroupBy(i => i.CollectionId)
+                .Select(g => new { CollectionId = g.Key, Count = g.Count() })
+                .ToDictionaryAsync(x => x.CollectionId, x => x.Count);
+
+            // Pass filter values via ViewBag
+            ViewBag.ImageCounts = imageCounts;
             ViewBag.Search = search;
             ViewBag.Status = status;
             ViewBag.Category = category;
             ViewBag.Verified = verified;
             ViewBag.FilteredCount = items.Count;
 
-            return View(items.Select(x => x.Collection).ToList());
+            return View(items);
         }
 
         public IActionResult Create() => View(new Collection());

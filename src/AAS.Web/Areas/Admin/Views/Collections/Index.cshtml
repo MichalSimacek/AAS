@@ -252,7 +252,8 @@
                         @foreach (var collection in Model.OrderBy(c => c.Status).ThenByDescending(c => c.CreatedUtc))
                         {
                             var firstImage = collection.Images?.OrderBy(i => i.SortOrder).FirstOrDefault();
-                            var imageCount = collection.Images?.Count() ?? 0;
+                            var imageCounts = ViewBag.ImageCounts as Dictionary<int, int> ?? new Dictionary<int, int>();
+                            var imageCount = imageCounts.ContainsKey(collection.Id) ? imageCounts[collection.Id] : 0;
                             
                             <tr class="collection-row">
                                 <td>

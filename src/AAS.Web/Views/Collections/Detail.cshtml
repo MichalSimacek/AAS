@@ -1018,7 +1018,7 @@ const minZoom = 0.5;
 const maxZoom = 4;
 const zoomStep = 0.25;
 
-// Thumbnail selection
+// Thumbnail selection - Works on both desktop and mobile
 function selectThumbnail(element, index) {
   // Update active state
   document.querySelectorAll('.thumbnail-item').forEach(t => t.classList.remove('active'));
@@ -1034,14 +1034,47 @@ function selectThumbnail(element, index) {
   currentImageIndex = index;
 }
 
-// Add touch support for thumbnails
+// Enhanced touch support for mobile thumbnails
 document.addEventListener('DOMContentLoaded', function() {
   const thumbnails = document.querySelectorAll('.thumbnail-item');
-  thumbnails.forEach(function(thumb, idx) {
+  
+  thumbnails.forEach(function(thumb) {
+    // Remove onclick attribute and use event listeners instead for better mobile support
+    thumb.removeAttribute('onclick');
+    
+    // Track touch state to distinguish tap from scroll
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isTap = false;
+    
+    thumb.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isTap = true;
+    }, { passive: true });
+    
+    thumb.addEventListener('touchmove', function(e) {
+      // If moved more than 10px, it's a scroll not a tap
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY);
+      if (dx > 10 || dy > 10) {
+        isTap = false;
+      }
+    }, { passive: true });
+    
     thumb.addEventListener('touchend', function(e) {
-      e.preventDefault();
-      selectThumbnail(this, parseInt(this.dataset.index));
+      if (isTap) {
+        e.preventDefault();
+        const index = parseInt(this.dataset.index);
+        selectThumbnail(this, index);
+      }
     }, { passive: false });
+    
+    // Keep click for desktop
+    thumb.addEventListener('click', function(e) {
+      const index = parseInt(this.dataset.index);
+      selectThumbnail(this, index);
+    });
   });
 });
 
