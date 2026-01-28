@@ -1034,6 +1034,17 @@ function selectThumbnail(element, index) {
   currentImageIndex = index;
 }
 
+// Add touch support for thumbnails
+document.addEventListener('DOMContentLoaded', function() {
+  const thumbnails = document.querySelectorAll('.thumbnail-item');
+  thumbnails.forEach(function(thumb, idx) {
+    thumb.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      selectThumbnail(this, parseInt(this.dataset.index));
+    }, { passive: false });
+  });
+});
+
 // Social Share Functions
 function shareOnFacebook() {
   const url = encodeURIComponent(window.location.href);
