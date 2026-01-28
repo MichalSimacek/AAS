@@ -244,31 +244,31 @@
   </script>
 
   <!-- GDPR Cookie Consent Banner -->
-  <div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(0, 0, 0, 0.8) !important; z-index: 9999 !important; align-items: center !important; justify-content: center !important; padding: 20px !important;">
-    <div class="cookie-consent-content" style="background: white !important; border-radius: 16px !important; padding: 40px !important; max-width: 700px !important; width: 100% !important; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important; text-align: center !important; position: relative !important; animation: popupSlideIn 0.4s ease-out !important;">
+  <div id="cookie-consent-banner" class="cookie-consent-banner" style="display: none; position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: rgba(5, 5, 5, 0.9) !important; z-index: 9999 !important; align-items: center !important; justify-content: center !important; padding: 20px !important; backdrop-filter: blur(8px) !important;">
+    <div class="cookie-consent-content" style="background: linear-gradient(135deg, #151019 0%, #0d0a10 100%) !important; border: 1px solid rgba(212, 175, 55, 0.2) !important; border-radius: 16px !important; padding: 40px !important; max-width: 700px !important; width: 100% !important; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(75, 0, 130, 0.2) !important; text-align: center !important; position: relative !important; animation: popupSlideIn 0.4s ease-out !important;">
       
       <!-- Main Cookie Consent View -->
       <div id="cookie-main-view">
         <div class="cookie-consent-text">
-          <h4>🍪 @L["Cookie Settings"]</h4>
-          <p>
+          <h4 style="color: #D4AF37 !important; font-family: 'Playfair Display', serif !important; font-size: 24px !important; margin-bottom: 16px !important;">🍪 @L["Cookie Settings"]</h4>
+          <p style="color: #9ca3af !important; font-size: 14px !important; line-height: 1.7 !important; margin-bottom: 16px !important;">
             @L["We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies."]
           </p>
-          <p class="cookie-links">
-            <a href="https://www.google.com/policies/privacy/partners/" target="_blank">@L["How Google uses data"]</a> |
-            <a href="/Home/Privacy" target="_blank">@L["Privacy Policy"]</a>
+          <p class="cookie-links" style="margin-bottom: 24px !important;">
+            <a href="https://www.google.com/policies/privacy/partners/" target="_blank" style="color: #D4AF37 !important; text-decoration: underline !important;">@L["How Google uses data"]</a> |
+            <a href="/Home/Privacy" target="_blank" style="color: #D4AF37 !important; text-decoration: underline !important;">@L["Privacy Policy"]</a>
           </p>
         </div>
-        <div class="cookie-consent-buttons">
-          <button id="cookie-decline" class="btn btn-outline-secondary">@L["Decline"]</button>
-          <button id="cookie-settings" class="btn btn-outline-primary">@L["Settings"]</button>
-          <button id="cookie-accept" class="btn btn-primary">@L["Accept All"]</button>
+        <div class="cookie-consent-buttons" style="display: flex !important; gap: 12px !important; justify-content: center !important; flex-wrap: wrap !important;">
+          <button id="cookie-decline" class="btn" style="background: transparent !important; border: 1px solid rgba(255,255,255,0.2) !important; color: #9ca3af !important; padding: 10px 24px !important; border-radius: 8px !important; font-weight: 600 !important; transition: all 0.3s !important;">@L["Decline"]</button>
+          <button id="cookie-settings" class="btn" style="background: transparent !important; border: 1px solid rgba(212, 175, 55, 0.3) !important; color: #D4AF37 !important; padding: 10px 24px !important; border-radius: 8px !important; font-weight: 600 !important; transition: all 0.3s !important;">@L["Settings"]</button>
+          <button id="cookie-accept" class="btn" style="background: linear-gradient(135deg, #240046 0%, #4B0082 100%) !important; border: 1px solid rgba(212, 175, 55, 0.4) !important; color: #D4AF37 !important; padding: 10px 24px !important; border-radius: 8px !important; font-weight: 600 !important; transition: all 0.3s !important;">@L["Accept All"]</button>
         </div>
       </div>
 
       <!-- Settings View (initially hidden) -->
       <div id="cookie-settings-view" style="display: none;">
-        <h5 style="color: #1A1A1A; margin-bottom: 30px; font-size: 28px; font-weight: 700; font-family: 'Playfair Display', serif;">@L["Cookie Preferences"]</h5>
+        <h5 style="color: #D4AF37 !important; margin-bottom: 30px; font-size: 24px; font-weight: 700; font-family: 'Playfair Display', serif;">@L["Cookie Preferences"]</h5>
         
         <div class="cookie-category">
           <div class="cookie-toggle">
