@@ -63,7 +63,7 @@ namespace AAS.Web.Controllers
             {
                 await SendContactEmailAsync(name, email, subject, message, ip);
                 _cache.Set(key, count + 1, new MemoryCacheEntryOptions { SlidingExpiration = TimeSpan.FromMinutes(15) });
-                TempData["Success"] = "Your message has been sent successfully. We'll get back to you within 12 hours.";
+                TempData["Success"] = "Your message has been sent successfully. We'll get back to you within 24 hours.";
             }
             catch (Exception ex)
             {

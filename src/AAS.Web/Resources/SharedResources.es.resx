@@ -77,13 +77,13 @@
 <!-- Contact Page -->
 <data name="Get in touch with our team" xml:space="preserve"><value>Póngase en contacto con nuestro equipo de especialistas. Estamos aquí para ayudarle con cualquier consulta.</value></data>
 <data name="Reach Out to Us" xml:space="preserve"><value>Contáctenos</value></data>
-<data name="Reach Out to Us Text" xml:space="preserve"><value>Nuestros especialistas están disponibles para responder sus preguntas y brindarle orientación experta. Garantizamos una respuesta en 12 horas.</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>Nuestros especialistas están disponibles para responder sus preguntas y brindarle orientación experta. Garantizamos una respuesta en 24 horas.</value></data>
 <data name="Email Address" xml:space="preserve"><value>Dirección de correo electrónico</value></data>
 <data name="Location" xml:space="preserve"><value>Ubicación</value></data>
 <data name="Houston, Texas, USA" xml:space="preserve"><value>Houston, Texas, EE. UU.</value></data>
 <data name="Worldwide representation available" xml:space="preserve"><value>Representación mundial disponible</value></data>
 <data name="Response Time" xml:space="preserve"><value>Tiempo de respuesta</value></data>
-<data name="Within 12 hours" xml:space="preserve"><value>En 12 horas</value></data>
+<data name="Within 24 hours" xml:space="preserve"><value>En 24 horas</value></data>
 <data name="Professional and confidential service" xml:space="preserve"><value>Servicio profesional y confidencial</value></data>
 <data name="Privacy Notice" xml:space="preserve"><value>Aviso de privacidad:</value></data>
 <data name="Privacy Notice Text" xml:space="preserve"><value>Todas las comunicaciones se manejan con la más estricta confidencialidad. Su información personal y consultas están seguras con nosotros.</value></data>
@@ -154,7 +154,7 @@
 <data name="No Image" xml:space="preserve"><value>Sin imagen</value></data>
 <data name="Home" xml:space="preserve"><value>Inicio</value></data>
 <data name="Audio Description" xml:space="preserve"><value>Descripción de audio</value></data>
-<data name="Inquiry form instructions" xml:space="preserve"><value>Complete el formulario a continuación y nuestro especialista se comunicará con usted en 12 horas.</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>Complete el formulario a continuación y nuestro especialista se comunicará con usted en 24 horas.</value></data>
 <data name="Message placeholder" xml:space="preserve"><value>Cuéntenos sobre su interés...</value></data>
 <data name="Site Title" xml:space="preserve"><value>Venta de obras de arte aristocráticas</value></data>
 <data name="Site Meta Description" xml:space="preserve"><value>Discreción, calidad y profesionalismo en arte fino, joyería, relojes y coleccionables.</value></data>
@@ -266,7 +266,7 @@
 <data name="HowToBuyStep2Title" xml:space="preserve"><value>Paso 2: Expresar interés</value></data>
 <data name="HowToBuyStep2Text" xml:space="preserve"><value>Cuando encuentre un artículo que le interese, haga clic en el botón "Estoy interesado" y complete el formulario de contacto. Su consulta se manejará con total discreción.</value></data>
 <data name="HowToBuyStep3Title" xml:space="preserve"><value>Paso 3: Consulta con experto</value></data>
-<data name="HowToBuyStep3Text" xml:space="preserve"><value>Nuestro especialista se pondrá en contacto con usted dentro de 12 horas, proporcionará información detallada sobre el artículo y responderá todas sus preguntas.</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Nuestro especialista se pondrá en contacto con usted dentro de 24 horas, proporcionará información detallada sobre el artículo y responderá todas sus preguntas.</value></data>
 <data name="HowToBuyStep4Title" xml:space="preserve"><value>Paso 4: Completar transacción</value></data>
 <data name="HowToBuyStep4Text" xml:space="preserve"><value>Una vez acordados los términos, organizaremos el pago seguro y la entrega discreta a su dirección elegida en cualquier parte del mundo.</value></data>
 <data name="HowToBuyNote" xml:space="preserve"><value>Todas las transacciones se realizan con máxima discreción y seguridad. Su privacidad es nuestra prioridad.</value></data>

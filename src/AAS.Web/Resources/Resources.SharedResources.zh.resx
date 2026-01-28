@@ -78,13 +78,13 @@
 <!-- Contact Page -->
 <data name="Get in touch with our team" xml:space="preserve"><value>联系我们的专家团队。我们在此帮助您解决任何问题。</value></data>
 <data name="Reach Out to Us" xml:space="preserve"><value>联系我们</value></data>
-<data name="Reach Out to Us Text" xml:space="preserve"><value>我们的专家随时准备回答您的问题并提供专家指导。我们保证12小时内回复。</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>我们的专家随时准备回答您的问题并提供专家指导。我们保证24小时内回复。</value></data>
 <data name="Email Address" xml:space="preserve"><value>电子邮件地址</value></data>
 <data name="Location" xml:space="preserve"><value>位置</value></data>
 <data name="Houston, Texas, USA" xml:space="preserve"><value>美国德克萨斯州休斯顿</value></data>
 <data name="Worldwide representation available" xml:space="preserve"><value>提供全球代表</value></data>
 <data name="Response Time" xml:space="preserve"><value>响应时间</value></data>
-<data name="Within 12 hours" xml:space="preserve"><value>12小时内</value></data>
+<data name="Within 24 hours" xml:space="preserve"><value>24小时内</value></data>
 <data name="Professional and confidential service" xml:space="preserve"><value>专业且保密的服务</value></data>
 <data name="Privacy Notice" xml:space="preserve"><value>隐私声明:</value></data>
 <data name="Privacy Notice Text" xml:space="preserve"><value>所有沟通都以最严格的保密方式处理。您的个人信息和查询在我们这里很安全。</value></data>
@@ -155,7 +155,7 @@
 <data name="No Image" xml:space="preserve"><value>无图片</value></data>
 <data name="Home" xml:space="preserve"><value>首页</value></data>
 <data name="Audio Description" xml:space="preserve"><value>音频描述</value></data>
-<data name="Inquiry form instructions" xml:space="preserve"><value>请填写下方表格，我们的专家将在12小时内与您联系。</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>请填写下方表格，我们的专家将在24小时内与您联系。</value></data>
 <data name="Message placeholder" xml:space="preserve"><value>告诉我们您的兴趣...</value></data>
 <data name="Site Title" xml:space="preserve"><value>贵族艺术品拍卖</value></data>
 <data name="Site Meta Description" xml:space="preserve"><value>美术、珠宝、腕表和收藏品领域的谨慎、品质与专业精神。</value></data>
@@ -267,7 +267,7 @@
 <data name="HowToBuyStep2Title" xml:space="preserve"><value>步骤2：表达兴趣</value></data>
 <data name="HowToBuyStep2Text" xml:space="preserve"><value>当您找到感兴趣的物品时，点击"我感兴趣"按钮并填写联系表单。您的询问将得到完全保密处理。</value></data>
 <data name="HowToBuyStep3Title" xml:space="preserve"><value>步骤3：专家咨询</value></data>
-<data name="HowToBuyStep3Text" xml:space="preserve"><value>我们的专家将在12小时内与您联系，提供有关该物品的详细信息，并回答您的所有问题。</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>我们的专家将在24小时内与您联系，提供有关该物品的详细信息，并回答您的所有问题。</value></data>
 <data name="HowToBuyStep4Title" xml:space="preserve"><value>步骤4：完成交易</value></data>
 <data name="HowToBuyStep4Text" xml:space="preserve"><value>一旦达成条款协议，我们将安排安全付款和将物品谨慎送达您选择的全球任何地址。</value></data>
 <data name="HowToBuyNote" xml:space="preserve"><value>所有交易都以最大的保密性和安全性进行。您的隐私是我们的首要任务。</value></data>

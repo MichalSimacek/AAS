@@ -78,13 +78,13 @@
 <!-- Contact Page -->
 <data name="Get in touch with our team" xml:space="preserve"><value>हमारी विशेषज्ञों की टीम से संपर्क करें। हम किसी भी पूछताछ में आपकी सहायता के लिए यहां हैं।</value></data>
 <data name="Reach Out to Us" xml:space="preserve"><value>हमसे संपर्क करें</value></data>
-<data name="Reach Out to Us Text" xml:space="preserve"><value>हमारे विशेषज्ञ आपके प्रश्नों का उत्तर देने और विशेषज्ञ मार्गदर्शन प्रदान करने के लिए उपलब्ध हैं। हम 12 घंटे के भीतर प्रतिक्रिया की गारंटी देते हैं।</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>हमारे विशेषज्ञ आपके प्रश्नों का उत्तर देने और विशेषज्ञ मार्गदर्शन प्रदान करने के लिए उपलब्ध हैं। हम 24 घंटे के भीतर प्रतिक्रिया की गारंटी देते हैं।</value></data>
 <data name="Email Address" xml:space="preserve"><value>ईमेल पता</value></data>
 <data name="Location" xml:space="preserve"><value>स्थान</value></data>
 <data name="Houston, Texas, USA" xml:space="preserve"><value>ह्यूस्टन, टेक्सास, यूएसए</value></data>
 <data name="Worldwide representation available" xml:space="preserve"><value>विश्वव्यापी प्रतिनिधित्व उपलब्ध</value></data>
 <data name="Response Time" xml:space="preserve"><value>प्रतिक्रिया समय</value></data>
-<data name="Within 12 hours" xml:space="preserve"><value>12 घंटे के भीतर</value></data>
+<data name="Within 24 hours" xml:space="preserve"><value>24 घंटे के भीतर</value></data>
 <data name="Professional and confidential service" xml:space="preserve"><value>पेशेवर और गोपनीय सेवा</value></data>
 <data name="Privacy Notice" xml:space="preserve"><value>गोपनीयता सूचना:</value></data>
 <data name="Privacy Notice Text" xml:space="preserve"><value>सभी संचार सबसे सख्त गोपनीयता के साथ संभाले जाते हैं। आपकी व्यक्तिगत जानकारी और पूछताछ हमारे साथ सुरक्षित है।</value></data>
@@ -155,7 +155,7 @@
 <data name="No Image" xml:space="preserve"><value>कोई छवि नहीं</value></data>
 <data name="Home" xml:space="preserve"><value>मुख्य पृष्ठ</value></data>
 <data name="Audio Description" xml:space="preserve"><value>ऑडियो विवरण</value></data>
-<data name="Inquiry form instructions" xml:space="preserve"><value>नीचे दिया गया फॉर्म भरें और हमारे विशेषज्ञ 12 घंटे के भीतर आपसे संपर्क करेंगे।</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>नीचे दिया गया फॉर्म भरें और हमारे विशेषज्ञ 24 घंटे के भीतर आपसे संपर्क करेंगे।</value></data>
 <data name="Message placeholder" xml:space="preserve"><value>हमें अपनी रुचि के बारे में बताएं...</value></data>
 <data name="Site Title" xml:space="preserve"><value>कुलीन कला बिक्री</value></data>
 <data name="Site Meta Description" xml:space="preserve"><value>उत्कृष्ट कला, आभूषण, घड़ियों और संग्रहणीय वस्तुओं में विवेक, गुणवत्ता और व्यावसायिकता।</value></data>

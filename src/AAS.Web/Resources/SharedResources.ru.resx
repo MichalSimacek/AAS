@@ -77,13 +77,13 @@
 <!-- Contact Page -->
 <data name="Get in touch with our team" xml:space="preserve"><value>Свяжитесь с нашей командой специалистов. Мы здесь, чтобы помочь вам с любыми вопросами.</value></data>
 <data name="Reach Out to Us" xml:space="preserve"><value>Свяжитесь с нами</value></data>
-<data name="Reach Out to Us Text" xml:space="preserve"><value>Наши специалисты готовы ответить на ваши вопросы и предоставить экспертное руководство. Мы гарантируем ответ в течение 12 часов.</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>Наши специалисты готовы ответить на ваши вопросы и предоставить экспертное руководство. Мы гарантируем ответ в течение 24 часа.</value></data>
 <data name="Email Address" xml:space="preserve"><value>Адрес электронной почты</value></data>
 <data name="Location" xml:space="preserve"><value>Местоположение</value></data>
 <data name="Houston, Texas, USA" xml:space="preserve"><value>Хьюстон, Техас, США</value></data>
 <data name="Worldwide representation available" xml:space="preserve"><value>Доступно представительство по всему миру</value></data>
 <data name="Response Time" xml:space="preserve"><value>Время ответа</value></data>
-<data name="Within 12 hours" xml:space="preserve"><value>В течение 12 часов</value></data>
+<data name="Within 24 hours" xml:space="preserve"><value>В течение 24 часа</value></data>
 <data name="Professional and confidential service" xml:space="preserve"><value>Профессиональный и конфиденциальный сервис</value></data>
 <data name="Privacy Notice" xml:space="preserve"><value>Уведомление о конфиденциальности:</value></data>
 <data name="Privacy Notice Text" xml:space="preserve"><value>Вся коммуникация осуществляется с максимальной конфиденциальностью. Ваша личная информация и запросы находятся в безопасности.</value></data>
@@ -154,7 +154,7 @@
 <data name="No Image" xml:space="preserve"><value>Нет изображения</value></data>
 <data name="Home" xml:space="preserve"><value>Главная</value></data>
 <data name="Audio Description" xml:space="preserve"><value>Аудио описание</value></data>
-<data name="Inquiry form instructions" xml:space="preserve"><value>Заполните форму ниже, и наш специалист свяжется с вами в течение 12 часов.</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>Заполните форму ниже, и наш специалист свяжется с вами в течение 24 часа.</value></data>
 <data name="Message placeholder" xml:space="preserve"><value>Расскажите нам о вашем интересе...</value></data>
 <data name="Site Title" xml:space="preserve"><value>Продажа аристократических произведений искусства</value></data>
 <data name="Site Meta Description" xml:space="preserve"><value>Конфиденциальность, качество и профессионализм в изобразительном искусстве, ювелирных изделиях, часах и предметах коллекционирования.</value></data>
@@ -266,7 +266,7 @@
 <data name="HowToBuyStep2Title" xml:space="preserve"><value>Шаг 2: Выразить интерес</value></data>
 <data name="HowToBuyStep2Text" xml:space="preserve"><value>Когда вы найдете интересующий вас предмет, нажмите кнопку "Мне интересно" и заполните контактную форму. Ваш запрос будет обработан с полной конфиденциальностью.</value></data>
 <data name="HowToBuyStep3Title" xml:space="preserve"><value>Шаг 3: Консультация с экспертом</value></data>
-<data name="HowToBuyStep3Text" xml:space="preserve"><value>Наш специалист свяжется с вами в течение 12 часов, предоставит подробную информацию о предмете и ответит на все ваши вопросы.</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Наш специалист свяжется с вами в течение 24 часа, предоставит подробную информацию о предмете и ответит на все ваши вопросы.</value></data>
 <data name="HowToBuyStep4Title" xml:space="preserve"><value>Шаг 4: Завершение сделки</value></data>
 <data name="HowToBuyStep4Text" xml:space="preserve"><value>После согласования условий мы организуем безопасную оплату и конфиденциальную доставку по выбранному вами адресу в любую точку мира.</value></data>
 <data name="HowToBuyNote" xml:space="preserve"><value>Все транзакции проводятся с максимальной конфиденциальностью и безопасностью. Ваша конфиденциальность - наш приоритет.</value></data>

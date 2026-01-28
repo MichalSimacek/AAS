@@ -77,13 +77,13 @@
 <!-- Contact Page -->
 <data name="Get in touch with our team" xml:space="preserve"><value>Get in touch with our team of specialists. We're here to assist you with any inquiries.</value></data>
 <data name="Reach Out to Us" xml:space="preserve"><value>Reach Out to Us</value></data>
-<data name="Reach Out to Us Text" xml:space="preserve"><value>Our specialists are available to answer your questions and provide expert guidance. We guarantee a response within 12 hours.</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>Our specialists are available to answer your questions and provide expert guidance. We guarantee a response within 24 hours.</value></data>
 <data name="Email Address" xml:space="preserve"><value>Email Address</value></data>
 <data name="Location" xml:space="preserve"><value>Location</value></data>
 <data name="Houston, Texas, USA" xml:space="preserve"><value>Houston, Texas, USA</value></data>
 <data name="Worldwide representation available" xml:space="preserve"><value>Worldwide representation available</value></data>
 <data name="Response Time" xml:space="preserve"><value>Response Time</value></data>
-<data name="Within 12 hours" xml:space="preserve"><value>Within 12 hours</value></data>
+<data name="Within 24 hours" xml:space="preserve"><value>Within 24 hours</value></data>
 <data name="Professional and confidential service" xml:space="preserve"><value>Professional and confidential service</value></data>
 <data name="Privacy Notice" xml:space="preserve"><value>Privacy Notice:</value></data>
 <data name="Privacy Notice Text" xml:space="preserve"><value>All communications are handled with the strictest confidentiality. Your personal information and inquiries are secure with us.</value></data>
@@ -154,7 +154,7 @@
 <data name="No Image" xml:space="preserve"><value>No Image</value></data>
 <data name="Home" xml:space="preserve"><value>Home</value></data>
 <data name="Audio Description" xml:space="preserve"><value>Audio Description</value></data>
-<data name="Inquiry form instructions" xml:space="preserve"><value>Fill out the form below and our specialist will contact you within 12 hours.</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>Fill out the form below and our specialist will contact you within 24 hours.</value></data>
 <data name="Message placeholder" xml:space="preserve"><value>Tell us about your interest...</value></data>
 <data name="Site Title" xml:space="preserve"><value>Aristocratic Artwork Sale</value></data>
 <data name="Site Meta Description" xml:space="preserve"><value>Discretion, quality and professionalism in fine art, jewelry, watches and collectibles.</value></data>
@@ -311,7 +311,7 @@
 <data name="HowToBuyStep2Title" xml:space="preserve"><value>Step 2: Express Interest</value></data>
 <data name="HowToBuyStep2Text" xml:space="preserve"><value>When you find an item that interests you, click the "I'm interested" button and fill out the contact form. Your inquiry will be handled with complete discretion.</value></data>
 <data name="HowToBuyStep3Title" xml:space="preserve"><value>Step 3: Expert Consultation</value></data>
-<data name="HowToBuyStep3Text" xml:space="preserve"><value>Our specialist will contact you within 12 hours, provide detailed information about the item, and answer all your questions.</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Our specialist will contact you within 24 hours, provide detailed information about the item, and answer all your questions.</value></data>
 <data name="HowToBuyStep4Title" xml:space="preserve"><value>Step 4: Complete Transaction</value></data>
 <data name="HowToBuyStep4Text" xml:space="preserve"><value>Once terms are agreed upon, we'll arrange secure payment and discreet delivery to your chosen address anywhere in the world.</value></data>
 <data name="HowToBuyNote" xml:space="preserve"><value>All transactions are conducted with maximum discretion and security. Your privacy is our priority.</value></data>

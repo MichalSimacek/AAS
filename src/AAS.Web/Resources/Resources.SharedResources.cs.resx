@@ -78,13 +78,13 @@
 <!-- Contact Page -->
 <data name="Get in touch with our team" xml:space="preserve"><value>Spojte se s naším týmem specialistů. Jsme zde, abychom vám pomohli s jakýmikoli dotazy.</value></data>
 <data name="Reach Out to Us" xml:space="preserve"><value>Kontaktujte nás</value></data>
-<data name="Reach Out to Us Text" xml:space="preserve"><value>Naši specialisté jsou k dispozici pro zodpovězení vašich otázek a poskytnutí odborného vedení. Garantujeme odpověď do 12 hodin.</value></data>
+<data name="Reach Out to Us Text" xml:space="preserve"><value>Naši specialisté jsou k dispozici pro zodpovězení vašich otázek a poskytnutí odborného vedení. Garantujeme odpověď do 24 hodin.</value></data>
 <data name="Email Address" xml:space="preserve"><value>E-mailová adresa</value></data>
 <data name="Location" xml:space="preserve"><value>Umístění</value></data>
 <data name="Houston, Texas, USA" xml:space="preserve"><value>Houston, Texas, USA</value></data>
 <data name="Worldwide representation available" xml:space="preserve"><value>K dispozici celosvětové zastoupení</value></data>
 <data name="Response Time" xml:space="preserve"><value>Doba odpovědi</value></data>
-<data name="Within 12 hours" xml:space="preserve"><value>Do 12 hodin</value></data>
+<data name="Within 24 hours" xml:space="preserve"><value>Do 24 hodin</value></data>
 <data name="Professional and confidential service" xml:space="preserve"><value>Profesionální a důvěrná služba</value></data>
 <data name="Privacy Notice" xml:space="preserve"><value>Upozornění na ochranu soukromí:</value></data>
 <data name="Privacy Notice Text" xml:space="preserve"><value>Veškerá komunikace je vedena s maximální důvěrností. Vaše osobní údaje a dotazy jsou u nás v bezpečí.</value></data>
@@ -155,7 +155,7 @@
 <data name="No Image" xml:space="preserve"><value>Bez obrázku</value></data>
 <data name="Home" xml:space="preserve"><value>Domů</value></data>
 <data name="Audio Description" xml:space="preserve"><value>Popis audia</value></data>
-<data name="Inquiry form instructions" xml:space="preserve"><value>Vyplňte formulář níže a náš specialista vás bude kontaktovat do 12 hodin.</value></data>
+<data name="Inquiry form instructions" xml:space="preserve"><value>Vyplňte formulář níže a náš specialista vás bude kontaktovat do 24 hodin.</value></data>
 <data name="Message placeholder" xml:space="preserve"><value>Řekněte nám o vašem zájmu...</value></data>
 <data name="Site Title" xml:space="preserve"><value>Aristocratic Artwork Sale</value></data>
 <data name="Site Meta Description" xml:space="preserve"><value>Diskrétnost, kvalita a profesionalita v oblasti umění, šperků, hodinek a sběratelských předmětů.</value></data>
@@ -312,7 +312,7 @@
 <data name="HowToBuyStep2Title" xml:space="preserve"><value>Krok 2: Vyjádřete zájem</value></data>
 <data name="HowToBuyStep2Text" xml:space="preserve"><value>Když najdete předmět, který vás zaujme, klikněte na tlačítko "Mám zájem" a vyplňte kontaktní formulář. Váš dotaz bude zpracován s naprostou diskrétností.</value></data>
 <data name="HowToBuyStep3Title" xml:space="preserve"><value>Krok 3: Konzultace s odborníkem</value></data>
-<data name="HowToBuyStep3Text" xml:space="preserve"><value>Náš specialista vás bude kontaktovat do 12 hodin, poskytne vám podrobné informace o předmětu a zodpoví všechny vaše otázky.</value></data>
+<data name="HowToBuyStep3Text" xml:space="preserve"><value>Náš specialista vás bude kontaktovat do 24 hodin, poskytne vám podrobné informace o předmětu a zodpoví všechny vaše otázky.</value></data>
 <data name="HowToBuyStep4Title" xml:space="preserve"><value>Krok 4: Dokončení transakce</value></data>
 <data name="HowToBuyStep4Text" xml:space="preserve"><value>Po dohodě na podmínkách zařídíme bezpečnou platbu a diskrétní doručení na vaši zvolenou adresu kdekoli na světě.</value></data>
 <data name="HowToBuyNote" xml:space="preserve"><value>Všechny transakce jsou provedeny s maximální diskrétností a bezpečností. Vaše soukromí je naší prioritou.</value></data>
