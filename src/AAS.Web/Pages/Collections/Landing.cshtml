@@ -269,15 +269,24 @@
 </div>
 
 <!-- Background Music: Vltava by Bedřich Smetana -->
-<div id="musicControl" class="music-control" style="display: none;">
-    <button id="musicToggle" class="music-toggle" title="Toggle Music">
-        <i class="bi bi-music-note-beamed"></i>
-    </button>
-</div>
-
 <audio id="backgroundMusic" loop preload="auto">
     <source src="https://upload.wikimedia.org/wikipedia/commons/6/61/Vltava_%28The_Moldau%29.ogg" type="audio/ogg">
 </audio>
+
+<!-- Floating music control (shown only when music is playing) -->
+<div id="musicControl" class="music-control" style="display: none;">
+    <button id="musicToggle" class="music-toggle" title="Pause Music">
+        <i class="bi bi-pause-fill"></i>
+    </button>
+</div>
+
+<!-- One-time prompt if autoplay blocked -->
+<div id="musicPrompt" class="music-prompt" style="display: none;">
+    <div class="music-prompt-content">
+        <i class="bi bi-music-note-beamed"></i>
+        <span>Klikněte pro spuštění hudby</span>
+    </div>
+</div>
 
 <style>
 .music-control {
@@ -301,6 +310,7 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: pulse-gold 2s infinite;
 }
 
 .music-toggle:hover {
@@ -308,17 +318,62 @@
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
 }
 
-.music-toggle.playing {
-    animation: pulse-gold 2s infinite;
-}
-
-.music-toggle.paused {
-    opacity: 0.7;
-}
-
 @@keyframes pulse-gold {
     0%, 100% { box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
     50% { box-shadow: 0 4px 25px rgba(212, 175, 55, 0.6); }
+}
+
+.music-prompt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: pointer;
+    animation: fadeIn 0.3s ease;
+}
+
+.music-prompt-content {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-deep));
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-lg);
+    padding: 2rem 3rem;
+    text-align: center;
+    color: var(--color-gold);
+    font-family: var(--font-accent);
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+    animation: scaleIn 0.3s ease;
+}
+
+.music-prompt-content i {
+    font-size: 3rem;
+    animation: bounce 1s infinite;
+}
+
+@@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 </style>
 
@@ -327,62 +382,46 @@ document.addEventListener('DOMContentLoaded', function() {
     const audio = document.getElementById('backgroundMusic');
     const control = document.getElementById('musicControl');
     const toggle = document.getElementById('musicToggle');
+    const prompt = document.getElementById('musicPrompt');
     
-    // Check if user came from clicking "Explore collections" (has referrer from home page)
-    const fromExplore = sessionStorage.getItem('playMusic') === 'true' || 
-                        document.referrer.includes('/Home') || 
-                        document.referrer.endsWith('/') ||
-                        document.referrer === '';
+    // Check if user came from clicking "Explore collections"
+    const shouldPlayMusic = sessionStorage.getItem('playMusic') === 'true';
     
-    // Show music control
-    control.style.display = 'block';
-    
-    // Try to play music automatically if user came from explore button
-    if (fromExplore) {
-        // Set flag for future page loads within session
-        sessionStorage.setItem('playMusic', 'true');
+    if (shouldPlayMusic) {
+        // Clear the flag so it only plays once per click
+        sessionStorage.removeItem('playMusic');
         
-        // Attempt to play (may be blocked by browser autoplay policy)
+        // Try to play immediately
         const playPromise = audio.play();
         
         if (playPromise !== undefined) {
             playPromise.then(() => {
-                // Autoplay started
-                toggle.classList.add('playing');
-                toggle.innerHTML = '<i class="bi bi-pause-fill"></i>';
+                // Success! Show the pause button
+                control.style.display = 'block';
             }).catch(() => {
-                // Autoplay was prevented - show play button
-                toggle.classList.add('paused');
-                toggle.innerHTML = '<i class="bi bi-play-fill"></i>';
+                // Autoplay blocked - show prompt for one click
+                prompt.style.display = 'flex';
             });
         }
-    } else {
-        toggle.classList.add('paused');
-        toggle.innerHTML = '<i class="bi bi-play-fill"></i>';
     }
     
-    // Toggle music on button click
+    // Click anywhere on prompt to start music
+    prompt.addEventListener('click', function() {
+        audio.play().then(() => {
+            prompt.style.display = 'none';
+            control.style.display = 'block';
+        });
+    });
+    
+    // Toggle button to pause/resume
     toggle.addEventListener('click', function() {
         if (audio.paused) {
             audio.play();
-            toggle.classList.remove('paused');
-            toggle.classList.add('playing');
             toggle.innerHTML = '<i class="bi bi-pause-fill"></i>';
-            sessionStorage.setItem('playMusic', 'true');
         } else {
             audio.pause();
-            toggle.classList.remove('playing');
-            toggle.classList.add('paused');
             toggle.innerHTML = '<i class="bi bi-play-fill"></i>';
-            sessionStorage.setItem('playMusic', 'false');
         }
-    });
-    
-    // Update button state when audio ends (shouldn't happen with loop, but just in case)
-    audio.addEventListener('ended', function() {
-        toggle.classList.remove('playing');
-        toggle.classList.add('paused');
-        toggle.innerHTML = '<i class="bi bi-play-fill"></i>';
     });
 });
 </script>
