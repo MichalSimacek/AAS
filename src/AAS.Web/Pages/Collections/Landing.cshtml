@@ -267,3 +267,122 @@
         </div>
     </section>
 </div>
+
+<!-- Background Music: Vltava by Bedřich Smetana -->
+<div id="musicControl" class="music-control" style="display: none;">
+    <button id="musicToggle" class="music-toggle" title="Toggle Music">
+        <i class="bi bi-music-note-beamed"></i>
+    </button>
+</div>
+
+<audio id="backgroundMusic" loop preload="auto">
+    <source src="https://upload.wikimedia.org/wikipedia/commons/6/61/Vltava_%28The_Moldau%29.ogg" type="audio/ogg">
+</audio>
+
+<style>
+.music-control {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.music-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-deep));
+    border: 2px solid var(--color-gold);
+    color: var(--color-gold);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+}
+
+.music-toggle.playing {
+    animation: pulse-gold 2s infinite;
+}
+
+.music-toggle.paused {
+    opacity: 0.7;
+}
+
+@@keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
+    50% { box-shadow: 0 4px 25px rgba(212, 175, 55, 0.6); }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('backgroundMusic');
+    const control = document.getElementById('musicControl');
+    const toggle = document.getElementById('musicToggle');
+    
+    // Check if user came from clicking "Explore collections" (has referrer from home page)
+    const fromExplore = sessionStorage.getItem('playMusic') === 'true' || 
+                        document.referrer.includes('/Home') || 
+                        document.referrer.endsWith('/') ||
+                        document.referrer === '';
+    
+    // Show music control
+    control.style.display = 'block';
+    
+    // Try to play music automatically if user came from explore button
+    if (fromExplore) {
+        // Set flag for future page loads within session
+        sessionStorage.setItem('playMusic', 'true');
+        
+        // Attempt to play (may be blocked by browser autoplay policy)
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                // Autoplay started
+                toggle.classList.add('playing');
+                toggle.innerHTML = '<i class="bi bi-pause-fill"></i>';
+            }).catch(() => {
+                // Autoplay was prevented - show play button
+                toggle.classList.add('paused');
+                toggle.innerHTML = '<i class="bi bi-play-fill"></i>';
+            });
+        }
+    } else {
+        toggle.classList.add('paused');
+        toggle.innerHTML = '<i class="bi bi-play-fill"></i>';
+    }
+    
+    // Toggle music on button click
+    toggle.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            toggle.classList.remove('paused');
+            toggle.classList.add('playing');
+            toggle.innerHTML = '<i class="bi bi-pause-fill"></i>';
+            sessionStorage.setItem('playMusic', 'true');
+        } else {
+            audio.pause();
+            toggle.classList.remove('playing');
+            toggle.classList.add('paused');
+            toggle.innerHTML = '<i class="bi bi-play-fill"></i>';
+            sessionStorage.setItem('playMusic', 'false');
+        }
+    });
+    
+    // Update button state when audio ends (shouldn't happen with loop, but just in case)
+    audio.addEventListener('ended', function() {
+        toggle.classList.remove('playing');
+        toggle.classList.add('paused');
+        toggle.innerHTML = '<i class="bi bi-play-fill"></i>';
+    });
+});
+</script>
