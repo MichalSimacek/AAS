@@ -320,5 +320,8 @@
 <data name="Privacy Policy" xml:space="preserve"><value>Политика конфиденциальности</value></data>
 
 <data name="Back to Blog" xml:space="preserve"><value>Назад к блогу</value></data>
+  <data name="DecorativeArtsOther" xml:space="preserve">
+    <value>Декоративное искусство и Другое</value>
+  </data>
 </root>
 

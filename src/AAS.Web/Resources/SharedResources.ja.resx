@@ -311,4 +311,7 @@
 <data name="Settings" xml:space="preserve"><value>設定</value></data>
 <data name="Back" xml:space="preserve"><value>戻る</value></data>
 <data name="Back to Blog" xml:space="preserve"><value>ブログに戻る</value></data>
+  <data name="DecorativeArtsOther" xml:space="preserve">
+    <value>装飾芸術・その他</value>
+  </data>
 </root>

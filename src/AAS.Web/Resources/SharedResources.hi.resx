@@ -311,4 +311,7 @@
 <data name="Settings" xml:space="preserve"><value>सेटिंग्स</value></data>
 <data name="Back" xml:space="preserve"><value>वापस</value></data>
 <data name="Back to Blog" xml:space="preserve"><value>ब्लॉग पर वापस जाएं</value></data>
+  <data name="DecorativeArtsOther" xml:space="preserve">
+    <value>सजावटी कला और अन्य</value>
+  </data>
 </root>

@@ -325,4 +325,7 @@
   <data name="Decorative Arts &amp; Other" xml:space="preserve">
     <value>Decorative Arts &amp; Other</value>
   </data>
+  <data name="DecorativeArtsOther" xml:space="preserve">
+    <value>装飾芸術・その他</value>
+  </data>
 </root>
