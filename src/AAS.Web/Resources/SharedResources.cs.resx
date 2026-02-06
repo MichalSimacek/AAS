@@ -365,4 +365,7 @@
 <data name="Save Preferences" xml:space="preserve"><value>Uložit preference</value></data>
 <data name="Back" xml:space="preserve"><value>Zpět</value></data>
 
+  <data name="DecorativeArtsOther" xml:space="preserve">
+    <value>Dekorativní umění &amp; Ostatní</value>
+  </data>
 </root>

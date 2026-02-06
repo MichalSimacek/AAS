@@ -323,4 +323,7 @@
 <data name="Back" xml:space="preserve"><value>Retour</value></data>
 
 <data name="Back to Blog" xml:space="preserve"><value>Retour au Blog</value></data>
+  <data name="DecorativeArtsOther" xml:space="preserve">
+    <value>Arts Décoratifs &amp; Autres</value>
+  </data>
 </root>

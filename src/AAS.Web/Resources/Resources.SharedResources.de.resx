@@ -336,4 +336,7 @@
   <data name="Decorative Arts &amp; Other" xml:space="preserve">
     <value>Decorative Arts &amp; Other</value>
   </data>
+  <data name="DecorativeArtsOther" xml:space="preserve">
+    <value>Dekorative Kunst &amp; Andere</value>
+  </data>
 </root>
