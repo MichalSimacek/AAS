@@ -368,4 +368,9 @@
   <data name="DecorativeArtsOther" xml:space="preserve">
     <value>Dekorativní umění &amp; Ostatní</value>
   </data>
+  <data name="Sort by" xml:space="preserve"><value>Řadit podle</value></data>
+  <data name="Default" xml:space="preserve"><value>Výchozí</value></data>
+  <data name="Price High to Low" xml:space="preserve"><value>Cena: Od nejvyšší</value></data>
+  <data name="Price Low to High" xml:space="preserve"><value>Cena: Od nejnižší</value></data>
+  <data name="In Auction" xml:space="preserve"><value>V aukci</value></data>
 </root>

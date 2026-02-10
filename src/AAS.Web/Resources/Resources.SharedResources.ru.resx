@@ -337,5 +337,10 @@
   <data name="DecorativeArtsOther" xml:space="preserve">
     <value>Декоративное искусство и Другое</value>
   </data>
+  <data name="Sort by" xml:space="preserve"><value>Сортировать по</value></data>
+  <data name="Default" xml:space="preserve"><value>По умолчанию</value></data>
+  <data name="Price High to Low" xml:space="preserve"><value>Цена: По убыванию</value></data>
+  <data name="Price Low to High" xml:space="preserve"><value>Цена: По возрастанию</value></data>
+  <data name="In Auction" xml:space="preserve"><value>На аукционе</value></data>
 </root>
 

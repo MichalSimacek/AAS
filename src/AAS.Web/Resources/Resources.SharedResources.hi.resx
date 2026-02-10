@@ -328,4 +328,9 @@
   <data name="DecorativeArtsOther" xml:space="preserve">
     <value>सजावटी कला और अन्य</value>
   </data>
+  <data name="Sort by" xml:space="preserve"><value>इसके अनुसार क्रमबद्ध करें</value></data>
+  <data name="Default" xml:space="preserve"><value>डिफ़ॉल्ट</value></data>
+  <data name="Price High to Low" xml:space="preserve"><value>कीमत: उच्च से निम्न</value></data>
+  <data name="Price Low to High" xml:space="preserve"><value>कीमत: निम्न से उच्च</value></data>
+  <data name="In Auction" xml:space="preserve"><value>नीलामी में</value></data>
 </root>

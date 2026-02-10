@@ -314,4 +314,9 @@
   <data name="DecorativeArtsOther" xml:space="preserve">
     <value>装飾芸術・その他</value>
   </data>
+  <data name="Sort by" xml:space="preserve"><value>並び替え</value></data>
+  <data name="Default" xml:space="preserve"><value>デフォルト</value></data>
+  <data name="Price High to Low" xml:space="preserve"><value>価格: 高い順</value></data>
+  <data name="Price Low to High" xml:space="preserve"><value>価格: 安い順</value></data>
+  <data name="In Auction" xml:space="preserve"><value>オークション中</value></data>
 </root>

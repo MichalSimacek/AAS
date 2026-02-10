@@ -326,4 +326,9 @@
   <data name="DecorativeArtsOther" xml:space="preserve">
     <value>Arts Décoratifs &amp; Autres</value>
   </data>
+  <data name="Sort by" xml:space="preserve"><value>Trier par</value></data>
+  <data name="Default" xml:space="preserve"><value>Par défaut</value></data>
+  <data name="Price High to Low" xml:space="preserve"><value>Prix: Décroissant</value></data>
+  <data name="Price Low to High" xml:space="preserve"><value>Prix: Croissant</value></data>
+  <data name="In Auction" xml:space="preserve"><value>En Vente aux Enchères</value></data>
 </root>
