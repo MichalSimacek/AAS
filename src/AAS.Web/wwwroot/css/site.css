@@ -1929,3 +1929,95 @@ footer a:hover {
     margin-bottom: 1rem;
   }
 }
+
+/* ===============================
+   SORTING CONTROLS
+   =============================== */
+.sorting-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--color-bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.sorting-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.sorting-label {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sorting-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sort-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.sort-btn:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gold-dim);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.sort-btn.active {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  background: linear-gradient(135deg, rgba(75, 0, 130, 0.3), rgba(212, 175, 55, 0.15));
+  font-weight: 500;
+}
+
+.sort-btn i {
+  font-size: 0.85em;
+}
+
+/* Responsive sorting controls */
+@media (max-width: 768px) {
+  .sorting-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .sorting-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .sorting-buttons {
+    width: 100%;
+  }
+  
+  .sort-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.6rem 0.75rem;
+    font-size: var(--text-xs);
+  }
+}
