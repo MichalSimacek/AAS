@@ -4,6 +4,7 @@ using AAS.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace AAS.Web.Controllers
 {
@@ -12,7 +13,20 @@ namespace AAS.Web.Controllers
         private readonly AppDbContext _db; private readonly TranslationService _tr;
         public CollectionsController(AppDbContext db, TranslationService tr) { _db = db; _tr = tr; }
 
-        public async Task<IActionResult> Index(CollectionCategory? category, int page = 1)
+        // Helper to extract numeric price from string (e.g., "15,000" -> 15000, "Price on request" -> 0)
+        private static decimal ParsePrice(string? price)
+        {
+            if (string.IsNullOrWhiteSpace(price)) return 0;
+            // Remove all non-numeric characters except decimal point and comma
+            var numericString = Regex.Replace(price, @"[^\d.,]", "");
+            // Replace comma with dot for parsing
+            numericString = numericString.Replace(",", "");
+            if (decimal.TryParse(numericString, NumberStyles.Any, CultureInfo.InvariantCulture, out var result))
+                return result;
+            return 0;
+        }
+
+        public async Task<IActionResult> Index(CollectionCategory? category, string? sort, string? status, int page = 1)
         {
             const int pageSize = 12;
 
@@ -24,18 +38,51 @@ namespace AAS.Web.Controllers
             if (category.HasValue)
                 q = q.Where(c => c.Category == category);
 
+            // Filter by status if specified
+            if (!string.IsNullOrEmpty(status) && Enum.TryParse<CollectionStatus>(status, out var statusFilter))
+                q = q.Where(c => c.Status == statusFilter);
+
             // Get total count for pagination
             var totalCount = await q.CountAsync();
             var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
 
-            // Order by status: Available (0) → InAuction (1) → Sold (2), then by CreatedUtc descending
-            var collections = await q
-                .OrderBy(c => c.Status)
-                .ThenByDescending(c => c.CreatedUtc)
+            // Load all matching collections for sorting (we need to sort by parsed price in memory)
+            var allCollections = await q.AsNoTracking().ToListAsync();
+
+            // Apply sorting - default: Available first, then by price descending
+            IEnumerable<Collection> sortedCollections = sort switch
+            {
+                "price_asc" => allCollections
+                    .OrderBy(c => c.Status)
+                    .ThenBy(c => ParsePrice(c.Price)),
+                "price_desc" => allCollections
+                    .OrderBy(c => c.Status)
+                    .ThenByDescending(c => ParsePrice(c.Price)),
+                "status_available" => allCollections
+                    .Where(c => c.Status == CollectionStatus.Available)
+                    .OrderByDescending(c => ParsePrice(c.Price))
+                    .Concat(allCollections.Where(c => c.Status != CollectionStatus.Available)
+                        .OrderBy(c => c.Status).ThenByDescending(c => ParsePrice(c.Price))),
+                "status_sold" => allCollections
+                    .Where(c => c.Status == CollectionStatus.Sold)
+                    .OrderByDescending(c => ParsePrice(c.Price))
+                    .Concat(allCollections.Where(c => c.Status != CollectionStatus.Sold)
+                        .OrderBy(c => c.Status).ThenByDescending(c => ParsePrice(c.Price))),
+                "status_auction" => allCollections
+                    .Where(c => c.Status == CollectionStatus.InAuction)
+                    .OrderByDescending(c => ParsePrice(c.Price))
+                    .Concat(allCollections.Where(c => c.Status != CollectionStatus.InAuction)
+                        .OrderBy(c => c.Status).ThenByDescending(c => ParsePrice(c.Price))),
+                _ => allCollections // Default: Available first, price descending
+                    .OrderBy(c => c.Status)
+                    .ThenByDescending(c => ParsePrice(c.Price))
+            };
+
+            // Apply pagination
+            var collections = sortedCollections
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
-                .AsNoTracking()
-                .ToListAsync();
+                .ToList();
 
             // Load pre-translated titles from database
             // Original collection titles are in Czech (cs), so we need translations for ALL other languages
