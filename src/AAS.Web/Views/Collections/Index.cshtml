@@ -2,6 +2,20 @@
 @using AAS.Web.Models
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
+@{
+    var currentSort = ViewBag.Sort?.ToString() ?? "default";
+    var currentCategory = ViewBag.Category?.ToString();
+    var currentStatus = ViewBag.StatusFilter?.ToString();
+    
+    string BuildUrl(string? sort = null, string? status = null) {
+        var parts = new List<string>();
+        if (!string.IsNullOrEmpty(currentCategory)) parts.Add($"category={currentCategory}");
+        if (!string.IsNullOrEmpty(sort ?? currentSort) && (sort ?? currentSort) != "default") parts.Add($"sort={sort ?? currentSort}");
+        if (!string.IsNullOrEmpty(status ?? currentStatus)) parts.Add($"status={status ?? currentStatus}");
+        return "/Collections" + (parts.Any() ? "?" + string.Join("&", parts) : "");
+    }
+}
+
 <!-- Collections Page -->
 <section class="section">
   <div class="container">
@@ -15,13 +29,48 @@
     </div>
 
     <!-- Category Filter -->
-    <div class="category-filter justify-content-center mb-5">
+    <div class="category-filter justify-content-center mb-4">
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Paintings" ? "active" : "")" href="/Collections?category=Paintings">@L["Paintings"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Jewelry" ? "active" : "")" href="/Collections?category=Jewelry">@L["Jewelry"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Watches" ? "active" : "")" href="/Collections?category=Watches">@L["Watches"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Statues" ? "active" : "")" href="/Collections?category=Statues">@L["Statues"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "GoldSilver" ? "active" : "")" href="/Collections?category=GoldSilver">@L["GoldSilver"]</a>
       <a class="btn btn-sm @(ViewBag.Category?.ToString() == "Other" ? "active" : "")" href="/Collections?category=Other">@L["DecorativeArtsOther"]</a>
+    </div>
+
+    <!-- Sorting & Filter Controls -->
+    <div class="sorting-controls mb-5">
+      <div class="sorting-group">
+        <span class="sorting-label"><i class="bi bi-sort-down me-2"></i>@L["Sort by"]:</span>
+        <div class="sorting-buttons">
+          <a href="@BuildUrl(sort: "default")" class="sort-btn @(currentSort == "default" ? "active" : "")" data-testid="sort-default">
+            <i class="bi bi-star me-1"></i>@L["Default"]
+          </a>
+          <a href="@BuildUrl(sort: "price_desc")" class="sort-btn @(currentSort == "price_desc" ? "active" : "")" data-testid="sort-price-desc">
+            <i class="bi bi-arrow-down me-1"></i>@L["Price High to Low"]
+          </a>
+          <a href="@BuildUrl(sort: "price_asc")" class="sort-btn @(currentSort == "price_asc" ? "active" : "")" data-testid="sort-price-asc">
+            <i class="bi bi-arrow-up me-1"></i>@L["Price Low to High"]
+          </a>
+        </div>
+      </div>
+      <div class="sorting-group">
+        <span class="sorting-label"><i class="bi bi-funnel me-2"></i>@L["Status"]:</span>
+        <div class="sorting-buttons">
+          <a href="@BuildUrl(status: "")" class="sort-btn @(string.IsNullOrEmpty(currentStatus) ? "active" : "")" data-testid="filter-all">
+            @L["All"]
+          </a>
+          <a href="@BuildUrl(status: "Available")" class="sort-btn @(currentStatus == "Available" ? "active" : "")" data-testid="filter-available">
+            <i class="bi bi-check-circle me-1"></i>@L["Available"]
+          </a>
+          <a href="@BuildUrl(status: "InAuction")" class="sort-btn @(currentStatus == "InAuction" ? "active" : "")" data-testid="filter-auction">
+            <i class="bi bi-hammer me-1"></i>@L["In Auction"]
+          </a>
+          <a href="@BuildUrl(status: "Sold")" class="sort-btn @(currentStatus == "Sold" ? "active" : "")" data-testid="filter-sold">
+            <i class="bi bi-bag-check me-1"></i>@L["Sold"]
+          </a>
+        </div>
+      </div>
     </div>
 
     @if (!Model.Any())
