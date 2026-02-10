@@ -138,6 +138,8 @@ namespace AAS.Web.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = totalPages;
             ViewBag.TotalCount = totalCount;
+            ViewBag.Sort = sort ?? "default";
+            ViewBag.StatusFilter = status;
             return View(collections);
         }
 
