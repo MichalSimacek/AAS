@@ -333,4 +333,134 @@
   <data name="Price High to Low" xml:space="preserve"><value>价格: 从高到低</value></data>
   <data name="Price Low to High" xml:space="preserve"><value>价格: 从低到高</value></data>
   <data name="In Auction" xml:space="preserve"><value>拍卖中</value></data>
+
+<!-- Auto-added missing translations -->
+<data name="Navigation" xml:space="preserve"><value>导航</value></data>
+<data name="About us" xml:space="preserve"><value>关于我们</value></data>
+<data name="Browse" xml:space="preserve"><value>浏览</value></data>
+<data name="Browse Collections" xml:space="preserve"><value>浏览藏品</value></data>
+<data name="Browse our curated selection of luxury artwork and collectibles" xml:space="preserve"><value>浏览我们精心挑选的奢华艺术品和收藏品</value></data>
+<data name="ViewAllCollections" xml:space="preserve"><value>查看所有藏品</value></data>
+<data name="Discover" xml:space="preserve"><value>发现</value></data>
+<data name="Discover Our Collections" xml:space="preserve"><value>探索我们的藏品</value></data>
+<data name="Featured" xml:space="preserve"><value>精选</value></data>
+<data name="Latest Additions" xml:space="preserve"><value>最新添加</value></data>
+<data name="Explore our newest acquisitions from each category" xml:space="preserve"><value>探索我们每个类别中的最新收藏</value></data>
+<data name="View All" xml:space="preserve"><value>查看全部</value></data>
+<data name="Explore More" xml:space="preserve"><value>探索更多</value></data>
+<data name="Verified" xml:space="preserve"><value>已验证</value></data>
+<data name="Reach Out" xml:space="preserve"><value>联系我们</value></data>
+<data name="Send Us a Message" xml:space="preserve"><value>给我们发送消息</value></data>
+<data name="Send Message" xml:space="preserve"><value>发送消息</value></data>
+<data name="Your Name" xml:space="preserve"><value>您的姓名</value></data>
+<data name="Enter your name" xml:space="preserve"><value>输入您的姓名</value></data>
+<data name="Enter your email" xml:space="preserve"><value>输入您的电子邮件</value></data>
+<data name="Subject" xml:space="preserve"><value>主题</value></data>
+<data name="What is this about?" xml:space="preserve"><value>这是关于什么的？</value></data>
+<data name="Tell us about your inquiry..." xml:space="preserve"><value>告诉我们您的询问...</value></data>
+<data name="Tell us about your interest..." xml:space="preserve"><value>告诉我们您的兴趣...</value></data>
+<data name="Get In Touch" xml:space="preserve"><value>联系我们</value></data>
+<data name="Get in Touch" xml:space="preserve"><value>联系我们</value></data>
+<data name="Follow Us" xml:space="preserve"><value>关注我们</value></data>
+<data name="Ready to Begin?" xml:space="preserve"><value>准备开始？</value></data>
+<data name="Ready to Start?" xml:space="preserve"><value>准备开始？</value></data>
+<data name="Start Your Journey With Us" xml:space="preserve"><value>与我们开启您的旅程</value></data>
+<data name="Begin Your Journey Today" xml:space="preserve"><value>今天就开启您的旅程</value></data>
+<data name="Featured Image" xml:space="preserve"><value>特色图片</value></data>
+<data name="Current Featured Image" xml:space="preserve"><value>当前特色图片</value></data>
+<data name="Optional: Leave empty to keep current image" xml:space="preserve"><value>可选：留空以保留当前图片</value></data>
+<data name="Optional: Main image for the blog post" xml:space="preserve"><value>可选：博客文章的主图片</value></data>
+<data name="Blog Title" xml:space="preserve"><value>博客标题</value></data>
+<data name="Blog Content" xml:space="preserve"><value>博客内容</value></data>
+<data name="Create Blog Post" xml:space="preserve"><value>创建博客文章</value></data>
+<data name="Edit Blog Post" xml:space="preserve"><value>编辑博客文章</value></data>
+<data name="Delete Blog Post" xml:space="preserve"><value>删除博客文章</value></data>
+<data name="Are you sure you want to delete this blog post?" xml:space="preserve"><value>您确定要删除此博客文章吗？</value></data>
+<data name="Are you sure?" xml:space="preserve"><value>您确定吗？</value></data>
+<data name="Confirm Deletion" xml:space="preserve"><value>确认删除</value></data>
+<data name="Draft" xml:space="preserve"><value>草稿</value></data>
+<data name="Published" xml:space="preserve"><value>已发布</value></data>
+<data name="Read More" xml:space="preserve"><value>阅读更多</value></data>
+<data name="New Post" xml:space="preserve"><value>新文章</value></data>
+<data name="No blog posts available" xml:space="preserve"><value>暂无博客文章</value></data>
+<data name="Check back soon for news and insights" xml:space="preserve"><value>请稍后返回查看新闻和见解</value></data>
+<data name="Comments" xml:space="preserve"><value>评论</value></data>
+<data name="Add Comment" xml:space="preserve"><value>添加评论</value></data>
+<data name="Submit Comment" xml:space="preserve"><value>提交评论</value></data>
+<data name="Edit Comment" xml:space="preserve"><value>编辑评论</value></data>
+<data name="Delete Comment" xml:space="preserve"><value>删除评论</value></data>
+<data name="Your Comment" xml:space="preserve"><value>您的评论</value></data>
+<data name="Write your comment..." xml:space="preserve"><value>写下您的评论...</value></data>
+<data name="Write your comment here..." xml:space="preserve"><value>在此处写下您的评论...</value></data>
+<data name="Edit your comment:" xml:space="preserve"><value>编辑您的评论：</value></data>
+<data name="edited" xml:space="preserve"><value>已编辑</value></data>
+<data name="No comments yet. Be the first to comment!" xml:space="preserve"><value>暂无评论。成为第一个评论的人吧！</value></data>
+<data name="to leave a comment" xml:space="preserve"><value>发表评论</value></data>
+<data name="Sign in" xml:space="preserve"><value>登录</value></data>
+<data name="Are you sure you want to delete this comment?" xml:space="preserve"><value>您确定要删除这条评论吗？</value></data>
+<data name="Do you really want to delete this comment?" xml:space="preserve"><value>您真的要删除这条评论吗？</value></data>
+<data name="Comment cannot be empty" xml:space="preserve"><value>评论不能为空</value></data>
+<data name="Comment is too long (max 2000 characters)" xml:space="preserve"><value>评论过长（最多2000个字符）</value></data>
+<data name="Maximum 2000 characters" xml:space="preserve"><value>最多2000个字符</value></data>
+<data name="Failed to load comments" xml:space="preserve"><value>加载评论失败</value></data>
+<data name="Failed to post comment. Please try again." xml:space="preserve"><value>发布评论失败。请重试。</value></data>
+<data name="Failed to update comment. Please try again." xml:space="preserve"><value>更新评论失败。请重试。</value></data>
+<data name="Failed to delete comment. Please try again." xml:space="preserve"><value>删除评论失败。请重试。</value></data>
+<data name="Updated" xml:space="preserve"><value>已更新</value></data>
+<data name="Save Changes" xml:space="preserve"><value>保存更改</value></data>
+<data name="Saving..." xml:space="preserve"><value>保存中...</value></data>
+<data name="Deleting..." xml:space="preserve"><value>删除中...</value></data>
+<data name="Uncheck to save as draft" xml:space="preserve"><value>取消选中以另存为草稿</value></data>
+<data name="Create" xml:space="preserve"><value>创建</value></data>
+<data name="Changes will be automatically translated using DeepL" xml:space="preserve"><value>更改将使用DeepL自动翻译</value></data>
+<data name="Content will be automatically translated to all supported languages" xml:space="preserve"><value>内容将自动翻译为所有支持的语言</value></data>
+<data name="Content will be automatically re-translated to all supported languages" xml:space="preserve"><value>内容将自动重新翻译为所有支持的语言</value></data>
+<data name="Other languages will be translated automatically using DeepL" xml:space="preserve"><value>其他语言将使用DeepL自动翻译</value></data>
+<data name="Content not available in the selected language. Please try switching to Czech." xml:space="preserve"><value>所选语言中没有内容。请尝试切换到捷克语。</value></data>
+<data name="Link copied to clipboard!" xml:space="preserve"><value>链接已复制到剪贴板！</value></data>
+<data name="Share this collection" xml:space="preserve"><value>分享此收藏</value></data>
+<data name="AASVerified" xml:space="preserve"><value>AAS 已认证</value></data>
+<data name="AASVerifiedBadge" xml:space="preserve"><value>AAS 已认证</value></data>
+<data name="AASVerifiedTooltip" xml:space="preserve"><value>由 Aristocratic Artwork Sale 专家验证真实性和来源</value></data>
+<data name="AASVerifiedExplanation" xml:space="preserve"><value>AAS 认证商品经过我们的专家策展人团队严格验证，保证真实性、来源和质量。</value></data>
+<data name="How To" xml:space="preserve"><value>如何操作</value></data>
+<data name="How to Buy" xml:space="preserve"><value>如何购买</value></data>
+<data name="How to Sell" xml:space="preserve"><value>如何出售</value></data>
+<data name="Buying Process" xml:space="preserve"><value>购买流程</value></data>
+<data name="Selling Process" xml:space="preserve"><value>销售流程</value></data>
+<data name="Step" xml:space="preserve"><value>步骤</value></data>
+<data name="How It Works" xml:space="preserve"><value>运作方式</value></data>
+<data name="Guide" xml:space="preserve"><value>指南</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>美术与绘画</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>来自知名艺术家和新兴人才的精选画作</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>雕塑与雕像</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>为尊贵收藏家提供的古典与当代雕塑</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>古董与收藏品</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>具有丰富历史的稀有古董和独特收藏品</value></data>
+<data name="Expert valuations and sales of decorative art pieces" xml:space="preserve"><value>装饰艺术作品的专业评估和销售</value></data>
+<data name="Essential Cookies" xml:space="preserve"><value>必要的Cookie</value></data>
+<data name="Analytics Cookies" xml:space="preserve"><value>分析Cookie</value></data>
+<data name="Marketing Cookies" xml:space="preserve"><value>营销Cookie</value></data>
+<data name="Cookie Preferences" xml:space="preserve"><value>Cookie 偏好</value></data>
+<data name="Save Preferences" xml:space="preserve"><value>保存偏好</value></data>
+<data name="Privacy Policy" xml:space="preserve"><value>隐私政策</value></data>
+<data name="How Google uses data" xml:space="preserve"><value>Google 如何使用数据</value></data>
+<data name="These cookies are necessary for the website to function and cannot be switched off." xml:space="preserve"><value>这些Cookie对网站运行是必需的，无法关闭。</value></data>
+<data name="These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously." xml:space="preserve"><value>这些Cookie通过匿名收集和报告信息，帮助我们了解访问者如何与网站互动。</value></data>
+<data name="These cookies are used to make advertising messages more relevant to you and your interests." xml:space="preserve"><value>这些Cookie用于使广告信息更符合您的兴趣。</value></data>
+<data name="We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies." xml:space="preserve"><value>我们使用Cookie和类似技术来改善您的浏览体验、分析网站流量并了解访问者的来源。点击『全部接受』即表示您同意我们使用Cookie。</value></data>
+<data name="Authentication" xml:space="preserve"><value>身份验证</value></data>
+<data name="Manage Account" xml:space="preserve"><value>管理账户</value></data>
+<data name="ContactUs" xml:space="preserve"><value>联系我们</value></data>
+<data name="Have Questions?" xml:space="preserve"><value>有疑问？</value></data>
+<data name="Our team of experts is ready to assist you with any inquiries" xml:space="preserve"><value>我们的专家团队随时准备回答您的任何询问</value></data>
+<data name="Fill out the form below and our specialist will contact you within 24 hours." xml:space="preserve"><value>填写下面的表格，我们的专家将在24小时内与您联系。</value></data>
+<data name="News &amp; Insights" xml:space="preserve"><value>新闻与见解</value></data>
+<data name="Stay informed about the world of luxury collectibles and fine art" xml:space="preserve"><value>了解奢华收藏品和美术界的最新动态</value></data>
+<data name="Our Story" xml:space="preserve"><value>我们的故事</value></data>
+<data name="Our Promise" xml:space="preserve"><value>我们的承诺</value></data>
+<data name="What We Offer" xml:space="preserve"><value>我们提供什么</value></data>
+<data name="Client Rating" xml:space="preserve"><value>客户评分</value></data>
+<data name="Years Experience" xml:space="preserve"><value>年经验</value></data>
+<data name="Items Sold" xml:space="preserve"><value>已售商品</value></data>
 </root>

@@ -245,7 +245,7 @@
                             <th style="width: 150px;">Price</th>
                             <th style="width: 100px;">Images</th>
                             <th style="width: 120px;">Created</th>
-                            <th style="width: 180px; text-align: right;">Actions</th>
+                            <th style="width: 220px; text-align: right;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -255,7 +255,7 @@
                             var imageCounts = ViewBag.ImageCounts as Dictionary<int, int> ?? new Dictionary<int, int>();
                             var imageCount = imageCounts.ContainsKey(collection.Id) ? imageCounts[collection.Id] : 0;
                             
-                            <tr class="collection-row">
+                            <tr class="collection-row @(collection.IsHidden ? "collection-hidden" : "")">
                                 <td>
                                     @if (firstImage != null)
                                     {
@@ -276,7 +276,15 @@
                                 </td>
                                 <td>
                                     <div class="collection-info">
-                                        <h5 class="collection-name">@collection.Title</h5>
+                                        <h5 class="collection-name">
+                                            @collection.Title
+                                            @if (collection.IsHidden)
+                                            {
+                                                <span class="badge-hidden" title="Hidden from public site">
+                                                    <i class="bi bi-eye-slash-fill"></i> Hidden
+                                                </span>
+                                            }
+                                        </h5>
                                         <div class="collection-badges">
                                             <span class="badge-category">@collection.Category</span>
                                             @if (collection.AASVerified)
@@ -347,6 +355,15 @@
                                            title="Edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
+                                        <form method="post" action="/Admin/Collections/ToggleVisibility/@collection.Id" style="display: inline; margin: 0;">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit"
+                                                    class="btn-action @(collection.IsHidden ? "btn-show" : "btn-hide")"
+                                                    title="@(collection.IsHidden ? "Show on public site" : "Hide from public site")"
+                                                    data-testid="toggle-visibility-@collection.Id">
+                                                <i class="bi @(collection.IsHidden ? "bi-eye-fill" : "bi-eye-slash")"></i>
+                                            </button>
+                                        </form>
                                         <button type="button" 
                                                 class="btn-action btn-delete delete-btn" 
                                                 data-id="@collection.Id" 
@@ -611,6 +628,49 @@
     background: #FCE4EC;
     border-color: #C2185B;
     color: #C2185B;
+}
+
+.btn-hide:hover {
+    background: #E0E0E0;
+    border-color: #616161;
+    color: #212121;
+}
+
+.btn-show {
+    background: #FFFDE7;
+    border-color: #F9A825;
+    color: #F9A825;
+}
+
+.btn-show:hover {
+    background: #FFF59D;
+    border-color: #F57F17;
+    color: #F57F17;
+}
+
+.collection-row.collection-hidden {
+    background: repeating-linear-gradient(45deg, #FAFAFA, #FAFAFA 12px, #F5F5F5 12px, #F5F5F5 24px);
+    opacity: 0.75;
+}
+
+.collection-row.collection-hidden .collection-name {
+    color: #757575;
+}
+
+.badge-hidden {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    background: #424242;
+    color: #FFFDE7;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-left: 8px;
+    vertical-align: middle;
 }
 
 @@media (max-width: 1200px) {

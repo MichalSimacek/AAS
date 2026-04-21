@@ -333,4 +333,134 @@
   <data name="Price High to Low" xml:space="preserve"><value>価格: 高い順</value></data>
   <data name="Price Low to High" xml:space="preserve"><value>価格: 安い順</value></data>
   <data name="In Auction" xml:space="preserve"><value>オークション中</value></data>
+
+<!-- Auto-added missing translations -->
+<data name="Navigation" xml:space="preserve"><value>ナビゲーション</value></data>
+<data name="About us" xml:space="preserve"><value>私たちについて</value></data>
+<data name="Browse" xml:space="preserve"><value>閲覧</value></data>
+<data name="Browse Collections" xml:space="preserve"><value>コレクションを見る</value></data>
+<data name="Browse our curated selection of luxury artwork and collectibles" xml:space="preserve"><value>厳選された高級アート作品とコレクション品をご覧ください</value></data>
+<data name="ViewAllCollections" xml:space="preserve"><value>すべてのコレクションを見る</value></data>
+<data name="Discover" xml:space="preserve"><value>発見する</value></data>
+<data name="Discover Our Collections" xml:space="preserve"><value>私たちのコレクションを発見</value></data>
+<data name="Featured" xml:space="preserve"><value>注目</value></data>
+<data name="Latest Additions" xml:space="preserve"><value>最新の追加</value></data>
+<data name="Explore our newest acquisitions from each category" xml:space="preserve"><value>各カテゴリーの最新の取得品をご覧ください</value></data>
+<data name="View All" xml:space="preserve"><value>すべて表示</value></data>
+<data name="Explore More" xml:space="preserve"><value>もっと見る</value></data>
+<data name="Verified" xml:space="preserve"><value>認証済み</value></data>
+<data name="Reach Out" xml:space="preserve"><value>お問い合わせ</value></data>
+<data name="Send Us a Message" xml:space="preserve"><value>メッセージを送る</value></data>
+<data name="Send Message" xml:space="preserve"><value>メッセージを送信</value></data>
+<data name="Your Name" xml:space="preserve"><value>お名前</value></data>
+<data name="Enter your name" xml:space="preserve"><value>お名前を入力</value></data>
+<data name="Enter your email" xml:space="preserve"><value>メールアドレスを入力</value></data>
+<data name="Subject" xml:space="preserve"><value>件名</value></data>
+<data name="What is this about?" xml:space="preserve"><value>内容について</value></data>
+<data name="Tell us about your inquiry..." xml:space="preserve"><value>お問い合わせ内容をお知らせください...</value></data>
+<data name="Tell us about your interest..." xml:space="preserve"><value>ご興味についてお知らせください...</value></data>
+<data name="Get In Touch" xml:space="preserve"><value>お問い合わせ</value></data>
+<data name="Get in Touch" xml:space="preserve"><value>お問い合わせ</value></data>
+<data name="Follow Us" xml:space="preserve"><value>フォローする</value></data>
+<data name="Ready to Begin?" xml:space="preserve"><value>始める準備はできましたか？</value></data>
+<data name="Ready to Start?" xml:space="preserve"><value>開始の準備はできましたか？</value></data>
+<data name="Start Your Journey With Us" xml:space="preserve"><value>私たちと一緒に旅を始めましょう</value></data>
+<data name="Begin Your Journey Today" xml:space="preserve"><value>今日から旅を始めよう</value></data>
+<data name="Featured Image" xml:space="preserve"><value>注目の画像</value></data>
+<data name="Current Featured Image" xml:space="preserve"><value>現在の注目画像</value></data>
+<data name="Optional: Leave empty to keep current image" xml:space="preserve"><value>オプション：現在の画像を保持するには空のままにしてください</value></data>
+<data name="Optional: Main image for the blog post" xml:space="preserve"><value>オプション：ブログ投稿のメイン画像</value></data>
+<data name="Blog Title" xml:space="preserve"><value>ブログタイトル</value></data>
+<data name="Blog Content" xml:space="preserve"><value>ブログ内容</value></data>
+<data name="Create Blog Post" xml:space="preserve"><value>ブログ投稿を作成</value></data>
+<data name="Edit Blog Post" xml:space="preserve"><value>ブログ投稿を編集</value></data>
+<data name="Delete Blog Post" xml:space="preserve"><value>ブログ投稿を削除</value></data>
+<data name="Are you sure you want to delete this blog post?" xml:space="preserve"><value>このブログ投稿を本当に削除しますか？</value></data>
+<data name="Are you sure?" xml:space="preserve"><value>よろしいですか？</value></data>
+<data name="Confirm Deletion" xml:space="preserve"><value>削除を確認</value></data>
+<data name="Draft" xml:space="preserve"><value>下書き</value></data>
+<data name="Published" xml:space="preserve"><value>公開済み</value></data>
+<data name="Read More" xml:space="preserve"><value>続きを読む</value></data>
+<data name="New Post" xml:space="preserve"><value>新しい投稿</value></data>
+<data name="No blog posts available" xml:space="preserve"><value>ブログ投稿はありません</value></data>
+<data name="Check back soon for news and insights" xml:space="preserve"><value>ニュースや洞察のためにすぐに戻ってきてください</value></data>
+<data name="Comments" xml:space="preserve"><value>コメント</value></data>
+<data name="Add Comment" xml:space="preserve"><value>コメントを追加</value></data>
+<data name="Submit Comment" xml:space="preserve"><value>コメントを投稿</value></data>
+<data name="Edit Comment" xml:space="preserve"><value>コメントを編集</value></data>
+<data name="Delete Comment" xml:space="preserve"><value>コメントを削除</value></data>
+<data name="Your Comment" xml:space="preserve"><value>あなたのコメント</value></data>
+<data name="Write your comment..." xml:space="preserve"><value>コメントを書いてください...</value></data>
+<data name="Write your comment here..." xml:space="preserve"><value>ここにコメントを書いてください...</value></data>
+<data name="Edit your comment:" xml:space="preserve"><value>コメントを編集してください：</value></data>
+<data name="edited" xml:space="preserve"><value>編集済み</value></data>
+<data name="No comments yet. Be the first to comment!" xml:space="preserve"><value>まだコメントはありません。最初のコメントを投稿してください！</value></data>
+<data name="to leave a comment" xml:space="preserve"><value>コメントを残すには</value></data>
+<data name="Sign in" xml:space="preserve"><value>サインイン</value></data>
+<data name="Are you sure you want to delete this comment?" xml:space="preserve"><value>このコメントを本当に削除しますか？</value></data>
+<data name="Do you really want to delete this comment?" xml:space="preserve"><value>本当にこのコメントを削除しますか？</value></data>
+<data name="Comment cannot be empty" xml:space="preserve"><value>コメントは空にできません</value></data>
+<data name="Comment is too long (max 2000 characters)" xml:space="preserve"><value>コメントが長すぎます（最大2000文字）</value></data>
+<data name="Maximum 2000 characters" xml:space="preserve"><value>最大2000文字</value></data>
+<data name="Failed to load comments" xml:space="preserve"><value>コメントの読み込みに失敗</value></data>
+<data name="Failed to post comment. Please try again." xml:space="preserve"><value>コメントの投稿に失敗しました。もう一度お試しください。</value></data>
+<data name="Failed to update comment. Please try again." xml:space="preserve"><value>コメントの更新に失敗しました。</value></data>
+<data name="Failed to delete comment. Please try again." xml:space="preserve"><value>コメントの削除に失敗しました。</value></data>
+<data name="Updated" xml:space="preserve"><value>更新済み</value></data>
+<data name="Save Changes" xml:space="preserve"><value>変更を保存</value></data>
+<data name="Saving..." xml:space="preserve"><value>保存中...</value></data>
+<data name="Deleting..." xml:space="preserve"><value>削除中...</value></data>
+<data name="Uncheck to save as draft" xml:space="preserve"><value>下書きとして保存するにはチェックを外します</value></data>
+<data name="Create" xml:space="preserve"><value>作成</value></data>
+<data name="Changes will be automatically translated using DeepL" xml:space="preserve"><value>変更はDeepLで自動翻訳されます</value></data>
+<data name="Content will be automatically translated to all supported languages" xml:space="preserve"><value>コンテンツは対応するすべての言語に自動翻訳されます</value></data>
+<data name="Content will be automatically re-translated to all supported languages" xml:space="preserve"><value>コンテンツは対応するすべての言語に自動的に再翻訳されます</value></data>
+<data name="Other languages will be translated automatically using DeepL" xml:space="preserve"><value>他の言語はDeepLで自動翻訳されます</value></data>
+<data name="Content not available in the selected language. Please try switching to Czech." xml:space="preserve"><value>選択された言語でコンテンツが利用できません。チェコ語に切り替えてください。</value></data>
+<data name="Link copied to clipboard!" xml:space="preserve"><value>リンクをクリップボードにコピーしました！</value></data>
+<data name="Share this collection" xml:space="preserve"><value>このコレクションを共有</value></data>
+<data name="AASVerified" xml:space="preserve"><value>AAS認証済み</value></data>
+<data name="AASVerifiedBadge" xml:space="preserve"><value>AAS認証済み</value></data>
+<data name="AASVerifiedTooltip" xml:space="preserve"><value>AAS専門家による真正性と来歴の検証済み</value></data>
+<data name="AASVerifiedExplanation" xml:space="preserve"><value>AAS認証済みの商品は、当社の専門キュレーターチームによる厳格な認証を経ており、真正性、来歴、品質が保証されています。</value></data>
+<data name="How To" xml:space="preserve"><value>使い方</value></data>
+<data name="How to Buy" xml:space="preserve"><value>購入方法</value></data>
+<data name="How to Sell" xml:space="preserve"><value>販売方法</value></data>
+<data name="Buying Process" xml:space="preserve"><value>購入プロセス</value></data>
+<data name="Selling Process" xml:space="preserve"><value>販売プロセス</value></data>
+<data name="Step" xml:space="preserve"><value>ステップ</value></data>
+<data name="How It Works" xml:space="preserve"><value>仕組み</value></data>
+<data name="Guide" xml:space="preserve"><value>ガイド</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>ファインアートと絵画</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>著名アーティストと新進気鋭の才能による厳選された絵画</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>彫刻と像</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>洗練されたコレクターのためのクラシックおよび現代彫刻</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>アンティークとコレクティブル</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>豊かな歴史を持つ珍しいアンティークとユニークなコレクティブル</value></data>
+<data name="Expert valuations and sales of decorative art pieces" xml:space="preserve"><value>装飾美術品の専門的な評価と販売</value></data>
+<data name="Essential Cookies" xml:space="preserve"><value>必須クッキー</value></data>
+<data name="Analytics Cookies" xml:space="preserve"><value>分析クッキー</value></data>
+<data name="Marketing Cookies" xml:space="preserve"><value>マーケティングクッキー</value></data>
+<data name="Cookie Preferences" xml:space="preserve"><value>クッキー設定</value></data>
+<data name="Save Preferences" xml:space="preserve"><value>設定を保存</value></data>
+<data name="Privacy Policy" xml:space="preserve"><value>プライバシーポリシー</value></data>
+<data name="How Google uses data" xml:space="preserve"><value>Googleのデータの使用方法</value></data>
+<data name="These cookies are necessary for the website to function and cannot be switched off." xml:space="preserve"><value>これらのクッキーはウェブサイトの機能に必要であり、無効にできません。</value></data>
+<data name="These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously." xml:space="preserve"><value>これらのクッキーは、訪問者がウェブサイトとどのようにやり取りしているかを匿名で収集することで理解するのに役立ちます。</value></data>
+<data name="These cookies are used to make advertising messages more relevant to you and your interests." xml:space="preserve"><value>これらのクッキーは、広告メッセージをお客様の興味に関連したものにするために使用されます。</value></data>
+<data name="We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies." xml:space="preserve"><value>当ウェブサイトでは、閲覧体験の向上、トラフィックの分析、訪問者の動向を理解するためにクッキーや類似技術を使用しています。「すべて受け入れる」をクリックすると、クッキーの使用に同意したことになります。</value></data>
+<data name="Authentication" xml:space="preserve"><value>認証</value></data>
+<data name="Manage Account" xml:space="preserve"><value>アカウント管理</value></data>
+<data name="ContactUs" xml:space="preserve"><value>お問い合わせ</value></data>
+<data name="Have Questions?" xml:space="preserve"><value>ご質問は？</value></data>
+<data name="Our team of experts is ready to assist you with any inquiries" xml:space="preserve"><value>弊社の専門チームがあらゆるお問い合わせに対応いたします</value></data>
+<data name="Fill out the form below and our specialist will contact you within 24 hours." xml:space="preserve"><value>以下のフォームにご記入ください。専門スタッフより24時間以内にご連絡いたします。</value></data>
+<data name="News &amp; Insights" xml:space="preserve"><value>ニュースと洞察</value></data>
+<data name="Stay informed about the world of luxury collectibles and fine art" xml:space="preserve"><value>高級コレクティブルとファインアートの世界について常に最新情報を入手</value></data>
+<data name="Our Story" xml:space="preserve"><value>私たちの物語</value></data>
+<data name="Our Promise" xml:space="preserve"><value>私たちの約束</value></data>
+<data name="What We Offer" xml:space="preserve"><value>私たちの提供内容</value></data>
+<data name="Client Rating" xml:space="preserve"><value>顧客評価</value></data>
+<data name="Years Experience" xml:space="preserve"><value>年の経験</value></data>
+<data name="Items Sold" xml:space="preserve"><value>販売商品</value></data>
 </root>

@@ -333,4 +333,134 @@
   <data name="Price High to Low" xml:space="preserve"><value>कीमत: उच्च से निम्न</value></data>
   <data name="Price Low to High" xml:space="preserve"><value>कीमत: निम्न से उच्च</value></data>
   <data name="In Auction" xml:space="preserve"><value>नीलामी में</value></data>
+
+<!-- Auto-added missing translations -->
+<data name="Navigation" xml:space="preserve"><value>नेविगेशन</value></data>
+<data name="About us" xml:space="preserve"><value>हमारे बारे में</value></data>
+<data name="Browse" xml:space="preserve"><value>ब्राउज़ करें</value></data>
+<data name="Browse Collections" xml:space="preserve"><value>संग्रह ब्राउज़ करें</value></data>
+<data name="Browse our curated selection of luxury artwork and collectibles" xml:space="preserve"><value>हमारे चुनिंदा लक्ज़री कलाकृति और संग्रहणीय वस्तुओं का चयन ब्राउज़ करें</value></data>
+<data name="ViewAllCollections" xml:space="preserve"><value>सभी संग्रह देखें</value></data>
+<data name="Discover" xml:space="preserve"><value>खोजें</value></data>
+<data name="Discover Our Collections" xml:space="preserve"><value>हमारे संग्रह खोजें</value></data>
+<data name="Featured" xml:space="preserve"><value>विशेष रुप से प्रदर्शित</value></data>
+<data name="Latest Additions" xml:space="preserve"><value>नवीनतम जोड़</value></data>
+<data name="Explore our newest acquisitions from each category" xml:space="preserve"><value>प्रत्येक श्रेणी से हमारे नवीनतम अधिग्रहणों का अन्वेषण करें</value></data>
+<data name="View All" xml:space="preserve"><value>सभी देखें</value></data>
+<data name="Explore More" xml:space="preserve"><value>और अन्वेषण करें</value></data>
+<data name="Verified" xml:space="preserve"><value>सत्यापित</value></data>
+<data name="Reach Out" xml:space="preserve"><value>संपर्क करें</value></data>
+<data name="Send Us a Message" xml:space="preserve"><value>हमें संदेश भेजें</value></data>
+<data name="Send Message" xml:space="preserve"><value>संदेश भेजें</value></data>
+<data name="Your Name" xml:space="preserve"><value>आपका नाम</value></data>
+<data name="Enter your name" xml:space="preserve"><value>अपना नाम दर्ज करें</value></data>
+<data name="Enter your email" xml:space="preserve"><value>अपना ईमेल दर्ज करें</value></data>
+<data name="Subject" xml:space="preserve"><value>विषय</value></data>
+<data name="What is this about?" xml:space="preserve"><value>यह किस बारे में है?</value></data>
+<data name="Tell us about your inquiry..." xml:space="preserve"><value>हमें अपनी पूछताछ के बारे में बताएं...</value></data>
+<data name="Tell us about your interest..." xml:space="preserve"><value>हमें अपनी रुचि के बारे में बताएं...</value></data>
+<data name="Get In Touch" xml:space="preserve"><value>संपर्क में रहें</value></data>
+<data name="Get in Touch" xml:space="preserve"><value>संपर्क में रहें</value></data>
+<data name="Follow Us" xml:space="preserve"><value>हमें फॉलो करें</value></data>
+<data name="Ready to Begin?" xml:space="preserve"><value>शुरू करने के लिए तैयार?</value></data>
+<data name="Ready to Start?" xml:space="preserve"><value>शुरू करने के लिए तैयार?</value></data>
+<data name="Start Your Journey With Us" xml:space="preserve"><value>हमारे साथ अपनी यात्रा शुरू करें</value></data>
+<data name="Begin Your Journey Today" xml:space="preserve"><value>आज ही अपनी यात्रा शुरू करें</value></data>
+<data name="Featured Image" xml:space="preserve"><value>विशेष रुप से प्रदर्शित छवि</value></data>
+<data name="Current Featured Image" xml:space="preserve"><value>वर्तमान विशेष छवि</value></data>
+<data name="Optional: Leave empty to keep current image" xml:space="preserve"><value>वैकल्पिक: वर्तमान छवि रखने के लिए खाली छोड़ें</value></data>
+<data name="Optional: Main image for the blog post" xml:space="preserve"><value>वैकल्पिक: ब्लॉग पोस्ट के लिए मुख्य छवि</value></data>
+<data name="Blog Title" xml:space="preserve"><value>ब्लॉग शीर्षक</value></data>
+<data name="Blog Content" xml:space="preserve"><value>ब्लॉग सामग्री</value></data>
+<data name="Create Blog Post" xml:space="preserve"><value>ब्लॉग पोस्ट बनाएं</value></data>
+<data name="Edit Blog Post" xml:space="preserve"><value>ब्लॉग पोस्ट संपादित करें</value></data>
+<data name="Delete Blog Post" xml:space="preserve"><value>ब्लॉग पोस्ट हटाएं</value></data>
+<data name="Are you sure you want to delete this blog post?" xml:space="preserve"><value>क्या आप वाकई इस ब्लॉग पोस्ट को हटाना चाहते हैं?</value></data>
+<data name="Are you sure?" xml:space="preserve"><value>क्या आप निश्चित हैं?</value></data>
+<data name="Confirm Deletion" xml:space="preserve"><value>हटाने की पुष्टि करें</value></data>
+<data name="Draft" xml:space="preserve"><value>ड्राफ़्ट</value></data>
+<data name="Published" xml:space="preserve"><value>प्रकाशित</value></data>
+<data name="Read More" xml:space="preserve"><value>और पढ़ें</value></data>
+<data name="New Post" xml:space="preserve"><value>नया पोस्ट</value></data>
+<data name="No blog posts available" xml:space="preserve"><value>कोई ब्लॉग पोस्ट उपलब्ध नहीं</value></data>
+<data name="Check back soon for news and insights" xml:space="preserve"><value>समाचार और अंतर्दृष्टि के लिए जल्द ही वापस देखें</value></data>
+<data name="Comments" xml:space="preserve"><value>टिप्पणियाँ</value></data>
+<data name="Add Comment" xml:space="preserve"><value>टिप्पणी जोड़ें</value></data>
+<data name="Submit Comment" xml:space="preserve"><value>टिप्पणी सबमिट करें</value></data>
+<data name="Edit Comment" xml:space="preserve"><value>टिप्पणी संपादित करें</value></data>
+<data name="Delete Comment" xml:space="preserve"><value>टिप्पणी हटाएं</value></data>
+<data name="Your Comment" xml:space="preserve"><value>आपकी टिप्पणी</value></data>
+<data name="Write your comment..." xml:space="preserve"><value>अपनी टिप्पणी लिखें...</value></data>
+<data name="Write your comment here..." xml:space="preserve"><value>अपनी टिप्पणी यहाँ लिखें...</value></data>
+<data name="Edit your comment:" xml:space="preserve"><value>अपनी टिप्पणी संपादित करें:</value></data>
+<data name="edited" xml:space="preserve"><value>संपादित</value></data>
+<data name="No comments yet. Be the first to comment!" xml:space="preserve"><value>अभी तक कोई टिप्पणी नहीं। पहले टिप्पणी करने वाले बनें!</value></data>
+<data name="to leave a comment" xml:space="preserve"><value>टिप्पणी करने के लिए</value></data>
+<data name="Sign in" xml:space="preserve"><value>साइन इन करें</value></data>
+<data name="Are you sure you want to delete this comment?" xml:space="preserve"><value>क्या आप वाकई इस टिप्पणी को हटाना चाहते हैं?</value></data>
+<data name="Do you really want to delete this comment?" xml:space="preserve"><value>क्या आप वाकई इस टिप्पणी को हटाना चाहते हैं?</value></data>
+<data name="Comment cannot be empty" xml:space="preserve"><value>टिप्पणी खाली नहीं हो सकती</value></data>
+<data name="Comment is too long (max 2000 characters)" xml:space="preserve"><value>टिप्पणी बहुत लंबी है (अधिकतम 2000 वर्ण)</value></data>
+<data name="Maximum 2000 characters" xml:space="preserve"><value>अधिकतम 2000 वर्ण</value></data>
+<data name="Failed to load comments" xml:space="preserve"><value>टिप्पणियाँ लोड करने में विफल</value></data>
+<data name="Failed to post comment. Please try again." xml:space="preserve"><value>टिप्पणी पोस्ट करने में विफल। कृपया पुन: प्रयास करें।</value></data>
+<data name="Failed to update comment. Please try again." xml:space="preserve"><value>टिप्पणी अपडेट करने में विफल।</value></data>
+<data name="Failed to delete comment. Please try again." xml:space="preserve"><value>टिप्पणी हटाने में विफल।</value></data>
+<data name="Updated" xml:space="preserve"><value>अद्यतन</value></data>
+<data name="Save Changes" xml:space="preserve"><value>परिवर्तन सहेजें</value></data>
+<data name="Saving..." xml:space="preserve"><value>सहेज रहा है...</value></data>
+<data name="Deleting..." xml:space="preserve"><value>हटा रहा है...</value></data>
+<data name="Uncheck to save as draft" xml:space="preserve"><value>ड्राफ़्ट के रूप में सहेजने के लिए अनचेक करें</value></data>
+<data name="Create" xml:space="preserve"><value>बनाएं</value></data>
+<data name="Changes will be automatically translated using DeepL" xml:space="preserve"><value>DeepL का उपयोग करके परिवर्तन स्वचालित रूप से अनुवादित होंगे</value></data>
+<data name="Content will be automatically translated to all supported languages" xml:space="preserve"><value>सामग्री सभी समर्थित भाषाओं में स्वचालित रूप से अनुवादित होगी</value></data>
+<data name="Content will be automatically re-translated to all supported languages" xml:space="preserve"><value>सामग्री सभी समर्थित भाषाओं में स्वचालित रूप से पुनः अनुवादित होगी</value></data>
+<data name="Other languages will be translated automatically using DeepL" xml:space="preserve"><value>अन्य भाषाएँ DeepL का उपयोग करके स्वचालित रूप से अनुवादित होंगी</value></data>
+<data name="Content not available in the selected language. Please try switching to Czech." xml:space="preserve"><value>चयनित भाषा में सामग्री उपलब्ध नहीं है। कृपया चेक पर स्विच करें।</value></data>
+<data name="Link copied to clipboard!" xml:space="preserve"><value>लिंक क्लिपबोर्ड पर कॉपी किया गया!</value></data>
+<data name="Share this collection" xml:space="preserve"><value>इस संग्रह को साझा करें</value></data>
+<data name="AASVerified" xml:space="preserve"><value>AAS सत्यापित</value></data>
+<data name="AASVerifiedBadge" xml:space="preserve"><value>AAS सत्यापित</value></data>
+<data name="AASVerifiedTooltip" xml:space="preserve"><value>AAS विशेषज्ञों द्वारा प्रामाणिकता और उत्पत्ति सत्यापित</value></data>
+<data name="AASVerifiedExplanation" xml:space="preserve"><value>AAS सत्यापित वस्तुओं को हमारे विशेषज्ञ क्यूरेटरों की टीम द्वारा कठोर प्रमाणीकरण से गुज़रा है, जो प्रामाणिकता, उत्पत्ति और गुणवत्ता की गारंटी देता है।</value></data>
+<data name="How To" xml:space="preserve"><value>कैसे करें</value></data>
+<data name="How to Buy" xml:space="preserve"><value>कैसे खरीदें</value></data>
+<data name="How to Sell" xml:space="preserve"><value>कैसे बेचें</value></data>
+<data name="Buying Process" xml:space="preserve"><value>खरीद प्रक्रिया</value></data>
+<data name="Selling Process" xml:space="preserve"><value>विक्रय प्रक्रिया</value></data>
+<data name="Step" xml:space="preserve"><value>कदम</value></data>
+<data name="How It Works" xml:space="preserve"><value>यह कैसे काम करता है</value></data>
+<data name="Guide" xml:space="preserve"><value>मार्गदर्शिका</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>ललित कला और पेंटिंग</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>प्रसिद्ध कलाकारों से क्यूरेटेड पेंटिंग</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>मूर्तियां और प्रतिमाएँ</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>प्रतिष्ठित संग्राहकों के लिए क्लासिक और समकालीन मूर्तियां</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>प्राचीन वस्तुएं और संग्रहणीय</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>समृद्ध इतिहास के साथ दुर्लभ प्राचीन वस्तुएं</value></data>
+<data name="Expert valuations and sales of decorative art pieces" xml:space="preserve"><value>सजावटी कला के विशेषज्ञ मूल्यांकन और बिक्री</value></data>
+<data name="Essential Cookies" xml:space="preserve"><value>आवश्यक कुकीज़</value></data>
+<data name="Analytics Cookies" xml:space="preserve"><value>विश्लेषण कुकीज़</value></data>
+<data name="Marketing Cookies" xml:space="preserve"><value>मार्केटिंग कुकीज़</value></data>
+<data name="Cookie Preferences" xml:space="preserve"><value>कुकी प्राथमिकताएँ</value></data>
+<data name="Save Preferences" xml:space="preserve"><value>प्राथमिकताएँ सहेजें</value></data>
+<data name="Privacy Policy" xml:space="preserve"><value>गोपनीयता नीति</value></data>
+<data name="How Google uses data" xml:space="preserve"><value>Google डेटा का उपयोग कैसे करता है</value></data>
+<data name="These cookies are necessary for the website to function and cannot be switched off." xml:space="preserve"><value>ये कुकीज़ वेबसाइट के कार्य के लिए आवश्यक हैं और इन्हें बंद नहीं किया जा सकता।</value></data>
+<data name="These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously." xml:space="preserve"><value>ये कुकीज़ हमें यह समझने में मदद करती हैं कि आगंतुक हमारी वेबसाइट के साथ कैसे इंटरैक्ट करते हैं।</value></data>
+<data name="These cookies are used to make advertising messages more relevant to you and your interests." xml:space="preserve"><value>ये कुकीज़ विज्ञापन संदेशों को आपकी रुचियों के लिए अधिक प्रासंगिक बनाने के लिए उपयोग की जाती हैं।</value></data>
+<data name="We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies." xml:space="preserve"><value>हम आपके ब्राउज़िंग अनुभव को बेहतर बनाने, वेबसाइट ट्रैफ़िक का विश्लेषण करने और यह समझने के लिए कुकीज़ और समान तकनीकों का उपयोग करते हैं कि हमारे आगंतुक कहां से आ रहे हैं।</value></data>
+<data name="Authentication" xml:space="preserve"><value>प्रमाणीकरण</value></data>
+<data name="Manage Account" xml:space="preserve"><value>खाता प्रबंधित करें</value></data>
+<data name="ContactUs" xml:space="preserve"><value>संपर्क</value></data>
+<data name="Have Questions?" xml:space="preserve"><value>प्रश्न हैं?</value></data>
+<data name="Our team of experts is ready to assist you with any inquiries" xml:space="preserve"><value>हमारी विशेषज्ञ टीम किसी भी पूछताछ में आपकी सहायता के लिए तैयार है</value></data>
+<data name="Fill out the form below and our specialist will contact you within 24 hours." xml:space="preserve"><value>नीचे दिया गया फ़ॉर्म भरें और हमारे विशेषज्ञ 24 घंटे के भीतर आपसे संपर्क करेंगे।</value></data>
+<data name="News &amp; Insights" xml:space="preserve"><value>समाचार और अंतर्दृष्टि</value></data>
+<data name="Stay informed about the world of luxury collectibles and fine art" xml:space="preserve"><value>लक्ज़री संग्रहणीय और ललित कला की दुनिया के बारे में सूचित रहें</value></data>
+<data name="Our Story" xml:space="preserve"><value>हमारी कहानी</value></data>
+<data name="Our Promise" xml:space="preserve"><value>हमारा वादा</value></data>
+<data name="What We Offer" xml:space="preserve"><value>हम क्या प्रदान करते हैं</value></data>
+<data name="Client Rating" xml:space="preserve"><value>ग्राहक रेटिंग</value></data>
+<data name="Years Experience" xml:space="preserve"><value>वर्षों का अनुभव</value></data>
+<data name="Items Sold" xml:space="preserve"><value>बेची गई वस्तुएं</value></data>
 </root>

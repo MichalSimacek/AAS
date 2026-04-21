@@ -9,8 +9,9 @@
     ViewData["Title"] = L["Collections"];
     Layout = "~/Views/Shared/_Layout.cshtml";
     
-    // Get category counts
+    // Get category counts (exclude hidden collections)
     var categoryCounts = await Db.Collections
+        .Where(c => !c.IsHidden)
         .GroupBy(c => c.Category)
         .Select(g => new { Category = g.Key, Count = g.Count() })
         .ToDictionaryAsync(x => x.Category, x => x.Count);
@@ -20,7 +21,7 @@
     foreach (CollectionCategory cat in Enum.GetValues(typeof(CollectionCategory)))
     {
         var featuredImage = await Db.Collections
-            .Where(c => c.Category == cat)
+            .Where(c => c.Category == cat && !c.IsHidden)
             .SelectMany(c => c.Images.OrderBy(i => i.SortOrder).Take(1))
             .Select(i => i.FileName)
             .FirstOrDefaultAsync();
@@ -33,7 +34,7 @@
     {
         var previews = await Db.Collections
             .Include(c => c.Images)
-            .Where(c => c.Category == cat)
+            .Where(c => c.Category == cat && !c.IsHidden)
             .OrderByDescending(c => c.CreatedUtc)
             .Take(3)
             .ToListAsync();

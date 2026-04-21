@@ -345,4 +345,123 @@
   <data name="Price High to Low" xml:space="preserve"><value>Precio: Mayor a Menor</value></data>
   <data name="Price Low to High" xml:space="preserve"><value>Precio: Menor a Mayor</value></data>
   <data name="In Auction" xml:space="preserve"><value>En Subasta</value></data>
+
+<!-- Auto-added missing translations -->
+<data name="Navigation" xml:space="preserve"><value>Navegación</value></data>
+<data name="About us" xml:space="preserve"><value>Sobre nosotros</value></data>
+<data name="Browse" xml:space="preserve"><value>Explorar</value></data>
+<data name="Browse Collections" xml:space="preserve"><value>Explorar colecciones</value></data>
+<data name="Browse our curated selection of luxury artwork and collectibles" xml:space="preserve"><value>Explore nuestra selección curada de obras de arte de lujo y coleccionables</value></data>
+<data name="ViewAllCollections" xml:space="preserve"><value>Ver todas las colecciones</value></data>
+<data name="Discover" xml:space="preserve"><value>Descubrir</value></data>
+<data name="Discover Our Collections" xml:space="preserve"><value>Descubra nuestras colecciones</value></data>
+<data name="Featured" xml:space="preserve"><value>Destacados</value></data>
+<data name="Latest Additions" xml:space="preserve"><value>Últimas incorporaciones</value></data>
+<data name="Explore our newest acquisitions from each category" xml:space="preserve"><value>Explore nuestras adquisiciones más recientes de cada categoría</value></data>
+<data name="View All" xml:space="preserve"><value>Ver todo</value></data>
+<data name="Explore More" xml:space="preserve"><value>Explorar más</value></data>
+<data name="Verified" xml:space="preserve"><value>Verificado</value></data>
+<data name="Reach Out" xml:space="preserve"><value>Contáctenos</value></data>
+<data name="Send Us a Message" xml:space="preserve"><value>Envíanos un mensaje</value></data>
+<data name="Send Message" xml:space="preserve"><value>Enviar mensaje</value></data>
+<data name="Your Name" xml:space="preserve"><value>Su nombre</value></data>
+<data name="Enter your name" xml:space="preserve"><value>Ingrese su nombre</value></data>
+<data name="Enter your email" xml:space="preserve"><value>Ingrese su correo electrónico</value></data>
+<data name="Subject" xml:space="preserve"><value>Asunto</value></data>
+<data name="What is this about?" xml:space="preserve"><value>¿De qué se trata?</value></data>
+<data name="Tell us about your inquiry..." xml:space="preserve"><value>Cuéntenos sobre su consulta...</value></data>
+<data name="Tell us about your interest..." xml:space="preserve"><value>Cuéntenos sobre su interés...</value></data>
+<data name="Get In Touch" xml:space="preserve"><value>Póngase en contacto</value></data>
+<data name="Get in Touch" xml:space="preserve"><value>Póngase en contacto</value></data>
+<data name="Follow Us" xml:space="preserve"><value>Síganos</value></data>
+<data name="Ready to Begin?" xml:space="preserve"><value>¿Listo para empezar?</value></data>
+<data name="Ready to Start?" xml:space="preserve"><value>¿Listo para comenzar?</value></data>
+<data name="Start Your Journey With Us" xml:space="preserve"><value>Comience su viaje con nosotros</value></data>
+<data name="Begin Your Journey Today" xml:space="preserve"><value>Comience su viaje hoy</value></data>
+<data name="Featured Image" xml:space="preserve"><value>Imagen destacada</value></data>
+<data name="Current Featured Image" xml:space="preserve"><value>Imagen destacada actual</value></data>
+<data name="Optional: Leave empty to keep current image" xml:space="preserve"><value>Opcional: Deje vacío para mantener la imagen actual</value></data>
+<data name="Optional: Main image for the blog post" xml:space="preserve"><value>Opcional: Imagen principal del artículo</value></data>
+<data name="Blog Title" xml:space="preserve"><value>Título del blog</value></data>
+<data name="Blog Content" xml:space="preserve"><value>Contenido del blog</value></data>
+<data name="Create Blog Post" xml:space="preserve"><value>Crear publicación</value></data>
+<data name="Edit Blog Post" xml:space="preserve"><value>Editar publicación</value></data>
+<data name="Delete Blog Post" xml:space="preserve"><value>Eliminar publicación</value></data>
+<data name="Are you sure you want to delete this blog post?" xml:space="preserve"><value>¿Está seguro de que desea eliminar esta publicación?</value></data>
+<data name="Are you sure?" xml:space="preserve"><value>¿Está seguro?</value></data>
+<data name="Confirm Deletion" xml:space="preserve"><value>Confirmar eliminación</value></data>
+<data name="Draft" xml:space="preserve"><value>Borrador</value></data>
+<data name="Published" xml:space="preserve"><value>Publicado</value></data>
+<data name="Read More" xml:space="preserve"><value>Leer más</value></data>
+<data name="New Post" xml:space="preserve"><value>Nueva publicación</value></data>
+<data name="No blog posts available" xml:space="preserve"><value>No hay publicaciones disponibles</value></data>
+<data name="Check back soon for news and insights" xml:space="preserve"><value>Vuelva pronto para noticias e ideas</value></data>
+<data name="Comments" xml:space="preserve"><value>Comentarios</value></data>
+<data name="Add Comment" xml:space="preserve"><value>Agregar comentario</value></data>
+<data name="Submit Comment" xml:space="preserve"><value>Enviar comentario</value></data>
+<data name="Edit Comment" xml:space="preserve"><value>Editar comentario</value></data>
+<data name="Delete Comment" xml:space="preserve"><value>Eliminar comentario</value></data>
+<data name="Your Comment" xml:space="preserve"><value>Su comentario</value></data>
+<data name="Write your comment..." xml:space="preserve"><value>Escriba su comentario...</value></data>
+<data name="Write your comment here..." xml:space="preserve"><value>Escriba su comentario aquí...</value></data>
+<data name="Edit your comment:" xml:space="preserve"><value>Edite su comentario:</value></data>
+<data name="edited" xml:space="preserve"><value>editado</value></data>
+<data name="No comments yet. Be the first to comment!" xml:space="preserve"><value>Aún no hay comentarios. ¡Sea el primero en comentar!</value></data>
+<data name="to leave a comment" xml:space="preserve"><value>para dejar un comentario</value></data>
+<data name="Sign in" xml:space="preserve"><value>Iniciar sesión</value></data>
+<data name="Are you sure you want to delete this comment?" xml:space="preserve"><value>¿Está seguro de que desea eliminar este comentario?</value></data>
+<data name="Do you really want to delete this comment?" xml:space="preserve"><value>¿Realmente desea eliminar este comentario?</value></data>
+<data name="Comment cannot be empty" xml:space="preserve"><value>El comentario no puede estar vacío</value></data>
+<data name="Comment is too long (max 2000 characters)" xml:space="preserve"><value>El comentario es demasiado largo (máx. 2000 caracteres)</value></data>
+<data name="Maximum 2000 characters" xml:space="preserve"><value>Máximo 2000 caracteres</value></data>
+<data name="Failed to load comments" xml:space="preserve"><value>Error al cargar comentarios</value></data>
+<data name="Failed to post comment. Please try again." xml:space="preserve"><value>Error al publicar el comentario. Inténtelo de nuevo.</value></data>
+<data name="Failed to update comment. Please try again." xml:space="preserve"><value>Error al actualizar el comentario. Inténtelo de nuevo.</value></data>
+<data name="Failed to delete comment. Please try again." xml:space="preserve"><value>Error al eliminar el comentario. Inténtelo de nuevo.</value></data>
+<data name="Updated" xml:space="preserve"><value>Actualizado</value></data>
+<data name="Save Changes" xml:space="preserve"><value>Guardar cambios</value></data>
+<data name="Saving..." xml:space="preserve"><value>Guardando...</value></data>
+<data name="Deleting..." xml:space="preserve"><value>Eliminando...</value></data>
+<data name="Uncheck to save as draft" xml:space="preserve"><value>Desmarque para guardar como borrador</value></data>
+<data name="Create" xml:space="preserve"><value>Crear</value></data>
+<data name="Changes will be automatically translated using DeepL" xml:space="preserve"><value>Los cambios se traducirán automáticamente con DeepL</value></data>
+<data name="Content will be automatically translated to all supported languages" xml:space="preserve"><value>El contenido se traducirá automáticamente a todos los idiomas</value></data>
+<data name="Content will be automatically re-translated to all supported languages" xml:space="preserve"><value>El contenido se retraducirá automáticamente a todos los idiomas</value></data>
+<data name="Other languages will be translated automatically using DeepL" xml:space="preserve"><value>Otros idiomas se traducirán automáticamente con DeepL</value></data>
+<data name="Content not available in the selected language. Please try switching to Czech." xml:space="preserve"><value>Contenido no disponible en el idioma seleccionado. Intente cambiar a checo.</value></data>
+<data name="Link copied to clipboard!" xml:space="preserve"><value>¡Enlace copiado al portapapeles!</value></data>
+<data name="Share this collection" xml:space="preserve"><value>Compartir esta colección</value></data>
+<data name="AASVerified" xml:space="preserve"><value>Verificado por AAS</value></data>
+<data name="AASVerifiedBadge" xml:space="preserve"><value>Verificado AAS</value></data>
+<data name="AASVerifiedTooltip" xml:space="preserve"><value>Autenticidad y procedencia verificadas por expertos de AAS</value></data>
+<data name="AASVerifiedExplanation" xml:space="preserve"><value>Los artículos verificados por AAS han sido autenticados rigurosamente por nuestro equipo de curadores expertos, garantizando autenticidad, procedencia y calidad.</value></data>
+<data name="How To" xml:space="preserve"><value>Cómo</value></data>
+<data name="How to Buy" xml:space="preserve"><value>Cómo comprar</value></data>
+<data name="How to Sell" xml:space="preserve"><value>Cómo vender</value></data>
+<data name="Buying Process" xml:space="preserve"><value>Proceso de compra</value></data>
+<data name="Selling Process" xml:space="preserve"><value>Proceso de venta</value></data>
+<data name="Step" xml:space="preserve"><value>Paso</value></data>
+<data name="How It Works" xml:space="preserve"><value>Cómo funciona</value></data>
+<data name="Guide" xml:space="preserve"><value>Guía</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>Arte y Pinturas</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>Pinturas seleccionadas de artistas reconocidos</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>Esculturas y Estatuas</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>Esculturas clásicas y contemporáneas para coleccionistas distinguidos</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>Antigüedades y Coleccionables</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>Antigüedades raras y coleccionables únicos con rica historia</value></data>
+<data name="Expert valuations and sales of decorative art pieces" xml:space="preserve"><value>Tasaciones expertas y venta de piezas de arte decorativo</value></data>
+<data name="Authentication" xml:space="preserve"><value>Autenticación</value></data>
+<data name="Manage Account" xml:space="preserve"><value>Administrar cuenta</value></data>
+<data name="ContactUs" xml:space="preserve"><value>Contacto</value></data>
+<data name="Have Questions?" xml:space="preserve"><value>¿Tiene preguntas?</value></data>
+<data name="Our team of experts is ready to assist you with any inquiries" xml:space="preserve"><value>Nuestro equipo de expertos está listo para ayudarle con cualquier consulta</value></data>
+<data name="Fill out the form below and our specialist will contact you within 24 hours." xml:space="preserve"><value>Complete el formulario a continuación y nuestro especialista se pondrá en contacto dentro de 24 horas.</value></data>
+<data name="News &amp; Insights" xml:space="preserve"><value>Noticias e información</value></data>
+<data name="Stay informed about the world of luxury collectibles and fine art" xml:space="preserve"><value>Manténgase informado sobre el mundo de los coleccionables de lujo y el arte</value></data>
+<data name="Our Story" xml:space="preserve"><value>Nuestra historia</value></data>
+<data name="Our Promise" xml:space="preserve"><value>Nuestra promesa</value></data>
+<data name="What We Offer" xml:space="preserve"><value>Qué ofrecemos</value></data>
+<data name="Client Rating" xml:space="preserve"><value>Calificación del cliente</value></data>
+<data name="Years Experience" xml:space="preserve"><value>Años de experiencia</value></data>
+<data name="Items Sold" xml:space="preserve"><value>Artículos vendidos</value></data>
 </root>

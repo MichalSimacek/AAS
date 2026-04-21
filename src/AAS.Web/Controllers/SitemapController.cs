@@ -18,7 +18,7 @@ namespace AAS.Web.Controllers
             sb.AppendLine("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
             void Url(string path) { sb.AppendLine($"<url><loc>{baseUrl}{path}</loc></url>"); }
             Url("/"); Url("/Collections"); Url("/About"); Url("/Contacts");
-            var slugs = await _db.Collections.Select(c => c.Slug).ToListAsync();
+            var slugs = await _db.Collections.Where(c => !c.IsHidden).Select(c => c.Slug).ToListAsync();
             foreach (var s in slugs) Url($"/collections/{s}");
             sb.AppendLine("</urlset>");
             return Content(sb.ToString(), "application/xml", Encoding.UTF8);

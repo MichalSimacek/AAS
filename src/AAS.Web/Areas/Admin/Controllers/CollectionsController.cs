@@ -459,6 +459,36 @@ namespace AAS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ToggleVisibility(int id)
+        {
+            try
+            {
+                var collection = await _db.Collections.FirstOrDefaultAsync(c => c.Id == id);
+                if (collection == null)
+                {
+                    TempData["ErrorMessage"] = "Collection not found.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                collection.IsHidden = !collection.IsHidden;
+                await _db.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = collection.IsHidden
+                    ? $"Collection '{collection.Title}' is now hidden from the public site."
+                    : $"Collection '{collection.Title}' is now visible on the public site.";
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error toggling visibility for collection {Id}", id);
+                TempData["ErrorMessage"] = $"Error toggling visibility: {ex.Message}";
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             try

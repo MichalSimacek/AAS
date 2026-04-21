@@ -21,6 +21,9 @@ namespace AAS.Web.Models
         
         // AAS Verification - authenticity guaranteed by AAS
         public bool AASVerified { get; set; } = false;
+
+        // Visibility - when true, the collection is hidden from public view (admin only)
+        public bool IsHidden { get; set; } = false;
         
         public ICollection<CollectionImage> Images { get; set; } = new List<CollectionImage>();
         public ICollection<CollectionTranslation> Translations { get; set; } = new List<CollectionTranslation>();

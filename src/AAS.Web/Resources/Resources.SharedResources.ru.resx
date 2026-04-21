@@ -342,5 +342,132 @@
   <data name="Price High to Low" xml:space="preserve"><value>Цена: По убыванию</value></data>
   <data name="Price Low to High" xml:space="preserve"><value>Цена: По возрастанию</value></data>
   <data name="In Auction" xml:space="preserve"><value>На аукционе</value></data>
+
+<!-- Auto-added missing translations -->
+<data name="Navigation" xml:space="preserve"><value>Навигация</value></data>
+<data name="About us" xml:space="preserve"><value>О нас</value></data>
+<data name="Browse" xml:space="preserve"><value>Обзор</value></data>
+<data name="Browse Collections" xml:space="preserve"><value>Просмотреть коллекции</value></data>
+<data name="Browse our curated selection of luxury artwork and collectibles" xml:space="preserve"><value>Ознакомьтесь с нашей тщательно подобранной коллекцией предметов роскоши и искусства</value></data>
+<data name="ViewAllCollections" xml:space="preserve"><value>Все коллекции</value></data>
+<data name="Discover" xml:space="preserve"><value>Открыть</value></data>
+<data name="Discover Our Collections" xml:space="preserve"><value>Откройте наши коллекции</value></data>
+<data name="Featured" xml:space="preserve"><value>Избранное</value></data>
+<data name="Latest Additions" xml:space="preserve"><value>Последние поступления</value></data>
+<data name="Explore our newest acquisitions from each category" xml:space="preserve"><value>Ознакомьтесь с нашими новейшими поступлениями из каждой категории</value></data>
+<data name="View All" xml:space="preserve"><value>Все</value></data>
+<data name="Explore More" xml:space="preserve"><value>Узнать больше</value></data>
+<data name="Verified" xml:space="preserve"><value>Проверено</value></data>
+<data name="Reach Out" xml:space="preserve"><value>Связаться</value></data>
+<data name="Send Us a Message" xml:space="preserve"><value>Отправьте нам сообщение</value></data>
+<data name="Send Message" xml:space="preserve"><value>Отправить сообщение</value></data>
+<data name="Your Name" xml:space="preserve"><value>Ваше имя</value></data>
+<data name="Enter your name" xml:space="preserve"><value>Введите ваше имя</value></data>
+<data name="Enter your email" xml:space="preserve"><value>Введите ваш email</value></data>
+<data name="Subject" xml:space="preserve"><value>Тема</value></data>
+<data name="What is this about?" xml:space="preserve"><value>О чем это?</value></data>
+<data name="Tell us about your inquiry..." xml:space="preserve"><value>Расскажите нам о вашем запросе...</value></data>
+<data name="Tell us about your interest..." xml:space="preserve"><value>Расскажите о своем интересе...</value></data>
+<data name="Get In Touch" xml:space="preserve"><value>Свяжитесь с нами</value></data>
+<data name="Get in Touch" xml:space="preserve"><value>Свяжитесь с нами</value></data>
+<data name="Follow Us" xml:space="preserve"><value>Следите за нами</value></data>
+<data name="Ready to Begin?" xml:space="preserve"><value>Готовы начать?</value></data>
+<data name="Ready to Start?" xml:space="preserve"><value>Готовы начать?</value></data>
+<data name="Start Your Journey With Us" xml:space="preserve"><value>Начните свой путь с нами</value></data>
+<data name="Begin Your Journey Today" xml:space="preserve"><value>Начните свой путь сегодня</value></data>
+<data name="Featured Image" xml:space="preserve"><value>Главное изображение</value></data>
+<data name="Current Featured Image" xml:space="preserve"><value>Текущее главное изображение</value></data>
+<data name="Optional: Leave empty to keep current image" xml:space="preserve"><value>Необязательно: Оставьте пустым, чтобы сохранить текущее изображение</value></data>
+<data name="Optional: Main image for the blog post" xml:space="preserve"><value>Необязательно: Главное изображение для записи блога</value></data>
+<data name="Blog Title" xml:space="preserve"><value>Заголовок блога</value></data>
+<data name="Blog Content" xml:space="preserve"><value>Содержание блога</value></data>
+<data name="Create Blog Post" xml:space="preserve"><value>Создать запись блога</value></data>
+<data name="Edit Blog Post" xml:space="preserve"><value>Редактировать запись блога</value></data>
+<data name="Delete Blog Post" xml:space="preserve"><value>Удалить запись блога</value></data>
+<data name="Are you sure you want to delete this blog post?" xml:space="preserve"><value>Вы уверены, что хотите удалить эту запись блога?</value></data>
+<data name="Are you sure?" xml:space="preserve"><value>Вы уверены?</value></data>
+<data name="Confirm Deletion" xml:space="preserve"><value>Подтвердите удаление</value></data>
+<data name="Draft" xml:space="preserve"><value>Черновик</value></data>
+<data name="Published" xml:space="preserve"><value>Опубликовано</value></data>
+<data name="Read More" xml:space="preserve"><value>Читать далее</value></data>
+<data name="New Post" xml:space="preserve"><value>Новая запись</value></data>
+<data name="No blog posts available" xml:space="preserve"><value>Нет доступных записей блога</value></data>
+<data name="Check back soon for news and insights" xml:space="preserve"><value>Скоро возвращайтесь за новостями</value></data>
+<data name="Comments" xml:space="preserve"><value>Комментарии</value></data>
+<data name="Add Comment" xml:space="preserve"><value>Добавить комментарий</value></data>
+<data name="Submit Comment" xml:space="preserve"><value>Отправить комментарий</value></data>
+<data name="Edit Comment" xml:space="preserve"><value>Редактировать комментарий</value></data>
+<data name="Delete Comment" xml:space="preserve"><value>Удалить комментарий</value></data>
+<data name="Your Comment" xml:space="preserve"><value>Ваш комментарий</value></data>
+<data name="Write your comment..." xml:space="preserve"><value>Напишите ваш комментарий...</value></data>
+<data name="Write your comment here..." xml:space="preserve"><value>Напишите комментарий здесь...</value></data>
+<data name="Edit your comment:" xml:space="preserve"><value>Редактируйте ваш комментарий:</value></data>
+<data name="edited" xml:space="preserve"><value>изменено</value></data>
+<data name="No comments yet. Be the first to comment!" xml:space="preserve"><value>Комментариев пока нет. Оставьте первый!</value></data>
+<data name="to leave a comment" xml:space="preserve"><value>чтобы оставить комментарий</value></data>
+<data name="Sign in" xml:space="preserve"><value>Войти</value></data>
+<data name="Are you sure you want to delete this comment?" xml:space="preserve"><value>Вы уверены, что хотите удалить этот комментарий?</value></data>
+<data name="Do you really want to delete this comment?" xml:space="preserve"><value>Вы действительно хотите удалить этот комментарий?</value></data>
+<data name="Comment cannot be empty" xml:space="preserve"><value>Комментарий не может быть пустым</value></data>
+<data name="Comment is too long (max 2000 characters)" xml:space="preserve"><value>Комментарий слишком длинный (макс. 2000 символов)</value></data>
+<data name="Maximum 2000 characters" xml:space="preserve"><value>Максимум 2000 символов</value></data>
+<data name="Failed to load comments" xml:space="preserve"><value>Не удалось загрузить комментарии</value></data>
+<data name="Failed to post comment. Please try again." xml:space="preserve"><value>Не удалось отправить комментарий. Попробуйте снова.</value></data>
+<data name="Failed to update comment. Please try again." xml:space="preserve"><value>Не удалось обновить комментарий.</value></data>
+<data name="Failed to delete comment. Please try again." xml:space="preserve"><value>Не удалось удалить комментарий.</value></data>
+<data name="Updated" xml:space="preserve"><value>Обновлено</value></data>
+<data name="Save Changes" xml:space="preserve"><value>Сохранить изменения</value></data>
+<data name="Saving..." xml:space="preserve"><value>Сохранение...</value></data>
+<data name="Deleting..." xml:space="preserve"><value>Удаление...</value></data>
+<data name="Uncheck to save as draft" xml:space="preserve"><value>Снимите флажок, чтобы сохранить как черновик</value></data>
+<data name="Create" xml:space="preserve"><value>Создать</value></data>
+<data name="Changes will be automatically translated using DeepL" xml:space="preserve"><value>Изменения будут автоматически переведены с помощью DeepL</value></data>
+<data name="Content will be automatically translated to all supported languages" xml:space="preserve"><value>Контент будет автоматически переведён на все поддерживаемые языки</value></data>
+<data name="Content will be automatically re-translated to all supported languages" xml:space="preserve"><value>Контент будет автоматически переведён заново на все поддерживаемые языки</value></data>
+<data name="Other languages will be translated automatically using DeepL" xml:space="preserve"><value>Другие языки будут автоматически переведены с помощью DeepL</value></data>
+<data name="Content not available in the selected language. Please try switching to Czech." xml:space="preserve"><value>Содержимое недоступно на выбранном языке. Попробуйте переключиться на чешский.</value></data>
+<data name="Link copied to clipboard!" xml:space="preserve"><value>Ссылка скопирована в буфер обмена!</value></data>
+<data name="Share this collection" xml:space="preserve"><value>Поделиться этой коллекцией</value></data>
+<data name="AASVerified" xml:space="preserve"><value>Проверено AAS</value></data>
+<data name="AASVerifiedBadge" xml:space="preserve"><value>Проверено AAS</value></data>
+<data name="AASVerifiedTooltip" xml:space="preserve"><value>Подлинность и происхождение проверены экспертами Aristocratic Artwork Sale</value></data>
+<data name="AASVerifiedExplanation" xml:space="preserve"><value>Предметы, проверенные AAS, прошли тщательную аутентификацию нашей командой экспертов-кураторов, гарантирующих подлинность, происхождение и качество.</value></data>
+<data name="How To" xml:space="preserve"><value>Как</value></data>
+<data name="How to Buy" xml:space="preserve"><value>Как купить</value></data>
+<data name="How to Sell" xml:space="preserve"><value>Как продать</value></data>
+<data name="Buying Process" xml:space="preserve"><value>Процесс покупки</value></data>
+<data name="Selling Process" xml:space="preserve"><value>Процесс продажи</value></data>
+<data name="Step" xml:space="preserve"><value>Шаг</value></data>
+<data name="How It Works" xml:space="preserve"><value>Как это работает</value></data>
+<data name="Guide" xml:space="preserve"><value>Руководство</value></data>
+<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>Изобразительное искусство и живопись</value></data>
+<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>Отобранные картины известных художников и подающих надежды талантов</value></data>
+<data name="Sculptures &amp; Statues" xml:space="preserve"><value>Скульптуры и статуи</value></data>
+<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>Классические и современные скульптуры для взыскательных коллекционеров</value></data>
+<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>Антиквариат и коллекционные предметы</value></data>
+<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>Редкий антиквариат и уникальные коллекционные предметы с богатой историей</value></data>
+<data name="Expert valuations and sales of decorative art pieces" xml:space="preserve"><value>Экспертные оценки и продажа декоративного искусства</value></data>
+<data name="Essential Cookies" xml:space="preserve"><value>Необходимые файлы cookie</value></data>
+<data name="Marketing Cookies" xml:space="preserve"><value>Маркетинговые файлы cookie</value></data>
+<data name="Cookie Preferences" xml:space="preserve"><value>Настройки файлов cookie</value></data>
+<data name="How Google uses data" xml:space="preserve"><value>Как Google использует данные</value></data>
+<data name="These cookies are necessary for the website to function and cannot be switched off." xml:space="preserve"><value>Эти файлы cookie необходимы для работы сайта и не могут быть отключены.</value></data>
+<data name="These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously." xml:space="preserve"><value>Эти файлы cookie помогают нам понять, как посетители взаимодействуют с сайтом, анонимно собирая информацию.</value></data>
+<data name="These cookies are used to make advertising messages more relevant to you and your interests." xml:space="preserve"><value>Эти файлы cookie используются, чтобы сделать рекламные сообщения более релевантными для вас.</value></data>
+<data name="We use cookies and similar technologies to improve your browsing experience, analyze website traffic, and understand where our visitors are coming from. By clicking 'Accept All', you consent to our use of cookies." xml:space="preserve"><value>Мы используем файлы cookie и аналогичные технологии для улучшения работы сайта, анализа трафика и понимания, откуда приходят посетители. Нажимая 'Принять все', вы соглашаетесь на использование файлов cookie.</value></data>
+<data name="Authentication" xml:space="preserve"><value>Аутентификация</value></data>
+<data name="Manage Account" xml:space="preserve"><value>Управление учётной записью</value></data>
+<data name="ContactUs" xml:space="preserve"><value>Свяжитесь с нами</value></data>
+<data name="Have Questions?" xml:space="preserve"><value>Есть вопросы?</value></data>
+<data name="Our team of experts is ready to assist you with any inquiries" xml:space="preserve"><value>Наша команда экспертов готова помочь вам по любым вопросам</value></data>
+<data name="Fill out the form below and our specialist will contact you within 24 hours." xml:space="preserve"><value>Заполните форму ниже, и наш специалист свяжется с вами в течение 24 часов.</value></data>
+<data name="News &amp; Insights" xml:space="preserve"><value>Новости и аналитика</value></data>
+<data name="Stay informed about the world of luxury collectibles and fine art" xml:space="preserve"><value>Будьте в курсе мира роскошных коллекционных предметов и искусства</value></data>
+<data name="Our Story" xml:space="preserve"><value>Наша история</value></data>
+<data name="Our Promise" xml:space="preserve"><value>Наше обещание</value></data>
+<data name="What We Offer" xml:space="preserve"><value>Что мы предлагаем</value></data>
+<data name="Client Rating" xml:space="preserve"><value>Оценка клиентов</value></data>
+<data name="Years Experience" xml:space="preserve"><value>Лет опыта</value></data>
+<data name="Items Sold" xml:space="preserve"><value>Продано предметов</value></data>
 </root>
 

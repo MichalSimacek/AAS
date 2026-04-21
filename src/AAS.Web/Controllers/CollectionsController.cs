@@ -146,7 +146,9 @@ namespace AAS.Web.Controllers
         public async Task<IActionResult> Details(string id)
         {
             // PERFORMANCE: Use AsNoTracking for read-only operations
+            // Hidden collections are invisible to public viewers
             var item = await _db.Collections
+                .Where(c => !c.IsHidden)
                 .Include(c => c.Images.OrderBy(i => i.SortOrder))
                 .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.Slug == id);
