@@ -1,10 +1,12 @@
 using System.Globalization;
 using System.Net;
+using System.Threading.RateLimiting;
 using AAS.Web.Data;
 using AAS.Web.Services;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -125,6 +127,133 @@ services.AddMemoryCache();
 services.AddResponseCompression();
 services.AddResponseCaching();
 
+// SECURITY: Rate limiting to mitigate brute force / DoS attacks
+// - "global": soft limit on all requests per IP (generous to avoid blocking normal browsing)
+// - "api": stricter limit for API endpoints
+// - "auth": very strict for login / register / password reset
+// - "contact": strict for public contact form
+services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = (int)HttpStatusCode.TooManyRequests;
+
+    string GetClientIp(HttpContext ctx)
+    {
+        var forwardedFor = ctx.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+        if (!string.IsNullOrEmpty(forwardedFor))
+        {
+            var firstIp = forwardedFor.Split(',')[0].Trim();
+            if (IPAddress.TryParse(firstIp, out _))
+                return firstIp;
+        }
+        return ctx.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+    }
+
+    // Global partition: 300 req / minute per IP (generous default)
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(ctx =>
+    {
+        // Do not rate limit static asset / health routes
+        var path = ctx.Request.Path.Value ?? string.Empty;
+        if (path.StartsWith("/uploads", StringComparison.OrdinalIgnoreCase) ||
+            path.StartsWith("/css", StringComparison.OrdinalIgnoreCase) ||
+            path.StartsWith("/js", StringComparison.OrdinalIgnoreCase) ||
+            path.StartsWith("/lib", StringComparison.OrdinalIgnoreCase) ||
+            path.StartsWith("/images", StringComparison.OrdinalIgnoreCase) ||
+            path.StartsWith("/favicon", StringComparison.OrdinalIgnoreCase))
+        {
+            return RateLimitPartition.GetNoLimiter<string>("static");
+        }
+
+        return RateLimitPartition.GetFixedWindowLimiter(GetClientIp(ctx), _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 300,
+            Window = TimeSpan.FromMinutes(1),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        });
+    });
+
+    // Named policy: API endpoints (60 req / minute / IP)
+    options.AddPolicy("api", ctx =>
+        RateLimitPartition.GetFixedWindowLimiter(GetClientIp(ctx), _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 60,
+            Window = TimeSpan.FromMinutes(1),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
+
+    // Named policy: Authentication endpoints (10 req / 15 min / IP)
+    options.AddPolicy("auth", ctx =>
+        RateLimitPartition.GetFixedWindowLimiter(GetClientIp(ctx), _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 10,
+            Window = TimeSpan.FromMinutes(15),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
+
+    // Named policy: Contact form (5 req / 15 min / IP)
+    options.AddPolicy("contact", ctx =>
+        RateLimitPartition.GetFixedWindowLimiter(GetClientIp(ctx), _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 5,
+            Window = TimeSpan.FromMinutes(15),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
+
+    // Named policy: Comments (20 req / 10 min / IP)
+    options.AddPolicy("comments", ctx =>
+        RateLimitPartition.GetFixedWindowLimiter(GetClientIp(ctx), _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 20,
+            Window = TimeSpan.FromMinutes(10),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
+});
+
+// SECURITY: HTML sanitizer registration for user-generated HTML (blog/collections)
+services.AddSingleton<Ganss.Xss.IHtmlSanitizer>(_ =>
+{
+    var s = new Ganss.Xss.HtmlSanitizer();
+    // TinyMCE may use these extras; add common safe ones
+    s.AllowedSchemes.Add("mailto");
+    s.AllowedSchemes.Add("tel");
+    s.AllowedAttributes.Add("class");
+    s.AllowedAttributes.Add("id");
+    s.AllowedAttributes.Add("style");
+    s.AllowedAttributes.Add("target");
+    s.AllowedAttributes.Add("rel");
+    s.AllowedCssProperties.Add("text-align");
+    s.AllowedCssProperties.Add("font-weight");
+    s.AllowedCssProperties.Add("font-style");
+    s.AllowedCssProperties.Add("text-decoration");
+    s.AllowedCssProperties.Add("color");
+    s.AllowedCssProperties.Add("background-color");
+    return s;
+});
+
+// SECURITY: Identity application cookie hardening (HttpOnly, Secure, SameSite)
+services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    options.ExpireTimeSpan = TimeSpan.FromHours(2);
+    options.SlidingExpiration = true;
+    options.LoginPath = "/Identity/Account/Login";
+    options.LogoutPath = "/Identity/Account/Logout";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+});
+
+// SECURITY: Limit request body size globally to prevent DoS via huge uploads
+services.Configure<Microsoft.AspNetCore.Http.Features.FormOptions>(o =>
+{
+    o.MultipartBodyLengthLimit = 100L * 1024 * 1024; // 100 MB (gallery can include several images)
+    o.ValueCountLimit = 1024;
+});
+
 var app = builder.Build();
 
 // Use fully qualified name to avoid collision with AAS.Web.Data.AppDbContext
@@ -231,6 +360,7 @@ app.UseResponseCompression();
 app.UseResponseCaching();
 
 app.UseRouting();
+app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
 

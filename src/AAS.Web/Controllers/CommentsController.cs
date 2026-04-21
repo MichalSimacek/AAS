@@ -2,6 +2,7 @@ using AAS.Web.Data;
 using AAS.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -9,6 +10,8 @@ namespace AAS.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [AutoValidateAntiforgeryToken]
+    [EnableRateLimiting("comments")]
     public class CommentsController : ControllerBase
     {
         private readonly AppDbContext _db;

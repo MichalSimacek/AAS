@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <root>
 <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
 <resheader name="version"><value>2.0</value></resheader>
 <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
 <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
 
-<!-- Home Page -->
+
 <data name="Slogan" xml:space="preserve"><value>裁量、保証された品質、そしてお客様への専門的なケアが私たちの最優先事項です。</value></data>
 <data name="Home Description" xml:space="preserve"><value>卓越した美術品、骨董品、貴重な宝飾品、高級時計をご覧ください。保証された裁量とプロフェッショナリズムで最高の価格を提供します。</value></data>
 
-<!-- Navigation -->
+
 <data name="Collections" xml:space="preserve"><value>コレクション</value></data>
 <data name="Contacts" xml:space="preserve"><value>お問い合わせ</value></data>
 <data name="Register" xml:space="preserve"><value>登録</value></data>
@@ -18,7 +18,7 @@
 <data name="Admin Panel" xml:space="preserve"><value>管理パネル</value></data>
 <data name="Manage" xml:space="preserve"><value>管理</value></data>
 
-<!-- Home Page Content -->
+
 <data name="Explore collections" xml:space="preserve"><value>コレクションを見る</value></data>
 <data name="Contact Us" xml:space="preserve"><value>お問い合わせ</value></data>
 <data name="Why Choose Us" xml:space="preserve"><value>なぜ私たちを選ぶのか</value></data>
@@ -30,7 +30,7 @@
 <data name="Expert Service" xml:space="preserve"><value>専門家サービス</value></data>
 <data name="Expert Service Desc" xml:space="preserve"><value>ご関心がある場合、専門家が売主負担で専門的な鑑定と個別サービスを手配します。</value></data>
 
-<!-- Categories -->
+
 <data name="Paintings" xml:space="preserve"><value>絵画</value></data>
 <data name="Jewelry" xml:space="preserve"><value>ジュエリー</value></data>
 <data name="Watches" xml:space="preserve"><value>時計</value></data>
@@ -39,11 +39,11 @@
 <data name="Decorative Arts" xml:space="preserve"><value>装飾芸術</value></data>
 <data name="All" xml:space="preserve"><value>すべて</value></data>
 
-<!-- Collection Details -->
+
 <data name="I'm interested" xml:space="preserve"><value>興味があります</value></data>
 <data name="Send inquiry" xml:space="preserve"><value>お問い合わせを送信</value></data>
 
-<!-- Forms -->
+
 <data name="First name" xml:space="preserve"><value>名</value></data>
 <data name="Last name" xml:space="preserve"><value>姓</value></data>
 <data name="Phone" xml:space="preserve"><value>電話</value></data>
@@ -53,8 +53,8 @@
 <data name="Send" xml:space="preserve"><value>送信</value></data>
 <data name="Thank you. We will contact you soon." xml:space="preserve"><value>ありがとうございます。すぐにご連絡いたします。</value></data>
 
-<!-- About Page -->
-<data name="About Us" xml:space="preserve"><value>私たちについて</value></data>
+
+<data name="About us" xml:space="preserve"><value>私たちについて</value></data>
 <data name="Excellence in luxury artwork and collectibles" xml:space="preserve"><value>高級美術品とコレクターズアイテムにおける卓越性</value></data>
 <data name="Who We Are" xml:space="preserve"><value>私たちは誰か</value></data>
 <data name="Who We Are Text" xml:space="preserve"><value>私たちはテキサス州ヒューストンに拠点を置くアメリカの会社で、世界的な代表を持ち、高級市場において卓越性の評判を持っています。私たちの専門鑑定士と専門家チームは、美術、骨董品、貴重な宝飾品、高級時計、希少なコレクターズアイテムにおいて数十年の総合経験をもたらします。単品を売却したい場合でも、コレクション全体を売却したい場合でも、お客様の独自のニーズに合わせたパーソナライズされたサービスを提供します。</value></data>
@@ -75,7 +75,7 @@
 <data name="Professional Service" xml:space="preserve"><value>プロフェッショナルサービス</value></data>
 <data name="Professional Service Commitment" xml:space="preserve"><value>信頼できる信頼性と専門知識</value></data>
 
-<!-- Contact Page -->
+
 <data name="Get in touch with our team" xml:space="preserve"><value>私たちの専門家チームにお問い合わせください。どんなお問い合わせでもお手伝いいたします。</value></data>
 <data name="Reach Out to Us" xml:space="preserve"><value>お問い合わせ</value></data>
 <data name="Reach Out to Us Text" xml:space="preserve"><value>私たちの専門家はお客様の質問にお答えし、専門的なガイダンスを提供するために利用可能です。24時間以内の回答を保証します。</value></data>
@@ -89,7 +89,7 @@
 <data name="Privacy Notice" xml:space="preserve"><value>プライバシー通知：</value></data>
 <data name="Privacy Notice Text" xml:space="preserve"><value>すべてのコミュニケーションは最高の機密性をもって扱われます。お客様の個人情報とお問い合わせは私たちのもとで安全です。</value></data>
 
-<!-- Admin Panel -->
+
 <data name="Manage Collections" xml:space="preserve"><value>コレクション管理</value></data>
 <data name="Collections Management" xml:space="preserve"><value>コレクション管理</value></data>
 <data name="Total" xml:space="preserve"><value>合計</value></data>
@@ -108,7 +108,7 @@
 <data name="Cancel" xml:space="preserve"><value>キャンセル</value></data>
 <data name="Success!" xml:space="preserve"><value>成功！</value></data>
 
-<!-- Admin Forms -->
+
 <data name="Title" xml:space="preserve"><value>タイトル</value></data>
 <data name="Description" xml:space="preserve"><value>説明</value></data>
 <data name="Category" xml:space="preserve"><value>カテゴリー</value></data>
@@ -120,7 +120,7 @@
 <data name="Current Images" xml:space="preserve"><value>現在の画像</value></data>
 <data name="Drag to reorder" xml:space="preserve"><value>ドラッグして並べ替え</value></data>
 
-<!-- Identity - Login -->
+
 <data name="Log in" xml:space="preserve"><value>ログイン</value></data>
 <data name="Password" xml:space="preserve"><value>パスワード</value></data>
 <data name="Remember me?" xml:space="preserve"><value>ログイン状態を保持しますか？</value></data>
@@ -128,15 +128,15 @@
 <data name="Register as a new user" xml:space="preserve"><value>新規ユーザーとして登録</value></data>
 <data name="Resend email confirmation" xml:space="preserve"><value>メール確認を再送信</value></data>
 
-<!-- Identity - Register -->
+
 <data name="Confirm Password" xml:space="preserve"><value>パスワードの確認</value></data>
 
-<!-- Identity - Manage Account -->
+
 <data name="Account Settings" xml:space="preserve"><value>アカウント設定</value></data>
 <data name="Profile Information" xml:space="preserve"><value>プロフィール情報</value></data>
 <data name="Email / Username" xml:space="preserve"><value>メール / ユーザー名</value></data>
 <data name="Phone number" xml:space="preserve"><value>電話番号</value></data>
-<data name="Save changes" xml:space="preserve"><value>変更を保存</value></data>
+<data name="Save Changes" xml:space="preserve"><value>変更を保存</value></data>
 <data name="Profile" xml:space="preserve"><value>プロフィール</value></data>
 <data name="Personal Data" xml:space="preserve"><value>個人データ</value></data>
 <data name="Change Password" xml:space="preserve"><value>パスワード変更</value></data>
@@ -148,7 +148,7 @@
 <data name="Thank you for confirming your email" xml:space="preserve"><value>メールの確認ありがとうございます</value></data>
 <data name="Please confirm your account" xml:space="preserve"><value>アカウントを確認してください</value></data>
 
-<!-- Additional UI Texts -->
+
 <data name="Collections Description" xml:space="preserve"><value>厳選された美術品、宝飾品、時計、コレクターズアイテムのコレクションをご覧ください</value></data>
 <data name="No Collections Available" xml:space="preserve"><value>利用可能なコレクションはありません</value></data>
 <data name="Check back soon message" xml:space="preserve"><value>コレクションへの新しい追加をお楽しみに。</value></data>
@@ -163,7 +163,7 @@
 <data name="Toggle navigation" xml:space="preserve"><value>ナビゲーション切り替え</value></data>
 <data name="Footer rights text" xml:space="preserve"><value>© {0} 全著作権所有。裁量、品質 &amp; プロフェッショナリズム。</value></data>
 
-<!-- Admin - Collection Management -->
+
 <data name="Add new collection description" xml:space="preserve"><value>新しい貴族的美術品コレクションを追加</value></data>
 <data name="Error label" xml:space="preserve"><value>エラー:</value></data>
 <data name="Fix errors message" xml:space="preserve"><value>次のエラーを修正してください:</value></data>
@@ -189,7 +189,7 @@
 <data name="Error saving order" xml:space="preserve"><value>順序の保存エラー:</value></data>
 <data name="Error saving order message" xml:space="preserve"><value>順序の保存中にエラーが発生しました。もう一度お試しください。</value></data>
 
-<!-- Form Placeholders -->
+
 <data name="Email placeholder" xml:space="preserve"><value>name@example.com</value></data>
 <data name="Password placeholder" xml:space="preserve"><value>パスワード</value></data>
 <data name="Email label placeholder" xml:space="preserve"><value>メールアドレス</value></data>
@@ -198,7 +198,7 @@
 <data name="New password placeholder" xml:space="preserve"><value>新しいパスワードを入力（最低12文字）</value></data>
 <data name="Confirm password placeholder" xml:space="preserve"><value>新しいパスワードを再入力</value></data>
 
-<!-- Email Management -->
+
 <data name="Manage Email" xml:space="preserve"><value>メール管理</value></data>
 <data name="Current Email" xml:space="preserve"><value>現在のメール</value></data>
 <data name="Email confirmed" xml:space="preserve"><value>メール確認済み</value></data>
@@ -208,11 +208,11 @@
 <data name="New email placeholder" xml:space="preserve"><value>新しいメールアドレスを入力</value></data>
 <data name="Change email" xml:space="preserve"><value>メールを変更</value></data>
 
-<!-- Navigation Items -->
+
 <data name="Email nav" xml:space="preserve"><value>メール</value></data>
 <data name="Password nav" xml:space="preserve"><value>パスワード</value></data>
 
-<!-- Personal Data -->
+
 <data name="Personal data description" xml:space="preserve"><value>お客様のアカウントには、お客様が提供した個人データが含まれています。このページでは、そのデータをダウンロードまたは削除できます。</value></data>
 <data name="Delete warning" xml:space="preserve"><value>このデータを削除すると、アカウントが完全に削除され、復元することはできません。</value></data>
 <data name="Download data button" xml:space="preserve"><value>個人データをダウンロード</value></data>
@@ -221,11 +221,11 @@
 <data name="Confirm password label" xml:space="preserve"><value>パスワードで確認</value></data>
 <data name="Delete account button" xml:space="preserve"><value>アカウントを完全に削除</value></data>
 
-<!-- Confirm Email Messages -->
+
 <data name="Confirm email success text" xml:space="preserve"><value>メールの確認ありがとうございます。今すぐ</value></data>
 <data name="log in link" xml:space="preserve"><value>ログイン</value></data>
 
-<!-- Error Messages -->
+
 <data name="Rate limit error" xml:space="preserve"><value>お問い合わせが多すぎます。後でもう一度お試しください。</value></data>
 <data name="Message too long error" xml:space="preserve"><value>メッセージが長すぎます（最大5000文字）</value></data>
 <data name="Inquiry processing error" xml:space="preserve"><value>お問い合わせの処理中にエラーが発生しました</value></data>
@@ -255,12 +255,12 @@
 <data name="Currency" xml:space="preserve"><value>通貨</value></data>
 <data name="Available for" xml:space="preserve"><value>入手可能価格</value></data>
 
-<!-- How To Page Details -->
+
 <data name="HowToBuySell" xml:space="preserve"><value>購入または販売方法</value></data>
 <data name="HowToBuySellDescription" xml:space="preserve"><value>プロフェッショナルなケアと完全な機密保持で高級美術品とコレクションアイテムを購入・販売するためのガイド</value></data>
 <data name="Note" xml:space="preserve"><value>注意</value></data>
 
-<!-- How to Buy -->
+
 <data name="HowToBuy" xml:space="preserve"><value>購入方法</value></data>
 <data name="HowToBuyStep1Title" xml:space="preserve"><value>ステップ1：コレクションを閲覧</value></data>
 <data name="HowToBuyStep1Text" xml:space="preserve"><value>厳選された高級美術品、骨董品、ジュエリー、時計のコレクションをご覧ください。各アイテムは専門家によって徹底的に検証され、認証されています。</value></data>
@@ -272,7 +272,7 @@
 <data name="HowToBuyStep4Text" xml:space="preserve"><value>条件が合意されたら、安全な支払いと世界中のお選びいただいた住所への機密配送を手配いたします。</value></data>
 <data name="HowToBuyNote" xml:space="preserve"><value>すべての取引は最大限の機密性とセキュリティで行われます。お客様のプライバシーが私たちの最優先事項です。</value></data>
 
-<!-- How to Sell -->
+
 <data name="HowToSell" xml:space="preserve"><value>販売方法</value></data>
 <data name="HowToSellStep1Title" xml:space="preserve"><value>ステップ1：お問い合わせ</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>アイテムの説明と写真を添付してメールでお問い合わせください。情報が多いほど、より正確な評価が可能になります。</value></data>
@@ -284,7 +284,7 @@
 <data name="HowToSellStep4Text" xml:space="preserve"><value>アイテムの受領と検証後、お好みの安全な支払い方法で即座に支払いを受け取ります。</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>市場で最高の価格を提供します。隠れた手数料や手数料はありません。合意した全額を受け取ります。</value></data>
 
-<!-- AAS Verified Section -->
+
 <data name="WhatIsAASVerified" xml:space="preserve"><value>AAS認証とは？</value></data>
 <data name="WithAASVerified" xml:space="preserve"><value>AAS認証付き</value></data>
 <data name="WithAASVerifiedText" xml:space="preserve"><value>専門家による真正性保証。完全な文書と真正性証明書。最高レベルの信頼と品質。</value></data>
@@ -293,7 +293,7 @@
 <data name="AASVerifiedDisclaimer" xml:space="preserve"><value>AAS認証バッジ付きのすべてのアイテムには、真正性証明書と完全な出所文書が付属します。</value></data>
 <data name="BrowseCollections" xml:space="preserve"><value>コレクションを閲覧</value></data>
 
-<!-- Home page - BuyOrSell Section -->
+
 <data name="BuyOrSellThroughUs" xml:space="preserve"><value>当社で購入または販売</value></data>
 <data name="BuyOrSellDescription" xml:space="preserve"><value>高級美術品の購入と販売における信頼できるパートナー</value></data>
 <data name="BuyOrSellDetails" xml:space="preserve"><value>コレクションを拡大したい場合でも、貴重なアイテムを販売したい場合でも、完全な機密保持と市場最高価格でプロフェッショナルなサービスを提供します。</value></data>
@@ -301,11 +301,11 @@
 
 <data name="Blog" xml:space="preserve"><value>ブログ</value></data>
 
-<!-- Pagination -->
+
 <data name="Showing" xml:space="preserve"><value>表示中</value></data>
 <data name="of" xml:space="preserve"><value>の</value></data>
 
-<!-- GDPR Cookie Consent -->
+
 <data name="Cookie Settings" xml:space="preserve"><value>クッキー設定</value></data>
 <data name="Accept All" xml:space="preserve"><value>すべて受け入れる</value></data>
 <data name="Decline" xml:space="preserve"><value>拒否する</value></data>
@@ -334,9 +334,8 @@
   <data name="Price Low to High" xml:space="preserve"><value>価格: 安い順</value></data>
   <data name="In Auction" xml:space="preserve"><value>オークション中</value></data>
 
-<!-- Auto-added missing translations -->
+
 <data name="Navigation" xml:space="preserve"><value>ナビゲーション</value></data>
-<data name="About us" xml:space="preserve"><value>私たちについて</value></data>
 <data name="Browse" xml:space="preserve"><value>閲覧</value></data>
 <data name="Browse Collections" xml:space="preserve"><value>コレクションを見る</value></data>
 <data name="Browse our curated selection of luxury artwork and collectibles" xml:space="preserve"><value>厳選された高級アート作品とコレクション品をご覧ください</value></data>
@@ -359,7 +358,6 @@
 <data name="What is this about?" xml:space="preserve"><value>内容について</value></data>
 <data name="Tell us about your inquiry..." xml:space="preserve"><value>お問い合わせ内容をお知らせください...</value></data>
 <data name="Tell us about your interest..." xml:space="preserve"><value>ご興味についてお知らせください...</value></data>
-<data name="Get In Touch" xml:space="preserve"><value>お問い合わせ</value></data>
 <data name="Get in Touch" xml:space="preserve"><value>お問い合わせ</value></data>
 <data name="Follow Us" xml:space="preserve"><value>フォローする</value></data>
 <data name="Ready to Begin?" xml:space="preserve"><value>始める準備はできましたか？</value></data>
@@ -407,7 +405,6 @@
 <data name="Failed to update comment. Please try again." xml:space="preserve"><value>コメントの更新に失敗しました。</value></data>
 <data name="Failed to delete comment. Please try again." xml:space="preserve"><value>コメントの削除に失敗しました。</value></data>
 <data name="Updated" xml:space="preserve"><value>更新済み</value></data>
-<data name="Save Changes" xml:space="preserve"><value>変更を保存</value></data>
 <data name="Saving..." xml:space="preserve"><value>保存中...</value></data>
 <data name="Deleting..." xml:space="preserve"><value>削除中...</value></data>
 <data name="Uncheck to save as draft" xml:space="preserve"><value>下書きとして保存するにはチェックを外します</value></data>
@@ -431,12 +428,7 @@
 <data name="Step" xml:space="preserve"><value>ステップ</value></data>
 <data name="How It Works" xml:space="preserve"><value>仕組み</value></data>
 <data name="Guide" xml:space="preserve"><value>ガイド</value></data>
-<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>ファインアートと絵画</value></data>
-<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>著名アーティストと新進気鋭の才能による厳選された絵画</value></data>
-<data name="Sculptures &amp; Statues" xml:space="preserve"><value>彫刻と像</value></data>
-<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>洗練されたコレクターのためのクラシックおよび現代彫刻</value></data>
-<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>アンティークとコレクティブル</value></data>
-<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>豊かな歴史を持つ珍しいアンティークとユニークなコレクティブル</value></data>
+
 <data name="Expert valuations and sales of decorative art pieces" xml:space="preserve"><value>装飾美術品の専門的な評価と販売</value></data>
 <data name="Essential Cookies" xml:space="preserve"><value>必須クッキー</value></data>
 <data name="Analytics Cookies" xml:space="preserve"><value>分析クッキー</value></data>

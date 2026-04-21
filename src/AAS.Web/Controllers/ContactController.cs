@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Caching.Memory;
 using MailKit.Net.Smtp;
 using MimeKit;
 
 namespace AAS.Web.Controllers
 {
+    [EnableRateLimiting("contact")]
     public class ContactsController : Controller
     {
         private readonly IConfiguration _cfg;
@@ -22,6 +24,12 @@ namespace AAS.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Submit(string name, string email, string? subject, string message)
         {
+            // SECURITY: Enforce input length limits (defense against DoS and abuse)
+            const int maxNameLen = 120;
+            const int maxEmailLen = 254; // RFC 5321
+            const int maxSubjectLen = 200;
+            const int maxMessageLen = 5000;
+
             // Basic validation
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(message))
             {
@@ -29,8 +37,25 @@ namespace AAS.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Email format validation
-            if (!email.Contains("@") || !email.Contains("."))
+            if (name.Length > maxNameLen || email.Length > maxEmailLen ||
+                (subject?.Length ?? 0) > maxSubjectLen || message.Length > maxMessageLen)
+            {
+                TempData["Error"] = "Your input exceeds the allowed length.";
+                return RedirectToAction("Index");
+            }
+
+            // SECURITY: Strip control characters and CR/LF (SMTP header injection defense)
+            name = System.Text.RegularExpressions.Regex.Replace(name, @"[\x00-\x1F\x7F]", " ").Trim();
+            email = email.Trim();
+            subject = subject == null ? null : System.Text.RegularExpressions.Regex.Replace(subject, @"[\x00-\x1F\x7F]", " ").Trim();
+
+            // SECURITY: Strict email format validation via System.Net.Mail
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                if (addr.Address != email) throw new FormatException();
+            }
+            catch
             {
                 TempData["Error"] = "Please enter a valid email address.";
                 return RedirectToAction("Index");

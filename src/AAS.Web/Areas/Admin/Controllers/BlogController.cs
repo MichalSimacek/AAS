@@ -1,10 +1,12 @@
 using AAS.Web.Data;
 using AAS.Web.Models;
 using AAS.Web.Services;
+using Ganss.Xss;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SixLabors.ImageSharp;
 using System.Security.Claims;
 
 namespace AAS.Web.Areas.Admin.Controllers
@@ -16,18 +18,69 @@ namespace AAS.Web.Areas.Admin.Controllers
         private readonly AppDbContext _db;
         private readonly IDeepLService _deepL;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IHtmlSanitizer _sanitizer;
         private readonly ILogger<BlogController> _logger;
+
+        // SECURITY: File upload constraints
+        private static readonly string[] AllowedImageExtensions = new[] { ".jpg", ".jpeg", ".png", ".webp", ".gif" };
+        private const long MaxImageBytes = 8L * 1024 * 1024; // 8 MB
 
         public BlogController(
             AppDbContext db,
             IDeepLService deepL,
             UserManager<IdentityUser> userManager,
+            IHtmlSanitizer sanitizer,
             ILogger<BlogController> logger)
         {
             _db = db;
             _deepL = deepL;
             _userManager = userManager;
+            _sanitizer = sanitizer;
             _logger = logger;
+        }
+
+        // SECURITY: Validate and save an uploaded image safely.
+        // - Enforces extension whitelist
+        // - Enforces max size
+        // - Verifies it is a real image by decoding with ImageSharp
+        // - Uses GUID-only filename (never trusts client filename -> prevents path traversal / dangerous extensions)
+        // Returns public URL or null if invalid.
+        private async Task<string?> SaveFeaturedImageAsync(IFormFile file)
+        {
+            if (file == null || file.Length == 0) return null;
+            if (file.Length > MaxImageBytes) throw new InvalidOperationException("Image too large (max 8 MB).");
+
+            var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+            if (!AllowedImageExtensions.Contains(ext))
+                throw new InvalidOperationException("Unsupported image type.");
+
+            // Verify file is actually a valid image
+            try
+            {
+                await using var probe = file.OpenReadStream();
+                using var img = await Image.LoadAsync(probe);
+                if (img.Width < 1 || img.Height < 1)
+                    throw new InvalidOperationException("Invalid image.");
+            }
+            catch (InvalidOperationException) { throw; }
+            catch
+            {
+                throw new InvalidOperationException("File is not a valid image.");
+            }
+
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "blog");
+            Directory.CreateDirectory(uploadsFolder);
+
+            // SECURITY: Use GUID only; never trust user-supplied filename
+            var safeName = $"{Guid.NewGuid():N}{ext}";
+            var filePath = Path.Combine(uploadsFolder, safeName);
+
+            await using (var fs = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(fs);
+            }
+
+            return $"/uploads/blog/{safeName}";
         }
 
         // GET: Admin/Blog
@@ -82,21 +135,23 @@ namespace AAS.Web.Areas.Admin.Controllers
                 post.AuthorId = userId;
                 post.CreatedAt = DateTime.UtcNow;
 
-                // Handle featured image upload
+                // SECURITY: Sanitize the WYSIWYG HTML input to prevent stored XSS
+                if (!string.IsNullOrEmpty(post.ContentCs))
+                    post.ContentCs = _sanitizer.Sanitize(post.ContentCs);
+
+                // Handle featured image upload (hardened: extension + size + image-content validation + GUID filename)
                 if (featuredImage != null && featuredImage.Length > 0)
                 {
-                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "blog");
-                    Directory.CreateDirectory(uploadsFolder);
-
-                    var uniqueFileName = $"{Guid.NewGuid()}_{featuredImage.FileName}";
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    try
                     {
-                        await featuredImage.CopyToAsync(fileStream);
+                        var url = await SaveFeaturedImageAsync(featuredImage);
+                        if (url != null) post.FeaturedImage = url;
                     }
-
-                    post.FeaturedImage = $"/uploads/blog/{uniqueFileName}";
+                    catch (InvalidOperationException ex)
+                    {
+                        ModelState.AddModelError(nameof(featuredImage), ex.Message);
+                        return View(post);
+                    }
                 }
 
                 // Translate title and content to all languages using DeepL
@@ -254,27 +309,27 @@ namespace AAS.Web.Areas.Admin.Controllers
                     return NotFound();
                 }
 
-                // Update basic fields
+                // Update basic fields (SECURITY: Sanitize WYSIWYG HTML)
                 existingPost.TitleCs = post.TitleCs;
-                existingPost.ContentCs = post.ContentCs;
+                existingPost.ContentCs = string.IsNullOrEmpty(post.ContentCs)
+                    ? post.ContentCs
+                    : _sanitizer.Sanitize(post.ContentCs);
                 existingPost.Published = post.Published;
                 existingPost.UpdatedAt = DateTime.UtcNow;
 
-                // Handle new featured image
+                // Handle new featured image (hardened)
                 if (featuredImage != null && featuredImage.Length > 0)
                 {
-                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "blog");
-                    Directory.CreateDirectory(uploadsFolder);
-
-                    var uniqueFileName = $"{Guid.NewGuid()}_{featuredImage.FileName}";
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    try
                     {
-                        await featuredImage.CopyToAsync(fileStream);
+                        var url = await SaveFeaturedImageAsync(featuredImage);
+                        if (url != null) existingPost.FeaturedImage = url;
                     }
-
-                    existingPost.FeaturedImage = $"/uploads/blog/{uniqueFileName}";
+                    catch (InvalidOperationException ex)
+                    {
+                        ModelState.AddModelError(nameof(featuredImage), ex.Message);
+                        return View(post);
+                    }
                 }
 
                 // Re-translate if content changed (auto-detect source language)

@@ -1,5 +1,37 @@
 # Aristocratic Artwork Sale - Product Requirements Document
 
+## Session 2026-04-21 — Security hardening & translations
+
+### Completed
+- Translations: Added ~1,146 resource entries across 10 languages (`Resources.SharedResources.*.resx`).
+  Deduplicated case-insensitive duplicates. Russian/German/etc. now fully translated on nav, cookie banner,
+  contact form, landing page, blog.
+- Collection visibility toggle: new `IsHidden` column + EF migration `AddCollectionIsHidden`; admin action
+  `POST /Admin/Collections/ToggleVisibility/{id}` with antiforgery; eye/eye-slash button in admin table with
+  row striping + `Hidden` badge. Public `CollectionsController.Index`, `Details`, `Pages/Collections/Landing`
+  (category counts, hero images, previews), and `SitemapController` all filter `!c.IsHidden`.
+- Rate limiting: ASP.NET Core `RateLimiter` with global policy (300/min/IP) + named policies `auth` (10/15min),
+  `api` (60/min), `contact` (5/15min), `comments` (20/10min). Applied to Login, Register, Contacts, Comments API.
+- CSRF hardening: `CommentsController` now uses `[AutoValidateAntiforgeryToken]`.
+- File upload: `BlogController` image upload hardened — extension whitelist, 8 MB cap, ImageSharp content
+  validation, GUID-only filename (never trusts client name).
+- Stored XSS defense: `Ganss.Xss.HtmlSanitizer` sanitizes blog `ContentCs` before DB save.
+- Cookie hardening: application cookies are HttpOnly, SameSite=Lax, Secure=SameAsRequest, 2h sliding.
+- SMTP injection: `ContactsController.Submit` strips CR/LF/control chars, validates email with
+  `System.Net.Mail.MailAddress`, enforces max lengths (120/254/200/5000).
+- Secret removal: Hardcoded DeepL API key removed from `appsettings.Production.json` (now empty;
+  resolved from env var `DEEPL_API_KEY` at runtime).
+- Vulnerable dependencies upgraded: `HtmlSanitizer 9.0.892`, `MailKit 4.16.0`.
+- Request body limit: `FormOptions.MultipartBodyLengthLimit = 100 MB`.
+- Build verified on local container with .NET 8 SDK — 0 errors, 1 pre-existing warning.
+
+### Pending / follow-up
+- Refactor `Collection.Price` from `string` to `decimal` (existing P1 tech debt).
+- Ensure env var `DEEPL_API_KEY` is set on the production server (systemd unit / docker-compose).
+- Consider adding 2FA for admin account.
+- Consider replacing `unsafe-inline` in CSP with nonce-based CSP.
+
+
 ## Original Problem Statement
 ASP.NET Core web application for selling aristocratic artwork, antiques, jewelry, and watches. The application features multi-language support (10 languages), GDPR compliance, and professional presentation of luxury items.
 

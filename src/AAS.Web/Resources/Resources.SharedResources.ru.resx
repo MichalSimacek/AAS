@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <root>
 <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
 <resheader name="version"><value>2.0</value></resheader>
 <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
 <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
 
-<!-- Home Page -->
+
 <data name="Slogan" xml:space="preserve"><value>Конфиденциальность, гарантированное качество и профессиональная забота о наших клиентах - наш главный приоритет.</value></data>
 <data name="Home Description" xml:space="preserve"><value>Откройте для себя исключительные произведения искусства, антиквариат, драгоценные украшения и роскошные часы. Мы предлагаем самые высокие цены с гарантированной конфиденциальностью и профессионализмом.</value></data>
 
-<!-- Navigation -->
+
 <data name="Collections" xml:space="preserve"><value>Коллекции</value></data>
 <data name="Contacts" xml:space="preserve"><value>Контакты</value></data>
 <data name="Register" xml:space="preserve"><value>Регистрация</value></data>
@@ -18,7 +18,7 @@
 <data name="Admin Panel" xml:space="preserve"><value>Панель администратора</value></data>
 <data name="Manage" xml:space="preserve"><value>Управление</value></data>
 
-<!-- Home Page Content -->
+
 <data name="Explore collections" xml:space="preserve"><value>Просмотреть коллекции</value></data>
 <data name="Contact Us" xml:space="preserve"><value>Свяжитесь с нами</value></data>
 <data name="Why Choose Us" xml:space="preserve"><value>Почему выбирают нас</value></data>
@@ -30,7 +30,7 @@
 <data name="Expert Service" xml:space="preserve"><value>Экспертный сервис</value></data>
 <data name="Expert Service Desc" xml:space="preserve"><value>При заинтересованности наши специалисты организуют профессиональные оценки и индивидуальные услуги за счет продавца.</value></data>
 
-<!-- Categories -->
+
 <data name="Paintings" xml:space="preserve"><value>Картины</value></data>
 <data name="Jewelry" xml:space="preserve"><value>Ювелирные изделия</value></data>
 <data name="Watches" xml:space="preserve"><value>Часы</value></data>
@@ -39,11 +39,11 @@
 <data name="Decorative Arts" xml:space="preserve"><value>Декоративное искусство</value></data>
 <data name="All" xml:space="preserve"><value>Все</value></data>
 
-<!-- Collection Details -->
+
 <data name="I'm interested" xml:space="preserve"><value>Мне интересно</value></data>
 <data name="Send inquiry" xml:space="preserve"><value>Отправить запрос</value></data>
 
-<!-- Forms -->
+
 <data name="First name" xml:space="preserve"><value>Имя</value></data>
 <data name="Last name" xml:space="preserve"><value>Фамилия</value></data>
 <data name="Phone" xml:space="preserve"><value>Телефон</value></data>
@@ -53,8 +53,8 @@
 <data name="Send" xml:space="preserve"><value>Отправить</value></data>
 <data name="Thank you. We will contact you soon." xml:space="preserve"><value>Спасибо. Мы свяжемся с вами в ближайшее время.</value></data>
 
-<!-- About Page -->
-<data name="About Us" xml:space="preserve"><value>О нас</value></data>
+
+<data name="About us" xml:space="preserve"><value>О нас</value></data>
 <data name="Excellence in luxury artwork and collectibles" xml:space="preserve"><value>Совершенство в роскошных произведениях искусства и предметах коллекционирования</value></data>
 <data name="Who We Are" xml:space="preserve"><value>Кто мы</value></data>
 <data name="Who We Are Text" xml:space="preserve"><value>Мы - американская компания, базирующаяся в Хьюстоне, штат Техас, с представительствами по всему миру и репутацией совершенства на рынке роскоши. Наша команда опытных оценщиков и специалистов обладает десятилетиями совместного опыта в области изобразительного искусства, антиквариата, драгоценностей, роскошных часов и редких предметов коллекционирования. Независимо от того, хотите ли вы продать один предмет или целую коллекцию, мы предоставляем персонализированное обслуживание, адаптированное к вашим уникальным потребностям.</value></data>
@@ -75,7 +75,7 @@
 <data name="Professional Service" xml:space="preserve"><value>Профессиональный сервис</value></data>
 <data name="Professional Service Commitment" xml:space="preserve"><value>Надежность и экспертиза, которым можно доверять</value></data>
 
-<!-- Contact Page -->
+
 <data name="Get in touch with our team" xml:space="preserve"><value>Свяжитесь с нашей командой специалистов. Мы здесь, чтобы помочь вам с любыми вопросами.</value></data>
 <data name="Reach Out to Us" xml:space="preserve"><value>Свяжитесь с нами</value></data>
 <data name="Reach Out to Us Text" xml:space="preserve"><value>Наши специалисты готовы ответить на ваши вопросы и предоставить экспертное руководство. Мы гарантируем ответ в течение 24 часа.</value></data>
@@ -89,7 +89,7 @@
 <data name="Privacy Notice" xml:space="preserve"><value>Уведомление о конфиденциальности:</value></data>
 <data name="Privacy Notice Text" xml:space="preserve"><value>Вся коммуникация осуществляется с максимальной конфиденциальностью. Ваша личная информация и запросы находятся в безопасности.</value></data>
 
-<!-- Admin Panel -->
+
 <data name="Manage Collections" xml:space="preserve"><value>Управление коллекциями</value></data>
 <data name="Collections Management" xml:space="preserve"><value>Управление коллекциями</value></data>
 <data name="Total" xml:space="preserve"><value>Всего</value></data>
@@ -108,7 +108,7 @@
 <data name="Cancel" xml:space="preserve"><value>Отмена</value></data>
 <data name="Success!" xml:space="preserve"><value>Успешно!</value></data>
 
-<!-- Admin Forms -->
+
 <data name="Title" xml:space="preserve"><value>Название</value></data>
 <data name="Description" xml:space="preserve"><value>Описание</value></data>
 <data name="Category" xml:space="preserve"><value>Категория</value></data>
@@ -120,7 +120,7 @@
 <data name="Current Images" xml:space="preserve"><value>Текущие изображения</value></data>
 <data name="Drag to reorder" xml:space="preserve"><value>Перетащите для изменения порядка</value></data>
 
-<!-- Identity - Login -->
+
 <data name="Log in" xml:space="preserve"><value>Войти</value></data>
 <data name="Password" xml:space="preserve"><value>Пароль</value></data>
 <data name="Remember me?" xml:space="preserve"><value>Запомнить меня?</value></data>
@@ -128,15 +128,15 @@
 <data name="Register as a new user" xml:space="preserve"><value>Зарегистрироваться как новый пользователь</value></data>
 <data name="Resend email confirmation" xml:space="preserve"><value>Повторно отправить подтверждение email</value></data>
 
-<!-- Identity - Register -->
+
 <data name="Confirm Password" xml:space="preserve"><value>Подтвердите пароль</value></data>
 
-<!-- Identity - Manage Account -->
+
 <data name="Account Settings" xml:space="preserve"><value>Настройки учетной записи</value></data>
 <data name="Profile Information" xml:space="preserve"><value>Информация профиля</value></data>
 <data name="Email / Username" xml:space="preserve"><value>Email / Имя пользователя</value></data>
 <data name="Phone number" xml:space="preserve"><value>Номер телефона</value></data>
-<data name="Save changes" xml:space="preserve"><value>Сохранить изменения</value></data>
+<data name="Save Changes" xml:space="preserve"><value>Сохранить изменения</value></data>
 <data name="Profile" xml:space="preserve"><value>Профиль</value></data>
 <data name="Personal Data" xml:space="preserve"><value>Личные данные</value></data>
 <data name="Change Password" xml:space="preserve"><value>Изменить пароль</value></data>
@@ -148,7 +148,7 @@
 <data name="Thank you for confirming your email" xml:space="preserve"><value>Спасибо за подтверждение вашего email</value></data>
 <data name="Please confirm your account" xml:space="preserve"><value>Пожалуйста, подтвердите ваш аккаунт</value></data>
 
-<!-- Additional UI Texts -->
+
 <data name="Collections Description" xml:space="preserve"><value>Изучите нашу тщательно подобранную коллекцию произведений искусства, ювелирных изделий, часов и предметов коллекционирования</value></data>
 <data name="No Collections Available" xml:space="preserve"><value>Нет доступных коллекций</value></data>
 <data name="Check back soon message" xml:space="preserve"><value>Скоро появятся новые экспонаты в нашей коллекции.</value></data>
@@ -163,7 +163,7 @@
 <data name="Toggle navigation" xml:space="preserve"><value>Переключить навигацию</value></data>
 <data name="Footer rights text" xml:space="preserve"><value>© {0} Все права защищены. Конфиденциальность, качество &amp; профессионализм.</value></data>
 
-<!-- Admin - Collection Management -->
+
 <data name="Add new collection description" xml:space="preserve"><value>Добавить новую коллекцию аристократических произведений искусства</value></data>
 <data name="Error label" xml:space="preserve"><value>Ошибка:</value></data>
 <data name="Fix errors message" xml:space="preserve"><value>Пожалуйста, исправьте следующие ошибки:</value></data>
@@ -189,7 +189,7 @@
 <data name="Error saving order" xml:space="preserve"><value>Ошибка сохранения порядка:</value></data>
 <data name="Error saving order message" xml:space="preserve"><value>Ошибка сохранения порядка. Пожалуйста, попробуйте снова.</value></data>
 
-<!-- Form Placeholders -->
+
 <data name="Email placeholder" xml:space="preserve"><value>имя@пример.com</value></data>
 <data name="Password placeholder" xml:space="preserve"><value>пароль</value></data>
 <data name="Email label placeholder" xml:space="preserve"><value>Ваш адрес электронной почты</value></data>
@@ -198,7 +198,7 @@
 <data name="New password placeholder" xml:space="preserve"><value>Введите новый пароль (минимум 12 символов)</value></data>
 <data name="Confirm password placeholder" xml:space="preserve"><value>Введите новый пароль повторно</value></data>
 
-<!-- Email Management -->
+
 <data name="Manage Email" xml:space="preserve"><value>Управление email</value></data>
 <data name="Current Email" xml:space="preserve"><value>Текущий email</value></data>
 <data name="Email confirmed" xml:space="preserve"><value>Email подтвержден</value></data>
@@ -208,11 +208,11 @@
 <data name="New email placeholder" xml:space="preserve"><value>Введите новый адрес электронной почты</value></data>
 <data name="Change email" xml:space="preserve"><value>Изменить email</value></data>
 
-<!-- Navigation Items -->
+
 <data name="Email nav" xml:space="preserve"><value>Email</value></data>
 <data name="Password nav" xml:space="preserve"><value>Пароль</value></data>
 
-<!-- Personal Data -->
+
 <data name="Personal data description" xml:space="preserve"><value>Ваша учетная запись содержит персональные данные, которые вы нам предоставили. Эта страница позволяет вам скачать или удалить эти данные.</value></data>
 <data name="Delete warning" xml:space="preserve"><value>Удаление этих данных приведет к безвозвратному удалению вашей учетной записи, и это невозможно будет восстановить.</value></data>
 <data name="Download data button" xml:space="preserve"><value>Скачать персональные данные</value></data>
@@ -221,11 +221,11 @@
 <data name="Confirm password label" xml:space="preserve"><value>Подтвердите с помощью пароля</value></data>
 <data name="Delete account button" xml:space="preserve"><value>Удалить учетную запись навсегда</value></data>
 
-<!-- Confirm Email Messages -->
+
 <data name="Confirm email success text" xml:space="preserve"><value>Спасибо за подтверждение вашего email. Теперь вы можете</value></data>
 <data name="log in link" xml:space="preserve"><value>войти</value></data>
 
-<!-- Error Messages -->
+
 <data name="Rate limit error" xml:space="preserve"><value>Слишком много запросов. Пожалуйста, попробуйте позже.</value></data>
 <data name="Message too long error" xml:space="preserve"><value>Сообщение слишком длинное (максимум 5000 символов)</value></data>
 <data name="Inquiry processing error" xml:space="preserve"><value>Произошла ошибка при обработке вашего запроса</value></data>
@@ -255,12 +255,12 @@
 <data name="Currency" xml:space="preserve"><value>Валюта</value></data>
 <data name="Available for" xml:space="preserve"><value>Доступно за</value></data>
 
-<!-- How To Page Details -->
+
 <data name="HowToBuySell" xml:space="preserve"><value>Как купить или продать</value></data>
 <data name="HowToBuySellDescription" xml:space="preserve"><value>Ваш путеводитель по покупке и продаже предметов роскоши и коллекционных произведений искусства с профессиональным уходом и полной конфиденциальностью</value></data>
 <data name="Note" xml:space="preserve"><value>Примечание</value></data>
 
-<!-- How to Buy -->
+
 <data name="HowToBuy" xml:space="preserve"><value>Как купить</value></data>
 <data name="HowToBuyStep1Title" xml:space="preserve"><value>Шаг 1: Просмотр коллекций</value></data>
 <data name="HowToBuyStep1Text" xml:space="preserve"><value>Изучите нашу тщательно отобранную коллекцию предметов роскоши, антиквариата, ювелирных изделий и часов. Каждый предмет тщательно проверяется и аутентифицируется нашими экспертами.</value></data>
@@ -272,7 +272,7 @@
 <data name="HowToBuyStep4Text" xml:space="preserve"><value>После согласования условий мы организуем безопасную оплату и конфиденциальную доставку по выбранному вами адресу в любую точку мира.</value></data>
 <data name="HowToBuyNote" xml:space="preserve"><value>Все транзакции проводятся с максимальной конфиденциальностью и безопасностью. Ваша конфиденциальность - наш приоритет.</value></data>
 
-<!-- How to Sell -->
+
 <data name="HowToSell" xml:space="preserve"><value>Как продать</value></data>
 <data name="HowToSellStep1Title" xml:space="preserve"><value>Шаг 1: Свяжитесь с нами</value></data>
 <data name="HowToSellStep1Text" xml:space="preserve"><value>Отправьте нам электронное письмо с описанием вашего предмета и прикрепите фотографии. Чем больше информации вы предоставите, тем точнее будет наша оценка.</value></data>
@@ -284,7 +284,7 @@
 <data name="HowToSellStep4Text" xml:space="preserve"><value>После получения и проверки предмета вы получите оплату немедленно через предпочитаемый вами безопасный способ оплаты.</value></data>
 <data name="HowToSellNote" xml:space="preserve"><value>Мы предлагаем самые высокие цены на рынке. Никаких скрытых комиссий, никаких комиссионных. Вы получаете полную согласованную сумму.</value></data>
 
-<!-- AAS Verified Section -->
+
 <data name="WhatIsAASVerified" xml:space="preserve"><value>Что такое AAS Проверено?</value></data>
 <data name="WithAASVerified" xml:space="preserve"><value>С AAS Проверено</value></data>
 <data name="WithAASVerifiedText" xml:space="preserve"><value>Подлинность гарантирована нашими экспертами. Полная документация и сертификат подлинности. Высший уровень доверия и качества.</value></data>
@@ -293,7 +293,7 @@
 <data name="AASVerifiedDisclaimer" xml:space="preserve"><value>Все предметы со значком AAS Проверено сопровождаются сертификатом подлинности и полной документацией о происхождении.</value></data>
 <data name="BrowseCollections" xml:space="preserve"><value>Просмотреть коллекции</value></data>
 
-<!-- Home page - BuyOrSell Section -->
+
 <data name="BuyOrSellThroughUs" xml:space="preserve"><value>Покупайте или продавайте с нами</value></data>
 <data name="BuyOrSellDescription" xml:space="preserve"><value>Ваш надежный партнер для покупки и продажи предметов роскоши</value></data>
 <data name="BuyOrSellDetails" xml:space="preserve"><value>Хотите расширить свою коллекцию или продать ценные предметы - мы предоставляем профессиональные услуги с полной конфиденциальностью и самыми высокими ценами на рынке.</value></data>
@@ -301,11 +301,11 @@
 
 <data name="Blog" xml:space="preserve"><value>Блог</value></data>
 
-<!-- Pagination -->
+
 <data name="Showing" xml:space="preserve"><value>Показано</value></data>
 <data name="of" xml:space="preserve"><value>из</value></data>
 
-<!-- GDPR Cookie Consent -->
+
 <data name="Cookie Banner Title" xml:space="preserve"><value>Мы используем файлы cookie</value></data>
 <data name="Cookie Banner Description" xml:space="preserve"><value>Мы используем файлы cookie и аналогичные технологии для улучшения вашего опыта просмотра. Выберите ваши предпочтения ниже.</value></data>
 <data name="Cookie Settings" xml:space="preserve"><value>Настройки cookie</value></data>
@@ -343,9 +343,8 @@
   <data name="Price Low to High" xml:space="preserve"><value>Цена: По возрастанию</value></data>
   <data name="In Auction" xml:space="preserve"><value>На аукционе</value></data>
 
-<!-- Auto-added missing translations -->
+
 <data name="Navigation" xml:space="preserve"><value>Навигация</value></data>
-<data name="About us" xml:space="preserve"><value>О нас</value></data>
 <data name="Browse" xml:space="preserve"><value>Обзор</value></data>
 <data name="Browse Collections" xml:space="preserve"><value>Просмотреть коллекции</value></data>
 <data name="Browse our curated selection of luxury artwork and collectibles" xml:space="preserve"><value>Ознакомьтесь с нашей тщательно подобранной коллекцией предметов роскоши и искусства</value></data>
@@ -368,7 +367,6 @@
 <data name="What is this about?" xml:space="preserve"><value>О чем это?</value></data>
 <data name="Tell us about your inquiry..." xml:space="preserve"><value>Расскажите нам о вашем запросе...</value></data>
 <data name="Tell us about your interest..." xml:space="preserve"><value>Расскажите о своем интересе...</value></data>
-<data name="Get In Touch" xml:space="preserve"><value>Свяжитесь с нами</value></data>
 <data name="Get in Touch" xml:space="preserve"><value>Свяжитесь с нами</value></data>
 <data name="Follow Us" xml:space="preserve"><value>Следите за нами</value></data>
 <data name="Ready to Begin?" xml:space="preserve"><value>Готовы начать?</value></data>
@@ -416,7 +414,6 @@
 <data name="Failed to update comment. Please try again." xml:space="preserve"><value>Не удалось обновить комментарий.</value></data>
 <data name="Failed to delete comment. Please try again." xml:space="preserve"><value>Не удалось удалить комментарий.</value></data>
 <data name="Updated" xml:space="preserve"><value>Обновлено</value></data>
-<data name="Save Changes" xml:space="preserve"><value>Сохранить изменения</value></data>
 <data name="Saving..." xml:space="preserve"><value>Сохранение...</value></data>
 <data name="Deleting..." xml:space="preserve"><value>Удаление...</value></data>
 <data name="Uncheck to save as draft" xml:space="preserve"><value>Снимите флажок, чтобы сохранить как черновик</value></data>
@@ -440,12 +437,7 @@
 <data name="Step" xml:space="preserve"><value>Шаг</value></data>
 <data name="How It Works" xml:space="preserve"><value>Как это работает</value></data>
 <data name="Guide" xml:space="preserve"><value>Руководство</value></data>
-<data name="Fine Art &amp; Paintings" xml:space="preserve"><value>Изобразительное искусство и живопись</value></data>
-<data name="Fine Art &amp; Paintings Desc" xml:space="preserve"><value>Отобранные картины известных художников и подающих надежды талантов</value></data>
-<data name="Sculptures &amp; Statues" xml:space="preserve"><value>Скульптуры и статуи</value></data>
-<data name="Sculptures &amp; Statues Desc" xml:space="preserve"><value>Классические и современные скульптуры для взыскательных коллекционеров</value></data>
-<data name="Antiques &amp; Collectibles" xml:space="preserve"><value>Антиквариат и коллекционные предметы</value></data>
-<data name="Antiques &amp; Collectibles Desc" xml:space="preserve"><value>Редкий антиквариат и уникальные коллекционные предметы с богатой историей</value></data>
+
 <data name="Expert valuations and sales of decorative art pieces" xml:space="preserve"><value>Экспертные оценки и продажа декоративного искусства</value></data>
 <data name="Essential Cookies" xml:space="preserve"><value>Необходимые файлы cookie</value></data>
 <data name="Marketing Cookies" xml:space="preserve"><value>Маркетинговые файлы cookie</value></data>
@@ -470,4 +462,3 @@
 <data name="Years Experience" xml:space="preserve"><value>Лет опыта</value></data>
 <data name="Items Sold" xml:space="preserve"><value>Продано предметов</value></data>
 </root>
-
