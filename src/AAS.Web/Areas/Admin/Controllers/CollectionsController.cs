@@ -514,6 +514,104 @@ namespace AAS.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BulkAction(string action, List<int> ids, string? visibility = null)
+        {
+            if (ids == null || ids.Count == 0)
+            {
+                TempData["ErrorMessage"] = "No collections selected.";
+                return RedirectToAction(nameof(Index), new { visibility });
+            }
+
+            if (string.IsNullOrWhiteSpace(action))
+            {
+                TempData["ErrorMessage"] = "No bulk action specified.";
+                return RedirectToAction(nameof(Index), new { visibility });
+            }
+
+            try
+            {
+                var items = await _db.Collections
+                    .AsTracking()
+                    .Where(c => ids.Contains(c.Id))
+                    .ToListAsync();
+
+                if (items.Count == 0)
+                {
+                    TempData["ErrorMessage"] = "Selected collections were not found.";
+                    return RedirectToAction(nameof(Index), new { visibility });
+                }
+
+                int affected = 0;
+
+                switch (action.ToLowerInvariant())
+                {
+                    case "hide":
+                        foreach (var c in items)
+                        {
+                            if (!c.IsHidden) { c.IsHidden = true; affected++; }
+                        }
+                        await _db.SaveChangesAsync();
+                        TempData["SuccessMessage"] = $"Hidden {affected} collection(s) from the public site.";
+                        break;
+
+                    case "show":
+                        foreach (var c in items)
+                        {
+                            if (c.IsHidden) { c.IsHidden = false; affected++; }
+                        }
+                        await _db.SaveChangesAsync();
+                        TempData["SuccessMessage"] = $"Made {affected} collection(s) visible on the public site.";
+                        break;
+
+                    case "delete":
+                        // Need to include Images for file cleanup
+                        var withImages = await _db.Collections
+                            .Include(c => c.Images)
+                            .AsTracking()
+                            .Where(c => ids.Contains(c.Id))
+                            .ToListAsync();
+
+                        foreach (var c in withImages)
+                        {
+                            foreach (var img in c.Images)
+                            {
+                                try { _img.DeleteAllVariants(img.FileName); } catch { }
+                            }
+                            if (!string.IsNullOrEmpty(c.AudioPath))
+                            {
+                                try
+                                {
+                                    var audioPath = Path.Combine("wwwroot", c.AudioPath.TrimStart('/'));
+                                    if (System.IO.File.Exists(audioPath))
+                                        System.IO.File.Delete(audioPath);
+                                }
+                                catch { }
+                            }
+                        }
+
+                        _db.Collections.RemoveRange(withImages);
+                        await _db.SaveChangesAsync();
+                        affected = withImages.Count;
+                        TempData["SuccessMessage"] = $"Deleted {affected} collection(s).";
+                        break;
+
+                    default:
+                        TempData["ErrorMessage"] = $"Unknown bulk action: {action}.";
+                        break;
+                }
+
+                return RedirectToAction(nameof(Index), new { visibility });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Bulk action '{Action}' failed for ids {Ids}", action, string.Join(",", ids));
+                TempData["ErrorMessage"] = $"Bulk action failed: {ex.Message}";
+                return RedirectToAction(nameof(Index), new { visibility });
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             try

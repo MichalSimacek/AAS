@@ -39,8 +39,7 @@
         </div>
 
         <!-- Visibility Tabs -->
-        <div class="visibility-tabs-wrap" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
-            @{
+        <div class="visibility-tabs-wrap" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">            @{
                 var currentVis = ((string)(ViewBag.Visibility ?? "all")).ToLower();
                 string BuildVisUrl(string v) {
                     var parts = new List<string>();
@@ -248,10 +247,43 @@
         }
         else
         {
+            <!-- Bulk Actions Bar (appears when items are selected) -->
+            <form id="bulkActionsForm" method="post" action="/Admin/Collections/BulkAction" class="bulk-actions-bar" style="display:none;">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="visibility" value="@currentVis" />
+                <input type="hidden" name="action" id="bulkActionInput" value="" />
+
+                <div class="bulk-actions-inner">
+                    <div class="bulk-selection-info">
+                        <i class="bi bi-check2-square me-2"></i>
+                        <span id="bulkSelectionCount" data-testid="bulk-selection-count">0</span> selected
+                        <button type="button" class="bulk-clear" id="bulkClearBtn" data-testid="bulk-clear">
+                            <i class="bi bi-x-lg"></i> Clear
+                        </button>
+                    </div>
+                    <div class="bulk-actions-buttons">
+                        <button type="button" class="btn btn-bulk btn-bulk-hide" data-bulk-action="hide" data-testid="bulk-hide">
+                            <i class="bi bi-eye-slash-fill me-1"></i> Hide selected
+                        </button>
+                        <button type="button" class="btn btn-bulk btn-bulk-show" data-bulk-action="show" data-testid="bulk-show">
+                            <i class="bi bi-eye-fill me-1"></i> Show selected
+                        </button>
+                        <button type="button" class="btn btn-bulk btn-bulk-delete" data-bulk-action="delete" data-testid="bulk-delete">
+                            <i class="bi bi-trash-fill me-1"></i> Delete selected
+                        </button>
+                    </div>
+                </div>
+            </form>
+
             <div class="collections-table-card">
                 <table class="table collections-table">
                     <thead>
                         <tr>
+                            <th style="width: 44px;">
+                                <label class="bulk-checkbox-label" title="Select all on this page">
+                                    <input type="checkbox" id="selectAllCheckbox" class="bulk-checkbox" data-testid="bulk-select-all" />
+                                </label>
+                            </th>
                             <th style="width: 60px;"></th>
                             <th>Title & Details</th>
                             <th style="width: 120px;">Status</th>
@@ -268,7 +300,17 @@
                             var imageCounts = ViewBag.ImageCounts as Dictionary<int, int> ?? new Dictionary<int, int>();
                             var imageCount = imageCounts.ContainsKey(collection.Id) ? imageCounts[collection.Id] : 0;
                             
-                            <tr class="collection-row @(collection.IsHidden ? "collection-hidden" : "")">
+                            <tr class="collection-row @(collection.IsHidden ? "collection-hidden" : "")" data-id="@collection.Id">
+                                <td>
+                                    <label class="bulk-checkbox-label" title="Select for bulk actions">
+                                        <input type="checkbox"
+                                               class="bulk-checkbox row-checkbox"
+                                               name="ids"
+                                               form="bulkActionsForm"
+                                               value="@collection.Id"
+                                               data-testid="bulk-row-@collection.Id" />
+                                    </label>
+                                </td>
                                 <td>
                                     @if (firstImage != null)
                                     {
@@ -1018,5 +1060,82 @@ document.addEventListener('DOMContentLoaded', function() {
             filtersSection.style.borderLeft = '4px solid #B8941F';
         }
     }
+
+    // ============================================================
+    // Bulk selection & bulk actions
+    // ============================================================
+    const selectAll = document.getElementById('selectAllCheckbox');
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    const bulkBar = document.getElementById('bulkActionsForm');
+    const bulkCount = document.getElementById('bulkSelectionCount');
+    const bulkActionInput = document.getElementById('bulkActionInput');
+    const bulkClearBtn = document.getElementById('bulkClearBtn');
+
+    function updateBulkUI() {
+        if (!bulkBar) return;
+        const selected = Array.from(rowCheckboxes).filter(cb => cb.checked);
+        if (bulkCount) bulkCount.textContent = selected.length;
+        bulkBar.style.display = selected.length > 0 ? 'block' : 'none';
+
+        if (selectAll) {
+            if (selected.length === 0) {
+                selectAll.checked = false;
+                selectAll.indeterminate = false;
+            } else if (selected.length === rowCheckboxes.length) {
+                selectAll.checked = true;
+                selectAll.indeterminate = false;
+            } else {
+                selectAll.checked = false;
+                selectAll.indeterminate = true;
+            }
+        }
+
+        // Highlight selected rows
+        rowCheckboxes.forEach(cb => {
+            const row = cb.closest('tr');
+            if (row) row.classList.toggle('row-selected', cb.checked);
+        });
+    }
+
+    if (selectAll) {
+        selectAll.addEventListener('change', function() {
+            rowCheckboxes.forEach(cb => { cb.checked = selectAll.checked; });
+            updateBulkUI();
+        });
+    }
+
+    rowCheckboxes.forEach(cb => cb.addEventListener('change', updateBulkUI));
+
+    if (bulkClearBtn) {
+        bulkClearBtn.addEventListener('click', function() {
+            rowCheckboxes.forEach(cb => { cb.checked = false; });
+            updateBulkUI();
+        });
+    }
+
+    // Bulk action buttons (Hide / Show / Delete)
+    document.querySelectorAll('[data-bulk-action]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const action = this.getAttribute('data-bulk-action');
+            const selected = Array.from(rowCheckboxes).filter(cb => cb.checked);
+            if (selected.length === 0) return;
+
+            let confirmMsg = '';
+            if (action === 'delete') {
+                confirmMsg = 'Permanently delete ' + selected.length + ' collection(s)? This cannot be undone.';
+            } else if (action === 'hide') {
+                confirmMsg = 'Hide ' + selected.length + ' collection(s) from the public site?';
+            } else if (action === 'show') {
+                confirmMsg = 'Make ' + selected.length + ' collection(s) visible on the public site?';
+            }
+            if (confirmMsg && !confirm(confirmMsg)) return;
+
+            bulkActionInput.value = action;
+            bulkBar.submit();
+        });
+    });
+
+    // Initialize state on load
+    updateBulkUI();
 });
 </script>

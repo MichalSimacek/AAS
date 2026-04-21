@@ -484,6 +484,207 @@
     box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
 }
 
+/* Bulk actions bar + selection checkboxes --------------------- */
+.bulk-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0;
+}
+
+.bulk-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid rgba(212, 175, 55, 0.4);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    margin: 0;
+}
+
+.bulk-checkbox:hover {
+    border-color: #D4AF37;
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.bulk-checkbox:checked {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+    border-color: #D4AF37;
+}
+
+.bulk-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid #0d0a10;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
+
+.bulk-checkbox:indeterminate {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+    border-color: #D4AF37;
+}
+
+.bulk-checkbox:indeterminate::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 7px;
+    width: 10px;
+    height: 2px;
+    background: #0d0a10;
+    border-radius: 1px;
+}
+
+.admin-collections-page .collection-row.row-selected {
+    background: rgba(212, 175, 55, 0.08) !important;
+    box-shadow: inset 3px 0 0 0 #D4AF37;
+}
+
+.admin-collections-page .collection-row.row-selected td {
+    background: transparent !important;
+}
+
+.bulk-actions-bar {
+    background: linear-gradient(135deg, #151019 0%, #0d0a10 100%);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.1);
+    animation: bulkBarSlideIn 0.25s ease-out;
+}
+
+@keyframes bulkBarSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.bulk-actions-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bulk-selection-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #D4AF37;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.bulk-selection-info #bulkSelectionCount {
+    background: rgba(212, 175, 55, 0.15);
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-weight: 700;
+    min-width: 28px;
+    text-align: center;
+    display: inline-block;
+}
+
+.bulk-clear {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #9ca3af;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+}
+
+.bulk-clear:hover {
+    border-color: rgba(231, 76, 60, 0.5);
+    color: #f87171;
+    background: rgba(231, 76, 60, 0.08);
+}
+
+.bulk-actions-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-bulk {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-bulk-hide {
+    background: rgba(75, 0, 130, 0.25);
+    border-color: rgba(212, 175, 55, 0.3);
+    color: #D4AF37;
+}
+.btn-bulk-hide:hover {
+    background: rgba(75, 0, 130, 0.4);
+    border-color: #D4AF37;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(75, 0, 130, 0.35);
+}
+
+.btn-bulk-show {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+    border-color: rgba(212, 175, 55, 0.5);
+    color: #0d0a10;
+}
+.btn-bulk-show:hover {
+    background: linear-gradient(135deg, #e2c14b 0%, #c9a030 100%);
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-bulk-delete {
+    background: rgba(231, 76, 60, 0.15);
+    border-color: rgba(231, 76, 60, 0.35);
+    color: #f87171;
+}
+.btn-bulk-delete:hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+    border-color: rgba(231, 76, 60, 0.6);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(231, 76, 60, 0.35);
+}
+
+@media (max-width: 768px) {
+    .bulk-actions-inner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .bulk-actions-buttons {
+        justify-content: stretch;
+    }
+    .bulk-actions-buttons .btn-bulk {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
 /* Blog admin page (.admin-blog-page) ------------------------- */
 .admin-blog-page {
     background: #050505 !important;

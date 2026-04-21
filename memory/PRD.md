@@ -1,5 +1,21 @@
 # Aristocratic Artwork Sale - Product Requirements Document
 
+## Session 2026-04-21 (pt.3) — Bulk actions in Admin Collections
+
+### Completed
+- **Bulk selection UI**: checkboxes on every row + "select all" in table header with indeterminate
+  state when partial selection. Selected rows highlighted with gold left border.
+- **Bulk actions bar** (appears when ≥1 selected): shows selected count, Clear button, and three
+  action buttons — Hide selected / Show selected / Delete selected. Confirmation dialog for each.
+- **Backend endpoint** `POST /Admin/Collections/BulkAction` (antiforgery protected) in
+  `Areas/Admin/Controllers/CollectionsController.cs` handles `hide`, `show`, `delete` actions;
+  uses `.AsTracking()` + single `SaveChangesAsync()` per request. For `delete` also cleans up
+  image and audio files on disk.
+- Current visibility filter preserved across bulk redirect (hidden `visibility` form input).
+- CSS for bulk bar + custom dark gold-accented checkboxes in `wwwroot/css/admin-dark.css`.
+- E2E verified via curl + UI screenshot: bulk hide flips IsHidden for multiple IDs, tabs update
+  counts live, bulk delete removes rows and frees assets.
+
 ## Session 2026-04-21 (pt.2) — Hide/Show fix, admin filter, dark admin redesign
 
 ### Completed
