@@ -30,8 +30,9 @@ namespace AAS.Web.Controllers
         {
             const int pageSize = 12;
 
-            // Load collections with first image
+            // Load collections with first image (exclude hidden from public view)
             var q = _db.Collections
+                .Where(c => !c.IsHidden)
                 .Include(c => c.Images.OrderBy(i => i.SortOrder).Take(1))
                 .AsQueryable();
 
