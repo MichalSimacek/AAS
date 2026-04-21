@@ -38,9 +38,46 @@
             </div>
         </div>
 
+        <!-- Visibility Tabs -->
+        <div class="visibility-tabs-wrap" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
+            @{
+                var currentVis = ((string)(ViewBag.Visibility ?? "all")).ToLower();
+                string BuildVisUrl(string v) {
+                    var parts = new List<string>();
+                    if (!string.IsNullOrWhiteSpace(ViewBag.Search as string)) parts.Add($"search={Uri.EscapeDataString((string)ViewBag.Search)}");
+                    if (ViewBag.Status != null) parts.Add($"status={ViewBag.Status}");
+                    if (ViewBag.Category != null) parts.Add($"category={ViewBag.Category}");
+                    if (ViewBag.Verified != null) parts.Add($"verified={ViewBag.Verified.ToString().ToLower()}");
+                    if (v != "all") parts.Add($"visibility={v}");
+                    return "/Admin/Collections" + (parts.Any() ? "?" + string.Join("&", parts) : "");
+                }
+            }
+            <div class="visibility-tabs" data-testid="visibility-filter">
+                <a href="@BuildVisUrl("all")"
+                   class="vtab @(currentVis == "all" ? "active" : "")"
+                   data-testid="vfilter-all">
+                    <i class="bi bi-collection"></i> All
+                    <span class="vcount" style="opacity:.7;font-weight:400;">(@ViewBag.TotalAll)</span>
+                </a>
+                <a href="@BuildVisUrl("visible")"
+                   class="vtab @(currentVis == "visible" ? "active" : "")"
+                   data-testid="vfilter-visible">
+                    <i class="bi bi-eye-fill"></i> Visible
+                    <span class="vcount" style="opacity:.7;font-weight:400;">(@ViewBag.TotalVisible)</span>
+                </a>
+                <a href="@BuildVisUrl("hidden")"
+                   class="vtab @(currentVis == "hidden" ? "active" : "")"
+                   data-testid="vfilter-hidden">
+                    <i class="bi bi-eye-slash-fill"></i> Hidden
+                    <span class="vcount" style="opacity:.7;font-weight:400;">(@ViewBag.TotalHidden)</span>
+                </a>
+            </div>
+        </div>
+
         <!-- Search and Filter Section -->
         <div class="filters-section">
             <form method="get" class="filters-form">
+                <input type="hidden" name="visibility" value="@currentVis" />
                 <div class="filters-row">
                     <!-- Search Box -->
                     <div class="filter-group search-group">
@@ -120,30 +157,6 @@
                         </select>
                     </div>
 
-                    <!-- Price Range -->
-                    <div class="filter-group">
-                        <label class="filter-label">
-                            <i class="bi bi-currency-euro me-1"></i>Price Range
-                        </label>
-                        <div class="price-range-inputs">
-                            <input type="number" 
-                                   name="minPrice" 
-                                   value="@ViewBag.MinPrice" 
-                                   placeholder="Min €" 
-                                   class="form-control price-input"
-                                   min="0"
-                                   step="1">
-                            <span class="price-separator">-</span>
-                            <input type="number" 
-                                   name="maxPrice" 
-                                   value="@ViewBag.MaxPrice" 
-                                   placeholder="Max €" 
-                                   class="form-control price-input"
-                                   min="0"
-                                   step="1">
-                        </div>
-                    </div>
-
                     <!-- Verified Filter -->
                     <div class="filter-group">
                         <label for="verified" class="filter-label">
@@ -184,8 +197,7 @@
                 <!-- Results Summary -->
                 @if (!string.IsNullOrWhiteSpace(ViewBag.Search as string) || 
                      ViewBag.Status != null || ViewBag.Category != null || 
-                     ViewBag.MinPrice != null || ViewBag.MaxPrice != null || 
-                     ViewBag.Verified != null)
+                     ViewBag.Verified != null || currentVis != "all")
                 {
                     <div class="results-summary">
                         <span class="results-count">
@@ -203,15 +215,16 @@
                             {
                                 <span class="filter-tag">Category: @((AAS.Web.Models.CollectionCategory)ViewBag.Category)</span>
                             }
-                            @if (ViewBag.MinPrice != null || ViewBag.MaxPrice != null)
-                            {
-                                <span class="filter-tag">
-                                    Price: @(ViewBag.MinPrice?.ToString() ?? "0")€ - @(ViewBag.MaxPrice?.ToString() ?? "∞")€
-                                </span>
-                            }
                             @if (ViewBag.Verified != null)
                             {
                                 <span class="filter-tag">@(ViewBag.Verified == true ? "Verified" : "Unverified")</span>
+                            }
+                            @if (currentVis != "all")
+                            {
+                                <span class="filter-tag">
+                                    <i class="bi @(currentVis == "hidden" ? "bi-eye-slash-fill" : "bi-eye-fill") me-1"></i>
+                                    @(currentVis == "hidden" ? "Only Hidden" : "Only Visible")
+                                </span>
                             }
                         </span>
                     </div>
@@ -357,6 +370,7 @@
                                         </a>
                                         <form method="post" action="/Admin/Collections/ToggleVisibility/@collection.Id" style="display: inline; margin: 0;">
                                             @Html.AntiForgeryToken()
+                                            <input type="hidden" name="visibility" value="@currentVis" />
                                             <button type="submit"
                                                     class="btn-action @(collection.IsHidden ? "btn-show" : "btn-hide")"
                                                     title="@(collection.IsHidden ? "Show on public site" : "Hide from public site")"
@@ -710,7 +724,7 @@
 
 .filters-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr 1fr auto;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
     gap: 20px;
     align-items: end;
 }
@@ -960,30 +974,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Auto-submit on filter change
     const filterSelects = document.querySelectorAll('.filters-form select');
-    const priceInputs = document.querySelectorAll('.price-input');
 
     filterSelects.forEach(select => {
         select.addEventListener('change', function() {
             submitFilters();
-        });
-    });
-
-    priceInputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            if (this.value !== this.dataset.originalValue) {
-                submitFilters();
-            }
-        });
-
-        // Store original value for comparison
-        input.dataset.originalValue = input.value || '';
-
-        // Submit on Enter
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                submitFilters();
-            }
         });
     });
 
@@ -1008,7 +1002,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Clear all form inputs
             searchInput.value = '';
             filterSelects.forEach(select => select.selectedIndex = 0);
-            priceInputs.forEach(input => input.value = '');
             
             // Redirect to clean URL
             window.location.href = '/Admin/Collections';

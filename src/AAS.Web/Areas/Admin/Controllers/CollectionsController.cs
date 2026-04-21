@@ -32,7 +32,8 @@ namespace AAS.Web.Areas.Admin.Controllers
             string? search = null, 
             int? status = null, 
             int? category = null, 
-            bool? verified = null)
+            bool? verified = null,
+            string? visibility = null)
         {
             var query = _db.Collections.AsQueryable();
 
@@ -64,6 +65,15 @@ namespace AAS.Web.Areas.Admin.Controllers
                 query = query.Where(c => c.AASVerified == verified.Value);
             }
 
+            // Apply visibility filter (all / visible / hidden)
+            if (!string.IsNullOrEmpty(visibility))
+            {
+                if (visibility.Equals("hidden", StringComparison.OrdinalIgnoreCase))
+                    query = query.Where(c => c.IsHidden);
+                else if (visibility.Equals("visible", StringComparison.OrdinalIgnoreCase))
+                    query = query.Where(c => !c.IsHidden);
+            }
+
             // Load collections with first image for thumbnail display
             var items = await query
                 .Include(c => c.Images.OrderBy(i => i.SortOrder).Take(1))
@@ -78,13 +88,22 @@ namespace AAS.Web.Areas.Admin.Controllers
                 .Select(g => new { CollectionId = g.Key, Count = g.Count() })
                 .ToDictionaryAsync(x => x.CollectionId, x => x.Count);
 
+            // Counts for the visibility tabs (independent of current visibility filter)
+            var totalAll = await _db.Collections.CountAsync();
+            var totalVisible = await _db.Collections.CountAsync(c => !c.IsHidden);
+            var totalHidden = await _db.Collections.CountAsync(c => c.IsHidden);
+
             // Pass filter values via ViewBag
             ViewBag.ImageCounts = imageCounts;
             ViewBag.Search = search;
             ViewBag.Status = status;
             ViewBag.Category = category;
             ViewBag.Verified = verified;
+            ViewBag.Visibility = visibility ?? "all";
             ViewBag.FilteredCount = items.Count;
+            ViewBag.TotalAll = totalAll;
+            ViewBag.TotalVisible = totalVisible;
+            ViewBag.TotalHidden = totalHidden;
 
             return View(items);
         }
@@ -463,7 +482,9 @@ namespace AAS.Web.Areas.Admin.Controllers
         {
             try
             {
-                var collection = await _db.Collections.FirstOrDefaultAsync(c => c.Id == id);
+                // IMPORTANT: AppDbContext is configured with NoTracking by default.
+                // Use AsTracking() so SaveChangesAsync actually persists the update.
+                var collection = await _db.Collections.AsTracking().FirstOrDefaultAsync(c => c.Id == id);
                 if (collection == null)
                 {
                     TempData["ErrorMessage"] = "Collection not found.";
@@ -477,6 +498,10 @@ namespace AAS.Web.Areas.Admin.Controllers
                     ? $"Collection '{collection.Title}' is now hidden from the public site."
                     : $"Collection '{collection.Title}' is now visible on the public site.";
 
+                // Preserve current visibility filter on redirect when possible
+                var visibility = Request.Form["visibility"].ToString();
+                if (!string.IsNullOrEmpty(visibility))
+                    return RedirectToAction(nameof(Index), new { visibility });
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)

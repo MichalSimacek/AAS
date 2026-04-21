@@ -1,5 +1,34 @@
 # Aristocratic Artwork Sale - Product Requirements Document
 
+## Session 2026-04-21 (pt.2) — Hide/Show fix, admin filter, dark admin redesign
+
+### Completed
+- **Hide/Show bug ROOT CAUSE fixed**: `AppDbContext` uses `QueryTrackingBehavior.NoTracking` by default,
+  so `ToggleVisibility` was mutating a non-tracked entity and `SaveChangesAsync()` persisted nothing.
+  Fixed by adding `.AsTracking()` in `Areas/Admin/Controllers/CollectionsController.ToggleVisibility`.
+  End-to-end test verified: toggle → DB flips → public `/Collections` hides/shows the item immediately.
+- **Response cache hardened**: public `CollectionsController` marked
+  `[ResponseCache(NoStore = true, Location = ResponseCacheLocation.None, Duration = 0)]` to prevent any
+  downstream (browser / CDN / proxy) caching of visibility state.
+- **Admin visibility filter (All / Visible / Hidden) added**: new `visibility` query param in Admin
+  `CollectionsController.Index`; new tab pills UI in `Areas/Admin/Views/Collections/Index.cshtml` with
+  live counts per tab; current filter preserved across toggle redirects via hidden form field.
+  Removed broken price-range inputs (controller no longer supports them — `Price` is free-text).
+- **Admin panel dark aristocratic redesign**: 
+  - New global override stylesheet `wwwroot/css/admin-dark.css` (re-themes all admin pages without
+    rewriting each cshtml — rules scoped by `.admin-dashboard`, `.admin-collections-page`,
+    `.admin-blog-page`, `.admin-inquiries-page`).
+  - New wrapper `Areas/Admin/Views/Shared/_AdminLayout.cshtml` that injects `admin-dark.css` into
+    the main `_Layout.cshtml`.
+  - `_ViewStart.cshtml` updated to use the new layout.
+  - All admin pages now match site aesthetic: `#050505` background, `#D4AF37` gold accents,
+    Playfair Display headings, gold-gradient primary buttons, dark glass cards, custom dark tables.
+
+### Pending / follow-up
+- Ensure env var `DEEPL_API_KEY` is set on the production server (systemd unit / docker-compose).
+- Consider adding 2FA for admin account.
+- Consider replacing `unsafe-inline` in CSP with nonce-based CSP.
+
 ## Session 2026-04-21 — Security hardening & translations
 
 ### Completed
@@ -26,10 +55,10 @@
 - Build verified on local container with .NET 8 SDK — 0 errors, 1 pre-existing warning.
 
 ### Pending / follow-up
-- Refactor `Collection.Price` from `string` to `decimal` (existing P1 tech debt).
 - Ensure env var `DEEPL_API_KEY` is set on the production server (systemd unit / docker-compose).
 - Consider adding 2FA for admin account.
 - Consider replacing `unsafe-inline` in CSP with nonce-based CSP.
+- `Collection.Price` stays as `string` by user request (allows free-text like "Price on request").
 
 
 ## Original Problem Statement

@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace AAS.Web.Controllers
 {
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None, Duration = 0)]
     public class CollectionsController : Controller
     {
         private readonly AppDbContext _db; private readonly TranslationService _tr;

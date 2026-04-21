@@ -1,0 +1,623 @@
+/* ============================================================
+   Admin Panel — Dark Aristocratic Theme Overrides
+   Mirrors the public site palette:
+     bg:    #050505 / #0d0a10 / #151019
+     text:  #e8e8e8 / #9ca3af
+     gold:  #D4AF37 / #B8941F / #C9A961
+   Applied as overrides over existing admin pages (no cshtml
+   rewrite needed). Keeps all functionality intact.
+   ============================================================ */
+
+/* Page backgrounds ------------------------------------------- */
+.admin-dashboard,
+.admin-collections-page,
+.admin-blog-page,
+.admin-inquiries-page {
+    background: #050505 !important;
+    color: #e8e8e8 !important;
+    min-height: 100vh;
+}
+
+/* Cards, sections, tables ------------------------------------ */
+.admin-dashboard .stat-card,
+.admin-dashboard .action-card,
+.admin-dashboard .recent-section,
+.admin-collections-page .filters-section,
+.admin-collections-page .collections-table-card,
+.admin-collections-page .empty-state-card,
+.admin-dashboard .collection-item,
+.admin-dashboard .activity-item {
+    background: linear-gradient(135deg, #151019 0%, #0d0a10 100%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.15) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(75, 0, 130, 0.08) !important;
+    color: #e8e8e8 !important;
+}
+
+.admin-dashboard .stat-card {
+    border-left: 4px solid #D4AF37 !important;
+}
+
+.admin-dashboard .page-header,
+.admin-collections-page .page-header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Text hierarchy --------------------------------------------- */
+.admin-dashboard .dashboard-title,
+.admin-collections-page .page-title,
+.admin-dashboard .section-title,
+.admin-dashboard .action-card-title,
+.admin-dashboard .collection-title,
+.admin-collections-page .collection-name {
+    color: #D4AF37 !important;
+    font-family: 'Playfair Display', 'Cinzel', serif !important;
+}
+
+.admin-dashboard .dashboard-subtitle,
+.admin-collections-page .page-subtitle,
+.admin-dashboard .stat-label,
+.admin-dashboard .action-card-desc,
+.admin-dashboard .collection-meta,
+.admin-dashboard .activity-time,
+.admin-dashboard .activity-message,
+.admin-collections-page .text-muted,
+.admin-collections-page .filter-label {
+    color: #9ca3af !important;
+}
+
+.admin-dashboard .stat-value {
+    color: #fff !important;
+}
+
+/* Stat icons — dark glass variant ---------------------------- */
+.admin-dashboard .stat-icon.collections,
+.admin-dashboard .stat-icon.available {
+    background: rgba(212, 175, 55, 0.12) !important;
+    color: #D4AF37 !important;
+}
+
+.admin-dashboard .stat-icon.sold {
+    background: rgba(192, 57, 43, 0.18) !important;
+    color: #e07b6e !important;
+}
+
+.admin-dashboard .stat-icon.inquiries {
+    background: rgba(75, 0, 130, 0.25) !important;
+    color: #c9a961 !important;
+}
+
+/* Action card gold circle ------------------------------------ */
+.admin-dashboard .action-card-icon {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%) !important;
+    color: #0d0a10 !important;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Buttons ---------------------------------------------------- */
+.admin-dashboard .action-btn,
+.admin-collections-page .btn-primary,
+.admin-collections-page .filter-btn,
+.btn-primary {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    color: #0d0a10 !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.admin-dashboard .action-btn:hover,
+.admin-collections-page .btn-primary:hover,
+.admin-collections-page .filter-btn:hover,
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e2c14b 0%, #c9a030 100%) !important;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4) !important;
+    transform: translateY(-1px);
+}
+
+.admin-collections-page .btn-outline-secondary,
+.admin-collections-page .btn-secondary,
+.btn-outline-secondary {
+    background: transparent !important;
+    border: 1px solid rgba(212, 175, 55, 0.25) !important;
+    color: #D4AF37 !important;
+}
+
+.admin-collections-page .btn-outline-secondary:hover,
+.btn-outline-secondary:hover {
+    background: rgba(212, 175, 55, 0.08) !important;
+    border-color: rgba(212, 175, 55, 0.5) !important;
+    color: #D4AF37 !important;
+}
+
+/* Form inputs / selects -------------------------------------- */
+.admin-collections-page .form-control,
+.admin-collections-page .form-select,
+.admin-collections-page .search-input,
+.admin-collections-page .price-input {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(212, 175, 55, 0.15) !important;
+    color: #e8e8e8 !important;
+}
+
+.admin-collections-page .form-control::placeholder,
+.admin-collections-page .search-input::placeholder,
+.admin-collections-page .price-input::placeholder {
+    color: #6b7280 !important;
+}
+
+.admin-collections-page .form-control:focus,
+.admin-collections-page .form-select:focus,
+.admin-collections-page .search-input:focus,
+.admin-collections-page .price-input:focus {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(212, 175, 55, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12) !important;
+    color: #fff !important;
+}
+
+.admin-collections-page .form-select option {
+    background: #0d0a10 !important;
+    color: #e8e8e8 !important;
+}
+
+/* Table ------------------------------------------------------ */
+.admin-collections-page .collections-table,
+.admin-collections-page .table {
+    background: transparent !important;
+    color: #e8e8e8 !important;
+    --bs-table-bg: transparent !important;
+    --bs-table-color: #e8e8e8 !important;
+    --bs-table-border-color: rgba(212, 175, 55, 0.08) !important;
+    --bs-table-striped-bg: rgba(212, 175, 55, 0.03) !important;
+    --bs-table-striped-color: #e8e8e8 !important;
+    --bs-table-hover-bg: rgba(212, 175, 55, 0.06) !important;
+    --bs-table-hover-color: #fff !important;
+}
+
+.admin-collections-page .collections-table thead th {
+    background: rgba(212, 175, 55, 0.08) !important;
+    color: #D4AF37 !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
+}
+
+.admin-collections-page .collections-table tbody tr,
+.admin-collections-page .collections-table tbody tr > td,
+.admin-collections-page .collections-table tbody tr > th {
+    background: transparent !important;
+    color: #e8e8e8 !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08) !important;
+}
+
+.admin-collections-page .collections-table tbody tr:hover,
+.admin-collections-page .collections-table tbody tr:hover > td {
+    background: rgba(212, 175, 55, 0.04) !important;
+}
+
+.admin-collections-page .collection-thumbnail,
+.admin-collections-page .collection-thumbnail-placeholder {
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    color: #6b7280 !important;
+}
+
+.admin-collections-page .badge-category {
+    background: rgba(212, 175, 55, 0.08) !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    color: #D4AF37 !important;
+}
+
+.admin-collections-page .collection-price {
+    color: #D4AF37 !important;
+}
+
+.admin-collections-page .image-count {
+    color: #9ca3af !important;
+}
+
+/* Status badges ---------------------------------------------- */
+.admin-collections-page .status-available {
+    background: rgba(46, 204, 113, 0.15) !important;
+    color: #4ade80 !important;
+}
+
+.admin-collections-page .status-inauction {
+    background: rgba(241, 196, 15, 0.15) !important;
+    color: #facc15 !important;
+}
+
+.admin-collections-page .status-sold {
+    background: rgba(231, 76, 60, 0.18) !important;
+    color: #f87171 !important;
+}
+
+.admin-collections-page .badge-verified {
+    background: rgba(46, 204, 113, 0.15) !important;
+    color: #4ade80 !important;
+}
+
+.admin-collections-page .badge-hidden {
+    background: rgba(75, 0, 130, 0.35) !important;
+    color: #D4AF37 !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+.admin-collections-page .collection-row.collection-hidden {
+    background: repeating-linear-gradient(45deg,
+        rgba(212, 175, 55, 0.04),
+        rgba(212, 175, 55, 0.04) 12px,
+        rgba(212, 175, 55, 0.02) 12px,
+        rgba(212, 175, 55, 0.02) 24px) !important;
+    opacity: 0.7;
+}
+
+.admin-collections-page .collection-row.collection-hidden .collection-name {
+    color: #9ca3af !important;
+}
+
+/* Action icon buttons ---------------------------------------- */
+.admin-collections-page .btn-action,
+.admin-dashboard .btn-icon {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    color: #D4AF37 !important;
+}
+
+.admin-collections-page .btn-action:hover,
+.admin-dashboard .btn-icon:hover {
+    background: rgba(212, 175, 55, 0.12) !important;
+    border-color: rgba(212, 175, 55, 0.5) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2) !important;
+}
+
+.admin-collections-page .btn-view:hover {
+    color: #4ade80 !important;
+    border-color: rgba(74, 222, 128, 0.5) !important;
+}
+
+.admin-collections-page .btn-delete:hover {
+    color: #f87171 !important;
+    border-color: rgba(248, 113, 113, 0.5) !important;
+    background: rgba(231, 76, 60, 0.12) !important;
+}
+
+.admin-collections-page .btn-show {
+    background: rgba(212, 175, 55, 0.12) !important;
+    border-color: rgba(212, 175, 55, 0.5) !important;
+    color: #D4AF37 !important;
+}
+
+/* Filter tags ------------------------------------------------ */
+.admin-collections-page .filter-tag {
+    background: rgba(212, 175, 55, 0.08) !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    color: #D4AF37 !important;
+}
+
+.admin-collections-page .results-summary {
+    border-top: 1px solid rgba(212, 175, 55, 0.15) !important;
+}
+
+.admin-collections-page .results-count {
+    color: #9ca3af !important;
+}
+
+/* Alerts ----------------------------------------------------- */
+.alert-success {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.15) 0%, rgba(46, 204, 113, 0.08) 100%) !important;
+    border: 1px solid rgba(74, 222, 128, 0.3) !important;
+    color: #4ade80 !important;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.15) 0%, rgba(231, 76, 60, 0.08) 100%) !important;
+    border: 1px solid rgba(248, 113, 113, 0.3) !important;
+    color: #f87171 !important;
+}
+
+.alert .btn-close {
+    filter: invert(1) grayscale(100%) brightness(1.5);
+}
+
+/* Bootstrap badge colour overrides in subtitle --------------- */
+.admin-collections-page .page-subtitle .badge.bg-primary {
+    background: rgba(212, 175, 55, 0.15) !important;
+    color: #D4AF37 !important;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.admin-collections-page .page-subtitle .badge.bg-success {
+    background: rgba(46, 204, 113, 0.15) !important;
+    color: #4ade80 !important;
+}
+
+.admin-collections-page .page-subtitle .badge.bg-warning {
+    background: rgba(241, 196, 15, 0.15) !important;
+    color: #facc15 !important;
+}
+
+.admin-collections-page .page-subtitle .badge.bg-danger {
+    background: rgba(231, 76, 60, 0.18) !important;
+    color: #f87171 !important;
+}
+
+.admin-dashboard .collection-meta .badge.bg-success {
+    background: rgba(46, 204, 113, 0.15) !important;
+    color: #4ade80 !important;
+}
+.admin-dashboard .collection-meta .badge.bg-warning {
+    background: rgba(241, 196, 15, 0.15) !important;
+    color: #facc15 !important;
+}
+.admin-dashboard .collection-meta .badge.bg-danger {
+    background: rgba(231, 76, 60, 0.18) !important;
+    color: #f87171 !important;
+}
+
+/* Empty state ------------------------------------------------ */
+.admin-collections-page .empty-state-card h3,
+.admin-dashboard .empty-activity p {
+    color: #D4AF37 !important;
+}
+
+.admin-collections-page .empty-icon,
+.admin-dashboard .empty-activity i {
+    color: #D4AF37 !important;
+    opacity: 0.5;
+}
+
+/* Recent items (dashboard) ----------------------------------- */
+.admin-dashboard .collection-item {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(212, 175, 55, 0.1) !important;
+}
+
+.admin-dashboard .collection-item:hover {
+    background: rgba(212, 175, 55, 0.04) !important;
+    border-color: rgba(212, 175, 55, 0.25) !important;
+}
+
+.admin-dashboard .collection-thumb-placeholder {
+    background: rgba(212, 175, 55, 0.06) !important;
+    color: #D4AF37 !important;
+}
+
+.admin-dashboard .view-all-link {
+    color: #D4AF37 !important;
+}
+
+.admin-dashboard .view-all-link:hover {
+    color: #fff !important;
+}
+
+.admin-dashboard .section-header {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15) !important;
+}
+
+.admin-dashboard .activity-item {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(212, 175, 55, 0.08) !important;
+}
+
+.admin-dashboard .activity-item:hover {
+    background: rgba(212, 175, 55, 0.04) !important;
+}
+
+.admin-dashboard .activity-feed::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+.admin-dashboard .activity-feed::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.2);
+}
+.admin-dashboard .activity-feed::-webkit-scrollbar-thumb:hover {
+    background: #D4AF37;
+}
+
+/* Delete modal ----------------------------------------------- */
+#deleteModal > div {
+    background: linear-gradient(135deg, #151019 0%, #0d0a10 100%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    color: #e8e8e8 !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(75, 0, 130, 0.15) !important;
+}
+
+#deleteModal h5 {
+    color: #D4AF37 !important;
+    font-family: 'Playfair Display', serif !important;
+}
+
+#deleteModal p {
+    color: #e8e8e8 !important;
+}
+
+#deleteModal > div > div:first-child,
+#deleteModal > div > div:last-child {
+    border-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+#deleteModal button[onclick="closeDeleteModal()"] {
+    color: #9ca3af !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%) !important;
+    border-color: rgba(231, 76, 60, 0.5) !important;
+    color: #fff !important;
+}
+
+/* Visibility filter pills (new) ------------------------------ */
+.visibility-tabs {
+    display: inline-flex;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.visibility-tabs .vtab {
+    padding: 8px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: #9ca3af;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.visibility-tabs .vtab:hover {
+    color: #D4AF37;
+    background: rgba(212, 175, 55, 0.06);
+}
+
+.visibility-tabs .vtab.active {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+    color: #0d0a10;
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
+
+/* Blog admin page (.admin-blog-page) ------------------------- */
+.admin-blog-page {
+    background: #050505 !important;
+    color: #e8e8e8 !important;
+    min-height: 100vh;
+}
+
+.admin-blog-page .page-header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.admin-blog-page .page-title,
+.admin-blog-page h1,
+.admin-blog-page h2,
+.admin-blog-page h3 {
+    color: #D4AF37 !important;
+    font-family: 'Playfair Display', serif !important;
+}
+
+.admin-blog-page .page-subtitle,
+.admin-blog-page .text-muted,
+.admin-blog-page .filter-label {
+    color: #9ca3af !important;
+}
+
+.admin-blog-page .card,
+.admin-blog-page .blog-card,
+.admin-blog-page .filters-section,
+.admin-blog-page .collections-table-card,
+.admin-blog-page .empty-state-card {
+    background: linear-gradient(135deg, #151019 0%, #0d0a10 100%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.15) !important;
+    color: #e8e8e8 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.admin-blog-page .form-control,
+.admin-blog-page .form-select {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(212, 175, 55, 0.15) !important;
+    color: #e8e8e8 !important;
+}
+
+.admin-blog-page .form-control:focus,
+.admin-blog-page .form-select:focus {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(212, 175, 55, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12) !important;
+    color: #fff !important;
+}
+
+.admin-blog-page table,
+.admin-blog-page .table {
+    --bs-table-bg: transparent !important;
+    --bs-table-color: #e8e8e8 !important;
+    --bs-table-border-color: rgba(212, 175, 55, 0.08) !important;
+    --bs-table-hover-bg: rgba(212, 175, 55, 0.06) !important;
+    --bs-table-hover-color: #fff !important;
+    background: transparent !important;
+    color: #e8e8e8 !important;
+}
+
+.admin-blog-page table thead th {
+    background: rgba(212, 175, 55, 0.08) !important;
+    color: #D4AF37 !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
+}
+
+.admin-blog-page table tbody tr,
+.admin-blog-page table tbody tr td {
+    background: transparent !important;
+    color: #e8e8e8 !important;
+    border-color: rgba(212, 175, 55, 0.08) !important;
+}
+
+/* Inquiries admin page (.admin-inquiries-page) --------------- */
+.admin-inquiries-page h1 {
+    color: #D4AF37 !important;
+    font-family: 'Playfair Display', serif !important;
+}
+
+.admin-inquiries-page {
+    color: #e8e8e8 !important;
+}
+
+.admin-inquiries-page .alert-info {
+    background: rgba(212, 175, 55, 0.08) !important;
+    border: 1px solid rgba(212, 175, 55, 0.25) !important;
+    color: #D4AF37 !important;
+}
+
+.admin-inquiries-page table,
+.admin-inquiries-page .table {
+    --bs-table-bg: transparent !important;
+    --bs-table-color: #e8e8e8 !important;
+    --bs-table-border-color: rgba(212, 175, 55, 0.08) !important;
+    --bs-table-hover-bg: rgba(212, 175, 55, 0.06) !important;
+    --bs-table-hover-color: #fff !important;
+    background: linear-gradient(135deg, #151019 0%, #0d0a10 100%) !important;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.admin-inquiries-page table thead th {
+    background: rgba(212, 175, 55, 0.1) !important;
+    color: #D4AF37 !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
+    padding: 14px !important;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.admin-inquiries-page table tbody tr,
+.admin-inquiries-page table tbody tr td {
+    background: transparent !important;
+    color: #e8e8e8 !important;
+    border-color: rgba(212, 175, 55, 0.08) !important;
+    padding: 14px !important;
+}
+
+.admin-inquiries-page .badge.bg-secondary {
+    background: rgba(212, 175, 55, 0.12) !important;
+    color: #D4AF37 !important;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.admin-inquiries-page a {
+    color: #D4AF37;
+}
+.admin-inquiries-page a:hover {
+    color: #e2c14b;
+}
+.admin-inquiries-page .text-muted {
+    color: #9ca3af !important;
+}
