@@ -221,7 +221,7 @@
                                             }
                                         </div>
                                         <div class="preview-card-content">
-                                            <h4 class="preview-title">@item.Title</h4>
+                                            <h4 class="preview-title">@displayTitle(item)</h4>
                                             @if (item.Status == CollectionStatus.Available && !string.IsNullOrEmpty(item.Price))
                                             {
                                                 <p class="preview-price">
