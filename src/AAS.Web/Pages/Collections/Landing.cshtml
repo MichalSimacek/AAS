@@ -40,6 +40,42 @@
             .ToListAsync();
         categoryPreviews[cat] = previews;
     }
+
+    // Load translated titles for the current UI culture.
+    // Original collection titles are in Czech (cs); for any other language we look
+    // up the pre-translated title in CollectionTranslations, with English as fallback.
+    var lang = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+    var translatedTitles = new Dictionary<int, string>();
+    if (lang != "cs")
+    {
+        var allPreviewIds = categoryPreviews.SelectMany(kv => kv.Value.Select(c => c.Id)).Distinct().ToList();
+        if (allPreviewIds.Any())
+        {
+            var dbTranslations = await Db.CollectionTranslations
+                .Where(t => allPreviewIds.Contains(t.CollectionId) && t.LanguageCode == lang)
+                .AsNoTracking()
+                .ToDictionaryAsync(t => t.CollectionId, t => t.TranslatedTitle);
+
+            Dictionary<int, string> englishFallback = lang != "en"
+                ? await Db.CollectionTranslations
+                    .Where(t => allPreviewIds.Contains(t.CollectionId) && t.LanguageCode == "en")
+                    .AsNoTracking()
+                    .ToDictionaryAsync(t => t.CollectionId, t => t.TranslatedTitle)
+                : dbTranslations;
+
+            foreach (var id in allPreviewIds)
+            {
+                if (dbTranslations.TryGetValue(id, out var t) && !string.IsNullOrWhiteSpace(t))
+                    translatedTitles[id] = t;
+                else if (englishFallback.TryGetValue(id, out var en) && !string.IsNullOrWhiteSpace(en))
+                    translatedTitles[id] = en;
+            }
+        }
+    }
+
+    // Helper: title in current language with fallback to original Czech
+    Func<Collection, string> displayTitle = c =>
+        translatedTitles.TryGetValue(c.Id, out var t) && !string.IsNullOrWhiteSpace(t) ? t : c.Title;
     
     var categories = new[] {
         new { Cat = CollectionCategory.Paintings, Icon = "bi-palette", Key = "Paintings" },
@@ -164,7 +200,7 @@
                                             @if (firstImage != null)
                                             {
                                                 <img src="/uploads/images/@(firstImage.FileName)-480.jpg" 
-                                                     alt="@item.Title" 
+                                                     alt="@displayTitle(item)" 
                                                      loading="lazy" />
                                             }
                                             else
