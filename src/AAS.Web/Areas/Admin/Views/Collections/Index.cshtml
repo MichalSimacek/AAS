@@ -31,6 +31,22 @@
                     <a href="/Admin/Dashboard" class="btn btn-outline-secondary">
                         <i class="bi bi-speedometer2 me-2"></i>Dashboard
                     </a>
+                    <a href="/Admin/Collections/TranslationStatus" target="_blank"
+                       class="btn btn-outline-secondary"
+                       title="View translation status of every collection across all languages"
+                       data-testid="translation-status-link">
+                        <i class="bi bi-clipboard-data me-2"></i>Translation Status
+                    </a>
+                    <form method="post" action="/Admin/Collections/TranslateAllCollections" style="display:inline; margin:0;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit"
+                                class="btn btn-outline-secondary"
+                                onclick="return confirm('Translate ALL collections to every supported language? This may take a few minutes and will call the DeepL API.');"
+                                title="Translate all collection titles & descriptions to every supported language via DeepL"
+                                data-testid="translate-all-btn">
+                            <i class="bi bi-translate me-2"></i>Translate All
+                        </button>
+                    </form>
                     <a href="/Admin/Collections/Create" class="btn btn-primary">
                         <i class="bi bi-plus-circle me-2"></i>Create New Collection
                     </a>
