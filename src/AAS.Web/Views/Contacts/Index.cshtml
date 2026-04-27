@@ -1,6 +1,7 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 @{
-    ViewData["Title"] = L["Contact Us"];
+    ViewData["Title"] = L["Contact Us"].Value;
+    ViewData["Description"] = L["Get in Touch"].Value + " — Aristocratic Artwork Sale";
 }
 
 <!-- Hero Section -->

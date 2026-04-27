@@ -1,18 +1,69 @@
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Http
+@using Microsoft.Extensions.Configuration
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+@inject IConfiguration Cfg
 @{
     var rqf = Context.Request.HttpContext.Features.Get<IRequestCultureFeature>();
     var culture = rqf?.RequestCulture.Culture.TwoLetterISOLanguageName ?? "en";
     var cultures = new[]{"en","cs","ru","de","es","fr","zh","pt","hi","ja"};
+
+    // Map ISO 2-letter -> BCP-47 region tags expected by hreflang & og:locale
+    var bcp47 = new Dictionary<string,string>{
+        {"en","en"}, {"cs","cs-CZ"}, {"ru","ru-RU"}, {"de","de-DE"},
+        {"es","es-ES"}, {"fr","fr-FR"}, {"zh","zh-CN"}, {"pt","pt-PT"},
+        {"hi","hi-IN"}, {"ja","ja-JP"}
+    };
+    string LocaleTag(string c) => bcp47.TryGetValue(c, out var v) ? v.Replace('-', '_') : c;
+    var primaryLocale = LocaleTag(culture);
+
+    var scheme = Context.Request.Scheme;
+    var host = Context.Request.Host.Value;
+    var path = Context.Request.Path.Value ?? "/";
+    var qsCol = Context.Request.Query;
+    var canonicalQuery = string.Join("&",
+        qsCol.Where(q => q.Key != "culture" && q.Key != "ui-culture")
+             .Select(q => $"{Uri.EscapeDataString(q.Key)}={Uri.EscapeDataString(q.Value.ToString())}"));
+    var canonical = $"{scheme}://{host}{path}" + (string.IsNullOrEmpty(canonicalQuery) ? "" : "?" + canonicalQuery);
+    string AltUrl(string c) => $"{scheme}://{host}{path}" +
+        (string.IsNullOrEmpty(canonicalQuery) ? $"?culture={c}" : $"?{canonicalQuery}&culture={c}");
+
+    // Per-page title + description with sensible localized defaults
+    var pageTitle = ViewData["Title"] as string;
+    var fullTitle = string.IsNullOrWhiteSpace(pageTitle)
+        ? "Aristocratic Artwork Sale"
+        : $"{pageTitle} | Aristocratic Artwork Sale";
+    var defaultDesc = L["Slogan"].Value;
+    var pageDesc = (ViewData["Description"] as string) ?? defaultDesc;
+    if (pageDesc.Length > 300) pageDesc = pageDesc.Substring(0, 297) + "...";
+
+    var googleSiteVerification = Cfg["Seo:GoogleSiteVerification"];
+    var bingSiteVerification = Cfg["Seo:BingSiteVerification"];
 }
 <!DOCTYPE html>
 <html lang="@culture">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aristocratic Artwork Sale</title>
-  <meta name="description" content="Discretion, quality and professionalism in fine art, jewelry, watches and collectibles." />
+  <title>@fullTitle</title>
+  <meta name="description" content="@pageDesc" />
+  <meta name="theme-color" content="#D4AF37" />
+  @if (!string.IsNullOrWhiteSpace(googleSiteVerification))
+  {
+      <meta name="google-site-verification" content="@googleSiteVerification" />
+  }
+  @if (!string.IsNullOrWhiteSpace(bingSiteVerification))
+  {
+      <meta name="msvalidate.01" content="@bingSiteVerification" />
+  }
+
+  <!-- hreflang alternates for international SEO -->
+  @foreach (var c in cultures)
+  {
+      <link rel="alternate" hreflang="@(bcp47.TryGetValue(c, out var tag) ? tag : c)" href="@AltUrl(c)" />
+  }
+  <link rel="alternate" hreflang="x-default" href="@AltUrl("en")" />
+
   @RenderSection("Meta", required: false)
   
   <!-- Google Analytics - ONLY loaded after user consent (GDPR compliant) -->

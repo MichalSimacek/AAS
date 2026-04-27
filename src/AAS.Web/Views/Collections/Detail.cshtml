@@ -6,33 +6,110 @@
   var firstImage = images.FirstOrDefault();
   var imageUrl = firstImage != null ? $"{Context.Request.Scheme}://{Context.Request.Host}/uploads/images/{firstImage.FileName}-1600.jpg" : "";
   var pageUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}";
-  var description = !string.IsNullOrEmpty(Model.Description) && Model.Description.Length > 160 
-    ? Model.Description.Substring(0, 160) + "..." 
-    : Model.Description ?? "Aristocratic Artwork Sale";
+  var displayTitle = (ViewBag.TranslatedTitle as string) ?? Model.Title;
+  var displayDescription = (ViewBag.TranslatedDescription as string) ?? Model.Description ?? "";
+  var description = !string.IsNullOrEmpty(displayDescription) && displayDescription.Length > 160
+    ? displayDescription.Substring(0, 160) + "..."
+    : (string.IsNullOrEmpty(displayDescription) ? "Aristocratic Artwork Sale" : displayDescription);
+
+  ViewData["Title"] = displayTitle;
+  ViewData["Description"] = description;
+
+  // JSON-LD Product schema mapping
+  string availability = Model.Status switch {
+      AAS.Web.Models.CollectionStatus.Available => "https://schema.org/InStock",
+      AAS.Web.Models.CollectionStatus.Sold      => "https://schema.org/SoldOut",
+      AAS.Web.Models.CollectionStatus.InAuction => "https://schema.org/PreOrder",
+      _ => "https://schema.org/InStock"
+  };
+  string currencyCode = Model.Currency == AAS.Web.Models.Currency.USD ? "USD" : "EUR";
+  bool hasNumericPrice = decimal.TryParse(Model.Price, System.Globalization.NumberStyles.Any,
+                          System.Globalization.CultureInfo.InvariantCulture, out var numericPrice);
+  var allImageUrls = images
+      .Select(i => $"{Context.Request.Scheme}://{Context.Request.Host}/uploads/images/{i.FileName}-1600.jpg")
+      .ToList();
 }
 
 @section Meta {
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="product" />
   <meta property="og:url" content="@pageUrl" />
-  <meta property="og:title" content="@Model.Title - Aristocratic Artwork Sale" />
+  <meta property="og:title" content="@displayTitle - Aristocratic Artwork Sale" />
   <meta property="og:description" content="@description" />
   @if (!string.IsNullOrEmpty(imageUrl))
   {
     <meta property="og:image" content="@imageUrl" />
     <meta property="og:image:width" content="1600" />
     <meta property="og:image:height" content="1200" />
+    <meta property="og:image:alt" content="@displayTitle" />
   }
-  
+  @if (Model.Status == AAS.Web.Models.CollectionStatus.Available && hasNumericPrice)
+  {
+    <meta property="product:price:amount" content="@numericPrice.ToString(System.Globalization.CultureInfo.InvariantCulture)" />
+    <meta property="product:price:currency" content="@currencyCode" />
+    <meta property="product:availability" content="in stock" />
+  }
+  else if (Model.Status == AAS.Web.Models.CollectionStatus.Sold)
+  {
+    <meta property="product:availability" content="out of stock" />
+  }
+
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="@pageUrl" />
-  <meta property="twitter:title" content="@Model.Title - Aristocratic Artwork Sale" />
-  <meta property="twitter:description" content="@description" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="@pageUrl" />
+  <meta name="twitter:title" content="@displayTitle - Aristocratic Artwork Sale" />
+  <meta name="twitter:description" content="@description" />
   @if (!string.IsNullOrEmpty(imageUrl))
   {
-    <meta property="twitter:image" content="@imageUrl" />
+    <meta name="twitter:image" content="@imageUrl" />
+    <meta name="twitter:image:alt" content="@displayTitle" />
   }
+
+  <!-- Schema.org Product -->
+  <script type="application/ld+json">
+  @Html.Raw(System.Text.Json.JsonSerializer.Serialize(new Dictionary<string, object?>
+  {
+      ["@context"] = "https://schema.org",
+      ["@type"] = "Product",
+      ["name"] = displayTitle,
+      ["description"] = displayDescription,
+      ["image"] = allImageUrls.Any() ? (object)allImageUrls : null,
+      ["sku"] = $"AAS-{Model.Id}",
+      ["category"] = Model.Category.ToString(),
+      ["brand"] = new Dictionary<string, object> {
+          ["@type"] = "Brand",
+          ["name"] = "Aristocratic Artwork Sale"
+      },
+      ["offers"] = new Dictionary<string, object?> {
+          ["@type"] = "Offer",
+          ["url"] = pageUrl,
+          ["priceCurrency"] = currencyCode,
+          ["price"] = hasNumericPrice ? numericPrice.ToString(System.Globalization.CultureInfo.InvariantCulture) : null,
+          ["availability"] = availability,
+          ["itemCondition"] = "https://schema.org/UsedCondition",
+          ["seller"] = new Dictionary<string, object> {
+              ["@type"] = "Organization",
+              ["name"] = "Aristocratic Artwork Sale"
+          }
+      }
+  }, new System.Text.Json.JsonSerializerOptions {
+      DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+      Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+  }))
+  </script>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@@type":"ListItem", "position":1, "name":"@L["Home"]", "item":"@($"{Context.Request.Scheme}://{Context.Request.Host}/")" },
+      { "@@type":"ListItem", "position":2, "name":"@L["Collections"]", "item":"@($"{Context.Request.Scheme}://{Context.Request.Host}/Collections")" },
+      { "@@type":"ListItem", "position":3, "name":"@displayTitle" }
+    ]
+  }
+  </script>
 }
 
 <div class="section">
@@ -61,7 +138,7 @@
             @if(images.Any()){
               <img id="mainImage" 
                    class="main-gallery-image" 
-                   alt="@Model.Title" 
+                   alt="@displayTitle" 
                    src="/uploads/images/@images.First().FileName-960.jpg"
                    data-full="/uploads/images/@images.First().FileName-1600.jpg"
                    onclick="openLightbox(0)" />
@@ -79,7 +156,7 @@
                      data-full="/uploads/images/@img.FileName-1600.jpg"
                      onclick="selectThumbnail(this, @i)">
                   <img src="/uploads/images/@img.FileName-480.jpg" 
-                       alt="@Model.Title - @(i+1)" />
+                       alt="@displayTitle - @(i+1)" />
                 </div>
               }
             </div>

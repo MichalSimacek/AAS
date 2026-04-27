@@ -3,7 +3,8 @@
 @using System.Globalization
 
 @{
-    ViewData["Title"] = L["Blog"];
+    ViewData["Title"] = L["Blog"].Value;
+    ViewData["Description"] = L["Stay informed about the world of luxury collectibles and fine art"].Value;
     var currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 }
 

@@ -6,7 +6,8 @@
 @inject AppDbContext Db
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 @{
-    ViewData["Title"] = L["Collections"];
+    ViewData["Title"] = L["Collections"].Value;
+    ViewData["Description"] = L["Slogan"].Value;
     Layout = "~/Views/Shared/_Layout.cshtml";
     
     // Get category counts (exclude hidden collections)
