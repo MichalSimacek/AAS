@@ -86,7 +86,7 @@ namespace AAS.Web.Controllers
             foreach (var c in collections)
             {
                 var imgs = c.Images.Select(fn => $"{baseUrl}/uploads/images/{fn}-1600.jpg");
-                AppendUrl($"/collections/{c.Slug}", c.CreatedUtc, "weekly", "0.8", imgs);
+                AppendUrl($"/Collections/Details/{c.Slug}", c.CreatedUtc, "weekly", "0.8", imgs);
             }
 
             // Blog posts — only published

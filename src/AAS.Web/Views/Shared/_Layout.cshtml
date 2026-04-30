@@ -21,12 +21,26 @@
     var host = Context.Request.Host.Value;
     var path = Context.Request.Path.Value ?? "/";
     var qsCol = Context.Request.Query;
-    var canonicalQuery = string.Join("&",
-        qsCol.Where(q => q.Key != "culture" && q.Key != "ui-culture")
-             .Select(q => $"{Uri.EscapeDataString(q.Key)}={Uri.EscapeDataString(q.Value.ToString())}"));
+
+    // Pages where every query string is a filter/sort/pager — canonical should
+    // collapse to the bare path so Google does not treat each filter combination
+    // as a duplicate URL.
+    var stripAllParamsForCanonical =
+        path.Equals("/Collections", StringComparison.OrdinalIgnoreCase) ||
+        path.Equals("/Blog", StringComparison.OrdinalIgnoreCase);
+
+    var canonicalQuery = stripAllParamsForCanonical
+        ? string.Empty
+        : string.Join("&",
+            qsCol.Where(q => q.Key != "culture" && q.Key != "ui-culture")
+                 .Select(q => $"{Uri.EscapeDataString(q.Key)}={Uri.EscapeDataString(q.Value.ToString())}"));
     var canonical = $"{scheme}://{host}{path}" + (string.IsNullOrEmpty(canonicalQuery) ? "" : "?" + canonicalQuery);
     string AltUrl(string c) => $"{scheme}://{host}{path}" +
         (string.IsNullOrEmpty(canonicalQuery) ? $"?culture={c}" : $"?{canonicalQuery}&culture={c}");
+
+    // Add noindex,follow to filtered/paginated views and to invalid culture combos
+    // so Google focuses crawl budget on the canonical pages.
+    var isFilteredView = stripAllParamsForCanonical && qsCol.Any(q => q.Key != "culture" && q.Key != "ui-culture");
 
     // Per-page title + description with sensible localized defaults
     var pageTitle = ViewData["Title"] as string;
@@ -48,6 +62,10 @@
   <title>@fullTitle</title>
   <meta name="description" content="@pageDesc" />
   <meta name="theme-color" content="#D4AF37" />
+  @if (isFilteredView)
+  {
+      <meta name="robots" content="noindex,follow" />
+  }
   @if (!string.IsNullOrWhiteSpace(googleSiteVerification))
   {
       <meta name="google-site-verification" content="@googleSiteVerification" />

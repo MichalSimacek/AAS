@@ -369,6 +369,14 @@ app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
+// 301 redirect for legacy lowercase /collections/{slug} URLs that were indexed
+// by Google before the canonical /Collections/Details/{slug} pattern was set.
+// This preserves SEO link juice and fixes 404s reported in Search Console.
+app.MapGet("/collections/{slug}", (string slug) =>
+    Results.RedirectToRoute("default",
+        new { controller = "Collections", action = "Details", id = slug },
+        permanent: true));
+
 // Default route
 app.MapControllerRoute(
     name: "default",
