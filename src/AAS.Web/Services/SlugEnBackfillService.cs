@@ -28,6 +28,7 @@ namespace AAS.Web.Services
             var slug = scope.ServiceProvider.GetRequiredService<SlugService>();
 
             var missing = await db.Collections
+                .AsTracking()
                 .Where(c => c.SlugEn == null || c.SlugEn == "")
                 .ToListAsync(ct);
 
@@ -36,6 +37,8 @@ namespace AAS.Web.Services
                 _logger.LogInformation("SlugEn backfill: no rows to update.");
                 return;
             }
+
+            _logger.LogInformation("SlugEn backfill: {Count} collection(s) need SlugEn.", missing.Count);
 
             var ids = missing.Select(c => c.Id).ToList();
             var enTranslations = await db.CollectionTranslations
@@ -73,8 +76,16 @@ namespace AAS.Web.Services
                 updated++;
             }
 
-            await db.SaveChangesAsync(ct);
-            _logger.LogInformation("SlugEn backfill: filled {Count} collection(s).", updated);
+            try
+            {
+                await db.SaveChangesAsync(ct);
+                _logger.LogInformation("SlugEn backfill: filled {Count} collection(s).", updated);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "SlugEn backfill: SaveChanges failed.");
+                throw;
+            }
         }
     }
 }
