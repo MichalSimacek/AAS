@@ -22,12 +22,36 @@
     var path = Context.Request.Path.Value ?? "/";
     var qsCol = Context.Request.Query;
 
+    // Variant C URL strategy — split the path into (cultureSegment, basePath):
+    //  - /                                  → cultureSegment="",  basePath="/"
+    //  - /Collections/Landing               → cultureSegment="",  basePath="/Collections/Landing"
+    //  - /ru/Collections/Landing            → cultureSegment="ru", basePath="/Collections/Landing"
+    //  - /ru/Collections/Details/foo        → cultureSegment="ru", basePath="/Collections/Details/foo"
+    var nonDefaultCultures = new HashSet<string>(new[] { "cs", "ru", "de", "es", "fr", "zh", "pt", "hi", "ja" });
+    string cultureSegment = "";
+    string basePath = path;
+    {
+        var firstSeg = path.TrimStart('/').Split('/', 2)[0];
+        if (nonDefaultCultures.Contains(firstSeg))
+        {
+            cultureSegment = firstSeg;
+            basePath = path.Length > firstSeg.Length + 1 ? path.Substring(firstSeg.Length + 1) : "/";
+        }
+    }
+    string PathFor(string c)
+    {
+        var seg = (c == "en") ? "" : $"/{c}";
+        if (basePath == "/" || string.IsNullOrEmpty(basePath))
+            return seg == "" ? "/" : seg;
+        return seg + basePath;
+    }
+
     // Pages where every query string is a filter/sort/pager — canonical should
     // collapse to the bare path so Google does not treat each filter combination
     // as a duplicate URL.
     var stripAllParamsForCanonical =
-        path.Equals("/Collections", StringComparison.OrdinalIgnoreCase) ||
-        path.Equals("/Blog", StringComparison.OrdinalIgnoreCase);
+        basePath.Equals("/Collections", StringComparison.OrdinalIgnoreCase) ||
+        basePath.Equals("/Blog", StringComparison.OrdinalIgnoreCase);
 
     var canonicalQuery = stripAllParamsForCanonical
         ? string.Empty
@@ -35,8 +59,8 @@
             qsCol.Where(q => q.Key != "culture" && q.Key != "ui-culture")
                  .Select(q => $"{Uri.EscapeDataString(q.Key)}={Uri.EscapeDataString(q.Value.ToString())}"));
     var canonical = $"{scheme}://{host}{path}" + (string.IsNullOrEmpty(canonicalQuery) ? "" : "?" + canonicalQuery);
-    string AltUrl(string c) => $"{scheme}://{host}{path}" +
-        (string.IsNullOrEmpty(canonicalQuery) ? $"?culture={c}" : $"?{canonicalQuery}&culture={c}");
+    string AltUrl(string c) => $"{scheme}://{host}{PathFor(c)}" +
+        (string.IsNullOrEmpty(canonicalQuery) ? "" : "?" + canonicalQuery);
 
     // Add noindex,follow to filtered/paginated views and to invalid culture combos
     // so Google focuses crawl budget on the canonical pages.
@@ -53,6 +77,10 @@
 
     var googleSiteVerification = Cfg["Seo:GoogleSiteVerification"];
     var bingSiteVerification = Cfg["Seo:BingSiteVerification"];
+
+    // Current culture prefix for in-app navigation links.
+    // EN (default) → empty; others → "/{culture}" (e.g. "/ru")
+    var cp = culture == "en" ? "" : $"/{culture}";
 }
 <!DOCTYPE html>
 <html lang="@culture">
@@ -190,11 +218,11 @@
       </button>
       <div id="nav" class="collapse navbar-collapse justify-content-center">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="/">@L["Home"]</a></li>
-          <li class="nav-item"><a class="nav-link" href="/Collections/Landing">@L["Collections"]</a></li>
-          <li class="nav-item"><a class="nav-link" href="/Blog">@L["Blog"]</a></li>
-          <li class="nav-item"><a class="nav-link" href="/About">@L["About us"]</a></li>
-          <li class="nav-item"><a class="nav-link" href="/Contacts">@L["Contacts"]</a></li>
+          <li class="nav-item"><a class="nav-link" href="@(cp)/">@L["Home"]</a></li>
+          <li class="nav-item"><a class="nav-link" href="@(cp)/Collections/Landing">@L["Collections"]</a></li>
+          <li class="nav-item"><a class="nav-link" href="@(cp)/Blog">@L["Blog"]</a></li>
+          <li class="nav-item"><a class="nav-link" href="@(cp)/About">@L["About us"]</a></li>
+          <li class="nav-item"><a class="nav-link" href="@(cp)/Contacts">@L["Contacts"]</a></li>
           <partial name="_LoginPartial" />
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
@@ -223,10 +251,10 @@
         <div class="col-lg-4 mb-4 mb-lg-0">
           <h6 class="text-accent text-gold mb-3">@L["Navigation"]</h6>
           <ul class="footer-links">
-            <li><a href="/">@L["Home"]</a></li>
-            <li><a href="/Collections/Landing">@L["Collections"]</a></li>
-            <li><a href="/About">@L["About us"]</a></li>
-            <li><a href="/Contacts">@L["Contacts"]</a></li>
+            <li><a href="@(cp)/">@L["Home"]</a></li>
+            <li><a href="@(cp)/Collections/Landing">@L["Collections"]</a></li>
+            <li><a href="@(cp)/About">@L["About us"]</a></li>
+            <li><a href="@(cp)/Contacts">@L["Contacts"]</a></li>
           </ul>
         </div>
         <div class="col-lg-4">

@@ -136,6 +136,32 @@ namespace AAS.Web.Areas.Admin.Controllers
             
             model.Slug = slug;
 
+            // SlugEn (variant C URL localization): try to translate the title to English
+            // via the translation service so the EN URL is human-readable. Falls back to
+            // the Czech slug if translation is unavailable.
+            try
+            {
+                var enTitle = await _tr.TranslateAsync(model.Title, "cs", "en");
+                var enBase = !string.IsNullOrWhiteSpace(enTitle) && enTitle != model.Title
+                    ? _slug.ToSlug(enTitle)
+                    : slug;
+                if (string.IsNullOrWhiteSpace(enBase)) enBase = slug;
+                var enSlug = enBase;
+                var enCounter = 1;
+                while (await _db.Collections.AnyAsync(c => c.SlugEn == enSlug))
+                {
+                    enSlug = $"{enBase}-{enCounter}";
+                    enCounter++;
+                }
+                model.SlugEn = enSlug;
+            }
+            catch
+            {
+                // Fall back to Czech slug if translation fails; backfill service will
+                // try again on next startup once translations are available.
+                model.SlugEn = slug;
+            }
+
             // Security: Validate at least one image is provided
             if (!images.Any(f => f.Length > 0))
             {

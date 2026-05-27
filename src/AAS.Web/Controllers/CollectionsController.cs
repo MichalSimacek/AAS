@@ -2,6 +2,7 @@ using AAS.Web.Data;
 using AAS.Web.Models;
 using AAS.Web.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -147,20 +148,50 @@ namespace AAS.Web.Controllers
 
         public async Task<IActionResult> Details(string id)
         {
-            // PERFORMANCE: Use AsNoTracking for read-only operations
-            // Hidden collections are invisible to public viewers
+            // Variant C URL strategy:
+            //  - /Collections/Details/{slug}        → English (default), expects SlugEn
+            //  - /cs/Collections/Details/{slug}     → Czech, expects original Slug
+            //  - /ru|de|es|fr|zh|pt|hi|ja/.../{slug} → expects SlugEn
+            //
+            // For backward compatibility with URLs Google has already indexed (the
+            // old all-Czech-slugs scheme), we accept either slug column and emit a
+            // 301 redirect to the canonical form for the active culture.
+            var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+            var preferEnSlug = lang != "cs";
+
+            // 1) Try the preferred slug column first.
             var item = await _db.Collections
                 .Where(c => !c.IsHidden)
                 .Include(c => c.Images.OrderBy(i => i.SortOrder))
                 .AsNoTracking()
-                .FirstOrDefaultAsync(c => c.Slug == id);
+                .FirstOrDefaultAsync(c => preferEnSlug ? c.SlugEn == id : c.Slug == id);
+
+            // 2) Fallback to the other slug column (handles legacy Google index).
+            if (item == null)
+            {
+                item = await _db.Collections
+                    .Where(c => !c.IsHidden)
+                    .Include(c => c.Images.OrderBy(i => i.SortOrder))
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(c => preferEnSlug ? c.Slug == id : c.SlugEn == id);
+
+                if (item != null)
+                {
+                    var canonicalSlug = preferEnSlug ? item.SlugEn : item.Slug;
+                    if (!string.IsNullOrEmpty(canonicalSlug) && !string.Equals(canonicalSlug, id, StringComparison.Ordinal))
+                    {
+                        var rv = new RouteValueDictionary { ["id"] = canonicalSlug };
+                        if (lang != "en")
+                            rv["culture"] = lang;
+                        return RedirectToActionPermanent(nameof(Details), rv);
+                    }
+                }
+            }
 
             if (item == null) return NotFound();
 
             // Load pre-translated content from database
             // Original content is in Czech (cs), so only translate for other languages
-            var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            
             if (lang != "cs")
             {
                 // Try to load translation from database for requested language
@@ -178,14 +209,14 @@ namespace AAS.Web.Controllers
                     // Try on-demand translation first
                     var onDemandTitle = await _tr.TranslateAsync(item.Title, "cs", lang);
                     var onDemandDescription = await _tr.TranslateAsync(item.Description, "cs", lang);
-                    
+
                     // If on-demand translation failed (returned original Czech text), try English fallback
                     if (onDemandTitle == item.Title && lang != "en")
                     {
                         var englishTranslation = await _db.CollectionTranslations
                             .AsNoTracking()
                             .FirstOrDefaultAsync(t => t.CollectionId == item.Id && t.LanguageCode == "en");
-                        
+
                         if (englishTranslation != null)
                         {
                             ViewBag.TranslatedTitle = englishTranslation.TranslatedTitle;

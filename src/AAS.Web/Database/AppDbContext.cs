@@ -25,6 +25,8 @@ namespace AAS.Web.Data
             b.Entity<Collection>(e =>
             {
                 e.HasIndex(x => x.Slug).IsUnique();
+                // Allow multiple NULL SlugEn (filtered unique index for Postgres).
+                e.HasIndex(x => x.SlugEn).IsUnique().HasFilter("\"SlugEn\" IS NOT NULL");
                 e.Property(x => x.Description).HasColumnType("text");
             });
 

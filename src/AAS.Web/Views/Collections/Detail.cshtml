@@ -117,7 +117,7 @@
     <nav aria-label="breadcrumb" class="mb-4 reveal">
       <ol class="breadcrumb" style="background: transparent; padding: 0; margin: 0;">
         <li class="breadcrumb-item"><a href="/" class="text-gold"><i class="bi bi-house me-1"></i>@L["Home"]</a></li>
-        <li class="breadcrumb-item"><a href="/Collections" class="text-gold">@L["Collections"]</a></li>
+        <li class="breadcrumb-item"><a href="@Loc("/Collections")" class="text-gold">@L["Collections"]</a></li>
         <li class="breadcrumb-item active text-muted" aria-current="page">@(ViewBag.TranslatedTitle as string ?? Model.Title)</li>
       </ol>
       

@@ -2,6 +2,7 @@
 @using AAS.Web.Models
 @using AAS.Web.Data
 @using AAS.Web.Resources
+@using System.Globalization
 @using Microsoft.EntityFrameworkCore
 @inject AppDbContext Db
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
@@ -196,7 +197,7 @@
                             {
                                 var firstImage = item.Images.OrderBy(i => i.SortOrder).FirstOrDefault();
                                 <div class="col-md-6 col-lg-4">
-                                    <a href="/Collections/Details/@item.Slug" class="preview-card" data-testid="preview-item-@item.Id">
+                                    <a href="@Loc($"/Collections/Details/{(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs" ? item.Slug : (string.IsNullOrEmpty(item.SlugEn) ? item.Slug : item.SlugEn))}")" class="preview-card" data-testid="preview-item-@item.Id">
                                         <div class="preview-card-image">
                                             @if (firstImage != null)
                                             {

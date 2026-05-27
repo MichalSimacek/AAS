@@ -8,6 +8,11 @@ namespace AAS.Web.Models
         public int Id { get; set; }
         [Required, MaxLength(180)] public string Title { get; set; } = string.Empty;
         [MaxLength(200)] public string Slug { get; set; } = string.Empty;
+        // English slug — used for all non-Czech language URLs (variant C).
+        // Auto-generated from the English translation when DeepL runs, or filled
+        // by admin manually. Null/empty means the system will fall back to the
+        // Czech Slug above.
+        [MaxLength(200)] public string? SlugEn { get; set; }
         [Required] public CollectionCategory Category { get; set; }
         [Column(TypeName = "text"), MaxLength(10000)] public string Description { get; set; } = string.Empty;
         [MaxLength(500)] public string? AudioPath { get; set; }

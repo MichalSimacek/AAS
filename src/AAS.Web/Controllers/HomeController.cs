@@ -54,7 +54,27 @@ namespace AAS.Web.Controllers
                 }
             );
 
-            return LocalRedirect(returnUrl);
+            // Variant C URL strategy: re-prefix returnUrl with the selected culture.
+            // EN is the default and uses no prefix; all other languages use /{culture}/...
+            var queryIdx = returnUrl.IndexOf('?');
+            var path = queryIdx >= 0 ? returnUrl.Substring(0, queryIdx) : returnUrl;
+            var query = queryIdx >= 0 ? returnUrl.Substring(queryIdx) : string.Empty;
+
+            // Strip an existing leading culture segment from the path (if any).
+            var firstSeg = path.TrimStart('/').Split('/', 2)[0];
+            var nonDefaultCultures = new[] { "cs", "ru", "de", "es", "fr", "zh", "pt", "hi", "ja" };
+            if (nonDefaultCultures.Contains(firstSeg))
+            {
+                path = path.Length > firstSeg.Length + 1 ? path.Substring(firstSeg.Length + 1) : "/";
+            }
+
+            if (string.IsNullOrEmpty(path)) path = "/";
+            var newPath = culture == "en"
+                ? path
+                : $"/{culture}" + (path == "/" ? "" : path);
+            if (string.IsNullOrEmpty(newPath)) newPath = "/";
+
+            return LocalRedirect(newPath + query);
         }
 
     }

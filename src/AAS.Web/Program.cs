@@ -97,7 +97,14 @@ services.AddDefaultIdentity<IdentityUser>(o =>
 // MVC + Localization
 services.AddLocalization(options => options.ResourcesPath = "Resources");
 services.AddControllersWithViews().AddViewLocalization().AddRazorRuntimeCompilation();
-services.AddRazorPages().AddRazorRuntimeCompilation();
+services.AddRazorPages(options =>
+{
+    // Variant C URL localization: also expose /{culture}/Collections/Landing
+    // for non-default cultures (en is the default and uses the bare URL).
+    options.Conventions.AddPageRoute(
+        "/Collections/Landing",
+        "{culture:regex(^(cs|ru|de|es|fr|zh|pt|hi|ja)$)}/Collections/Landing");
+}).AddRazorRuntimeCompilation();
 
 // SECURITY: Configure anti-forgery to accept tokens from headers (for AJAX requests)
 services.AddAntiforgery(options =>
@@ -107,6 +114,7 @@ services.AddAntiforgery(options =>
 
 // Services
 services.AddScoped<SlugService>();
+services.AddScoped<SlugEnBackfillService>();
 services.AddScoped<ImageService>();
 services.AddScoped<EmailService>();
 services.AddTransient<Microsoft.AspNetCore.Identity.UI.Services.IEmailSender, EmailSenderAdapter>();
@@ -265,6 +273,11 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     await db.Database.MigrateAsync();
+
+    // One-time SlugEn backfill (variant C URL localization).
+    // Safe to run on every startup — only updates rows that have NULL/empty SlugEn.
+    var backfill = scope.ServiceProvider.GetRequiredService<SlugEnBackfillService>();
+    await backfill.RunAsync();
 }
 
 // CRITICAL: Configure forwarded headers BEFORE other middleware
@@ -337,9 +350,14 @@ app.Use((ctx, next) =>
 });
 
 // Localization - configure culture detection in this order:
-// 1. Cookie (user's explicit choice via language selector)
-// 2. Accept-Language header (browser's default language)
-// 3. Default culture (fallback to English)
+// 1. Route data (URL prefix /cs/, /ru/, /de/ etc. — used for localized URL paths)
+// 2. Query string (?culture=ru — used for hreflang/sitemap URLs and SEO crawlers)
+// 3. Cookie (user's explicit choice via language selector — persists 1 year)
+// 4. Default culture (English — for first-time visitors, regardless of browser language)
+//
+// Accept-Language header provider intentionally NOT registered: we always default
+// to English for new visitors. They can switch via the language selector, which
+// persists their choice in a cookie for 1 year.
 var supported = config.GetSection("Localization:SupportedCultures").Get<string[]>() ?? new[] { "en" };
 var defaultCulture = config["Localization:DefaultCulture"] ?? "en";
 var cultures = Array.ConvertAll(supported, s => new CultureInfo(s));
@@ -351,8 +369,13 @@ var locOpts = new RequestLocalizationOptions
 };
 // Clear default providers and set custom order
 locOpts.RequestCultureProviders.Clear();
+locOpts.RequestCultureProviders.Add(new Microsoft.AspNetCore.Localization.Routing.RouteDataRequestCultureProvider
+{
+    RouteDataStringKey = "culture",
+    UIRouteDataStringKey = "culture"
+});
+locOpts.RequestCultureProviders.Add(new Microsoft.AspNetCore.Localization.QueryStringRequestCultureProvider());
 locOpts.RequestCultureProviders.Add(new Microsoft.AspNetCore.Localization.CookieRequestCultureProvider());
-locOpts.RequestCultureProviders.Add(new Microsoft.AspNetCore.Localization.AcceptLanguageHeaderRequestCultureProvider());
 app.UseRequestLocalization(locOpts);
 
 app.UseStaticFiles();
@@ -364,20 +387,26 @@ app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Area routes
+// Area routes (admin & identity stay unlocalized in URL — internal pages only)
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
 // 301 redirect for legacy lowercase /collections/{slug} URLs that were indexed
 // by Google before the canonical /Collections/Details/{slug} pattern was set.
-// This preserves SEO link juice and fixes 404s reported in Search Console.
 app.MapGet("/collections/{slug}", (string slug) =>
     Results.RedirectToRoute("default",
         new { controller = "Collections", action = "Details", id = slug },
         permanent: true));
 
-// Default route
+// Localized route — culture prefix in path for non-default languages.
+// Supported non-default languages: cs, ru, de, es, fr, zh, pt, hi, ja.
+// English (default) uses the bare URL with no prefix.
+app.MapControllerRoute(
+    name: "localized",
+    pattern: "{culture:regex(^(cs|ru|de|es|fr|zh|pt|hi|ja)$)}/{controller=Home}/{action=Index}/{id?}");
+
+// Default route (English / no prefix)
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

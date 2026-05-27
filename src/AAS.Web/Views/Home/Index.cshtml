@@ -14,7 +14,7 @@
       @L["Home Description"]
     </p>
     <div class="d-flex gap-3 justify-content-center flex-wrap mt-5 animate-fade-in delay-3">
-      <a class="btn btn-primary btn-lg" href="/Collections/Landing" onclick="sessionStorage.setItem('playMusic', 'true')">@L["Explore collections"]</a>
+      <a class="btn btn-primary btn-lg" href="@Loc("/Collections/Landing")" onclick="sessionStorage.setItem('playMusic', 'true')">@L["Explore collections"]</a>
       <a class="btn btn-outline-secondary btn-lg" href="/Contacts">@L["Contact Us"]</a>
     </div>
   </div>
@@ -143,7 +143,7 @@
     </div>
     
     <div class="text-center mt-5">
-      <a href="/Collections/Landing" class="btn btn-primary btn-lg" onclick="sessionStorage.setItem('playMusic', 'true')">
+      <a href="@Loc("/Collections/Landing")" class="btn btn-primary btn-lg" onclick="sessionStorage.setItem('playMusic', 'true')">
         @L["ViewAllCollections"] <i class="bi bi-arrow-right ms-2"></i>
       </a>
     </div>
